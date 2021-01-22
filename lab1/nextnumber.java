@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class nextnumber {
+public class nextnumber {
+    public static void main(String[] args) {
+        
+    }
 }

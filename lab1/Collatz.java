@@ -19,8 +19,6 @@ public class Collatz {
             return (3*t + 1);
         }
         return t;
-
-
     }
 
 }

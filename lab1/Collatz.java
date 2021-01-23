@@ -4,17 +4,21 @@
 public class Collatz {
     public static void main(String[] args) {
         int n = 5;
-        while (n != 1) {
-            if (n )
+
 
         System.out.print(n + " ");
-        }
+
     }
     public static int nextnumber(int t) {
+        if (t % 2 == 0 ){
+            return (t//2)
+        }
+
 /** this method return the next number of Collatz Sequence
  * however, it doesn't judge anything,it just return the value of the next number.
  */
-        return (t*3 + 1);
+
+
     }
-    public  static
+
 }

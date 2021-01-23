@@ -7,7 +7,9 @@ public class Collatz {
         System.out.print(n + " ");
     }
     public static int nextnumber(int t) {
-
+/** this method return the next number of Collatz Sequence
+ * however, it doesn't judge anything,it just return the value of the next number.
+ */
         return (t*3 + 1);
     }
     public  static 

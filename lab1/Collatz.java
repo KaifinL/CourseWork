@@ -2,6 +2,12 @@
  *  @author YOUR NAME HERE
  */
 public class Collatz {
+    public static int nextnumber(int t) {
+        if (t % 2 == 0) {    /** this statement is to judge whether the parameter is an odd or not      */
+            return (t / 2);
+        }
+        return (3 * t + 1);
+    }
     public static void main(String[] args) {
         int n = 5;
         while (n!=1) {
@@ -11,11 +17,6 @@ public class Collatz {
         }
         System.out.println("1");
     }
-    public static int nextnumber(int t) {
-            if (t % 2 == 0) {    /** this statement is to judge whether the parameter is an odd or not      */
-                return (t / 2);
-            }
-            return (3*t + 1);
-    }
 
-}
+    }
+    

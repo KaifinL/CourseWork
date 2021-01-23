@@ -4,7 +4,11 @@
 public class Collatz {
     public static void main(String[] args) {
         int n = 5;
+        while (n != 1) {
+            if (n )
+
         System.out.print(n + " ");
+        }
     }
     public static int nextnumber(int t) {
 /** this method return the next number of Collatz Sequence
@@ -12,5 +16,5 @@ public class Collatz {
  */
         return (t*3 + 1);
     }
-    public  static 
+    public  static
 }

@@ -1,5 +1,7 @@
 public class nextnumber {
-    public static void main(String[] args) {
-        
+    public static int nextNumber(int n){
+        while (n != 1){
+            
+        }
     }
 }

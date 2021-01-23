@@ -6,5 +6,7 @@ public class Collatz {
         int n = 5;
         System.out.print(n + " ");
     }
-    public static void 
+    public static int nextnumber{
+
+    }
 }

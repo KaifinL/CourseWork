@@ -7,6 +7,7 @@ public class Collatz {
         while (n!=1) {
             n = nextnumber(n);
             System.out.print(n + " ");
+            n = n+1;
         }
         System.out.println("1");
     }

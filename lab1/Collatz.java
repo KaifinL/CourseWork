@@ -7,15 +7,8 @@ public class Collatz {
         System.out.print(n + " ");
     }
     public static int nextnumber(int t) {
-        while (t != 1) {
-            if (t%2==0) {
-                t = 
 
-
-            }
-
-        }
-
-        return t;
+        return (t*3 + 1);
     }
+    public  static 
 }

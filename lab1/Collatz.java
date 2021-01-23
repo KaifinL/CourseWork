@@ -13,7 +13,7 @@ public class Collatz {
     public static int nextnumber(int t) {
         while (t != 1) {
 
-            if (t % 2 == 0) {    /** this statement is to judge whether the peramator is an odd or not      */
+            if (t % 2 == 0) {    /** this statement is to judge whether the parameter is an odd or not      */
                 return (t / 2);
             }
             return (3*t + 1);

@@ -3,7 +3,7 @@
  */
 public class Collatz {
     public static int nextnumber(int t) {
-        if (t % 2 == 0) {    
+        if (t % 2 == 0) {
             return (t / 2);
         }
         return (3 * t + 1);
@@ -14,7 +14,6 @@ public class Collatz {
             n = nextnumber(n);
             System.out.print(n + " ");
         }
-        System.out.println("1");
     }
 
     }

@@ -6,8 +6,16 @@ public class Collatz {
         int n = 5;
         System.out.print(n + " ");
     }
-    public static int nextnumber(int t){
-        
+    public static int nextnumber(int t) {
+        while (t != 1) {
+            if (t%2==0) {
+                t = 
 
+
+            }
+
+        }
+
+        return t;
     }
 }

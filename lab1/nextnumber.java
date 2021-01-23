@@ -1,5 +1,5 @@
 public class nextnumber {
-    public static int nextNumber(int n){
+    public static void nextNumber(int n){
         while (n != 1){
             
         }

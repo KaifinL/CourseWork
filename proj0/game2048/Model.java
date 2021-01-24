@@ -140,10 +140,20 @@ public class Model extends Observable {
         // TODO: Fill in this function.
         int i = 0;
         int j = 0;
+        int counter = 0;
         while ( i < 5) {
             while (j < 5) {
-                if (tile(i,j)) ==
+                if (b.tile(i,j)) {
+                    counter += 1;
+                }
+                j += 1;
             }
+            j = 0;
+            i += 1;
+
+        }
+        if (counter == 16){
+            return true;
         }
         return false;
     }

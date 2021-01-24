@@ -47,8 +47,9 @@ public class Model extends Observable {
     /** Return the current Tile at (COL, ROW), where 0 <= ROW < size(),
      *  0 <= COL < size(). Returns null if there is no tile there.
      *  Used for testing. Should be deprecated and removed.
-     *  */
-    public Tile tile(int col, int row) {
+     *
+     * @return*/
+    public boolean tile(int col, int row) {
         return board.tile(col, row);
     }
 

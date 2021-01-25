@@ -142,7 +142,7 @@ public class Model extends Observable {
         int i = 0;
         int j = 0;
         int counter = 0;
-        while ( i < 5) {
+        while (i < 5) {
             while (j < 5) {
                 if (b.tile(i,j)) {
                     counter += 1;

@@ -5,7 +5,7 @@ import java.util.Observable;
 
 
 /** The state of a game of 2048.
- *  @author TODO: Kaifeng Lin
+ *  @author TODO: YOUR NAME HERE
  */
 public class Model extends Observable {
     /** Current contents of the board. */
@@ -47,9 +47,8 @@ public class Model extends Observable {
     /** Return the current Tile at (COL, ROW), where 0 <= ROW < size(),
      *  0 <= COL < size(). Returns null if there is no tile there.
      *  Used for testing. Should be deprecated and removed.
-     *
-     * @return*/
-    public boolean tile(int col, int row) {
+     *  */
+    public Tile tile(int col, int row) {
         return board.tile(col, row);
     }
 
@@ -139,23 +138,6 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
-        int i = 0;
-        int j = 0;
-        int counter = 0;
-        while (i < 5) {
-            while (j < 5) {
-                if (b.tile(i,j)) {
-                    counter += 1;
-                }
-                j += 1;
-            }
-            j = 0;
-            i += 1;
-
-        }
-        if (counter == 16){
-            return true;
-        }
         return false;
     }
 

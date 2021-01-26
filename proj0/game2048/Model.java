@@ -111,7 +111,7 @@ public class Model extends Observable {
         boolean changed;
         changed = false;
         for (int n = 0;n<4;n+=1) {       /** n stands for every column */
-            for (int i = 3; i > 0; i -= 1) {   /** i stands for coresponding row */
+            for (int i = 3; i > 0; i -= 1) {   /** to merge the tiles previously */
                 Tile t = board.tile(n, i);
                 Tile r = board.tile(n, i - 1);
                 if (t == null || r == null) {
@@ -119,16 +119,17 @@ public class Model extends Observable {
                 }
                 if (t.value() == r.value()) {
                     t.merge(n, i, r);
+                    score += t.value();
                 }
             }
             int counter = 0;
-            for (int j = 3; j > 0; j -= 1) {
+            for (int j = 3; j > 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
                 Tile t = board.tile(n, j);
                 if (t == null) {
                     counter += 1;
                 }
             }
-            if (counter == 1) {
+            if (counter == 1) {  /** indicate that there is a empty tile in the column*/
                 int a = 0;
                 for (int j = 3; j > 0; j -= 1) {
                     Tile t = board.tile(n, j);
@@ -141,7 +142,7 @@ public class Model extends Observable {
                     board.move(n, a + 1, j);
                 }
             }
-            if (counter == 2) {
+            if (counter == 2) {    /** indicate that there is a empty tile in the column*/
                 if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
                     Tile t = board.tile(n, 1);
                     board.move(n, 3, t);
@@ -169,7 +170,7 @@ public class Model extends Observable {
                     board.move(n, 2, j);
                 }
             }
-            if (counter == 3) {
+            if (counter == 3) {  /** indicate that there is a empty tile in the column*/
                 int b = 0;
                 for (int j = 3; j > 0; j -= 1) {
                     Tile t = board.tile(n, j);

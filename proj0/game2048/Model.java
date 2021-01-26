@@ -113,7 +113,10 @@ public class Model extends Observable {
         for (int i=3; i > 0;i-=1){
             Tile t = board.tile(0,i);
             Tile r = board.tile(0,i-1);
-            if (t == null) 
+            if (t == null || r == null) { continue; }
+            if (t.value() == r.value()){
+                t.value() = t.value() + r.value();
+            }
             }
 
 

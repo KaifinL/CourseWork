@@ -110,9 +110,12 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
-        
-        for (int i=3; i >= 0;i-=1){
-            if ()
+        for (int i=3; i > 0;i-=1){
+            if (tile(0,i)==null) { continue; }
+            if (tile(0,i).value() == tile(0,i-1).value()){
+                tile(0,i).value() *= 2;
+                tile(0,i+1) = null;
+            }
         }
 
         // TODO: Modify this.board (and perhaps this.score) to account

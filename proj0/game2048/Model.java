@@ -181,10 +181,9 @@ public class Model extends Observable {
         if (emptySpaceExists(b)){
             return true;
         }
-        for (int i=0;i<3;i+=1) {
-            for (int j = 0; j < 3; j += 1) {
-                if (b.tile(i,j).value()==b.tile(i,j+1).value())
-                    { return true; }
+        for (int i=0;i<4;i+=1) {
+            for (int j = 0; j < 4; j += 1) {
+                if (b.tile(i,j).value()==b.tile(i,j+1).value()){return true;}
                 if (b.tile(i,j).value()==b.tile(i+1,j).value()){ return true;}
             }
 

@@ -118,6 +118,7 @@ public class Model extends Observable {
                 t.merge(0,i,r);
             }
             }
+        
 
 
         // TODO: Modify this.board (and perhaps this.score) to account

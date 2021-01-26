@@ -110,61 +110,78 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
-        for (int i=3; i > 0;i-=1){
-            Tile t = board.tile(0,i);
-            Tile r = board.tile(0,i-1);
-            if (t == null || r == null) { continue; }
-            if (t.value() == r.value()){
-                t.merge(0,i,r);
+        for (int n = 0;n<4;n+=1) {       /** n stands for every column */
+            for (int i = 3; i > 0; i -= 1) {   /** i stands for coordinary row */
+                Tile t = board.tile(n, i);
+                Tile r = board.tile(n, i - 1);
+                if (t == null || r == null) {
+                    continue;
+                }
+                if (t.value() == r.value()) {
+                    t.merge(n, i, r);
+                }
             }
+            int counter = 0;
+            for (int j = 3; j > 0; j -= 1) {
+                Tile t = board.tile(n, j);
+                if (t == null) {
+                    counter += 1;
+                }
             }
-        int counter = 0;
-        for (int j=3; j>0; j-=1){
-            Tile t = board.tile(0,j);
-            if (t == null){
-                counter += 1; } }
-        if (counter == 1){
-            int a = 0;
-            for (int j=3; j>0; j-=1){
-                Tile t = board.tile(0,j);
-                if (t == null){
-                     a = j;} }
-            for (int t=0; t<3-a;t+=1){
-                Tile j = board.tile(0,a);
-                board.move(0,a+1,j);
-            }}
-        if (counter == 2){
-            if (board.tile(0,3) == null & board.tile(0,2) == null){
-                Tile t = board.tile(0,1);
-                board.move(0,3,t);
-                Tile j = board.tile(0,0);
-                board.move(0,2,j); }
-            if (board.tile(0,3) == null & board.tile(0,1)==null){
-                Tile t = board.tile(0,2);
-                board.move(0,3,t);
-                Tile j = board.tile(0,0);
-                board.move(0,2,j); }
-            if (board.tile(0,3) == null & board.tile(0,0)==null){
-                Tile t = board.tile(0,2);
-                board.move(0,3,t);
-                Tile j = board.tile(0,1);
-                board.move(0,2,j); }
-            if (board.tile(0,2) == null & board.tile(0,1)==null){
-                Tile j = board.tile(0,0);
-                board.move(0,2,j); }
-            if (board.tile(0,2) == null & board.tile(0,0)==null){
-                Tile j = board.tile(0,1);
-                board.move(0,2,j); } }
-        if (counter == 3){
-            int b = 0;
-            for (int j=3; j>0; j-=1){
-                Tile t = board.tile(0,j);
-                if (t != null){
-                    b = j;
-                break;} }
-            Tile t = board.tile(0,b);
-            board.move(0,3,t); }
-        
+            if (counter == 1) {
+                int a = 0;
+                for (int j = 3; j > 0; j -= 1) {
+                    Tile t = board.tile(n, j);
+                    if (t == null) {
+                        a = j;
+                    }
+                }
+                for (int t = 0; t < 3 - a; t += 1) {
+                    Tile j = board.tile(n, a);
+                    board.move(n, a + 1, j);
+                }
+            }
+            if (counter == 2) {
+                if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
+                    Tile t = board.tile(n, 1);
+                    board.move(n, 3, t);
+                    Tile j = board.tile(n, 0);
+                    board.move(n, 2, j);
+                }
+                if (board.tile(n, 3) == null & board.tile(n, 1) == null) {
+                    Tile t = board.tile(n, 2);
+                    board.move(n, 3, t);
+                    Tile j = board.tile(n, 0);
+                    board.move(n, 2, j);
+                }
+                if (board.tile(n, 3) == null & board.tile(n, 0) == null) {
+                    Tile t = board.tile(n, 2);
+                    board.move(n, 3, t);
+                    Tile j = board.tile(n, 1);
+                    board.move(n, 2, j);
+                }
+                if (board.tile(n, 2) == null & board.tile(n, 1) == null) {
+                    Tile j = board.tile(n, 0);
+                    board.move(n, 2, j);
+                }
+                if (board.tile(n, 2) == null & board.tile(n, 0) == null) {
+                    Tile j = board.tile(n, 1);
+                    board.move(n, 2, j);
+                }
+            }
+            if (counter == 3) {
+                int b = 0;
+                for (int j = 3; j > 0; j -= 1) {
+                    Tile t = board.tile(n, j);
+                    if (t != null) {
+                        b = j;
+                        break;
+                    }
+                }
+                Tile t = board.tile(n, b);
+                board.move(n, 3, t);
+            }
+        }
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.

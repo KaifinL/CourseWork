@@ -132,11 +132,39 @@ public class Model extends Observable {
             for (int t=0; t<3-a;t+=1){
                 Tile j = board.tile(0,a);
                 board.move(0,a+1,j);
-            }
+            }}
         if (counter == 2){
-            if (board.tile(0,3) == null;board.tile(0,2) == null)
-        }
-        }
+            if (board.tile(0,3) == null & board.tile(0,2) == null){
+                Tile t = board.tile(0,1);
+                board.move(0,3,t);
+                Tile j = board.tile(0,0);
+                board.move(0,2,j); }
+            if (board.tile(0,3) == null & board.tile(0,1)==null){
+                Tile t = board.tile(0,2);
+                board.move(0,3,t);
+                Tile j = board.tile(0,0);
+                board.move(0,2,j); }
+            if (board.tile(0,3) == null & board.tile(0,0)==null){
+                Tile t = board.tile(0,2);
+                board.move(0,3,t);
+                Tile j = board.tile(0,1);
+                board.move(0,2,j); }
+            if (board.tile(0,2) == null & board.tile(0,1)==null){
+                Tile j = board.tile(0,0);
+                board.move(0,2,j); }
+            if (board.tile(0,2) == null & board.tile(0,0)==null){
+                Tile j = board.tile(0,1);
+                board.move(0,2,j); } }
+        if (counter == 3){
+            int b = 0;
+            for (int j=3; j>0; j-=1){
+                Tile t = board.tile(0,j);
+                if (t != null){
+                    b = j;
+                break;} }
+            Tile t = board.tile(0,b);
+            board.move(0,3,t); }
+        
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.

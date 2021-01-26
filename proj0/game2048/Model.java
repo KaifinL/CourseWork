@@ -185,7 +185,7 @@ public class Model extends Observable {
             for (int j = 0; j < 3; j += 1) {
                 if (b.tile(i,j).value()==b.tile(i,j+1).value())
                     { return true; }
-                elif (b.tile(i,j).value()==b.tile(i+1,j).value()); { return true;}
+                elif (b.tile(i,j).value()==b.tile(i+1,j).value());{ return true;}
             }
 
             }

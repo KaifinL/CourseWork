@@ -192,7 +192,6 @@ public class Model extends Observable {
         return false;
     }
 
-
     @Override
      /** Returns the model as a string, used for debugging. */
     public String toString() {

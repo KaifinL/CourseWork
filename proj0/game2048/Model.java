@@ -111,7 +111,7 @@ public class Model extends Observable {
         boolean changed;
         changed = false;
         for (int n = 0;n<4;n+=1) {       /** n stands for every column */
-            for (int i = 3; i > 0; i -= 1) {   /** i stands for coordinary row */
+            for (int i = 3; i > 0; i -= 1) {   /** i stands for coresponding row */
                 Tile t = board.tile(n, i);
                 Tile r = board.tile(n, i - 1);
                 if (t == null || r == null) {

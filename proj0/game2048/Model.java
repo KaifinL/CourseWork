@@ -118,9 +118,25 @@ public class Model extends Observable {
                 t.merge(0,i,r);
             }
             }
-
-
-
+        int counter = 0;
+        for (int j=3; j>0; j-=1){
+            Tile t = board.tile(0,j);
+            if (t == null){
+                counter += 1; } }
+        if (counter == 1){
+            int a = 0;
+            for (int j=3; j>0; j-=1){
+                Tile t = board.tile(0,j);
+                if (t == null){
+                     a = j;} }
+            for (int t=0; t<3-a;t+=1){
+                Tile j = board.tile(0,a);
+                board.move(0,a+1,j);
+            }
+        if (counter == 2){
+            if (board.tile(0,3) == null;board.tile(0,2) == null)
+        }
+        }
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.

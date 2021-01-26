@@ -158,6 +158,9 @@ public class Model extends Observable {
         // TODO: Fill in this function.
         for (int i=0;i<4;i+=1) {
             for (int j = 0; j < 4; j += 1) {
+                if (b.tile(i,j)==null){
+                    continue;
+                }
                 if (b.tile(i,j).value() == MAX_PIECE){
                     return true;
                 }

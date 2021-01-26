@@ -115,7 +115,7 @@ public class Model extends Observable {
             Tile r = board.tile(0,i-1);
             if (t == null || r == null) { continue; }
             if (t.value() == r.value()){
-                t.value() = t.value() + r.value();
+                t.merge(0,i,r);
             }
             }
 

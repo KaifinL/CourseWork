@@ -110,7 +110,7 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
-        Tile 
+        Tile t = 
         for (int i=0; i < 4;i+=1){
             if
         }

@@ -131,7 +131,7 @@ public class Model extends Observable {
                 }
             }
             counter = 0;
-            for (int j = 3; j > 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
+            for (int j = 3; j >= 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
                 Tile t = board.tile(n, j);
                 if (t == null) {
                     counter += 1;

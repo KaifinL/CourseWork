@@ -187,6 +187,7 @@ public class Model extends Observable {
                 }
             }
         }
+        board.setViewingPerspective(Side.WEST);
         
         changed = true;
         // TODO: Modify this.board (and perhaps this.score) to account

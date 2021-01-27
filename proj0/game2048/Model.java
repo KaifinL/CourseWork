@@ -118,8 +118,7 @@ public class Model extends Observable {
                     continue;
                 }
                 if (t.value() == r.value()) {
-                    t=t.merge(n, i, r);
-                    r = null;
+                    
                     score += t.value();
                 }
             }

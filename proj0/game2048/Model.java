@@ -185,9 +185,9 @@ public class Model extends Observable {
                         board.move(n,3,t);
                     }
                 }
-
             }
         }
+        
         changed = true;
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the

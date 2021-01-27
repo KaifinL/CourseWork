@@ -174,11 +174,10 @@ public class Model extends Observable {
                 for (int j = 3; j > 0; j -= 1) {  /* to track which tile is empty*/
                     Tile t = board.tile(n, j);
                     if (t != null) {
-                        b = j;
+                        board.move(n,3,t);
                     }
                 }
-                Tile t = board.tile(n, b);
-                board.move(n, 3, t);
+
             }
         }
         changed = true;

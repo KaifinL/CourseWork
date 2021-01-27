@@ -114,11 +114,10 @@ public class Model extends Observable {
             for (int i = 3; i > 0; i -= 1) {   /** to merge the tiles previously */
                 Tile t = board.tile(n, i);
                 Tile r = board.tile(n, i - 1);
-                if (t == null || r == null) {
-                    continue;
-                }
+                if (t == null) { continue; }
+                if (r == null) {r = board.tile(n,)}
                 if (t.value() == r.value()) {
-                    
+
                     score += t.value();
                 }
             }

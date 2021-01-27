@@ -190,6 +190,7 @@ public class Model extends Observable {
         }}
         if (side == Side.WEST) {
             board.setViewingPerspective(Side.WEST);
+            board.tile(Side.NORTH)
         }
         changed = true;
         // TODO: Modify this.board (and perhaps this.score) to account

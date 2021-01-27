@@ -193,7 +193,7 @@ public class Model extends Observable {
         }
         }
         if (side == Side.WEST){
-            board.setViewingPerspective(side.west);
+            board.setViewingPerspective(side.WEST);
             tilt(Side.NORTH);
             board.setViewingPerspective(Side.NORTH);
         }

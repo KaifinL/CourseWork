@@ -110,6 +110,7 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
+        int counter = 0;
         for (int n = 0;n<4;n+=1) {       /** n stands for every column */
             int u = 3; int s =2;
             while (u > 0 & s > 0){
@@ -129,7 +130,7 @@ public class Model extends Observable {
                     score += 2*y.value();
                 }
             }
-            int counter = 0;
+            counter = 0;
             for (int j = 3; j > 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
                 Tile t = board.tile(n, j);
                 if (t == null) {

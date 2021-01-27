@@ -128,6 +128,7 @@ public class Model extends Observable {
                 }
                 if (y.value() == z.value()){
                     board.move(n,u,z);
+                    changed = true;
                     score += 2*y.value();
                     u -= 2;
                     s -= 2;
@@ -145,33 +146,39 @@ public class Model extends Observable {
                     if (t == null) {
                         for (int x =1; x<j+1; x+=1){
                             Tile p = board.tile(n,j-x);
-                            board.move(n,j-x+1,p); } } } }
+                            board.move(n,j-x+1,p);
+                            changed = true;} } } }
             if (counter == 2) {    /** indicate that there is a empty tile in the column*/
                 if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
                     Tile t = board.tile(n, 1);
                     board.move(n, 3, t);
                     Tile j = board.tile(n, 0);
                     board.move(n, 2, j);
+                    changed = true;
                 }
                 if (board.tile(n, 3) == null & board.tile(n, 1) == null) {
                     Tile t = board.tile(n, 2);
                     board.move(n, 3, t);
                     Tile j = board.tile(n, 0);
                     board.move(n, 2, j);
+                    changed = true;
                 }
                 if (board.tile(n, 3) == null & board.tile(n, 0) == null) {
                     Tile t = board.tile(n, 2);
                     board.move(n, 3, t);
                     Tile j = board.tile(n, 1);
                     board.move(n, 2, j);
+                    changed = true;
                 }
                 if (board.tile(n, 2) == null & board.tile(n, 1) == null) {
                     Tile j = board.tile(n, 0);
                     board.move(n, 2, j);
+                    changed = true;
                 }
                 if (board.tile(n, 2) == null & board.tile(n, 0) == null) {
                     Tile j = board.tile(n, 1);
                     board.move(n, 2, j);
+                    changed = true;
                 }
             }
             if (counter == 3) {  /** indicate that there is a empty tile in the column*/
@@ -179,6 +186,7 @@ public class Model extends Observable {
                     Tile t = board.tile(n, j);
                     if (t != null) {
                         board.move(n,3,t);
+                        changed = true;
                     }
                 }
             }
@@ -189,7 +197,6 @@ public class Model extends Observable {
             this.tilt(Side.NORTH);
             board.setViewingPerspective(Side.NORTH);
         }
-        changed = true;
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.

@@ -110,6 +110,7 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
+        int a=0; int b=0;
         for (int n = 0;n<4;n+=1) {       /** n stands for every column */
             for (int i = 3; i > 0; i -= 1) {   /** to merge the tiles previously */
                 Tile t = board.tile(n, i);
@@ -130,7 +131,7 @@ public class Model extends Observable {
                 }
             }
             if (counter == 1) {  /** indicate that there is a empty tile in the column*/
-                int a = 0;
+                 a = 0;
                 for (int j = 3; j > 0; j -= 1) {
                     Tile t = board.tile(n, j);
                     if (t == null) {
@@ -171,8 +172,8 @@ public class Model extends Observable {
                 }
             }
             if (counter == 3) {  /** indicate that there is a empty tile in the column*/
-                int b = 0;
-                for (int j = 3; j > 0; j -= 1) {
+                 b = 0;
+                for (int j = 3; j > 0; j -= 1) {  /* to track which tile is empty*/
                     Tile t = board.tile(n, j);
                     if (t != null) {
                         b = j;

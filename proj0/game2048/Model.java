@@ -135,13 +135,15 @@ public class Model extends Observable {
                     Tile t = board.tile(n, j);
                     if (t == null) {
                         a = j;
+                        for (int x =0; x<3-j; x+=1){
+                            Tile p = board.tile(n,j);
+                            board.move(n,j+1,p);
+                        }
                     }
                 }
-                for (int t = 0; t < 3 - a; t += 1) {
-                    Tile j = board.tile(n, a);
-                    board.move(n, a + 1, j);
+
                 }
-            }
+
             if (counter == 2) {    /** indicate that there is a empty tile in the column*/
                 if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
                     Tile t = board.tile(n, 1);

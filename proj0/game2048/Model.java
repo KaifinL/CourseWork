@@ -130,9 +130,8 @@ public class Model extends Observable {
                     board.move(n,u,z);
                     changed = true;
                     score += 2*y.value();
-                    u -= 2;
-                    s -= 2;
-                    continue;
+                    u -= 1;
+                    s -= 1;
                 }
             }
             counter = 0;

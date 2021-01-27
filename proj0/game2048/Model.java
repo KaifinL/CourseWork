@@ -175,7 +175,6 @@ public class Model extends Observable {
                     Tile t = board.tile(n, j);
                     if (t != null) {
                         b = j;
-                        break;
                     }
                 }
                 Tile t = board.tile(n, b);

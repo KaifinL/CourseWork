@@ -132,6 +132,7 @@ public class Model extends Observable {
                     score += 2*y.value();
                     u -= 2;
                     s -= 2;
+                    continue;
                 }
             }
             counter = 0;

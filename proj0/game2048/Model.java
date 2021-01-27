@@ -131,10 +131,10 @@ public class Model extends Observable {
                 }
             }
             if (counter == 1) {  /** indicate that there is a empty tile in the column*/
-                for (int j = 3; j > 0; j -= 1) {
+                for (int j = 3; j > 0 ; j -= 1) {
                     Tile t = board.tile(n, j);
                     if (t == null) {
-                        for (int x =1; x<4-j; x+=1){
+                        for (int x =1; x<j+1; x+=1){
                             Tile p = board.tile(n,j-x);
                             board.move(n,j-x+1,p);
                         }

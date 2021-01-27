@@ -186,7 +186,7 @@ public class Model extends Observable {
                     Tile t = board.tile(n, j);
                     if (t != null) {
                         board.move(n,3,t);
-                        if (j==3){changed = true;}
+                        if (j!=3){changed = true;}
                     }
                 }
             }

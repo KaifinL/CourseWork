@@ -110,7 +110,6 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
-        int a=0; int b=0;
         for (int n = 0;n<4;n+=1) {       /** n stands for every column */
             for (int i = 3; i > 0; i -= 1) {   /** to merge the tiles previously */
                 Tile t = board.tile(n, i);
@@ -119,7 +118,8 @@ public class Model extends Observable {
                     continue;
                 }
                 if (t.value() == r.value()) {
-                    t.merge(n, i, r);
+                    t=t.merge(n, i, r);
+                    r = null;
                     score += t.value();
                 }
             }

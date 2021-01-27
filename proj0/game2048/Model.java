@@ -170,7 +170,7 @@ public class Model extends Observable {
                 }
                 if (board.tile(n, 2) == null & board.tile(n, 1) == null) {
                     Tile j = board.tile(n, 0);
-                    board.move(n, 0, j);
+                    board.move(n, 2, j);
                 }
                 if (board.tile(n, 2) == null & board.tile(n, 0) == null) {
                     Tile j = board.tile(n, 1);

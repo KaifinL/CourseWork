@@ -194,17 +194,258 @@ public class Model extends Observable {
         }
         if (side == Side.WEST){
             board.setViewingPerspective(side.WEST);
-            tilt(Side.NORTH);
+            int counter = 0;
+            for (int n = 0;n<4;n+=1) {       /** n stands for column number*/
+                int u = 3; int s =2;
+                while (u >= 0 & s >= 0){
+                    Tile y = board.tile(n,u);
+                    Tile z = board.tile(n,s);
+                    if (y == null ){
+                        u -= 1;
+                        s -= 1;
+                        continue;
+                    }
+                    if (z == null) {
+                        s -= 1;
+                        continue;
+                    }
+                    if (y.value() == z.value()){
+                        board.move(n,u,z);
+                        changed = true;
+                        score += 2*y.value();
+                        u -= 2;
+                        s -= 2;
+                    }
+                }
+                counter = 0;
+                for (int j = 3; j >= 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
+                    Tile t = board.tile(n, j);
+                    if (t == null) {
+                        counter += 1; }
+                }
+                if (counter == 1) {  /** indicate that there is a empty tile in the column*/
+                    for (int j = 3; j > 0 ; j -= 1) {
+                        Tile t = board.tile(n, j);
+                        if (t == null) {
+                            for (int x =1; x<j+1; x+=1){
+                                Tile p = board.tile(n,j-x);
+                                board.move(n,j-x+1,p);
+                                changed = true;} } } }
+                if (counter == 2) {    /** indicate that there is a empty tile in the column*/
+                    if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
+                        Tile t = board.tile(n, 1);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 3) == null & board.tile(n, 1) == null) {
+                        Tile t = board.tile(n, 2);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 3) == null & board.tile(n, 0) == null) {
+                        Tile t = board.tile(n, 2);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 1);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 2) == null & board.tile(n, 1) == null) {
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 2) == null & board.tile(n, 0) == null) {
+                        Tile j = board.tile(n, 1);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                }
+                if (counter == 3) {  /** indicate that there are three empty tiles in the column*/
+                    for (int j = 3; j > 0; j -= 1) {  /* to track which tile is empty*/
+                        Tile t = board.tile(n, j);
+                        if (t != null) {
+                            board.move(n,3,t);
+                            if (j!=3){changed = true;}
+                        }
+                    }
+                }
+            }
             board.setViewingPerspective(Side.NORTH);
         }
         if (side == Side.EAST){
             board.setViewingPerspective(side.EAST);
-            tilt(Side.NORTH);
+
+            int counter = 0;
+            for (int n = 0;n<4;n+=1) {       /** n stands for column number*/
+                int u = 3; int s =2;
+                while (u >= 0 & s >= 0){
+                    Tile y = board.tile(n,u);
+                    Tile z = board.tile(n,s);
+                    if (y == null ){
+                        u -= 1;
+                        s -= 1;
+                        continue;
+                    }
+                    if (z == null) {
+                        s -= 1;
+                        continue;
+                    }
+                    if (y.value() == z.value()){
+                        board.move(n,u,z);
+                        changed = true;
+                        score += 2*y.value();
+                        u -= 2;
+                        s -= 2;
+                    }
+                }
+                counter = 0;
+                for (int j = 3; j >= 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
+                    Tile t = board.tile(n, j);
+                    if (t == null) {
+                        counter += 1; }
+                }
+                if (counter == 1) {  /** indicate that there is a empty tile in the column*/
+                    for (int j = 3; j > 0 ; j -= 1) {
+                        Tile t = board.tile(n, j);
+                        if (t == null) {
+                            for (int x =1; x<j+1; x+=1){
+                                Tile p = board.tile(n,j-x);
+                                board.move(n,j-x+1,p);
+                                changed = true;} } } }
+                if (counter == 2) {    /** indicate that there is a empty tile in the column*/
+                    if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
+                        Tile t = board.tile(n, 1);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 3) == null & board.tile(n, 1) == null) {
+                        Tile t = board.tile(n, 2);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 3) == null & board.tile(n, 0) == null) {
+                        Tile t = board.tile(n, 2);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 1);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 2) == null & board.tile(n, 1) == null) {
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 2) == null & board.tile(n, 0) == null) {
+                        Tile j = board.tile(n, 1);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                }
+                if (counter == 3) {  /** indicate that there are three empty tiles in the column*/
+                    for (int j = 3; j > 0; j -= 1) {  /* to track which tile is empty*/
+                        Tile t = board.tile(n, j);
+                        if (t != null) {
+                            board.move(n,3,t);
+                            if (j!=3){changed = true;}
+                        }
+                    }
+                }
+            }
+
             board.setViewingPerspective(Side.NORTH);
         }
         if (side == Side.SOUTH){
             board.setViewingPerspective(side.SOUTH);
-            tilt(side.NORTH);
+
+            int counter = 0;
+            for (int n = 0;n<4;n+=1) {       /** n stands for column number*/
+                int u = 3; int s =2;
+                while (u >= 0 & s >= 0){
+                    Tile y = board.tile(n,u);
+                    Tile z = board.tile(n,s);
+                    if (y == null ){
+                        u -= 1;
+                        s -= 1;
+                        continue;
+                    }
+                    if (z == null) {
+                        s -= 1;
+                        continue;
+                    }
+                    if (y.value() == z.value()){
+                        board.move(n,u,z);
+                        changed = true;
+                        score += 2*y.value();
+                        u -= 2;
+                        s -= 2;
+                    }
+                }
+                counter = 0;
+                for (int j = 3; j >= 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
+                    Tile t = board.tile(n, j);
+                    if (t == null) {
+                        counter += 1; }
+                }
+                if (counter == 1) {  /** indicate that there is a empty tile in the column*/
+                    for (int j = 3; j > 0 ; j -= 1) {
+                        Tile t = board.tile(n, j);
+                        if (t == null) {
+                            for (int x =1; x<j+1; x+=1){
+                                Tile p = board.tile(n,j-x);
+                                board.move(n,j-x+1,p);
+                                changed = true;} } } }
+                if (counter == 2) {    /** indicate that there is a empty tile in the column*/
+                    if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
+                        Tile t = board.tile(n, 1);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 3) == null & board.tile(n, 1) == null) {
+                        Tile t = board.tile(n, 2);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 3) == null & board.tile(n, 0) == null) {
+                        Tile t = board.tile(n, 2);
+                        board.move(n, 3, t);
+                        Tile j = board.tile(n, 1);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 2) == null & board.tile(n, 1) == null) {
+                        Tile j = board.tile(n, 0);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                    if (board.tile(n, 2) == null & board.tile(n, 0) == null) {
+                        Tile j = board.tile(n, 1);
+                        board.move(n, 2, j);
+                        changed = true;
+                    }
+                }
+                if (counter == 3) {  /** indicate that there are three empty tiles in the column*/
+                    for (int j = 3; j > 0; j -= 1) {  /* to track which tile is empty*/
+                        Tile t = board.tile(n, j);
+                        if (t != null) {
+                            board.move(n,3,t);
+                            if (j!=3){changed = true;}
+                        }
+                    }
+                }
+            }
+
             board.setViewingPerspective(Side.NORTH);
         }
         // TODO: Modify this.board (and perhaps this.score) to account

@@ -181,7 +181,7 @@ public class Model extends Observable {
                     changed = true;
                 }
             }
-            if (counter == 3) {  /** indicate that there is a empty tile in the column*/
+            if (counter == 3) {  /** indicate that there are three empty tiles in the column*/
                 for (int j = 3; j > 0; j -= 1) {  /* to track which tile is empty*/
                     Tile t = board.tile(n, j);
                     if (t != null) {

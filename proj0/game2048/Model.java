@@ -137,8 +137,7 @@ public class Model extends Observable {
             for (int j = 3; j >= 0; j -= 1) {  /** to know how many empty tiles are there in the board. */
                 Tile t = board.tile(n, j);
                 if (t == null) {
-                    counter += 1;
-                }
+                    counter += 1; }
             }
             if (counter == 1) {  /** indicate that there is a empty tile in the column*/
                 for (int j = 3; j > 0 ; j -= 1) {
@@ -146,13 +145,7 @@ public class Model extends Observable {
                     if (t == null) {
                         for (int x =1; x<j+1; x+=1){
                             Tile p = board.tile(n,j-x);
-                            board.move(n,j-x+1,p);
-                        }
-                    }
-                }
-
-                }
-
+                            board.move(n,j-x+1,p); } } } }
             if (counter == 2) {    /** indicate that there is a empty tile in the column*/
                 if (board.tile(n, 3) == null & board.tile(n, 2) == null) {
                     Tile t = board.tile(n, 1);

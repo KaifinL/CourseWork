@@ -112,7 +112,7 @@ public class Model extends Observable {
         changed = false;
         if (side == Side.NORTH){
         int counter = 0;
-        for (int n = 0;n<4;n+=1) {       /** n stands for every column */
+        for (int n = 0;n<4;n+=1) {       /** n stands for column number*/
             int u = 3; int s =2;
             while (u >= 0 & s >= 0){
                 Tile y = board.tile(n,u);
@@ -186,7 +186,7 @@ public class Model extends Observable {
                     Tile t = board.tile(n, j);
                     if (t != null) {
                         board.move(n,3,t);
-                        changed = true;
+                        if (j==3){changed = true;}
                     }
                 }
             }

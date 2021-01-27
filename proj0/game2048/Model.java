@@ -134,10 +134,9 @@ public class Model extends Observable {
                 for (int j = 3; j > 0; j -= 1) {
                     Tile t = board.tile(n, j);
                     if (t == null) {
-                        a = j;
-                        for (int x =0; x<3-j; x+=1){
-                            Tile p = board.tile(n,j);
-                            board.move(n,j+1,p);
+                        for (int x =1; x<4-j; x+=1){
+                            Tile p = board.tile(n,j-x);
+                            board.move(n,j-x+1,p);
                         }
                     }
                 }

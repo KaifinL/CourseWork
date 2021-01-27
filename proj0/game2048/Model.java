@@ -131,7 +131,6 @@ public class Model extends Observable {
                 }
             }
             if (counter == 1) {  /** indicate that there is a empty tile in the column*/
-                 a = 0;
                 for (int j = 3; j > 0; j -= 1) {
                     Tile t = board.tile(n, j);
                     if (t == null) {
@@ -172,7 +171,6 @@ public class Model extends Observable {
                 }
             }
             if (counter == 3) {  /** indicate that there is a empty tile in the column*/
-                 b = 0;
                 for (int j = 3; j > 0; j -= 1) {  /* to track which tile is empty*/
                     Tile t = board.tile(n, j);
                     if (t != null) {

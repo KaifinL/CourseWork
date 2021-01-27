@@ -111,14 +111,22 @@ public class Model extends Observable {
         boolean changed;
         changed = false;
         for (int n = 0;n<4;n+=1) {       /** n stands for every column */
-            for (int i = 3; i > 0; i -= 1) {   /** to merge the tiles previously */
-                Tile t = board.tile(n, i);
-                Tile r = board.tile(n, i - 1);
-                if (t == null) { continue; }
-                if (r == null) {r = board.tile(n,)}
-                if (t.value() == r.value()) {
-
-                    score += t.value();
+            int u = 0; int s =0;
+            while (u > 0 & s > 0){
+                Tile y = board.tile(n,u);
+                Tile z = board.tile(n,s);
+                if (y == null ){
+                    u -= 1;
+                    s -= 1;
+                    continue;
+                }
+                if (z == null) {
+                    s -= 1;
+                    continue;
+                }
+                if (y.value() == z.value()){
+                    board.move(n,u,z);
+                    score += y.value();
                 }
             }
             int counter = 0;

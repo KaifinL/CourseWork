@@ -187,10 +187,10 @@ public class Model extends Observable {
                     }
                 }
             }
-        }}
-        if (side == Side.WEST) {
-            board.setViewingPerspective(Side.WEST);
-            board.tile(Side.NORTH)
+        }
+        }
+        if (side == Side.WEST){
+            
         }
         changed = true;
         // TODO: Modify this.board (and perhaps this.score) to account

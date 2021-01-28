@@ -1,12 +1,19 @@
 package game2048;
 
+<<<<<<< HEAD
 import java.util.EmptyStackException;
+=======
+>>>>>>> df1e47bc85003fc91c0bf1334ce794456df8109a
 import java.util.Formatter;
 import java.util.Observable;
 
 
 /** The state of a game of 2048.
+<<<<<<< HEAD
  *  @author TODO: Kaifeng Lin
+=======
+ *  @author TODO: YOUR NAME HERE
+>>>>>>> df1e47bc85003fc91c0bf1334ce794456df8109a
  */
 public class Model extends Observable {
     /** Current contents of the board. */
@@ -110,6 +117,7 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
+<<<<<<< HEAD
         if (side == Side.NORTH){
         int counter = 0;
         for (int n = 0;n<4;n+=1) {       /** n stands for column number*/
@@ -128,8 +136,8 @@ public class Model extends Observable {
                 }
                 if (y.value() == z.value()){
                     board.move(n,u,z);
-                    changed = true;
                     score += 2* y.value();
+                    changed = true;
                     u -= 2;
                     s -= 2;
                     continue;
@@ -214,8 +222,8 @@ public class Model extends Observable {
                     }
                     if (y.value() == z.value()){
                         board.move(n,u,z);
-                        changed = true;
                         score += 2*y.value();
+                        changed = true;
                         u -= 2;
                         s -= 2;
                         continue;
@@ -302,8 +310,8 @@ public class Model extends Observable {
                     }
                     if (y.value() == z.value()){
                         board.move(n,u,z);
-                        changed = true;
                         score += 2*y.value();
+                        changed = true;
                         u -= 2;
                         s -= 2;
                         continue;
@@ -391,8 +399,8 @@ public class Model extends Observable {
                     }
                     if (y.value() == z.value()){
                         board.move(n,u,z);
-                        changed = true;
                         score += 2*y.value();
+                        changed = true;
                         u -= 2;
                         s -= 2;
                     }
@@ -460,6 +468,9 @@ public class Model extends Observable {
 
             board.setViewingPerspective(Side.NORTH);
         }
+=======
+
+>>>>>>> df1e47bc85003fc91c0bf1334ce794456df8109a
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
@@ -470,6 +481,10 @@ public class Model extends Observable {
         }
         return changed;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> df1e47bc85003fc91c0bf1334ce794456df8109a
     /** Checks if the game is over and sets the gameOver variable
      *  appropriately.
      */
@@ -487,6 +502,7 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
+<<<<<<< HEAD
         for (int i=0;i<4;i+=1){
             for (int j=0;j<4;j+=1){
                 if (b.tile(i,j) == null ){
@@ -495,6 +511,8 @@ public class Model extends Observable {
             }
         }
 
+=======
+>>>>>>> df1e47bc85003fc91c0bf1334ce794456df8109a
         return false;
     }
 
@@ -505,6 +523,7 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+<<<<<<< HEAD
         for (int i=0;i<4;i+=1) {
             for (int j = 0; j < 4; j += 1) {
                 if (b.tile(i,j)==null){
@@ -515,6 +534,8 @@ public class Model extends Observable {
                 }
             }
         }
+=======
+>>>>>>> df1e47bc85003fc91c0bf1334ce794456df8109a
         return false;
     }
 
@@ -526,6 +547,7 @@ public class Model extends Observable {
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+<<<<<<< HEAD
         if (emptySpaceExists(b)){
             return true;
         }
@@ -540,6 +562,12 @@ public class Model extends Observable {
         return false;
     }
 
+=======
+        return false;
+    }
+
+
+>>>>>>> df1e47bc85003fc91c0bf1334ce794456df8109a
     @Override
      /** Returns the model as a string, used for debugging. */
     public String toString() {

@@ -393,6 +393,8 @@ public class Model extends Observable {
                         u -= 2;
                         s -= 2;
                     }
+                    u -= 1;
+                    s -= 1;
                 }
                 counter = 0;
                 for (int j = 3; j >= 0; j -= 1) {  /** to know how many empty tiles are there in the board. */

@@ -132,6 +132,7 @@ public class Model extends Observable {
                     score += 2* y.value();
                     u -= 2;
                     s -= 2;
+                    continue;
                 }
                 u -= 1;
                 s -= 1;
@@ -217,6 +218,7 @@ public class Model extends Observable {
                         score += 2*y.value();
                         u -= 2;
                         s -= 2;
+                        continue;
                     }
                     u -= 1;
                     s -= 1;
@@ -304,6 +306,7 @@ public class Model extends Observable {
                         score += 2*y.value();
                         u -= 2;
                         s -= 2;
+                        continue;
                     }
                     u -= 1;
                     s -= 1;
@@ -395,6 +398,7 @@ public class Model extends Observable {
                     }
                     u -= 1;
                     s -= 1;
+                    continue;
                 }
                 counter = 0;
                 for (int j = 3; j >= 0; j -= 1) {  /** to know how many empty tiles are there in the board. */

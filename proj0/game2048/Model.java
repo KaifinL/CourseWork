@@ -129,7 +129,7 @@ public class Model extends Observable {
                 if (y.value() == z.value()){
                     board.move(n,u,z);
                     changed = true;
-                    score +=  y.value();
+                    score += 2* y.value();
                     u -= 2;
                     s -= 2;
                 }

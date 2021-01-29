@@ -115,6 +115,9 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
+        // TODO: Modify this.board (and perhaps this.score) to account
+        // for the tilt to the Side SIDE. If the board changed, set the
+        // changed local variable to true.
         checkGameOver();
         if (changed) {
             setChanged();
@@ -307,13 +310,6 @@ public class Model extends Observable {
             }
             board.setViewingPerspective(Side.NORTH);
         }
-
-
-        // TODO: Modify this.board (and perhaps this.score) to account
-        // for the tilt to the Side SIDE. If the board changed, set the
-        // changed local variable to true.
-
-        
         return changed;
     }
     /** Checks if the game is over and sets the gameOver variable

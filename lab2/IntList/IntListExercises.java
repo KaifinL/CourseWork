@@ -78,7 +78,7 @@ public class IntListExercises {
         while (counter < lst.size()){
             int currentnumber = lst.get(counter);
         if (Primes.isPrime(currentnumber)) {
-            counter *= counter;
+            lst.first *= lst.first;
             changed = true; }
         counter += 1;
         }

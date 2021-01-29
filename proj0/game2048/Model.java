@@ -116,6 +116,9 @@ public class Model extends Observable {
         boolean changed;
         changed = false;
         checkGameOver();
+        if (changed) {
+            setChanged();
+        }
         if (side == Side.NORTH) {
             int counter = 0;
             for (int n = 0; n < 4; n += 1) {       /** n stands for column number*/
@@ -310,10 +313,7 @@ public class Model extends Observable {
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
 
-        checkGameOver();
-        if (changed) {
-            setChanged();
-        }
+        
         return changed;
     }
     /** Checks if the game is over and sets the gameOver variable

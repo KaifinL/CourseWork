@@ -115,6 +115,7 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
+        checkGameOver();
         if (side == Side.NORTH) {
             int counter = 0;
             for (int n = 0; n < 4; n += 1) {       /** n stands for column number*/

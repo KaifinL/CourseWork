@@ -1,5 +1,7 @@
 package IntList;
 
+import net.sf.saxon.functions.ConstantFunction;
+
 public class IntListExercises {
 
     /**
@@ -71,13 +73,16 @@ public class IntListExercises {
         if (lst == null) {
             return false;
         }
-
-        boolean currElemIsPrime = Primes.isPrime(lst.first);
-
-        if (currElemIsPrime) {
-            lst.first *= lst.first;
+        boolean changed = false;
+        int counter = 0;
+        while (counter < lst.size()){
+            int currentnumber = lst.get(counter);
+        if (Primes.isPrime(currentnumber)) {
+            counter *= counter;
+            changed = true;
+        }
         }
 
-        return currElemIsPrime || squarePrimes(lst.rest);
+        return changed ;
     }
 }

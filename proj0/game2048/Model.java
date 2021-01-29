@@ -210,7 +210,7 @@ public class Model extends Observable {
         }
         if (side == Side.EAST || side == Side.WEST || side == Side.SOUTH){
             board.setViewingPerspective(side);
-            int counter = 0;
+            int counter;
             for (int n = 0; n < 4; n += 1) {       /** n stands for column number*/
                 int u = 3;
                 int s = 2;

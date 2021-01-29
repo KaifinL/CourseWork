@@ -285,7 +285,7 @@ public class Model extends Observable {
                     }
                 }
             }
-            board.setViewingPerspective(Side.NORTH);
+            board.setViewingPerspective(side.NORTH);
         }
         if (side == Side.EAST){
             board.setViewingPerspective(side.EAST);
@@ -374,7 +374,7 @@ public class Model extends Observable {
                 }
             }
 
-            board.setViewingPerspective(Side.NORTH);
+            board.setViewingPerspective(side.NORTH);
         }
         if (side == Side.SOUTH){
             board.setViewingPerspective(side.SOUTH);
@@ -463,7 +463,7 @@ public class Model extends Observable {
                 }
             }
 
-            board.setViewingPerspective(Side.NORTH);
+            board.setViewingPerspective(side.NORTH);
         }
 
 

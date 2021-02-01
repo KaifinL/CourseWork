@@ -1,5 +1,6 @@
 import java.lang.reflect.Type;
 import java.net.Proxy;
+import java.util.Iterator;
 
 public class LinkedListDeque {
     /* the same name as well as the function in the lecture */
@@ -83,8 +84,8 @@ public class LinkedListDeque {
         }
         return currentnode.item;
     }
-    public Iterable iterator(){
-        
+    public Iterator iterator(){
+        return 
     }
 
     private class DequeNode{

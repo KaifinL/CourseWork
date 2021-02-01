@@ -1,10 +1,11 @@
 
 public class LinkedListDeque {
     DequeNode sentinel = new DequeNode(null,7,null);
+    public DequeNode first;
 
 
     public LinkedListDeque(int t){
-        
+        first = new LinkedListDeque(t)
 
     }
     public void addfirst(int t){}

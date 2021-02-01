@@ -1,5 +1,7 @@
 
 public class LinkedListDeque {
+    
+
     public LinkedListDeque(){
 
     }
@@ -9,6 +11,10 @@ public class LinkedListDeque {
         public DequeNode ahead;
         public int item;
         public DequeNode next;
-        public DequeNode()
+        public DequeNode(DequeNode a,int i,DequeNode n){
+            ahead = a;
+            item = i;
+            next = n;
+        }
     }
 }

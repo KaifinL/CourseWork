@@ -83,7 +83,9 @@ public class LinkedListDeque {
         }
         return currentnode.item;
     }
-    public Iterable 
+    public Iterable iterator(){
+        
+    }
 
     private class DequeNode{
         public DequeNode ahead;

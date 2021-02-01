@@ -57,7 +57,20 @@ public class LinkedListDeque {
         }
     }
     public Object removelast(){
-        
+        if (sentinel.next == null){
+            return null;
+        }
+        else {
+            DequeNode currentnode = sentinel.next;
+            DequeNode pastnode = sentinel;
+            while (currentnode.next != null){
+                currentnode = currentnode.next;
+                pastnode = pastnode.next;
+            }
+            pastnode.next = null;
+            return currentnode.item;
+
+        }
     }
 
     private class DequeNode{

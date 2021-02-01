@@ -1,6 +1,6 @@
 
 public class LinkedListDeque {
-    
+    DequeNode 
 
     public LinkedListDeque(){
 

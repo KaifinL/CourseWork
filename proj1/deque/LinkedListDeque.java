@@ -8,8 +8,8 @@ public class LinkedListDeque {
         sentinel = new DequeNode(null,7,null);
     }
     public LinkedListDeque(int t){
-        sentinel = new DequeNode(null,7,null);
-        
+        sentinel = new DequeNode(null,7,);
+        sentinel.next
     }
     public void addfirst(int t){}
 

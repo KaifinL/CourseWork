@@ -12,9 +12,9 @@ public class LinkedListDeque {
         sentinel.next = new DequeNode(null,t,null);
     }
     public void addfirst(int t){
-        /* this variable is to her
+        /* this variable is to inherit the sentinel.next's information */
         DequeNode formerfirst = sentinel.next;
-
+        sentinel.next = new DequeNode(sentinel,t,formerfirst);
     }
 
     private class DequeNode{

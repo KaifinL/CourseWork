@@ -71,7 +71,9 @@ public class LinkedListDeque {
             return currentnode.item;
         }
     }
-    public Object get()
+    public Object get(int index){
+        if (sentinel.
+    }
 
     private class DequeNode{
         public DequeNode ahead;

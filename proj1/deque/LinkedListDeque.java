@@ -17,7 +17,11 @@ public class LinkedListDeque {
         sentinel.next = new DequeNode(sentinel,t,formerfirst);
     }
     public void addlast(int t){
-        
+        DequeNode currentnode = sentinel;    /* this variable to represent the current node */
+        while (currentnode.next != null){
+            currentnode = currentnode.next;
+        }
+        currentnode.next = new DequeNode(currentnode,t,null);
     }
 
     private class DequeNode{

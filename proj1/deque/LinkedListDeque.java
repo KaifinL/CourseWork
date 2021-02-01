@@ -37,8 +37,12 @@ public class LinkedListDeque {
     public int size(){
         return size;
     }
-    public void printitmes(){
-        
+    public void printDeque(){
+        DequeNode currentnode = sentinel;   /* plays the same function as the former one */
+        while (currentnode.next != null) {
+            System.out.print(currentnode.next.item + " ");
+        }
+        System.out.println();
     }
 
     private class DequeNode{

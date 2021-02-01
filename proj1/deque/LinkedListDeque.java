@@ -81,7 +81,7 @@ public class LinkedListDeque {
             currentnode = currentnode.next;
             counter ++;
         }
-        return 
+        return currentnode.item;
     }
 
     private class DequeNode{

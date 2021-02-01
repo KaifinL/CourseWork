@@ -1,11 +1,11 @@
 
 public class LinkedListDeque {
-    
-    public DequeNode first;
+    /* the same name as well as the function in the lecture */
+    public DequeNode sentinel;
 
 
     public LinkedListDeque(int t){
-        sentinel = new DequeNode(sentinel,t,null);
+        sentinel = new DequeNode(null,t,null);
 
     }
     public void addfirst(int t){}

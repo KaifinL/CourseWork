@@ -1,3 +1,5 @@
+import java.lang.reflect.Type;
+import java.net.Proxy;
 
 public class LinkedListDeque {
     /* the same name as well as the function in the lecture */
@@ -44,7 +46,7 @@ public class LinkedListDeque {
         }
         System.out.println(currentnode.item);
     }
-    public void removefirst(){
+    public Object removefirst(){
         if (sentinel.next ==null){
             return null;
         }

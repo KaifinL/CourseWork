@@ -56,7 +56,9 @@ public class LinkedListDeque {
             return sentinel.next.item;
         }
     }
-    public Object 
+    public Object removelast(){
+        
+    }
 
     private class DequeNode{
         public DequeNode ahead;

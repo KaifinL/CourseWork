@@ -5,7 +5,7 @@ public class LinkedListDeque {
 
 
     public LinkedListDeque(int t){
-        first = new LinkedListDeque(t)
+        first = new DequeNode(sentinel,t,null);
 
     }
     public void addfirst(int t){}

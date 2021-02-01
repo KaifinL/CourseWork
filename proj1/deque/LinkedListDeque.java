@@ -16,6 +16,9 @@ public class LinkedListDeque {
         DequeNode formerfirst = sentinel.next;
         sentinel.next = new DequeNode(sentinel,t,formerfirst);
     }
+    public void addlast(int t){
+        
+    }
 
     private class DequeNode{
         public DequeNode ahead;

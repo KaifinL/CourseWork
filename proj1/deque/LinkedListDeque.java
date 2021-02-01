@@ -48,6 +48,10 @@ public class LinkedListDeque {
         if (sentinel.next ==null){
             return null;
         }
+        else {
+            DequeNode secondnode = sentinel.next.next;
+            sentinel.next = secondnode;
+        }
     }
 
     private class DequeNode{

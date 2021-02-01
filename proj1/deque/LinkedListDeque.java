@@ -42,7 +42,7 @@ public class LinkedListDeque {
         while (currentnode.next != null) {
             System.out.print(currentnode.next.item + " ");
         }
-        System.out.println();
+        System.out.println(currentnode.item);
     }
 
     private class DequeNode{

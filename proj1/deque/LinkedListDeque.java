@@ -3,6 +3,6 @@ public class LinkedListDeque {
     public LinkedListDeque(){
 
     }
-    public 
+    public void addfirst(int t){}
 
 }

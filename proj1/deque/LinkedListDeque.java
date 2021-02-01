@@ -71,7 +71,7 @@ public class LinkedListDeque {
             return currentnode.item;
         }
     }
-    
+    public Object 
 
     private class DequeNode{
         public DequeNode ahead;

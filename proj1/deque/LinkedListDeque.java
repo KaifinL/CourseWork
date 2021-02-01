@@ -72,7 +72,9 @@ public class LinkedListDeque {
         }
     }
     public Object get(int index){
-        if (sentinel.
+        if (sentinel.next == null){
+            return null;
+        }
     }
 
     private class DequeNode{

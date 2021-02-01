@@ -44,6 +44,11 @@ public class LinkedListDeque {
         }
         System.out.println(currentnode.item);
     }
+    public  removefirst(){
+        if (sentinel.next ==null){
+            return null;
+        }
+    }
 
     private class DequeNode{
         public DequeNode ahead;

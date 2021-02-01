@@ -11,7 +11,11 @@ public class LinkedListDeque {
         sentinel = new DequeNode(null,7,null);
         sentinel.next = new DequeNode(null,t,null);
     }
-    public void addfirst(int t){}
+    public void addfirst(int t){
+        /* this variable is to her
+        DequeNode formerfirst = sentinel.next;
+
+    }
 
     private class DequeNode{
         public DequeNode ahead;

@@ -1,8 +1,10 @@
 
 public class LinkedListDeque {
-    DequeNode 
+    DequeNode sentinel = new DequeNode(null,7,null);
 
-    public LinkedListDeque(){
+
+    public LinkedListDeque(int t){
+        
 
     }
     public void addfirst(int t){}

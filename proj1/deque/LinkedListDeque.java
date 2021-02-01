@@ -69,9 +69,9 @@ public class LinkedListDeque {
             }
             pastnode.next = null;
             return currentnode.item;
-
         }
     }
+    
 
     private class DequeNode{
         public DequeNode ahead;

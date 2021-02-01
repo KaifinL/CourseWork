@@ -23,12 +23,13 @@ public class LinkedListDeque {
         }
         currentnode.next = new DequeNode(currentnode,t,null);
     }
-    public boolean Isempty(){
+    public boolean isEmpty(){
         if (sentinel.next == null){
             return true;
         }
         return false;
     }
+    
 
     private class DequeNode{
         public DequeNode ahead;

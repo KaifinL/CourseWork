@@ -53,6 +53,7 @@ public class LinkedListDeque {
         else {
             DequeNode secondnode = sentinel.next.next;
             sentinel.next = secondnode;
+            return sentinel.next.item;
         }
     }
 

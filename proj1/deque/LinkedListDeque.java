@@ -56,6 +56,7 @@ public class LinkedListDeque {
             return sentinel.next.item;
         }
     }
+    public Object 
 
     private class DequeNode{
         public DequeNode ahead;

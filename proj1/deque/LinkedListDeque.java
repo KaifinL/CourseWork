@@ -37,6 +37,9 @@ public class LinkedListDeque {
     public int size(){
         return size;
     }
+    public void printitmes(){
+        
+    }
 
     private class DequeNode{
         public DequeNode ahead;

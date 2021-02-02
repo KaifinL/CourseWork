@@ -55,7 +55,7 @@ public class LinkedListDeque {
         }
         System.out.println();
     }
-    public void removefirst(){
+    public T removefirst(){
         
         size -= 1;
     }

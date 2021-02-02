@@ -85,8 +85,18 @@ public class LinkedListDeque {
         return currentnode.item;
     }
     public Iterator iterator(){
-        return 
+        return
     }
+
+    private boolean hasNext(DequeNode t){
+        if (t.next == null){
+            return false;
+        }
+        return true;
+    }
+
+    private int next()
+
 
     private class DequeNode{
         public DequeNode ahead;

@@ -5,34 +5,42 @@ import java.util.Iterator;
 public class LinkedListDeque {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;
+    private DequeNode last;
     int size;
 
 
     public LinkedListDeque(){
-        sentinel = new DequeNode(null,7,null);
+        sentinel = new DequeNode(null,0,null);
+        last = new DequeNode(null,0,null);
+        sentinel.next = last;
+        last.ahead = sentinel;
         size = 0;
     }
     public LinkedListDeque(int t){
-        sentinel = new DequeNode(null,7,null);
-        sentinel.next = new DequeNode(null,t,null);
+        sentinel = new DequeNode(null,0,null);
+        last = new DequeNode(null,0,null);
+        DequeNode D = new DequeNode(null,t,null);
+        D.next = last;
+        sentinel.next = D;
+        D.ahead = sentinel;
+        last.ahead = D;
         size = 0;
     }
     public void addfirst(int t){
         /* this variable is to inherit the sentinel.next's information */
-        DequeNode formerfirst = sentinel.next;
-        sentinel.next = new DequeNode(sentinel,t,formerfirst);
+        DequeNode D = new DequeNode(sentinel,t,sentinel.next);
+        sentinel.next.ahead = D;
+        sentinel.next = D;
         size ++;
     }
     public void addlast(int t){
-        DequeNode currentnode = sentinel;    /* this variable to represent the current node */
-        while (currentnode.next != null){
-            currentnode = currentnode.next;
-        }
-        currentnode.next = new DequeNode(currentnode,t,null);
+        DequeNode D = new DequeNode(last.ahead,t,last);
+        sentinel.ahead.next = D;
+        sentinel.ahead = D;
         size ++;
     }
     public boolean isEmpty(){
-        if (sentinel.next == null){
+        if (sentinel.next == last){
             return true;
         }
         return false;
@@ -42,12 +50,12 @@ public class LinkedListDeque {
     }
     public void printDeque(){
         DequeNode currentnode = sentinel;   /* plays the same function as the former one */
-        while (currentnode.next != null) {
+        while (currentnode.next != last) {
             System.out.print(currentnode.next.item + " ");
         }
-        System.out.println(currentnode.item);
+        System.out.println();
     }
-    public Object removefirst(){
+    public void removefirst(){
         if (sentinel.next ==null){
             return null;
         }
@@ -56,6 +64,7 @@ public class LinkedListDeque {
             sentinel.next = secondnode;
             return sentinel.next.item;
         }
+        size -= 1;
     }
     public Object removelast(){
         if (sentinel.next == null){

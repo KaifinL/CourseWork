@@ -2,15 +2,15 @@ package deque;
 import java.lang.reflect.Type;
 import java.net.Proxy;
 import java.util.Iterator;
-public class LinkedListDeque<BleepBlorp> {
+public class LinkedListDeque {
     /* the same name as well as the function in the lecture */
-    public DequeNode  sentinel;
+    public DequeNode sentinel;
     private DequeNode last;
     int size;
 
 
     public LinkedListDeque(){
-        LinkedListDeque <String> sentinel = new LinkedListDeque<>("none");
+        sentinel = new DequeNode(null,0,null);
         last = new DequeNode(null,0,null);
         sentinel.next = last;
         last.ahead = sentinel;
@@ -102,9 +102,9 @@ public class LinkedListDeque<BleepBlorp> {
 
     private class DequeNode{
         public DequeNode ahead;
-        public BleepBlorp item;
+        public int item;
         public DequeNode next;
-        public DequeNode(DequeNode a,BleepBlorp i,DequeNode n){
+        public DequeNode(DequeNode a,int i,DequeNode n){
             ahead = a;
             item = i;
             next = n;

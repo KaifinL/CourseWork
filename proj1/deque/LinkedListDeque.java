@@ -4,7 +4,7 @@ import java.net.Proxy;
 import java.util.Iterator;
 public class LinkedListDeque<BleepBlorp> {
     /* the same name as well as the function in the lecture */
-    public DequeNode <> sentinel;
+    public DequeNode  sentinel;
     private DequeNode last;
     int size;
 

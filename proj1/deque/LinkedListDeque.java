@@ -10,7 +10,7 @@ public class LinkedListDeque<BleepBlorp> {
 
 
     public LinkedListDeque(){
-        LinkedListDeque <Integer> sentinel = new LinkedListDeque<>(0,);
+        LinkedListDeque <String> sentinel = new LinkedListDeque<>('Nothing');
         last = new DequeNode(null,0,null);
         sentinel.next = last;
         last.ahead = sentinel;

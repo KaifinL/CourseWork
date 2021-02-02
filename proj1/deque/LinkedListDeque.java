@@ -56,14 +56,7 @@ public class LinkedListDeque {
         System.out.println();
     }
     public void removefirst(){
-        if (sentinel.next ==null){
-            return null;
-        }
-        else {
-            DequeNode secondnode = sentinel.next.next;
-            sentinel.next = secondnode;
-            return sentinel.next.item;
-        }
+        
         size -= 1;
     }
     public Object removelast(){

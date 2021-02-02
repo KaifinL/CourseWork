@@ -98,7 +98,13 @@ public class LinkedListDeque {
     }
 
     public boolean equals(Object o){
-        
+        if (
+        int counter = 0;
+        DequeNode current = sentinel;
+        DequeNode compare = o.sentinel;
+        while (current.next != last ){
+
+        }
     }
 
 

@@ -97,14 +97,24 @@ public class LinkedListDeque {
         return true;
     }
 
-    public boolean equals(Object o){
-        if (
-        int counter = 0;
-        DequeNode current = sentinel;
-        DequeNode compare = o.sentinel;
-        while (current.next != last ){
+    public boolean equals(Object o) {
+        if (o instanceof LinkedListDeque) {
+            int counter = 0;
+            DequeNode current = sentinel;
+            DequeNode compare = ((LinkedListDeque) o).sentinel;
+            while (current.next != last) {
+                if (current.next.item == compare.next.item){
+                    counter ++;
+                }
+                current = current.next;
+                compare = compare.next;
 
+            }
+            if (counter == size){
+                return true;
+            }
         }
+        return false;
     }
 
 

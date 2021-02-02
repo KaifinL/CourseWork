@@ -97,7 +97,7 @@ public class LinkedListDeque {
         return true;
     }
 
-    private int next()
+    public boolean equals(Object)
 
 
     private class DequeNode{

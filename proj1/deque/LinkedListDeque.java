@@ -102,9 +102,9 @@ public class LinkedListDeque<BleepBlorp> {
 
     private class DequeNode{
         public DequeNode ahead;
-        public <BleepBlorp> item;
+        public BleepBlorp item;
         public DequeNode next;
-        public DequeNode(DequeNode a,int i,DequeNode n){
+        public DequeNode(DequeNode a,BleepBlorp i,DequeNode n){
             ahead = a;
             item = i;
             next = n;

@@ -2,7 +2,7 @@ package deque;
 import java.lang.reflect.Type;
 import java.net.Proxy;
 import java.util.Iterator;
-public class LinkedListDeque<Bleepbler> {
+public class LinkedListDeque<BleepBlope> {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;
     private DequeNode last;

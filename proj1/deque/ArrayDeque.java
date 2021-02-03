@@ -7,6 +7,7 @@ import java.lang.reflect.Array;
 public class ArrayDeque<Glorp> {
     Glorp [] item;
     int beginIndex = 4;
+    int endIndex = 4;
     int size = 0;
 
 
@@ -16,6 +17,7 @@ public class ArrayDeque<Glorp> {
         if (beginIndex == 0){
             beginIndex = item.length-1;
         }
+        if (endIndex >)
     }
 
     public void addfirst(Glorp t){
@@ -24,6 +26,8 @@ public class ArrayDeque<Glorp> {
         size ++;
     }
 
-    public 
+    public void addlast(Glorp t){
+
+    }
 
 }

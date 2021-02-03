@@ -73,7 +73,7 @@ public class LinkedListDeque {
         size --;
         return deleteNode.item;
     }
-    public Object get(int index){
+    public Type get(int index){
         if (sentinel.next == null){
             return null;
         }

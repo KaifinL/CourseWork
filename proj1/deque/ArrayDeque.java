@@ -20,13 +20,13 @@ public class ArrayDeque<Glorp> {
         }
     }
 
-    public void addfirst(Glorp t){
+    public void addFirst(Glorp t){
         item[beginIndex-1] = t;
         beginIndex --;
         size ++;
     }
 
-    public void addlast(Glorp t){
+    public void addLast(Glorp t){
         item[endIndex] = t;
         endIndex ++;
         size ++;

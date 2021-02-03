@@ -34,6 +34,7 @@ public class ArrayDeque<Glorp> {
 
     public static void main(String[] args) {
         ArrayDeque L = new ArrayDeque();
+        L.addfirst(3);
         System.out.println(L);
     }
 

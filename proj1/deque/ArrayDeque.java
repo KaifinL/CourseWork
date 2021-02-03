@@ -9,7 +9,7 @@ public class ArrayDeque<Glorp> {
 
 
     public ArrayDeque(){
-        item = new Glorp[8];
+        item = (Glorp[]) Object;
     }
 
 }

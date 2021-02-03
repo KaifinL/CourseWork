@@ -1,5 +1,6 @@
 package deque;
 
+import afu.org.checkerframework.checker.oigj.qual.O;
 import org.checkerframework.checker.units.qual.A;
 import org.w3c.dom.ls.LSInput;
 
@@ -69,6 +70,10 @@ public class ArrayDeque<Glorp> {
 
     public Glorp get(int index){
          return item[beginIndex + index];
+    }
+
+    public boolean equals(Object o){
+        
     }
 
 

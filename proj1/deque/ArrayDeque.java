@@ -32,6 +32,6 @@ public class ArrayDeque<Glorp> {
         size ++;
     }
 
-    
+    public boolean Isempty()
 
 }

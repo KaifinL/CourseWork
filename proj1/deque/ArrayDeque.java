@@ -52,8 +52,22 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp removeFirst(){
-
+        Glorp returnStuff = item[beginIndex];
+        item[beginIndex] = null;
+        beginIndex ++;
+        size --;
+        return returnStuff;
     }
+
+    public Glorp removeLast(){
+        Glorp returnStuff = item[endIndex];
+        item[endIndex] = null;
+        endIndex --;
+        size--;
+        return returnStuff;
+    }
+
+    
 
 
 }

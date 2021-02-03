@@ -1,6 +1,5 @@
 package deque;
 
-import afu.org.checkerframework.checker.oigj.qual.O;
 import org.checkerframework.checker.units.qual.A;
 import org.w3c.dom.ls.LSInput;
 

@@ -4,7 +4,7 @@ import org.checkerframework.checker.units.qual.A;
 
 import java.lang.reflect.Array;
 
-public class ArrayDeque<Bl> {
+public class ArrayDeque<Gloup> {
     int [] item;
 
 

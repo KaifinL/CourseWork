@@ -104,7 +104,6 @@ public class ArrayDeque<Glorp> {
         if (size >= (item.length*2 /3)){
             Glorp [] newItem;
             newItem = (Glorp[]) new Object[size*2];
-
         }
 
     }

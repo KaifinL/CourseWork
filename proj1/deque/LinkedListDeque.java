@@ -1,9 +1,4 @@
 package deque;
-import org.junit.Test;
-
-import java.lang.reflect.Type;
-import java.net.Proxy;
-import java.util.Iterator;
 public class LinkedListDeque<Gloup> {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;

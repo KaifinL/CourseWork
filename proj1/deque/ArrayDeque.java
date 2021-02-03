@@ -47,8 +47,10 @@ public class ArrayDeque<Glorp> {
         for (int i= beginIndex;i < endIndex;i++){
             System.out.print(i + " ");
         }
+        System.out.println();
     }
 
+    
 
 
 }

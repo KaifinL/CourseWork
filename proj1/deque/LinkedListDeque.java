@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.lang.reflect.Type;
 import java.net.Proxy;
 import java.util.Iterator;
-public class LinkedListDeque {
+public class LinkedListDeque<Gloup> {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;
     private DequeNode last;
@@ -19,7 +19,7 @@ public class LinkedListDeque {
         last.next = sentinel;
         size = 0;
     }
-    public LinkedListDeque(Type t){
+    public LinkedListDeque(Gloup t){
         sentinel = new DequeNode(null,null,null);
         last = new DequeNode(null,null,null);
         DequeNode D = new DequeNode(null,t,null);
@@ -30,14 +30,14 @@ public class LinkedListDeque {
         last.next = sentinel;
         size = 0;
     }
-    public void addFirst(Type t){
+    public void addFirst(Gloup t){
         /* this variable is to inherit the sentinel.next's information */
         DequeNode D = new DequeNode(sentinel,t,sentinel.next);
         sentinel.next.ahead = D;
         sentinel.next = D;
         size ++;
     }
-    public void addLast(Type t){
+    public void addLast(Gloup t){
         DequeNode D = new DequeNode(last.ahead,t,last);
         sentinel.ahead.next = D;
         sentinel.ahead = D;
@@ -59,21 +59,21 @@ public class LinkedListDeque {
         }
         System.out.println();
     }
-    public Type removeFirst(){
+    public Gloup removeFirst(){
         DequeNode deletenode = sentinel.next;
         sentinel.next.next.ahead = sentinel;
         sentinel.next = sentinel.next.next;
         size -= 1;
         return deletenode.item;
     }
-    public Object removeLast(){
+    public Gloup removeLast(){
         DequeNode deleteNode = last.ahead;
         last.ahead.ahead.next = last;
         last.ahead = last.ahead.ahead;
         size --;
         return deleteNode.item;
     }
-    public Type get(int index){
+    public Gloup get(int index){
         int counter = 0;  /* to count the node's rank */
         DequeNode currentnode = sentinel.next;
         while (index != counter){
@@ -116,9 +116,9 @@ public class LinkedListDeque {
 
     private class DequeNode{
         public DequeNode ahead;
-        public Type item;
+        public Gloup item;
         public DequeNode next;
-        public DequeNode(DequeNode a,Type i,DequeNode n){
+        public DequeNode(DequeNode a,Gloup i,DequeNode n){
             ahead = a;
             item = i;
             next = n;

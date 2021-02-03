@@ -75,16 +75,14 @@ public class LinkedListDeque {
     }
     public Type get(int index){
         int counter = 0;  /* to count the node's rank */
-        DequeNode currentnode = sentinel;
+        DequeNode currentnode = sentinel.next;
         while (index != counter){
             currentnode = currentnode.next;
             counter ++;
         }
         return currentnode.item;
     }
-    public Iterator iterator(){
-        return
-    }
+
 
     private boolean hasNext(DequeNode t){
         if (t.next == null){
@@ -96,11 +94,13 @@ public class LinkedListDeque {
     public boolean equals(Object o) {
         if (o instanceof LinkedListDeque) {
             int counter = 0;
+            int t = 0;
             DequeNode current = sentinel;
             DequeNode compare = ((LinkedListDeque) o).sentinel;
-            while (current.next != last) {
+            while (current.next != last & t < ((LinkedListDeque)o).size) {
                 if (current.next.item == compare.next.item){
                     counter ++;
+                    t ++;
                 }
                 current = current.next;
                 compare = compare.next;

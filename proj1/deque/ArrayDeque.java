@@ -67,7 +67,9 @@ public class ArrayDeque<Glorp> {
         return returnStuff;
     }
 
-    
+    public Glorp get(int i){
+
+    }
 
 
 }

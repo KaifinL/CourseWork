@@ -30,14 +30,14 @@ public class LinkedListDeque {
         last.next = sentinel;
         size = 0;
     }
-    public void addfirst(Type t){
+    public void addFirst(Type t){
         /* this variable is to inherit the sentinel.next's information */
         DequeNode D = new DequeNode(sentinel,t,sentinel.next);
         sentinel.next.ahead = D;
         sentinel.next = D;
         size ++;
     }
-    public void addlast(Type t){
+    public void addLast(Type t){
         DequeNode D = new DequeNode(last.ahead,t,last);
         sentinel.ahead.next = D;
         sentinel.ahead = D;
@@ -59,14 +59,14 @@ public class LinkedListDeque {
         }
         System.out.println();
     }
-    public Type removefirst(){
+    public Type removeFirst(){
         DequeNode deletenode = sentinel.next;
         sentinel.next.next.ahead = sentinel;
         sentinel.next = sentinel.next.next;
         size -= 1;
         return deletenode.item;
     }
-    public Object removelast(){
+    public Object removeLast(){
         DequeNode deleteNode = last.ahead;
         last.ahead.ahead.next = last;
         last.ahead = last.ahead.ahead;

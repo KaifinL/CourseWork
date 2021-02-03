@@ -32,10 +32,13 @@ public class ArrayDeque<Glorp> {
         size ++;
     }
 
-    public static void main(String[] args) {
-        ArrayDeque L = new ArrayDeque();
-        L.addfirst(3);
-        System.out.println(L);
+    public boolean Isempty(){
+        if (item[beginIndex-1] == null & item[beginIndex] == null){
+            return true;
+        }
+        return false;
     }
+
+    
 
 }

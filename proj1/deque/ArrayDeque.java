@@ -43,6 +43,12 @@ public class ArrayDeque<Glorp> {
         return size;
     }
 
+    public void printDeque(){
+        for (int i= beginIndex;i < endIndex;i++){
+            System.out.print(i + " ");
+        }
+    }
+
 
 
 }

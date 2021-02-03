@@ -8,21 +8,18 @@ public class LinkedListDeque<Gloup> {
 
     public LinkedListDeque(){
         sentinel = new DequeNode(null,null,null);
-        last = new DequeNode(null,null,null);
+        last = new DequeNode(sentinel,null,sentinel);
         sentinel.next = last;
-        last.ahead = sentinel;
-        last.next = sentinel;
+        sentinel.ahead = last;
         size = 0;
     }
     public LinkedListDeque(Gloup t){
-        sentinel = new DequeNode(null,null,null);
-        last = new DequeNode(null,null,null);
         DequeNode D = new DequeNode(null,t,null);
+        sentinel = new DequeNode(null,null,D);
+        last = new DequeNode(D,null,sentinel);
         D.next = last;
-        sentinel.next = D;
         D.ahead = sentinel;
-        last.ahead = D;
-        last.next = sentinel;
+        sentinel.ahead = last;
         size = 0;
     }
     public void addFirst(Gloup t){
@@ -34,17 +31,20 @@ public class LinkedListDeque<Gloup> {
     }
     public void addLast(Gloup t){
         DequeNode D = new DequeNode(last.ahead,t,last);
-        sentinel.ahead.next = D;
-        sentinel.ahead = D;
+        last.ahead.next = D;
+        last.ahead = D;
         size ++;
     }
     public boolean isEmpty(){
-        if (sentinel.next.item == null){
+        if (size <= 0){
             return true;
         }
         return false;
     }
     public int size(){
+        if (size < 0){
+            return 0;
+        }
         return size;
     }
     public void printDeque(){

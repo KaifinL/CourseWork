@@ -17,9 +17,7 @@ public class ArrayDeque<Glorp> {
 
     public ArrayDeque(){
         item = (Glorp[]) new Object[8];
-        if (beginIndex == 0){
-            beginIndex = item.length-1;
-        }
+        
     }
 
     public void addFirst(Glorp t){

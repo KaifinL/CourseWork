@@ -73,7 +73,14 @@ public class ArrayDeque<Glorp> {
     }
 
     public boolean equals(Object o){
-        
+        if (o instanceof ArrayDeque){
+            int counter = 0;
+            for (int i = beginIndex;i<=endIndex;i++){
+                if (item[i] == ((ArrayDeque)o)[i]){
+
+                }
+            }
+        }
     }
 
 

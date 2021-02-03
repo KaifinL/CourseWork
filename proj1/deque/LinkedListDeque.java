@@ -1,4 +1,6 @@
 package deque;
+import org.junit.Test;
+
 import java.lang.reflect.Type;
 import java.net.Proxy;
 import java.util.Iterator;
@@ -10,30 +12,32 @@ public class LinkedListDeque {
 
 
     public LinkedListDeque(){
-        sentinel = new DequeNode(null,0,null);
-        last = new DequeNode(null,0,null);
+        sentinel = new DequeNode(null,null,null);
+        last = new DequeNode(null,null,null);
         sentinel.next = last;
         last.ahead = sentinel;
+        last.next = sentinel;
         size = 0;
     }
-    public LinkedListDeque(int t){
-        sentinel = new DequeNode(null,0,null);
-        last = new DequeNode(null,0,null);
+    public LinkedListDeque(Type t){
+        sentinel = new DequeNode(null,null,null);
+        last = new DequeNode(null,null,null);
         DequeNode D = new DequeNode(null,t,null);
         D.next = last;
         sentinel.next = D;
         D.ahead = sentinel;
         last.ahead = D;
+        last.next = sentinel;
         size = 0;
     }
-    public void addfirst(int t){
+    public void addfirst(Type t){
         /* this variable is to inherit the sentinel.next's information */
         DequeNode D = new DequeNode(sentinel,t,sentinel.next);
         sentinel.next.ahead = D;
         sentinel.next = D;
         size ++;
     }
-    public void addlast(int t){
+    public void addlast(Type t){
         DequeNode D = new DequeNode(last.ahead,t,last);
         sentinel.ahead.next = D;
         sentinel.ahead = D;
@@ -55,7 +59,7 @@ public class LinkedListDeque {
         }
         System.out.println();
     }
-    public T removefirst(){
+    public Type removefirst(){
         
         size -= 1;
     }
@@ -120,9 +124,9 @@ public class LinkedListDeque {
 
     private class DequeNode{
         public DequeNode ahead;
-        public int item;
+        public Type item;
         public DequeNode next;
-        public DequeNode(DequeNode a,int i,DequeNode n){
+        public DequeNode(DequeNode a,Type i,DequeNode n){
             ahead = a;
             item = i;
             next = n;

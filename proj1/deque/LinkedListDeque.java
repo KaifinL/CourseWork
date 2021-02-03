@@ -60,23 +60,18 @@ public class LinkedListDeque {
         System.out.println();
     }
     public Type removefirst(){
-        
+        DequeNode deletenode = sentinel.next;
+        sentinel.next.next.ahead = sentinel;
+        sentinel.next = sentinel.next.next;
         size -= 1;
+        return deletenode.item;
     }
     public Object removelast(){
-        if (sentinel.next == null){
-            return null;
-        }
-        else {
-            DequeNode currentnode = sentinel.next;
-            DequeNode pastnode = sentinel;
-            while (currentnode.next != null){
-                currentnode = currentnode.next;
-                pastnode = pastnode.next;
-            }
-            pastnode.next = null;
-            return currentnode.item;
-        }
+        DequeNode deleteNode = last.ahead;
+        last.ahead.ahead.next = last;
+        last.ahead = last.ahead.ahead;
+        size --;
+        return deleteNode.item;
     }
     public Object get(int index){
         if (sentinel.next == null){

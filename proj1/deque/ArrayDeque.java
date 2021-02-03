@@ -32,6 +32,9 @@ public class ArrayDeque<Glorp> {
         size ++;
     }
 
-    public boolean Isempty()
+    public static void main(String[] args) {
+        ArrayDeque L = new ArrayDeque();
+        System.out.println(L);
+    }
 
 }

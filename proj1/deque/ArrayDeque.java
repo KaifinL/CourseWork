@@ -68,8 +68,7 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp get(int index){
-        Glorp returnStuff = item[beginIndex + index]
-
+         return item[beginIndex + index];
     }
 
 

@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.lang.reflect.Type;
 import java.net.Proxy;
 import java.util.Iterator;
-public class LinkedListDeque {
+public class LinkedListDeque<item> {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;
     private DequeNode last;

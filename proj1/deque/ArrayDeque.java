@@ -1,11 +1,4 @@
 package deque;
-
-import org.checkerframework.checker.units.qual.A;
-import org.w3c.dom.ls.LSInput;
-
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
-
 public class ArrayDeque<Glorp> {
     Glorp [] item;
     int beginIndex;

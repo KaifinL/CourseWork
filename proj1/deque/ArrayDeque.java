@@ -5,11 +5,11 @@ import org.checkerframework.checker.units.qual.A;
 import java.lang.reflect.Array;
 
 public class ArrayDeque<Glorp> {
-    int [] item;
+    Glorp [] item;
 
 
     public ArrayDeque(){
-        item = new int[8];
+        item = new Glorp[8];
     }
 
 }

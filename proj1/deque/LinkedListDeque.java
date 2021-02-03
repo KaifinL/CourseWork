@@ -74,9 +74,6 @@ public class LinkedListDeque {
         return deleteNode.item;
     }
     public Type get(int index){
-        if (sentinel.next == null){
-            return null;
-        }
         int counter = 0;  /* to count the node's rank */
         DequeNode currentnode = sentinel;
         while (index != counter){

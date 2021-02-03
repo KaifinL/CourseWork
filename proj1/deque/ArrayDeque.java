@@ -6,6 +6,7 @@ import java.lang.reflect.Array;
 
 public class ArrayDeque<Glorp> {
     Glorp [] item;
+    int beginIndex 
 
 
     public ArrayDeque(){
@@ -13,7 +14,7 @@ public class ArrayDeque<Glorp> {
     }
 
     public void addfirst(Glorp t){
-        
+
     }
 
 }

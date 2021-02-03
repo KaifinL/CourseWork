@@ -9,21 +9,25 @@ import java.lang.reflect.Type;
 
 public class ArrayDeque<Glorp> {
     Glorp [] item;
-    int beginIndex = 4;
-    int endIndex = 4;
-    int size = 0;
+    int beginIndex;
+    int endIndex;
+    int size;
 
 
 
     public ArrayDeque(){
         item = (Glorp[]) new Object[8];
-        
+        beginIndex = 4;
+        endIndex = 4;
+        size = 0;
+
     }
 
     public void addFirst(Glorp t){
         item[beginIndex-1] = t;
         beginIndex --;
         size ++;
+
     }
 
     public void addLast(Glorp t){
@@ -85,6 +89,24 @@ public class ArrayDeque<Glorp> {
             }
         }
         return false;
+    }
+    public void helpDecrease(){
+        if (size <= (item.length/4)){
+            Glorp[] newItem;
+            newItem = (Glorp[]) new Object[size*2];
+            System.arraycopy(item,beginIndex,newItem,size/3,4*size/3);
+            item = newItem;
+            beginIndex = size / 3;
+            endIndex = size *4 /3;
+        }
+    }
+    public void helpIncrease(){
+        if (size >= (item.length*2 /3)){
+            Glorp [] newItem;
+            newItem = (Glorp[]) new Object[size*2];
+
+        }
+
     }
 
 

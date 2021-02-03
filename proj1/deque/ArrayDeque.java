@@ -76,7 +76,7 @@ public class ArrayDeque<Glorp> {
         if (o instanceof ArrayDeque){
             int counter = 0;
             for (int i = beginIndex;i<=endIndex;i++){
-                if (item[i] == ((ArrayDeque)o)[i]){
+                if (item[i] == o[i]) {
 
                 }
             }

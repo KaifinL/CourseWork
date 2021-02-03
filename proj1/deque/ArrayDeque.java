@@ -39,6 +39,10 @@ public class ArrayDeque<Glorp> {
         return false;
     }
 
+    public int size(){
+        return size;
+    }
+
 
 
 }

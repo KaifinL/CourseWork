@@ -39,7 +39,7 @@ public class LinkedListDeque<Gloup> {
         size ++;
     }
     public boolean isEmpty(){
-        if (sentinel.next == last){
+        if (sentinel.next.item == null){
             return true;
         }
         return false;

@@ -12,6 +12,8 @@ public class ArrayDeque<Glorp> {
         item = (Glorp[]) new Object[8];
     }
 
-    public void addfirst()
+    public void addfirst(Glorp t){
+        
+    }
 
 }

@@ -69,8 +69,8 @@ public class ArrayDeque<Glorp> {
             resize(item.length / 4);
         }
         Glorp x = getLast();
-        item[size - 1] = null;
         if (size > 0){
+            item[size - 1] = null;
             size--;
         }
         return x;

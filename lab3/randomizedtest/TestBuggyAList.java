@@ -13,6 +13,7 @@ public class TestBuggyAList {
   // YOUR TESTS HERE
     public void testThreeAddThreeRemove(){
         AListNoResizing origin = new AListNoResizing();
+        BuggyAList origin2 = new BuggyAList();
         origin.addLast(4);
         origin.addLast(5);
         origin.addLast(6);

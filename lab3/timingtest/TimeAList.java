@@ -1,4 +1,5 @@
 package timingtest;
+import edu.princeton.cs.algs4.Count;
 import edu.princeton.cs.algs4.Stopwatch;
 import javax.swing.plaf.IconUIResource;
 
@@ -24,6 +25,7 @@ public class TimeAList {
 
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
+        int j=0;
         AList<Integer> Ns = new AList<>();
         Ns.addLast(1000);
         Ns.addLast(2000);
@@ -33,20 +35,20 @@ public class TimeAList {
         Ns.addLast(32000);
         Ns.addLast(64000);
         Ns.addLast(128000);
+        AList<Double> times = new AList();
+        for (j=0;j<8;j++){
+            Stopwatch sw = new Stopwatch();
+            Count(Ns.get(j));
+            double timeInSeconds = sw.elapsedTime();
+            times.addLast(timeInSeconds);
+        }
+        printTimingTable(Ns,times,Ns);
     }
-    int i;
-    int p;
-    AList<Double> times = new AList();
-    public void Count(int n){
+    public static void Count(int n){
+        int i;
         AList test = new AList();
         for (i=0;i<n;i++){
             test.addLast(i);
-        }
-    }
-    public void test(){
-        for (i=0;i<8;i++){
-            Stopwatch sw = new Stopwatch();
-            Double
         }
     }
 }

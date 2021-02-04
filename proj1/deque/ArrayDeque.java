@@ -93,27 +93,7 @@ public class ArrayDeque<Glorp> {
         return false;
     }
     /*
-    public void helpDecrease(){
-        if (size <= (item.length/4)){
-            Glorp[] newItem;
-            newItem = (Glorp[]) new Object[size*2];
-            System.arraycopy(item,beginIndex,newItem,size/2,3*size/2);
-            item = newItem;
-            beginIndex = size / 2;
-            endIndex = size *3 /2;
-        }
-    }
-    public void helpIncrease(){
-        if (size >= (item.length/2)){
-            Glorp [] newItem;
-            newItem = (Glorp[]) new Object[item.length*2];
-            System.arraycopy(item,beginIndex,newItem,item.length/2,item.length/2+size);
-            beginIndex = item.length/2;
-            endIndex = item.length/2 + size;
-            item = newItem;
-        }
-
-    }
+    
 
      */
     public static int min(int a,int b){

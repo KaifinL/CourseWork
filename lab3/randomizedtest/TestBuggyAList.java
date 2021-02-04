@@ -15,8 +15,11 @@ public class TestBuggyAList {
         AListNoResizing origin = new AListNoResizing();
         BuggyAList origin2 = new BuggyAList();
         origin.addLast(4);
+        origin2.addLast(4);
         origin.addLast(5);
+        origin2.addLast(5);
         origin.addLast(6);
+        origin2.addLast(6);
         origin.removeLast();
         AListNoResizing expect = new AListNoResizing();
     }

@@ -1,2 +1,5 @@
-package deque;public class ArrayDequeTest {
+package deque;
+
+public class ArrayDequeTest {
+
 }

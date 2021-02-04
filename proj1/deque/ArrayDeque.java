@@ -100,7 +100,7 @@ public class ArrayDeque<Glorp> {
         }
         items = a;
     }
-    
+
     public static int min(int a,int b){
         if (a <= b){
             return a;

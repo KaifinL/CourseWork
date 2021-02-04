@@ -22,6 +22,7 @@ public class ArrayDequeTest {
 
         assertEquals(input.removeLast(),expect.removeLast());
         assertEquals(input.getFirst(),expect.getFirst());
+        assertEquals(input.size(),expect.size());
 
     }
     public static void randomTest() {

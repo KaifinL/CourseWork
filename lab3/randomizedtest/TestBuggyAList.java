@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
 public class TestBuggyAList {
   // YOUR TESTS HERE
   public static void main(String[] args) {
-      
+      testThreeAddThreeRemove();
   }
-    public void testThreeAddThreeRemove(){
+    public static void testThreeAddThreeRemove(){
         AListNoResizing origin = new AListNoResizing();
         BuggyAList origin2 = new BuggyAList();
         origin.addLast(4);

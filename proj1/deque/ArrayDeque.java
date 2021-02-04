@@ -29,13 +29,16 @@ public class ArrayDeque<Glorp> {
     }
 
     public boolean isEmpty(){
-        if (item[beginIndex-1] == null & item[beginIndex] == null){
+        if (size <= 0){
             return true;
         }
         return false;
     }
 
     public int size(){
+        if (size <= 0){
+            return 0;
+        }
         return size;
     }
 

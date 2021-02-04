@@ -11,6 +11,9 @@ import static org.junit.Assert.*;
  */
 public class TestBuggyAList {
   // YOUR TESTS HERE
+  public static void main(String[] args) {
+      
+  }
     public void testThreeAddThreeRemove(){
         AListNoResizing origin = new AListNoResizing();
         BuggyAList origin2 = new BuggyAList();
@@ -22,6 +25,6 @@ public class TestBuggyAList {
         origin2.addLast(6);
         origin.removeLast();
         origin2.removeLast();
-        
+        org.junit.Assert.assertEquals(origin,origin2);
     }
 }

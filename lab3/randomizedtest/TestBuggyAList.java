@@ -50,6 +50,7 @@ public class TestBuggyAList {
             }else if (operationNumber == 3){
                 //size
                 int size = L.size();
+                assertEquals(L.size(),M.size());
             }
         }
     }

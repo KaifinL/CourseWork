@@ -44,19 +44,15 @@ public class ArrayDeque<Glorp> {
     }
 
     public void printDeque(){
-        for (int i= beginIndex;i < endIndex;i++){
-            System.out.print(i + " ");
+        for (int i= 0;i < size;i++){
+            System.out.print(item[i] + " ");
         }
         System.out.println();
     }
 
     public Glorp removeFirst(){
-        Glorp returnStuff = item[beginIndex];
-        item[beginIndex] = null;
-        beginIndex ++;
-        size --;
-        helpDecrease();
-        return returnStuff;
+        Glorp [] a = (Glorp[]) new Object[size-1];
+        System.arraycopy(item,1,);
     }
 
     public Glorp removeLast(){

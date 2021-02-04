@@ -43,7 +43,6 @@ public class TestBuggyAList {
                 System.out.println("addLast(" + randVal + ")");
             } else if (operationNumber == 1 & L.size() > 0) {
                 // getLast
-                System.out.println(L.getLast());
                 assertEquals(L.getLast(),M.getLast());
             }else if (operationNumber == 2 & L.size() > 0){
                 // removeLast

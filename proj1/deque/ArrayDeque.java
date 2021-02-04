@@ -15,7 +15,7 @@ public class ArrayDeque<Glorp> {
 
     public void addFirst(Glorp t){
         Glorp [] a = (Glorp[]) new Object[size+1];
-        System.arraycopy();
+        System.arraycopy(item,0,a,);
 
         helpIncrease();
     }

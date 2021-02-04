@@ -81,11 +81,9 @@ public class ArrayDeque<Glorp> {
 
     public boolean equals(Object o){
         if (o instanceof ArrayDeque){
-            Glorp [] compare = (Glorp[]) new Object[item.length];
-            System.arraycopy(o,0,compare,0,((ArrayDeque)o).size);
             int counter = 0;
             for (int i = 0;i<min(size,((ArrayDeque)o).size);i++){
-                if (item[i] == compare[i]) {
+                if (item[i] ==((ArrayDeque)o).item[i]) {
                     counter++;
                 }
             }

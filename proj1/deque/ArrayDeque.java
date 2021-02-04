@@ -94,11 +94,11 @@ public class ArrayDeque<Glorp> {
     }
 
     private void resize(int capacity) {
-        Item[] a = (Item[]) new Object[capacity];
+        Glorp[] a = (Glorp[])  new Object[capacity];
         for (int i = 0; i < size; i += 1) {
-            a[i] = items[i];
+            a[i] = item[i];
         }
-        items = a;
+        item = a;
     }
 
     public static int min(int a,int b){

@@ -19,7 +19,7 @@ public class ArrayDeque<Glorp> {
         item[beginIndex-1] = t;
         beginIndex --;
         size ++;
-        
+        Glorp [] a = ()
         helpIncrease();
     }
 

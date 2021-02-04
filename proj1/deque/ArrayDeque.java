@@ -19,13 +19,14 @@ public class ArrayDeque<Glorp> {
         item[beginIndex-1] = t;
         beginIndex --;
         size ++;
-
+        helpIncrease();
     }
 
     public void addLast(Glorp t){
         item[endIndex] = t;
         endIndex ++;
         size ++;
+        helpDecrease();
     }
 
     public boolean isEmpty(){
@@ -54,6 +55,7 @@ public class ArrayDeque<Glorp> {
         item[beginIndex] = null;
         beginIndex ++;
         size --;
+        helpDecrease();
         return returnStuff;
     }
 
@@ -62,6 +64,7 @@ public class ArrayDeque<Glorp> {
         item[endIndex] = null;
         endIndex --;
         size--;
+        helpDecrease();
         return returnStuff;
     }
 
@@ -89,16 +92,20 @@ public class ArrayDeque<Glorp> {
         if (size <= (item.length/4)){
             Glorp[] newItem;
             newItem = (Glorp[]) new Object[size*2];
-            System.arraycopy(item,beginIndex,newItem,size/3,4*size/3);
+            System.arraycopy(item,beginIndex,newItem,size/2,3*size/2);
             item = newItem;
-            beginIndex = size / 3;
-            endIndex = size *4 /3;
+            beginIndex = size / 2;
+            endIndex = size *3 /2;
         }
     }
     public void helpIncrease(){
-        if (size >= (item.length*2 /3)){
+        if (size >= (item.length/2)){
             Glorp [] newItem;
-            newItem = (Glorp[]) new Object[size*2];
+            newItem = (Glorp[]) new Object[item.length*2];
+            System.arraycopy(item,beginIndex,newItem,item.length/2,item.length/2+size);
+            beginIndex = item.length/2;
+            endIndex = item.length/2 + size;
+            item = newItem;
         }
 
     }

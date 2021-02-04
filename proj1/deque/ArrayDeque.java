@@ -51,6 +51,9 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp removeFirst(){
+        if (size<=0){
+            return null;
+        }
         Glorp [] a = (Glorp[]) new Object[size-1];
         Glorp returnStuff = item[size];
         System.arraycopy(item,1,a,0,size-1);

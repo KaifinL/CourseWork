@@ -25,6 +25,6 @@ public class TestBuggyAList {
         origin2.addLast(6);
         origin.removeLast();
         origin2.removeLast();
-        org.junit.Assert.assertEquals(origin,origin2);
+        assertEquals(origin,origin2);
     }
 }

@@ -18,15 +18,15 @@ public class ArrayDeque<Glorp> {
         System.arraycopy(item,0,a,1,size+1);
         a[0] = t;
         item = a;
-
-        helpIncrease();
+        size ++;
     }
 
     public void addLast(Glorp t){
-        item[endIndex] = t;
-        endIndex ++;
+        Glorp [] a = (Glorp[]) new Object[size+1];
+        System.arraycopy(item,0,a,0,size);
+        a[size] = t;
+        item = a;
         size ++;
-        helpDecrease();
     }
 
     public boolean isEmpty(){

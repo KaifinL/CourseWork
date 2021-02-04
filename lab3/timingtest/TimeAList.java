@@ -1,8 +1,5 @@
 package timingtest;
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stopwatch;
-import org.checkerframework.checker.units.qual.A;
-
 import javax.swing.plaf.IconUIResource;
 
 /**
@@ -46,11 +43,10 @@ public class TimeAList {
             test.addLast(i);
         }
     }
-    public void tst(){
-        AList test1 = new AList();
-        for (i = 0,i < 8, i++ ){
+    public void test(){
+        for (i=0;i<8;i++){
             Stopwatch sw = new Stopwatch();
-            Count();
+            Double
         }
-   }
+    }
 }

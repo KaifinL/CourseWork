@@ -52,20 +52,24 @@ public class ArrayDeque<Glorp> {
 
     public Glorp removeFirst(){
         Glorp [] a = (Glorp[]) new Object[size-1];
-        System.arraycopy(item,1,);
+        Glorp returnStuff = item[size];
+        System.arraycopy(item,1,a,0,size-1);
+        size --;
+        item = a;
+        return returnStuff;
     }
 
     public Glorp removeLast(){
-        Glorp returnStuff = item[endIndex];
-        item[endIndex] = null;
-        endIndex --;
+        Glorp [] a = (Glorp[]) new Object[size-1];
+        Glorp returnStuff = item[size-1];
+        System.arraycopy(item,0,a,0,size-1);
         size--;
-        helpDecrease();
+        item = a;
         return returnStuff;
     }
 
     public Glorp get(int index){
-         return item[beginIndex + index];
+         return item[index];
     }
 
     public boolean equals(Object o){

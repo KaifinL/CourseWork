@@ -14,17 +14,17 @@ public class ArrayDeque<Glorp> {
     }
 
     public void addFirst(Glorp t){
-        Glorp [] a = (Glorp[]) new Object[size+1];
-        System.arraycopy(item,0,a,1,size+1);
+        Glorp [] a = (Glorp[]) new Object[item.length+1];
+        System.arraycopy(item,0,a,1,size);
         a[0] = t;
         item = a;
         size ++;
     }
 
     public void addLast(Glorp t){
-        Glorp [] a = (Glorp[]) new Object[size+1];
+        Glorp [] a = (Glorp[]) new Object[item.length+1];
         System.arraycopy(item,0,a,0,size);
-        a[size] = t;
+        a[size+1] = t;
         item = a;
         size ++;
     }
@@ -51,11 +51,8 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp removeFirst(){
-        if (size<=0){
-            return null;
-        }
         Glorp [] a = (Glorp[]) new Object[size-1];
-        Glorp returnStuff = item[size];
+        Glorp returnStuff = item[0];
         System.arraycopy(item,1,a,0,size-1);
         size --;
         item = a;

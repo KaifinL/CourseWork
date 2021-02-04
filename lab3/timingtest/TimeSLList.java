@@ -25,11 +25,23 @@ public class TimeSLList {
     public static void timeGetLast() {
         // TODO: YOUR CODE HERE
         AList<Integer> Ns = new AList<>();
-        int [] helpList = new int []{1000,2000,4000,8000,16000,32000,64000,128000};
-        System.arraycopy(helpList,0,Ns,0,8);
+        Ns.addLast(1000);
+        Ns.addLast(2000);
+        Ns.addLast(4000);
+        Ns.addLast(8000);
+        Ns.addLast(16000);
+        Ns.addLast(32000);
+        Ns.addLast(64000);
+        Ns.addLast(128000);
         AList<Integer> Ops = new AList<>();
-        int [] helpList2 = new int []{10000,10000,10000,10000,10000,10000,10000,10000};
-        System.arraycopy(helpList2,0,Ops,0,8);
+        Ops.addLast(10000);
+        Ops.addLast(10000);
+        Ops.addLast(10000);
+        Ops.addLast(10000);
+        Ops.addLast(10000);
+        Ops.addLast(10000);
+        Ops.addLast(10000);
+        Ops.addLast(10000);
         AList<Double> times = new AList<>();
         int i=0;int j=0;int x=0;
         for (i=0;i<8;i++){

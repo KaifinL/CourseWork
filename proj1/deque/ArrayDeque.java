@@ -1,6 +1,8 @@
 package deque;
 
 
+import org.checkerframework.checker.units.qual.A;
+
 public class ArrayDeque<Glorp> {
     Glorp [] item;
     int size;
@@ -69,15 +71,18 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp get(int index){
+        if (index < 0 || index >= size){
+            return null;
+        }
          return item[index];
     }
 
     public boolean equals(Object o){
         if (o instanceof ArrayDeque){
-            Glorp [] compare = (Glorp[]) new Object[8];
-            System.arraycopy(o,0,compare,beginIndex,endIndex);
+            Glorp [] compare = (Glorp[]) new Object[item.length];
+            System.arraycopy(o,0,compare,0,((ArrayDeque)o).size);
             int counter = 0;
-            for (int i = beginIndex;i<=endIndex;i++){
+            for (int i = 0;i<min(size,((ArrayDeque)o).size);i++){
                 if (item[i] == compare[i]) {
                     counter++;
                 }
@@ -88,6 +93,7 @@ public class ArrayDeque<Glorp> {
         }
         return false;
     }
+    /*
     public void helpDecrease(){
         if (size <= (item.length/4)){
             Glorp[] newItem;
@@ -110,6 +116,11 @@ public class ArrayDeque<Glorp> {
 
     }
 
-
-
+     */
+    public static int min(int a,int b){
+        if (a <= b){
+            return a;
+        }
+        return b;
+    }
 }

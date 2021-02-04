@@ -57,11 +57,11 @@ public class ArrayDeque<Glorp> {
             resize(item.length / 4);
         }
         Glorp [] a = (Glorp[]) new Object[item.length-1];
-        Glorp returnStuff = item[0];
         System.arraycopy(item,1,a,0,item.length-1);
         size --;
         item = a;
-        return returnStuff;
+        Glorp x = getFirst();
+        return x;
     }
 
     public Glorp removeLast(){
@@ -115,5 +115,9 @@ public class ArrayDeque<Glorp> {
 
     public Glorp getLast() {
         return item[size - 1];
+    }
+
+    public Glorp getFirst(){
+        return item[0];
     }
 }

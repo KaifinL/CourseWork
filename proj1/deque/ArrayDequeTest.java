@@ -21,6 +21,7 @@ public class ArrayDequeTest {
         expect.addFirst(4);
 
         assertEquals(input.removeLast(),expect.removeLast());
+        assertEquals();
 
     }
     public static void randomTest() {

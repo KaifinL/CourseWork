@@ -40,7 +40,6 @@ public class TestBuggyAList {
                 int randVal = StdRandom.uniform(0, 100);
                 L.addLast(randVal);
                 M.addLast(randVal);
-                System.out.println("addLast(" + randVal + ")");
             } else if (operationNumber == 1 & L.size() > 0) {
                 // getLast
                 assertEquals(L.getLast(),M.getLast());
@@ -51,7 +50,6 @@ public class TestBuggyAList {
             }else if (operationNumber == 3){
                 //size
                 int size = L.size();
-                System.out.println("size("+size+")");
             }
         }
     }

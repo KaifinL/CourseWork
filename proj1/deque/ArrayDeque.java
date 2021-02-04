@@ -114,7 +114,10 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp getLast() {
-        return item[size - 1];
+        if (size > 0) {
+            return item[size - 1];
+        }
+        return null;
     }
 
     public Glorp getFirst(){

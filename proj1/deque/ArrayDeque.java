@@ -62,8 +62,10 @@ public class ArrayDeque<Glorp> {
         Glorp [] a = (Glorp[]) new Object[item.length-1];
         Glorp returnStuff = item[size-1];
         System.arraycopy(item,0,a,0,item.length-1);
-        size--;
+        if (size <= 0){
+            returnStuff = null; }
         item = a;
+        size--;
         return returnStuff;
     }
 

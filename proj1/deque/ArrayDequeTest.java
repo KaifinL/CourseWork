@@ -12,11 +12,11 @@ public class ArrayDequeTest {
     }
     public static void testThreeAddThreeRemove(){
         ArrayDeque<Integer> input = new ArrayDeque<>();
-        input.removeFirst();
+        input.removeLast();
         input.addLast(5);
         input.addLast(6);
         ArrayDeque<Integer> expect = new ArrayDeque<>();
-        expect.removeFirst();
+        expect.removeLast();
         expect.addFirst(6);
         expect.addFirst(5);
 

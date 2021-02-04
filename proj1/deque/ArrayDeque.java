@@ -59,14 +59,13 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp removeLast(){
-        Glorp [] a = (Glorp[]) new Object[item.length-1];
-        Glorp returnStuff = item[size-1];
-        System.arraycopy(item,0,a,0,item.length-1);
-        if (size <= 0){
-            returnStuff = null; }
-        item = a;
-        size--;
-        return returnStuff;
+        if ((size < item.length / 4) && (size > 4)) {
+            resize(item.length / 4);
+        }
+        Glorp x = getLast();
+        item[size - 1] = null;
+        size = size - 1;
+        return x;
     }
 
     public Glorp get(int index){

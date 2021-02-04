@@ -9,5 +9,7 @@ import static org.junit.Assert.*;
  */
 public class TestBuggyAList {
   // YOUR TESTS HERE
-    
+    public static void WarmupTest(){
+        
+    }
 }

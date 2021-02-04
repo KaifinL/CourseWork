@@ -1,25 +1,22 @@
 package deque;
+
+
 public class ArrayDeque<Glorp> {
     Glorp [] item;
-    int beginIndex;
-    int endIndex;
     int size;
 
 
 
     public ArrayDeque(){
         item = (Glorp[]) new Object[8];
-        beginIndex = 4;
-        endIndex = 4;
         size = 0;
 
     }
 
     public void addFirst(Glorp t){
-        item[beginIndex-1] = t;
-        beginIndex --;
-        size ++;
-        Glorp [] a = ()
+        Glorp [] a = (Glorp[]) new Object[size+1];
+        System.arraycopy();
+
         helpIncrease();
     }
 

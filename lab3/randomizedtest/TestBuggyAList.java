@@ -21,6 +21,7 @@ public class TestBuggyAList {
         origin.addLast(6);
         origin2.addLast(6);
         origin.removeLast();
-        AListNoResizing expect = new AListNoResizing();
+        origin2.removeLast();
+        
     }
 }

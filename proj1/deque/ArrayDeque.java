@@ -92,10 +92,15 @@ public class ArrayDeque<Glorp> {
         }
         return false;
     }
-    /*
-    
 
-     */
+    private void resize(int capacity) {
+        Item[] a = (Item[]) new Object[capacity];
+        for (int i = 0; i < size; i += 1) {
+            a[i] = items[i];
+        }
+        items = a;
+    }
+    
     public static int min(int a,int b){
         if (a <= b){
             return a;

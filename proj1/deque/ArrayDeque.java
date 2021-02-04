@@ -50,18 +50,18 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp removeFirst(){
-        Glorp [] a = (Glorp[]) new Object[size-1];
+        Glorp [] a = (Glorp[]) new Object[item.length-1];
         Glorp returnStuff = item[0];
-        System.arraycopy(item,1,a,0,size-1);
+        System.arraycopy(item,1,a,0,item.length-1);
         size --;
         item = a;
         return returnStuff;
     }
 
     public Glorp removeLast(){
-        Glorp [] a = (Glorp[]) new Object[size-1];
+        Glorp [] a = (Glorp[]) new Object[item.length-1];
         Glorp returnStuff = item[size-1];
-        System.arraycopy(item,0,a,0,size-1);
+        System.arraycopy(item,0,a,0,item.length-1);
         size--;
         item = a;
         return returnStuff;

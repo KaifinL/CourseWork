@@ -4,8 +4,6 @@ public class ArrayDeque<Glorp> {
     Glorp [] item;
     int size;
 
-
-
     public ArrayDeque(){
         item = (Glorp[]) new Object[8];
         size = 0;

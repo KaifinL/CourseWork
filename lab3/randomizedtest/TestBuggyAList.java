@@ -23,8 +23,7 @@ public class TestBuggyAList {
         origin2.addLast(5);
         origin.addLast(6);
         origin2.addLast(6);
-        origin.removeLast();
-        origin2.removeLast();
-        assertEquals(origin,origin2);
+
+        assertEquals(origin.size(),origin2.size());
     }
 }

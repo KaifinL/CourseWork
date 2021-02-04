@@ -23,6 +23,6 @@ public class TimeAList {
 
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
-        AList<Integer> Ns = new AList();
+        AList<Integer> Ns = ;
     }
 }

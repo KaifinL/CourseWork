@@ -70,7 +70,9 @@ public class ArrayDeque<Glorp> {
         }
         Glorp x = getLast();
         item[size - 1] = null;
-        size = size - 1;
+        if (size > 0){
+            size--;
+        }
         return x;
     }
 

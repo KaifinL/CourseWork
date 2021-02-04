@@ -13,12 +13,12 @@ public class ArrayDequeTest {
     public static void testThreeAddThreeRemove(){
         ArrayDeque<Integer> input = new ArrayDeque<>();
         input.removeLast();
-        input.addLast(5);
-        input.addLast(6);
+        //input.addLast(5);
+        //input.addLast(6);
         ArrayDeque<Integer> expect = new ArrayDeque<>();
         expect.removeLast();
-        expect.addFirst(6);
-        expect.addFirst(5);
+        //expect.addFirst(6);
+        //expect.addFirst(5);
 
         assertEquals(input.removeLast(),expect.removeLast());
         assertEquals(input.getFirst(),expect.getFirst());

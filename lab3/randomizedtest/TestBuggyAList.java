@@ -27,4 +27,5 @@ public class TestBuggyAList {
         assertEquals(origin.size(),origin2.size());
         assertEquals(origin.removeLast(),origin2.removeLast());
     }
+    public static void 
 }

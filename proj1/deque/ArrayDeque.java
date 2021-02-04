@@ -13,6 +13,9 @@ public class ArrayDeque<Glorp> {
     }
 
     public void addFirst(Glorp t){
+        if (size == item.length) {
+            resize(size * 2);
+        }
         Glorp [] a = (Glorp[]) new Object[item.length+1];
         System.arraycopy(item,0,a,1,size);
         a[0] = t;
@@ -20,12 +23,12 @@ public class ArrayDeque<Glorp> {
         size ++;
     }
 
-    public void addLast(Glorp t){
-        Glorp [] a = (Glorp[]) new Object[item.length+1];
-        System.arraycopy(item,0,a,0,size);
-        a[size+1] = t;
-        item = a;
-        size ++;
+    public void addLast(Glorp x) {
+        if (size == item.length) {
+            resize(size * 2);
+        }
+        item[size] = x;
+        size = size + 1;
     }
 
     public boolean isEmpty(){
@@ -50,6 +53,9 @@ public class ArrayDeque<Glorp> {
     }
 
     public Glorp removeFirst(){
+        if ((size < item.length / 4) && (size > 4)) {
+            resize(item.length / 4);
+        }
         Glorp [] a = (Glorp[]) new Object[item.length-1];
         Glorp returnStuff = item[0];
         System.arraycopy(item,1,a,0,item.length-1);
@@ -105,5 +111,9 @@ public class ArrayDeque<Glorp> {
             return a;
         }
         return b;
+    }
+
+    public Glorp getLast() {
+        return item[size - 1];
     }
 }

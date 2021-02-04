@@ -15,8 +15,8 @@ public class TestBuggyAList {
       testThreeAddThreeRemove();
   }
     public static void testThreeAddThreeRemove(){
-        AListNoResizing<Integer> origin = new AListNoResizing();
-        BuggyAList origin2 = new BuggyAList();
+        AListNoResizing<Integer> origin = new AListNoResizing<>();
+        BuggyAList<Integer> origin2 = new BuggyAList<>();
         origin.addLast(4);
         origin2.addLast(4);
         origin.addLast(5);

@@ -20,7 +20,7 @@ public class ArrayDequeTest {
         expect.addFirst(5);
         expect.addFirst(4);
 
-        assertEquals(input,expect);
+        assertEquals(input.removeLast(),expect.removeLast());
 
     }
     public static void randomTest() {

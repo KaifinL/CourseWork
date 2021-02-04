@@ -32,8 +32,8 @@ public class TimeSLList {
         Ns.addLast(32000);
         Ns.addLast(64000);
         Ns.addLast(128000);
-        SLList item = new SLList();
-        
+        AList<Integer> 
+
     }
 
 }

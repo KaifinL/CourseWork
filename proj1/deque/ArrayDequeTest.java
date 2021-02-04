@@ -12,18 +12,17 @@ public class ArrayDequeTest {
     }
     public static void testThreeAddThreeRemove(){
         ArrayDeque<Integer> input = new ArrayDeque<>();
-        input.addLast(4);
+        input.removeFirst();
         input.addLast(5);
         input.addLast(6);
         ArrayDeque<Integer> expect = new ArrayDeque<>();
+        expect.removeFirst();
         expect.addFirst(6);
         expect.addFirst(5);
-        expect.addFirst(4);
 
         assertEquals(input.removeLast(),expect.removeLast());
         assertEquals(input.getFirst(),expect.getFirst());
         assertEquals(input.size(),expect.size());
-        System.out.println(input.equals(expect));
 
     }
     public static void randomTest() {

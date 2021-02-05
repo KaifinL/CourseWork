@@ -10,7 +10,7 @@ public class ArrayDequeTest {
         //testThreeAddThreeRemove();
         //randomTest();
         ArrayDeque<Integer> test = new ArrayDeque<>();
-        test.addFirst(0);
+        test.addLast(0);
         System.out.println(test.get(0));
     }
     public static void testThreeAddThreeRemove(){

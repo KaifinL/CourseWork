@@ -7,8 +7,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ArrayDequeTest {
     public static void main(String[] args) {
-        testThreeAddThreeRemove();
-        //randomTest();
+        //testThreeAddThreeRemove();
+        randomTest();
     }
     public static void testThreeAddThreeRemove(){
         ArrayDeque<Integer> input = new ArrayDeque<>();
@@ -29,7 +29,7 @@ public class ArrayDequeTest {
     }
     public static void randomTest() {
         ArrayDeque<Integer> L = new ArrayDeque<>();
-        int [] t = new int[1000];
+        AListNoResizing<Integer> M = new AListNoResizing<>();
         int N = 500;
         for (int i = 0; i < N; i += 1) {
             int operationNumber = StdRandom.uniform(0, 4);
@@ -37,16 +37,19 @@ public class ArrayDequeTest {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
                 L.addLast(randVal);
+                M.addLast(randVal);
+                assertEquals(L.size(),M.size());
             } else if (operationNumber == 1 & L.size() > 0) {
                 // getLast
+                assertEquals(L.getLast(),M.getLast());
 
             } else if (operationNumber == 2 & L.size() > 0) {
                 // removeLast
-
+                assertEquals(L.removeLast(),M.removeLast());
 
             } else if (operationNumber == 3) {
-                //size
-                int size = L.size();
+                //get(0)
+                assertEquals(L.get(0),M.get(0));
 
             }
         }

@@ -11,6 +11,7 @@ public class ArrayDequeTest {
         //randomTest();
         ArrayDeque<Integer> test = new ArrayDeque<>();
         test.addLast(0);
+        test.removeLast();
         System.out.println(test.get(0));
     }
     public static void testThreeAddThreeRemove(){

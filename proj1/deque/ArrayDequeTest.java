@@ -29,8 +29,8 @@ public class ArrayDequeTest {
     }
     public static void randomTest() {
         ArrayDeque<Integer> L = new ArrayDeque<>();
-        ArrayDeque<Integer> M = new ArrayDeque<>();
-        int N = 5000;
+        int [] t = new int[1000];
+        int N = 500;
         for (int i = 0; i < N; i += 1) {
             int operationNumber = StdRandom.uniform(0, 4);
             if (operationNumber == 0) {

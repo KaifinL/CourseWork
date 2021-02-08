@@ -1,5 +1,5 @@
 package deque;
 
-public class MaxArrayDeque extends ArrayDeque {
-    public MaxArrayDeque(Comparable T)
+public class MaxArrayDeque<Tone> extends ArrayDeque {
+    public MaxArrayDeque(Comparable <Tone> c)
 }

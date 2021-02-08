@@ -1,5 +1,4 @@
 package deque;
-
 public class ArrayDeque<Glorp> {
     Glorp [] item;
     int size;

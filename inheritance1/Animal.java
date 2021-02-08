@@ -5,7 +5,7 @@ public interface Animal {
     default void sniff(Animal a){
         System.out.println("sniff animal");
     }
-    /* default void praise(Animal a){
+     default void praise(Animal a){
         System.out.println("u r cool animal");
-    }*/
+    }
 }

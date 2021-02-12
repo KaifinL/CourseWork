@@ -119,5 +119,4 @@ public class LinkedListDeque<Gloup> {
             next = n;
         }
     }
-    public void 
 }

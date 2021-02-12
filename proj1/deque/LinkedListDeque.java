@@ -107,6 +107,7 @@ public class LinkedListDeque<Gloup> {
         }
         return false;
     }
+    public Gloup 
 
 
     private class DequeNode{

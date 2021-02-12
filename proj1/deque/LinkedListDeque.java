@@ -108,7 +108,14 @@ public class LinkedListDeque<Gloup> {
         return false;
     }
     public Gloup getRecursive(int index){
-        
+        return helpToGet(index,sentinel.next).item;
+    }
+
+    private DequeNode helpToGet(int index,DequeNode p){
+        if (index == 0){
+            return p;
+        }
+        return helpToGet(index-1,p.next);
     }
 
 

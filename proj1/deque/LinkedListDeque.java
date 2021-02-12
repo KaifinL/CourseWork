@@ -107,7 +107,7 @@ public class LinkedListDeque<Gloup> {
         }
         return false;
     }
-    public Gloup 
+    public Gloup getRecursive
 
 
     private class DequeNode{

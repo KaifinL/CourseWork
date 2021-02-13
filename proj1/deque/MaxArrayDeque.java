@@ -16,6 +16,10 @@ public class MaxArrayDeque<T> extends ArrayDeque {
         if (m == null){
             return null;
         }
-        
+
+    }
+
+    public T compareTo(Comparator c){
+
     }
 }

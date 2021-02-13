@@ -13,6 +13,9 @@ public class MaxArrayDeque<T> extends ArrayDeque {
     }
 
     public T max(){
-        if ()
+        if (m == null){
+            return null;
+        }
+        
     }
 }

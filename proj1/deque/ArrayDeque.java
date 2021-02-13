@@ -1,27 +1,27 @@
 package deque;
 
-public class ArrayDeque<Glorp> {
-    Glorp [] item;
+public class ArrayDeque<T> {
+    T [] item;
     int size;
 
     public ArrayDeque(){
-        item = (Glorp[]) new Object[8];
+        item = (T[]) new Object[8];
         size = 0;
 
     }
 
-    public void addFirst(Glorp t){
+    public void addFirst(T t){
         if (size == item.length) {
             resize(size * 2);
         }
-        Glorp [] a = (Glorp[]) new Object[item.length+1];
+        T [] a = (T[]) new Object[item.length+1];
         System.arraycopy(item,0,a,1,size);
         a[0] = t;
         item = a;
         size ++;
     }
 
-    public void addLast(Glorp x) {
+    public void addLast(T x) {
         if (size == item.length) {
             resize(size * 2);
         }
@@ -50,23 +50,23 @@ public class ArrayDeque<Glorp> {
         System.out.println();
     }
 
-    public Glorp removeFirst(){
+    public T removeFirst(){
         if ((size < item.length / 4) && (size > 4)) {
             resize(item.length / 4);
         }
-        Glorp [] a = (Glorp[]) new Object[item.length-1];
-        Glorp returnStuff = item[0];
+        T [] a = (T[]) new Object[item.length-1];
+        T returnStuff = item[0];
         System.arraycopy(item,1,a,0,item.length-1);
         size --;
         item = a;
         return returnStuff;
     }
 
-    public Glorp removeLast(){
+    public T removeLast(){
         if ((size < item.length / 4) && (size > 4)) {
             resize(item.length / 4);
         }
-        Glorp x = getLast();
+        T x = getLast();
         if (size > 0){
             item[size - 1] = null;
             size--;
@@ -74,7 +74,7 @@ public class ArrayDeque<Glorp> {
         return x;
     }
 
-    public Glorp get(int index){
+    public T get(int index){
         if (index < 0 || index >= size){
             return null;
         }
@@ -97,7 +97,7 @@ public class ArrayDeque<Glorp> {
     }
 
     private void resize(int capacity) {
-        Glorp[] a = (Glorp[])  new Object[capacity];
+        T[] a = (T[])  new Object[capacity];
         for (int i = 0; i < size; i += 1) {
             a[i] = item[i];
         }
@@ -111,14 +111,14 @@ public class ArrayDeque<Glorp> {
         return b;
     }
 
-    public Glorp getLast() {
+    public T getLast() {
         if (size > 0) {
             return item[size - 1];
         }
         return null;
     }
 
-    public Glorp getFirst(){
+    public T getFirst(){
         return item[0];
     }
 }

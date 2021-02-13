@@ -3,5 +3,11 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 public class MaxArrayDeque<T> extends ArrayDeque {
-    public MaxArrayDeque(Comparator<T> c){}
+    public Comparator c;
+
+    public MaxArrayDeque(Comparator<T> c){
+        c = c;
+    }
+
+    
 }

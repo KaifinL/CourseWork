@@ -10,6 +10,6 @@ public class MaxArrayDeque<T> extends ArrayDeque {
     }
 
     public T max(){
-        
+        if ()
     }
 }

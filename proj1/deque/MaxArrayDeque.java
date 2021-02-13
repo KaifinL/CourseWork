@@ -22,5 +22,7 @@ public class MaxArrayDeque<T> extends ArrayDeque{
     public int compareTo(T a,T b){
         return a.
     }
+    
+    }
 
 }

@@ -8,7 +8,7 @@ public class MaxArrayDeque<T> extends ArrayDeque{
     public MaxArrayDeque m;
 
     public MaxArrayDeque(Comparator<T> c){
-        c = c;
+        this.c = c;
 
     }
 
@@ -16,10 +16,11 @@ public class MaxArrayDeque<T> extends ArrayDeque{
         if (m == null){
             return null;
         }
+        return null;
 
     }
 
-    public T compareTo(T a,T b){
-
+    public class Maxizer implements Comparator<T>{
+        
     }
 }

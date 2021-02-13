@@ -20,7 +20,7 @@ public class MaxArrayDeque<T> extends ArrayDeque{
 
     }
 
-    public class Maxizer implements Comparator<T>{
-        
+    private static class Maxizer implements Comparator<T>{
+        public int compareTo
     }
 }

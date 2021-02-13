@@ -20,9 +20,6 @@ public class MaxArrayDeque<T> extends ArrayDeque{
     }
 
     public T compareTo(T a,T b){
-        for (int i = 0; i<m.size(); i++){
-            
-        }
-
+        
     }
 }

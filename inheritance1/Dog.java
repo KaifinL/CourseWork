@@ -7,6 +7,11 @@ public class Dog implements Animal {
         System.out.println("u r cool dog");
     }
 
+    
+    public void nervous(){
+        System.out.println("awoooo");
+    }
+
     public static void main(String[] args) {
         Animal a = new Dog();
         Dog d = new Dog();

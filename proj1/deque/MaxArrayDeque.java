@@ -16,14 +16,11 @@ public class MaxArrayDeque<T> extends ArrayDeque{
         if (m == null){
             return null;
         }
-        return null;
+
 
     }
-
-    private static class Maxizer implements Comparator<MaxArrayDeque>{
-        public int compareTo(MaxArrayDeque a,MaxArrayDeque b){
-
-
-        }
+    public int compareTo(T a,T b){
+        return a.
     }
+
 }

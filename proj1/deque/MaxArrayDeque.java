@@ -20,9 +20,10 @@ public class MaxArrayDeque<T> extends ArrayDeque{
 
     }
 
-    private static class Maxizer implements Comparator<T>{
-        public int compareTo(T a,T b){
+    private static class Maxizer implements Comparator<MaxArrayDeque>{
+        public int compareTo(MaxArrayDeque a,MaxArrayDeque b){
             
+
         }
     }
 }

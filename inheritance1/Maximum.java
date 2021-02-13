@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class Maximum {
+public class Maximum {
+    public Comparable
 }

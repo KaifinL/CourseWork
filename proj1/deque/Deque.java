@@ -1,2 +1,5 @@
-package deque;public interface Deque {
+package deque;
+
+public interface Deque {
+    
 }

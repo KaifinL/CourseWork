@@ -147,6 +147,7 @@ public class LinkedListDequeTest {
         for (int i : forTest){
             i += 5;
         }
-        assertEquals(104,forTest.get());
+        int i = forTest.get(0);
+        assertEquals(104,i);
     }
 }

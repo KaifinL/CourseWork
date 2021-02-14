@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
+public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     /* the same name as well as the function in the lecture */
     private DequeNode sentinel;
     private DequeNode last;
@@ -10,8 +10,8 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
 
 
     public LinkedListDeque() {
-        sentinel = new DequeNode(null ,null ,null);
-        last = new DequeNode(sentinel ,null ,sentinel);
+        sentinel = new DequeNode(null, null, null);
+        last = new DequeNode(sentinel, null, sentinel);
         sentinel.next = last;
         sentinel.ahead = last;
         size = 0;
@@ -20,7 +20,7 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
     @Override
     public void addFirst(T t) {
         /* this variable is to inherit the sentinel.next's information */
-        DequeNode D = new DequeNode(sentinel ,t ,sentinel.next);
+        DequeNode D = new DequeNode(sentinel, t, sentinel.next);
         sentinel.next.ahead = D;
         sentinel.next = D;
         size++;
@@ -28,10 +28,10 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
 
     @Override
     public void addLast(T t) {
-        DequeNode D = new DequeNode(last.ahead ,t ,last);
+        DequeNode D = new DequeNode(last.ahead, t, last);
         last.ahead.next = D;
         last.ahead = D;
-        size ++;
+        size++;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
         DequeNode currentnode = sentinel.next;
         while (index != counter){
             currentnode = currentnode.next;
-            counter ++;
+            counter++;
         }
         return currentnode.item;
     }
@@ -106,14 +106,14 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
         return false;
     }
     public T getRecursive(int index){
-        return helpToGet(index ,sentinel.next).item;
+        return helpToGet(index, sentinel.next).item;
     }
 
-    private DequeNode helpToGet(int index ,DequeNode p) {
+    private DequeNode helpToGet(int index, DequeNode p) {
         if (index == 0) {
             return p;
         }
-        return helpToGet(index-1 ,p.next);
+        return helpToGet(index-1, p.next);
     }
 
     @Override
@@ -146,7 +146,7 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
         public DequeNode ahead;
         public T item;
         public DequeNode next;
-        public DequeNode(DequeNode a ,T i ,DequeNode n) {
+        public DequeNode(DequeNode a, T i, DequeNode n) {
             ahead = a;
             item = i;
             next = n;

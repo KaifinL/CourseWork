@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> implements Iterable<T> {
+public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;
     private DequeNode last;

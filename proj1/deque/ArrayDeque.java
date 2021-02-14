@@ -86,7 +86,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     public boolean equals(Object o) {
         if (o instanceof ArrayDeque) {
             int counter = 0;
-            for (int i = 0; i < min(size, ((ArrayDeque) o).size); i++){
+            for (int i = 0; i < min(size, ((ArrayDeque) o).size); i++) {
                 T compare = (T) ((ArrayDeque) o).item[i];
                 if (item[i].equals(compare)) {
                     counter++;

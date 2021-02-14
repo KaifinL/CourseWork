@@ -79,19 +79,19 @@ public class ArrayDeque<T> implements Iterable<T> ,Deque<T> {
         if (index < 0 || index >= size) {
             return null;
         }
-         return item[index];
+        return item[index];
     }
 
     @Override
-    public boolean equals(Object o){
-        if (o instanceof ArrayDeque){
+    public boolean equals(Object o) {
+        if (o instanceof ArrayDeque) {
             int counter = 0;
-            for (int i = 0;i<min(size,((ArrayDeque)o).size);i++){
-                if (item[i] ==((ArrayDeque)o).item[i]) {
+            for (int i = 0 ;i < min(size,((ArrayDeque) o).size) ;i++){
+                if (item[i] == ((ArrayDeque) o).item[i]) {
                     counter++;
                 }
             }
-            if (counter == size){
+            if (counter == size) {
                 return true;
             }
         }
@@ -106,8 +106,8 @@ public class ArrayDeque<T> implements Iterable<T> ,Deque<T> {
         item = a;
     }
 
-    private static int min(int a,int b){
-        if (a <= b){
+    private static int min(int a ,int b) {
+        if (a <= b) {
             return a;
         }
         return b;
@@ -118,13 +118,13 @@ public class ArrayDeque<T> implements Iterable<T> ,Deque<T> {
         return new ArrayDequeIterator();
     }
 
-    private class ArrayDequeIterator implements Iterator<T>{
+    private class ArrayDequeIterator implements Iterator<T> {
         private int inSize;
         public ArrayDequeIterator(){
             inSize = 0;
         }
         public boolean hasNext(){
-            return inSize<size();
+            return inSize < size();
         }
         public T next(){
             T returnItem = get(inSize);

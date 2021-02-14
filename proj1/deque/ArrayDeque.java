@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
+public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T [] item;
     private int size;
 
@@ -18,7 +18,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
             resize(size * 2);
         }
         T [] a = (T[]) new Object[item.length];
-        System.arraycopy(item ,0 ,a ,1 ,size);
+        System.arraycopy(item ,0, a, 1, size);
         a[0] = t;
         item = a;
         size++;
@@ -42,7 +42,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
 
     @Override
     public void printDeque() {
-        for (int i = 0 ;i < size ;i++) {
+        for (int i = 0; i < size; i++) {
             System.out.print(item[i] + " ");
         }
         System.out.println();
@@ -55,7 +55,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         }
         T [] a = (T[]) new Object[item.length];
         T returnStuff = item[0];
-        System.arraycopy(item ,1 ,a ,0 ,item.length-1);
+        System.arraycopy(item, 1, a, 0, item.length-1);
         size--;
         item = a;
         return returnStuff;
@@ -86,7 +86,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
     public boolean equals(Object o) {
         if (o instanceof ArrayDeque) {
             int counter = 0;
-            for (int i = 0 ;i < min(size,((ArrayDeque) o).size) ;i++){
+            for (int i = 0; i < min(size,((ArrayDeque) o).size); i++){
                 T compare = (T) ((ArrayDeque) o).item[i];
                 if (item[i].equals(compare)) {
                     counter++;

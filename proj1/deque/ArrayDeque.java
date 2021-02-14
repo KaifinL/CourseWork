@@ -3,8 +3,8 @@ package deque;
 import java.util.Iterator;
 
 public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
-    T [] item;
-    int size;
+    private T [] item;
+    private int size;
 
     public ArrayDeque(){
         item = (T[]) new Object[8];

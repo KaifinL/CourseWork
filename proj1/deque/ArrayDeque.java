@@ -118,7 +118,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     }
 
 
-    public Iterator<T> iterator(){
+    public Iterator<T> iterator() {
         return new ArrayDequeIterator();
     }
 

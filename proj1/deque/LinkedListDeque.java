@@ -1,5 +1,7 @@
 package deque;
 
+import org.junit.Test;
+
 import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
@@ -9,7 +11,7 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
     private int size;
 
 
-    public LinkedListDeque(){
+    public LinkedListDeque() {
         sentinel = new DequeNode(null,null,null);
         last = new DequeNode(sentinel,null,sentinel);
         sentinel.next = last;
@@ -18,32 +20,32 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
     }
 
     @Override
-    public void addFirst(T t){
+    public void addFirst(T t) {
         /* this variable is to inherit the sentinel.next's information */
-        DequeNode D = new DequeNode(sentinel,t,sentinel.next);
+        DequeNode D = new DequeNode(sentinel ,t ,sentinel.next);
         sentinel.next.ahead = D;
         sentinel.next = D;
-        size ++;
+        size++;
     }
 
     @Override
-    public void addLast(T t){
-        DequeNode D = new DequeNode(last.ahead,t,last);
+    public void addLast(T t) {
+        DequeNode D = new DequeNode(last.ahead ,t ,last);
         last.ahead.next = D;
         last.ahead = D;
         size ++;
     }
 
     @Override
-    public int size(){
-        if (size < 0){
+    public int size() {
+        if (size < 0) {
             return 0;
         }
         return size;
     }
 
     @Override
-    public void printDeque(){
+    public void printDeque() {
         DequeNode currentnode = sentinel;   /* plays the same function as the former one */
         while (currentnode.next != last) {
             System.out.print(currentnode.next.item + " ");
@@ -61,11 +63,11 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
     }
 
     @Override
-    public T removeLast(){
+    public T removeLast() {
         DequeNode deleteNode = last.ahead;
         last.ahead.ahead.next = last;
         last.ahead = last.ahead.ahead;
-        size --;
+        size--;
         return deleteNode.item;
     }
 
@@ -88,15 +90,15 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
             DequeNode current = sentinel;
             DequeNode compare = ((LinkedListDeque) o).sentinel;
             while (current.next != last & t < ((LinkedListDeque)o).size) {
-                if (current.next.item == compare.next.item){
-                    counter ++;
-                    t ++;
+                if (current.next.item == compare.next.item) {
+                    counter++;
                 }
+                t++;
                 current = current.next;
                 compare = compare.next;
 
             }
-            if (counter == size){
+            if (counter == size) {
                 return true;
             }
         }
@@ -106,11 +108,11 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
         return helpToGet(index,sentinel.next).item;
     }
 
-    private DequeNode helpToGet(int index,DequeNode p){
-        if (index == 0){
+    private DequeNode helpToGet(int index ,DequeNode p) {
+        if (index == 0) {
             return p;
         }
-        return helpToGet(index-1,p.next);
+        return helpToGet(index-1 ,p.next);
     }
 
     @Override
@@ -127,11 +129,11 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
 
         @Override
         public boolean hasNext(){
-            return inSize<size;
+            return inSize < size;
         }
 
         @Override
-        public T next(){
+        public T next() {
             T returnItem = get(inSize);
             inSize++;
             return returnItem;
@@ -139,14 +141,19 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
     }
 
 
-    private class DequeNode{
+    private class DequeNode {
         public DequeNode ahead;
         public T item;
         public DequeNode next;
-        public DequeNode(DequeNode a,T i,DequeNode n){
+        public DequeNode(DequeNode a,T i ,DequeNode n) {
             ahead = a;
             item = i;
             next = n;
         }
+    }
+
+    @Test
+    public void testEquals(){
+
     }
 }

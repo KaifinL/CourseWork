@@ -15,14 +15,24 @@ public class MaxArrayDeque<T> extends ArrayDeque{
         if (m == null){
             return null;
         }
-        T maxItem = (T) m.getFirst();
-        for (int i = 0; i < m.size();i++){
-            if (maxItem.compareTo())
+
+    }
+
+    public class NameSort implements c{
+        public int compare(T a,T b){
+            return a.compareTo(b);
         }
     }
 
-    public int compareTo(T a,T b){
-        return a.
-    }
+    public static T max(m) {
+        int maxDex = 0;
+        for (int i = 0; i < items.length; i += 1) {
+            int cmp = items[i].compareTo(items[maxDex]);
+
+            if (cmp > 0) {
+                maxDex = i;
+            }
+        }
+        return items[maxDex];
 
 }

@@ -16,10 +16,10 @@ public class MaxArrayDequeTest {
     public void Test1(){
 
         MaxArrayDeque test1 = new MaxArrayDeque(ForTest1);
-        test1.items.addFirst(28);
-        test1.items.addFirst(34);
-        test1.items.addFirst(48);
-        test1.items.addFirst(3);
+        test1.addFirst(28);
+        test1.addFirst(34);
+        test1.addFirst(48);
+        test1.addFirst(3);
         assertEquals(test1.max(),48);
 
 

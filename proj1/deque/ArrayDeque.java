@@ -66,7 +66,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         if ((size < item.length / 4) && (size > 4)) {
             resize(item.length / 4);
         }
-        T x = getLast();
+        T x = get(size);
         if (size > 0){
             item[size - 1] = null;
             size--;
@@ -106,24 +106,13 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         item = a;
     }
 
-    public static int min(int a,int b){
+    private static int min(int a,int b){
         if (a <= b){
             return a;
         }
         return b;
     }
 
-
-    public T getLast() {
-        if (size > 0) {
-            return item[size - 1];
-        }
-        return null;
-    }
-
-    public T getFirst(){
-        return item[0];
-    }
 
     public Iterator<T> iterator(){
         return new ArrayDequeIterator();

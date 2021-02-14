@@ -1,6 +1,8 @@
 package deque;
 
-public class ArrayDeque<T> {
+import java.util.Iterator;
+
+public class ArrayDeque<T> implements Iterable<T> {
     T [] item;
     int size;
 
@@ -121,4 +123,6 @@ public class ArrayDeque<T> {
     public T getFirst(){
         return item[0];
     }
+    
+    public Iterator<T>
 }

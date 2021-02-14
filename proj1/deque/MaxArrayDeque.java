@@ -15,13 +15,7 @@ public class MaxArrayDeque<T> extends ArrayDeque{
             return null;
         }
         for (int i=0; i< items.size();i ++){
-
-        }
-    }
-    
-    public class sorted implements Comparator<T>{
-        public int compare(T o1,T o2){
-            return o1.
+            
         }
     }
 

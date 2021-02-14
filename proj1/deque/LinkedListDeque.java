@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
     /* the same name as well as the function in the lecture */
-    public DequeNode sentinel;
+    private DequeNode sentinel;
     private DequeNode last;
     private int size;
 

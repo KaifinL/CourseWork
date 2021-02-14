@@ -12,6 +12,13 @@ public class MaxArrayDequeTest {
         }
     };
 
+    Comparator ForTest2 = new Comparator() {
+        @Override
+        public int compare(Object o1, Object o2) {
+            return (String)o1. - (String)o2.;
+        }
+    };
+
     @Test
     public void Test1(){
 
@@ -21,6 +28,13 @@ public class MaxArrayDequeTest {
         test1.addFirst(48);
         test1.addFirst(3);
         assertEquals(test1.max(),48);
+
+
+    }
+
+    @Test
+    public void Test2(){
+
 
 
     }

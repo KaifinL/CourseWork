@@ -92,7 +92,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
                     counter++;
                 }
             }
-            if (size != ((ArrayDeque) o).size()){
+            if (size != ((ArrayDeque) o).size()) {
                 return false;
             }
             if (counter == size) {

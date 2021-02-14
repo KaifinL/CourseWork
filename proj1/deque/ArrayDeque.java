@@ -12,6 +12,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
 
     }
 
+    @Override
     public void addFirst(T t){
         if (size == item.length) {
             resize(size * 2);
@@ -22,7 +23,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         item = a;
         size ++;
     }
-
+    @Override
     public void addLast(T x) {
         if (size == item.length) {
             resize(size * 2);
@@ -30,7 +31,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         item[size] = x;
         size = size + 1;
     }
-
+    @Override
     public boolean isEmpty(){
         if (size <= 0){
             return true;
@@ -38,6 +39,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         return false;
     }
 
+    @Override
     public int size(){
         if (size <= 0){
             return 0;
@@ -45,6 +47,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         return size;
     }
 
+    @Override
     public void printDeque(){
         for (int i= 0;i < size;i++){
             System.out.print(item[i] + " ");
@@ -52,6 +55,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         System.out.println();
     }
 
+    @Override
     public T removeFirst(){
         if ((size < item.length / 4) && (size > 4)) {
             resize(item.length / 4);
@@ -64,6 +68,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         return returnStuff;
     }
 
+    @Override
     public T removeLast(){
         if ((size < item.length / 4) && (size > 4)) {
             resize(item.length / 4);
@@ -76,6 +81,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         return x;
     }
 
+    @Override
     public T get(int index){
         if (index < 0 || index >= size){
             return null;
@@ -83,6 +89,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
          return item[index];
     }
 
+    @Override
     public boolean equals(Object o){
         if (o instanceof ArrayDeque){
             int counter = 0;
@@ -112,6 +119,7 @@ public class ArrayDeque<T> implements Iterable<T>,Deque<T> {
         }
         return b;
     }
+
 
     public T getLast() {
         if (size > 0) {

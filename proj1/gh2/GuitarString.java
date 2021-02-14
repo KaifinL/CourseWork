@@ -22,6 +22,7 @@ public class GuitarString {
     public GuitarString(double frequency) {
         buffer = new ArrayDeque<>();
         for (int i=0;i< buffer.size();i++){
+            buffer.removeLast();
             buffer.addFirst(0.0);
         }
         int capacity =(int) Math.round(SR / frequency);
@@ -55,7 +56,7 @@ public class GuitarString {
      */
     public void tic() {
         for (int i=0; i< buffer.size();i++){
-            double newDouble = (buffer.removeFirst()+ buffer.get(1))*1/2*0.996;
+            double newDouble = (buffer.removeFirst()+ buffer.get(1))*1/2*DECAY;
             buffer.addLast(newDouble);
         }
         // TODO: Dequeue the front sample and enqueue a new sample that is

@@ -16,8 +16,8 @@ public class GuitarString {
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
         buffer = new ArrayDeque<>();
-        int capacity =(int) Math.round(SR / frequency);
-        for (int i=0; i< capacity; i++) {
+        int capacity = (int) Math.round(SR / frequency);
+        for (int i=0; i < capacity; i++) {
             buffer.addFirst(0.0);
         }
 
@@ -26,8 +26,8 @@ public class GuitarString {
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
-        for (int i=0; i< buffer.size(); i++) {
-            double r = Math.random() -0.5;
+        for (int i=0; i < buffer.size(); i++) {
+            double r = Math.random() - 0.5;
             buffer.removeLast();
             buffer.addFirst(r);
         }

@@ -124,7 +124,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     private class ArrayDequeIterator implements Iterator<T> {
         private int inSize;
-        public ArrayDequeIterator(){
+        public ArrayDequeIterator() {
             inSize = 0;
         }
         public boolean hasNext(){

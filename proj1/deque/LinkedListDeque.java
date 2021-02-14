@@ -70,10 +70,10 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     @Override
-    public T get(int index){
+    public T get(int index) {
         int counter = 0;  /* to count the node's rank */
         DequeNode currentnode = sentinel.next;
-        while (index != counter){
+        while (index != counter) {
             currentnode = currentnode.next;
             counter++;
         }
@@ -87,7 +87,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
             int t = 0;
             DequeNode current = sentinel;
             DequeNode compare = ((LinkedListDeque) o).sentinel;
-            while (current.next != last & t < ((LinkedListDeque)o).size) {
+            while (current.next != last & t < ((LinkedListDeque<T>) o).size) {
                 if (current.next.item.equals(compare.next.item)) {
                     counter++;
                 }
@@ -96,7 +96,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
                 compare = compare.next;
 
             }
-            if (size != ((LinkedListDeque<?>) o).size){
+            if (size != ((LinkedListDeque<T>) o).size){
                 return false;
             }
             if (counter == size) {

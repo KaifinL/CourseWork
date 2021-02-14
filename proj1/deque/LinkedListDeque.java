@@ -122,11 +122,25 @@ public class LinkedListDeque<T> implements Iterable<T> {
     }
 
     public Iterator<T> iterator(){
-        return new
+        return new LinkedListDequeIterator();
     }
 
-    private class LinkedListDequeIterator implements Iterator{
-        public boolean
+    private class LinkedListDequeIterator implements Iterator<T>{
+        private int inSize;
+
+        public LinkedListDequeIterator(){
+            inSize = 0;
+        }
+
+        public boolean hasNext(){
+            return inSize<size;
+        }
+
+        public T next(){
+            T returnItem = get(inSize);
+            inSize++;
+            return returnItem;
+        }
     }
 
 

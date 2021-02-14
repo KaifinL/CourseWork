@@ -144,10 +144,10 @@ public class LinkedListDequeTest {
         forTest.addFirst(3);
         forTest.addFirst(78);
         forTest.addFirst(99);
+        int j = 0;
         for (int i : forTest){
-            i += 5;
+            j += 5;
         }
-        int i = forTest.get(0);
-        assertEquals(104,i);
+        assertEquals(15,j);
     }
 }

@@ -80,14 +80,6 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
         return currentnode.item;
     }
 
-
-    private boolean hasNext(DequeNode t){
-        if (t.next == null){
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o instanceof LinkedListDeque) {

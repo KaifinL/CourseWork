@@ -110,7 +110,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         item = a;
     }
 
-    private static int min(int a ,int b) {
+    private static int min(int a, int b) {
         if (a <= b) {
             return a;
         }

@@ -52,7 +52,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     @Override
-    public T removeFirst(){
+    public T removeFirst() {
         DequeNode deletenode = sentinel.next;
         sentinel.next.next.ahead = sentinel;
         sentinel.next = sentinel.next.next;

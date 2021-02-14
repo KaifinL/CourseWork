@@ -1,7 +1,9 @@
 package gh2;
 
 // TODO: uncomment the following import once you're ready to start this portion
+import deque.ArrayDeque;
 import deque.Deque;
+import net.sf.saxon.expr.Component;
 // TODO: maybe more imports
 
 //Note: This file will not compile until you complete the Deque implementations
@@ -18,6 +20,12 @@ public class GuitarString {
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
+        buffer = new ArrayDeque<>();
+        for (int i=0;i< buffer.size();i++){
+            buffer.addFirst(0.0);
+        }
+        Object nearly =  Math.round(SR / frequency);
+        int capacity = (int) nearly;
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
         //       cast the result of this division operation into an int. For
         //       better accuracy, use the Math.round() function before casting.
@@ -27,6 +35,11 @@ public class GuitarString {
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
+        for (int i=0;i< buffer.size();i++){
+            double r = Math.random() -0.5;
+            buffer.removeLast();
+            buffer.addFirst(r);
+        }
         // TODO: Dequeue everything in buffer, and replace with random numbers
         //       between -0.5 and 0.5. You can get such a number by using:
         //       double r = Math.random() - 0.5;

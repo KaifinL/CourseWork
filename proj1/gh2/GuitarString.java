@@ -21,11 +21,10 @@ public class GuitarString {
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
         buffer = new ArrayDeque<>();
-        for (int i=0;i< buffer.size();i++){
-            buffer.removeLast();
+        int capacity =(int) Math.round(SR / frequency);
+        for (int i=0;i< capacity;i++){
             buffer.addFirst(0.0);
         }
-        int capacity =(int) Math.round(SR / frequency);
 
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
         //       cast the result of this division operation into an int. For

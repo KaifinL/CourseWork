@@ -14,7 +14,7 @@ public class MaxArrayDeque<T> extends ArrayDeque{
             return null;
         }
         int comparation;
-        T maxDex = (T) getFirst();
+        T maxDex = (T) get(0);
         for (int i=1; i< size();i ++){
             comparation = getGivenComparator().compare(maxDex,get(i));
             if (comparation < 0){
@@ -29,7 +29,7 @@ public class MaxArrayDeque<T> extends ArrayDeque{
             return null;
         }
         int comparation;
-        T maxDex = (T) getFirst();
+        T maxDex = (T) get(0);
         for (int i=1; i< size();i ++){
             comparation = c.compare(maxDex,get(i));
             if (comparation < 0){

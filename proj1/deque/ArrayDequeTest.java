@@ -1,7 +1,5 @@
 package deque;
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdRandom;
 
 import static org.junit.Assert.assertEquals;
 

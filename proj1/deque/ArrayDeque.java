@@ -125,12 +125,22 @@ public class ArrayDeque<T> implements Iterable<T> {
     }
 
     public Iterator<T> iterator(){
-        return new
+        return new ArrayDequeIterator();
     }
 
     private class ArrayDequeIterator implements Iterator<T>{
         private int inSize;
-        public 
+        public ArrayDequeIterator(){
+            inSize = 0;
+        }
+        public boolean hasNext(){
+            return inSize<size();
+        }
+        public T next(){
+            T returnItem = get(inSize);
+            inSize ++;
+            return returnItem;
+        }
 
     }
 }

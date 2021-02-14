@@ -55,7 +55,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         }
         T [] a = (T[]) new Object[item.length];
         T returnStuff = item[0];
-        System.arraycopy(item, 1, a, 0, item.length-1);
+        System.arraycopy(item, 1, a, 0, item.length - 1);
         size--;
         item = a;
         return returnStuff;

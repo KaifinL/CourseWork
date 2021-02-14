@@ -1,7 +1,5 @@
 package deque;
 
-import org.junit.Test;
-import static org.junit.Assert.assertTrue;
 import java.util.Iterator;
 
 public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
@@ -150,18 +148,5 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
             item = i;
             next = n;
         }
-    }
-
-    @Test
-    public void testEquals(){
-        LinkedListDeque test1 = new LinkedListDeque();
-        test1.addFirst(0);
-        test1.addFirst(1);
-        test1.addFirst(2);
-        LinkedListDeque test2 = new LinkedListDeque();
-        test2.addLast(2);
-        test2.addLast(1);
-        test2.addLast(0);
-        assertTrue(test1.equals(test2));
     }
 }

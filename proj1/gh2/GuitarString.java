@@ -24,8 +24,8 @@ public class GuitarString {
         for (int i=0;i< buffer.size();i++){
             buffer.addFirst(0.0);
         }
-        Object nearly =  Math.round(SR / frequency);
-        int capacity = (int) nearly;
+        int capacity =(int) Math.round(SR / frequency);
+
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
         //       cast the result of this division operation into an int. For
         //       better accuracy, use the Math.round() function before casting.

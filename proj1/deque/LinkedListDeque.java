@@ -96,7 +96,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
                 compare = compare.next;
 
             }
-            if (size != ((LinkedListDeque<T>) o).size){
+            if (size != ((LinkedListDeque<T>) o).size) {
                 return false;
             }
             if (counter == size) {

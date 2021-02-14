@@ -66,7 +66,7 @@ public class ArrayDeque<T> implements Iterable<T> ,Deque<T> {
         if ((size < item.length / 4) && (size > 4)) {
             resize(item.length / 4);
         }
-        T x = get(size);
+        T x = get(size-1);
         if (size > 0) {
             item[size - 1] = null;
             size--;

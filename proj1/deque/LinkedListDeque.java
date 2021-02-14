@@ -1,5 +1,8 @@
 package deque;
-public class LinkedListDeque<Gloup> {
+
+import java.util.Iterator;
+
+public class LinkedListDeque<T> implements Iterable<T> {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;
     private DequeNode last;
@@ -13,7 +16,7 @@ public class LinkedListDeque<Gloup> {
         sentinel.ahead = last;
         size = 0;
     }
-    public LinkedListDeque(Gloup t){
+    public LinkedListDeque(T t){
         DequeNode D = new DequeNode(null,t,null);
         sentinel = new DequeNode(null,null,D);
         last = new DequeNode(D,null,sentinel);
@@ -22,14 +25,14 @@ public class LinkedListDeque<Gloup> {
         sentinel.ahead = last;
         size = 0;
     }
-    public void addFirst(Gloup t){
+    public void addFirst(T t){
         /* this variable is to inherit the sentinel.next's information */
         DequeNode D = new DequeNode(sentinel,t,sentinel.next);
         sentinel.next.ahead = D;
         sentinel.next = D;
         size ++;
     }
-    public void addLast(Gloup t){
+    public void addLast(T t){
         DequeNode D = new DequeNode(last.ahead,t,last);
         last.ahead.next = D;
         last.ahead = D;
@@ -54,21 +57,21 @@ public class LinkedListDeque<Gloup> {
         }
         System.out.println();
     }
-    public Gloup removeFirst(){
+    public T removeFirst(){
         DequeNode deletenode = sentinel.next;
         sentinel.next.next.ahead = sentinel;
         sentinel.next = sentinel.next.next;
         size -= 1;
         return deletenode.item;
     }
-    public Gloup removeLast(){
+    public T removeLast(){
         DequeNode deleteNode = last.ahead;
         last.ahead.ahead.next = last;
         last.ahead = last.ahead.ahead;
         size --;
         return deleteNode.item;
     }
-    public Gloup get(int index){
+    public T get(int index){
         int counter = 0;  /* to count the node's rank */
         DequeNode currentnode = sentinel.next;
         while (index != counter){
@@ -107,7 +110,7 @@ public class LinkedListDeque<Gloup> {
         }
         return false;
     }
-    public Gloup getRecursive(int index){
+    public T getRecursive(int index){
         return helpToGet(index,sentinel.next).item;
     }
 
@@ -118,14 +121,20 @@ public class LinkedListDeque<Gloup> {
         return helpToGet(index-1,p.next);
     }
 
-    public 
+    public Iterator<T> iterator(){
+        return new
+    }
+
+    private class LinkedListDequeIterator implements Iterator{
+        public boolean
+    }
 
 
     private class DequeNode{
         public DequeNode ahead;
-        public Gloup item;
+        public T item;
         public DequeNode next;
-        public DequeNode(DequeNode a,Gloup i,DequeNode n){
+        public DequeNode(DequeNode a,T i,DequeNode n){
             ahead = a;
             item = i;
             next = n;

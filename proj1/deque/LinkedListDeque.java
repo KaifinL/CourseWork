@@ -6,7 +6,7 @@ public class LinkedListDeque<T> implements Iterable<T>,Deque<T> {
     /* the same name as well as the function in the lecture */
     public DequeNode sentinel;
     private DequeNode last;
-    int size;
+    private int size;
 
 
     public LinkedListDeque(){

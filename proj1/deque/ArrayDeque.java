@@ -123,6 +123,14 @@ public class ArrayDeque<T> implements Iterable<T> {
     public T getFirst(){
         return item[0];
     }
-    
-    public Iterator<T>
+
+    public Iterator<T> iterator(){
+        return new
+    }
+
+    private class ArrayDequeIterator implements Iterator<T>{
+        private int inSize;
+        public 
+
+    }
 }

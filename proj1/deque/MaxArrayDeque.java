@@ -3,36 +3,26 @@ package deque;
 import java.util.Comparator;
 
 public class MaxArrayDeque<T> extends ArrayDeque{
-    public Comparator c;
-    public MaxArrayDeque<T> m;
+    public Comparator givenComparator;
+    public MaxArrayDeque<T> items;
 
     public MaxArrayDeque(Comparator<T> c){
-        this.c = c;
-
+        this.givenComparator = c;
     }
 
     public T max(){
-        if (m == null){
+        if (items == null){
             return null;
         }
+        for (int i=0; i< items.size();i ++){
 
-    }
-
-    public class NameSort implements c{
-        public int compare(T a,T b){
-            return a.compareTo(b);
         }
     }
-
-    public static T max(m) {
-        int maxDex = 0;
-        for (int i = 0; i < items.length; i += 1) {
-            int cmp = items[i].compareTo(items[maxDex]);
-
-            if (cmp > 0) {
-                maxDex = i;
-            }
+    
+    public class sorted implements Comparator<T>{
+        public int compare(T o1,T o2){
+            return o1.
         }
-        return items[maxDex];
+    }
 
 }

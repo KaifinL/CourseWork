@@ -104,7 +104,7 @@ public class LinkedListDequeTest {
     public void emptyNullReturnTest() {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-        /*
+
         LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
 
         boolean passed1 = false;
@@ -112,7 +112,7 @@ public class LinkedListDequeTest {
         assertEquals("Should return null when removeFirst is called on an empty Deque,", null, lld1.removeFirst());
         assertEquals("Should return null when removeLast is called on an empty Deque,", null, lld1.removeLast());
 
-        */
+        
     }
 
     @Test

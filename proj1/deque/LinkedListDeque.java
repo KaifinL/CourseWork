@@ -118,6 +118,8 @@ public class LinkedListDeque<Gloup> {
         return helpToGet(index-1,p.next);
     }
 
+    public 
+
 
     private class DequeNode{
         public DequeNode ahead;

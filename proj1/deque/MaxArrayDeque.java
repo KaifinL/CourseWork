@@ -25,6 +25,10 @@ public class MaxArrayDeque<T> extends ArrayDeque{
         return maxDex;
     }
 
+    public T max(Comparator newComparator){
+        
+    }
+
     public Comparator getGivenComparator() {
         return givenComparator;
     }

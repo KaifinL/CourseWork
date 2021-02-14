@@ -15,8 +15,11 @@ public class MaxArrayDeque<T> extends ArrayDeque{
             return null;
         }
         for (int i=0; i< items.size();i ++){
-            
+
         }
     }
 
+    public Comparator getGivenComparator() {
+        return givenComparator;
+    }
 }

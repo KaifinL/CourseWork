@@ -88,13 +88,16 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
             DequeNode current = sentinel;
             DequeNode compare = ((LinkedListDeque) o).sentinel;
             while (current.next != last & t < ((LinkedListDeque)o).size) {
-                if (current.next.item == compare.next.item) {
+                if (current.next.item.equals(compare.next.item)) {
                     counter++;
                 }
                 t++;
                 current = current.next;
                 compare = compare.next;
 
+            }
+            if (size != ((LinkedListDeque<?>) o).size){
+                return false;
             }
             if (counter == size) {
                 return true;
@@ -103,7 +106,7 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
         return false;
     }
     public T getRecursive(int index){
-        return helpToGet(index,sentinel.next).item;
+        return helpToGet(index ,sentinel.next).item;
     }
 
     private DequeNode helpToGet(int index ,DequeNode p) {
@@ -143,7 +146,7 @@ public class LinkedListDeque<T> implements Iterable<T> ,Deque<T> {
         public DequeNode ahead;
         public T item;
         public DequeNode next;
-        public DequeNode(DequeNode a,T i ,DequeNode n) {
+        public DequeNode(DequeNode a ,T i ,DequeNode n) {
             ahead = a;
             item = i;
             next = n;

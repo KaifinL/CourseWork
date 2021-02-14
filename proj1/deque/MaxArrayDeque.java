@@ -14,9 +14,15 @@ public class MaxArrayDeque<T> extends ArrayDeque{
         if (items == null){
             return null;
         }
-        for (int i=0; i< items.size();i ++){
-
+        int comparation;
+        T maxDex = (T) items.getFirst();
+        for (int i=1; i< items.size();i ++){
+            comparation = getGivenComparator().compare(maxDex,items.get(i));
+            if (comparation < 0){
+                maxDex = (T) items.get(i);
+            }
         }
+        return maxDex;
     }
 
     public Comparator getGivenComparator() {

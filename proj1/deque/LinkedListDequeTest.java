@@ -133,7 +133,20 @@ public class LinkedListDequeTest {
         for (double i = 999999; i > 500000; i--) {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
+    }
 
-
+    @Test
+    /* this test is to checkout the Iterator method
+        and is written by kaifeng lin
+     */
+    public void iteratorTest(){
+        LinkedListDeque<Integer> forTest = new LinkedListDeque();
+        forTest.addFirst(3);
+        forTest.addFirst(78);
+        forTest.addFirst(99);
+        for (int i : forTest){
+            i += 5;
+        }
+        assertEquals(104,forTest.get());
     }
 }

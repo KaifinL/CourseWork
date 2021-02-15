@@ -16,7 +16,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         if (size == item.length) {
             resize(size * 2);
         }
-        T [] a = (T[]) new Object[item.length + 1];
+        T [] a = (T[]) new Object[item.length];
         System.arraycopy(item,0, a, 1, size);
         a[0] = t;
         item = a;
@@ -52,12 +52,15 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         if ((size < item.length / 4) && (size > 4)) {
             resize(item.length / 4);
         }
-        T [] a = (T[]) new Object[item.length];
-        T returnStuff = item[0];
-        System.arraycopy(item, 1, a, 0, item.length - 1);
-        size--;
-        item = a;
-        return returnStuff;
+        if (size < 0) {
+            T[] a = (T[]) new Object[item.length];
+            T returnStuff = item[0];
+            System.arraycopy(item, 1, a, 0, item.length - 1);
+            size--;
+            item = a;
+            return returnStuff;
+        }
+        return null;
     }
 
     @Override

@@ -20,8 +20,19 @@ public class TestArrayDequeEC {
                 task1.addFirst(i);
                 forTask1.addFirst(i);
             }
-            
+
         }
+        for (int i = 0; i < 10; i += 1) {  /*  @StudentArrayDequeLaucher.java */
+            double numberBetweenZeroAndOne = StdRandom.uniform();
+            if (numberBetweenZeroAndOne < 0.5 && task1.size() > 0 ) {
+                task1.removeFirst();
+                forTask1.removeFirst();
+            } else {
+                task1.addFirst(i);
+                forTask1.addFirst(i);
+            }
+
+
 
     }
 }

@@ -28,11 +28,11 @@ public class TestArrayDequeEC {
         for (int i = 0; i < 1000; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.5 && task1.size() > 0) {
-                task1.removeFirst();
-                forTask1.removeFirst();
+                task1.removeLast();
+                forTask1.removeLast();
             } else {
-                task1.addFirst(i);
-                forTask1.addFirst(i);
+                task1.addLast(i);
+                forTask1.addLast(i);
             }
         }
         for (int i = 0; i < task1.size(); i++) {

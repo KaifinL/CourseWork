@@ -146,7 +146,7 @@ public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
         private DequeNode ahead;
         private T item;
         private DequeNode next;
-        public DequeNode(DequeNode a, T i, DequeNode n) {
+        DequeNode(DequeNode a, T i, DequeNode n) {
             ahead = a;
             item = i;
             next = n;

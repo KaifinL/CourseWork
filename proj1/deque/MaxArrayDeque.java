@@ -24,7 +24,7 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         return maxDex;
     }
 
-    public T max(Comparator c) {
+    public T max(Comparator<T> c) {
         if (this == null) {
             return null;
         }

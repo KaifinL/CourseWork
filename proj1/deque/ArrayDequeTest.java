@@ -34,7 +34,7 @@ public class ArrayDequeTest {
     @Test
     public void testGet(){
         ArrayDeque test3 = new ArrayDeque();
-        test3.removeFirst();
+        test3.removeLast();
         test3.addFirst(0);
         test3.addFirst(7);
         test3.addFirst(9);

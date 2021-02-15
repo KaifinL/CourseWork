@@ -5,33 +5,36 @@ import java.util.Iterator;
 public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T [] item;
     private int size;
+    private int nextFirst;
+    private int nextLast;
 
 
     public ArrayDeque() {
         item = (T[]) new Object[8];
         size = 0;
+        nextFirst = 0;
+        nextLast = 0;
 
     }
 
     @Override
     public void addFirst(T t) {
-        if (size == item.length) {
-            resize(size * 2);
-        }
-        T [] a = (T[]) new Object[item.length];
-        System.arraycopy(item, 0, a, 1, size);
-        a[0] = t;
-        item = a;
+        item[nextFirst] = t;
+        nextFirst -= 1;
         size++;
+        if (nextLast - nextFirst == 1) {
+            RaiseSize();
+        }
     }
 
     @Override
     public void addLast(T x) {
-        if (size == item.length) {
-            resize(size * 2);
+        item[nextLast] = x;
+        nextLast++;
+        size++;
+        if (nextLast - nextFirst == 1) {
+            RaiseSize();
         }
-        item[size] = x;
-        size = size + 1;
     }
 
     @Override
@@ -45,35 +48,33 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     @Override
     public void printDeque() {
         for (int i = 0; i < size; i++) {
-            System.out.print(item[i] + " ");
+            System.out.print(get(i) + " ");
         }
         System.out.println();
     }
 
     @Override
     public T removeFirst() {
-        if ((size < item.length / 4) && (size > 4)) {
-            resize(item.length / 4);
-        }
-        T [] a = (T[]) new Object[item.length];
-        T returnStuff = item[0];
-        System.arraycopy(item, 1, a, 0, item.length - 1);
+        nextFirst = (nextFirst + 1) % item.length;
+        T returnStuff = item[nextFirst];
+        item[nextFirst] = null;
         size--;
-        item = a;
+        if (size <= 0.25 * item.length) {
+            CutSize();
+        }
         return returnStuff;
     }
 
     @Override
     public T removeLast() {
-        if ((size < item.length / 4) && (size > 4)) {
-            resize(item.length / 4);
+        nextLast = (nextLast - 1 + item.length) % item.length;
+        T returnStuff = item[nextLast];
+        item[nextLast] = null;
+        size--;
+        if (size <= 0.25 * item.length) {
+            CutSize();
         }
-        T x = get(size - 1);
-        if (size > 0) {
-            item[size - 1] = null;
-            size--;
-        }
-        return x;
+        return returnStuff;
     }
 
     @Override
@@ -81,7 +82,8 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         if (index < 0 || index >= size) {
             return null;
         }
-        return item[index];
+        int trueIndex = (index + nextFirst + 1) % item.length;
+        return item[trueIndex];
     }
 
     @Override
@@ -93,7 +95,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             }
             for (int i = 0; i < size; i++) {
                 T compare = (T) ((Deque) o).get(i);
-                if (item[i].equals(compare)) {
+                if (get(i).equals(compare)) {
                     counter++;
                 }
             }
@@ -102,14 +104,6 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             }
         }
         return false;
-    }
-
-    private void resize(int capacity) {
-        T[] a = (T[])  new Object[capacity];
-        for (int i = 0; i < size; i += 1) {
-            a[i] = item[i];
-        }
-        item = a;
     }
 
     public Iterator<T> iterator() {
@@ -130,5 +124,28 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             return returnItem;
         }
 
+    }
+
+    private void RaiseSize() {
+        T[] newItem = (T[]) new Object[item.length * 2];
+        System.arraycopy(item, 0, newItem, 0, nextLast);
+        System.arraycopy(item, nextFirst, newItem, nextLast + item.length, item.length - nextFirst + 1);
+        nextFirst += item.length;
+        item = newItem;
+    }
+
+    private void CutSize(){
+        T[] newItem = (T[]) new Object[item.length / 2];
+        if (nextFirst < nextLast) {
+            System.arraycopy(item, nextFirst + 1, newItem, item.length / 4 - 1, size);
+            item = newItem;
+            nextFirst -= item.length / 4;
+            nextLast -= item.length / 4;
+        }
+        else {
+            System.arraycopy(item, nextFirst + 1, newItem, nextFirst - item.length / 2 + 1, item.length - nextFirst);
+            System.arraycopy(item, 0, newItem, 0, nextLast);
+            nextFirst -= item.length / 2;
+        }
     }
 }

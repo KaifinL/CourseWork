@@ -9,7 +9,6 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     public ArrayDeque() {
         item = (T[]) new Object[8];
         size = 0;
-
     }
 
     @Override
@@ -86,14 +85,14 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     public boolean equals(Object o) {
         if (o instanceof ArrayDeque) {
             int counter = 0;
-            for (int i = 0; i < min(size, ((ArrayDeque) o).size); i++) {
+            if (size != ((ArrayDeque) o).size()) {
+                return false;
+            }
+            for (int i = 0; i < size; i++) {
                 T compare = (T) ((ArrayDeque) o).item[i];
                 if (item[i].equals(compare)) {
                     counter++;
                 }
-            }
-            if (size != ((ArrayDeque) o).size()) {
-                return false;
             }
             if (counter == size) {
                 return true;
@@ -109,14 +108,6 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         }
         item = a;
     }
-
-    private static int min(int a, int b) {
-        if (a <= b) {
-            return a;
-        }
-        return b;
-    }
-
 
     public Iterator<T> iterator() {
         return new ArrayDequeIterator();

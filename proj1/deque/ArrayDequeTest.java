@@ -30,4 +30,16 @@ public class ArrayDequeTest {
         assertEquals(b,7);
         assertEquals(c,0);
     }
+
+    @Test
+    public void testGet(){
+        ArrayDeque test3 = new ArrayDeque();
+        test3.removeFirst();
+        test3.addFirst(0);
+        test3.addFirst(7);
+        test3.addFirst(9);
+        assertEquals(test3.get(0),9);
+        assertEquals(test3.get(1),7);
+        assertEquals(test3.get(2),0);
+    }
 }

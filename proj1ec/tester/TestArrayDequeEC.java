@@ -1,2 +1,5 @@
-package tester;public class TestArrayDequeEC {
+package tester;
+
+public class TestArrayDequeEC {
+    
 }

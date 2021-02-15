@@ -5,10 +5,12 @@ import java.util.Iterator;
 public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T [] item;
     private int size;
+    private int beginIndex;
 
     public ArrayDeque() {
         item = (T[]) new Object[8];
         size = 0;
+        beginIndex = 4;
 
     }
 

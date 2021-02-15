@@ -13,8 +13,8 @@ public class TestArrayDequeEC {
         for (int i = 0; i < 10000; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             //double numberBetweenZeroAndOne = StdRandom.uniform();
             //if (numberBetweenZeroAndOne < 0.5) {
-                task1.addLast(i);
-                forTask1.addLast(i);
+                task1.addFirst(i);
+                forTask1.addFirst(i);
 
         }
         for (int i = 0; i < task1.size(); i++) {

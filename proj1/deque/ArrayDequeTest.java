@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 public class ArrayDequeTest {
 
     @Test
-    void testAddFirst(){
+    public void testAddFirst(){
         ArrayDeque test1 = new ArrayDeque();
         test1.addFirst(0);
         test1.addFirst("newlymade");

@@ -18,7 +18,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             resize(size * 2);
         }
         T [] a = (T[]) new Object[item.length];
-        System.arraycopy(item,0, a, 1, size);
+        System.arraycopy(item, 0, a, 1, size);
         a[0] = t;
         item = a;
         size++;
@@ -116,7 +116,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     private class ArrayDequeIterator implements Iterator<T> {
         private int inSize;
-        public ArrayDequeIterator() {
+        ArrayDequeIterator() {
             inSize = 0;
         }
         public boolean hasNext() {

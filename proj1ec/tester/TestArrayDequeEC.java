@@ -36,5 +36,6 @@ public class TestArrayDequeEC {
         }
         for (int i = 0; i < task1.size(); i++) {
             assertEquals(task1.get(i), forTask1.get(i));
+        }
     }
 }

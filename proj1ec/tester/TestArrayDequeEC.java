@@ -4,5 +4,8 @@ import org.junit.Test;
 import student.StudentArrayDeque;
 
 public class TestArrayDequeEC {
-    
+    @Test
+    void DequeTest() {
+        
+    }
 }

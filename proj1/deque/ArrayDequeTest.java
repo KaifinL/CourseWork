@@ -42,4 +42,16 @@ public class ArrayDequeTest {
         assertEquals(test3.get(1),7);
         assertEquals(test3.get(2),0);
     }
+
+    @Test
+    public void testAddLast(){
+        ArrayDeque test4 = new ArrayDeque();
+        test4.removeLast();
+        test4.addLast(0);
+        test4.addLast(7);
+        test4.addLast(9);
+        assertEquals(test4.get(0),0);
+        assertEquals(test4.get(1),7);
+        assertEquals(test4.get(2),9);
+    }
 }

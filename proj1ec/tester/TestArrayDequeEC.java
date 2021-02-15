@@ -7,7 +7,7 @@ import student.StudentArrayDeque;
 
 public class TestArrayDequeEC {
     @Test
-    void DequeTest() {
+    public void DequeTest() {
         StudentArrayDeque<Integer> task1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> forTask1 = new ArrayDequeSolution<>();
         for (int i = 0; i < 10; i += 1) {  /*  @StudentArrayDequeLaucher.java */

@@ -15,10 +15,10 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         }
         int comparation;
         T maxDex = (T) get(0);
-        for (int i=1; i < size(); i++) {
+        for (int i = 1; i < size(); i++) {
             comparation = getGivenComparator().compare(maxDex, get(i));
             if (comparation < 0) {
-                maxDex = (T)get(i);
+                maxDex = (T) get(i);
             }
         }
         return maxDex;
@@ -30,7 +30,7 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         }
         int comparation;
         T maxDex = (T) get(0);
-        for (int i=1; i < size(); i++) {
+        for (int i = 1; i < size(); i++) {
             comparation = c.compare(maxDex, get(i));
             if (comparation < 0) {
                 maxDex = (T) get(i);

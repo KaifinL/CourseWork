@@ -23,6 +23,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         item = a;
         size++;
     }
+
     @Override
     public void addLast(T x) {
         if (size == item.length) {

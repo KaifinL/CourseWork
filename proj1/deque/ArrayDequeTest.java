@@ -46,13 +46,17 @@ public class ArrayDequeTest {
     @Test
     public void testAddLast(){
         Deque test4 = new ArrayDeque();
+        Deque test9 = new LinkedListDeque();
         test4.removeLast();
         test4.addLast(0);
         test4.addLast(7);
         test4.addLast(9);
-        assertEquals(test4.get(0),0);
-        assertEquals(test4.get(1),7);
-        assertEquals(test4.get(2),9);
+        test9.addLast(0);
+        test9.addLast(7);
+        test9.addLast(9);
+        assertEquals(test4.get(0),test9.get(0));
+        assertEquals(test4.get(1),test9.get(1));
+        assertEquals(test4.get(2),test9.get(2));
     }
 
     @Test

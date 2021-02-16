@@ -143,6 +143,7 @@ public class ArrayDequeTest {
         assertEquals(4,a);
 
     }
+    @T
 }
 
 

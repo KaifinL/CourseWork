@@ -16,22 +16,11 @@ public class TestArrayDequeEC {
             if (numberBetweenZeroAndOne < 0.1 && task1.size() > 0) {
                 Integer a = task1.removeLast();
                 Integer b = forTask1.removeLast();
-                assertEquals(a,b);
+                assertEquals("removeLast()",a,b);
             } else {
                 task1.addFirst(i);
                 forTask1.addFirst(i);
-            }
-        }
-
-        for (int i = 0; i < 100; i += 1) {  /*  @StudentArrayDequeLaucher.java */
-            double numberBetweenZeroAndOne = StdRandom.uniform();
-            if (numberBetweenZeroAndOne < 0.5 && task1.size() > 0) {
-                Integer a = task1.removeLast();
-                Integer b = forTask1.removeLast();
-                assertEquals(a,b);
-            } else {
-                task1.addLast(i);
-                forTask1.addLast(i);
+                System.out.println(String.format("remove({})", i));
             }
         }
     }

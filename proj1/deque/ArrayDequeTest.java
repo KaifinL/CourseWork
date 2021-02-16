@@ -153,7 +153,7 @@ public class ArrayDequeTest {
         ArrayDeque.addLast(4);
         ArrayDeque.removeFirst();
         ArrayDeque.addLast(6);
-        
+
     }
 }
 

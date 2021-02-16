@@ -1,7 +1,5 @@
 package tester;
 import static org.junit.Assert.*;
-
-import edu.princeton.cs.introcs.In;
 import edu.princeton.cs.introcs.StdRandom;
 import org.junit.Test;
 import student.StudentArrayDeque;
@@ -11,6 +9,7 @@ public class TestArrayDequeEC {
     public void DequeTest() {
         StudentArrayDeque<Integer> task1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> forTask1 = new ArrayDequeSolution<>();
+        
 
         for (int i = 0; i < 500; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();

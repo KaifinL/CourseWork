@@ -70,9 +70,10 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             resize(item.length / 4);
         }
         if (size > 0) {
+            T returnStuff = get(size - 1);
             item[size - 1] = null;
             size--;
-            return get(size - 1);
+            return returnStuff;
         }
         return null;
     }

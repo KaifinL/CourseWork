@@ -7,7 +7,7 @@ public class ArrayDequeTest {
 
     @Test
     public void testAddFirst(){
-        ArrayDeque test1 = new ArrayDeque();
+        newArrayDeque test1 = new newArrayDeque();
         test1.addFirst(0);
         test1.addFirst("newlymade");
         test1.addFirst(7);
@@ -18,7 +18,7 @@ public class ArrayDequeTest {
 
     @Test
     public void testRemoveFirst(){
-        ArrayDeque test2 = new ArrayDeque();
+        newArrayDeque test2 = new newArrayDeque();
         test2.removeFirst();
         test2.addFirst(0);
         test2.addFirst(7);
@@ -33,7 +33,7 @@ public class ArrayDequeTest {
 
     @Test
     public void testGet(){
-        ArrayDeque test3 = new ArrayDeque();
+        Deque test3 = new newArrayDeque();
         test3.removeFirst();
         test3.addFirst(0);
         test3.addFirst(7);
@@ -45,7 +45,7 @@ public class ArrayDequeTest {
 
     @Test
     public void testAddLast(){
-        ArrayDeque test4 = new ArrayDeque();
+        Deque test4 = new newArrayDeque();
         test4.removeLast();
         test4.addLast(0);
         test4.addLast(7);
@@ -57,7 +57,7 @@ public class ArrayDequeTest {
 
     @Test
     public void testEquals(){
-        ArrayDeque test5 = new ArrayDeque();
+        Deque test5 = new newArrayDeque();
         LinkedListDeque test6 = new LinkedListDeque();
         test5.addLast(5);
         test5.addLast(6);

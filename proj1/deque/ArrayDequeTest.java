@@ -150,19 +150,29 @@ public class ArrayDequeTest {
     @Test
     public void AGtest4(){
         Deque ArrayDeque = new ArrayDeque();
-        ArrayDeque.addLast(0);
+        ArrayDeque.addFirst(0);
         ArrayDeque.addFirst(1);
-        ArrayDeque.removeLast();
+        ArrayDeque.get(0);
+        ArrayDeque.addFirst(3);
         ArrayDeque.removeFirst();
-        ArrayDeque.addLast(4);
-        ArrayDeque.addLast(5);
         ArrayDeque.removeLast();
+        ArrayDeque.addFirst(6);
         ArrayDeque.addLast(7);
-        ArrayDeque.addFirst(8);
-        ArrayDeque.removeFirst();
-        ArrayDeque.addFirst(10);
-        int a =(int) ArrayDeque.get(2);
-        assertEquals(7, a);
+        ArrayDeque.removeLast();
+        ArrayDeque.removeLast();
+        ArrayDeque.get(0);
+        ArrayDeque.addFirst(11);
+        ArrayDeque.removeLast();
+        ArrayDeque.removeLast();
+        ArrayDeque.addLast(14);
+        ArrayDeque.removeLast();
+        ArrayDeque.addLast(16);
+        ArrayDeque.addFirst(17);
+        ArrayDeque.get(0);
+        ArrayDeque.removeLast();
+        ArrayDeque.addLast(20);
+        ArrayDeque.removeLast();
+        ArrayDeque.addFirst(22);
     }
 
     private class newcomparator implements Comparator{

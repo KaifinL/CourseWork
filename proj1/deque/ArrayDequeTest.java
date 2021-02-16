@@ -124,7 +124,8 @@ public class ArrayDequeTest {
         ugly.addLast(3);
         ugly.removeFirst();
         ugly.addLast(5);
-        ugly.removeFirst();
+        int a = (int) ugly.removeFirst();
+        assertEquals(1,a);
     }
 }
 

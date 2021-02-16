@@ -36,7 +36,6 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         if (endIndex == item.length - 1) {
             resize(size * 2);
         }
-        size += 1;
         if (size != 0) {
             item[endIndex + 1] = x;
             endIndex += 1;
@@ -44,6 +43,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         if (size == 0){
            item[endIndex] = x;
         }
+        size++;
     }
 
     @Override

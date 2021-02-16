@@ -67,4 +67,22 @@ public class ArrayDequeTest {
         test6.addLast(7);
         assertTrue(test5.equals(test6));
     }
+
+    public void testRemoveLast(){
+        Deque test8 = new ArrayDeque();
+        LinkedListDeque test7 = new LinkedListDeque();
+        test7.addLast(5);
+        test7.addLast(6);
+        test7.addLast(7);
+        test8.addLast(5);
+        test8.addLast(6);
+        test8.addLast(7);
+        for (int i = 0; i < test7.size(); i++) {
+            Integer a = (Integer) test7.removeLast();
+            Integer b = (Integer) test8.removeLast();
+            assertEquals(a,b);
+        }
+    }
 }
+
+

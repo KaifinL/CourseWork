@@ -111,7 +111,7 @@ public class ArrayDequeTest {
         newone.addLast(0);
         newone.addLast(1);
         int a = (Integer) newone.removeLast();
-        assertEquals(1,a);
+        assertEquals(1, a);
 
     }
 
@@ -125,7 +125,7 @@ public class ArrayDequeTest {
         ugly.removeFirst();
         ugly.addLast(5);
         int a = (int) ugly.removeFirst();
-        assertEquals(1,a);
+        assertEquals(1, a);
     }
 
     @Test
@@ -140,19 +140,23 @@ public class ArrayDequeTest {
         ArrayDeque.removeFirst();
         ArrayDeque.addFirst(7);
         int a = (int) ArrayDeque.removeLast();
-        assertEquals(4,a);
+        assertEquals(4, a);
 
     }
     @Test
     public void AGtest4(){
         Deque ArrayDeque = new ArrayDeque();
-        ArrayDeque.addLast(0);
+        ArrayDeque.addFirst(0);
         ArrayDeque.addLast(1);
         ArrayDeque.addLast(2);
         ArrayDeque.removeFirst();
-        ArrayDeque.addLast(4);
+        ArrayDeque.size();
         ArrayDeque.removeFirst();
-        ArrayDeque.addLast(6);
+        ArrayDeque.isEmpty();
+        ArrayDeque.removeFirst();
+        ArrayDeque.addLast(8);
+        int a = (int) ArrayDeque.removeFirst();
+        assertEquals(a, );
 
     }
 }

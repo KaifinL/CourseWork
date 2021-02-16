@@ -20,7 +20,7 @@ public class TestArrayDequeEC {
             } else {
                 task1.addFirst(i);
                 forTask1.addFirst(i);
-                System.out.println(String.format("remove({})", i));
+                System.out.println(("addFirst()"));
             }
         }
     }

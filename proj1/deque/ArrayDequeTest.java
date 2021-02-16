@@ -127,6 +127,11 @@ public class ArrayDequeTest {
         int a = (int) ugly.removeFirst();
         assertEquals(1,a);
     }
+
+    @Test
+    public void AGtest3(){
+
+    }
 }
 
 

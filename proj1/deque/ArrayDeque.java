@@ -121,6 +121,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     }
 
     private void resize(int capacity) {
+        if (capacity < 8) {
+            capacity = 8;
+        }
         T[] a = (T[])  new Object[capacity];
         System.arraycopy(item, beginIndex, a, capacity / 4, size);
         beginIndex = capacity / 4;

@@ -146,18 +146,19 @@ public class ArrayDequeTest {
     @Test
     public void AGtest4(){
         Deque ArrayDeque = new ArrayDeque();
-        ArrayDeque.addFirst(0);
-        ArrayDeque.addLast(1);
-        ArrayDeque.addLast(2);
+        ArrayDeque.addLast(0);
+        ArrayDeque.addFirst(1);
+        ArrayDeque.removeLast();
         ArrayDeque.removeFirst();
-        ArrayDeque.size();
+        ArrayDeque.addLast(4);
+        ArrayDeque.addLast(5);
+        ArrayDeque.removeLast();
+        ArrayDeque.addLast(7);
+        ArrayDeque.addFirst(8);
         ArrayDeque.removeFirst();
-        ArrayDeque.isEmpty();
-        ArrayDeque.removeFirst();
-        ArrayDeque.addLast(8);
-        int a = (int) ArrayDeque.removeFirst();
-        assertEquals(8, a);
-
+        ArrayDeque.addFirst(10);
+        int a =(int) ArrayDeque.get(2);
+        assertEquals(7,a);
     }
 }
 

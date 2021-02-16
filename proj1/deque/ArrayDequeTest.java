@@ -104,6 +104,16 @@ public class ArrayDequeTest {
         assertEquals(2,test1.get(2));
         assertEquals(3,test1.get(3));
     }
+
+    @Test
+    public void AGtest(){
+        ArrayDeque newone = new ArrayDeque();
+        newone.addLast(0);
+        newone.addLast(1);
+        int a = (Integer) newone.removeLast();
+        assertEquals(1,a);
+
+    }
 }
 
 

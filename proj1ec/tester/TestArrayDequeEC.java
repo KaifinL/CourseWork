@@ -26,11 +26,12 @@ public class TestArrayDequeEC {
             assertEquals(task1.get(i),forTask1.get(i));
         }
 
-        for (int i = 0; i < 1000; i += 1) {  /*  @StudentArrayDequeLaucher.java */
+        for (int i = 0; i < 100; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.5 && task1.size() > 0) {
-                task1.removeLast();
-                forTask1.removeLast();
+                Integer a = task1.removeLast();
+                Integer b = forTask1.removeLast();
+                assertEquals(a,b);
             } else {
                 task1.addLast(i);
                 forTask1.addLast(i);

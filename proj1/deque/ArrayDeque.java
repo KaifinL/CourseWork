@@ -19,7 +19,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     @Override
     public void addFirst(T t) {
-        if (beginIndex == 1) {
+        if (beginIndex == 0) {
             resize(size * 2);
         }
         if (size != 0) {

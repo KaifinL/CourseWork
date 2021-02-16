@@ -70,7 +70,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         T returnStuff = item[beginIndex];
         if (size > 0) {
             item[beginIndex] = null;
-            beginIndex += 1;
+            if (beginIndex != endIndex) {
+                beginIndex += 1;
+            }
             size--;
         }
         return returnStuff;
@@ -85,7 +87,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
             T x = item[endIndex];
             item[endIndex] = null;
             size--;
-            endIndex--;
+            if (beginIndex != endIndex) {
+                endIndex--;
+            }
             return x;
         }
         return null;

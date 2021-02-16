@@ -13,7 +13,7 @@ public class TestArrayDequeEC {
 
         for (int i = 0; i < 100; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();
-            if (numberBetweenZeroAndOne < 0.1 && task1.size() > 0) {
+            if (numberBetweenZeroAndOne < 0.6 && task1.size() > 0) {
                 Integer a = task1.removeLast();
                 Integer b = forTask1.removeLast();
                 assertEquals("removeLast()",a,b);

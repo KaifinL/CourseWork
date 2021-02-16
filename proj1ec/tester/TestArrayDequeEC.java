@@ -11,13 +11,13 @@ public class TestArrayDequeEC {
     public void DequeTest() {
         StudentArrayDeque<Integer> task1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> forTask1 = new ArrayDequeSolution<>();
-        ArrayList<String> returnList = new ArrayList<>();
+        StringBuilder returnList = new StringBuilder();
         for (int i = 0; i < 500; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.25 && task1.size() > 0) {
                 Integer a = task1.removeLast();
                 Integer b = forTask1.removeLast();
-                returnList.add("")
+                returnList.append("");
                 assertEquals("removeLast()", a, b);
             } else if (numberBetweenZeroAndOne < 0.5) {
                 task1.addFirst(i);

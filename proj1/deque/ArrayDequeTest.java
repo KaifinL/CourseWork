@@ -160,6 +160,11 @@ public class ArrayDequeTest {
         int a =(int) ArrayDeque.get(2);
         assertEquals(7, a);
     }
+
+    @Test
+    public void test(){
+        Deque MaxArrayDeque = new MaxArrayDeque()
+    }
 }
 
 

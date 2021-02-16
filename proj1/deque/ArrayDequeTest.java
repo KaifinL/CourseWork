@@ -114,6 +114,18 @@ public class ArrayDequeTest {
         assertEquals(1,a);
 
     }
+
+    @Test
+    public void AGtest2(){
+        ArrayDeque ugly = new ArrayDeque();
+        ugly.addLast(0);
+        ugly.addLast(1);
+        ugly.addLast(2);
+        ugly.addLast(3);
+        ugly.removeFirst();
+        ugly.addLast(5);
+        ugly.removeFirst();
+    }
 }
 
 

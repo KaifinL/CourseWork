@@ -11,6 +11,7 @@ public class TestArrayDequeEC {
         ArrayDequeSolution<Integer> forTask1 = new ArrayDequeSolution<>();
 
 
+
         for (int i = 0; i < 500; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.25 && task1.size() > 0) {

@@ -186,24 +186,25 @@ public class ArrayDequeTest {
         MaxArrayDeque.addLast(0);
         MaxArrayDeque.removeFirst();
         MaxArrayDeque.addLast(2);
-        MaxArrayDeque.addLast(3);
-        MaxArrayDeque.addFirst(4);
+        MaxArrayDeque.addFirst(3);
+        MaxArrayDeque.addLast(4);
+        MaxArrayDeque.removeLast();
         MaxArrayDeque.removeFirst();
         MaxArrayDeque.removeFirst();
-        MaxArrayDeque.addLast(7);
+        MaxArrayDeque.addLast(8);
+        MaxArrayDeque.addLast(9);
+        MaxArrayDeque.addLast(10);
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.removeLast();
+        MaxArrayDeque.addFirst(14);
+        MaxArrayDeque.addLast(15);
+        MaxArrayDeque.removeFirst();
         MaxArrayDeque.get(0);
         MaxArrayDeque.removeFirst();
-        MaxArrayDeque.addLast(10);
-        MaxArrayDeque.addFirst(11);
-        MaxArrayDeque.removeFirst();
-        MaxArrayDeque.removeLast();
-        MaxArrayDeque.addLast(14);
-        MaxArrayDeque.get(1);
-        MaxArrayDeque.removeFirst();
-        MaxArrayDeque.addLast(17);
-        MaxArrayDeque.removeLast();
-        MaxArrayDeque.removeFirst();
-        MaxArrayDeque.addFirst(20);
+        MaxArrayDeque.addLast(19);
+        int a = (int) MaxArrayDeque.get(0);
+        assertEquals(a,);
     }
 }
 

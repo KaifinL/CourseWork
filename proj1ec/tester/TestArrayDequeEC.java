@@ -10,7 +10,7 @@ public class TestArrayDequeEC {
     public void DequeTest() {
         StudentArrayDeque<Integer> task1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> forTask1 = new ArrayDequeSolution<>();
-        for (int i = 0; i < 100; i += 1) {  /*  @StudentArrayDequeLaucher.java */
+        for (int i = 0; i < 10000; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.9 && task1.size() > 0) {
                 Integer a = task1.removeFirst();

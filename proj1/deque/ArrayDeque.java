@@ -119,9 +119,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private void resize(int capacity) {
         T[] a = (T[])  new Object[capacity];
         System.arraycopy(item, beginIndex, a, item.length / 4, size);
+        beginIndex = item.length / 4;
+        endIndex = item.length / 4 + size - 1;
         item = a;
-        beginIndex = capacity / 4;
-        endIndex = capacity / 4 + size - 1;
     }
 
     public Iterator<T> iterator() {

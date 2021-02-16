@@ -140,7 +140,7 @@ public class ArrayDequeTest {
         ArrayDeque.removeFirst();
         ArrayDeque.addFirst(7);
         int a = (int) ArrayDeque.removeLast();
-        assertEquals();
+        assertEquals(4,a);
 
     }
 }

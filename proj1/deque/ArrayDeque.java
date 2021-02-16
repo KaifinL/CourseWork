@@ -123,8 +123,8 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         T[] a = (T[])  new Object[capacity];
         System.arraycopy(item, beginIndex, a, item.length / 4, size);
         item = a;
-        beginIndex = item.length / 4;
-        endIndex = item.length / 4 + size - 1;
+        beginIndex = capacity / 4;
+        endIndex = capacity / 4 + size - 1;
     }
 
     public Iterator<T> iterator() {

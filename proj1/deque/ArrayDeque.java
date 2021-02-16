@@ -19,11 +19,13 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
 
     @Override
     public void addFirst(T t) {
-        if (beginIndex == 0) {
+        if (beginIndex == 1) {
             resize(size * 2);
         }
         item[beginIndex - 1] = t;
-        beginIndex -= 1;
+        if (size != 0) {
+            beginIndex -= 1;
+        }
         size++;
     }
     @Override
@@ -33,7 +35,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         }
         item[endIndex + 1] = x;
         size += 1;
-        endIndex += 1;
+        if (size != 0) {
+            endIndex += 1;
+        }
     }
 
     @Override

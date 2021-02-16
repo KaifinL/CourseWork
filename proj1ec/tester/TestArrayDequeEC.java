@@ -17,7 +17,7 @@ public class TestArrayDequeEC {
             if (numberBetweenZeroAndOne < 0.25 && task1.size() > 0) {
                 Integer a = task1.removeLast();
                 Integer b = forTask1.removeLast();
-                assertEquals("removeLast()", a, b);
+                assertEquals("oh no, this is bad! removeLast()", a, b);
                 System.out.println("removeLast()" );
             } else if (numberBetweenZeroAndOne < 0.5) {
                 task1.addFirst(i);

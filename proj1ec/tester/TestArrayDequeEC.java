@@ -1,6 +1,7 @@
 package tester;
 import static org.junit.Assert.*;
 
+import edu.princeton.cs.introcs.In;
 import edu.princeton.cs.introcs.StdRandom;
 import org.junit.Test;
 import student.StudentArrayDeque;
@@ -16,11 +17,21 @@ public class TestArrayDequeEC {
             if (numberBetweenZeroAndOne < 0.1 && task1.size() > 0) {
                 Integer a = task1.removeLast();
                 Integer b = forTask1.removeLast();
-                assertEquals("removeLast()",a,b);
-            } else {
+                assertEquals("removeLast()", a, b);
+                System.out.println("removeLast()" );
+            } else if (numberBetweenZeroAndOne < 0.5) {
                 task1.addFirst(i);
                 forTask1.addFirst(i);
-                System.out.println(("addFirst()"));
+                System.out.println(("addFirst(" + i + ")"));
+            } else if (numberBetweenZeroAndOne < 0.75) {
+                task1.addLast(i);
+                forTask1.addLast(i);
+                System.out.println("addLast(" + i + ")");
+            } else if (numberBetweenZeroAndOne < 1) {
+                Integer a = task1.removeFirst();
+                Integer b = forTask1.removeFirst();
+                assertEquals("removeFirst()", a, b);
+                System.out.println("removeFirst()");
             }
         }
     }

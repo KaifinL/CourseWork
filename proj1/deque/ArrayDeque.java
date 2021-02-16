@@ -128,6 +128,9 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         System.arraycopy(item, beginIndex, a, capacity / 4, size);
         beginIndex = capacity / 4;
         endIndex = capacity / 4 + size - 1;
+        if (beginIndex > endIndex) {
+            endIndex = beginIndex;
+        }
         item = a;
     }
 

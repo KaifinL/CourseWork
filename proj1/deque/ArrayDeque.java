@@ -73,7 +73,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         }
         if (size > 0) {
             T x = get(endIndex);
-            item[endIndex - 1] = null;
+            item[endIndex] = null;
             size--;
             endIndex--;
             return x;

@@ -207,5 +207,3 @@ public class ArrayDequeTest {
         assertEquals(a, 19);
     }
 }
-
-

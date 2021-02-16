@@ -91,6 +91,19 @@ public class ArrayDequeTest {
             assertEquals(a,b);
         }
     }
+
+    @Test
+    public void testAddGet(){
+        Deque test1 = new ArrayDeque();
+        test1.addFirst(0);
+        test1.addLast(1);
+        test1.addLast(2);
+        test1.addLast(3);
+        assertEquals(0,test1.get(0));
+        assertEquals(1,test1.get(1));
+        assertEquals(2,test1.get(2));
+        assertEquals(3,test1.get(3));
+    }
 }
 
 

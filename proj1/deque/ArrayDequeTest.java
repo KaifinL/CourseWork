@@ -151,28 +151,26 @@ public class ArrayDequeTest {
     public void AGtest4(){
         Deque ArrayDeque = new ArrayDeque();
         ArrayDeque.addFirst(0);
-        ArrayDeque.addFirst(1);
-        ArrayDeque.get(0);
-        ArrayDeque.addFirst(3);
         ArrayDeque.removeFirst();
-        ArrayDeque.removeLast();
-        ArrayDeque.addFirst(6);
-        ArrayDeque.addLast(7);
-        ArrayDeque.removeLast();
-        ArrayDeque.removeLast();
+        ArrayDeque.addFirst(2);
+        ArrayDeque.addLast(3);
+        ArrayDeque.removeFirst();
         ArrayDeque.get(0);
-        ArrayDeque.addFirst(11);
-        ArrayDeque.removeLast();
-        ArrayDeque.removeLast();
-        ArrayDeque.addLast(14);
-        ArrayDeque.removeLast();
-        ArrayDeque.addLast(16);
-        ArrayDeque.addFirst(17);
+        ArrayDeque.addLast(6);
         ArrayDeque.get(0);
-        ArrayDeque.removeLast();
-        ArrayDeque.addLast(20);
-        ArrayDeque.removeLast();
-        ArrayDeque.addFirst(22);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addFirst(9);
+        ArrayDeque.addFirst(10);
+        ArrayDeque.get(0);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addLast(13);
+        ArrayDeque.removeFirst();
+        ArrayDeque.removeFirst();
+        ArrayDeque.get(0);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addLast(18);
+        int a = (int) ArrayDeque.removeFirst();
+        assertEquals(a,18);
     }
 
     private class newcomparator implements Comparator{

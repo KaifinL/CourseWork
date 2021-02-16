@@ -204,7 +204,7 @@ public class ArrayDequeTest {
         MaxArrayDeque.removeFirst();
         MaxArrayDeque.addLast(19);
         int a = (int) MaxArrayDeque.get(0);
-        assertEquals(a,);
+        assertEquals(a, 19);
     }
 }
 

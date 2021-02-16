@@ -11,7 +11,7 @@ public class TestArrayDequeEC {
         StudentArrayDeque<Integer> task1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> forTask1 = new ArrayDequeSolution<>();
 
-        for (int i = 0; i < 100; i += 1) {  /*  @StudentArrayDequeLaucher.java */
+        for (int i = 0; i < 50; i += 1) {  /*  @StudentArrayDequeLaucher.java */
             double numberBetweenZeroAndOne = StdRandom.uniform();
             if (numberBetweenZeroAndOne < 0.1 && task1.size() > 0) {
                 Integer a = task1.removeLast();

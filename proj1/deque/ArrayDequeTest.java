@@ -1,6 +1,10 @@
 package deque;
 
+import jh61b.junit.In;
 import org.junit.Test;
+
+import java.util.Comparator;
+
 import static org.junit.Assert.*;
 
 public class ArrayDequeTest {
@@ -161,9 +165,37 @@ public class ArrayDequeTest {
         assertEquals(7, a);
     }
 
+    private class newcomparator implements Comparator{
+        public int compare(Object a, Object b){
+            return (Integer) a - (Integer) b;
+        }
+    }
+
     @Test
     public void test(){
-        Deque MaxArrayDeque = new MaxArrayDeque()
+        Comparator newcompareator = new newcomparator();
+        Deque MaxArrayDeque = new MaxArrayDeque(newcompareator);
+        MaxArrayDeque.addLast(0);
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.addLast(2);
+        MaxArrayDeque.addLast(3);
+        MaxArrayDeque.addFirst(4);
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.addLast(7);
+        MaxArrayDeque.get(0);
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.addLast(10);
+        MaxArrayDeque.addFirst(11);
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.removeLast();
+        MaxArrayDeque.addLast(14);
+        MaxArrayDeque.get(1);
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.addLast(17);
+        MaxArrayDeque.removeLast();
+        MaxArrayDeque.removeFirst();
+        MaxArrayDeque.addFirst(20);
     }
 }
 

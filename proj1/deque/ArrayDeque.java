@@ -22,9 +22,11 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         if (beginIndex == 1) {
             resize(size * 2);
         }
-        item[beginIndex - 1] = t;
-        if (size != 0) {
+        if (size != 0){
+            item[beginIndex - 1] = t;
             beginIndex -= 1;
+        }else {
+            item[beginIndex] = t;
         }
         size++;
     }
@@ -33,10 +35,12 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         if (endIndex == item.length - 1) {
             resize(size * 2);
         }
-        item[endIndex + 1] = x;
         size += 1;
         if (size != 0) {
+            item[endIndex + 1] = x;
             endIndex += 1;
+        }else {
+           item[endIndex] = x;
         }
     }
 

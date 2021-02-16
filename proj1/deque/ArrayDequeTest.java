@@ -54,6 +54,9 @@ public class ArrayDequeTest {
         test9.addLast(0);
         test9.addLast(7);
         test9.addLast(9);
+        Integer a = (Integer) test4.removeFirst();
+        Integer b = (Integer) test9.removeFirst();
+        assertEquals(a,b);
         assertEquals(test4.get(0),test9.get(0));
         assertEquals(test4.get(1),test9.get(1));
         assertEquals(test4.get(2),test9.get(2));

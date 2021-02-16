@@ -158,7 +158,7 @@ public class ArrayDequeTest {
         ArrayDeque.removeFirst();
         ArrayDeque.addFirst(10);
         int a =(int) ArrayDeque.get(2);
-        assertEquals(7,a);
+        assertEquals(7, a);
     }
 }
 

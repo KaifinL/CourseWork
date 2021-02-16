@@ -130,6 +130,17 @@ public class ArrayDequeTest {
 
     @Test
     public void AGtest3(){
+        Deque ArrayDeque = new ArrayDeque();
+        ArrayDeque.addLast(0);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addLast(2);
+        ArrayDeque.addLast(3);
+        ArrayDeque.addLast(4);
+        ArrayDeque.addFirst(5);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addFirst(7);
+        int a = (int) ArrayDeque.removeLast();
+        assertEquals();
 
     }
 }

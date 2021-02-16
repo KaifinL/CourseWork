@@ -22,15 +22,15 @@ public class TestArrayDequeEC {
             } else if (numberBetweenZeroAndOne < 0.5) {
                 task1.addFirst(i);
                 forTask1.addFirst(i);
-                returnList.append("addFirst(" + i + ")");
+                returnList.append("addFirst(" + i + ")\n");
             } else if (numberBetweenZeroAndOne < 0.75) {
                 task1.addLast(i);
                 forTask1.addLast(i);
-                returnList.append("addLast(" + i + ")");
+                returnList.append("addLast(" + i + ")\n");
             } else if (numberBetweenZeroAndOne < 1 && task1.size() > 0) {
                 Integer a = task1.removeFirst();
                 Integer b = forTask1.removeFirst();
-                returnList.append("removeFirst()");
+                returnList.append("removeFirst()\n");
                 assertEquals(returnList.toString(), a, b);
             }
         }

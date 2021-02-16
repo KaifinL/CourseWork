@@ -143,7 +143,15 @@ public class ArrayDequeTest {
         assertEquals(4,a);
 
     }
-    @T
+    @Test
+    public void AGtest4(){
+        Deque ArrayDeque = new ArrayDeque();
+        ArrayDeque.addFirst(0);
+        ArrayDeque.removeLast();
+        ArrayDeque.addFirst(2);
+        int a = (int) ArrayDeque.removeLast();
+        assertEquals();
+    }
 }
 
 

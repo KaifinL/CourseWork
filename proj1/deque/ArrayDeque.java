@@ -7,7 +7,6 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     public ArrayDeque() {
         item = (T[]) new Object[8];
         size = 0;
-
     }
 
     @Override
@@ -21,6 +20,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         item = a;
         size++;
     }
+
     @Override
     public void addLast(T x) {
         if (size == item.length) {
@@ -111,8 +111,7 @@ public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
         }
         item = a;
     }
-
-
+    
     public Iterator<T> iterator() {
         return new ArrayDequeIterator();
     }

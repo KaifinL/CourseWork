@@ -21,7 +21,7 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
                 maxDex = (T) get(i);
             }
         }
-        
+
         return maxDex;
     }
 

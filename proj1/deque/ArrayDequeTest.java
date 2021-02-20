@@ -12,18 +12,18 @@ import static org.junit.Assert.*;
 public class ArrayDequeTest {
 
     @Test
-    public void testAddFirst(){
+    public void testAddFirst() {
         ArrayDeque test1 = new ArrayDeque();
         test1.addFirst(0);
         test1.addFirst("newlymade");
         test1.addFirst(7);
-        assertEquals(test1.get(0),7);
-        assertEquals(test1.get(1),"newlymade");
-        assertEquals(test1.get(2),0);
+        assertEquals(test1.get(0), 7);
+        assertEquals(test1.get(1), "newlymade");
+        assertEquals(test1.get(2), 0);
     }
 
     @Test
-    public void testRemoveFirst(){
+    public void testRemoveFirst() {
         ArrayDeque test2 = new ArrayDeque();
         test2.removeFirst();
         test2.addFirst(0);
@@ -32,25 +32,25 @@ public class ArrayDequeTest {
         int a = (int) test2.removeFirst();
         int b = (int) test2.removeFirst();
         int c = (int) test2.removeFirst();
-        assertEquals(a,9);
-        assertEquals(b,7);
-        assertEquals(c,0);
+        assertEquals(a, 9);
+        assertEquals(b, 7);
+        assertEquals(c, 0);
     }
 
     @Test
-    public void testGet(){
+    public void testGet() {
         Deque test3 = new ArrayDeque();
         test3.removeFirst();
         test3.addFirst(0);
         test3.addFirst(7);
         test3.addFirst(9);
-        assertEquals(test3.get(0),9);
-        assertEquals(test3.get(1),7);
-        assertEquals(test3.get(2),0);
+        assertEquals(test3.get(0), 9);
+        assertEquals(test3.get(1), 7);
+        assertEquals(test3.get(2), 0);
     }
 
     @Test
-    public void testAddLast(){
+    public void testAddLast() {
         Deque test4 = new ArrayDeque();
         Deque test9 = new LinkedListDeque();
         test4.removeLast();
@@ -62,14 +62,14 @@ public class ArrayDequeTest {
         test9.addLast(9);
         Integer a = (Integer) test4.removeFirst();
         Integer b = (Integer) test9.removeFirst();
-        assertEquals(a,b);
-        assertEquals(test4.get(0),test9.get(0));
-        assertEquals(test4.get(1),test9.get(1));
-        assertEquals(test4.get(2),test9.get(2));
+        assertEquals(a, b);
+        assertEquals(test4.get(0), test9.get(0));
+        assertEquals(test4.get(1), test9.get(1));
+        assertEquals(test4.get(2), test9.get(2));
     }
 
     @Test
-    public void testEquals(){
+    public void testEquals() {
         Deque test5 = new ArrayDeque();
         LinkedListDeque test6 = new LinkedListDeque();
         test5.addLast(5);
@@ -82,7 +82,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveLast(){
+    public void testRemoveLast() {
         Deque test8 = new ArrayDeque();
         LinkedListDeque test7 = new LinkedListDeque();
         test7.addLast(5);
@@ -94,25 +94,25 @@ public class ArrayDequeTest {
         for (int i = 0; i < test7.size(); i++) {
             Integer a = (Integer) test7.removeFirst();
             Integer b = (Integer) test8.removeFirst();
-            assertEquals(a,b);
+            assertEquals(a, b);
         }
     }
 
     @Test
-    public void testAddGet(){
+    public void testAddGet() {
         Deque test1 = new ArrayDeque();
         test1.addFirst(0);
         test1.addLast(1);
         test1.addLast(2);
         test1.addLast(3);
-        assertEquals(0,test1.get(0));
-        assertEquals(1,test1.get(1));
-        assertEquals(2,test1.get(2));
-        assertEquals(3,test1.get(3));
+        assertEquals(0, test1.get(0));
+        assertEquals(1, test1.get(1));
+        assertEquals(2, test1.get(2));
+        assertEquals(3, test1.get(3));
     }
 
     @Test
-    public void AGtest(){
+    public void AGtest() {
         ArrayDeque newone = new ArrayDeque();
         newone.addLast(0);
         newone.addLast(1);
@@ -122,7 +122,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void AGtest2(){
+    public void AGtest2() {
         ArrayDeque ugly = new ArrayDeque();
         ugly.addLast(0);
         ugly.addLast(1);
@@ -135,7 +135,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void AGtest3(){
+    public void AGtest3() {
         Deque ArrayDeque = new ArrayDeque();
         ArrayDeque.addLast(0);
         ArrayDeque.removeFirst();
@@ -149,8 +149,9 @@ public class ArrayDequeTest {
         assertEquals(4, a);
 
     }
+
     @Test
-    public void AGtest4(){
+    public void AGtest4() {
         Deque ArrayDeque = new ArrayDeque();
         ArrayDeque.addFirst(0);
         ArrayDeque.removeFirst();
@@ -172,17 +173,17 @@ public class ArrayDequeTest {
         ArrayDeque.removeFirst();
         ArrayDeque.addLast(18);
         int a = (int) ArrayDeque.removeFirst();
-        assertEquals(a,18);
+        assertEquals(a, 18);
     }
 
-    private class newcomparator implements Comparator{
-        public int compare(Object a, Object b){
+    private class newcomparator implements Comparator {
+        public int compare(Object a, Object b) {
             return (Integer) a - (Integer) b;
         }
     }
 
     @Test
-    public void test(){
+    public void test() {
         Comparator newcompareator = new newcomparator();
         Deque MaxArrayDeque = new MaxArrayDeque(newcompareator);
         MaxArrayDeque.addLast(0);
@@ -208,11 +209,5 @@ public class ArrayDequeTest {
         int a = (int) MaxArrayDeque.get(0);
         assertEquals(a, 19);
 
-    }
-    @Test
-    public void test11(){
-        List<Integer> tst1 = new LinkedList<Integer>();
-        List<Integer> tst2 = (List<Integer>) new java.util.ArrayDeque<Integer>();
-        assertEquals(tst1.getClass(), tst2.getClass());
     }
 }

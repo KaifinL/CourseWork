@@ -205,5 +205,6 @@ public class ArrayDequeTest {
         MaxArrayDeque.addLast(19);
         int a = (int) MaxArrayDeque.get(0);
         assertEquals(a, 19);
+        
     }
 }

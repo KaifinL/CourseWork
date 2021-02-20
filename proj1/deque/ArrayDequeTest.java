@@ -4,6 +4,8 @@ import jh61b.junit.In;
 import org.junit.Test;
 
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -205,6 +207,12 @@ public class ArrayDequeTest {
         MaxArrayDeque.addLast(19);
         int a = (int) MaxArrayDeque.get(0);
         assertEquals(a, 19);
-        
+
+    }
+    @Test
+    public void test11(){
+        List<Integer> tst1 = new LinkedList<Integer>();
+        List<Integer> tst2 = (List<Integer>) new java.util.ArrayDeque<Integer>();
+        assertEquals(tst1.getClass(), tst2.getClass());
     }
 }

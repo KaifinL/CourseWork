@@ -31,6 +31,10 @@ public class CapersRepository {
      */
     public static void setupPersistence() {
         File capers = new File(System.getProperty("user.dir"));
+        File dogs = new File(".capers");
+        dogs.mkdir();
+        File story = new File(".capers");
+        story.createNewFile();
     }
 
     /**

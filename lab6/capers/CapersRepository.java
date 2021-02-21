@@ -18,8 +18,7 @@ public class CapersRepository {
     static final File CWD = new File(System.getProperty("user.dir"));
 
     /** Main metadata folder. */
-    static final File CAPERS_FOLDER = Utils.join(".capers","user.dir"); // TODO Hint: look at the `join`
-                                            //      function in Utils
+    static final File CAPERS_FOLDER = Utils.join(".capers","user.dir"); 
 
     /**
      * Does required filesystem operations to allow for persistence.
@@ -31,7 +30,7 @@ public class CapersRepository {
      *    - story -- file containing the current story
      */
     public static void setupPersistence() {
-        // TODO
+        File capers = new File(System.getProperty("user.dir"));
     }
 
     /**

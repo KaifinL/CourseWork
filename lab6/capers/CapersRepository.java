@@ -31,7 +31,7 @@ public class CapersRepository {
      */
     public static void setupPersistence() {
         File capers = new File(System.getProperty("user.dir"));
-        File dogs = new File(".capers");
+        File dogs = new File("Dog.java");
         dogs.mkdir();
         File story = new File(".capers");
         story.createNewFile();

@@ -18,7 +18,7 @@ public class CapersRepository {
     static final File CWD = new File(System.getProperty("user.dir"));
 
     /** Main metadata folder. */
-    static final File CAPERS_FOLDER = Utils.join(".capers","user.dir"); 
+    static final File CAPERS_FOLDER = Utils.join(".capers");
 
     /**
      * Does required filesystem operations to allow for persistence.

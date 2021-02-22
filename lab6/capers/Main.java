@@ -54,12 +54,12 @@ public class Main {
             validateNumArgs("dog", args, 4);
             String name = args[0];
             String breed = args[1];
-            int age = 
-            CapersRepository.makeDog(name,breed,);
-            // TODO: make a dog
+            int age=Integer.parseInt(args[2]);  /* online resource */
+            CapersRepository.makeDog(name,breed,age);
             break;
         case "birthday":
             validateNumArgs("birthday", args, 2);
+            CapersRepository.celebrateBirthday(args[0]);
             // TODO: celebrate this dog's birthday
             break;
         default:

@@ -56,7 +56,7 @@ public class Dog { // TODO
      * Saves a dog to a file for future use.
      */
     public void saveDog() {
-        Module m = ;
+        Module m = CapersRepository;
         Dog futureUse = new Dog("unknown","unknown",0);
         File example = join(".capers","Dog");
         writeObject(example,m);

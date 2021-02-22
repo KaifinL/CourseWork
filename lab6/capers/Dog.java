@@ -59,7 +59,6 @@ public class Dog { // TODO
         Module m;
         Dog futureUse = new Dog("unknown","unknown",0);
         File example = join(".capers","Dog");
-        m = (Module)  
         writeObject(example,m);
         // TODO (hint: don't forget dog names are unique)
     }

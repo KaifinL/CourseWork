@@ -40,9 +40,12 @@ public class Dog implements Serializable { // TODO
      * @return Dog read from file
      */
     public static Dog fromFile(String name) {
-        
+        Module m;
+        Dog returnDog;
+        File inFile = join(DOG_FOLDER, name + ".txt");
+        returnDog = readObject(inFile, Dog.class);
         // TODO (hint: look at the Utils file)
-        return null;
+        return returnDog;
     }
 
     /**

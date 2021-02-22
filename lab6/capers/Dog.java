@@ -57,13 +57,13 @@ public class Dog { // TODO
      * Saves a dog to a file for future use.
      */
     public void saveDog() {
-        File name = Utils.join(DOG_FOLDER, this.name,".txt");
+        File newDog = Utils.join(DOG_FOLDER, this.name,".txt");
         try {
-            name.createNewFile();
+            newDog.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        writeObject(name, (Serializable) this);
+        writeObject(newDog, (Serializable) this);
         // TODO (hint: don't forget dog names are unique)
     }
 

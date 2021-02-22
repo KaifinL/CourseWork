@@ -34,7 +34,7 @@ public class CapersRepository {
     public static void setupPersistence() {
         File dogs = join(".capers", "dogs");
         dogs.mkdir();
-        File story = join(".capers","dogs", "story");
+        File story = join(".capers","dogs", "story.txt");
         try {
             story.createNewFile();
         } catch (IOException e) {
@@ -50,11 +50,9 @@ public class CapersRepository {
     public static void writeStory(String text) {
         int index = text.indexOf(" ");  /* from online resource on how to get the */
         String firstString = text.substring(0, index);  /*first item in a string */
-        Module m;
-        File outFile = join(".capers","story");
+        File outFile = join(".capers","story.txt");
         String original = readContentsAsString(outFile);
         writeContents(outFile,original + firstString);
-        writeObject(outFile,m);
         // TODO
     }
 

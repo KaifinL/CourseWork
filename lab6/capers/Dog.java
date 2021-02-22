@@ -57,7 +57,7 @@ public class Dog { // TODO
      */
     public void saveDog() {
         Module m;
-        
+        m = readObject();
         Dog futureUse = new Dog("unknown","unknown",0);
         File example = join(".capers","Dog");
         writeObject(example,m);

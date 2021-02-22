@@ -75,6 +75,9 @@ public class CapersRepository {
      * @param name String name of the Dog whose birthday we're celebrating.
      */
     public static void celebrateBirthday(String name) {
+        Dog birthdayDog = Dog.fromFile(name);
+        
+        birthdayDog.haveBirthday();
 
         // TODO
     }

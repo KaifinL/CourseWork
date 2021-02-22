@@ -32,10 +32,9 @@ public class CapersRepository {
      *    - story -- file containing the current story
      */
     public static void setupPersistence() {
-        File capers = CAPERS_FOLDER;
-        File dogs = join(".capers","dogs");
+        File dogs = join(".capers", "dogs");
         dogs.mkdir();
-        File story = join(".capers","story");
+        File story = join(".capers","dogs", "story");
         try {
             story.createNewFile();
         } catch (IOException e) {
@@ -43,15 +42,14 @@ public class CapersRepository {
         }
     }
 
-
     /**
      * Appends the first non-command argument in args
      * to a file called `story` in the .capers directory.
      * @param text String of the text to be appended to the story
      */
     public static void writeStory(String text) {
-        int index = text.indexOf(" ");
-        String firstString = text.substring(0, index);
+        int index = text.indexOf(" ");  /* from online resource on how to get the */
+        String firstString = text.substring(0, index);  /*first item in a string */
         Module m;
         File outFile = join(".capers","story");
         String original = readContentsAsString(outFile);

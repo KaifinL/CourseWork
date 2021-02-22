@@ -56,6 +56,7 @@ public class Dog { // TODO
      * Saves a dog to a file for future use.
      */
     public void saveDog() {
+        Dog futureUse = new Dog();
         // TODO (hint: don't forget dog names are unique)
     }
 

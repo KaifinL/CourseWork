@@ -1,6 +1,8 @@
 package capers;
 
 import java.io.File;
+import java.io.IOException;
+
 import static capers.Utils.*;
 
 /** A repository for Capers 
@@ -30,11 +32,17 @@ public class CapersRepository {
      *    - story -- file containing the current story
      */
     public static void setupPersistence() {
+        File capers = CAPERS_FOLDER;
         File dogs = join(".capers","dogs");
         dogs.mkdir();
         File story = join(".capers","story");
-        story.createNewFile();
+        try {
+            story.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     /**
      * Appends the first non-command argument in args

@@ -54,7 +54,7 @@ public class CapersRepository {
         String fistString = text.substring(0, index);
         Module m;
         File outFile = join(".capers","story");
-        
+        String original = readContentsAsString(CapersRepository.CAPERS_FOLDER);
         writeObject(outFile,m);
         // TODO
     }

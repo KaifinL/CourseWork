@@ -1,6 +1,7 @@
 package capers;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import static capers.Utils.*;
 
@@ -56,12 +57,13 @@ public class Dog { // TODO
      * Saves a dog to a file for future use.
      */
     public void saveDog() {
-        Module m;
-        
-        m = readObject(Dog.DOG_FOLDER, );
-        Dog futureUse = new Dog("unknown","unknown",0);
-        File example = join(".capers","Dog");
-        writeObject(example,m);
+        File name = Utils.join(DOG_FOLDER, this.name,".txt");
+        try {
+            name.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writeObject(name, (Serializable) this);
         // TODO (hint: don't forget dog names are unique)
     }
 

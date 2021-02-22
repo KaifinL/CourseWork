@@ -8,7 +8,7 @@ import static capers.Utils.*;
 /** Represents a dog that can be serialized.
  * @author TODO
 */
-public class Dog { // TODO
+public class Dog implements Serializable { // TODO
 
     /** Folder that dogs live in. */
     static final File DOG_FOLDER = join(".capers","Dog"); // TODO (hint: look at the `join`
@@ -40,6 +40,7 @@ public class Dog { // TODO
      * @return Dog read from file
      */
     public static Dog fromFile(String name) {
+        
         // TODO (hint: look at the Utils file)
         return null;
     }
@@ -63,7 +64,7 @@ public class Dog { // TODO
         } catch (IOException e) {
             e.printStackTrace();
         }
-        writeObject(newDog, (Serializable) this);
+        writeObject(newDog,  Dog.class);
         // TODO (hint: don't forget dog names are unique)
     }
 

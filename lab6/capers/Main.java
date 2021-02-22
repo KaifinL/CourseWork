@@ -59,7 +59,8 @@ public class Main {
             break;
         case "birthday":
             validateNumArgs("birthday", args, 2);
-            CapersRepository.celebrateBirthday(args[0]);
+            CapersRepository.celebrateBirthday(args[1]);
+
             // TODO: celebrate this dog's birthday
             break;
         default:

@@ -50,8 +50,11 @@ public class CapersRepository {
      * @param text String of the text to be appended to the story
      */
     public static void writeStory(String text) {
-        File story = join(".capers", "story");
-        String toBeAppended =
+        int index = text.indexOf(" ");
+        String fistString = text.substring(0, index);
+        Module m;
+        File outFile = join(".capers","story");
+        writeObject(outFile,story);
         // TODO
     }
 

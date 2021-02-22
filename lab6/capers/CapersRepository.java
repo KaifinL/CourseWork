@@ -30,10 +30,9 @@ public class CapersRepository {
      *    - story -- file containing the current story
      */
     public static void setupPersistence() {
-        File capers = new File(System.getProperty("user.dir"));
-        File dogs = new File("Dog.java");
+        File dogs = join(".capers","dogs");
         dogs.mkdir();
-        File story = new File(".capers");
+        File story = join(".capers","story");
         story.createNewFile();
     }
 

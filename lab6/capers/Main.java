@@ -52,9 +52,9 @@ public class Main {
             break;
         case "dog":
             validateNumArgs("dog", args, 4);
-            String name = args[0];
-            String breed = args[1];
-            int age=Integer.parseInt(args[2]);  /* online resource */
+            String name = args[1];
+            String breed = args[2];
+            int age=Integer.parseInt(args[3]);  /* online resource */
             CapersRepository.makeDog(name,breed,age);
             break;
         case "birthday":

@@ -52,7 +52,7 @@ public class CapersRepository {
     public static void writeStory(String text) {
         int index = text.indexOf(" ");
         String fistString = text.substring(0, index);
-        Module m;
+        Module m = ;
         File outFile = join(".capers","story");
         writeObject(outFile,story);
         // TODO

@@ -51,10 +51,11 @@ public class CapersRepository {
      */
     public static void writeStory(String text) {
         int index = text.indexOf(" ");
-        String fistString = text.substring(0, index);
+        String firstString = text.substring(0, index);
         Module m;
         File outFile = join(".capers","story");
-        String original = readContentsAsString(CapersRepository.CAPERS_FOLDER);
+        String original = readContentsAsString(outFile);
+        writeContents(outFile,original + firstString);
         writeObject(outFile,m);
         // TODO
     }

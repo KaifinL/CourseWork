@@ -50,6 +50,8 @@ public class CapersRepository {
      * @param text String of the text to be appended to the story
      */
     public static void writeStory(String text) {
+        File story = join(".capers", "story");
+        String toBeAppended =
         // TODO
     }
 

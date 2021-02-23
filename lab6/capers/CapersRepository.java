@@ -51,8 +51,9 @@ public class CapersRepository {
     public static void writeStory(String text) {
         File outFile = new File(CAPERS_FOLDER,"story.txt");
         String original = readContentsAsString(outFile);
-        writeContents(outFile,original + text);
-        System.out.println(text);
+        String output = original + text;
+        writeContents(outFile, output);
+        System.out.println(output);
         // TODO
     }
 

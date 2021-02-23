@@ -59,7 +59,7 @@ public class Dog implements Serializable { // TODO
     /**
      * Saves a dog to a file for future use.
      */
-    public void saveDog() {
+    public void saveDog()  {
         File newDog = Utils.join(DOG_FOLDER, this.name + ".txt");
         try {
             newDog.createNewFile();

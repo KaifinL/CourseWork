@@ -52,7 +52,7 @@ public class CapersRepository {
         File outFile = new File(CAPERS_FOLDER,"story.txt");
         String original = readContentsAsString(outFile);
         writeContents(outFile,original + text);
-        System.out.print(text);
+        System.out.println(text);
         // TODO
     }
 

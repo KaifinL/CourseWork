@@ -34,7 +34,7 @@ public class CapersRepository {
     public static void setupPersistence() {
         File dogs = join(CAPERS_FOLDER, "dogs");
         dogs.mkdir();
-        File story = join(CAPERS_FOLDER,  "story.txt");
+        File story = join(CAPERS_FOLDER,  "story");
         try {
             story.createNewFile();
         } catch (IOException e) {
@@ -48,7 +48,7 @@ public class CapersRepository {
      * @param text String of the text to be appended to the story
      */
     public static void writeStory(String text) {
-        File outFile = join(CAPERS_FOLDER,"story.txt");
+        File outFile = join(CAPERS_FOLDER,"story");
         String original = readContentsAsString(outFile);
         writeContents(outFile,original + text);
         // TODO

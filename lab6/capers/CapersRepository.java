@@ -32,6 +32,12 @@ public class CapersRepository {
      *    - story -- file containing the current story
      */
     public static void setupPersistence() {
+        File test = new File("dummy.txt");
+        try {
+            test.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         File dogs = join(CAPERS_FOLDER, "dogs");
         dogs.mkdir();
         File story = join(CAPERS_FOLDER,  "story.txt");

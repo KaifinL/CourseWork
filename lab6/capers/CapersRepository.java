@@ -33,9 +33,9 @@ public class CapersRepository {
      */
     public static void setupPersistence() {
         CAPERS_FOLDER.mkdir();
-        File dogs = Utils.join(CAPERS_FOLDER, "dogs");
+        File dogs = join(CAPERS_FOLDER, "dogs");
         dogs.mkdir();
-        File story = Utils.join(CAPERS_FOLDER, "story.txt");
+        File story = join(CAPERS_FOLDER,  "story.txt");
         try {
             story.createNewFile();
         } catch (IOException e) {

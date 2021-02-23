@@ -11,7 +11,7 @@ import static capers.Utils.*;
 public class Dog implements Serializable { // TODO
 
     /** Folder that dogs live in. */
-    static final File DOG_FOLDER = join(".capers","Dog"); // TODO (hint: look at the `join`
+    static final File DOG_FOLDER = join(".capers","dogs"); // TODO (hint: look at the `join`
                                          //      function in Utils)
 
     /** Age of dog. */

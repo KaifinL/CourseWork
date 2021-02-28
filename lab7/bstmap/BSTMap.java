@@ -7,6 +7,7 @@ import java.util.Set;
 public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
     private BSTNode KeFinTree;
     private int size;
+    private HashSet<K> keySet;
 
     private void BSTMap() {
         size = 0;
@@ -81,6 +82,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
         }
         BSTNode nothing = put(key, value, KeFinTree);
         size += 1;
+        keySet.add(key);
     }
 
     private BSTNode put(K key, V value, BSTNode cur) {
@@ -104,22 +106,115 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
 
     @Override
     public Set<K> keySet() {
-        HashSet<K> KeySet = new HashSet();
-        BSTNode cur = KeFinTree;
-        while(cur != null) {
-            KeySet.add((K) cur.key);
-        }
-        throw new UnsupportedOperationException();
+        return keySet;
     }
 
     @Override
     public V remove(K key) {
-        throw new UnsupportedOperationException();
+        V returnStuff = null;
+        if (!containsKey(key)) {
+            return null;
+        }
+        BSTNode cur;
+        BSTNode prev = KeFinTree;
+        if (prev.left.key.compareTo(key) > 0) {
+            cur = prev.left;
+        }else {
+            cur = prev.right;
+        }
+        while (cur != null && !cur.key.equals(key)) {
+            if (cur.key.equals(key)) {
+                returnStuff = (V) cur.value;
+                if (childNumber(cur) == 0) {
+                    cur.key = null;
+                    cur.value = null;
+                }else if (childNumber(cur) == 1) {
+                    if (prev.left.key.equals(key)) {
+                        if (cur.left == null) {
+                            prev.left = cur.right;
+                        }else {
+                            prev.left = cur.left;
+                        }
+                    }else {
+                        if (cur.left == null) {
+                            prev.right = cur.right;
+                        }else {
+                            prev.right = cur.left;
+                        }
+                    }
+                }else {
+                    BSTNode rightBiggest = KeFinTree;
+                    while (rightBiggest.right != null) {
+                        rightBiggest = rightBiggest.right;
+                    }
+                    cur.key = rightBiggest.key;
+                    cur.value = rightBiggest.value;
+                    rightBiggest.key = null;
+                    rightBiggest.value = null;
+                }
+            }else if (cur.key.compareTo(key) > 0) {
+                prev = cur;
+                cur = cur.left;
+            }else {
+                prev = cur;
+                cur = cur.right;
+            }
+        }
+        return returnStuff;
     }
 
     @Override
     public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
+        V returnStuff = null;
+        if (!containsKey(key)) {
+            return null;
+        }
+        BSTNode cur;
+        BSTNode prev = KeFinTree;
+        if (prev.left.key.compareTo(key) > 0) {
+            cur = prev.left;
+        }else {
+            cur = prev.right;
+        }
+        while (cur != null && !cur.key.equals(key)) {
+            if (cur.key.equals(key) && cur.value.equals(value)) {
+                returnStuff = (V) cur.value;
+                if (childNumber(cur) == 0) {
+                    cur.key = null;
+                    cur.value = null;
+                }else if (childNumber(cur) == 1) {
+                    if (prev.left.key.equals(key)) {
+                        if (cur.left == null) {
+                            prev.left = cur.right;
+                        }else {
+                            prev.left = cur.left;
+                        }
+                    }else {
+                        if (cur.left == null) {
+                            prev.right = cur.right;
+                        }else {
+                            prev.right = cur.left;
+                        }
+                    }
+                }else {
+                    BSTNode rightBiggest = KeFinTree;
+                    while (rightBiggest.right != null) {
+                        rightBiggest = rightBiggest.right;
+                    }
+                    cur.key = rightBiggest.key;
+                    cur.value = rightBiggest.value;
+                    rightBiggest.key = null;
+                    rightBiggest.value = null;
+                }
+            }else if (cur.key.compareTo(key) > 0) {
+                prev = cur;
+                cur = cur.left;
+            }else {
+                prev = cur;
+                cur = cur.right;
+            }
+        }
+        return returnStuff;
     }
 
     @Override
@@ -127,11 +222,21 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
         return null;
     }
 
+    private int childNumber(BSTNode p) {
+        if (p.left == null && p.right == null) {
+            return 0;
+        }else if (p.left != null && p.right != null) {
+            return 2;
+        }else {
+            return 1;
+        }
+    }
+
     private class BSTNode<K extends Comparable<K>, Value> {
-        private K key;
-        private Value value;
-        private BSTNode left;
-        private BSTNode right;
+        public K key;
+        public Value value;
+        public BSTNode left;
+        public BSTNode right;
         public BSTNode() {}
         public BSTNode(K key, Value value, BSTNode left, BSTNode right) {
             this.key = key;

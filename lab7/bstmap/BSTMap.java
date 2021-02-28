@@ -4,18 +4,20 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
-    BSTNode KeFinTree;
-    int size;
+    private BSTNode KeFinTree;
+    private int size;
 
     private void BSTMap() {
         size = 0;
     }
 
+    @Override
     public void clear() {
         size = 0;
         KeFinTree = new BSTNode();
     }
 
+    @Override
     public boolean containsKey(K key) {
         BSTNode cur = KeFinTree;
         if (size == 0) {
@@ -34,6 +36,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
         return false;
     }
 
+    @Override
     public V get(K key) {
         BSTNode cur = KeFinTree;
         if (size == 0) {
@@ -52,10 +55,12 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
         return null;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void put(K key, V value) {
         if (containsKey(key)) {
             BSTNode cur = KeFinTree;
@@ -90,14 +95,17 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
         return cur;
     }
 
+    @Override
     public Set<K> keySet() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public V remove(K key) {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public V remove(K key, V value) {
         throw new UnsupportedOperationException();
     }

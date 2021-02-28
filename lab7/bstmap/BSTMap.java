@@ -12,9 +12,8 @@ public class BSTMap<Key,V> implements Map61B<Key,V> {
     }
 
     public void clear() {
-        for (Key item : keySet()) {
-            remove(item);
-        }
+        size = 0;
+        KeFinTree = new BST();
     }
 
     public boolean containsKey(Key key) {
@@ -30,8 +29,8 @@ public class BSTMap<Key,V> implements Map61B<Key,V> {
     }
 
     public void put(Key key, V value) {
-        put(key,value);
-
+        
+        size += 1;
     }
 
     public Set<Key> keySet() {
@@ -64,7 +63,7 @@ public class BSTMap<Key,V> implements Map61B<Key,V> {
 
         @Override
         public Key next() {
-            
+
 
         }
 

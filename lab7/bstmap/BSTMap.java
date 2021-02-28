@@ -7,7 +7,7 @@ import java.util.Set;
 public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
     private BSTNode KeFinTree;
     private int size;
-    private HashSet<K> keySet;
+    private HashSet<K> keySet = new HashSet<>();
 
     private void BSTMap() {
         size = 0;

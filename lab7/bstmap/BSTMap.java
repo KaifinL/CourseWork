@@ -3,7 +3,7 @@ package bstmap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class BSTMap<Key,V> implements Map61B<Key,V> {
+public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
     BST KeFinTree;
     int size;
 

@@ -56,44 +56,34 @@ public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
     }
 
     private void put(Key key, V value, BSTNode cur) {
-        
+        if (cur == null) {
+            cur = new BSTNode(key, value, null, null);
+        }else {
+            if (key.compareTo((Key) cur.key) > 0) {
+                put(key, value, cur.right);
+            }else {
+                put(key, value, cur.left);
+            }
+        }
     }
 
     public Set<Key> keySet() {
+        throw new UnsupportedOperationException();
     }
 
     public V remove(Key key) {
-
+        throw new UnsupportedOperationException();
     }
 
     public V remove(Key key, V value) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Iterator<Key> iterator() {
-        return new BSTMapIterator();
+        return null;
     }
 
-    private class BSTMapIterator implements Iterator<Key> {
-        private BSTNode cur;
-
-        BSTMapIterator() {
-            cur = KeFinTree;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return next() == null;
-        }
-
-        @Override
-        public Key next() {
-
-
-        }
-
-    }
     private class BSTNode<Key extends Comparable<Key>, Value> {
         private Key key;
         private Value value;

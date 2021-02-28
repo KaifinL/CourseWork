@@ -75,7 +75,7 @@ public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
             if (key.compareTo((Key) cur.key) > 0) {
                 cur.right = put(key, value, cur.right);
             }else {
-                put(key, value, cur.left);
+                cur.left = put(key, value, cur.left);
             }
         }
     }

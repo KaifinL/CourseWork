@@ -20,6 +20,9 @@ public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
 
     public boolean containsKey(Key key) {
         BSTNode cur = KeFinTree;
+        if (size == 0) {
+            return false;
+        }
         while (cur != null) {
             if (key.equals(cur.key)) {
                 return true;

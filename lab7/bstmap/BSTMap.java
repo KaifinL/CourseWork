@@ -55,7 +55,26 @@ public class BSTMap<K,V> implements Map61B<K,V> {
 
     @Override
     public Iterator<K> iterator() {
-        return null;
+        return new BSTMapIterator();
+    }
+
+    private class BSTMapIterator implements Iterator<K> {
+        private BST cur;
+
+        BSTMapIterator() {
+            cur = KeFinTree;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return true;
+        }
+
+        @Override
+        public K next() {
+            
+        }
+
     }
 
     private class BST<K, V> {     /* @ Data Structures Into Java written by Professor Hilfinger. */

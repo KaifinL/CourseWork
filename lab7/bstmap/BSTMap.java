@@ -51,7 +51,7 @@ public class BSTMap<K,V> implements Map61B<K,V> {
         return null;
     }
 
-    private class BST {     /* @
+    private class BST {     /* @ Data Structures Into Java written by 
         protected int label;
         protected BST left, right;
         /** A leaf node with given LABEL */

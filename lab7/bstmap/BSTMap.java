@@ -59,11 +59,12 @@ public class BSTMap<Key,V> implements Map61B<Key,V> {
 
         @Override
         public boolean hasNext() {
-            return true;
+            return next() == null;
         }
 
         @Override
         public Key next() {
+            
 
         }
 

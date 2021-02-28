@@ -1,5 +1,6 @@
 package bstmap;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -103,7 +104,11 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
 
     @Override
     public Set<K> keySet() {
-        Set KeySet = new 
+        HashSet<K> KeySet = new HashSet();
+        BSTNode cur = KeFinTree;
+        while(cur != null) {
+            KeySet.add((K) cur.key);
+        }
         throw new UnsupportedOperationException();
     }
 

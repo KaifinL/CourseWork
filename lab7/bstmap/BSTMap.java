@@ -1,10 +1,11 @@
 package bstmap;
 
+import java.util.Iterator;
 import java.util.Set;
 
 public class BSTMap<K,V> implements Map61B<K,V> {
     public void clear() {
-
+        for 
     }
 
     public boolean containsKey(K key) {
@@ -33,5 +34,10 @@ public class BSTMap<K,V> implements Map61B<K,V> {
 
     public V remove(K key, V value) {
 
+    }
+
+    @Override
+    public Iterator<K> iterator() {
+        return null;
     }
 }

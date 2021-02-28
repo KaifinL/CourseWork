@@ -1,5 +1,7 @@
 package bstmap;
 
+import org.checkerframework.checker.units.qual.K;
+
 import java.util.Iterator;
 import java.util.Set;
 
@@ -63,6 +65,9 @@ public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
                     cur = cur.left;
                 }
             }
+        }
+        if (size == 0) {
+            KeFinTree = new BSTNode(key, value, null, null);
         }
         BSTNode nothing = put(key, value, KeFinTree);
         size += 1;

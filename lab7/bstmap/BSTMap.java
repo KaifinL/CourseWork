@@ -4,10 +4,10 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class BSTMap<K,V> implements Map61B<K,V> {
-    Map61B KeFin = new BSTMap();
+    BST KeFinTree;
     int size;
 
-    private void BSTMap(){
+    private void BSTMap() {
         size = 0;
     }
 
@@ -19,7 +19,14 @@ public class BSTMap<K,V> implements Map61B<K,V> {
 
     public boolean containsKey(K key) {
         if ()
-        return true;
+            return true;
+    }
+
+    private boolean containsKey(K key, BST next) {
+        if (next.value == null) {
+            return false;
+        }
+        if (get(key) < next.value)
     }
 
     public V get(K key) {
@@ -51,16 +58,16 @@ public class BSTMap<K,V> implements Map61B<K,V> {
         return null;
     }
 
-    private class BST {     /* @ Data Structures Into Java written by 
-        protected int label;
-        protected BST left, right;
-        /** A leaf node with given LABEL */
-        public BST(int label) { this(label, null, null); }
-        /** Fetch the label of this node. */
-        private BST(int label, BST left, BST right) {
-            this.label = label; this.left = left; this.right = right;
+    private class BST<K, V> {     /* @ Data Structures Into Java written by Professor Hilfinger. */
+        K key;
+        V value;
+        BST left;
+        BST right;
+        public BST(BST left, BST right, K key, V value) {
+            this.left = left;
+            this.right = right;
+            this.key = key;
+            this.value = value;
         }
-        }
-        /** Insert the label L into T, returning the modified tree.
-         * The nodes of the original tree may be modified.... */
     }
+}

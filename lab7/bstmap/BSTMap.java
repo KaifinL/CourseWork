@@ -11,6 +11,7 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
 
     private void BSTMap() {
         size = 0;
+        keySet = new HashSet<>();
     }
 
     @Override

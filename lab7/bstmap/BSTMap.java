@@ -4,11 +4,21 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class BSTMap<K,V> implements Map61B<K,V> {
+    Map61B KeFin = new BSTMap();
+    int size;
+
+    private void BSTMap(){
+        size = 0;
+    }
+
     public void clear() {
-        for 
+        for (K item : keySet()) {
+            remove(item);
+        }
     }
 
     public boolean containsKey(K key) {
+        if ()
         return true;
     }
 

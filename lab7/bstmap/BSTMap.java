@@ -50,4 +50,17 @@ public class BSTMap<K,V> implements Map61B<K,V> {
     public Iterator<K> iterator() {
         return null;
     }
-}
+
+    private class BST {     /* @
+        protected int label;
+        protected BST left, right;
+        /** A leaf node with given LABEL */
+        public BST(int label) { this(label, null, null); }
+        /** Fetch the label of this node. */
+        private BST(int label, BST left, BST right) {
+            this.label = label; this.left = left; this.right = right;
+        }
+        }
+        /** Insert the label L into T, returning the modified tree.
+         * The nodes of the original tree may be modified.... */
+    }

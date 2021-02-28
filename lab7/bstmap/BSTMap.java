@@ -51,6 +51,19 @@ public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
     }
 
     public void put(Key key, V value) {
+        if (containsKey(key)) {
+            BSTNode cur = KeFinTree;
+            while (cur != null) {
+                if (key.equals(cur.key)) {
+                    cur.value = value;
+                }
+                if (key.compareTo((Key) cur.key) > 0) {
+                    cur = cur.right;
+                }else {
+                    cur = cur.left;
+                }
+            }
+        }
         put(key, value, KeFinTree);
         size += 1;
     }

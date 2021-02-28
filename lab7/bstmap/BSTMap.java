@@ -124,41 +124,42 @@ public class BSTMap<K extends Comparable<K>,V> implements Map61B<K,V> {
             cur = prev.right;
         }
         while (cur != null && !cur.key.equals(key)) {
-            if (cur.key.equals(key)) {
-                returnStuff = (V) cur.value;
-                if (childNumber(cur) == 0) {
-                    cur.key = null;
-                    cur.value = null;
-                }else if (childNumber(cur) == 1) {
-                    if (prev.left.key.equals(key)) {
-                        if (cur.left == null) {
-                            prev.left = cur.right;
-                        }else {
-                            prev.left = cur.left;
-                        }
-                    }else {
-                        if (cur.left == null) {
-                            prev.right = cur.right;
-                        }else {
-                            prev.right = cur.left;
-                        }
-                    }
-                }else {
-                    BSTNode rightBiggest = KeFinTree;
-                    while (rightBiggest.right != null) {
-                        rightBiggest = rightBiggest.right;
-                    }
-                    cur.key = rightBiggest.key;
-                    cur.value = rightBiggest.value;
-                    rightBiggest.key = null;
-                    rightBiggest.value = null;
-                }
-            }else if (cur.key.compareTo(key) > 0) {
+            if (cur.key.compareTo(key) > 0) {
                 prev = cur;
                 cur = cur.left;
             }else {
                 prev = cur;
                 cur = cur.right;
+            }
+        }
+        if (cur.key.equals(key)) {
+            returnStuff = (V) cur.value;
+            if (childNumber(cur) == 0) {
+                cur.key = null;
+                cur.value = null;
+            }else if (childNumber(cur) == 1) {
+                if (prev.left.key.equals(key)) {
+                    if (cur.left == null) {
+                        prev.left = cur.right;
+                    }else {
+                        prev.left = cur.left;
+                    }
+                }else {
+                    if (cur.left == null) {
+                        prev.right = cur.right;
+                    }else {
+                        prev.right = cur.left;
+                    }
+                }
+            }else {
+                BSTNode rightBiggest = KeFinTree;
+                while (rightBiggest.right != null) {
+                    rightBiggest = rightBiggest.right;
+                }
+                cur.key = rightBiggest.key;
+                cur.value = rightBiggest.value;
+                rightBiggest.key = null;
+                rightBiggest.value = null;
             }
         }
         return returnStuff;

@@ -64,11 +64,11 @@ public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
                 }
             }
         }
-        put(key, value, KeFinTree);
+        BSTNode nothing = put(key, value, KeFinTree);
         size += 1;
     }
 
-    private void put(Key key, V value, BSTNode cur) {
+    private BSTNode put(Key key, V value, BSTNode cur) {
         if (cur == null) {
             cur.key = key;
             cur.value = value;

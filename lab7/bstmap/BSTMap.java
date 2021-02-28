@@ -78,6 +78,7 @@ public class BSTMap<Key extends Comparable<Key>,V> implements Map61B<Key,V> {
                 cur.left = put(key, value, cur.left);
             }
         }
+        return cur;
     }
 
     public Set<Key> keySet() {

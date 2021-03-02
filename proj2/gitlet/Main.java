@@ -2,7 +2,7 @@ package gitlet;
 import java.io.File;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
- *  @author TODO
+ *  @author Kaifeng Lin
  */
 public class Main {
 
@@ -25,7 +25,7 @@ public class Main {
                     Commit initialCommit = new Commit();
                     initialCommit.commitMessage("initial commit");
                     initialCommit.setTimestamp(00, 00,  00, "Thursday", 1, "January", 1970);
-                    Commit branch = initialCommit;
+                    
                 }
                 // TODO: handle the `init` command
                 break;

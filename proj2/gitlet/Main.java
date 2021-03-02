@@ -1,4 +1,6 @@
 package gitlet;
+import jdk.jshell.execution.Util;
+
 import java.io.File;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
@@ -30,6 +32,10 @@ public class Main {
                 // TODO: handle the `init` command
                 break;
             case "add":
+                File toBeAdded = Utils.join(Repository.GITLET_DIR, args[1]);
+                if (!toBeAdded.exists()) {
+                    Utils.exitWithError("Incorrect operands.");
+                }
                 // TODO: handle the `add [filename]` command
                 break;
             // TODO: FILL THE REST IN

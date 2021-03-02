@@ -21,6 +21,7 @@ public class Main {
                 if (initial.exists()) {
                     Utils.exitWithError("A Gitlet version-control system already exists in the current directory.");
                 }else {
+                    Repository.setupPersistence();
                     Commit initialCommit = new Commit();
                     initialCommit.commitMessage("initial commit");
                     initialCommit.setTimestamp(00, 00,  00, "Thursday", 1, "January", 1970);

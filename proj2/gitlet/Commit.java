@@ -23,16 +23,18 @@ public class Commit {
 
     /** The message of this Commit. */
     private String message;
+    /** The time of this Commit. */
     private LinkedList timestamp;
 
     /* TODO: fill in the rest of this class. */
 
-    /** set the origin commit message */
+    /** set the original commit message */
     public void commitMessage(String message) {
         message = message;
         return;
     }
 
+    /** set the original commit time */
     public void setTimestamp(int h, int min, int sec, String date, int day, String month, int year) {
         timestamp.addFirst(h);
         timestamp.addLast(min);

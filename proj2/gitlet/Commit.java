@@ -2,7 +2,9 @@ package gitlet;
 
 // TODO: any imports you need here
 
+import java.util.ArrayList;
 import java.util.Date; // TODO: You'll likely use this in this class
+import java.util.LinkedList;
 
 /** Represents a gitlet commit object.
  *  TODO: It's a good idea to give a description here of what else this Class
@@ -21,7 +23,7 @@ public class Commit {
 
     /** The message of this Commit. */
     private String message;
-    private String 
+    private LinkedList<Integer> timestamp;
 
     /* TODO: fill in the rest of this class. */
 
@@ -29,5 +31,11 @@ public class Commit {
     public void commitMessage(String message) {
         message = message;
         return;
+    }
+
+    public void setTimestamp(int year, int month, int sec) {
+        timestamp.addFirst(year);
+        timestamp.addLast(month);
+        timestamp.addLast(sec);
     }
 }

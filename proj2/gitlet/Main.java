@@ -23,7 +23,7 @@ public class Main {
                 break;
             // TODO: FILL THE REST IN
             default:
-                Utils.exitWithError();
+                Utils.exitWithError("No command with that name exists");
         }
     }
 }

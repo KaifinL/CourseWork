@@ -66,7 +66,7 @@ public class Dog implements Serializable { // TODO
         } catch (IOException e) {
             e.printStackTrace();
         }
-        writeObject(newDog,  Dog.class);
+        writeObject(newDog,  this);
         // TODO (hint: don't forget dog names are unique)
     }
 

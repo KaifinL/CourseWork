@@ -23,6 +23,7 @@ public class Main {
                 }else {
                     Commit initialCommit = new Commit();
                     initialCommit.commitMessage("initial commit");
+                    Commit master = 
                 }
                 // TODO: handle the `init` command
                 break;

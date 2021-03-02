@@ -26,6 +26,7 @@ public class Commit {
     /** The time of this Commit. */
     private LinkedList timestamp;
 
+
     /* TODO: fill in the rest of this class. */
 
     /** set the original commit message */

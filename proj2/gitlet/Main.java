@@ -10,7 +10,7 @@ public class Main {
      */
     public static void main(String[] args) {
         if (args.length == 0) {
-            Utils.exitWithError("Must have at least one argument");
+            Utils.exitWithError("Must have at least one argument.");
         }
         // TODO: what if args is empty?
         String firstArg = args[0];
@@ -23,7 +23,7 @@ public class Main {
                 break;
             // TODO: FILL THE REST IN
             default:
-                Utils.exitWithError("No command with that name exists");
+                Utils.exitWithError("No command with that name exists.");
         }
     }
 }

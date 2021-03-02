@@ -33,7 +33,7 @@ public class Commit {
         return;
     }
 
-    public void setTimestamp(int h, int min, int sec, String date) {
+    public void setTimestamp(int h, int min, int sec, String date, int day, String month) {
         timestamp.addFirst(h);
         timestamp.addLast(min);
         timestamp.addLast(sec);

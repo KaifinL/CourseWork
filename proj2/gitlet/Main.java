@@ -19,7 +19,9 @@ public class Main {
             case "init":
                 File initial = Repository.GITLET_DIR;
                 if (initial.exists()) {
-                    Utils.exitWithError("");
+                    Utils.exitWithError("A Gitlet version-control system already exists in the current directory.");
+                }else {
+                    Commit  = new Commit();
                 }
                 // TODO: handle the `init` command
                 break;

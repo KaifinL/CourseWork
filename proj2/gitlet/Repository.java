@@ -1,5 +1,6 @@
 package gitlet;
 
+import javax.swing.*;
 import java.io.File;
 import static gitlet.Utils.*;
 
@@ -9,7 +10,7 @@ import static gitlet.Utils.*;
  *  TODO: It's a good idea to give a description here of what else this Class
  *  does at a high level.
  *
- *  @author TODO
+ *  @author Kaifeng Lin
  */
 public class Repository {
     /**
@@ -29,7 +30,7 @@ public class Repository {
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
-        
+        Commit master = new Commit();
     }
 
 }

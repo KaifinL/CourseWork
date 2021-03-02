@@ -31,6 +31,8 @@ public class Main {
                 File toBeAdded = Utils.join(Repository.GITLET_DIR, args[1]);
                 if (!toBeAdded.exists()) {
                     Utils.exitWithError("Incorrect operands.");
+                }else {
+                    
                 }
                 // TODO: handle the `add [filename]` command
                 break;

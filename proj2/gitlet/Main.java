@@ -1,4 +1,5 @@
 package gitlet;
+import java.io.File;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
  *  @author TODO
@@ -16,7 +17,10 @@ public class Main {
         String firstArg = args[0];
         switch(firstArg) {
             case "init":
-
+                File initial = Repository.GITLET_DIR;
+                if (initial.exists()) {
+                    Utils.exitWithError("");
+                }
                 // TODO: handle the `init` command
                 break;
             case "add":

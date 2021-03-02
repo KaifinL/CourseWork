@@ -9,6 +9,9 @@ public class Main {
      *  <COMMAND> <OPERAND1> <OPERAND2> ... 
      */
     public static void main(String[] args) {
+        if (args.length == 0) {
+            
+        }
         // TODO: what if args is empty?
         String firstArg = args[0];
         switch(firstArg) {

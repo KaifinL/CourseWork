@@ -26,10 +26,12 @@ public class Repository {
     /** The .gitlet directory. */
     public static final File GITLET_DIR = join(CWD, ".gitlet");
     /* TODO: fill in the rest of this class. */
-
+    /** The files haven't been staged will be added to this directory. */
+    public static File stagingArea = join(GITLET_DIR, ".stagingArea");
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
+        stagingArea.mkdir();
         Commit initialCommit = new Commit();
         initialCommit.commitMessage("initial commit");
         initialCommit.setTimestamp("00:00:00 UTC, Thursday, 1 January 1970");

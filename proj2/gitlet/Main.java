@@ -23,8 +23,8 @@ public class Main {
                 }else {
                     Commit initialCommit = new Commit();
                     initialCommit.commitMessage("initial commit");
-                    initialCommit.setTimestamp(00, 00,  00, "Thursday", 1, "January");
-
+                    initialCommit.setTimestamp(00, 00,  00, "Thursday", 1, "January", 1970);
+                    
                 }
                 // TODO: handle the `init` command
                 break;

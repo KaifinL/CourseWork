@@ -21,7 +21,7 @@ public class Main {
                 if (initial.exists()) {
                     Utils.exitWithError("A Gitlet version-control system already exists in the current directory.");
                 }else {
-                    Commit  = new Commit();
+                    Commit initialCommit = new Commit();
                 }
                 // TODO: handle the `init` command
                 break;

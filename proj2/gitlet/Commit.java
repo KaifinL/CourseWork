@@ -21,6 +21,7 @@ public class Commit {
 
     /** The message of this Commit. */
     private String message;
+    private String 
 
     /* TODO: fill in the rest of this class. */
 

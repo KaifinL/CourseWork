@@ -30,7 +30,11 @@ public class Repository {
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
-        Commit master = new Commit();
+        Commit initialCommit = new Commit();
+        initialCommit.commitMessage("initial commit");
+        initialCommit.setTimestamp(00, 00,  00, "Thursday", 1, "January", 1970);
+        Commit master = initialCommit;
+        Commit Head = initialCommit;
     }
 
 }

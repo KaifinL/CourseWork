@@ -23,6 +23,7 @@ public class Main {
                 }else {
                     Commit initialCommit = new Commit();
                     initialCommit.commitMessage("initial commit");
+                    initialCommit.setTimestamp();
 
                 }
                 // TODO: handle the `init` command

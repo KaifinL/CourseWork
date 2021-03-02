@@ -32,7 +32,7 @@ public class Repository {
         GITLET_DIR.mkdir();
         Commit initialCommit = new Commit();
         initialCommit.commitMessage("initial commit");
-        initialCommit.setTimestamp(00, 00,  00, "Thursday", 1, "January", 1970);
+        initialCommit.setTimestamp("00:00:00 UTC, Thursday, 1 January 1970");
         Commit master = initialCommit;
         Commit Head = initialCommit;
     }

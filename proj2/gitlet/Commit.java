@@ -23,7 +23,7 @@ public class Commit {
 
     /** The message of this Commit. */
     private String message;
-    private LinkedList<Integer> timestamp;
+    private LinkedList timestamp;
 
     /* TODO: fill in the rest of this class. */
 
@@ -33,9 +33,10 @@ public class Commit {
         return;
     }
 
-    public void setTimestamp(int year, int month, int sec) {
-        timestamp.addFirst(year);
-        timestamp.addLast(month);
+    public void setTimestamp(int h, int min, int sec, ) {
+        timestamp.addFirst(h);
+        timestamp.addLast(min);
         timestamp.addLast(sec);
+
     }
 }

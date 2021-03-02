@@ -25,5 +25,11 @@ public class Repository {
     /** The .gitlet directory. */
     public static final File GITLET_DIR = join(CWD, ".gitlet");
     /* TODO: fill in the rest of this class. */
-    GITLET_DIR.mkdir();
+
+
+    public static void setupPersistence() {
+        GITLET_DIR.mkdir();
+        
+    }
+
 }

@@ -29,7 +29,7 @@ public class Commit {
 
     /** set the original commit message */
     public Commit() {
-        this.message = message;
+        this.message = "";
     }
 
     /** set the original commit time */

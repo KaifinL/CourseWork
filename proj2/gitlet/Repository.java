@@ -35,7 +35,7 @@ public class Repository {
         GITLET_DIR.mkdir();
         Commit initialCommit = new Commit();
         File InitialCommitFile = join(GITLET_DIR, "InitialCommit");
-        writeObject(initialCommit, InitialCommitFile);
+        writeObject(InitialCommitFile, initialCommit);
         Commit master = initialCommit;
         Commit Head = initialCommit;
     }

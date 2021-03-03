@@ -31,9 +31,8 @@ public class Repository {
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
-        stagingArea.mkdir();
         Commit initialCommit = new Commit();
-        initialCommit
+        File InitialCommitFile = join(GITLET_DIR, "Initial")
         Commit master = initialCommit;
         Commit Head = initialCommit;
     }

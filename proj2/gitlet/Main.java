@@ -32,7 +32,7 @@ public class Main {
                 if (!toBeAdded.exists()) {
                     Utils.exitWithError("Incorrect operands.");
                 }else {
-                    
+                    if ()
                 }
                 // TODO: handle the `add [filename]` command
                 break;

@@ -1,5 +1,7 @@
 package gitlet;
 
+import jh61b.junit.In;
+
 import javax.swing.*;
 import java.io.File;
 import static gitlet.Utils.*;
@@ -32,7 +34,8 @@ public class Repository {
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commit initialCommit = new Commit();
-        File InitialCommitFile = join(GITLET_DIR, "Initial")
+        File InitialCommitFile = join(GITLET_DIR, "InitialCommit");
+        writeObject(initialCommit, InitialCommitFile);
         Commit master = initialCommit;
         Commit Head = initialCommit;
     }

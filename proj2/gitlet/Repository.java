@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 import static gitlet.Utils.*;
 
@@ -34,6 +35,10 @@ public class Repository {
     /* TODO: fill in the rest of this class. */
     /** The files haven't been staged will be added to this directory. */
     public static HashMap stagingArea = new HashMap();
+    /* a collection of all the commits */
+    public static LinkedList<Commit> commitsCollection = new LinkedList<>();
+
+
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -42,6 +47,7 @@ public class Repository {
         writeObject(InitialCommitFile, initialCommit);
         Commit master = initialCommit;
         Commit Head = initialCommit;
+        commitsCollection.addFirst(initialCommit);
     }
 
 }

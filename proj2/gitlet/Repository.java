@@ -5,6 +5,7 @@ import jh61b.junit.In;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 
 import static gitlet.Utils.*;
 
@@ -31,15 +32,10 @@ public class Repository {
     public static final File GITLET_DIR = join(CWD, ".gitlet");
     /* TODO: fill in the rest of this class. */
     /** The files haven't been staged will be added to this directory. */
-    public static File stagingArea = join(GITLET_DIR, ".stagingArea");
+    public static HashSet stagingArea = new HashSet();
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
-        try {
-            stagingArea.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         Commit initialCommit = new Commit();
         File InitialCommitFile = join(GITLET_DIR, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);

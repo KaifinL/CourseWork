@@ -28,14 +28,23 @@ public class Commit implements Serializable {
 
     /* TODO: fill in the rest of this class. */
 
-    /** set the original commit message */
-    public void setString(String message) {
+    /** set the commit message */
+    public void setMessage(String message) {
         this.message = message;
     }
 
+    /** initialize the commit */
     public Commit() {
         this.message = "initial commit";
         this.timestamp = new Date(0);
+    }
+
+
+    /** this method will return the copy of the commit instead of changing the origin commit */
+    public static Commit copy(Commit b) {
+        Commit returnCommit = new Commit();
+        returnCommit.timestamp = b.timestamp;
+        return returnCommit;
     }
 
     /** set the original commit time */

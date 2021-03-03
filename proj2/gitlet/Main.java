@@ -40,6 +40,10 @@ public class Main {
                 // TODO: handle the `add [filename]` command
                 break;
             // TODO: FILL THE REST IN
+            case "commit":
+                String message = args[1];
+                Commit newCommit = new Commit();
+                newCommit.
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

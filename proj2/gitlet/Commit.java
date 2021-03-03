@@ -2,6 +2,7 @@ package gitlet;
 
 // TODO: any imports you need here
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Date; // TODO: You'll likely use this in this class
 
@@ -25,6 +26,8 @@ public class Commit implements Serializable {
     /** The time of this Commit. */
     private Date timestamp;
 
+    private File committedFile;
+
 
     /* TODO: fill in the rest of this class. */
 
@@ -37,6 +40,7 @@ public class Commit implements Serializable {
     public Commit() {
         this.message = "initial commit";
         this.timestamp = new Date(0);
+        committedFile.mkdir();
     }
 
 
@@ -44,6 +48,7 @@ public class Commit implements Serializable {
     public static Commit copy(Commit b) {
         Commit returnCommit = new Commit();
         returnCommit.timestamp = b.timestamp;
+        returnCommit.committedFile = b.committedFile;
         return returnCommit;
     }
 

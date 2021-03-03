@@ -31,8 +31,11 @@ public class Main {
                 if (!toBeAdded.exists()) {
                     Utils.exitWithError("Incorrect operands.");
                 }else {
+                    if (Repository.stagingArea.contains(args[1])) {
+                        Repository.stagingArea.remove(args[1]);
+                    }
                     String newFile = Utils.readContentsAsString(toBeAdded);
-                    Utils.writeContents(Repository.stagingArea, newFile + "\n");
+                    Repository.stagingArea.add(newFile);
                 }
                 // TODO: handle the `add [filename]` command
                 break;

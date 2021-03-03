@@ -43,7 +43,9 @@ public class Main {
             case "commit":
                 String message = args[1];
                 Commit newCommit = new Commit();
-                newCommit.
+                newCommit = Commit.copy(Repository.commitsCollection.getLast());
+                newCommit.setMessage(message);
+
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

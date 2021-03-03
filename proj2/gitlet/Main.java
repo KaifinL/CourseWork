@@ -32,6 +32,7 @@ public class Main {
                     Utils.exitWithError("Incorrect operands.");
                 }else {
                     String newFile = Utils.readContentsAsString(toBeAdded);
+                    Utils.writeContents(Repository.stagingArea, newFile + "\n");
                 }
                 // TODO: handle the `add [filename]` command
                 break;

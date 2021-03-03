@@ -31,7 +31,7 @@ public class Main {
                 if (!toBeAdded.exists()) {
                     Utils.exitWithError("Incorrect operands.");
                 }else {
-
+                    String newFile = Utils.readContentsAsString(toBeAdded);
                 }
                 // TODO: handle the `add [filename]` command
                 break;

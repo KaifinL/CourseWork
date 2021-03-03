@@ -28,6 +28,11 @@ public class Commit implements Serializable {
 
     private File committedFile;
 
+    /**
+     * TODO: frame a construction that stores all the files.This should be a instance variable since
+     * every commit's files are different and that's also what you have to checkout.
+     */
+
 
     /* TODO: fill in the rest of this class. */
 

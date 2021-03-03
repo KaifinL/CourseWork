@@ -29,6 +29,10 @@ public class Commit implements Serializable {
     /* TODO: fill in the rest of this class. */
 
     /** set the original commit message */
+    public void setString(String message) {
+        this.message = message;
+    }
+
     public Commit() {
         this.message = "initial commit";
         this.timestamp = new Date(0);

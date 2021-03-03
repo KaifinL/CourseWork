@@ -22,19 +22,16 @@ public class Commit {
     /** The message of this Commit. */
     private String message;
     /** The time of this Commit. */
-    private String timestamp;
+    private Date timestamp;
 
 
     /* TODO: fill in the rest of this class. */
 
     /** set the original commit message */
-    public void commitMessage(String message) {
-        message = message;
-        return;
+    public void Commit() {
+        this.message = message;
     }
 
     /** set the original commit time */
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
+
 }

@@ -28,8 +28,8 @@ public class Main {
                 break;
             case "add":
                 File toBeAdded = Utils.join(Repository.GITLET_DIR, args[1]);
-                if (Repository.GITLET_DIR.) {
-                    Utils.exitWithError("Incorrect operands.");
+                if (!toBeAdded.exists()) {
+                    Utils.exitWithError("");
                 }else {
                     if (Repository.stagingArea.containsKey(args[1])) {
                         Repository.stagingArea.remove(args[1]);

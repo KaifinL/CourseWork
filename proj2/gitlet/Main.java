@@ -42,7 +42,7 @@ public class Main {
             // TODO: FILL THE REST IN
             case "commit":
                 String message = args[1];
-                Commit newCommit = new Commit();
+                Commit newCommit;
                 newCommit = Commit.copy(Repository.commitsCollection.getLast());
                 newCommit.setMessage(message);
 

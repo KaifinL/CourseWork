@@ -29,7 +29,7 @@ public class Main {
             case "add":
                 File toBeAdded = Utils.join(Repository.GITLET_DIR, args[1]);
                 if (!toBeAdded.exists()) {
-                    Utils.exitWithError("");
+                    Utils.exitWithError("File does not exist.");
                 }else {
                     if (Repository.stagingArea.containsKey(args[1])) {
                         Repository.stagingArea.remove(args[1]);

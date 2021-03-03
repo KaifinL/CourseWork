@@ -33,7 +33,7 @@ public class Repository {
         GITLET_DIR.mkdir();
         stagingArea.mkdir();
         Commit initialCommit = new Commit();
-        initialCommit.Commit();
+        Commit()
         Commit master = initialCommit;
         Commit Head = initialCommit;
     }

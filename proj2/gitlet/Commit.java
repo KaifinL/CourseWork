@@ -30,7 +30,7 @@ public class Commit {
     /** set the original commit message */
     public Commit() {
         this.message = "initial commit";
-        this.timestamp = Date(0);
+        this.timestamp = new Date(0);
     }
 
     /** set the original commit time */

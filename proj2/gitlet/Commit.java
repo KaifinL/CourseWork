@@ -28,7 +28,7 @@ public class Commit {
     /* TODO: fill in the rest of this class. */
 
     /** set the original commit message */
-    public void Commit() {
+    public Commit() {
         this.message = message;
     }
 

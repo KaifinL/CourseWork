@@ -1,12 +1,7 @@
 package gitlet;
 
-import jh61b.junit.In;
-
-import javax.swing.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 
 import static gitlet.Utils.*;

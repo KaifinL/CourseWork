@@ -4,6 +4,8 @@ import jh61b.junit.In;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
+
 import static gitlet.Utils.*;
 
 // TODO: any imports you need here
@@ -33,6 +35,11 @@ public class Repository {
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
+        try {
+            stagingArea.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Commit initialCommit = new Commit();
         File InitialCommitFile = join(GITLET_DIR, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);

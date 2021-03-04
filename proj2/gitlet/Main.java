@@ -61,6 +61,8 @@ public class Main {
                 break;
 
             case "log":
+                Repository.log();
+                break;
 
             default:
                 Utils.exitWithError("No command with that name exists.");

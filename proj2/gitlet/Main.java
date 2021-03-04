@@ -55,8 +55,9 @@ public class Main {
 
             case "rm":
                 if (args.length == 1) {
-                    Utils.exitWithError("");
+                    Utils.exitWithError("No reason to remove the file.");
                 }
+                
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

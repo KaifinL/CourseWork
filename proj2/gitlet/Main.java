@@ -46,7 +46,9 @@ public class Main {
                 }
                 String message = args[1];
                 if (StagingArea.addition == null) {
-                    Utils.exitWithError("");
+                    Utils.exitWithError("No changes added to the commit.");
+                }else {
+
                 }
 
             default:

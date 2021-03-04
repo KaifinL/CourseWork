@@ -51,7 +51,7 @@ public class Commit implements Serializable {
         this.message = "initial commit";
         this.timestamp = new Date(0);
         snapshot.mkdir();
-        
+
     }
 
     /** this is to create a new commit but not the initialized one */

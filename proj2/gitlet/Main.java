@@ -31,11 +31,11 @@ public class Main {
                 if (!toBeAdded.exists()) {
                     Utils.exitWithError("File does not exist.");
                 }else {
-                    if (Repository.stagingArea.containsKey(args[1])) {
-                        Repository.stagingArea.remove(args[1]);
+                    if (StagingArea.addition.containsKey(args[1])) {
+                        StagingArea.addition.remove(args[1]);
                     }
                     String newFile = Utils.readContentsAsString(toBeAdded);
-                    Repository.stagingArea.put(args[1], newFile);
+                    StagingArea.addition.put(args[1], newFile);
                 }
                 // TODO: handle the `add [filename]` command
                 break;

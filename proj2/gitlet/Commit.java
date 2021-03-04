@@ -26,6 +26,8 @@ public class Commit implements Serializable {
     /** The time of this Commit. */
     private Date timestamp;
 
+    private Commit parent;
+
     private File committedFile;
 
     /**
@@ -46,6 +48,13 @@ public class Commit implements Serializable {
         this.message = "initial commit";
         this.timestamp = new Date(0);
         committedFile.mkdir();
+    }
+
+    /** this is to create a new commit but not the initialized one */
+    public Commit(String message, Date timestamp, Commit parent) {
+        this.message = message;
+        this.timestamp = timestamp;
+        this.parent = parent;
     }
 
 

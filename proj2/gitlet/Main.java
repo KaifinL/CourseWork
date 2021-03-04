@@ -58,7 +58,7 @@ public class Main {
                 if (!Repository.removeFile(fileName)) {
                     Utils.exitWithError("No reason to remove the file.");
                 }
-                Utils.exitWithError("");
+                break;
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

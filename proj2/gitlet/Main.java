@@ -61,7 +61,7 @@ public class Main {
                 break;
 
             case "log":
-                
+
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

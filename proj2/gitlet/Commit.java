@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date; // TODO: You'll likely use this in this class
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /** Represents a gitlet commit object.
  *  TODO: It's a good idea to give a description here of what else this Class
@@ -36,6 +37,7 @@ public class Commit implements Serializable {
 
     public String id;
 
+    public LinkedList<Commit> CommitCollection;
 
     /**
      * TODO: frame a construction that stores all the files.This should be a instance variable since
@@ -52,17 +54,22 @@ public class Commit implements Serializable {
         this.timestamp = new Date(0);
         this.snapshot = null;
         this.id = Utils.sha1(this);
+        this.parent = null;
     }
 
     /** this is to create a new commit but not the initialized one */
-    public Commit(String message, Date timestamp, Commit parent) {
+    public Commit(String message, Date timestamp) {
         this.message = message;
         this.timestamp = timestamp;
-        this.parent = parent;
+        this.parent = CommitCollection.getLast();
+        CommitCollection.addLast(this);
     }
 
+    /**
+     * save each commit in a file just something like 'dog' in lab6
+     */
     public void saveCommit() {
-        File newCommit = Utils.join(Repository.Commits, this.message + ".txt");
+        File newCommit = Utils.join(Repository.Commits, this.id + ".txt");
         try {
             newCommit.createNewFile();
         } catch (IOException e) {

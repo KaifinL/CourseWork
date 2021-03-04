@@ -2,6 +2,7 @@ package gitlet;
 
 // TODO: any imports you need here
 
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.Date; // TODO: You'll likely use this in this class
@@ -30,6 +31,7 @@ public class Commit implements Serializable {
     private Commit parent;
     /** to collect the files in the commit */
     private File snapshot;
+
 
     /**
      * TODO: frame a construction that stores all the files.This should be a instance variable since

@@ -45,7 +45,7 @@ public class Repository {
         Head = initialCommit;
     }
 
-    public static void makeCommit(String message, Date timestamp, Commit parent) {
+    public static void makeCommit(String message, Commit parent) {
         /**
          * TODO: make a new commit
          * TODO: inherit the snapshot from its parent
@@ -54,7 +54,7 @@ public class Repository {
          */
         File parentFile = Utils.join(Commits, parent.getId());
         Commit newCommit = readObject(parentFile, Commit.class);
-        newCommit.makeChange(message, timestamp);
+        newCommit.makeChange(message);
         newCommit.saveCommit();
     }
 

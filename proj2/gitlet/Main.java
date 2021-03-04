@@ -48,7 +48,7 @@ public class Main {
                 if (StagingArea.addition == null) {
                     Utils.exitWithError("No changes added to the commit.");
                 }else {
-
+                    Repository.makeCommit(message);
                 }
 
             default:

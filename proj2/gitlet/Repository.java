@@ -69,6 +69,7 @@ public class Repository {
             StagingArea.addition.remove(Filename);
         }else if(currentCommit.snapshot.containsKey(Filename)) {
             StagingArea.removal.put(Filename, FileContent);
+            tobeRemoved.delete();
         }
 
     }

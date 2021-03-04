@@ -43,7 +43,6 @@ public class Main {
             case "commit":
                 String message = args[1];
 
-
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

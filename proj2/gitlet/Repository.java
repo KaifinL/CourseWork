@@ -27,15 +27,18 @@ public class Repository {
     public static final File CWD = new File(System.getProperty("user.dir"));
     /** The .gitlet directory. */
     public static final File GITLET_DIR = join(CWD, ".gitlet");
+
+    public static final File Commits = join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
+
 
 
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
+        Commits.mkdir();
         Commit initialCommit = new Commit();
-        Commit.Commits.addFirst(initialCommit);
-        File InitialCommitFile = join(GITLET_DIR, "InitialCommit");
+        File InitialCommitFile = join(Commits, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);
         Commit master = initialCommit;
         Commit Head = initialCommit;
@@ -49,8 +52,6 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Commit newCommit = new Commit();
-        newCommit = readObject()
-
     }
 
 }

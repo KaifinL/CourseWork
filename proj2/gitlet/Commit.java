@@ -105,25 +105,33 @@ public class Commit implements Serializable {
          */
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         this.timestamp = new Date(System.currentTimeMillis());
+        StagingArea.addition.clear();
+        StagingArea.removal.clear();
+        Repository.Head = this;
     }
 
     /** set the original commit time */
 
 
     /**
-     * Saves a snapshot of tracked files in the current commit and staging area
-     * so they can be restored at a later time, creating a new commit.
-     * The commit is said to be tracking the saved files. By default,
-     * each commit’s snapshot of files will be exactly the same as its parent commit’s snapshot of files;
-     * it will keep versions of files exactly as they are, and not update them. A commit will only update
-     * the contents of files it is tracking that have been staged for addition at the time of commit,
-     * in which case the commit will now include the version of the file that was staged instead of the
-     * version it got from its parent. A commit will save and start tracking any files that were staged
-     * for addition but weren’t tracked by its parent. Finally, files tracked in the current commit may be
-     * untracked in the new commit as a result being staged for removal by the rm command (below).
+     * Some additional points about commit:
+     * The commit command never adds, changes, or removes files in the working directory
+     *   (other than those in the .gitlet directory). The rm command will remove such files,
+     *   as well as staging them for removal, so that they will be untracked after a commit.
      *
-     * The bottom line: By default a commit has the same file contents as its parent.
-     * Files staged for addition and removal are the updates to the commit. Of course,
-     * the date (and likely the message) will also different from the parent.
+     * After the commit command, the new commit is added as a new node in the commit tree.
+     *
+     * The commit just made becomes the “current commit”, and the head pointer now points to it.
+     * The previous head commit is this commit’s parent commit.
+     *
+     * Each commit should contain the date and time it was made.
+     *
+     * Each commit has a log message associated with it that describes the changes to the files
+     * in the commit. This is specified by the user. The entire message should take up only one
+     * entry in the array args that is passed to main. To include multiword messages, you’ll have
+     * to surround them in quotes.
+     *
+     * Each commit is identified by its SHA-1 id, which must include the file (blob) references
+     * of its files, parent reference, log message, and commit time.
      */
 }

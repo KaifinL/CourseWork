@@ -98,6 +98,10 @@ public class Commit implements Serializable {
             snapshot.put(y, StagingArea.addition.get(y));
         }
         this.message = message;
+
+        /** by doing this the way we represent the time would be a little bit complex:
+         * System.out.println(formatter.format(timestamp));
+         */
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         this.timestamp = new Date(System.currentTimeMillis());
     }

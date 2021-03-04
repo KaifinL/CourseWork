@@ -61,10 +61,12 @@ public class Repository {
 
     public static void removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
-        if(StagingArea.addition.containsKey(Filename)) {
+        if (!tobeRemoved.exists()) {
+            Utils.restrictedDelete(Filename);
+        }else if(StagingArea.addition.containsKey(Filename)) {
             StagingArea.addition.remove(Filename);
         }
-        
+
     }
 
 }

@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date; // TODO: You'll likely use this in this class
 import java.util.HashMap;
-import java.util.Hashtable;
 
 /** Represents a gitlet commit object.
  *  TODO: It's a good idea to give a description here of what else this Class
@@ -35,7 +34,7 @@ public class Commit implements Serializable {
     /** to collect the files in the commit */
     public HashMap<String, String> snapshot;
 
-    public Hashtable id;
+    public String id;
 
 
     /**
@@ -51,8 +50,8 @@ public class Commit implements Serializable {
     public Commit() {
         this.message = "initial commit";
         this.timestamp = new Date(0);
-        snapshot = null;
-
+        this.snapshot = null;
+        this.id = Utils.sha1(this);
     }
 
     /** this is to create a new commit but not the initialized one */
@@ -60,15 +59,6 @@ public class Commit implements Serializable {
         this.message = message;
         this.timestamp = timestamp;
         this.parent = parent;
-    }
-
-
-    /** this method will return the copy of the commit instead of changing the origin commit */
-    public static Commit copy(Commit b) {
-        Commit returnCommit = new Commit();
-        returnCommit.timestamp = b.timestamp;
-        returnCommit.snapshot = b.snapshot;
-        return returnCommit;
     }
 
     public void saveCommit() {
@@ -84,6 +74,11 @@ public class Commit implements Serializable {
     /** get the commit's message */
     public String getMessage() {
         return this.message;
+    }
+
+    /** get the commit's id */
+    public String getId() {
+        return this.id;
     }
 
     /** a method that can change a commit's file */

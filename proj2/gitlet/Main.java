@@ -42,9 +42,12 @@ public class Main {
             // TODO: FILL THE REST IN
             case "commit":
                 if (args.length == 1) {
-                    Utils.exitWithError("");
+                    Utils.exitWithError("Please enter a commit message.");
                 }
                 String message = args[1];
+                if (StagingArea.addition == null) {
+                    Utils.exitWithError("");
+                }
 
             default:
                 Utils.exitWithError("No command with that name exists.");

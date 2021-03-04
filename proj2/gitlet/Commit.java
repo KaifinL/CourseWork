@@ -91,6 +91,9 @@ public class Commit implements Serializable {
     public Commit getParent() {
         return this.parent;
     }
+    public Date getTimestamp() {
+        return timestamp;
+    }
 
     /** a method that can change a commit's file */
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/

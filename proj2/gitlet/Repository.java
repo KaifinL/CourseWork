@@ -1,6 +1,7 @@
 package gitlet;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -44,14 +45,15 @@ public class Repository {
         Commit Head = initialCommit;
     }
 
-    public static void makeCommit(String message) {
+    public static void makeCommit(String message, Date timestamp, Commit parent) {
         /**
          * TODO: make a new commit
          * TODO: inherit the snapshot from its parent
          * TODO: update the files from staging area
          * TODO: set the commit message, date, parent(the last commit)
          */
-        Commit newCommit = new Commit();
+        Commit newCommit = new Commit(message, timestamp, parent);
+        newCommit.
     }
 
 }

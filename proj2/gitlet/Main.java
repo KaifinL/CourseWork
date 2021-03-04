@@ -39,6 +39,7 @@ public class Main {
                 }
                 // TODO: handle the `add [filename]` command
                 break;
+
             // TODO: FILL THE REST IN
             case "commit":
                 if (args.length == 1) {
@@ -50,7 +51,12 @@ public class Main {
                 }else {
                     Repository.makeCommit(message);
                 }
+                break;
 
+            case "rm":
+                if (args.length == 1) {
+                    Utils.exitWithError("");
+                }
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

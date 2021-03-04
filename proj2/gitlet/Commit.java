@@ -29,8 +29,6 @@ public class Commit implements Serializable {
 
     private Commit parent;
 
-    private File committedFile;
-
     public static LinkedList<Commit> Commits;
 
     private File snapshot;
@@ -52,7 +50,8 @@ public class Commit implements Serializable {
     public Commit() {
         this.message = "initial commit";
         this.timestamp = new Date(0);
-        committedFile.mkdir();
+        snapshot.mkdir();
+        
     }
 
     /** this is to create a new commit but not the initialized one */
@@ -67,7 +66,7 @@ public class Commit implements Serializable {
     public static Commit copy(Commit b) {
         Commit returnCommit = new Commit();
         returnCommit.timestamp = b.timestamp;
-        returnCommit.committedFile = b.committedFile;
+        returnCommit.snapshot = b.snapshot;
         return returnCommit;
     }
 

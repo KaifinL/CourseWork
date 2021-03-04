@@ -78,7 +78,10 @@ public class Repository {
     }
 
     public static void log() {
-        
+        Commit curr = Head;
+        while(curr != null) {
+            
+        }
     }
 
 }

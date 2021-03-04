@@ -43,7 +43,7 @@ public class Main {
             case "commit":
                 String message = args[1];
                 Commit newCommit;
-                newCommit = Commit.copy(Repository.commitsCollection.getLast());
+                newCommit = Commit.copy(Commit.Commits.getLast());
                 newCommit.setMessage(message);
 
             default:

@@ -56,8 +56,9 @@ public class Main {
             case "rm":
                 String fileName = args[1];
                 if (!Repository.removeFile(fileName)) {
-                    Utils.exitWithError("");
+                    Utils.exitWithError("No reason to remove the file.");
                 }
+                Utils.exitWithError("");
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

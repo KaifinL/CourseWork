@@ -59,19 +59,22 @@ public class Repository {
         newCommit.saveCommit();
     }
 
-    public static void removeFile(String Filename) {
+    public static boolean removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
         String FileContent = readContentsAsString(tobeRemoved);
         Commit currentCommit = Commit.CommitCollection.getLast();
+        boolean changed = false;
         if (!tobeRemoved.exists()) {
-            Utils.restrictedDelete(Filename);
+            changed = Utils.restrictedDelete(Filename);
         }else if(StagingArea.addition.containsKey(Filename)) {
             StagingArea.addition.remove(Filename);
+            changed = true;
         }else if(currentCommit.snapshot.containsKey(Filename)) {
             StagingArea.removal.put(Filename, FileContent);
             tobeRemoved.delete();
+            changed = true;
         }
-
+        return changed;
     }
 
 }

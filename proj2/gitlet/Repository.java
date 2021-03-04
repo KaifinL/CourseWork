@@ -51,6 +51,7 @@ public class Repository {
          * TODO: update the files from staging area
          * TODO: set the commit message, date, parent(the last commit)
          */
+        Date 
         Commit newCommit = new Commit(message)
         File parentFile = Utils.join(Commits, parent.getId());
         Commit newCommit = readObject(parentFile, Commit.class);

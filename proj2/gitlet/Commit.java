@@ -4,6 +4,7 @@ package gitlet;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date; // TODO: You'll likely use this in this class
 import java.util.LinkedList;
@@ -69,6 +70,17 @@ public class Commit implements Serializable {
         returnCommit.snapshot = b.snapshot;
         return returnCommit;
     }
+    
+    public void saveCommit() {
+        File newCommit = Utils.join(Repository.Commits, this.message + ".txt");
+        try {
+            newCommit.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Utils.writeObject(newCommit, this);
+    }
+
 
     /** set the original commit time */
 

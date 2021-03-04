@@ -83,7 +83,7 @@ public class Commit implements Serializable {
 
     /** a method that can change a commit's file */
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
-    public void makeChange(String message, Date timestamp) {
+    public void makeChange(String message) {
         for (String x : snapshot.keySet()) {
             if (StagingArea.containsName(x)) {
                 snapshot.remove(x);

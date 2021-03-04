@@ -37,7 +37,7 @@ public class Commit implements Serializable {
 
     public String id;
 
-    public LinkedList<Commit> CommitCollection;
+    public static LinkedList<Commit> CommitCollection;
 
     /**
      * TODO: frame a construction that stores all the files.This should be a instance variable since

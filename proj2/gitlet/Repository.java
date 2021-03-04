@@ -59,4 +59,8 @@ public class Repository {
         newCommit.saveCommit();
     }
 
+    public static void removeFile(String Filename) {
+        File tobeRemoved = Utils.join()
+    }
+
 }

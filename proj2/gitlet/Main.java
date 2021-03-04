@@ -41,6 +41,9 @@ public class Main {
                 break;
             // TODO: FILL THE REST IN
             case "commit":
+                if (args[1] == null) {
+
+                }
                 String message = args[1];
 
             default:

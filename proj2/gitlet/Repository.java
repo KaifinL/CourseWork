@@ -60,7 +60,7 @@ public class Repository {
     }
 
     public static void removeFile(String Filename) {
-        File tobeRemoved = Utils.join()
+        File tobeRemoved = Utils.join(GITLET_DIR, Filename);
     }
 
 }

@@ -81,7 +81,7 @@ public class Repository {
         Commit curr = Head;
         while(curr != null) {
             System.out.println("===");
-            System.out.println("commit " + );
+            System.out.println("commit " + curr.id);
         }
     }
 

@@ -1,10 +1,8 @@
 package gitlet;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-
 import static gitlet.Utils.*;
 
 // TODO: any imports you need here
@@ -32,6 +30,8 @@ public class Repository {
     public static final File Commits = join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
 
+    public static Commit Head;
+    public static Commit Master;
 
 
 
@@ -41,8 +41,8 @@ public class Repository {
         Commit initialCommit = new Commit();
         File InitialCommitFile = join(Commits, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);
-        Commit master = initialCommit;
-        Commit Head = initialCommit;
+        Master = initialCommit;
+        Head = initialCommit;
     }
 
     public static void makeCommit(String message, Date timestamp, Commit parent) {

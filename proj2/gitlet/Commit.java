@@ -6,6 +6,7 @@ package gitlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date; // TODO: You'll likely use this in this class
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -97,7 +98,8 @@ public class Commit implements Serializable {
             snapshot.put(y, StagingArea.addition.get(y));
         }
         this.message = message;
-        this.timestamp = new Date();
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        this.timestamp = new Date(System.currentTimeMillis());
     }
 
     /** set the original commit time */

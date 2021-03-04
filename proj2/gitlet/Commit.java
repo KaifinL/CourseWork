@@ -42,10 +42,6 @@ public class Commit implements Serializable {
 
     /* TODO: fill in the rest of this class. */
 
-    /** set the commit message */
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     /** initialize the commit */
     public Commit() {
@@ -70,7 +66,7 @@ public class Commit implements Serializable {
         returnCommit.snapshot = b.snapshot;
         return returnCommit;
     }
-    
+
     public void saveCommit() {
         File newCommit = Utils.join(Repository.Commits, this.message + ".txt");
         try {

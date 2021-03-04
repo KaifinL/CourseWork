@@ -101,6 +101,7 @@ public class Commit implements Serializable {
 
         /** by doing this the way we represent the time would be a little bit complex:
          * System.out.println(formatter.format(timestamp));
+         * this may cause a time zone error (i don't know whether if it may)
          */
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         this.timestamp = new Date(System.currentTimeMillis());

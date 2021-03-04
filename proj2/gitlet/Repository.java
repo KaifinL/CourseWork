@@ -65,7 +65,7 @@ public class Repository {
             Utils.restrictedDelete(Filename);
         }else if(StagingArea.addition.containsKey(Filename)) {
             StagingArea.addition.remove(Filename);
-        }
+        }else if()
 
     }
 

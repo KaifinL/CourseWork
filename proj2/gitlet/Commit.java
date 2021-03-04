@@ -28,9 +28,6 @@ public class Commit implements Serializable {
     private Date timestamp;
 
     private Commit parent;
-
-    public static LinkedList<Commit> Commits;
-
     /** to collect the files in the commit */
     private File snapshot;
 

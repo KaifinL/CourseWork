@@ -59,6 +59,9 @@ public class Main {
                     Utils.exitWithError("No reason to remove the file.");
                 }
                 break;
+
+            case "log":
+                
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

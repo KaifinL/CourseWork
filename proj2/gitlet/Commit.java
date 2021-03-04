@@ -97,7 +97,7 @@ public class Commit implements Serializable {
             snapshot.put(y, StagingArea.addition.get(y));
         }
         this.message = message;
-        this.timestamp = Date.;
+        this.timestamp = new Date();
     }
 
     /** set the original commit time */

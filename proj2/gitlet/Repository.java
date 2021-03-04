@@ -28,21 +28,26 @@ public class Repository {
     /** The .gitlet directory. */
     public static final File GITLET_DIR = join(CWD, ".gitlet");
     /* TODO: fill in the rest of this class. */
-    /** The files haven't been staged will be added to this directory. */
-    public static HashMap stagingArea = new HashMap();
-    /* a collection of all the commits */
-    public static LinkedList<Commit> commitsCollection = new LinkedList<>();
 
 
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commit initialCommit = new Commit();
+        Commit.Commits.addFirst(initialCommit);
         File InitialCommitFile = join(GITLET_DIR, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);
         Commit master = initialCommit;
         Commit Head = initialCommit;
-        commitsCollection.addFirst(initialCommit);
+    }
+
+    public static void makeCommit(String message) {
+        /**
+         * TODO: store the information that last commit does
+         * TODO: store the files stored in the staging area
+         * TODO: delete the items in the staging area
+         * TODO: set the commit message, date, parent(the last commit)
+         */
     }
 
 }

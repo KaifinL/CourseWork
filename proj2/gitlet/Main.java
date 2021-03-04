@@ -57,7 +57,7 @@ public class Main {
                 if (args.length == 1) {
                     Utils.exitWithError("No reason to remove the file.");
                 }
-                
+                String fileName = args[1];
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

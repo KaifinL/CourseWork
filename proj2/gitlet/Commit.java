@@ -88,6 +88,10 @@ public class Commit implements Serializable {
         return this.id;
     }
 
+    public Commit getParent() {
+        return this.parent;
+    }
+
     /** a method that can change a commit's file */
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
     public void makeChange(String message) {

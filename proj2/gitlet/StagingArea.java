@@ -19,12 +19,12 @@ public class StagingArea {
      * TODO: somehow create a method to judge whether a file's name has exists
      */
 
-    public boolean containsName(String a) {
+    public static boolean containsName(String a) {
         return addition.containsKey(a);
     }
 
-    public boolean sameContents(String key, String a) {
-        return a == addition.get(key);
+    public static boolean sameContents(String key, String a) {
+        return a.equals(addition.get(key));
     }
 
 

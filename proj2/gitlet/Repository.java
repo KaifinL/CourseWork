@@ -43,12 +43,12 @@ public class Repository {
 
     public static void makeCommit(String message) {
         /**
-         * TODO: store the information that last commit does
-         * TODO: store the files stored in the staging area
-         * TODO: delete the items in the staging area
+         * TODO: make a new commit
+         * TODO: inherit the snapshot from its parent
+         * TODO: update the files from staging area
          * TODO: set the commit message, date, parent(the last commit)
          */
-
+        Commit newCommit = new Commit();
 
     }
 

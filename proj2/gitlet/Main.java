@@ -31,7 +31,7 @@ public class Main {
                 if (!toBeAdded.exists()) {
                     Utils.exitWithError("File does not exist.");
                 }else {
-                    if (StagingArea.addition.containsKey(args[1])) {
+                    if (StagingArea.containsName(args[1])) {
                         StagingArea.addition.remove(args[1]);
                     }
                     String newFile = Utils.readContentsAsString(toBeAdded);

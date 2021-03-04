@@ -42,9 +42,7 @@ public class Main {
             // TODO: FILL THE REST IN
             case "commit":
                 String message = args[1];
-                Commit newCommit;
-                newCommit = Commit.copy(Commit.Commits.getLast());
-                newCommit.setMessage(message);
+
 
             default:
                 Utils.exitWithError("No command with that name exists.");

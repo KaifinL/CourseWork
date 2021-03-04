@@ -7,7 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date; // TODO: You'll likely use this in this class
-import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 /** Represents a gitlet commit object.
  *  TODO: It's a good idea to give a description here of what else this Class
@@ -31,7 +32,9 @@ public class Commit implements Serializable {
 
     private Commit parent;
     /** to collect the files in the commit */
-    private File snapshot;
+    public HashMap<String, String> snapshot;
+
+    public Hashtable id;
 
 
     /**
@@ -47,7 +50,7 @@ public class Commit implements Serializable {
     public Commit() {
         this.message = "initial commit";
         this.timestamp = new Date(0);
-        snapshot.mkdir();
+        snapshot = null;
 
     }
 
@@ -77,6 +80,25 @@ public class Commit implements Serializable {
         Utils.writeObject(newCommit, this);
     }
 
+    /** get the commit's message */
+    public String getMessage() {
+        return this.message;
+    }
+
+    /** a method that can change a commit's file */
+    /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
+    public void makeChange(String message, Date timestamp) {
+        for (String x : snapshot.keySet()) {
+            if (StagingArea.containsName(x)) {
+                snapshot.remove(x);
+            }
+        }
+        for (String y : StagingArea.addition.keySet()) {
+            snapshot.put(y, StagingArea.addition.get(y));
+        }
+        this.message = message;
+        this.timestamp = timestamp;
+    }
 
     /** set the original commit time */
 

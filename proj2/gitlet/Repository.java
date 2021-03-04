@@ -85,6 +85,9 @@ public class Repository {
             System.out.println("commit " + curr.id);
             SimpleDateFormat formatter= new SimpleDateFormat("d, EEE MMM HH:mm:ss yyyy Z");
             System.out.println("Date: " + formatter.format(curr.getTimestamp()));
+            System.out.println(curr.getMessage());
+            System.out.println();
+            curr = curr.getParent();
         }
     }
 

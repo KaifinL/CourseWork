@@ -77,4 +77,8 @@ public class Repository {
         return changed;
     }
 
+    public static void log() {
+        
+    }
+
 }

@@ -48,6 +48,8 @@ public class Repository {
          * TODO: delete the items in the staging area
          * TODO: set the commit message, date, parent(the last commit)
          */
+
+
     }
 
 }

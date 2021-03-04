@@ -1,6 +1,7 @@
 package gitlet;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import static gitlet.Utils.*;
 
@@ -82,6 +83,8 @@ public class Repository {
         while(curr != null) {
             System.out.println("===");
             System.out.println("commit " + curr.id);
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+            System.out.println(formatter.format(curr.getTimestamp()));
         }
     }
 

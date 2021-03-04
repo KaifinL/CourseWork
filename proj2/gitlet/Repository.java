@@ -49,6 +49,7 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Commit newCommit = new Commit();
+        newCommit = readObject()
 
     }
 

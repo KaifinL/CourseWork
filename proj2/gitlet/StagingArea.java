@@ -16,5 +16,16 @@ public class StagingArea {
     /**We should now list the methods which will be helpful storing information of files.
      * the contents needed to be stored are file's name,file's content
      * TODO: make the 'addition variable store the adding information including name and content'
+     * TODO: somehow create a method to judge whether a file's name has exists
      */
+
+    public boolean containsName(String a) {
+        return addition.containsKey(a);
+    }
+
+    public boolean sameContents(String key, String a) {
+        return a == addition.get(key);
+    }
+
+
 }

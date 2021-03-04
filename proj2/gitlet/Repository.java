@@ -61,11 +61,14 @@ public class Repository {
 
     public static void removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
+        Commit currentCommit = Commit.CommitCollection.getLast();
         if (!tobeRemoved.exists()) {
             Utils.restrictedDelete(Filename);
         }else if(StagingArea.addition.containsKey(Filename)) {
             StagingArea.addition.remove(Filename);
-        }else if()
+        }else if(currentCommit.snapshot.containsKey(Filename)) {
+            
+        }
 
     }
 

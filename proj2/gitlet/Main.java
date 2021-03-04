@@ -41,8 +41,8 @@ public class Main {
                 break;
             // TODO: FILL THE REST IN
             case "commit":
-                if (args[1] == null) {
-
+                if (args.length == 1) {
+                    Utils.exitWithError("");
                 }
                 String message = args[1];
 

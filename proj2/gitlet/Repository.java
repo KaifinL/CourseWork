@@ -33,8 +33,6 @@ public class Repository {
     public static Commit Head;
     public static Commit Master;
 
-
-
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commits.mkdir();
@@ -54,16 +52,19 @@ public class Repository {
          */
         Date dateObj = new Date();
         Commit newCommit = new Commit(message, dateObj);
-        File parentFile = Utils.join(Commits, newCommit.getParent().getId());
+        File parentFile = Utils.join(Commits, newCommit.getParentId());
         newCommit = readObject(parentFile, Commit.class);
+        newCommit.parentId = newCommit.id;
+        newCommit.id = Utils.sha1(newCommit);
         newCommit.makeChange(message);
         newCommit.saveCommit();
+        Head = newCommit;
     }
 
     public static boolean removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
         String FileContent = readContentsAsString(tobeRemoved);
-        Commit currentCommit = Commit.CommitCollection.getLast();
+        Commit currentCommit = Head;
         boolean changed = false;
         if (!tobeRemoved.exists()) {
             changed = Utils.restrictedDelete(Filename);

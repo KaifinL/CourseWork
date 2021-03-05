@@ -76,9 +76,9 @@ public class Main {
                     }else {
                         File targetFile = Repository.Head.snapshot.get(target);
                         String copyContent = Utils.readContentsAsString(targetFile);
+                        Utils.restrictedDelete(targetFile);
                         File newCopy = Utils.join(Repository.GITLET_DIR, target);
                         Utils.writeContents(newCopy, copyContent);
-                        Utils.restrictedDelete()
                         try {
                             newCopy.createNewFile();
                         } catch (IOException e) {
@@ -86,6 +86,7 @@ public class Main {
                         }
                     }
                 }else if (args[2].equals("--")) {
+                    
                     /**Takes the version of the file as it exists in the commit with the given id,
                      * and puts it in the working directory, overwriting the version of the file
                      * that’s already there if there is one. The new version of the file is not staged.

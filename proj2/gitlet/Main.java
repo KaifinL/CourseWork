@@ -77,21 +77,13 @@ public class Main {
                         Utils.exitWithError("File does not exist in that commit.");
                     }else {
                         File targetFile = Repository.Head.snapshot.get(target);
-                        String copyContent = Utils.readContentsAsString(targetFile);
-                        Utils.restrictedDelete(targetFile);
-                        File newCopy = Utils.join(Repository.GITLET_DIR, target);
-                        Utils.writeContents(newCopy, copyContent);
-                        try {
-                            newCopy.createNewFile();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        Repository.checkout(targetFile, target);
                     }
                 }else if (args[2].equals("--")) {
                     File targetCom = Utils.join(Repository.Commits, args[1]);
                     Commit targetCommit = Utils.readObject(targetCom, Commit.class);
                     File targetFile = targetCommit.snapshot.get(args[3]);
-                    
+                    Repository.checkout(targetFile, args[3]);
                     /**Takes the version of the file as it exists in the commit with the given id,
                      * and puts it in the working directory, overwriting the version of the file
                      * that’s already there if there is one. The new version of the file is not staged.

@@ -73,9 +73,9 @@ public class Main {
                     if (!Repository.Head.snapshot.containsKey(target)) {
                         Utils.exitWithError("File does not exist in that commit.");
                     }else {
-                        File targetFile = Utils.join(Repository.Commits, Repository.Head.getId(), target);
+                        File targetFile = Repository.Head.snapshot.get(target);
                         String copyContent = Utils.readContentsAsString(targetFile);
-                        File newCopy = Utils.join(Repository.GITLET_DIR, );
+                        File newCopy = Utils.join(Repository.GITLET_DIR, target);
                         Checkout.checkout1(args[2]);
                     }
                 }

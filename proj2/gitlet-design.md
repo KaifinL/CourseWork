@@ -15,15 +15,28 @@
 4. CommittedFile - The collections of the files that the current commit possess.
 
 ##### Methods
-
+1. Commit() - create the initialed commit
+2. Commit(...) - create the following commits
+3. saveCommit() - to create the commit text to store the commit object as a file.
+4. gets - get the private variable
+5. makeChange() - make the commit unique from its parent
+6. getParent() - get the current commit 's parent
+ 
 * 
 
 ### Class 2
 
-#### Fields
+#### StagingArea
 
-1. Field 1
-2. Field 2
+##### Variable
+1. addition -to stage the added things
+2. removal - for the rm implements
+
+##### methods
+1. 
+
+### Class 3
+
 
 
 ## Algorithms

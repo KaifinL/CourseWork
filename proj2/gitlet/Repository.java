@@ -78,6 +78,7 @@ public class Repository {
         return changed;
     }
 
+    /** haven't done with merge log information yet */
     public static void log() {
         Commit curr = Head;
         while(curr != null) {

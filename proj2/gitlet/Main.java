@@ -71,10 +71,13 @@ public class Main {
                 if (args[1].equals("--")) {
                     String target = args[2];
                     if (!Repository.Head.snapshot.containsKey(target)) {
-                        Utils.exitWithError("");
+                        Utils.exitWithError("File does not exist in that commit.");
+                    }else {
+                        File targetFile = Utils.join(Repository.Commits, Repository.Head.getId(), target);
+                        String copyContent = Utils.readContentsAsString(targetFile);
+
+                        Checkout.checkout1(args[2]);
                     }
-                    File Head = Utils.join(Repository.Commits, Repository.Head.getId());
-                    Checkout.checkout1(args[2]);
                 }
             default:
                 Utils.exitWithError("No command with that name exists.");

@@ -75,7 +75,7 @@ public class Main {
                     }else {
                         File targetFile = Utils.join(Repository.Commits, Repository.Head.getId(), target);
                         String copyContent = Utils.readContentsAsString(targetFile);
-
+                        File newCopy = Utils.join(Repository.GITLET_DIR, )
                         Checkout.checkout1(args[2]);
                     }
                 }

@@ -1,6 +1,7 @@
 package gitlet;
 
 import java.io.File;
+import java.io.IOException;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
  *  @author Kaifeng Lin
@@ -76,7 +77,12 @@ public class Main {
                         File targetFile = Repository.Head.snapshot.get(target);
                         String copyContent = Utils.readContentsAsString(targetFile);
                         File newCopy = Utils.join(Repository.GITLET_DIR, target);
-                        Checkout.checkout1(args[2]);
+                        Utils.writeContents(newCopy, copyContent);
+                        try {
+                            newCopy.createNewFile();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             default:

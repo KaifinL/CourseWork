@@ -37,8 +37,6 @@ public class Commit implements Serializable {
 
     public String id;
 
-    public static LinkedList<Commit> CommitCollection;
-
     /**
      * TODO: frame a construction that stores all the files.This should be a instance variable since
      * every commit's files are different and that's also what you have to checkout.
@@ -61,8 +59,6 @@ public class Commit implements Serializable {
     public Commit(String message, Date timestamp) {
         this.message = message;
         this.timestamp = timestamp;
-        this.parent = CommitCollection.getLast();
-        CommitCollection.addLast(this);
     }
 
     /**
@@ -112,7 +108,6 @@ public class Commit implements Serializable {
          * System.out.println(formatter.format(timestamp));
          * this may cause a time zone error (i don't know whether if it may)
          */
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         this.timestamp = new Date(System.currentTimeMillis());
         StagingArea.addition.clear();
         StagingArea.removal.clear();

@@ -90,6 +90,7 @@ public class Main {
                 }else if (args[2].equals("--")) {
                     File targetCom = Utils.join(Repository.Commits, args[1]);
                     Commit targetCommit = Utils.readObject(targetCom, Commit.class);
+                    File targetFile = targetCommit.snapshot.get(args[3]);
                     
                     /**Takes the version of the file as it exists in the commit with the given id,
                      * and puts it in the working directory, overwriting the version of the file

@@ -28,12 +28,9 @@ public class Commit implements Serializable {
     private String message;
     /** The time of this Commit. */
     private Date timestamp;
-
-    private Commit parent;
     /** to collect the files in the commit */
     public HashMap<String, String> snapshot;
-
-    private String parentId;
+    public String parentId;
     public String id;
 
     /**
@@ -51,7 +48,7 @@ public class Commit implements Serializable {
         this.timestamp = new Date(0);
         this.snapshot = null;
         this.id = Utils.sha1(this);
-        this.parent = null;
+        this.parentId = null;
     }
 
     /** this is to create a new commit but not the initialized one */
@@ -85,8 +82,8 @@ public class Commit implements Serializable {
         return this.id;
     }
 
-    public Commit getParent() {
-        return this.parent;
+    public String getParentId() {
+        return this.parentId;
     }
     public Date getTimestamp() {
         return timestamp;
@@ -112,7 +109,12 @@ public class Commit implements Serializable {
         this.timestamp = new Date(System.currentTimeMillis());
         StagingArea.addition.clear();
         StagingArea.removal.clear();
-        Repository.Head = this;
+    }
+
+    public Commit getParent() {
+        File parent =Utils.join(Repository.Commits, getParentId()) ;
+        Commit parentCommit = Utils.readObject(parent, Commit.class);
+        return parentCommit;
     }
 
     /** set the original commit time */

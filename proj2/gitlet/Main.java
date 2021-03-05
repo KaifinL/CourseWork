@@ -63,7 +63,15 @@ public class Main {
             case "log":
                 Repository.log();
                 break;
-
+            case "checkout":
+                /**
+                 * Takes the version of the file as it exists in the head commit and puts it
+                 * in the working directory, overwriting the version of the file that’s already there
+                 * if there is one. The new version of the file is not staged.
+                 */
+                if (args[1] == "--") {
+                    
+                }
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

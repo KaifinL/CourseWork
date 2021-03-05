@@ -88,7 +88,6 @@ public class Main {
                      * and puts it in the working directory, overwriting the version of the file
                      * that’s already there if there is one. The new version of the file is not staged.
                      */
-
                 }
             default:
                 Utils.exitWithError("No command with that name exists.");

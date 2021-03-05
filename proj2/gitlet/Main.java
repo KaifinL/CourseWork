@@ -70,7 +70,7 @@ public class Main {
                  * if there is one. The new version of the file is not staged.
                  */
                 if (args[1] == "--") {
-                    
+                    Checkout.checkout1(args[2]);
                 }
             default:
                 Utils.exitWithError("No command with that name exists.");

@@ -29,7 +29,7 @@ public class Commit implements Serializable {
     /** The time of this Commit. */
     private Date timestamp;
     /** to collect the files in the commit */
-    public HashMap<String, String> snapshot;
+    public HashMap<String, File> snapshot;
     public String parentId;
     public String id;
 

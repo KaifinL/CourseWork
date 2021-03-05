@@ -1,6 +1,7 @@
 package gitlet;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import static gitlet.Utils.*;
@@ -86,6 +87,18 @@ public class Repository {
             System.out.println(curr.getMessage());
             System.out.println();
             curr = curr.getParent();
+        }
+    }
+
+    public static void checkout(File targetFile, String target) {
+        String copyContent = Utils.readContentsAsString(targetFile);
+        Utils.restrictedDelete(targetFile);
+        File newCopy = Utils.join(Repository.GITLET_DIR, target);
+        Utils.writeContents(newCopy, copyContent);
+        try {
+            newCopy.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

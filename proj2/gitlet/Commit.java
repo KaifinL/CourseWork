@@ -117,28 +117,4 @@ public class Commit implements Serializable {
         return parentCommit;
     }
 
-    /** set the original commit time */
-
-
-    /**
-     * Some additional points about commit:
-     * The commit command never adds, changes, or removes files in the working directory
-     *   (other than those in the .gitlet directory). The rm command will remove such files,
-     *   as well as staging them for removal, so that they will be untracked after a commit.
-     *
-     * After the commit command, the new commit is added as a new node in the commit tree.
-     *
-     * The commit just made becomes the “current commit”, and the head pointer now points to it.
-     * The previous head commit is this commit’s parent commit.
-     *
-     * Each commit should contain the date and time it was made.
-     *
-     * Each commit has a log message associated with it that describes the changes to the files
-     * in the commit. This is specified by the user. The entire message should take up only one
-     * entry in the array args that is passed to main. To include multiword messages, you’ll have
-     * to surround them in quotes.
-     *
-     * Each commit is identified by its SHA-1 id, which must include the file (blob) references
-     * of its files, parent reference, log message, and commit time.
-     */
 }

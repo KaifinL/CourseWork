@@ -60,7 +60,6 @@ public class Repository {
 
     public static boolean removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
-        String FileContent = readContentsAsString(tobeRemoved);
         Commit currentCommit = Head;
         boolean changed = false;
         if (!tobeRemoved.exists()) {
@@ -69,7 +68,7 @@ public class Repository {
             StagingArea.addition.remove(Filename);
             changed = true;
         }else if(currentCommit.snapshot.containsKey(Filename)) {
-            StagingArea.removal.put(Filename, FileContent);
+            StagingArea.removal.put(Filename, tobeRemoved);
             tobeRemoved.delete();
             changed = true;
         }

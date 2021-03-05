@@ -1,5 +1,6 @@
 package gitlet;
 
+import java.io.File;
 import java.util.HashMap;
 
 /** this class is basically for adding and removing things, just to make things easier. */
@@ -9,8 +10,8 @@ public class StagingArea {
      *
      */
 
-    public static HashMap<String, String> addition = null;
-    public static HashMap<String, String> removal = null;
+    public static HashMap<String, File> addition = null;
+    public static HashMap<String, File> removal = null;
 
 
     /**We should now list the methods which will be helpful storing information of files.

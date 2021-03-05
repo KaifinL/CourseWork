@@ -84,7 +84,9 @@ public class Main {
                             e.printStackTrace();
                         }
                     }
-                }else if ()
+                }else if (args[2].equals("--")) {
+                    
+                }
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

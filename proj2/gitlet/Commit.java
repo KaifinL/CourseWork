@@ -6,10 +6,8 @@ package gitlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date; // TODO: You'll likely use this in this class
 import java.util.HashMap;
-import java.util.LinkedList;
 
 /** Represents a gitlet commit object.
  *  TODO: It's a good idea to give a description here of what else this Class
@@ -35,6 +33,7 @@ public class Commit implements Serializable {
     /** to collect the files in the commit */
     public HashMap<String, String> snapshot;
 
+    private String parentId;
     public String id;
 
     /**
@@ -59,6 +58,8 @@ public class Commit implements Serializable {
     public Commit(String message, Date timestamp) {
         this.message = message;
         this.timestamp = timestamp;
+        this.id = Utils.sha1(this);
+        this.snapshot = null;
     }
 
     /**

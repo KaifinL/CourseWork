@@ -34,8 +34,7 @@ public class Main {
                     if (StagingArea.containsName(args[1])) {
                         StagingArea.addition.remove(args[1]);
                     }
-                    String newFile = Utils.readContentsAsString(toBeAdded);
-                    StagingArea.addition.put(args[1], newFile);
+                    StagingArea.addition.put(args[1], toBeAdded);
                 }
                 // TODO: handle the `add [filename]` command
                 break;
@@ -69,7 +68,12 @@ public class Main {
                  * in the working directory, overwriting the version of the file that’s already there
                  * if there is one. The new version of the file is not staged.
                  */
-                if (args[1] == "--") {
+                if (args[1].equals("--")) {
+                    String target = args[2];
+                    if (!Repository.Head.snapshot.containsKey(target)) {
+                        Utils.exitWithError("");
+                    }
+                    File Head = Utils.join(Repository.Commits, Repository.Head.getId());
                     Checkout.checkout1(args[2]);
                 }
             default:

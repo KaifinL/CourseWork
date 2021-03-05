@@ -1,5 +1,7 @@
 package gitlet;
 
+import org.checkerframework.checker.units.qual.C;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -86,6 +88,8 @@ public class Main {
                         }
                     }
                 }else if (args[2].equals("--")) {
+                    File targetCom = Utils.join(Repository.Commits, args[1]);
+                    Commit targetCommit = Utils.readObject(targetCom, Commit.class);
                     
                     /**Takes the version of the file as it exists in the commit with the given id,
                      * and puts it in the working directory, overwriting the version of the file

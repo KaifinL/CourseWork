@@ -45,9 +45,6 @@ public class Repository {
 
     public static void makeCommit(String message) {
         /**
-         * TODO: make a new commit
-         * TODO: inherit the snapshot from its parent
-         * TODO: update the files from staging area
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();

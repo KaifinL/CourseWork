@@ -32,9 +32,9 @@ public class Repository {
     public static final File Commits = join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
 
-    public static branch Head = new branch("Head", null);
-    public static branch master = new branch("master", null);
-    public static branch branch = new branch("branch", null);
+    public static Commit Head;
+    public static Commit master;
+    public static Commit branch;
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -42,8 +42,8 @@ public class Repository {
         Commit initialCommit = new Commit();
         File InitialCommitFile = join(Commits, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);
-        master.pointer = initialCommit;
-        master.pointer = Head.pointer;
+        master = initialCommit;
+        master = Head;
     }
 
     public static void add(String fileName) {
@@ -63,19 +63,19 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();
-        File parentFile = Utils.join(Commits, Head.pointer.getId());
+        File parentFile = Utils.join(Commits, Head.getId());
         Commit newCommit = readObject(parentFile, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;
         newCommit.makeChange(message, dateObj);
         newCommit.id = Utils.sha1(newCommit);
         newCommit.saveCommit();
-        Head.pointer = newCommit;
+        Head = newCommit;
     }
 
     public static boolean removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
-        Commit currentCommit = Head.pointer;
+        Commit currentCommit = Head;
         boolean changed = false;
         if (!tobeRemoved.exists()) {
             changed = Utils.restrictedDelete(Filename);
@@ -104,7 +104,7 @@ public class Repository {
 
     /** haven't done with merge log information yet */
     public static void log() {
-        Commit curr = Head.pointer;
+        Commit curr = Head;
         while(curr != null) {
             logHelper(curr);
             curr = curr.getParent();
@@ -136,7 +136,7 @@ public class Repository {
         if (args[1].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[2]);
             createFile(targetFile);
-            byte[] targetContent = Head.pointer.snapshot.get(args[2]).getBlob();
+            byte[] targetContent = Head.snapshot.get(args[2]).getBlob();
             Utils.writeObject(targetFile, targetContent);
         }else if (args[2].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[3]);
@@ -171,9 +171,9 @@ public class Repository {
     }
 
     public static void branchFunc(String branchName) {
-        branch.name = branchName;
-        Commit curr = Head.pointer;
-        master.pointer = curr;
+        branch = branchName;
+        Commit curr = Head;
+        master = curr;
         Head = branch;
     }
 

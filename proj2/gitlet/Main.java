@@ -89,6 +89,7 @@ public class Main {
                 }
             case "global-log":
                 Repository.globalLog();
+            case ""
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

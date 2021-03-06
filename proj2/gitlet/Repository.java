@@ -88,7 +88,7 @@ public class Repository {
             System.out.println(curr.getMessage());
             System.out.println();
             if (curr.parent2Exist()) {
-                System.out.println("");
+                System.out.println("Merged development into master.");
             }
             curr = curr.getParent();
         }

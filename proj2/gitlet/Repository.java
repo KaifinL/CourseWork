@@ -100,5 +100,12 @@ public class Repository {
             e.printStackTrace();
         }
     }
+    public static void checkout2(String target, File targetFile) {
+        if (!Repository.Head.snapshot.containsKey(target)) {
+            Utils.exitWithError("File does not exist in that commit.");
+        }else {
+            Repository.checkout(targetFile, target);
+        }
+    }
 
 }

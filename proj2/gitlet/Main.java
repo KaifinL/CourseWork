@@ -89,7 +89,9 @@ public class Main {
                 }
             case "global-log":
                 Repository.globalLog();
-            case ""
+            case "find":
+                String commitMess = args[1];
+                
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

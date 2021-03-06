@@ -1,6 +1,7 @@
 package gitlet;
 
 import java.io.File;
+import java.io.IOException;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
  *  @author Kaifeng Lin
@@ -60,9 +61,12 @@ public class Main {
                  * if there is one. The new version of the file is not staged.
                  */
                 if (args[1].equals("--")) {
-                    File targetFile = 
+                    File targetFile = Utils.join(Repository.GITLET_DIR, args[2]);
+                    Repository.checkout(targetFile);
+                    byte[] targetContent = Repository.Head.snapshot.get(args[2]).getBlob();
+                    Utils.writeObject(targetFile, targetContent);
                 }else if (args[2].equals("--")) {
-
+                    
                 }else {
                     /** TODO: haven't done anything with this situation yet!
                      *

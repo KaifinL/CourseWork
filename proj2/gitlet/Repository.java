@@ -43,7 +43,7 @@ public class Repository {
         File InitialCommitFile = join(Commits, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);
         Master = initialCommit;
-        Head = initialCommit;
+        Head = Master;
         Branch = null;
     }
 

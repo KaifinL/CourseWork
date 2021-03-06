@@ -33,8 +33,8 @@ public class Repository {
     /* TODO: fill in the rest of this class. */
 
     public static Commit Head;
-    public static Commit Master;
-    public static Commit Branch;
+    public static Commit master;
+    public static Commit branch;
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -42,9 +42,8 @@ public class Repository {
         Commit initialCommit = new Commit();
         File InitialCommitFile = join(Commits, "InitialCommit");
         writeObject(InitialCommitFile, initialCommit);
-        Master = initialCommit;
-        Head = Master;
-        Branch = null;
+        master = initialCommit;
+        master = Head;
     }
 
     public static void add(String fileName) {

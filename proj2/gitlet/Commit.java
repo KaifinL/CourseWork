@@ -47,7 +47,7 @@ public class Commit implements Serializable {
         this.parent2Id = null;
     }
 
-    /** this is to create a new commit but not the initialized one */
+    /**
     public Commit(String message, Date timestamp) {
         this.message = message;
         this.timestamp = timestamp;
@@ -55,6 +55,8 @@ public class Commit implements Serializable {
         this.snapshot = null;
         this.parent2Id = null;
     }
+
+    */
 
     /**
      * save each commit in a file just something like 'dog' in lab6

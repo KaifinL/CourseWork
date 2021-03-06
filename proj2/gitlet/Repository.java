@@ -53,6 +53,7 @@ public class Repository {
         File parentFile = Utils.join(Commits, newCommit.getParentId());
         newCommit = readObject(parentFile, Commit.class);
         newCommit.parentId = newCommit.id;
+        newCommit.parent2Id = null;
         newCommit.id = Utils.sha1(newCommit);
         newCommit.makeChange(message);
         newCommit.saveCommit();
@@ -86,6 +87,9 @@ public class Repository {
             System.out.println("Date: " + formatter.format(curr.getTimestamp()));
             System.out.println(curr.getMessage());
             System.out.println();
+            if (curr.parent2Exist()) {
+                System.out.println("");
+            }
             curr = curr.getParent();
         }
     }

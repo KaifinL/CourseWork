@@ -101,7 +101,7 @@ public class Commit implements Serializable {
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
     public void makeChange(String message, Date date) {
         for (String x : snapshot.keySet()) {
-            if (StagingArea.containsName(x)) {
+            if (StagingArea.containsName(StagingArea.addition, x)) {
                 snapshot.remove(x);
             }
         }

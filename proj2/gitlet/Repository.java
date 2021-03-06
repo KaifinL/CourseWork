@@ -92,7 +92,6 @@ public class Repository {
 
     public static void checkout(File targetFile, String target) {
         String copyContent = Utils.readContentsAsString(targetFile);
-        Utils.restrictedDelete(targetFile);
         File newCopy = Utils.join(Repository.GITLET_DIR, target);
         Utils.writeContents(newCopy, copyContent);
         try {

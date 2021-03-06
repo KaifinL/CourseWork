@@ -34,12 +34,6 @@ public class Commit implements Serializable {
     public String parent2Id;
     public String id;
 
-    /**
-     * TODO: frame a construction that stores all the files.This should be a instance variable since
-     * every commit's files are different and that's also what you have to checkout.
-     */
-
-
     /* TODO: fill in the rest of this class. */
 
 
@@ -99,7 +93,9 @@ public class Commit implements Serializable {
         return parent2Id != null;
     }
 
-    /** a method that can change a commit's file */
+    /** a method that can change a commit's file
+     *  and I think this method works correctly!
+     *  */
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
     public void makeChange(String message, Date date) {
         for (String x : snapshot.keySet()) {
@@ -112,14 +108,11 @@ public class Commit implements Serializable {
         }
         this.message = message;
         this.timestamp = date;
-        /** by doing this the way we represent the time would be a little bit complex:
-         * System.out.println(formatter.format(timestamp));
-         * this may cause a time zone error (i don't know whether if it may)
-         */
         StagingArea.addition.clear();
         StagingArea.removal.clear();
     }
 
+    // return the parent of the current commit
     public Commit getParent() {
         File parent =Utils.join(Repository.Commits, getParentId()) ;
         Commit parentCommit = Utils.readObject(parent, Commit.class);

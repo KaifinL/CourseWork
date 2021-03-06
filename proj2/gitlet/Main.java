@@ -66,7 +66,8 @@ public class Main {
                 String commitMess = args[1];
                 Repository.find(commitMess);
                 break;
-            case ""
+            case "branch":
+                Repository.branchFunc(args[1]);
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

@@ -123,9 +123,6 @@ public class Repository {
             }
         }
     }
-    public static void checkout2(String target, File targetFile) {
-
-    }
     public static void globalLog() {
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {

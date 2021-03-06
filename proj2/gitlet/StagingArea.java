@@ -19,11 +19,11 @@ public class StagingArea {
      * the contents needed to be stored are file's name,file's content
      */
 
-    public static boolean containsName(String a) {
-        if (addition == null) {
+    public static boolean containsName(HashMap a, String b) {
+        if (a == null) {
             return false;
         }
-        return addition.containsKey(a);
+        return a.containsKey(b);
     }
 
     public static boolean sameContents(String key, String a) {

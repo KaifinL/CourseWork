@@ -126,7 +126,7 @@ public class Repository {
         }
     }
 
-    public static boolean find(String message) {
+    public static void find(String message) {
         boolean exist = false;
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {
@@ -139,9 +139,8 @@ public class Repository {
             }
         }
         if (exist == false) {
-            System.out.println("");
+            System.out.println("Found no commit with that message.");
         }
-        return exist;
     }
 
 }

@@ -42,8 +42,9 @@ public class Repository {
         Commit initialCommit = new Commit();
         File InitialCommitFile = join(Commits, initialCommit.id);
         writeObject(InitialCommitFile, initialCommit);
-        master = initialCommit;
+        Head = initialCommit;
         master = Head;
+
     }
 
     public static void add(String fileName) {

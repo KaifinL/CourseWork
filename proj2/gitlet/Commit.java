@@ -44,7 +44,7 @@ public class Commit implements Serializable {
         this.snapshot = null;
         this.parentId = null;
         this.parent2Id = null;
-        this.id = Utils.sha1(this);
+        this.id = Utils.sha1(this.toString());
     }
 
     /**

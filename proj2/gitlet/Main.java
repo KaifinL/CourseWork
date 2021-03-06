@@ -60,15 +60,9 @@ public class Main {
                  * if there is one. The new version of the file is not staged.
                  */
                 if (args[1].equals("--")) {
-                    String target = args[2];
-                    Blob targetBlob = Repository.Head.snapshot.get(target);
-                    Repository.checkout2(target, targetFile);
+                    File targetFile = 
                 }else if (args[2].equals("--")) {
-                    String target = args[3];
-                    File targetCom = Utils.join(Repository.Commits, args[1]);
-                    Commit targetCommit = Utils.readObject(targetCom, Commit.class);
-                    File targetFile = targetCommit.snapshot.get(args[3]);
-                    Repository.checkout2(target, targetFile);
+
                 }else {
                     /** TODO: haven't done anything with this situation yet!
                      *

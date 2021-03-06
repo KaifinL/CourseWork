@@ -31,6 +31,7 @@ public class Commit implements Serializable {
     /** to collect the files in the commit */
     public HashMap<String, File> snapshot;
     public String parentId;
+    public String parent2Id;
     public String id;
 
     /**
@@ -49,6 +50,7 @@ public class Commit implements Serializable {
         this.snapshot = null;
         this.id = Utils.sha1(this);
         this.parentId = null;
+        this.parent2Id = null;
     }
 
     /** this is to create a new commit but not the initialized one */
@@ -57,6 +59,7 @@ public class Commit implements Serializable {
         this.timestamp = timestamp;
         this.id = Utils.sha1(this);
         this.snapshot = null;
+        this.parent2Id = null;
     }
 
     /**
@@ -87,6 +90,13 @@ public class Commit implements Serializable {
     }
     public Date getTimestamp() {
         return timestamp;
+    }
+    public String getParent2Id() {
+        return this.parent2Id;
+    }
+
+    public boolean parent2Exist() {
+        return parent2Id != null;
     }
 
     /** a method that can change a commit's file */

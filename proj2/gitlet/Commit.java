@@ -29,7 +29,7 @@ public class Commit implements Serializable {
     /** The time of this Commit. */
     private Date timestamp;
     /** to collect the files in the commit */
-    public HashMap<String, File> snapshot;
+    public HashMap<String, Blob> snapshot;
     public String parentId;
     public String parent2Id;
     public String id;
@@ -101,7 +101,7 @@ public class Commit implements Serializable {
 
     /** a method that can change a commit's file */
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
-    public void makeChange(String message) {
+    public void makeChange(String message, Date date) {
         for (String x : snapshot.keySet()) {
             if (StagingArea.containsName(x)) {
                 snapshot.remove(x);
@@ -111,12 +111,11 @@ public class Commit implements Serializable {
             snapshot.put(y, StagingArea.addition.get(y));
         }
         this.message = message;
-
+        this.timestamp = date;
         /** by doing this the way we represent the time would be a little bit complex:
          * System.out.println(formatter.format(timestamp));
          * this may cause a time zone error (i don't know whether if it may)
          */
-        this.timestamp = new Date(System.currentTimeMillis());
         StagingArea.addition.clear();
         StagingArea.removal.clear();
     }

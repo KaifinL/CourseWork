@@ -170,4 +170,11 @@ public class Repository {
         }
     }
 
+    public static void branchFunc(String branchName) {
+        branch.name = branchName;
+        Commit curr = Head.pointer;
+        master.pointer = curr;
+        Head = branch;
+    }
+
 }

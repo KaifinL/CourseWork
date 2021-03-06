@@ -171,7 +171,6 @@ public class Repository {
     }
 
     public static void branchFunc(String branchName) {
-        branch = branchName;
         Commit curr = Head;
         master = curr;
         Head = branch;

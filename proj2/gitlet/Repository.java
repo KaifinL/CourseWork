@@ -138,6 +138,9 @@ public class Repository {
                 }
             }
         }
+        if (exist == false) {
+            System.out.println("");
+        }
         return exist;
     }
 

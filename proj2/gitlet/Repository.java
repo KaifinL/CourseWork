@@ -1,6 +1,5 @@
 package gitlet;
 
-import org.checkerframework.checker.units.qual.C;
 
 import java.io.File;
 import java.io.IOException;
@@ -118,10 +117,12 @@ public class Repository {
         }
     }
     public static void globalLog() {
-        for (String name : Utils.plainFilenamesIn(Commits)) {
-            File currFile = Utils.join(Commits, name);
-            Commit curr = Utils.readObject(currFile, Commit.class);
-            logHelper(curr);
+        if (Utils.plainFilenamesIn(Commits) != null) {
+            for (String name : Utils.plainFilenamesIn(Commits)) {
+                File currFile = Utils.join(Commits, name);
+                Commit curr = Utils.readObject(currFile, Commit.class);
+                logHelper(curr);
+            }
         }
     }
 

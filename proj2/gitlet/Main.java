@@ -35,15 +35,7 @@ public class Main {
                 break;
             // TODO: FILL THE REST IN
             case "commit":
-                if (args.length == 1) {
-                    Utils.exitWithError("Please enter a commit message.");
-                }
-                String message = args[1];
-                if (StagingArea.addition == null) {
-                    Utils.exitWithError("No changes added to the commit.");
-                }else {
-                    Repository.makeCommit(message);
-                }
+                Repository.finalCommit(args);
                 break;
 
             case "rm":

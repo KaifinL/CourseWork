@@ -131,6 +131,27 @@ public class Repository {
         }
     }
 
+    public static void checkout(String[] args) {
+        if (args[1].equals("--")) {
+            File targetFile = Utils.join(GITLET_DIR, args[2]);
+            createFile(targetFile);
+            byte[] targetContent = Head.snapshot.get(args[2]).getBlob();
+            Utils.writeObject(targetFile, targetContent);
+        }else if (args[2].equals("--")) {
+            File targetFile = Utils.join(GITLET_DIR, args[3]);
+            createFile(targetFile);
+            File commitFile = Utils.join(Commits, args[1]);
+            Commit targetCommit = Utils.readObject(commitFile, Commit.class);
+            byte[] targetContent = targetCommit.snapshot.get(args[3]).getBlob();
+            Utils.writeObject(targetFile, targetContent);
+        }else {
+            /** TODO: haven't done anything with this situation yet!
+             *
+             */
+            String targetName = args[1];
+        }
+    }
+
     public static void find(String message) {
         boolean exist = false;
         if (Utils.plainFilenamesIn(Commits) != null) {

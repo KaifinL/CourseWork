@@ -48,20 +48,16 @@ public class Repository {
 
     public static void add(String fileName) {
         File tobeAdded = Utils.join(GITLET_DIR, fileName);
-        if (!tobeAdded.exists()) {
-            Utils.exitWithError("File does not exist.");
-        }else {
-            if (StagingArea.containsName(fileName)) {
-                Blob tobeAdd = new Blob(tobeAdded);
-                Blob donknow = Head.snapshot.get(fileName);
-                StagingArea.addition.remove(fileName);
-                if (!tobeAdd.getBlobId().equals(donknow.getBlobId())){
-                    StagingArea.addition.put(fileName, new Blob(tobeAdded));
-                }
+        if (StagingArea.containsName(fileName)) {
+            Blob tobeAdd = new Blob(tobeAdded);
+            Blob donknow = Head.snapshot.get(fileName);
+            StagingArea.addition.remove(fileName);
+            if (!tobeAdd.getBlobId().equals(donknow.getBlobId())){
+                StagingArea.addition.put(fileName, new Blob(tobeAdded));
             }
-            if (StagingArea.removal.containsKey(fileName)) {
-                StagingArea.removal.remove(fileName);
-            }
+        }
+        if (StagingArea.removal.containsKey(fileName)) {
+            StagingArea.removal.remove(fileName);
         }
     }
 

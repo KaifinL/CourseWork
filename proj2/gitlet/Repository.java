@@ -110,22 +110,11 @@ public class Repository {
         }
     }
 
-    public static void checkout(File targetFile, String target) {
-        String copyContent = Utils.readContentsAsString(targetFile);
-        File newCopy = Utils.join(Repository.GITLET_DIR, target);
-        Utils.writeContents(newCopy, copyContent);
-        try {
-            newCopy.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void checkout(File targetFile, Blob target) {
+
     }
     public static void checkout2(String target, File targetFile) {
-        if (!Repository.Head.snapshot.containsKey(target)) {
-            Utils.exitWithError("File does not exist in that commit.");
-        }else {
-            Repository.checkout(targetFile, target);
-        }
+
     }
     public static void globalLog() {
         if (Utils.plainFilenamesIn(Commits) != null) {

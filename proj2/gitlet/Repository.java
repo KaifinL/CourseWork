@@ -47,7 +47,7 @@ public class Repository {
     }
 
     public static void add(String fileName) {
-        File tobeAdded = Utils.join(GITLET_DIR, fileName);
+        File tobeAdded = Utils.join(CWD, fileName);
         if (!tobeAdded.exists()) {
             Utils.exitWithError("File does not exist.");
         }else {

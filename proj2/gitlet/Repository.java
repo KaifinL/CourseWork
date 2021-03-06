@@ -44,6 +44,7 @@ public class Repository {
         writeObject(InitialCommitFile, initialCommit);
         Master = initialCommit;
         Head = initialCommit;
+        Branch = null;
     }
 
     public static void add(String fileName) {

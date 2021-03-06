@@ -80,6 +80,18 @@ public class Repository {
         Head = newCommit;
     }
 
+    public static void finalCommit(String[] args) {
+        if (args.length == 1) {
+            Utils.exitWithError("Please enter a commit message.");
+        }
+        String message = args[1];
+        if (StagingArea.addition == null) {
+            Utils.exitWithError("No changes added to the commit.");
+        }else {
+            Repository.makeCommit(message);
+        }
+    }
+
     public static boolean removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
         Commit currentCommit = Head;

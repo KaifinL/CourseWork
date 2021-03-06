@@ -126,5 +126,4 @@ public class Commit implements Serializable {
         Commit parentCommit = Utils.readObject(parent, Commit.class);
         return parentCommit;
     }
-
 }

@@ -52,6 +52,8 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             if (StagingArea.containsName(fileName)) {
+                Blob donknow = Head.snapshot.get(fileName);
+                String compare = Utils.readContentsAsString()
                 StagingArea.addition.remove(fileName);
             }
             StagingArea.addition.put(fileName, new Blob(tobeAdded));

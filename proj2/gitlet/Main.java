@@ -73,21 +73,14 @@ public class Main {
                  */
                 if (args[1].equals("--")) {
                     String target = args[2];
-                    if (!Repository.Head.snapshot.containsKey(target)) {
-                        Utils.exitWithError("File does not exist in that commit.");
-                    }else {
-                        File targetFile = Repository.Head.snapshot.get(target);
-                        Repository.checkout(targetFile, target);
-                    }
+                    File targetFile = Repository.Head.snapshot.get(target);
+                    Repository.checkout2(target, targetFile);
                 }else if (args[2].equals("--")) {
-                    if (!Repository.Head.snapshot.containsKey(args[3])) {
-                        Utils.exitWithError("File does not exist in that commit.");
-                    }else {
-                        File targetCom = Utils.join(Repository.Commits, args[1]);
-                        Commit targetCommit = Utils.readObject(targetCom, Commit.class);
-                        File targetFile = targetCommit.snapshot.get(args[3]);
-                        Repository.checkout(targetFile, args[3]);
-                    }
+                    String target = args[3];
+                    File targetCom = Utils.join(Repository.Commits, args[1]);
+                    Commit targetCommit = Utils.readObject(targetCom, Commit.class);
+                    File targetFile = targetCommit.snapshot.get(args[3]);
+                    Repository.checkout2(target, targetFile);
                 }else {
                     /** TODO: haven't done anything with this situation yet!
                      *

@@ -1,9 +1,6 @@
 package gitlet;
 
-import org.checkerframework.checker.units.qual.C;
-
 import java.io.File;
-import java.io.IOException;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
  *  @author Kaifeng Lin
@@ -30,18 +27,9 @@ public class Main {
                 // TODO: handle the `init` command
                 break;
             case "add":
-                File toBeAdded = Utils.join(Repository.GITLET_DIR, args[1]);
-                if (!toBeAdded.exists()) {
-                    Utils.exitWithError("File does not exist.");
-                }else {
-                    if (StagingArea.containsName(args[1])) {
-                        StagingArea.addition.remove(args[1]);
-                    }
-                    StagingArea.addition.put(args[1], toBeAdded);
-                }
+                Repository.add(args[1]);
                 // TODO: handle the `add [filename]` command
                 break;
-
             // TODO: FILL THE REST IN
             case "commit":
                 if (args.length == 1) {
@@ -73,7 +61,7 @@ public class Main {
                  */
                 if (args[1].equals("--")) {
                     String target = args[2];
-                    File targetFile = Repository.Head.snapshot.get(target);
+                    Blob targetBlob = Repository.Head.snapshot.get(target);
                     Repository.checkout2(target, targetFile);
                 }else if (args[2].equals("--")) {
                     String target = args[3];

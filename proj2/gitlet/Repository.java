@@ -110,8 +110,18 @@ public class Repository {
         }
     }
 
-    public static void checkout(File targetFile, Blob target) {
-
+    /** this method is to create the target file if it doesn't exist
+     *
+     * @param targetFile
+     */
+    public static void checkout(File targetFile) {
+        if (!targetFile.exists()) {
+            try {
+                targetFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
     public static void checkout2(String target, File targetFile) {
 

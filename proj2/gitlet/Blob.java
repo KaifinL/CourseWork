@@ -3,10 +3,8 @@ package gitlet;
 import java.io.File;
 
 /**
- * this class is to represent the changed contents of files and to make things easier
- * also by this class we are able to keep track of what files have been changed so we are able to store
- * them in commits.
- * This is basically work for 'commits'
+ * the Blob class can somehow represent the content of a file while simply use a file can't.
+ * I attempt to use it instead of direct file in the Commit 's property 'snapshot'
  */
 public class Blob {
 
@@ -15,14 +13,14 @@ public class Blob {
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.
      */
+
+    // create a blob by the pass-in file
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
     }
 
-    public Blob() {
-        this.BlobContent = null;
-    }
 
+    // return the content of a Blob
     public byte[] getBlob() {
         return this.BlobContent;
     }

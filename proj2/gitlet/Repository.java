@@ -114,7 +114,7 @@ public class Repository {
      *
      * @param targetFile
      */
-    public static void checkout(File targetFile) {
+    public static void createFile(File targetFile) {
         if (!targetFile.exists()) {
             try {
                 targetFile.createNewFile();

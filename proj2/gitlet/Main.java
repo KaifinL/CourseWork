@@ -1,5 +1,7 @@
 package gitlet;
 
+import org.checkerframework.checker.units.qual.C;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -68,7 +70,10 @@ public class Main {
                 }else if (args[2].equals("--")) {
                     File targetFile = Utils.join(Repository.GITLET_DIR, args[3]);
                     Repository.createFile(targetFile);
-                    
+                    File commitFile = Utils.join(Repository.Commits, args[1]);
+                    Commit targetCommit = Utils.readObject(commitFile, Commit.class);
+                    byte[] targetContent = targetCommit.snapshot.get(args[3]).getBlob();
+                    Utils.writeObject(targetFile, targetContent);
                 }else {
                     /** TODO: haven't done anything with this situation yet!
                      *

@@ -1,5 +1,7 @@
 package gitlet;
 
+import org.checkerframework.checker.units.qual.C;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -77,19 +79,23 @@ public class Repository {
         return changed;
     }
 
+    public static void logHelper(Commit cur) {
+        System.out.println("===");
+        System.out.println("commit " + cur.id);
+        SimpleDateFormat formatter= new SimpleDateFormat("d, EEE MMM HH:mm:ss yyyy Z");
+        System.out.println("Date: " + formatter.format(cur.getTimestamp()));
+        System.out.println(cur.getMessage());
+        System.out.println();
+        if (cur.parent2Exist()) {
+            System.out.println("Merged development into master.");
+        }
+    }
+
     /** haven't done with merge log information yet */
     public static void log() {
         Commit curr = Head;
         while(curr != null) {
-            System.out.println("===");
-            System.out.println("commit " + curr.id);
-            SimpleDateFormat formatter= new SimpleDateFormat("d, EEE MMM HH:mm:ss yyyy Z");
-            System.out.println("Date: " + formatter.format(curr.getTimestamp()));
-            System.out.println(curr.getMessage());
-            System.out.println();
-            if (curr.parent2Exist()) {
-                System.out.println("Merged development into master.");
-            }
+            logHelper(curr);
             curr = curr.getParent();
         }
     }
@@ -112,8 +118,11 @@ public class Repository {
         }
     }
     public static void globalLog() {
-        for ()
-
+        for (String name : Utils.plainFilenamesIn(Commits)) {
+            File currFile = Utils.join(Commits, name);
+            Commit curr = Utils.readObject(currFile, Commit.class);
+            logHelper(curr);
+        }
     }
 
 }

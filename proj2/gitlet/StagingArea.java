@@ -13,10 +13,6 @@ public class StagingArea {
     public static HashMap<String, Blob> addition;
     public static HashMap<String, Blob> removal;
 
-    public static void setup() {
-        addition.put(null, null);
-        removal.put(null, null);
-    }
 
 
     /**We should now list the methods which will be helpful storing information of files.

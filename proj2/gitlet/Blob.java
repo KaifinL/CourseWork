@@ -9,16 +9,16 @@ import java.util.HashSet;
  * them in commits.
  * This is basically work for 'commits'
  */
-public class Blobs {
+public class Blob {
 
-    private String BlobContent;
+    private byte[] BlobContent;
     private String BlobsName;
     private HashSet BlobCollection;
     /**
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.
      */
-    public Blobs(File tobeRead) {
-        this.BlobContent = Utils.readContentsAsString(tobeRead);
+    public Blob(File tobeRead) {
+        this.BlobContent = Utils.readContents(tobeRead);
     }
 }

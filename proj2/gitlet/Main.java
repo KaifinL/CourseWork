@@ -87,6 +87,7 @@ public class Main {
                      */
                     String targetName = args[1];
                 }
+                case ""
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

@@ -112,6 +112,7 @@ public class Repository {
         }
     }
     public static void globalLog() {
+        for ()
 
     }
 

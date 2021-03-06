@@ -57,34 +57,16 @@ public class Main {
                 Repository.log();
                 break;
             case "checkout":
-                /**
-                 * Takes the version of the file as it exists in the head commit and puts it
-                 * in the working directory, overwriting the version of the file that’s already there
-                 * if there is one. The new version of the file is not staged.
-                 */
-                if (args[1].equals("--")) {
-                    File targetFile = Utils.join(Repository.GITLET_DIR, args[2]);
-                    Repository.createFile(targetFile);
-                    byte[] targetContent = Repository.Head.snapshot.get(args[2]).getBlob();
-                    Utils.writeObject(targetFile, targetContent);
-                }else if (args[2].equals("--")) {
-                    File targetFile = Utils.join(Repository.GITLET_DIR, args[3]);
-                    Repository.createFile(targetFile);
-                    File commitFile = Utils.join(Repository.Commits, args[1]);
-                    Commit targetCommit = Utils.readObject(commitFile, Commit.class);
-                    byte[] targetContent = targetCommit.snapshot.get(args[3]).getBlob();
-                    Utils.writeObject(targetFile, targetContent);
-                }else {
-                    /** TODO: haven't done anything with this situation yet!
-                     *
-                     */
-                    String targetName = args[1];
-                }
+                Repository.checkout(args);
+                break;
             case "global-log":
                 Repository.globalLog();
+                break;
             case "find":
                 String commitMess = args[1];
                 Repository.find(commitMess);
+                break;
+                
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

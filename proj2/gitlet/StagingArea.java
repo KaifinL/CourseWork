@@ -10,8 +10,8 @@ public class StagingArea {
      *
      */
 
-    public static HashMap<String, Blob> addition;
-    public static HashMap<String, Blob> removal;
+    public static HashMap<String, Blob> addition = null;
+    public static HashMap<String, Blob> removal = null;
 
 
 

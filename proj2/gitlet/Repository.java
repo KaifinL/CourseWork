@@ -34,6 +34,7 @@ public class Repository {
 
     public static Commit Head;
     public static Commit Master;
+    public static Commit Branch;
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();

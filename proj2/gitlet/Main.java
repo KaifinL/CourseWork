@@ -89,7 +89,10 @@ public class Main {
                         Repository.checkout(targetFile, args[3]);
                     }
                 }else {
-                    
+                    /** TODO: haven't done anything with this situation yet!
+                     *
+                     */
+                    String targetName = args[1];
                 }
             default:
                 Utils.exitWithError("No command with that name exists.");

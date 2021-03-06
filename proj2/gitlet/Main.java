@@ -91,7 +91,7 @@ public class Main {
                 Repository.globalLog();
             case "find":
                 String commitMess = args[1];
-
+                Repository.find(commitMess);
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

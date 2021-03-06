@@ -75,7 +75,7 @@ public class Repository {
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;
         newCommit.makeChange(message, dateObj);
-        newCommit.id = Utils.sha1(newCommit);
+        newCommit.id = Utils.sha1(newCommit.toString());
         newCommit.saveCommit();
         Head = newCommit;
     }

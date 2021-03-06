@@ -10,8 +10,8 @@ public class StagingArea {
      *
      */
 
-    public static HashMap<String, File> addition = null;
-    public static HashMap<String, File> removal = null;
+    public static HashMap<String, Blob> addition = null;
+    public static HashMap<String, Blob> removal = null;
 
 
     /**We should now list the methods which will be helpful storing information of files.

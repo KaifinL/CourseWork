@@ -53,15 +53,15 @@ public class Repository {
         }else {
             if (StagingArea.containsName(StagingArea.addition, fileName)) {
                 Blob tobeAdd = new Blob(tobeAdded);
-                Blob donknow = Head.snapshot.get(fileName);
+                String donknow = Head.snapshot.get(fileName);
                 StagingArea.addition.remove(fileName);
-                if (!tobeAdd.getBlobId().equals(donknow.getBlobId())){
-                    StagingArea.addition.put(fileName, new Blob(tobeAdded));
+                if (!tobeAdd.getBlobId().equals(donknow)){
+                    StagingArea.addition.put(fileName, new Blob(tobeAdded).getBlobId());
                 }
             }else if (StagingArea.containsName(StagingArea.removal, fileName)) {
                 StagingArea.removal.remove(fileName);
             }else {
-                StagingArea.addition.put(fileName, new Blob(tobeAdded));
+                StagingArea.addition.put(fileName, new Blob(tobeAdded).getBlobId());
             }
         }
     }
@@ -103,7 +103,7 @@ public class Repository {
             StagingArea.addition.remove(Filename);
             changed = true;
         }else if(currentCommit.snapshot.containsKey(Filename)) {
-            StagingArea.removal.put(Filename, new Blob(tobeRemoved));
+            StagingArea.removal.put(Filename, new Blob(tobeRemoved).getBlobId());
             tobeRemoved.delete();
             changed = true;
         }
@@ -156,14 +156,14 @@ public class Repository {
         if (args[1].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[2]);
             createFile(targetFile);
-            byte[] targetContent = Head.snapshot.get(args[2]).getBlob();
+            String targetContent = Head.snapshot.get(args[2]);
             Utils.writeObject(targetFile, targetContent);
         }else if (args[2].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[3]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
-            byte[] targetContent = targetCommit.snapshot.get(args[3]).getBlob();
+            String targetContent = targetCommit.snapshot.get(args[3]);
             Utils.writeObject(targetFile, targetContent);
         }else {
             /** TODO: haven't done anything with this situation yet!

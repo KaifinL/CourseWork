@@ -126,16 +126,19 @@ public class Repository {
         }
     }
 
-    public static void find(String message) {
+    public static boolean find(String message) {
+        boolean exist = false;
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {
                 File currFIle = Utils.join(Commits, name);
                 Commit curr = Utils.readObject(currFIle, Commit.class);
                 if (curr.getMessage().equals(message)) {
                     System.out.println(curr.getId());
+                    exist = true;
                 }
             }
         }
+        return exist;
     }
 
 }

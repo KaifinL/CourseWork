@@ -44,7 +44,6 @@ public class Repository {
         writeObject(InitialCommitFile, initialCommit);
         master = initialCommit;
         master = Head;
-        StagingArea.setup();
     }
 
     public static void add(String fileName) {

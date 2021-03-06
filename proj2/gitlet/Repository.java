@@ -111,5 +111,8 @@ public class Repository {
             Repository.checkout(targetFile, target);
         }
     }
+    public static void globalLog() {
+
+    }
 
 }

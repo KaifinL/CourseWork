@@ -52,11 +52,13 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             if (StagingArea.containsName(fileName)) {
+                Blob tobeAdd = new Blob(tobeAdded);
                 Blob donknow = Head.snapshot.get(fileName);
-                String compare = Utils.readContentsAsString()
                 StagingArea.addition.remove(fileName);
+                if (!tobeAdd.getBlobId().equals(donknow.getBlobId())){
+                    StagingArea.addition.put(fileName, new Blob(tobeAdded));
+                }
             }
-            StagingArea.addition.put(fileName, new Blob(tobeAdded));
         }
     }
 

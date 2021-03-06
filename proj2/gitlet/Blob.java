@@ -18,7 +18,7 @@ public class Blob {
     // create a blob by the pass-in file
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
-        this.blobId = Utils.sha1(this);
+        this.blobId = Utils.sha1(this.toString());
     }
 
 

@@ -1,7 +1,6 @@
 package gitlet;
 
 import java.io.File;
-import java.util.HashSet;
 
 /**
  * this class is to represent the changed contents of files and to make things easier
@@ -12,13 +11,19 @@ import java.util.HashSet;
 public class Blob {
 
     private byte[] BlobContent;
-    private String BlobsName;
-    private HashSet BlobCollection;
     /**
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.
      */
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
+    }
+
+    public Blob() {
+        this.BlobContent = null;
+    }
+
+    public byte[] getBlob() {
+        return this.BlobContent;
     }
 }

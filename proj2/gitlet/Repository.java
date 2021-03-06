@@ -40,9 +40,7 @@ public class Repository {
         GITLET_DIR.mkdir();
         Commits.mkdir();
         Commit initialCommit = new Commit();
-        String id = Utils.sha1(initialCommit);
-        initialCommit.id = id;
-        File InitialCommitFile = join(Commits, "InitialCommit");
+        File InitialCommitFile = join(Commits, initialCommit.id);
         writeObject(InitialCommitFile, initialCommit);
         master = initialCommit;
         master = Head;

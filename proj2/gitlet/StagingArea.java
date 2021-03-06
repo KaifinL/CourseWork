@@ -20,6 +20,9 @@ public class StagingArea {
      */
 
     public static boolean containsName(String a) {
+        if (addition == null) {
+            return false;
+        }
         return addition.containsKey(a);
     }
 

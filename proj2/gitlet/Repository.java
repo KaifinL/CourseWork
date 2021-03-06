@@ -45,18 +45,29 @@ public class Repository {
         Head = initialCommit;
     }
 
+    public static void add(String fileName) {
+        File tobeAdded = Utils.join(GITLET_DIR, fileName);
+        if (!tobeAdded.exists()) {
+            Utils.exitWithError("File does not exist.");
+        }else {
+            if (StagingArea.containsName(fileName)) {
+                StagingArea.addition.remove(fileName);
+            }
+            StagingArea.addition.put(fileName, new Blob(tobeAdded));
+        }
+    }
+
     public static void makeCommit(String message) {
         /**
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();
-        Commit newCommit = new Commit(message, dateObj);
-        File parentFile = Utils.join(Commits, newCommit.getParentId());
-        newCommit = readObject(parentFile, Commit.class);
+        File parentFile = Utils.join(Commits, Head.getId());
+        Commit newCommit = readObject(parentFile, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;
+        newCommit.makeChange(message, dateObj);
         newCommit.id = Utils.sha1(newCommit);
-        newCommit.makeChange(message);
         newCommit.saveCommit();
         Head = newCommit;
     }
@@ -71,7 +82,7 @@ public class Repository {
             StagingArea.addition.remove(Filename);
             changed = true;
         }else if(currentCommit.snapshot.containsKey(Filename)) {
-            StagingArea.removal.put(Filename, tobeRemoved);
+            StagingArea.removal.put(Filename, new Blob(tobeRemoved));
             tobeRemoved.delete();
             changed = true;
         }

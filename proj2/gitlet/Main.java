@@ -88,7 +88,7 @@ public class Main {
                     String targetName = args[1];
                 }
             case "global-log":
-
+                Repository.globalLog();
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

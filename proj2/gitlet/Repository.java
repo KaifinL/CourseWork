@@ -51,16 +51,17 @@ public class Repository {
         if (!tobeAdded.exists()) {
             Utils.exitWithError("File does not exist.");
         }else {
-            if (StagingArea.containsName(fileName)) {
+            if (StagingArea.containsName(StagingArea.addition, fileName)) {
                 Blob tobeAdd = new Blob(tobeAdded);
                 Blob donknow = Head.snapshot.get(fileName);
                 StagingArea.addition.remove(fileName);
                 if (!tobeAdd.getBlobId().equals(donknow.getBlobId())){
                     StagingArea.addition.put(fileName, new Blob(tobeAdded));
                 }
-            }
-            if (StagingArea.removal.containsKey(fileName)) {
+            }else if (StagingArea.containsName(StagingArea.removal, fileName)) {
                 StagingArea.removal.remove(fileName);
+            }else {
+                StagingArea.addition.put(fileName, new Blob(tobeAdded));
             }
         }
     }

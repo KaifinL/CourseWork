@@ -62,10 +62,12 @@ public class Main {
                  */
                 if (args[1].equals("--")) {
                     File targetFile = Utils.join(Repository.GITLET_DIR, args[2]);
-                    Repository.checkout(targetFile);
+                    Repository.createFile(targetFile);
                     byte[] targetContent = Repository.Head.snapshot.get(args[2]).getBlob();
                     Utils.writeObject(targetFile, targetContent);
                 }else if (args[2].equals("--")) {
+                    File targetFile = Utils.join(Repository.GITLET_DIR, args[3]);
+                    Repository.createFile(targetFile);
                     
                 }else {
                     /** TODO: haven't done anything with this situation yet!

@@ -42,7 +42,6 @@ public class Commit implements Serializable {
         this.message = "initial commit";
         this.timestamp = new Date(0);
         this.snapshot = null;
-        this.id = Utils.sha1(this);
         this.parentId = null;
         this.parent2Id = null;
     }

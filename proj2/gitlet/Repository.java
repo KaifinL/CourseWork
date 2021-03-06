@@ -95,10 +95,10 @@ public class Repository {
         SimpleDateFormat formatter= new SimpleDateFormat("d, EEE MMM HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
-        System.out.println();
         if (cur.parent2Exist()) {
             System.out.println("Merged development into master.");
         }
+        System.out.println();
     }
 
     /** haven't done with merge log information yet */
@@ -110,9 +110,7 @@ public class Repository {
         }
     }
 
-    /** this method is to create the target file if it doesn't exist
-     *
-     * @param targetFile
+    /** create the target file if it doesn't exist
      */
     public static void createFile(File targetFile) {
         if (!targetFile.exists()) {

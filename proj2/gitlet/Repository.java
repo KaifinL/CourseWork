@@ -59,6 +59,9 @@ public class Repository {
                     StagingArea.addition.put(fileName, new Blob(tobeAdded));
                 }
             }
+            if (StagingArea.removal.containsKey(fileName)) {
+                StagingArea.removal.remove(fileName);
+            }
         }
     }
 

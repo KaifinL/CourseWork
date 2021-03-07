@@ -2,6 +2,8 @@ package gitlet;
 
 
 
+import org.checkerframework.checker.units.qual.C;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -167,7 +169,7 @@ public class Repository {
             String targetContent = nHead.snapshot.get(args[2]);
             Utils.writeObject(targetFile, targetContent);
         }else if (args[2].equals("--")) {
-            File targetFile = Utils.join(GITLET_DIR, args[3]);
+            File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);

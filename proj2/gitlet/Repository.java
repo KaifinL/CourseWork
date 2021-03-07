@@ -28,9 +28,9 @@ public class Repository {
     /** The current working directory. */
     public static final File CWD = new File(System.getProperty("user.dir"));
     /** The .gitlet directory. */
-    public static final File GITLET_DIR = join(CWD, ".gitlet");
+    public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
 
-    public static final File Commits = join(GITLET_DIR, "commits");
+    public static final File Commits = Utils.join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
 
     public static Commit Head = new Commit();

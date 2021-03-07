@@ -108,7 +108,8 @@ public class Commit implements Serializable {
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
     public void makeChange(String message, Date date) {
         for (String x : snapshot.keySet()) {
-            if (StagingArea.containsName(StagingArea.addition, x)) {
+            File targetFile = Utils.join(StagingArea.addition, x);
+            if (targetFile.exists()) {
                 snapshot.remove(x);
             }
         }

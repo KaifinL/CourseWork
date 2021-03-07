@@ -36,12 +36,15 @@ public class Repository {
     public static Commit Head = new Commit();
     public static Commit master = new Commit();
     public static Commit branch = new Commit();
+    public static String testId;
+
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commits.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         Head.id = initialCommit.id;
+        testId = initialCommit.id;
         master = Head;
         initialCommit.saveCommit();
     }
@@ -71,7 +74,7 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();
-        File parentFile = Utils.join(Commits, Head.id);
+        File parentFile = Utils.join(Commits, testId);
         Commit newCommit = readObject(parentFile, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;

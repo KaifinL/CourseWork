@@ -39,6 +39,7 @@ public class Repository {
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commits.mkdir();
+        StagingArea.StagingArea.mkdir();
         StagingArea.addition.mkdir();
         StagingArea.removal.mkdir();
         Date initDate = new Date(0);

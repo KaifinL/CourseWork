@@ -55,7 +55,7 @@ public class Repository {
 
     public static void add(String fileName) {
         File tobeAdded = Utils.join(CWD, fileName);
-        if (!tobeAdded.exists()) { // to check if the specified file is in the CWD
+        if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
         }else {
             Blob tobeAdd = new Blob(tobeAdded);

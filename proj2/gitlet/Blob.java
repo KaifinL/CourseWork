@@ -1,6 +1,7 @@
 package gitlet;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * the Blob class can somehow represent the content of a file while simply use a file can't.
@@ -10,6 +11,7 @@ public class Blob {
 
     private byte[] BlobContent;
     private String blobId;
+    public static HashMap<String, byte[]> BlobCollection;
     /**
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.
@@ -19,6 +21,7 @@ public class Blob {
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
         this.blobId = Utils.sha1(this.toString());
+        this.BlobCollection.put(blobId, BlobContent);
     }
 
 
@@ -29,5 +32,9 @@ public class Blob {
 
     public String getBlobId() {
         return this.blobId;
+    }
+
+    public static byte[] getBlobContent(String id) {
+        return BlobCollection.get(id);
     }
 }

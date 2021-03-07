@@ -38,6 +38,7 @@ public class Main {
                 Repository.finalCommit(args);
                 break;
 
+                /** to be revised
             case "rm":
                 String fileName = args[1];
                 if (!Repository.removeFile(fileName)) {
@@ -45,6 +46,7 @@ public class Main {
                 }
                 break;
 
+                 */
             case "log":
                 Repository.log();
                 break;

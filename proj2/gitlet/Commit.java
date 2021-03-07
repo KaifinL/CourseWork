@@ -116,7 +116,11 @@ public class Commit implements Serializable {
         }
         for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) { // put all the files
             File targetFile = Utils.join(StagingArea.addition, fileName); // in addition to snapshot
-            Blob newBlob = new Blob(targetFile);
+            Blob newBlob = new Blob();
+            byte[] contents = Utils.readContents(targetFile);
+            newBlob.BlobContent = contents;
+            newBlob.blobId = Utils.sha1(newBlob.toString());
+            Blob.BlobCollection.put(newBlob.blobId, newBlob.BlobContent);
             String content = newBlob.getBlobId();
             snapshot.put(fileName, content);
         }

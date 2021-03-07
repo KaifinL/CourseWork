@@ -113,8 +113,10 @@ public class Commit implements Serializable {
                 snapshot.remove(x);
             }
         }
-        for (String y : StagingArea.addition.keySet()) {
-            snapshot.put(y, StagingArea.addition.get(y));
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            File targetFile = Utils.join(StagingArea.addition, fileName);
+            String Content = Utils.readContentsAsString(targetFile);
+            snapshot.put(fileName, Content);
         }
         this.message = message;
         this.timestamp = date;

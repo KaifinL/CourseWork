@@ -118,6 +118,8 @@ public class Commit implements Serializable {
             String Content = Utils.readContentsAsString(targetFile);
             snapshot.put(fileName, Content);
         }
+        helpDelete(StagingArea.addition);
+        helpDelete(StagingArea.removal);
         this.message = message;
         this.timestamp = date;
     }
@@ -132,5 +134,11 @@ public class Commit implements Serializable {
     /**
      * TODO: delete all the files in staging area.
      */
+
+    public static void helpDelete(File dir) {
+        for(File file: dir.listFiles())   // @ Google
+            if (!file.isDirectory())
+                file.delete();
+    }
 
 }

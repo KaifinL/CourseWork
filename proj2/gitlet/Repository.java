@@ -167,7 +167,7 @@ public class Repository {
             createFile(targetFile);
             Commit nHead = Utils.readObject(HEAD, Commit.class);
             String targetContent = nHead.snapshot.get(args[2]);
-            Utils.writeObject(targetFile, targetContent);
+            Utils.writeContents(targetFile, targetContent);
         }else if (args[2].equals("--")) {
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);

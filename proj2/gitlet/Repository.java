@@ -29,9 +29,9 @@ public class Repository {
     public static final File CWD = new File(System.getProperty("user.dir"));
     /** The .gitlet directory. */
     public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
-
-    public static final File Commits = Utils.join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
+
+    public static File Commits = Utils.join(GITLET_DIR, "commits");
 
     public static Commit Head = new Commit();
     public static Commit master = new Commit();
@@ -39,6 +39,7 @@ public class Repository {
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
+        File Commits = Utils.join(GITLET_DIR, "commits");
         Commits.mkdir();
         Commit initialCommit = new Commit();
         initialCommit.saveCommit();
@@ -71,7 +72,7 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();
-        File parentFile = Utils.join(Commits, Head.getId());
+        File parentFile = Utils.join(GITLET_DIR, "commits", Head.getId());
         Commit newCommit = readObject(parentFile, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;

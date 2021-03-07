@@ -35,9 +35,7 @@ public class Repository {
     public static final File HEAD = Utils.join(Commits, "Head");
     /* TODO: fill in the rest of this class. */
 
-    public static Commit Head;
     public static Commit master;
-    public static Commit branch;
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -60,7 +58,8 @@ public class Repository {
         }else {
             Blob tobeAdd = new Blob(tobeAdded);
             if (StagingArea.containsName(StagingArea.addition, fileName)) {
-                String donknow = Head.snapshot.get(fileName);
+                Commit nHead = Utils.readObject(HEAD, Commit.class);
+                String donknow = nHead.snapshot.get(fileName);
                 StagingArea.addition.remove(fileName);
                 if (!tobeAdd.getBlobId().equals(donknow)){
                     StagingArea.addition.put(fileName, new Blob(tobeAdded).getBlobId());
@@ -84,7 +83,7 @@ public class Repository {
         newCommit.makeChange(message, dateObj);
         newCommit.id = Utils.sha1(newCommit.toString());
         newCommit.saveCommit();
-        Head = newCommit;
+        writeObject(HEAD, newCommit);
     }
 
     public static void finalCommit(String[] args) {
@@ -101,7 +100,8 @@ public class Repository {
 
     public static boolean removeFile(String Filename) {
         File tobeRemoved = Utils.join(GITLET_DIR, Filename);
-        Commit currentCommit = Head;
+        Commit nHead = Utils.readObject(HEAD, Commit.class);
+        Commit currentCommit = nHead;
         boolean changed = false;
         if (!tobeRemoved.exists()) {
             changed = Utils.restrictedDelete(Filename);
@@ -130,7 +130,8 @@ public class Repository {
 
     /** haven't done with merge log information yet */
     public static void log() {
-        Commit curr = Head;
+        Commit nHead = Utils.readObject(HEAD, Commit.class);
+        Commit curr = nHead;
         while(curr != null) {
             logHelper(curr);
             curr = curr.getParent();
@@ -198,9 +199,9 @@ public class Repository {
     }
 
     public static void branchFunc(String branchName) {
-        Commit curr = Head;
+        Commit nHead = Utils.readObject(HEAD, Commit.class);
+        Commit curr = nHead;
         master = curr;
-        Head = branch;
     }
 
 }

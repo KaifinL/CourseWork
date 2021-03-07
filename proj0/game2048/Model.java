@@ -224,9 +224,13 @@ public class Model extends Observable {
                 while (u >= 0 & s >= 0) {
                     Tile y = board.tile(n, u);
                     Tile z = board.tile(n, s);
-                    if (y == null) {
+                    if (y == null & u-s == 1) {
                         u -= 1;
                         s -= 1;
+                        continue;
+                    }
+                    if (y == null & u-s != 1){
+                        u -= 1;
                         continue;
                     }
                     if (z == null) {

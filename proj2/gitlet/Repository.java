@@ -44,6 +44,12 @@ public class Repository {
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
         Head.setId(initialCommit.getId());
+        File HeadFile = Utils.join(Commits, "Head");
+        try {
+            HeadFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         master = Head;
     }
 

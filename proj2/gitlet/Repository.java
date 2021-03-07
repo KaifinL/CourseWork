@@ -41,8 +41,7 @@ public class Repository {
         GITLET_DIR.mkdir();
         Commits.mkdir();
         Commit initialCommit = new Commit();
-        File InitialCommitFile = join(Commits, initialCommit.id);
-        writeObject(InitialCommitFile, initialCommit);
+        initialCommit.saveCommit();
         Head = initialCommit;
         master = Head;
     }

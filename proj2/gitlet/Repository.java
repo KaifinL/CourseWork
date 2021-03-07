@@ -59,6 +59,7 @@ public class Repository {
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
         }else {
+            byte[] content = Utils.readContents(tobeAdded);
             Blob tobeAdd = new Blob(tobeAdded);
             File targetFile = Utils.join(StagingArea.addition, fileName);
             File targetFile2 = Utils.join(StagingArea.removal, fileName);
@@ -78,6 +79,7 @@ public class Repository {
             }else {
                 try {    // create a file in the staging area
                     targetFile.createNewFile();
+                    writeObject(targetFile, content);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

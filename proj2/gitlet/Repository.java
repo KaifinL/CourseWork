@@ -36,7 +36,7 @@ public class Repository {
     public static Commit Head = new Commit();
     public static Commit master = new Commit();
     public static Commit branch = new Commit();
-    public static String testId;
+    public static String testId = new String();
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();

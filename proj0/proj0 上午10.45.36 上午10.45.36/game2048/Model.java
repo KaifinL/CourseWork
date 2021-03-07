@@ -142,8 +142,6 @@ public class Model extends Observable {
         
             return true;
         }
-        return false;
-    }
 
     /**
      * Returns true if any tile is equal to the maximum valid value.

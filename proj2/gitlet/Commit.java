@@ -33,7 +33,6 @@ public class Commit implements Serializable {
      * @param String the fileName of a file.
      * @param String2 the id of the blob.
      * */
-
     public HashMap<String, String> snapshot;
     public String parentId;
     public String parent2Id;
@@ -51,11 +50,7 @@ public class Commit implements Serializable {
         this.parent2Id = null;
         this.id = Utils.sha1(this.toString());
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    
     public Commit(String message, Date timestamp) {
         this.message = message;
         this.timestamp = timestamp;

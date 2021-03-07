@@ -1,6 +1,7 @@
 package gitlet;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -11,6 +12,7 @@ public class Blob {
 
     private byte[] BlobContent;
     private String blobId;
+    public File blobs = Repository.Blobs;
     public static HashMap<String, byte[]> BlobCollection = new HashMap<>();
     /**
      * TODO: some variables like blob itself should be created
@@ -25,6 +27,14 @@ public class Blob {
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
         this.blobId = Utils.sha1(this.toString());
+        File aBlob = Utils.join(blobs, this.blobId);
+        try {
+            aBlob.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Utils.writeContents(aBlob, this.BlobContent);
+        this.BlobCollection.put(blobId, BlobContent);
     }
 
 
@@ -40,5 +50,6 @@ public class Blob {
     public static byte[] getBlobContent(String id) {
         return BlobCollection.get(id);
     }
+
 
 }

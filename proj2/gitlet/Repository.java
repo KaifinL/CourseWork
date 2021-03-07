@@ -90,7 +90,7 @@ public class Repository {
             Utils.exitWithError("Please enter a commit message.");
         }
         String message = args[1];
-        if (StagingArea.addition == null) {
+        if (StagingArea.addition.size() == 0) {
             Utils.exitWithError("No changes added to the commit.");
         }else {
             Repository.makeCommit(message);

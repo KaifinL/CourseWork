@@ -11,7 +11,7 @@ public class Blob {
 
     private byte[] BlobContent;
     private String blobId;
-    public static HashMap<String, byte[]> BlobCollection;
+    public static HashMap<String, byte[]> BlobCollection = new HashMap<>();
     /**
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.

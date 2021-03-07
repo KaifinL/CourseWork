@@ -60,13 +60,13 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             byte[] content = Utils.readContents(tobeAdded);
+            Blob tobeAdd = new Blob(tobeAdded);
             File targetFile = Utils.join(StagingArea.addition, fileName);
             File targetFile2 = Utils.join(StagingArea.removal, fileName);
             if (targetFile.exists()) {    // to check if the specified file in the staging area
                 Commit nHead = Utils.readObject(HEAD, Commit.class);
                 String donknow = nHead.snapshot.get(fileName);
                 targetFile.delete();
-                Blob tobeAdd = new Blob(tobeAdded);
                 if (!tobeAdd.getBlobId().equals(donknow)){  //to check if they have the same content
                     try {
                         targetFile.createNewFile();

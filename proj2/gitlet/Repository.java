@@ -40,7 +40,8 @@ public class Repository {
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commits.mkdir();
-        Commit initialCommit = new Commit();
+        Date initDate = new Date(0);
+        Commit initialCommit = new Commit(, initDate);
         initialCommit.saveCommit();
         Head = initialCommit;
         master = Head;

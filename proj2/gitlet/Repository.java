@@ -55,27 +55,27 @@ public class Repository {
 
     public static void add(String fileName) {
         File tobeAdded = Utils.join(CWD, fileName);
-        if (!tobeAdded.exists()) {
+        if (!tobeAdded.exists()) { // to check if the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
         }else {
             Blob tobeAdd = new Blob(tobeAdded);
             File targetFile = Utils.join(StagingArea.addition, fileName);
             File targetFile2 = Utils.join(StagingArea.removal, fileName);
-            if (targetFile.exists()) {
+            if (targetFile.exists()) {    // to check if the specified file in the staging area
                 Commit nHead = Utils.readObject(HEAD, Commit.class);
                 String donknow = nHead.snapshot.get(fileName);
                 targetFile.delete();
-                if (!tobeAdd.getBlobId().equals(donknow)){
+                if (!tobeAdd.getBlobId().equals(donknow)){  //to check if they have the same content
                     try {
                         targetFile.createNewFile();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-            }else if (targetFile2.exists()) {
+            }else if (targetFile2.exists()) {  // to check if the removal has the file
                 targetFile2.delete();
             }else {
-                try {
+                try {    // create a file in the staging area
                     targetFile.createNewFile();
                 } catch (IOException e) {
                     e.printStackTrace();

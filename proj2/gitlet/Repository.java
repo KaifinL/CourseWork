@@ -41,7 +41,7 @@ public class Repository {
         Commits.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
-        Head = initialCommit;
+        Head.id = initialCommit.id;
         master = Head;
         initialCommit.saveCommit();
     }

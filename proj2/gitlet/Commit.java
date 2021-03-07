@@ -55,7 +55,6 @@ public class Commit implements Serializable {
         this.parent2Id = null;
     }
 
-    */
 
     /**
      * save each commit in a file just something like 'dog' in lab6

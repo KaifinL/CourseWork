@@ -58,18 +58,27 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             Blob tobeAdd = new Blob(tobeAdded);
-            File 
-            if (StagingArea.containsName(StagingArea.addition, fileName)) {
+            File targetFile = Utils.join(StagingArea.addition, fileName);
+            File targetFile2 = Utils.join(StagingArea.removal, fileName);
+            if (targetFile.exists()) {
                 Commit nHead = Utils.readObject(HEAD, Commit.class);
                 String donknow = nHead.snapshot.get(fileName);
-                StagingArea.addition.remove(fileName);
+                targetFile.delete();
                 if (!tobeAdd.getBlobId().equals(donknow)){
-                    StagingArea.addition.put(fileName, new Blob(tobeAdded).getBlobId());
+                    try {
+                        targetFile.createNewFile();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }else if (StagingArea.containsName(StagingArea.removal, fileName)) {
-                StagingArea.removal.remove(fileName);
+            }else if (targetFile2.exists()) {
+                targetFile2.delete();
             }else {
-                StagingArea.addition.put(fileName, tobeAdd.getBlobId());
+                try {
+                    targetFile.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

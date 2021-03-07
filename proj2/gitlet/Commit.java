@@ -28,7 +28,12 @@ public class Commit implements Serializable {
     private String message;
     /** The time of this Commit. */
     private Date timestamp;
-    /** to collect the files in the commit */
+    /** to collect the files in the commit
+     *
+     * @param String the fileName of a file.
+     * @param String2 the id of the blob.
+     * */
+
     public HashMap<String, String> snapshot;
     public String parentId;
     public String parent2Id;

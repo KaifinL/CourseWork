@@ -61,12 +61,12 @@ public class Commit implements Serializable {
      */
     public void saveCommit() {
         File newCommit = Utils.join(Repository.Commits, this.id);
+        Utils.writeObject(newCommit, this);
         try {
             newCommit.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Utils.writeObject(newCommit, this);
     }
 
     /** get the commit's message */

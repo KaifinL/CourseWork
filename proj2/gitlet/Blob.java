@@ -9,8 +9,8 @@ import java.util.HashMap;
  */
 public class Blob {
 
-    public byte[] BlobContent;
-    public String blobId;
+    private byte[] BlobContent;
+    private String blobId;
     public static HashMap<String, byte[]> BlobCollection = new HashMap<>();
     /**
      * TODO: some variables like blob itself should be created
@@ -41,4 +41,5 @@ public class Blob {
     public static byte[] getBlobContent(String id) {
         return BlobCollection.get(id);
     }
+
 }

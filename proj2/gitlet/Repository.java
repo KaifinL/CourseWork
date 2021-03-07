@@ -1,6 +1,7 @@
 package gitlet;
 
 
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -32,9 +33,9 @@ public class Repository {
     public static final File Commits = join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
 
-    public static Commit Head;
-    public static Commit master;
-    public static Commit branch;
+    public static Commit Head = new Commit();
+    public static Commit master = new Commit();
+    public static Commit branch = new Commit();
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -44,7 +45,6 @@ public class Repository {
         writeObject(InitialCommitFile, initialCommit);
         Head = initialCommit;
         master = Head;
-
     }
 
     public static void add(String fileName) {
@@ -72,7 +72,7 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();
-        File parentFile = Utils.join(CWD, Head.getId());
+        File parentFile = Utils.join(Commits, Head.getId());
         Commit newCommit = readObject(parentFile, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;

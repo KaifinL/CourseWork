@@ -30,14 +30,14 @@ public class Repository {
     /** The .gitlet directory. */
     public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
 
-    public static File Commits = Utils.join(GITLET_DIR, "commits");
+    public static final File Commits = Utils.join(GITLET_DIR, "commits");
 
     public static final File HEAD = Utils.join(Commits, "Head");
     /* TODO: fill in the rest of this class. */
 
-    public static Commit Head = new Commit();
-    public static Commit master = new Commit();
-    public static Commit branch = new Commit();
+    public static Commit Head;
+    public static Commit master;
+    public static Commit branch;
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -45,12 +45,12 @@ public class Repository {
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
-        Head.setId(initialCommit.getId());
         try {
             HEAD.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        writeObject(HEAD, initialCommit);
     }
 
     public static void add(String fileName) {

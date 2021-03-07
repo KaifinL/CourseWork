@@ -42,7 +42,7 @@ public class Repository {
         Commits.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
-        Head.id = initialCommit.id;
+        Head.setId(initialCommit.getId());
         master = Head;
         initialCommit.saveCommit();
     }

@@ -59,10 +59,10 @@ public class Repository {
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
         }else {
-            byte[] content = Utils.readContents(tobeAdded);
-            Blob tobeAdd = new Blob(tobeAdded);
-            File targetFile = Utils.join(StagingArea.addition, fileName);
-            File targetFile2 = Utils.join(StagingArea.removal, fileName);
+            byte[] content = Utils.readContents(tobeAdded);//read the specified file's content
+            Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
+            File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
+            File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
             if (targetFile.exists()) {    // to check if the specified file in the staging area
                 Commit nHead = Utils.readObject(HEAD, Commit.class);
                 String donknow = nHead.snapshot.get(fileName);
@@ -79,7 +79,7 @@ public class Repository {
             }else {
                 try {    // create a file in the staging area
                     targetFile.createNewFile();
-                    writeObject(targetFile, content);
+                    writeObject(targetFile, content);  //write the target file's content to to Staging area.
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

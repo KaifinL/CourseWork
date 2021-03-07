@@ -107,18 +107,19 @@ public class Commit implements Serializable {
      *  */
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
     public void makeChange(String message, Date date) {
-        for (String x : snapshot.keySet()) {
+        for (String x : snapshot.keySet()) {  //if the files in both snapshot and addition
+                                                // it will be removed from the snapshot
             File targetFile = Utils.join(StagingArea.addition, x);
             if (targetFile.exists()) {
                 snapshot.remove(x);
             }
         }
-        for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) {
-            File targetFile = Utils.join(StagingArea.addition, fileName);
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) { // put all the files
+            File targetFile = Utils.join(StagingArea.addition, fileName); // in addition to snapshot
             String Content = Utils.readContentsAsString(targetFile);
             snapshot.put(fileName, Content);
         }
-        helpDelete(StagingArea.addition);
+        helpDelete(StagingArea.addition); // clean all the files in the staging area.
         helpDelete(StagingArea.removal);
         this.message = message;
         this.timestamp = date;

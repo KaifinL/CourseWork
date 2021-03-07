@@ -25,7 +25,6 @@ public class Blob {
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
         this.blobId = Utils.sha1(this.toString());
-        this.BlobCollection.put(blobId, BlobContent);
     }
 
 

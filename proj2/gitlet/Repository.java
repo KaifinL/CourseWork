@@ -102,15 +102,17 @@ public class Repository {
             Utils.exitWithError("Please enter a commit message.");
         }
         String message = args[1];
-        if (StagingArea.addition.size() == 0) {
+        if (StagingArea.addition.length() == 0) {
             Utils.exitWithError("No changes added to the commit.");
         }else {
             Repository.makeCommit(message);
         }
     }
 
+
+    /** to be revised
     public static boolean removeFile(String Filename) {
-        File tobeRemoved = Utils.join(GITLET_DIR, Filename);
+        File tobeRemoved = Utils.join(StagingArea.addition, Filename);
         Commit nHead = Utils.readObject(HEAD, Commit.class);
         Commit currentCommit = nHead;
         boolean changed = false;
@@ -126,6 +128,8 @@ public class Repository {
         }
         return changed;
     }
+
+     */
 
     public static void logHelper(Commit cur) {
         System.out.println("===");

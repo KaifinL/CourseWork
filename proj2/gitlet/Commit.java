@@ -62,7 +62,8 @@ public class Commit implements Serializable {
      * save each commit in a file just something like 'dog' in lab6
      */
     public void saveCommit() {
-        File newCommit = Utils.join(Repository.Commits, this.id);
+        File Commits = Utils.join(Repository.GITLET_DIR, "commits");
+        File newCommit = Utils.join(Commits, this.id);
         try {
             newCommit.createNewFile();
         } catch (IOException e) {
@@ -116,7 +117,8 @@ public class Commit implements Serializable {
 
     // return the parent of the current commit
     public Commit getParent() {
-        File parent =Utils.join(Repository.Commits, getParentId()) ;
+        File Commits = Utils.join(Repository.GITLET_DIR, "commits");
+        File parent =Utils.join(Commits, getParentId()) ;
         Commit parentCommit = Utils.readObject(parent, Commit.class);
         return parentCommit;
     }

@@ -50,7 +50,7 @@ public class Commit implements Serializable {
         this.parent2Id = null;
         this.id = Utils.sha1(this.toString());
     }
-    
+
     public Commit(String message, Date timestamp) {
         this.message = message;
         this.timestamp = timestamp;

@@ -62,7 +62,7 @@ public class Commit implements Serializable {
      * save each commit in a file just something like 'dog' in lab6
      */
     public void saveCommit() {
-        File newCommit = Utils.join(Repository.Commits, this.id + ".txt");
+        File newCommit = Utils.join(Repository.Commits, this.id);
         try {
             newCommit.createNewFile();
         } catch (IOException e) {

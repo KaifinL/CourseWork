@@ -34,6 +34,8 @@ public class Repository {
     public static final File HEAD = Utils.join(Commits, "Head");
     /* TODO: fill in the rest of this class. */
 
+    public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
+
     public static Commit master;
 
     public static void setupPersistence() {
@@ -42,6 +44,7 @@ public class Repository {
         StagingArea.StagingArea.mkdir();
         StagingArea.addition.mkdir();
         StagingArea.removal.mkdir();
+        Blobs.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
@@ -186,7 +189,7 @@ public class Repository {
                 File targetFile = Utils.join(CWD, args[2]);
                 createFile(targetFile);
                 String targetId = nHead.snapshot.get(args[2]);
-                byte[] content = Blob.BlobCollection.get(targetId);
+                byte[] content = Blob.getBlobContent(targetId);
                 Utils.writeContents(targetFile, content);
             }
         }else if (args[2].equals("--")) {

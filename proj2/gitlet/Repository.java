@@ -42,9 +42,9 @@ public class Repository {
         Commits.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
+        initialCommit.saveCommit();
         Head.setId(initialCommit.getId());
         master = Head;
-        initialCommit.saveCommit();
     }
 
     public static void add(String fileName) {

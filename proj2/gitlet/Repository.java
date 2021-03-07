@@ -31,8 +31,6 @@ public class Repository {
     public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
     /* TODO: fill in the rest of this class. */
 
-    public static File Commits = Utils.join(GITLET_DIR, "commits");
-
     public static Commit Head = new Commit();
     public static Commit master = new Commit();
     public static Commit branch = new Commit();
@@ -144,6 +142,7 @@ public class Repository {
         }
     }
     public static void globalLog() {
+        File Commits = Utils.join(GITLET_DIR, "commits");
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {
                 File currFile = Utils.join(Commits, name);
@@ -154,6 +153,7 @@ public class Repository {
     }
 
     public static void checkout(String[] args) {
+        File Commits = Utils.join(GITLET_DIR, "commits");
         if (args[1].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[2]);
             createFile(targetFile);
@@ -176,6 +176,7 @@ public class Repository {
 
     public static void find(String message) {
         boolean exist = false;
+        File Commits = Utils.join(GITLET_DIR, "commits");
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {
                 File currFIle = Utils.join(Commits, name);

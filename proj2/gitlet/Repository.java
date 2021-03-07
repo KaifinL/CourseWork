@@ -160,13 +160,16 @@ public class Repository {
 
     public static void checkout(String[] args) {
         if (args[1].equals("--")) {
-            File targetFile = Utils.join(CWD, args[2]);
-            createFile(targetFile);
             Commit nHead = Utils.readObject(HEAD, Commit.class);
             if (!nHead.snapshot.containsKey(args[2])){
-                exitWithError("");
+                exitWithError("File does not exist in that commit.");
+            }else {
+                File targetFile = Utils.join(CWD, args[2]);
+                createFile(targetFile);
+                String targetId = nHead.snapshot.get(args[2]);
+                byte[] content = Blob.getBlobContent(targetId);
+                Utils.writeContents(targetFile, content);
             }
-            Utils.writeContents(targetFile, targetContent);
         }else if (args[2].equals("--")) {
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);

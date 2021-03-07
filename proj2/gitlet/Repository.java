@@ -78,8 +78,7 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();
-        File parentFile = Utils.join(Commits, Head.getId());
-        Commit newCommit = readObject(parentFile, Commit.class);
+        Commit newCommit = readObject(HEAD, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;
         newCommit.makeChange(message, dateObj);

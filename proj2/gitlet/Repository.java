@@ -161,7 +161,7 @@ public class Repository {
 
     public static void checkout(String[] args) {
         if (args[1].equals("--")) {
-            File targetFile = Utils.join(GITLET_DIR, args[2]);
+            File targetFile = Utils.join(CWD, args[2]);
             createFile(targetFile);
             Commit nHead = Utils.readObject(HEAD, Commit.class);
             String targetContent = nHead.snapshot.get(args[2]);

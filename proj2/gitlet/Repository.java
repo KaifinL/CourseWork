@@ -36,7 +36,6 @@ public class Repository {
     public static Commit Head = new Commit();
     public static Commit master = new Commit();
     public static Commit branch = new Commit();
-
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commits.mkdir();

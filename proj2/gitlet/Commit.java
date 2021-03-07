@@ -120,8 +120,6 @@ public class Commit implements Serializable {
         }
         this.message = message;
         this.timestamp = date;
-        StagingArea.addition.clear();
-        StagingArea.removal.clear();
     }
 
     // return the parent of the current commit
@@ -130,4 +128,9 @@ public class Commit implements Serializable {
         Commit parentCommit = Utils.readObject(parent, Commit.class);
         return parentCommit;
     }
+
+    /**
+     * TODO: delete all the files in staging area.
+     */
+
 }

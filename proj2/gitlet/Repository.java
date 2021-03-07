@@ -31,6 +31,8 @@ public class Repository {
     public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
 
     public static File Commits = Utils.join(GITLET_DIR, "commits");
+
+    public static final File HEAD = Utils.join(Commits, "Head");
     /* TODO: fill in the rest of this class. */
 
     public static Commit Head = new Commit();
@@ -44,13 +46,11 @@ public class Repository {
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
         Head.setId(initialCommit.getId());
-        File HeadFile = Utils.join(Commits, "Head");
         try {
-            HeadFile.createNewFile();
+            HEAD.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        master = Head;
     }
 
     public static void add(String fileName) {

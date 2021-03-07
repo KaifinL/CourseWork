@@ -39,6 +39,8 @@ public class Repository {
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commits.mkdir();
+        StagingArea.addition.mkdir();
+        StagingArea.removal.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
@@ -56,6 +58,7 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             Blob tobeAdd = new Blob(tobeAdded);
+            File 
             if (StagingArea.containsName(StagingArea.addition, fileName)) {
                 Commit nHead = Utils.readObject(HEAD, Commit.class);
                 String donknow = nHead.snapshot.get(fileName);

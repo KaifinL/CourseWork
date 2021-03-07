@@ -186,7 +186,7 @@ public class Repository {
                 File targetFile = Utils.join(CWD, args[2]);
                 createFile(targetFile);
                 String targetId = nHead.snapshot.get(args[2]);
-                byte[] content = Blob.getBlobContent(targetId);
+                byte[] content = Blob.BlobCollection.get(targetId);
                 Utils.writeContents(targetFile, content);
             }
         }else if (args[2].equals("--")) {

@@ -41,7 +41,7 @@ public class Repository {
         GITLET_DIR.mkdir();
         Commits.mkdir();
         Date initDate = new Date(0);
-        Commit initialCommit = new Commit(, initDate);
+        Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
         Head = initialCommit;
         master = Head;

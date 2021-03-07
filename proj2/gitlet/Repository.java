@@ -29,6 +29,8 @@ public class Repository {
     public static final File CWD = new File(System.getProperty("user.dir"));
     /** The .gitlet directory. */
     public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
+
+    public static final File Commits = Utils.join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
 
     public static Commit Head = new Commit();
@@ -37,7 +39,6 @@ public class Repository {
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
-        File Commits = Utils.join(GITLET_DIR, "commits");
         Commits.mkdir();
         Commit initialCommit = new Commit();
         initialCommit.saveCommit();
@@ -70,7 +71,7 @@ public class Repository {
          * TODO: set the commit message, date, parent(the last commit)
          */
         Date dateObj = new Date();
-        File parentFile = Utils.join(GITLET_DIR, "commits", Head.getId());
+        File parentFile = Utils.join(Commits, Head.getId());
         Commit newCommit = readObject(parentFile, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.parent2Id = null;
@@ -142,7 +143,6 @@ public class Repository {
         }
     }
     public static void globalLog() {
-        File Commits = Utils.join(GITLET_DIR, "commits");
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {
                 File currFile = Utils.join(Commits, name);
@@ -153,7 +153,6 @@ public class Repository {
     }
 
     public static void checkout(String[] args) {
-        File Commits = Utils.join(GITLET_DIR, "commits");
         if (args[1].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[2]);
             createFile(targetFile);
@@ -176,7 +175,6 @@ public class Repository {
 
     public static void find(String message) {
         boolean exist = false;
-        File Commits = Utils.join(GITLET_DIR, "commits");
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {
                 File currFIle = Utils.join(Commits, name);

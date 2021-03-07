@@ -162,7 +162,8 @@ public class Repository {
         if (args[1].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[2]);
             createFile(targetFile);
-            String targetContent = Head.snapshot.get(args[2]);
+            Commit nHead = Utils.readObject(HEAD, Commit.class);
+            String targetContent = nHead.snapshot.get(args[2]);
             Utils.writeObject(targetFile, targetContent);
         }else if (args[2].equals("--")) {
             File targetFile = Utils.join(GITLET_DIR, args[3]);

@@ -30,7 +30,7 @@ public class Repository {
     /** The .gitlet directory. */
     public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
 
-    public static final File Commits = Utils.join(GITLET_DIR, "commits");
+    public static File Commits = Utils.join(GITLET_DIR, "commits");
     /* TODO: fill in the rest of this class. */
 
     public static Commit Head = new Commit();

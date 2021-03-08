@@ -189,7 +189,8 @@ public class Repository {
                 File targetFile = Utils.join(CWD, args[2]);
                 createFile(targetFile);
                 String targetId = nHead.snapshot.get(args[2]);
-                byte[] content = Blob.getBlobContent(targetId);
+                File targetBlob = Utils.join(Blobs, targetId);
+                byte[] content = readContents(targetBlob);
                 Utils.writeContents(targetFile, content);
             }
         }else if (args[2].equals("--")) {

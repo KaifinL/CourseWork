@@ -64,7 +64,6 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
-            byte[] content = tobeAdd.getBlobContent();//read the specified file's content
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
             File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
             if (targetFile.exists()) {    // to check if the specified file in the staging area
@@ -83,7 +82,7 @@ public class Repository {
             }else {
                 try {    // create a file in the staging area
                     targetFile.createNewFile();
-                    writeObject(targetFile, content);  //write the target file's content to to Staging area.
+                    writeObject(targetFile, tobeAdd);  //write the target file's content to to Staging area.
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -45,10 +45,18 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         this.initialSize = 16;
         this.loadFactor = 0.75;
         this.keySet = new HashSet();
-        this.createBucket();
+        this.buckets = createTable(initialSize);
+        fileUp(buckets); // make every element in the buckets a empty collection of LinkedList
     }
 
-    public MyHashMap(int initialSize) { }
+    public MyHashMap(int initialSize) {
+        this.size = 0;
+        this.initialSize = initialSize;
+        this.loadFactor = 0.75;
+        this.keySet = new HashSet();
+        this.buckets = createTable(this.initialSize);
+        fileUp(buckets); // make every element in the buckets a empty collection of LinkedList
+    }
 
     /**
      * MyHashMap constructor that creates a backing array of initialSize.
@@ -57,13 +65,20 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param initialSize initial size of backing array
      * @param maxLoad maximum load factor
      */
-    public MyHashMap(int initialSize, double maxLoad) { }
+    public MyHashMap(int initialSize, double maxLoad) {
+        this.size = 0;
+        this.initialSize = initialSize;
+        this.loadFactor = maxLoad;
+        this.keySet = new HashSet();
+        this.buckets = createTable(this.initialSize);
+        fileUp(buckets); // make every element in the buckets a empty collection of LinkedList
+    }
 
     /**
      * Returns a new node to be placed in a hash table bucket
      */
     private Node createNode(K key, V value) {
-        return null;
+        return new Node(key, value);
     }
 
     /**
@@ -164,5 +179,12 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     @Override
     public Iterator<K> iterator() {
         return null;
+    }
+
+    public void fileUp(Collection target[]) {
+        Collection empty = createBucket();
+        for (int i = 0; i < initialSize; i += 1) {
+            target[i] = empty;
+        }
     }
 }

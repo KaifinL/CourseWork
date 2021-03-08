@@ -173,10 +173,20 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         if (division > loadFactor) {
             resize(initialSize * 2);
         }
-        int row = hash(key) % initialSize;
-        buckets[row].add(new Node(key, value));
-        keySet.add(key);
-        size ++;
+        if (get(key).equals(value)) {
+            for (Collection<Node> row : buckets) {
+                for (Node node : row) {
+                    if (node.key.equals(key)) {
+                        node.value = value;
+                    }
+                }
+            }
+        }else {
+            int row = hash(key) % initialSize;
+            buckets[row].add(new Node(key, value));
+            keySet.add(key);
+            size++;
+        }
     }
 
     @Override

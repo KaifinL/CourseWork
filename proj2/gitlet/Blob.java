@@ -39,7 +39,7 @@ public class Blob {
 
 
     // return the content of a Blob
-    public byte[] getBlob() {
+    public byte[] getBlobContent() {
         return this.BlobContent;
     }
 

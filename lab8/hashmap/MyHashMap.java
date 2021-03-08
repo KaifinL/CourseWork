@@ -179,11 +179,12 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public V remove(K key) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public V remove(K key, V value) {
+        throw new UnsupportedOperationException();
 
     }
 

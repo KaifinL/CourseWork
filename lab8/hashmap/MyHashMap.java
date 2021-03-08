@@ -167,7 +167,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public void put(K key, V value) {
-        
+
         keySet.add(key);
         size ++;
     }
@@ -200,9 +200,21 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         }
     }
 
+    // get the hashcode @optional textbook
     private int hash(K key) {
         int h = key.hashCode();
         h ^= (h >>> 20) ^ (h >>> 12) ^ (h >>> 7) ^ (h >>> 4);
         return h & (this.initialSize-1);
+    }
+
+    private void resize(int chains) {
+        MyHashMap newOne = new MyHashMap(chains);
+        for (int i = 0; i < initialSize; i++) {
+            for (K key : keySet()) {
+                V value = get(key);
+                newOne.put(key, value);
+            }
+        }
+        this = newOne;
     }
 }

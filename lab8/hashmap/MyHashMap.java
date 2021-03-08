@@ -35,12 +35,18 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     private Collection<Node>[] buckets;
     private int size;
     private int initialSize;
-    private int loadFactor;
+    private double loadFactor;
     private HashSet keySet;
     // You should probably define some more!
 
     /** Constructors */
-    public MyHashMap() { }
+    public MyHashMap() {
+        this.size = 0;
+        this.initialSize = 16;
+        this.loadFactor = 0.75;
+        this.keySet = new HashSet();
+        this.createBucket();
+    }
 
     public MyHashMap(int initialSize) { }
 

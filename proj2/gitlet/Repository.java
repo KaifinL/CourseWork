@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+
 import static gitlet.Utils.*;
 
 // TODO: any imports you need here
@@ -35,6 +37,11 @@ public class Repository {
     /* TODO: fill in the rest of this class. */
 
     public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
+
+    /**
+     * this variable is to rapidly find the corresponding blobId in terms of fileName
+     */
+    public static final HashMap<String, String> corresponding = new HashMap<>();
 
     public static Commit master;
 
@@ -82,6 +89,7 @@ public class Repository {
             }else {
                 try {    // create a file in the staging area
                     targetFile.createNewFile();
+                    corresponding.put(fileName, tobeAdd.getBlobId());
                     writeObject(targetFile, content);  //write the target file's content to to Staging area.
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -223,16 +223,27 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     private class MyIterator implements Iterator {
 
-        private K key;
-        
+        private LinkedList keys = setKeyList();
+        private K key = (K) keys.getFirst();
         @Override
         public boolean hasNext() {
-
+            return key != null;
         }
 
         @Override
         public K next() {
-
+            K curr = key;
+            keys.removeFirst();
+            key = (K) keys.getFirst();
+            return curr;
         }
     }
+    private LinkedList setKeyList() {
+        LinkedList keyList = new LinkedList<K>();
+        for (K key : keySet) {
+            keyList.addLast(key);
+        }
+        return keyList;
+    }
+
 }

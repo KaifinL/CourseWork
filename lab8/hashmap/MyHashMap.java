@@ -46,7 +46,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         this.loadFactor = 0.75;
         this.keySet = new HashSet();
         this.buckets = createTable(initialSize);
-        fileUp(buckets); // make every element in the buckets a empty collection of LinkedList
     }
 
     public MyHashMap(int initialSize) {
@@ -55,7 +54,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         this.loadFactor = 0.75;
         this.keySet = new HashSet();
         this.buckets = createTable(this.initialSize);
-        fileUp(buckets); // make every element in the buckets a empty collection of LinkedList
     }
 
     /**
@@ -71,7 +69,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         this.loadFactor = maxLoad;
         this.keySet = new HashSet();
         this.buckets = createTable(this.initialSize);
-        fileUp(buckets); // make every element in the buckets a empty collection of LinkedList
     }
 
     /**

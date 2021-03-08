@@ -167,13 +167,13 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public void put(K key, V value) {
-        if ((size / initialSize) > loadFactor) {
-            resize(initialSize * 2);
-        }
         int row = hash(key) % initialSize;
         buckets[row].add(new Node(key, value));
         keySet.add(key);
         size ++;
+        if ((size / initialSize) > loadFactor) {
+            resize(initialSize * 2);
+        }
     }
 
     @Override

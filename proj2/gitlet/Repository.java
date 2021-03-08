@@ -35,7 +35,7 @@ public class Repository {
     /* TODO: fill in the rest of this class. */
 
     public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
-    
+
 
     public static Commit master;
 
@@ -63,8 +63,8 @@ public class Repository {
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
         }else {
-            byte[] content = Utils.readContents(tobeAdded);//read the specified file's content
             Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
+            byte[] content = tobeAdd.getBlobContent();//read the specified file's content
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
             File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
             if (targetFile.exists()) {    // to check if the specified file in the staging area

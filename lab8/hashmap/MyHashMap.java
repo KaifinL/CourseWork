@@ -36,7 +36,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     private int size;
     private int initialSize;
     private double loadFactor;
-    private HashSet keySet;
+    private HashSet<K> keySet;
     // You should probably define some more!
 
     /** Constructors */
@@ -145,9 +145,14 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         if (!containsKey(key)) {
             return null;
         }else {
-            for (Collection row : buckets) {
-                if (row)
+            for (Collection<Node> row : buckets) {
+                for (Node node : row) {
+                    if (node.key.equals(key)) {
+                        return node.value;
+                    }
+                }
             }
+            return null;  //though knowing this makes no sense the compiler yields at me to return a value
         }
     }
 
@@ -155,15 +160,21 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     public int size() {
         return size;
     }
-
+    /**
+     * Associates the specified value with the specified key in this map.
+     * If the map previously contained a mapping for the key,
+     * the old value is replaced.
+     */
     @Override
     public void put(K key, V value) {
-
+        
+        keySet.add(key);
+        size ++;
     }
 
     @Override
     public Set<K> keySet() {
-
+        return keySet;
     }
 
     @Override

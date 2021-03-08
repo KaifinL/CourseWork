@@ -32,7 +32,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
 
     /* Instance Variables */
-    private Collection<Node>[] buckets;
+    private Collection<Node>[] buckets = createTable(16);
     private int size;
     private int initialSize;
     private double loadFactor;
@@ -171,7 +171,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
             resize(initialSize * 2);
         }
         int row = hash(key) % initialSize;
-        fileUp(buckets);
         buckets[row].add(new Node(key, value));
         keySet.add(key);
         size ++;

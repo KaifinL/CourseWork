@@ -140,7 +140,7 @@ public class Repository {
     public static void logHelper(Commit cur) {
         System.out.println("===");
         System.out.println("commit " + cur.id);
-        SimpleDateFormat formatter= new SimpleDateFormat("d, EEE MMM HH:mm:ss yyyy Z");
+        SimpleDateFormat formatter= new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
         if (cur.parent2Exist()) {

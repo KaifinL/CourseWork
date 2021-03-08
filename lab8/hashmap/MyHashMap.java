@@ -213,6 +213,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     public void resize(int capacity) {
         Collection<Node>[] newBuckets = createTable(capacity);
+        fileUp(newBuckets);
         for (K key : keySet()) {
             int row = hash(key) % capacity;
             newBuckets[row].add(new Node(key, get(key)));

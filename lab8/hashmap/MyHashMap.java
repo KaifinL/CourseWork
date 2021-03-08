@@ -92,25 +92,43 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param tableSize the size of the table to create
      */
     private Collection<Node>[] createTable(int tableSize) {
-        return new Collection<Collection<Node>>[];
+        Collection<Node> row = createBucket();
+        return new Collection<Collection>[tableSize];
     }
 
     // TODO: Implement the methods of the Map61B Interface below
     // Your code won't compile until you do so!
+
+    /**
+     * this is basically done
+     */
     @Override
     public void clear() {
-        Collection<Node> empty = createBucket();
+        Collection<Node>[] empty = createTable(this.initialSize);
         this.buckets = empty;
     }
 
+    /**
+     * this is basically done
+     */
     @Override
     public boolean containsKey(K key) {
-        return true;
+        return this.keySet.contains(key);
     }
 
+    /**
+     * Returns the value to which the specified key is mapped, or null if this
+     * map contains no mapping for the key.
+     */
     @Override
     public V get(K key) {
+        if (!containsKey(key)) {
+            return null;
+        }else {
+            for (Collection row : buckets) {
 
+            }
+        }
     }
 
     @Override

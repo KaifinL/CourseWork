@@ -213,6 +213,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     }
 
     public void resize(int capacity) {
+        initialSize = capacity;
         Collection<Node>[] newBuckets = new Collection[capacity];
         fileUp(newBuckets);
         for (K key : keySet()) {
@@ -220,7 +221,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
             newBuckets[row].add(new Node(key, get(key)));
         }
         buckets = newBuckets;
-        initialSize = capacity;
     }
 
     private class MyIterator implements Iterator {

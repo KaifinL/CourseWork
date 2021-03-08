@@ -32,7 +32,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
 
     /* Instance Variables */
-    private Collection<Node>[] buckets = createTable(16);
+    private Collection<Node>[] buckets;
     private int size;
     private int initialSize;
     private double loadFactor;

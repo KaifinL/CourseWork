@@ -79,7 +79,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * OWN BUCKET DATA STRUCTURES WITH THE NEW OPERATOR!
      */
     protected Collection<Node> createBucket() {
-        return LinkedList;
+        return new LinkedList<Node>();
     }
 
     /**
@@ -92,7 +92,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param tableSize the size of the table to create
      */
     private Collection<Node>[] createTable(int tableSize) {
-        return null;
+        return new Collection<>[];
     }
 
     // TODO: Implement the methods of the Map61B Interface below

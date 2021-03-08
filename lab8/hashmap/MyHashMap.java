@@ -14,6 +14,8 @@ import java.util.Set;
 public class MyHashMap<K, V> implements Map61B<K, V> {
 
     private int size;
+    private int initialSize;
+    private int loadFactor;
 
     /**
      * Protected helper class to store key/value pairs
@@ -93,7 +95,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     // Your code won't compile until you do so!
     @Override
     public void clear() {
-        
+
     }
 
     @Override

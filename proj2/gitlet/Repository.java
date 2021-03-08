@@ -152,7 +152,7 @@ public class Repository {
     /** haven't done with merge log information yet */
     public static void log() {
         Commit curr = Utils.readObject(HEAD, Commit.class);
-        while(curr.id != null) {
+        while(curr != null) {
             logHelper(curr);
             curr = curr.getParent();
         }

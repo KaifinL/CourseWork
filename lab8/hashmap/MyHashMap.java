@@ -173,7 +173,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         if (division > loadFactor) {
             resize(initialSize * 2);
         }
-        if (get(key).equals(value)) {
+        if (containsKey(key) && get(key).equals(value)) {
             for (Collection<Node> row : buckets) {
                 for (Node node : row) {
                     if (node.key.equals(key)) {

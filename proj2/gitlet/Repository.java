@@ -151,8 +151,7 @@ public class Repository {
 
     /** haven't done with merge log information yet */
     public static void log() {
-        Commit nHead = Utils.readObject(HEAD, Commit.class);
-        Commit curr = nHead;
+        Commit curr = Utils.readObject(HEAD, Commit.class);
         while(curr != null) {
             logHelper(curr);
             curr = curr.getParent();

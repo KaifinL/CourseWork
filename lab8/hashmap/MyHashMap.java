@@ -92,7 +92,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param tableSize the size of the table to create
      */
     private Collection<Node>[] createTable(int tableSize) {
-        return new Collection<>[];
+        return new Collection<Collection<Node>>[];
     }
 
     // TODO: Implement the methods of the Map61B Interface below

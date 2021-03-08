@@ -1,6 +1,7 @@
 package hashmap;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -16,6 +17,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     private int size;
     private int initialSize;
     private int loadFactor;
+    private HashSet keySet;
 
     /**
      * Protected helper class to store key/value pairs

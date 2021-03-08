@@ -15,10 +15,6 @@ import java.util.Set;
  */
 public class MyHashMap<K, V> implements Map61B<K, V> {
 
-    private int size;
-    private int initialSize;
-    private int loadFactor;
-    private HashSet keySet;
 
     /**
      * Protected helper class to store key/value pairs
@@ -37,6 +33,10 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     /* Instance Variables */
     private Collection<Node>[] buckets;
+    private int size;
+    private int initialSize;
+    private int loadFactor;
+    private HashSet keySet;
     // You should probably define some more!
 
     /** Constructors */

@@ -208,13 +208,14 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     }
 
     private void resize(int chains) {
-        MyHashMap newOne = new MyHashMap(chains);
-        for (int i = 0; i < initialSize; i++) {
-            for (K key : keySet()) {
-                V value = get(key);
-                newOne.put(key, value);
+        Collection<Node> temp = createBucket(chains);
+        for (int i = 0; i < m; i++) {
+            for (Key key : st[i].keys()) {
+                temp.put(key, st[i].get(key));
             }
         }
-        this = newOne;
+        this.m  = temp.m;
+        this.n  = temp.n;
+        this.st = temp.st;
     }
 }

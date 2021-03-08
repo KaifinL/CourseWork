@@ -167,7 +167,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public void put(K key, V value) {
-
+        
         keySet.add(key);
         size ++;
     }
@@ -203,6 +203,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     private int hash(K key) {
         int h = key.hashCode();
         h ^= (h >>> 20) ^ (h >>> 12) ^ (h >>> 7) ^ (h >>> 4);
-        return h & (m-1);
+        return h & (this.initialSize-1);
     }
 }

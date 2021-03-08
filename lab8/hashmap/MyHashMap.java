@@ -223,11 +223,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     private class MyIterator implements Iterator {
 
-        private Node cur;
-
-        MyIterator() {
-            cur = 
-        }
+        private Node cur = new Node(null, null);
+        
         @Override
         public boolean hasNext() {
 

@@ -167,7 +167,9 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public void put(K key, V value) {
-        if ((size / initialSize) > 
+        if ((size / initialSize) > loadFactor) {
+            resize(initialSize * 2);
+        }
         int row = hash(key) % initialSize;
         buckets[row].add(new Node(key, value));
         keySet.add(key);
@@ -217,5 +219,23 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         }
         buckets = newBuckets;
         initialSize = capacity;
+    }
+
+    private class MyIterator implements Iterator {
+
+        private Node cur;
+
+        MyIterator() {
+            cur = 
+        }
+        @Override
+        public boolean hasNext() {
+
+        }
+
+        @Override
+        public K next() {
+
+        }
     }
 }

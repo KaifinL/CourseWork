@@ -167,7 +167,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public void put(K key, V value) {
-        if ((size / initialSize) > loadFactor) {
+        double division = size / initialSize;
+        if (division > loadFactor) {
             resize(initialSize * 2);
         }
         int row = hash(key) % initialSize;

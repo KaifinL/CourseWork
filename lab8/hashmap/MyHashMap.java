@@ -3,6 +3,7 @@ package hashmap;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Set;
 
 /**
@@ -32,6 +33,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
             value = v;
         }
     }
+
 
     /* Instance Variables */
     private Collection<Node>[] buckets;
@@ -77,7 +79,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * OWN BUCKET DATA STRUCTURES WITH THE NEW OPERATOR!
      */
     protected Collection<Node> createBucket() {
-        return null;
+        return LinkedList;
     }
 
     /**

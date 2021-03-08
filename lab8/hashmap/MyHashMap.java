@@ -99,7 +99,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     // Your code won't compile until you do so!
     @Override
     public void clear() {
-
+        Collection<Node> empty = createBucket();
+        this.buckets = empty;
     }
 
     @Override

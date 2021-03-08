@@ -19,11 +19,6 @@ public class Blob implements Serializable {
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.
      */
-
-    public Blob() {
-        this.BlobContent = null;
-        this.blobId = null;
-    }
     // create a blob by the pass-in file
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);

@@ -198,10 +198,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     }
 
     public void fileUp(Collection target[]) {
-        Collection<Node> empty = createBucket();
-        for (Node noll : empty) {
-            noll = new Node(null, null);
-        }
+        Collection<Node> empty = new LinkedList<>();
         for (int i = 0; i < initialSize; i += 1) {
             target[i] = empty;
         }

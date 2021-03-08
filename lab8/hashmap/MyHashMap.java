@@ -146,7 +146,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
             return null;
         }else {
             for (Collection row : buckets) {
-                Node curr = row.
+                if (row)
             }
         }
     }

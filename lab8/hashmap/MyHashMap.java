@@ -126,6 +126,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     public void clear() {
         Collection<Node>[] empty = createTable(this.initialSize);
         this.buckets = empty;
+        size = 0;
+        keySet = new HashSet<>();
     }
 
     /**

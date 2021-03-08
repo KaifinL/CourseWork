@@ -123,6 +123,9 @@ public class Commit implements Serializable {
 
     // return the parent of the current commit
     public Commit getParent() {
+        if (parentId == null) {
+            return null;
+        }
         File parent =Utils.join(Repository.Commits, getParentId()) ;
         Commit parentCommit = Utils.readObject(parent, Commit.class);
         return parentCommit;

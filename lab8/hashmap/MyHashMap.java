@@ -167,7 +167,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public void put(K key, V value) {
-
+        
         keySet.add(key);
         size ++;
     }
@@ -207,15 +207,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return h & (this.initialSize-1);
     }
 
-    private void resize(int chains) {
-        Collection<Node> temp = createBucket(chains);
-        for (int i = 0; i < m; i++) {
-            for (Key key : st[i].keys()) {
-                temp.put(key, st[i].get(key));
-            }
-        }
-        this.m  = temp.m;
-        this.n  = temp.n;
-        this.st = temp.st;
+    public void resize(int capacity) {
+
     }
 }

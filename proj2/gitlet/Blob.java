@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Blob implements Serializable {
 
     private byte[] BlobContent;
-    private String blobId;
+    public String blobId;
     public File blobs = Repository.Blobs;
     public static HashMap<String, byte[]> BlobCollection = new HashMap<>();
     /**
@@ -22,7 +22,6 @@ public class Blob implements Serializable {
     // create a blob by the pass-in file
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
-        this.blobId = Utils.sha1(this.toString());
         File aBlob = Utils.join(blobs, this.blobId);
         try {
             aBlob.createNewFile();

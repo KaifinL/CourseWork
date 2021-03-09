@@ -94,7 +94,12 @@ public class Repository {
         Commit newCommit = readObject(HEAD, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.makeChange(message, dateObj);
-        newCommit.id = Utils.sha1(newCommit.getTimestamp().toString() + i.toString());
+        newCommit.saveCommit();
+        newCommit.id = Utils.sha1(newCommit.getTimestamp().toString());
+        newCommit.saveCommit();
+        File commit = Utils.join(Commits, newCommit.id);
+        byte[] content = readContents(commit);
+        newCommit.id = Utils.sha1(content);
         newCommit.saveCommit();
         writeObject(HEAD, newCommit);
     }

@@ -68,6 +68,8 @@ public class Repository {
             File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
             Commit Head = Utils.readObject(HEAD, Commit.class);
             String donknow = Head.snapshot.get(fileName);
+
+            // update the file if already exists in the staging area.
             if (targetFile.exists()) {    // to check if the specified file in the staging area
                 targetFile.delete();
                 if (!tobeAdd.getBlobId().equals(donknow)){  //to check if they have the same content
@@ -77,16 +79,19 @@ public class Repository {
                         e.printStackTrace();
                     }
                 }
-            }else if (Head.snapshot.containsKey(fileName)) {  // to check if the removal has the file
-                if (donknow.equals(tobeAdd.getBlobId())) {
-                    
-                }
             }else {
                 try {    // create a file in the staging area
                     targetFile.createNewFile();
                     writeObject(targetFile, tobeAdd);  //write the target file's content to to Staging area.
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+            }
+            if (Head.snapshot.containsKey(fileName)) {  // to check if the removal has the file
+                if (donknow.equals(tobeAdd.getBlobId())) {
+                    if (targetFile.exists()) {
+                        Utils.restrictedDelete(targetFile);
+                    }
                 }
             }
         }

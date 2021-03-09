@@ -94,6 +94,9 @@ public class Repository {
                     }
                 }
             }
+            if (targetFile2.exists()) {
+                Utils.restrictedDelete(targetFile2);
+            }
         }
     }
 

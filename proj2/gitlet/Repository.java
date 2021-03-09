@@ -91,7 +91,7 @@ public class Repository {
         Commit newCommit = readObject(HEAD, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.makeChange(message, dateObj);
-        newCommit.id = Utils.sha1(newCommit.toString());
+        newCommit.id = Utils.sha1(newCommit.getTimestamp().toString());
         newCommit.saveCommit();
         writeObject(HEAD, newCommit);
     }

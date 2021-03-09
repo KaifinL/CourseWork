@@ -64,7 +64,6 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
-            tobeAdd.blobId = Utils.sha1(tobeAdd.toString());
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
             Commit Head = Utils.readObject(HEAD, Commit.class);
             String Id = Head.snapshot.get(fileName);

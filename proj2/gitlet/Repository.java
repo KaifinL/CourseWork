@@ -67,9 +67,8 @@ public class Repository {
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
             Commit Head = Utils.readObject(HEAD, Commit.class);
             String Id = Head.snapshot.get(fileName);
-
             // update the file if already exists in the staging area.
-            if (!Id.equals(tobeAdd.getBlobId())) {    // the content of the blob is different from head one
+            if (Id == null || !Id.equals(tobeAdd.getBlobId())) {    // the content of the blob is different from head one
                 createFile(targetFile);
                 writeObject(targetFile, tobeAdd);
             }else {

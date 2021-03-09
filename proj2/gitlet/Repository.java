@@ -66,9 +66,9 @@ public class Repository {
             Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
             File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
+            Commit Head = Utils.readObject(HEAD, Commit.class);
+            String donknow = Head.snapshot.get(fileName);
             if (targetFile.exists()) {    // to check if the specified file in the staging area
-                Commit nHead = Utils.readObject(HEAD, Commit.class);
-                String donknow = nHead.snapshot.get(fileName);
                 targetFile.delete();
                 if (!tobeAdd.getBlobId().equals(donknow)){  //to check if they have the same content
                     try {
@@ -77,8 +77,10 @@ public class Repository {
                         e.printStackTrace();
                     }
                 }
-            }else if (targetFile2.exists()) {  // to check if the removal has the file
-                targetFile2.delete();
+            }else if (Head.snapshot.containsKey(fileName)) {  // to check if the removal has the file
+                if (donknow.equals(tobeAdd.getBlobId())) {
+                    
+                }
             }else {
                 try {    // create a file in the staging area
                     targetFile.createNewFile();

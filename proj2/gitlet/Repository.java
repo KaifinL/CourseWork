@@ -89,7 +89,6 @@ public class Repository {
         /**
          * TODO: set the commit message, date, parent(the last commit)
          */
-        i += 1;
         Date dateObj = new Date();
         Commit newCommit = readObject(HEAD, Commit.class);
         newCommit.parentId = newCommit.id;

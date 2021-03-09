@@ -23,7 +23,7 @@ public class Blob implements Serializable {
     // create a blob by the pass-in file
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);
-
+        this.blobId = Utils.sha1(BlobContent);
         File aBlob = Utils.join(blobs, this.blobId);
         try {
             aBlob.createNewFile();

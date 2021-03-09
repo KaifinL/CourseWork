@@ -3,7 +3,7 @@ package gitlet;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Formatter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import static gitlet.Utils.*;
 
@@ -140,7 +140,8 @@ public class Repository {
     public static void logHelper(Commit cur) {
         System.out.println("===");
         System.out.println("commit " + cur.id);
-        Formatter formatter= new Formatter("EEE, MMM d HH:mm:ss yyyy Z");
+        SimpleDateFormat formatter= new SimpleDateFormat("EEE, MMM d HH:mm:ss yyyy Z");
+        String date = formatter.format(cur.getMessage());
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
         if (cur.parent2Exist()) {

@@ -191,11 +191,13 @@ public class Repository {
             }
         }else if (args[2].equals("--")) {
             File targetFile = Utils.join(CWD, args[3]);
-            createFile(targetFile); //what for? don't understand!
+            createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
-            String targetContent = targetCommit.snapshot.get(args[3]);
-            Utils.writeObject(targetFile, targetContent);
+            String targetId = targetCommit.snapshot.get(args[3]);
+            File targetBlob = Utils.join(Blobs, targetId);
+            byte[] content = readContents(targetBlob);
+            Utils.writeObject(targetFile, content);
         }else {
             /** TODO: haven't done anything with this situation yet!
              *

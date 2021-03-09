@@ -65,35 +65,19 @@ public class Repository {
         }else {
             Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
-            File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
             Commit Head = Utils.readObject(HEAD, Commit.class);
-            String donknow = Head.snapshot.get(fileName);
+            String Id = Head.snapshot.get(fileName);
 
             // update the file if already exists in the staging area.
-            if (targetFile.exists()) {    // to check if the specified file in the staging area
-                targetFile.delete();
-                if (!tobeAdd.getBlobId().equals(donknow)){  //to check if they have the same content
-                    try {
-                        targetFile.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+            if (!Id.equals(tobeAdd.getBlobId())) {    // the content of the blob is different from head one
+                createFile(targetFile);
+                writeObject(targetFile, tobeAdd);
             }else {
-                try {    // create a file in the staging area
-                    targetFile.createNewFile();
-                    writeObject(targetFile, tobeAdd);  //write the target file's content to to Staging area.
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (targetFile.exists()) {
+                    Utils.restrictedDelete(targetFile);
                 }
             }
-            if (Head.snapshot.containsKey(fileName)) {  // to check if the removal has the file
-                if (donknow.equals(tobeAdd.getBlobId())) {
-                    if (targetFile.exists()) {
-                        Utils.restrictedDelete(targetFile);
-                    }
-                }
-            }
+            File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
             if (targetFile2.exists()) {
                 Utils.restrictedDelete(targetFile2);
             }

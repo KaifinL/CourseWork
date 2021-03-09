@@ -191,7 +191,7 @@ public class Repository {
             }
         }else if (args[2].equals("--")) {
             File targetFile = Utils.join(CWD, args[3]);
-            createFile(targetFile);
+            createFile(targetFile); //what for? don't understand!
             File commitFile = Utils.join(Commits, args[1]);
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
             String targetContent = targetCommit.snapshot.get(args[3]);

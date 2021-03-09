@@ -141,6 +141,7 @@ public class Repository {
         System.out.println("===");
         System.out.println("commit " + cur.id);
         SimpleDateFormat formatter= new SimpleDateFormat("EEE, MMM d HH:mm:ss yyyy Z");
+        String date = formatter.format(cur.getTimestamp());
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
         if (cur.parent2Exist()) {

@@ -4,8 +4,6 @@ package gitlet;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import static gitlet.Utils.*;
 
@@ -143,8 +141,6 @@ public class Repository {
         System.out.println("===");
         System.out.println("commit " + cur.id);
         SimpleDateFormat formatter= new SimpleDateFormat("EEE, MMM d HH:mm:ss yyyy Z");
-        String date = formatter.format(cur.getMessage());
-        TemporalAccessor temporal = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S").parse(date);
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
         if (cur.parent2Exist()) {

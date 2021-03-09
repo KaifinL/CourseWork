@@ -154,6 +154,9 @@ public class Repository {
     public static void log() {
         Commit curr = Utils.readObject(HEAD, Commit.class);
         while(curr != null) {
+            if (curr.id == curr.getParentId()) {
+                break;
+            }
             logHelper(curr);
             curr = curr.getParent();
         }

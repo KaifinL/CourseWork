@@ -36,6 +36,8 @@ public class Repository {
 
     public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
 
+    public static Integer i;
+
 
     public static Commit master;
 
@@ -87,11 +89,12 @@ public class Repository {
         /**
          * TODO: set the commit message, date, parent(the last commit)
          */
+        i += 1;
         Date dateObj = new Date();
         Commit newCommit = readObject(HEAD, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.makeChange(message, dateObj);
-        newCommit.id = Utils.sha1(newCommit.snapshot.toString());
+        newCommit.id = Utils.sha1(newCommit.getTimestamp().toString() + i.toString());
         newCommit.saveCommit();
         writeObject(HEAD, newCommit);
     }

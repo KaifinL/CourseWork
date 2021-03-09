@@ -195,9 +195,9 @@ public class Repository {
             File commitFile = Utils.join(Commits, args[1]);
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
             String targetId = targetCommit.snapshot.get(args[3]);
-            File targetBlob = Utils.join(Blobs, targetId);
-            byte[] content = readContents(targetBlob);
-            Utils.writeObject(targetFile, content);
+            File targetBlobFile = Utils.join(Blobs, targetId);
+            Blob targetBlob = Utils.readObject(targetBlobFile, Blob.class);
+            Utils.writeObject(targetFile, targetBlob);
         }else {
             /** TODO: haven't done anything with this situation yet!
              *

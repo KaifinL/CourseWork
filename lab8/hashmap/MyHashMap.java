@@ -194,6 +194,11 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return keySet;
     }
 
+    /**
+     * Removes the mapping for the specified key from this map if present.
+     * Not required for Lab 8. If you don't implement this, throw an
+     * UnsupportedOperationException.
+     */
     @Override
     public V remove(K key) {
         throw new UnsupportedOperationException();
@@ -210,6 +215,9 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return null;
     }
 
+
+
+    // helper method! To initialize each bucket to avoid nullPointerException
     private void fileUp(Collection target[]) {
         for (int i = 0; i < initialSize; i += 1) {
             Collection<Node> empty = new LinkedList<>();

@@ -201,7 +201,27 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key) {
-        throw new UnsupportedOperationException();
+        for (Collection bucket : buckets) {
+            if (removeHelper(key, bucket) != null) {
+                V returnStuff = (V) removeHelper(key, bucket);
+                bucket.remove(key);
+                size --;
+                keySet.remove(key);
+                return returnStuff;
+            }
+        }
+        return null;
+    }
+
+    private V removeHelper(K key, Collection<Node> bucket) {
+        for (Node i : bucket) {
+            if (i.key.equals(key)) {
+                V returnStuff = get(key);
+                bucket.remove(key);
+                return returnStuff;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -212,7 +232,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public Iterator<K> iterator() {
-        return null;
+        return new MyIterator();
     }
 
 

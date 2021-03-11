@@ -145,7 +145,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     public V get(K key) {
         if (!containsKey(key)) {
             return null;
-        }else {
+        } else {
             for (Collection<Node> row : buckets) {
                 for (Node node : row) {
                     if (node.key.equals(key)) {

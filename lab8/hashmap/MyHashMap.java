@@ -176,7 +176,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
                     }
                 }
             }
-        }else {
+        } else {
             int row = hash(key) % initialSize;
             buckets[row].add(new Node(key, value));
             keySet.add(key);

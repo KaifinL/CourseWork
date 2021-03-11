@@ -210,7 +210,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return null;
     }
 
-    public void fileUp(Collection target[]) {
+    private void fileUp(Collection target[]) {
         for (int i = 0; i < initialSize; i += 1) {
             Collection<Node> empty = new LinkedList<>();
             target[i] = empty;
@@ -224,7 +224,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return h & (this.initialSize-1);
     }
 
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         initialSize = capacity;
         Collection<Node>[] newBuckets = new Collection[capacity];
         fileUp(newBuckets);

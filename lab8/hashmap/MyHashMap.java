@@ -162,11 +162,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     public int size() {
         return size;
     }
-    /**
-     * Associates the specified value with the specified key in this map.
-     * If the map previously contained a mapping for the key,
-     * the old value is replaced.
-     */
+
     @Override
     public void put(K key, V value) {
         double division = ((double)size) / initialSize;
@@ -194,11 +190,6 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return keySet;
     }
 
-    /**
-     * Removes the mapping for the specified key from this map if present.
-     * Not required for Lab 8. If you don't implement this, throw an
-     * UnsupportedOperationException.
-     */
     @Override
     public V remove(K key) {
         for (Collection bucket : buckets) {
@@ -226,8 +217,10 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
-
+        if (get(key).equals(value)) {
+            return remove(key);
+        }
+        return null;
     }
 
     @Override

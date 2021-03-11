@@ -195,7 +195,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
             if (removeHelper(key, bucket) != null) {
                 V returnStuff = (V) removeHelper(key, bucket);
                 bucket.remove(key);
-                size --;
+                size--;
                 keySet.remove(key);
                 return returnStuff;
             }

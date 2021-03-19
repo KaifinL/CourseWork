@@ -1,6 +1,8 @@
 package gitlet;
 
 
+import jh61b.junit.In;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -226,6 +228,30 @@ public class Repository {
         Commit nHead = Utils.readObject(HEAD, Commit.class);
         Commit curr = nHead;
         master = curr;
+    }
+
+    public static void remove(String[] args) {
+        int error = 0;
+        File InAddition = Utils.join(StagingArea.addition, args[1]);
+        if (InAddition.exists()) {
+            Utils.restrictedDelete(InAddition);
+            error += 1;
+        }
+        Commit Head = Utils.readObject(HEAD, Commit.class);
+        String blobId = Head.snapshot.get(args[1]);
+        if (blobId != null) {
+            File toRemoval = Utils.join(StagingArea.removal, args[1]);
+            createFile(toRemoval);
+            writeContents(toRemoval, blobId);
+            File InCwd = Utils.join(CWD, args[1]);
+            if (InCwd.exists()) {
+                Utils.restrictedDelete(InCwd);
+            }
+            error += 1;
+        }
+        if (error == 0) {
+            Utils.exitWithError("No reason to remove the file");
+        }
     }
 
 }

@@ -37,15 +37,10 @@ public class Main {
                 Repository.finalCommit(args);
                 break;
 
-                /** to be revised
             case "rm":
                 String fileName = args[1];
-                if (!Repository.removeFile(fileName)) {
-                    Utils.exitWithError("No reason to remove the file.");
-                }
+                Repository.remove(args);
                 break;
-
-                 */
             case "log":
                 Repository.log();
                 break;

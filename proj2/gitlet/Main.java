@@ -55,7 +55,7 @@ public class Main {
                 Repository.find(commitMess);
                 break;
             case "status":
-                
+
             case "branch":
                 Repository.branchFunc(args[1]);
             default:

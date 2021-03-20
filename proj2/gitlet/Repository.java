@@ -202,8 +202,9 @@ public class Repository {
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
         }else {
-            /** TODO: haven't done anything with this situation yet!
-             *
+            /** TODO: Takes all files in the commit at the head of the given branch,
+             *  and puts them in the working directory
+             *  TODO: 
              */
             String targetName = args[1];
         }

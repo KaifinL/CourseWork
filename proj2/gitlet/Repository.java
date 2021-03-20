@@ -213,6 +213,20 @@ public class Repository {
              *  TODO:The staging area is cleared, unless the checked-out branch is the current branch
              */
             String targetName = args[1];
+            Commit curr = Branch.branches.get(targetName);
+            for (String fileName : curr.snapshot.keySet()) {
+                String BlobId = curr.snapshot.get(fileName);
+                File targetBlob = Utils.join(Blobs, BlobId);
+                File toCWD = Utils.join(CWD, fileName);
+                String content = Utils.readContentsAsString(targetBlob);
+                createFile(targetBlob);
+                Utils.writeContents(toCWD, content);
+            }
+            File targetBranch = Utils.join(BranchCollection, targetName);
+            Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
+            currentBranch = currBranch1;
+            Commit Head = currentBranch.getCurrentCommit();
+            Utils.writeObject(HEAD, Head);
         }
     }
 

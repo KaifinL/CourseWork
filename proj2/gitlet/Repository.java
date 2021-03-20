@@ -222,9 +222,11 @@ public class Repository {
     }
 
     public static void branchFunc(String branchName) {
-        Commit nHead = Utils.readObject(HEAD, Commit.class);
-        Commit curr = nHead;
-        master = curr;
+        if (Branch.branches.containsKey(branchName)) {
+            Utils.exitWithError("");
+        }
+        Commit Head = Utils.readObject(HEAD, Commit.class);
+
     }
 
     public static void remove(String[] args) {

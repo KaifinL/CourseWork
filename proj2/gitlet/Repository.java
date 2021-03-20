@@ -205,10 +205,7 @@ public class Repository {
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
         }else {
-            /** TODO: Takes all files in the commit at the head of the given branch,
-             *  and puts them in the working directory
-             *  TODO: overwriting the versions of the files that are already there if they exist.
-             *  TODO:at the end of this command, the given branch will now be considered the current branch (HEAD)
+            /**
              *  TODO:Any files that are tracked in the current branch but are not present in the checked-out branch are deleted
              *  TODO:The staging area is cleared, unless the checked-out branch is the current branch
              */
@@ -224,6 +221,10 @@ public class Repository {
             }
             File targetBranch = Utils.join(BranchCollection, targetName);
             Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
+            if (!currBranch1.equals(currentBranch)) {
+                Commit.helpDelete(StagingArea.addition);
+                Commit.helpDelete(StagingArea.removal);
+            }
             currentBranch = currBranch1;
             Commit Head = currentBranch.getCurrentCommit();
             Utils.writeObject(HEAD, Head);

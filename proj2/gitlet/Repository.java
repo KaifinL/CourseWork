@@ -38,6 +38,8 @@ public class Repository {
 
     public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
 
+    public static final File BranchCollection = Utils.join(GITLET_DIR, "Branch");
+
     public static Branch currentBranch;
 
     public static void setupPersistence() {
@@ -47,6 +49,7 @@ public class Repository {
         StagingArea.addition.mkdir();
         StagingArea.removal.mkdir();
         Blobs.mkdir();
+        BranchCollection.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
@@ -236,6 +239,9 @@ public class Repository {
         }
         Commit Head = Utils.readObject(HEAD, Commit.class);
         Branch newBranch = new Branch(branchName, Head);
+        File Branch1 = Utils.join(Repository.BranchCollection, branchName);
+        Repository.createFile(Branch1);
+        Utils.writeObject(Branch1, newBranch);
     }
 
     public static void remove(String[] args) {

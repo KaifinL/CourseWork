@@ -38,7 +38,6 @@ public class Main {
                 break;
 
             case "rm":
-                String fileName = args[1];
                 Repository.remove(args);
                 break;
             case "log":

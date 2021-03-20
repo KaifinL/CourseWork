@@ -205,7 +205,7 @@ public class Repository {
             /** TODO: Takes all files in the commit at the head of the given branch,
              *  and puts them in the working directory
              *  TODO: overwriting the versions of the files that are already there if they exist.
-             *  TODO:
+             *  TODO:at the end of this command, the given branch will now be considered the current branch (HEAD)
              */
             String targetName = args[1];
         }

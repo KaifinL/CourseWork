@@ -206,6 +206,7 @@ public class Repository {
              *  and puts them in the working directory
              *  TODO: overwriting the versions of the files that are already there if they exist.
              *  TODO:at the end of this command, the given branch will now be considered the current branch (HEAD)
+             *  TODO:Any files that are tracked in the current branch but are not present in the checked-out branch are deleted
              */
             String targetName = args[1];
         }

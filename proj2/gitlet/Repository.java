@@ -37,7 +37,7 @@ public class Repository {
     /* TODO: fill in the rest of this class. */
 
     public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
-    
+
     public static Commit master;
 
     public static void setupPersistence() {

@@ -204,7 +204,8 @@ public class Repository {
         }else {
             /** TODO: Takes all files in the commit at the head of the given branch,
              *  and puts them in the working directory
-             *  TODO: 
+             *  TODO: overwriting the versions of the files that are already there if they exist.
+             *  TODO:
              */
             String targetName = args[1];
         }

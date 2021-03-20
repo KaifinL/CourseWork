@@ -223,10 +223,10 @@ public class Repository {
 
     public static void branchFunc(String branchName) {
         if (Branch.branches.containsKey(branchName)) {
-            Utils.exitWithError("");
+            Utils.exitWithError("A branch with that name already exists.");
         }
         Commit Head = Utils.readObject(HEAD, Commit.class);
-
+        Branch newBranch = new Branch(branchName, Head);
     }
 
     public static void remove(String[] args) {

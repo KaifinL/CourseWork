@@ -38,7 +38,7 @@ public class Repository {
 
     public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
 
-    public static Commit master;
+    public static Branch currentBranch;
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -56,6 +56,9 @@ public class Repository {
             e.printStackTrace();
         }
         writeObject(HEAD, initialCommit);
+        Commit Head = Utils.readObject(HEAD, Commit.class);
+        Branch master = new Branch("master", Head);
+        currentBranch = master;
     }
 
     // all this method need to do is to simply move the file to the staging area.
@@ -95,6 +98,8 @@ public class Repository {
         newCommit.id = Utils.sha1(newCommit.getMessage());
         newCommit.saveCommit();
         writeObject(HEAD, newCommit);
+        Commit Head = Utils.readObject(HEAD, Commit.class);
+        currentBranch.setCurrentCommit(Head);
     }
 
     public static void finalCommit(String[] args) {

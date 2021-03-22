@@ -311,7 +311,15 @@ public class Repository {
         // TODO: remind revised
         System.out.println();
         //phase 5
-        System.out.println("");
+        System.out.println("=== Untracked Files ===");
+        // TODO: remind revised
+        System.out.println();
+    }
+
+    public static void rmBranch(String targetBranch) {
+        if (currentBranch.getName().equals(targetBranch)) {
+            Utils.exitWithError("");
+        }
     }
 
 }

@@ -285,7 +285,16 @@ public class Repository {
 
     public static void status() {
         // phase 1
-        System.out.println("===");
+        System.out.println("=== Branches ===");
+        System.out.println("*" + currentBranch.getName());
+        for (String branchName : Utils.plainFilenamesIn(BranchCollection)) {
+            if (!branchName.equals(currentBranch.getName())) {
+                System.out.println(branchName);
+            }
+        }
+        System.out.println();
+        // phase 2
+        System.out.println("");
     }
 
 }

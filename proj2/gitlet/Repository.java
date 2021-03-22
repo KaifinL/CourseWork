@@ -318,6 +318,15 @@ public class Repository {
 
     public static void rmBranch(String targetBranch) {
         if (currentBranch.getName().equals(targetBranch)) {
+            Utils.exitWithError("Cannot remove the current branch.");
+        }
+        boolean error = true;
+        for (String branchName : Utils.plainFilenamesIn(BranchCollection)) {
+            File targetFile = Utils.join(BranchCollection, branchName);
+            Utils.restrictedDelete(targetFile);
+            error = false;
+        }
+        if (error) {
             Utils.exitWithError("");
         }
     }

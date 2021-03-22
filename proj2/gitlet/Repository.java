@@ -327,7 +327,7 @@ public class Repository {
             error = false;
         }
         if (error) {
-            Utils.exitWithError("");
+            Utils.exitWithError("A branch with that name does not exist.");
         }
     }
 

@@ -294,6 +294,12 @@ public class Repository {
         }
         System.out.println();
         // phase 2
+        System.out.println("=== Staged Files ===");
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            System.out.println(FileName);
+        }
+        System.out.println();
+        // phase 3
         System.out.println("");
     }
 

@@ -307,6 +307,10 @@ public class Repository {
         }
         System.out.println();
         //phase 4
+        System.out.println("=== Modifications Not Staged For Commit ===");
+        // TODO: remind revised
+        System.out.println();
+        //phase 5
         System.out.println("");
     }
 

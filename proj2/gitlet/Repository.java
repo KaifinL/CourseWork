@@ -1,6 +1,7 @@
 package gitlet;
 
 
+import com.puppycrawl.tools.checkstyle.checks.naming.LocalFinalVariableNameCheck;
 import jh61b.junit.In;
 
 import java.io.File;
@@ -300,6 +301,12 @@ public class Repository {
         }
         System.out.println();
         // phase 3
+        System.out.println("=== Removed Files ===");
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
+            System.out.println(FileName);
+        }
+        System.out.println();
+        //phase 4
         System.out.println("");
     }
 

@@ -284,7 +284,8 @@ public class Repository {
     }
 
     public static void status() {
-        // ph
+        // phase 1
+        System.out.println("===");
     }
 
 }

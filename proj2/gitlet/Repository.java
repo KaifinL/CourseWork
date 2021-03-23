@@ -224,6 +224,9 @@ public class Repository {
                 Utils.writeContents(toCWD, content);
             }
             File targetBranch = Utils.join(BranchCollection, targetName);
+            if (!targetBranch.exists()) {
+                Utils.exitWithError("");
+            }
             Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
             if (!currBranch1.equals(currentBranch)) {
                 Commit.helpDelete(StagingArea.addition);

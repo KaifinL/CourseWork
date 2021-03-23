@@ -211,6 +211,7 @@ public class Repository {
         }else {
             String targetName = args[1];
             Commit curr = Branch.branches.get(targetName);
+            
             for (String fileName : curr.snapshot.keySet()) {
                 String BlobId = curr.snapshot.get(fileName);
                 File targetBlob = Utils.join(Blobs, BlobId);

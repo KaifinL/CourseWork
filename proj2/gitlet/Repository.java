@@ -201,7 +201,7 @@ public class Repository {
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);
             if (!commitFile.exists()) {
-                Utils.exitWithError("");
+                Utils.exitWithError("No commit with that id exists.");
             }
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
             String targetId = targetCommit.snapshot.get(args[3]);

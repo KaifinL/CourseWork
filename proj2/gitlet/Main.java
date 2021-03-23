@@ -57,7 +57,8 @@ public class Main {
                 Repository.status();
             case "branch":
                 Repository.branchFunc(args[1]);
-            case "rm"
+            case "rm-branch":
+                Repository.rmBranch(args[1]);
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

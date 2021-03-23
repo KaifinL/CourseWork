@@ -200,6 +200,9 @@ public class Repository {
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);
+            if (!commitFile.exists()) {
+                Utils.exitWithError("");
+            }
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
             String targetId = targetCommit.snapshot.get(args[3]);
             File targetBlob = Utils.join(Blobs, targetId);

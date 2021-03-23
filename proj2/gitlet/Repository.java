@@ -209,10 +209,6 @@ public class Repository {
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
         }else {
-            /**
-             *  TODO:Any files that are tracked in the current branch but are not present in the checked-out branch are deleted
-             *  TODO:The staging area is cleared, unless the checked-out branch is the current branch
-             */
             String targetName = args[1];
             Commit curr = Branch.branches.get(targetName);
             for (String fileName : curr.snapshot.keySet()) {
@@ -230,8 +226,7 @@ public class Repository {
             Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
             if (currBranch1.equals(currentBranch)) {
                 Utils.exitWithError("No need to checkout the current branch.");
-            }
-            if (!currBranch1.equals(currentBranch)) {
+            }else {
                 Commit.helpDelete(StagingArea.addition);
                 Commit.helpDelete(StagingArea.removal);
             }

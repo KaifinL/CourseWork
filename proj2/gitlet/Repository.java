@@ -225,7 +225,7 @@ public class Repository {
             }
             File targetBranch = Utils.join(BranchCollection, targetName);
             if (!targetBranch.exists()) {
-                Utils.exitWithError("");
+                Utils.exitWithError("No such branch exists.");
             }
             Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
             if (!currBranch1.equals(currentBranch)) {

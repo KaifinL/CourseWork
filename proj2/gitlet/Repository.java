@@ -211,7 +211,17 @@ public class Repository {
         }else {
             String targetName = args[1];
             Commit curr = Branch.branches.get(targetName);
-            
+            for (String FileName : Utils.plainFilenamesIn(CWD)) {
+                Commit head = Utils.readObject(HEAD, Commit.class);
+                if (!head.snapshot.containsKey(FileName) && curr.snapshot.containsKey(FileName)) {
+                    File untracked = Utils.join(CWD, FileName);
+                    Blob newOne = new Blob(untracked);
+                    String compared = curr.snapshot.get(FileName);
+                    if (newOne.getBlobId().equals(compared)) {
+                        Utils.exitWithError("");
+                    }
+                }
+            }
             for (String fileName : curr.snapshot.keySet()) {
                 String BlobId = curr.snapshot.get(fileName);
                 File targetBlob = Utils.join(Blobs, BlobId);

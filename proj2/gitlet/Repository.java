@@ -228,6 +228,9 @@ public class Repository {
                 Utils.exitWithError("No such branch exists.");
             }
             Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
+            if (currBranch1.equals(currentBranch)) {
+                
+            }
             if (!currBranch1.equals(currentBranch)) {
                 Commit.helpDelete(StagingArea.addition);
                 Commit.helpDelete(StagingArea.removal);

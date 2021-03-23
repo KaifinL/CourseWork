@@ -229,7 +229,7 @@ public class Repository {
             }
             Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
             if (currBranch1.equals(currentBranch)) {
-                
+                Utils.exitWithError("No need to checkout the current branch.");
             }
             if (!currBranch1.equals(currentBranch)) {
                 Commit.helpDelete(StagingArea.addition);

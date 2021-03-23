@@ -218,7 +218,7 @@ public class Repository {
                     Blob newOne = new Blob(untracked);
                     String compared = curr.snapshot.get(FileName);
                     if (newOne.getBlobId().equals(compared)) {
-                        Utils.exitWithError("");
+                        Utils.exitWithError("There is an untracked file in the way; delete it, or add and commit it first.");
                     }
                 }
             }

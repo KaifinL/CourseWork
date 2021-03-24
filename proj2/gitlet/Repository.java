@@ -3,6 +3,7 @@ package gitlet;
 
 import com.puppycrawl.tools.checkstyle.checks.naming.LocalFinalVariableNameCheck;
 import jh61b.junit.In;
+import net.sf.saxon.expr.flwor.Tuple;
 
 import java.io.File;
 import java.io.IOException;
@@ -351,7 +352,27 @@ public class Repository {
     }
 
     public static void reset() {
-        
+
+    }
+
+    public static void merge(String givenBranch1) {
+        // step 1: catch splitPoint;
+        File givenBranchName = Utils.join(BranchCollection, givenBranch1);
+        Branch givenBranch = Utils.readObject(givenBranchName, Branch.class);
+        Commit splitPoint = null;
+        for (String commitId : givenBranch.getBranches().keySet()) {
+            for (String commitId2 : currentBranch.getBranches().keySet()) {
+                File commit1File = Utils.join(Commits, commitId);
+                File commit2File = Utils.join(Commits, commitId2);
+                Commit commit1 = Utils.readObject(commit1File, Commit.class);
+                Commit commit2 = Utils.readObject(commit2File, Commit.class);
+                if (!commit1.equals(commit2) && commit1.getParentId().equals(commit2.getParentId())) {
+                    String splitPointId = commit1.getParentId();
+                    File splitFile = Utils.join(Commits, splitPointId);
+                    splitPoint = Utils.readObject(splitFile, Commit.class);
+                }
+            }
+        }
     }
 
 }

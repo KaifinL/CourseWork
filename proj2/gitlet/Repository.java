@@ -416,8 +416,27 @@ public class Repository {
         if (splitPoint.equals(givenBranch.getCurrentCommit())) {
             Utils.exitWithError("Given branch is an ancestor of the current branch.");
         }else if (splitPoint.equals(currentBranch.getCurrentCommit())) {
-            Utils.exitWithError("");
+            Utils.exitWithError("Current branch fast-forwarded.");
+        }
+
+        //step 3: follow up steps
+        Commit givenBranchCurrCommit = givenBranch.getCurrentCommit();
+        Commit currentBranchCurrCommit = currentBranch.getCurrentCommit();
+        merHelper1(splitPoint, givenBranchCurrCommit, currentBranchCurrCommit);
+    }
+
+    public static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit currentBranchCurrCommit) {
+        for (String Filename : splitPoint.snapshot.keySet()) {
+            if (givenBranchCurrCommit.snapshot.containsKey(Filename) && currentBranchCurrCommit.snapshot.containsKey(Filename)) {
+                String BlobId = splitPoint.snapshot.get(Filename);
+                String compared = givenBranchCurrCommit.snapshot.get(Filename);
+                String curr = currentBranchCurrCommit.snapshot.get(Filename);
+                if (BlobId.equals(curr) && !BlobId.equals(compared)) {
+                    currentBranchCurrCommit.snapshot.put(Filename, compared);
+                }
+            }
         }
     }
+    
 
 }

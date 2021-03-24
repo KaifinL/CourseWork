@@ -398,6 +398,10 @@ public class Repository {
         }
         Commit givenCommit = Utils.readObject(givenCommitFile, Commit.class);
         checkoutFailure(head);
+        for (String fileName : givenCommit.snapshot.keySet()) {
+            String[] args = new String[3];
+
+        }
         for (String FileName : head.snapshot.keySet()) { // remove files that are not present in the
             // given commit but present in the current commit
             if (!givenCommit.snapshot.containsKey(FileName)) {

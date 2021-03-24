@@ -186,7 +186,7 @@ public class Repository {
     }
 
     public static void checkout(String[] args) {
-        if (args[1].equals("--")) {
+        if (args.length == 2) {
             Commit nHead = Utils.readObject(HEAD, Commit.class);
             if (!nHead.snapshot.containsKey(args[2])){
                 exitWithError("File does not exist in that commit.");
@@ -198,7 +198,7 @@ public class Repository {
                 byte[] content = readContents(targetBlob);
                 Utils.writeContents(targetFile, content);
             }
-        }else if (args[2].equals("--")) {
+        }else if (args.length == 3) {
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);

@@ -212,7 +212,11 @@ public class Repository {
         }else {
             String targetName = args[1];
             Commit curr = Branch.branches.get(targetName);
+            File targetBranch = Utils.join(BranchCollection, targetName);
             checkoutFailure(curr);
+            if (!targetBranch.exists()) {
+                Utils.exitWithError("No such branch exists.");
+            }
             for (String fileName : curr.snapshot.keySet()) {
                 String BlobId = curr.snapshot.get(fileName);
                 File targetBlob = Utils.join(Blobs, BlobId);
@@ -220,10 +224,6 @@ public class Repository {
                 String content = Utils.readContentsAsString(targetBlob);
                 createFile(targetBlob);
                 Utils.writeContents(toCWD, content);
-            }
-            File targetBranch = Utils.join(BranchCollection, targetName);
-            if (!targetBranch.exists()) {
-                Utils.exitWithError("No such branch exists.");
             }
             Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
             if (currBranch1.equals(currentBranch)) {

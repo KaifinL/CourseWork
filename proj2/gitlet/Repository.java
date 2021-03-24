@@ -4,6 +4,7 @@ package gitlet;
 import com.puppycrawl.tools.checkstyle.checks.naming.LocalFinalVariableNameCheck;
 import jh61b.junit.In;
 import net.sf.saxon.expr.flwor.Tuple;
+import net.sf.saxon.trans.SymbolicName;
 
 import java.io.File;
 import java.io.IOException;
@@ -218,25 +219,27 @@ public class Repository {
                 Utils.exitWithError("No such branch exists.");
             }
             Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
-
-            for (String fileName : curr.snapshot.keySet()) {
-                String BlobId = curr.snapshot.get(fileName);
-                File targetBlob = Utils.join(Blobs, BlobId);
-                File toCWD = Utils.join(CWD, fileName);
-                String content = Utils.readContentsAsString(targetBlob);
-                createFile(targetBlob);
-                Utils.writeContents(toCWD, content);
-            }
+            Commit givenCommit = givenBranch.getCurrentCommit();
             if (givenBranch.equals(currentBranch)) {
                 Utils.exitWithError("No need to checkout the current branch.");
             }else {
                 Commit.helpDelete(StagingArea.addition);
                 Commit.helpDelete(StagingArea.removal);
             }
+            for (String FileName : givenCommit.snapshot.keySet()){
+                String BlobId = givenCommit.snapshot.get(FileName);
+                File targetBlob = Utils.join(Blobs, BlobId);
+                Blob tobeCopied = Utils.readObject(targetBlob, Blob.class);
+                byte[] content = tobeCopied.getBlobContent();
+                File targetFile = Utils.join(CWD, FileName);
+                createFile(targetFile);
+                writeContents(targetFile, content);
+            }
             currentBranch = givenBranch;
             Commit Head = currentBranch.getCurrentCommit();
             Utils.writeObject(HEAD, Head);
         }
+              
     }
 
     public static void find(String message) {

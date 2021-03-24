@@ -399,7 +399,7 @@ public class Repository {
         Commit givenCommit = Utils.readObject(givenCommitFile, Commit.class);
         checkoutFailure(head);
         for (String fileName : givenCommit.snapshot.keySet()) {
-            String[] args = new String[3];
+            String[] args = {givenCommit}
 
         }
         for (String FileName : head.snapshot.keySet()) { // remove files that are not present in the

@@ -404,7 +404,7 @@ public class Repository {
                 head.snapshot.remove(FileName);
             }
         }
-        
+        currentBranch = 
     }
 
     public static void merge(String givenBranch1) {

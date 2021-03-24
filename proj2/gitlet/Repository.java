@@ -212,9 +212,8 @@ public class Repository {
             Utils.writeContents(targetFile, content);
         }else {
             String targetName = args[1];
-            Commit curr = Branch.branches.get(targetName);
             File targetBranch = Utils.join(BranchCollection, targetName);
-            checkoutFailure(curr);
+            Commit Head = currentBranch.getCurrentCommit();
             if (!targetBranch.exists()) {
                 Utils.exitWithError("No such branch exists.");
             }
@@ -226,7 +225,8 @@ public class Repository {
                 Commit.helpDelete(StagingArea.addition);
                 Commit.helpDelete(StagingArea.removal);
             }
-            for (String FileName : givenCommit.snapshot.keySet()){
+
+            for (String FileName : givenCommit.snapshot.keySet()){ //
                 String BlobId = givenCommit.snapshot.get(FileName);
                 File targetBlob = Utils.join(Blobs, BlobId);
                 Blob tobeCopied = Utils.readObject(targetBlob, Blob.class);
@@ -235,13 +235,15 @@ public class Repository {
                 createFile(targetFile);
                 writeContents(targetFile, content);
             }
+            for (String FileName : Head.snapshot.keySet()) { // remove files that are not present in the
+                                                                // given commit but present in the current commit
+                if (!givenCommit.snapshot.containsKey(FileName)) {
+                    Head.snapshot.remove(FileName);
+                }
+            }
             currentBranch = givenBranch;
-            Commit Head = currentBranch.getCurrentCommit();
             Utils.writeObject(HEAD, Head);
 
-            /**
-             * files that are tracked in the current branch but are not present in the checked-out branch are deleted
-             */
         }
 
     }

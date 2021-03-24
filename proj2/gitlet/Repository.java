@@ -390,8 +390,18 @@ public class Repository {
         return false;
     }
 
-    public static void reset() {
-
+    public static void reset(String givenId) {
+        Commit head = Utils.readObject(HEAD, Commit.class);
+        File givenCommitFile = Utils.join(Commits, givenId);
+        
+        Commit givenCommit = Utils.readObject(givenCommitFile, Commit.class);
+        checkoutFailure(head);
+        for (String FileName : head.snapshot.keySet()) { // remove files that are not present in the
+            // given commit but present in the current commit
+            if (!givenCommit.snapshot.containsKey(FileName)) {
+                head.snapshot.remove(FileName);
+            }
+        }
     }
 
     public static void merge(String givenBranch1) {

@@ -238,8 +238,12 @@ public class Repository {
             currentBranch = givenBranch;
             Commit Head = currentBranch.getCurrentCommit();
             Utils.writeObject(HEAD, Head);
+
+            /**
+             * files that are tracked in the current branch but are not present in the checked-out branch are deleted
+             */
         }
-              
+
     }
 
     public static void find(String message) {

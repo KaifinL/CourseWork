@@ -348,11 +348,20 @@ public class Repository {
         }
     }
 
+    /**
+     * If a working file is untracked in the current branch and would be overwritten by the checkout,
+     * print There is an untracked file in the way; delete it, or add and commit it first. and exit
+     * @param curr
+     */
     public static void checkoutFailure(Commit curr) {
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
+            File untracked = Utils.join(CWD, FileName);
+            if (untracked.isDirectory()) {
+                continue;
+            }
             Commit head = Utils.readObject(HEAD, Commit.class);
             if (!head.snapshot.containsKey(FileName) && curr.snapshot.containsKey(FileName)) {
-                File untracked = Utils.join(CWD, FileName);
+                // to make sure that this file is untracked in the current branch
                 Blob newOne = new Blob(untracked);
                 String compared = curr.snapshot.get(FileName);
                 if (newOne.getBlobId().equals(compared)) {
@@ -360,6 +369,25 @@ public class Repository {
                 }
             }
         }
+    }
+
+    /**
+     * remain revised : I don't know how to check if the two files have the same content.
+     * thinking : to check if the contents are the same between current commit and CWD. If they are the same return true
+     * otherwise return false.
+     * @param FileName
+     * @return
+     */
+    // return true if the file is untracked by the Head commit.
+    public static boolean untracked(String FileName) {
+        File targetFile = Utils.join(CWD, FileName);
+        Commit head = Utils.readObject(HEAD, Commit.class);
+        if (!targetFile.exists()) {
+            return true;
+        }
+        byte[] content = Utils.readContents(targetFile);
+        //if (content.equals())
+        return false;
     }
 
     public static void reset() {
@@ -383,6 +411,10 @@ public class Repository {
                     splitPoint = Utils.readObject(splitFile, Commit.class);
                 }
             }
+        }
+        // step 2: 2 failure cases
+        if (splitPoint.equals(givenBranch.getCurrentCommit())) {
+            Utils.exitWithError("");
         }
     }
 

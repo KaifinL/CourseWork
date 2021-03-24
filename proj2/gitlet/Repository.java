@@ -217,6 +217,8 @@ public class Repository {
             if (!targetBranch.exists()) {
                 Utils.exitWithError("No such branch exists.");
             }
+            Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
+
             for (String fileName : curr.snapshot.keySet()) {
                 String BlobId = curr.snapshot.get(fileName);
                 File targetBlob = Utils.join(Blobs, BlobId);
@@ -225,14 +227,13 @@ public class Repository {
                 createFile(targetBlob);
                 Utils.writeContents(toCWD, content);
             }
-            Branch currBranch1 = Utils.readObject(targetBranch, Branch.class);
-            if (currBranch1.equals(currentBranch)) {
+            if (givenBranch.equals(currentBranch)) {
                 Utils.exitWithError("No need to checkout the current branch.");
             }else {
                 Commit.helpDelete(StagingArea.addition);
                 Commit.helpDelete(StagingArea.removal);
             }
-            currentBranch = currBranch1;
+            currentBranch = givenBranch;
             Commit Head = currentBranch.getCurrentCommit();
             Utils.writeObject(HEAD, Head);
         }

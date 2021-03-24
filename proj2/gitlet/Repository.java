@@ -219,14 +219,15 @@ public class Repository {
             }
             Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
             Commit givenCommit = givenBranch.getCurrentCommit();
-            if (givenBranch.equals(currentBranch)) {
+
+            if (givenBranch.equals(currentBranch)) {  //if givenBranch is the same as the currentBranch
                 Utils.exitWithError("No need to checkout the current branch.");
             }else {
                 Commit.helpDelete(StagingArea.addition);
                 Commit.helpDelete(StagingArea.removal);
             }
 
-            for (String FileName : givenCommit.snapshot.keySet()){ //
+            for (String FileName : givenCommit.snapshot.keySet()){ //put all the files to the CWD and overwrite them if necessary.
                 String BlobId = givenCommit.snapshot.get(FileName);
                 File targetBlob = Utils.join(Blobs, BlobId);
                 Blob tobeCopied = Utils.readObject(targetBlob, Blob.class);

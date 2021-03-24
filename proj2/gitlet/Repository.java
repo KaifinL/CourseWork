@@ -393,7 +393,9 @@ public class Repository {
     public static void reset(String givenId) {
         Commit head = Utils.readObject(HEAD, Commit.class);
         File givenCommitFile = Utils.join(Commits, givenId);
-        
+        if (!givenCommitFile.exists()) {
+            Utils.exitWithError("No commit with that id exists.");
+        }
         Commit givenCommit = Utils.readObject(givenCommitFile, Commit.class);
         checkoutFailure(head);
         for (String FileName : head.snapshot.keySet()) { // remove files that are not present in the
@@ -402,6 +404,7 @@ public class Repository {
                 head.snapshot.remove(FileName);
             }
         }
+        
     }
 
     public static void merge(String givenBranch1) {

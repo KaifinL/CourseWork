@@ -15,7 +15,6 @@ public class Blob implements Serializable {
     public String blobId;
     public File blobs = Repository.Blobs;
     public static HashMap<String, byte[]> BlobCollection = new HashMap<>();
-    private String i;
     /**
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.

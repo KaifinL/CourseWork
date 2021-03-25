@@ -94,7 +94,7 @@ public class Repository {
         }
     }
 
-    public static void makeCommit(String message) {
+    private static void makeCommit(String message) {
         /**
          * TODO: set the commit message, date, parent(the last commit)
          */
@@ -102,7 +102,6 @@ public class Repository {
         Commit newCommit = readObject(HEAD, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.makeChange(message, dateObj);
-        String[] idPara = new String[]
         newCommit.id = Utils.sha1(newCommit.getMessage());
         newCommit.saveCommit();
         writeObject(HEAD, newCommit);

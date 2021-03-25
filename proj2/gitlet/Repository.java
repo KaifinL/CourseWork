@@ -502,7 +502,8 @@ public class Repository {
         File Blob = Utils.join(Blobs, BlobId);
         String content = Utils.readContentsAsString(Blob);
         System.out.println(content);
-        
+        System.out.println("=======");
+        System.out.println("");
     }
 
 

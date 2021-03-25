@@ -2,7 +2,6 @@ package gitlet;
 
 
 import java.io.File;
-import java.io.IOException;
 
 /** Driver class for Gitlet, a subset of the Git version-control system.
  *  @author Kaifeng Lin
@@ -59,6 +58,8 @@ public class Main {
                 Repository.branchFunc(args[1]);
             case "rm-branch":
                 Repository.rmBranch(args[1]);
+            case "merge":
+                Repository.merge(args[1]);
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

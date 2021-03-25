@@ -496,7 +496,7 @@ public class Repository {
     }
 
     private static void showConflict(String blobId1, String blobId2) {
-        System.out.println("");
+        System.out.println("<<<<<<< HEAD");
     }
 
 

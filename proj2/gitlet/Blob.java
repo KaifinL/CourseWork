@@ -14,7 +14,6 @@ public class Blob implements Serializable {
     private byte[] BlobContent;
     public String blobId;
     public File blobs = Repository.Blobs;
-    public static HashMap<String, byte[]> BlobCollection = new HashMap<>();
     /**
      * TODO: some variables like blob itself should be created
      * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.
@@ -30,7 +29,6 @@ public class Blob implements Serializable {
             e.printStackTrace();
         }
         Utils.writeContents(aBlob, this.BlobContent);
-        this.BlobCollection.put(blobId, BlobContent);
     }
 
 
@@ -42,11 +40,6 @@ public class Blob implements Serializable {
     public String getBlobId() {
         return this.blobId;
     }
-
-    public static byte[] getBlobContent(String id) {
-        return BlobCollection.get(id);
-    }
-
 
 
 }

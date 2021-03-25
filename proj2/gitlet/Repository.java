@@ -444,6 +444,8 @@ public class Repository {
         mergeCommit.parent2Id = givenBranchCurrCommit.id;
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
+        merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
+
     }
 
     public static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
@@ -471,7 +473,31 @@ public class Repository {
         }
     }
 
-    
+    public static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
+        for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
+            if (!splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
+                String[] args = {givenBranchCurrentCommit.getId(), "--", FileName};
+                checkout(args);
+                mergeCommit.snapshot.put(FileName, givenBranchCurrentCommit.snapshot.get(FileName));
+            }
+        }
+    }
+
+    public static void merHelper4(Commit givenBranchCurrentCommit, Commit mergeCommit) {
+        for (String FileName : mergeCommit.snapshot.keySet()) {
+            if (givenBranchCurrentCommit.snapshot.containsKey(FileName)) {
+                String BlobId1 = mergeCommit.snapshot.get(FileName);
+                String BlobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
+                if (!BlobId1.equals(BlobId2)) {
+                    showConflict(BlobId1, BlobId2);
+                }
+            }
+        }
+    }
+
+    private static void showConflict(String blobId1, String blobId2) {
+        System.out.println("");
+    }
 
 
 }

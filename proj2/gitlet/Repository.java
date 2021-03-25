@@ -349,7 +349,7 @@ public class Repository {
     }
 
     /**
-     * If a working file is untracked in the current branch and would be overwritten by the checkout,
+     * If a working file is untracked in the current branch and would be overwritten by the ** (this is a general method),
      * print There is an untracked file in the way; delete it, or add and commit it first. and exit
      * @param curr
      */

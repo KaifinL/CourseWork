@@ -190,7 +190,7 @@ public class Repository {
                 byte[] content = readContents(targetBlob);
                 Utils.writeContents(targetFile, content);
             }
-        }else if (args.length == 3) {
+        }else if (args.length == 3) { //checkout [commit id] -- [file name]
             File targetFile = Utils.join(CWD, args[0]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[2]);

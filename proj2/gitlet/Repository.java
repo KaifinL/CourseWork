@@ -372,22 +372,13 @@ public class Repository {
     }
 
     /**
-     * remain revised : I don't know how to check if the two files have the same content.
-     * thinking : to check if the contents are the same between current commit and CWD. If they are the same return true
-     * otherwise return false.
      * @param FileName
-     * @return
+     * @return return true if the file is tracked by the head of the current branch,return false otherwise.
      */
     // return true if the file is untracked by the Head commit.
     private static boolean untracked(String FileName) {
-        File targetFile = Utils.join(CWD, FileName);
-        Commit head = Utils.readObject(HEAD, Commit.class);
-        if (!targetFile.exists()) {
-            return true;
-        }
-        byte[] content = Utils.readContents(targetFile);
-        //if (content.equals())
-        return false;
+        Commit currentCommit = currentBranch.getCurrentCommit();
+        return currentCommit.snapshot.containsKey(FileName);
     }
 
     public static void reset(String givenId) {

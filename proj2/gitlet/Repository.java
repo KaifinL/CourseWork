@@ -489,7 +489,7 @@ public class Repository {
                 String BlobId1 = mergeCommit.snapshot.get(FileName);
                 String BlobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
                 if (!BlobId1.equals(BlobId2)) {
-                    showConflict(BlobId2);
+                    showConflict(BlobId1, BlobId2);
                 }
             }
         }
@@ -497,17 +497,25 @@ public class Repository {
 
 
 
-    private static void showConflict(String blobId) {
+    private static void showConflict(String blobId1, String blobId2) {
         System.out.println("<<<<<<< HEAD");
         Commit head = Utils.readObject(HEAD, Commit.class);
         String BlobId = head.snapshot.get(head.getId());
         File Blob = Utils.join(Blobs, BlobId);
-        String content = Utils.readContentsAsString(Blob);
-        System.out.println(content);
+        if (blobId1.equals("null")) {
+            System.out.println();
+        }else {
+            String content = Utils.readContentsAsString(Blob);
+            System.out.println(content);
+        }
         System.out.println("=======");
-        File Blob2 = Utils.join(Blobs, blobId);
-        String content2 = Utils.readContentsAsString(Blob2);
-        System.out.println(content2);
+        if (blobId2.equals("null")) {
+            System.out.println();
+        }else {
+            File Blob2 = Utils.join(Blobs, blobId2);
+            String content2 = Utils.readContentsAsString(Blob2);
+            System.out.println(content2);
+        }
         System.out.println(">>>>>>>");
     }
 

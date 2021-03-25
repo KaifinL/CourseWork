@@ -142,7 +142,7 @@ public class Repository {
 
      */
 
-    public static void logHelper(Commit cur) {
+    private static void logHelper(Commit cur) {
         System.out.println("===");
         System.out.println("commit " + cur.id);
         SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
@@ -353,7 +353,7 @@ public class Repository {
      * print There is an untracked file in the way; delete it, or add and commit it first. and exit
      * @param curr
      */
-    public static void checkoutFailure(Commit curr) {
+    private static void checkoutFailure(Commit curr) {
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File untracked = Utils.join(CWD, FileName);
             if (untracked.isDirectory()) {
@@ -379,7 +379,7 @@ public class Repository {
      * @return
      */
     // return true if the file is untracked by the Head commit.
-    public static boolean untracked(String FileName) {
+    private static boolean untracked(String FileName) {
         File targetFile = Utils.join(CWD, FileName);
         Commit head = Utils.readObject(HEAD, Commit.class);
         if (!targetFile.exists()) {
@@ -445,10 +445,12 @@ public class Repository {
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
-
+        merHelper4(givenBranchCurrCommit, mergeCommit);
+        merHelper5(splitPoint, givenBranchCurrCommit, mergeCommit);
+        merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit);
     }
 
-    public static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
+    private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String Filename : splitPoint.snapshot.keySet()) {
             if (givenBranchCurrCommit.snapshot.containsKey(Filename) && mergeCommit.snapshot.containsKey(Filename)) {
                 String BlobId = splitPoint.snapshot.get(Filename);
@@ -461,7 +463,7 @@ public class Repository {
         }
     }
 
-    public static void merHelper2(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
+    private static void merHelper2(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String FileName : splitPoint.snapshot.keySet()) {
             if (mergeCommit.snapshot.containsKey(FileName) && !givenBranchCurrCommit.snapshot.containsKey(FileName)) {
                 String BlobId = splitPoint.snapshot.get(FileName);
@@ -473,7 +475,7 @@ public class Repository {
         }
     }
 
-    public static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
+    private static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (!splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
                 String[] args = {givenBranchCurrentCommit.getId(), "--", FileName};
@@ -483,7 +485,7 @@ public class Repository {
         }
     }
 
-    public static void merHelper4(Commit givenBranchCurrentCommit, Commit mergeCommit) {
+    private static void merHelper4(Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String FileName : mergeCommit.snapshot.keySet()) {
             if (givenBranchCurrentCommit.snapshot.containsKey(FileName)) {
                 String BlobId1 = mergeCommit.snapshot.get(FileName);
@@ -495,15 +497,19 @@ public class Repository {
         }
     }
 
+    //we can change the position of the last two parameters to show the different cases.
     private static void merHelper5(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
                 String blobId1 = splitPoint.snapshot.get(FileName);
                 String blobId2 = splitPoint.snapshot.get(FileName);
-                
+                if (!blobId1.equals(blobId2)) {
+                    showConflict("null", blobId2);
+                }
             }
         }
     }
+
 
 
     private static void showConflict(String blobId1, String blobId2) {

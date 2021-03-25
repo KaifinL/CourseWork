@@ -220,7 +220,7 @@ public class Repository {
             }
             Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
             Commit givenCommit = givenBranch.getCurrentCommit();
-
+            checkoutFailure(givenCommit);
             if (givenBranch.equals(currentBranch)) {  //if givenBranch is the same as the currentBranch
                 Utils.exitWithError("No need to checkout the current branch.");
             }else {
@@ -397,7 +397,7 @@ public class Repository {
             Utils.exitWithError("No commit with that id exists.");
         }
         Commit givenCommit = Utils.readObject(givenCommitFile, Commit.class);
-        checkoutFailure(head);
+        checkoutFailure(givenCommit);
         for (String fileName : givenCommit.snapshot.keySet()) {
             String[] args = {givenId, "--", fileName};
             checkout(args);

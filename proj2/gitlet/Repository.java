@@ -498,6 +498,10 @@ public class Repository {
     private static void showConflict(String blobId1, String blobId2) {
         System.out.println("<<<<<<< HEAD");
         Commit head = Utils.readObject(HEAD, Commit.class);
+        String BlobId = head.snapshot.get(head.getId());
+        File Blob = Utils.join(Blobs, BlobId);
+        String content = Utils.readContentsAsString(Blob);
+        System.out.println(content);
         
     }
 

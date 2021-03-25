@@ -3,7 +3,6 @@ package gitlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.HashMap;
 
 /**
  * the Blob class can somehow represent the content of a file while simply use a file can't.

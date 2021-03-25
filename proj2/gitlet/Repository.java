@@ -191,7 +191,7 @@ public class Repository {
                 Utils.writeContents(targetFile, content);
             }
         }else if (args.length == 3) {
-            File targetFile = Utils.join(CWD, args[2]);
+            File targetFile = Utils.join(CWD, args[0]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[2]);
             if (!commitFile.exists()) {

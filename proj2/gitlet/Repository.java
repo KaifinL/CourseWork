@@ -151,7 +151,7 @@ public class Repository {
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
         if (cur.parent2Exist()) {
-            System.out.println("Merged development into master.");
+            System.out.println("Merged " + cur.parentId);
         }
         System.out.println();
     }

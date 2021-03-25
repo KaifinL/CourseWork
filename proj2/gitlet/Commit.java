@@ -115,7 +115,8 @@ public class Commit implements Serializable {
             String blobId = newBlob.getBlobId(); // in the staging area.
             snapshot.put(fileName, blobId);
         }
-        
+        byte[] idPara = Utils.serialize(this);
+        this.id = Utils.sha1(idPara);
         helpDelete(StagingArea.addition); // clean all the files in the staging area.
         helpDelete(StagingArea.removal);
         this.message = message;

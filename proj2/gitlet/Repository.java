@@ -495,7 +495,9 @@ public class Repository {
         }
     }
 
-    private static void showConflict(String blobId2) {
+
+
+    private static void showConflict(String blobId) {
         System.out.println("<<<<<<< HEAD");
         Commit head = Utils.readObject(HEAD, Commit.class);
         String BlobId = head.snapshot.get(head.getId());
@@ -503,10 +505,10 @@ public class Repository {
         String content = Utils.readContentsAsString(Blob);
         System.out.println(content);
         System.out.println("=======");
-        File Blob2 = Utils.join(Blobs, blobId2);
+        File Blob2 = Utils.join(Blobs, blobId);
         String content2 = Utils.readContentsAsString(Blob2);
         System.out.println(content2);
-        System.out.println("");
+        System.out.println(">>>>>>>");
     }
 
 

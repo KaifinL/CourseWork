@@ -495,17 +495,24 @@ public class Repository {
         }
     }
 
+    private static void merHelper5(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
+        for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
+            if (splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
+                String blobId1 = splitPoint.snapshot.get(FileName);
+                String blobId2 = splitPoint.snapshot.get(FileName);
+                
+            }
+        }
+    }
 
 
     private static void showConflict(String blobId1, String blobId2) {
         System.out.println("<<<<<<< HEAD");
-        Commit head = Utils.readObject(HEAD, Commit.class);
-        String BlobId = head.snapshot.get(head.getId());
-        File Blob = Utils.join(Blobs, BlobId);
+        File Blob1 = Utils.join(Blobs, blobId1);
         if (blobId1.equals("null")) {
             System.out.println();
         }else {
-            String content = Utils.readContentsAsString(Blob);
+            String content = Utils.readContentsAsString(Blob1);
             System.out.println(content);
         }
         System.out.println("=======");

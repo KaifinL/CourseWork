@@ -497,6 +497,8 @@ public class Repository {
 
     private static void showConflict(String blobId1, String blobId2) {
         System.out.println("<<<<<<< HEAD");
+        Commit head = Utils.readObject(HEAD, Commit.class);
+        
     }
 
 

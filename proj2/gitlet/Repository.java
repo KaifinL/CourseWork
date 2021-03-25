@@ -36,7 +36,7 @@ public class Repository {
 
     public static final File BranchCollection = Utils.join(GITLET_DIR, "Branch");
 
-    public static Branch currentBranch;
+    public static Branch currentBranch = new Branch(null, null);
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();

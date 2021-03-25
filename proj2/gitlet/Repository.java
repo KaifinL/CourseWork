@@ -102,7 +102,6 @@ public class Repository {
         Commit newCommit = readObject(HEAD, Commit.class);
         newCommit.parentId = newCommit.id;
         newCommit.makeChange(message, dateObj);
-        newCommit.id = Utils.sha1(newCommit.getMessage());
         newCommit.saveCommit();
         writeObject(HEAD, newCommit);
         Commit Head = Utils.readObject(HEAD, Commit.class);

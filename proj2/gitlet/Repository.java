@@ -436,24 +436,42 @@ public class Repository {
             Utils.exitWithError("Current branch fast-forwarded.");
         }
 
+        // step 4: create the new mergeCommit
+        Commit mergeCommit = Utils.readObject(HEAD, Commit.class);
+
         //step 3: follow up steps
         Commit givenBranchCurrCommit = givenBranch.getCurrentCommit();
-        Commit currentBranchCurrCommit = currentBranch.getCurrentCommit();
-        merHelper1(splitPoint, givenBranchCurrCommit, currentBranchCurrCommit);
+        mergeCommit.parent2Id = givenBranchCurrCommit.id;
+        merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
+        merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
     }
 
-    public static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit currentBranchCurrCommit) {
+    public static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String Filename : splitPoint.snapshot.keySet()) {
-            if (givenBranchCurrCommit.snapshot.containsKey(Filename) && currentBranchCurrCommit.snapshot.containsKey(Filename)) {
+            if (givenBranchCurrCommit.snapshot.containsKey(Filename) && mergeCommit.snapshot.containsKey(Filename)) {
                 String BlobId = splitPoint.snapshot.get(Filename);
                 String compared = givenBranchCurrCommit.snapshot.get(Filename);
-                String curr = currentBranchCurrCommit.snapshot.get(Filename);
+                String curr = mergeCommit.snapshot.get(Filename);
                 if (BlobId.equals(curr) && !BlobId.equals(compared)) {
-                    currentBranchCurrCommit.snapshot.put(Filename, compared);
+                    mergeCommit.snapshot.put(Filename, compared);
                 }
             }
         }
     }
+
+    public static void merHelper2(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
+        for (String FileName : splitPoint.snapshot.keySet()) {
+            if (mergeCommit.snapshot.containsKey(FileName) && !givenBranchCurrCommit.snapshot.containsKey(FileName)) {
+                String BlobId = splitPoint.snapshot.get(FileName);
+                String curr = mergeCommit.snapshot.get(FileName);
+                if (BlobId.equals(mergeCommit)) {
+                    mergeCommit.snapshot.remove(FileName);
+                }
+            }
+        }
+    }
+
+    
 
 
 }

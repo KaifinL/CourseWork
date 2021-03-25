@@ -58,6 +58,8 @@ public class Main {
                 Repository.branchFunc(args[1]);
             case "rm-branch":
                 Repository.rmBranch(args[1]);
+            case "reset":
+                
             case "merge":
                 Repository.merge(args[1]);
             default:

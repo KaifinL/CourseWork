@@ -5,6 +5,7 @@ import com.puppycrawl.tools.checkstyle.checks.naming.LocalFinalVariableNameCheck
 import jh61b.junit.In;
 import net.sf.saxon.expr.flwor.Tuple;
 import net.sf.saxon.trans.SymbolicName;
+import org.checkerframework.checker.units.qual.C;
 
 import java.io.File;
 import java.io.IOException;
@@ -348,25 +349,15 @@ public class Repository {
         }
     }
 
-    /**
-     * If a working file is untracked in the current branch and would be overwritten by the ** (this is a general method),
-     * print There is an untracked file in the way; delete it, or add and commit it first. and exit
-     * @param curr
-     */
-    private static void checkoutFailure(Commit curr) {
+    private static void checkoutFailure(Commit givenCommit) {
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File untracked = Utils.join(CWD, FileName);
             if (untracked.isDirectory()) {
                 continue;
             }
-            Commit head = Utils.readObject(HEAD, Commit.class);
-            if (!head.snapshot.containsKey(FileName) && curr.snapshot.containsKey(FileName)) {
+            if (untracked(FileName) && beOverwritten(FileName, givenCommit)) {
                 // to make sure that this file is untracked in the current branch
-                Blob newOne = new Blob(untracked);
-                String compared = curr.snapshot.get(FileName);
-                if (newOne.getBlobId().equals(compared)) {
-                    Utils.exitWithError("There is an untracked file in the way; delete it, or add and commit it first.");
-                }
+                Utils.exitWithError("There is an untracked file in the way; delete it, or add and commit it first.");
             }
         }
     }
@@ -379,6 +370,24 @@ public class Repository {
     private static boolean untracked(String FileName) {
         Commit currentCommit = currentBranch.getCurrentCommit();
         return currentCommit.snapshot.containsKey(FileName);
+    }
+
+    /**
+     * when will the file be overwritten?
+     * The file in the current branch has the different content as the given Commit
+     * @param FileName
+     * @return
+     */
+    private static boolean beOverwritten(String FileName, Commit givenCommit) {
+        Commit head = Utils.readObject(HEAD, Commit.class);
+        if (head.snapshot.containsKey(FileName) && givenCommit.snapshot.containsKey(FileName)) {
+            String blobId1 = head.snapshot.get(FileName);
+            String blobId2 = givenCommit.snapshot.get(FileName);
+            if (!blobId1.equals(blobId2)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void reset(String givenId) {

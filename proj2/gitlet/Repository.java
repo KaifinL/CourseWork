@@ -503,7 +503,8 @@ public class Repository {
         String content = Utils.readContentsAsString(Blob);
         System.out.println(content);
         System.out.println("=======");
-        System.out.println("");
+        System.out.println("contents of file in given branch");
+        
     }
 
 

@@ -193,12 +193,12 @@ public class Repository {
         }else if (args.length == 3) {
             File targetFile = Utils.join(CWD, args[2]);
             createFile(targetFile);
-            File commitFile = Utils.join(Commits, args[1]);
+            File commitFile = Utils.join(Commits, args[2]);
             if (!commitFile.exists()) {
                 Utils.exitWithError("No commit with that id exists.");
             }
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
-            String targetId = targetCommit.snapshot.get(args[3]);
+            String targetId = targetCommit.snapshot.get(args[2]);
             File targetBlob = Utils.join(Blobs, targetId);
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);

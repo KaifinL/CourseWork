@@ -429,6 +429,7 @@ public class Repository {
         merHelper4(givenBranchCurrCommit, mergeCommit);
         merHelper5(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit);
+        
     }
 
     private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {

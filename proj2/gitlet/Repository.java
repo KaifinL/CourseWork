@@ -547,7 +547,7 @@ public class Repository {
         System.out.println("Merge: " + shortenId(target.getParentId()) + " " + shortenId(target.getParent2Id()));
         SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
-        System.out.println("Merged " + currentBranch.getName() + " " + );//Merged development into master.
+        System.out.println("Merged " + givenBranch + " " + currentBranch.getName());//Merged development into master.
     }
 
 

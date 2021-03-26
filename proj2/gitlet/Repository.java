@@ -142,7 +142,7 @@ public class Repository {
             if (curr.getParent2Id() != null) {
                 logHelper(curr);
                 curr = curr.getParent();
-            }else {
+            }else if (curr.parent2Exist()) {
                 logMerge(curr, curr.getMessage());
             }
         }

@@ -1,4 +1,6 @@
 package gitlet;
+import jh61b.junit.In;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -569,7 +571,6 @@ public class Repository {
 
 
     /**
-     * TODO: Tracked in the current commit, changed in the working directory, but not staged
      * TODO: Staged for addition, but with different contents than in the working directory;
      * TODO: Staged for addition, but deleted in the working directory
      * TODO: Not staged for removal, but tracked in the current commit and deleted from the working directory
@@ -578,6 +579,13 @@ public class Repository {
     private static HashMap<String, String> ModifiedButNStag() {
         HashMap returnList = new HashMap();
         Commit head = Utils.readObject(HEAD, Commit.class);
+        for (String FileName : Utils.plainFilenamesIn(CWD)) {
+            File file = Utils.join(CWD, FileName);
+            File inAddition = Utils.join(StagingArea.addition, FileName);
+            if (!file.isDirectory() && !untracked(FileName) && different(FileName)) {
+                returnList.put(FileName, "modified");
+            }else if ()
+        }
         for (String FileName : head.snapshot.keySet()) {
             File targetFile = Utils.join(CWD, FileName);
             if (!targetFile.exists()) {
@@ -606,9 +614,44 @@ public class Repository {
         return returnList;
     }
 
-    // this means that the file in the working directory has different content with the 
+    // this means that the file in the working directory has different content with the addition dir.
+
+    /**
+     *
+     * @param fileName the file you want to check if it is unStaged
+     * @return false if it has the same content as in the addition area return true otherwise
+     */
     private static boolean unStaged(String fileName) {
         File target = Utils.join(CWD, fileName);
+        File InAddition = Utils.join(StagingArea.addition, fileName);
+        if (target.exists() && InAddition.exists()) {
+            String content1 = Utils.readContentsAsString(target);
+            String content2 = Utils.readContentsAsString(InAddition);
+            if (content1.equals(content2)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     *
+     * @param fileName the file you want to check if it is different from what it is in the head commit.
+     * @return true if it is different from the head commit return false otherwise
+     */
+    private static boolean different(String fileName) {
+        File target = Utils.join(CWD, fileName);
+        Commit head = Utils.readObject(HEAD, Commit.class);
+        String blobId = head.snapshot.get(fileName);
+        if (blobId != null && target.exists()) {
+            File targetBlob = Utils.join(Blobs, blobId);
+            String content1 = Utils.readContentsAsString(targetBlob);
+            String content2 = Utils.readContentsAsString(target);
+            if (!content1.equals(content2)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

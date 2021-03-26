@@ -1,5 +1,6 @@
 package gitlet;
 import jh61b.junit.In;
+import net.sf.saxon.expr.flwor.Tuple;
 
 import java.io.File;
 import java.io.IOException;
@@ -167,7 +168,14 @@ public class Repository {
         }else if (args[0].equals("checkout") && args[2].equals("--")) { //checkout [commit id] -- [file name]
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
-            File commitFile = Utils.join(Commits, args[1]);
+            File commitFile = Utils.join(Commits, args[1]);;
+            if (args[1].length() == 6) {
+                for (String commitId : Utils.plainFilenamesIn(Commits)) {
+                    if (shortenId(commitId).equals(args[1])) {
+                        commitFile = Utils.join(Commits, commitId);
+                    }
+                }
+            }
             if (!commitFile.exists()) {
                 Utils.exitWithError("No commit with that id exists.");
             }

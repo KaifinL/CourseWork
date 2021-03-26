@@ -245,19 +245,19 @@ public class Repository {
         File InAddition = Utils.join(StagingArea.addition, fileName);
         if (!InAddition.exists() && untracked(fileName)) {
             Utils.exitWithError("No reason to remove the file.");
-        }
-        if (InAddition.exists()) {
+        }else if (InAddition.exists()) {
             Utils.restrictedDelete(InAddition);
-        }
-        Commit Head = Utils.readObject(HEAD, Commit.class);
-        String blobId = Head.snapshot.get(fileName);
-        if (blobId != null) {
-            File toRemoval = Utils.join(StagingArea.removal, fileName);
-            createFile(toRemoval);
-            writeContents(toRemoval, blobId);
-            File InCwd = Utils.join(CWD, fileName);
-            if (InCwd.exists()) {
-                Utils.restrictedDelete(InCwd);
+        }else {
+            Commit Head = Utils.readObject(HEAD, Commit.class);
+            String blobId = Head.snapshot.get(fileName);
+            if (blobId != null) {
+                File toRemoval = Utils.join(StagingArea.removal, fileName);
+                createFile(toRemoval);
+                writeContents(toRemoval, blobId);
+                File InCwd = Utils.join(CWD, fileName);
+                if (InCwd.exists()) {
+                    Utils.restrictedDelete(InCwd);
+                }
             }
         }
     }

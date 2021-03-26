@@ -545,7 +545,8 @@ public class Repository {
     private static void logMerge(Commit target) {
         System.out.println("===");
         System.out.println("commit " + target.id);
-        System.out.println("Merge: " + shortenId(target.getParentId()) + shortenId(target.getParent2Id()));
+        System.out.println("Merge: " + shortenId(target.getParentId()) + " " + shortenId(target.getParent2Id()));
+        
     }
 
 

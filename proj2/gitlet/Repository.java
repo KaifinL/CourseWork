@@ -242,11 +242,10 @@ public class Repository {
     }
 
     public static void remove(String[] args) {
-        int error = 0;
         File InAddition = Utils.join(StagingArea.addition, args[1]);
+        
         if (InAddition.exists()) {
             Utils.restrictedDelete(InAddition);
-            error += 1;
         }
         Commit Head = Utils.readObject(HEAD, Commit.class);
         String blobId = Head.snapshot.get(args[1]);
@@ -258,10 +257,6 @@ public class Repository {
             if (InCwd.exists()) {
                 Utils.restrictedDelete(InCwd);
             }
-            error += 1;
-        }
-        if (error == 0) {
-            Utils.exitWithError("No reason to remove the file");
         }
     }
 

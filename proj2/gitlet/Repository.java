@@ -527,8 +527,14 @@ public class Repository {
 
     private Commit shortId(String ShortId) {
         for (String id : Utils.plainFilenamesIn(Commits)) {
-            String subId = 
+            String subId = id.substring(0, 5);
+            if (subId.equals(ShortId)) {
+                File target = Utils.join(Commits, id);
+                Commit targetCommit = Utils.readObject(target, Commit.class);
+                return targetCommit;
+            }
         }
+        return null;
     }
 
 

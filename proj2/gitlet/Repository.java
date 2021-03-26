@@ -241,19 +241,19 @@ public class Repository {
         Utils.writeObject(Branch1, newBranch);
     }
 
-    public static void remove(String[] args) {
-        File InAddition = Utils.join(StagingArea.addition, args[1]);
-        
+    public static void remove(String fileName) {
+        File InAddition = Utils.join(StagingArea.addition, fileName);
+        File target = Utils.join()
         if (InAddition.exists()) {
             Utils.restrictedDelete(InAddition);
         }
         Commit Head = Utils.readObject(HEAD, Commit.class);
-        String blobId = Head.snapshot.get(args[1]);
+        String blobId = Head.snapshot.get(fileName);
         if (blobId != null) {
-            File toRemoval = Utils.join(StagingArea.removal, args[1]);
+            File toRemoval = Utils.join(StagingArea.removal, fileName);
             createFile(toRemoval);
             writeContents(toRemoval, blobId);
-            File InCwd = Utils.join(CWD, args[1]);
+            File InCwd = Utils.join(CWD, fileName);
             if (InCwd.exists()) {
                 Utils.restrictedDelete(InCwd);
             }

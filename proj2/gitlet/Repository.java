@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+
 import static gitlet.Utils.*;
 
 // TODO: any imports you need here
@@ -32,6 +34,7 @@ public class Repository {
     public static final File HEAD = Utils.join(Commits, "Head");
     /* TODO: fill in the rest of this class. */
 
+    // named by the blobId
     public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
 
     public static final File BranchCollection = Utils.join(GITLET_DIR, "Branch");
@@ -580,6 +583,22 @@ public class Repository {
         SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
         System.out.println(message);//Merged development into master.
+    }
+
+    private static LinkedList ModifiedButNStag() {
+        LinkedList returnList = new LinkedList();
+        for (String FileName : Utils.plainFilenamesIn(CWD)) {
+            File targetFile = Utils.join(CWD, FileName);
+            Commit head = Utils.readObject(HEAD, Commit.class);
+            if (!targetFile.isDirectory() && untracked(FileName) && head.snapshot.containsKey(FileName)) {
+                byte[] content = Utils.readContents(targetFile);
+                String BlobId = head.snapshot.get(FileName);
+                byte[] compared = Utils.readContents(Utils.join(Blobs, BlobId));
+                if (content.equals(compared)) {
+                    returnList.addLast(FileName);
+                }
+            }
+        }
     }
 
 

@@ -427,9 +427,10 @@ public class Repository {
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
-        merHelper4(givenBranchCurrCommit, mergeCommit);
-        merHelper5(splitPoint, givenBranchCurrCommit, mergeCommit);
-        merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit);
+        if (merHelper4(givenBranchCurrCommit, mergeCommit) || merHelper5(splitPoint, givenBranchCurrCommit, mergeCommit)
+        || merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit)) {
+            
+        }
     }
 
     private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
@@ -466,29 +467,35 @@ public class Repository {
         }
     }
 
-    private static void merHelper4(Commit givenBranchCurrentCommit, Commit mergeCommit) {
+    private static boolean merHelper4(Commit givenBranchCurrentCommit, Commit mergeCommit) {
+        boolean conflict = false;
         for (String FileName : mergeCommit.snapshot.keySet()) {
             if (givenBranchCurrentCommit.snapshot.containsKey(FileName)) {
                 String BlobId1 = mergeCommit.snapshot.get(FileName);
                 String BlobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
                 if (!BlobId1.equals(BlobId2)) {
+                    conflict = true;
                     showConflict(BlobId1, BlobId2);
                 }
             }
         }
+        return conflict;
     }
 
     //we can change the position of the last two parameters to show the different cases.
-    private static void merHelper5(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
+    private static boolean merHelper5(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
+        boolean conflict = false;
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
                 String blobId1 = splitPoint.snapshot.get(FileName);
                 String blobId2 = splitPoint.snapshot.get(FileName);
                 if (!blobId1.equals(blobId2)) {
+                    conflict = true;
                     showConflict("null", blobId2);
                 }
             }
         }
+        return conflict;
     }
 
 
@@ -511,10 +518,6 @@ public class Repository {
             System.out.println(content2);
         }
         System.out.println(">>>>>>>");
-    }
-
-    private static boolean conflict() {
-        
     }
 
     private static void mergeFailures2(String givenBranch) {

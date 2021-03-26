@@ -431,6 +431,7 @@ public class Repository {
         || merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit)) {
             System.out.println("Encountered a merge conflict.");
         }
+        mergeCommit.setMessage("Merged " + givenBranch1 + " " + currentBranch.getName());
     }
 
     private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
@@ -539,9 +540,6 @@ public class Repository {
         }
     }
 
-    private static void successfullyMerge(Commit mergeCommit, String givenBranch ) {
-        makeCommit("Merged " + givenBranch + " " + currentBranch.getName());
-    }
 
     private Commit shortId(String ShortId) {
         for (String id : Utils.plainFilenamesIn(Commits)) {

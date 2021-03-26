@@ -243,7 +243,10 @@ public class Repository {
 
     public static void remove(String fileName) {
         File InAddition = Utils.join(StagingArea.addition, fileName);
-        File target = Utils.join()
+        File target = Utils.join(StagingArea.addition, fileName);
+        if (!target.exists() && untracked(fileName)) {
+            Utils.exitWithError("");
+        }
         if (InAddition.exists()) {
             Utils.restrictedDelete(InAddition);
         }

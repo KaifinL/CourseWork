@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import static gitlet.Utils.*;
@@ -585,12 +586,14 @@ public class Repository {
         System.out.println(message);//Merged development into master.
     }
 
-    private static LinkedList ModifiedButNStag() {
+    private static HashMap<String, String> ModifiedButNStag() {
         LinkedList returnList = new LinkedList();
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File targetFile = Utils.join(CWD, FileName);
             Commit head = Utils.readObject(HEAD, Commit.class);
-            
+            if (!head.snapshot.containsKey(FileName)) {
+
+            }
             if (!targetFile.isDirectory() && untracked(FileName) && head.snapshot.containsKey(FileName)) {
                 byte[] content = Utils.readContents(targetFile);
                 String BlobId = head.snapshot.get(FileName);

@@ -528,7 +528,9 @@ public class Repository {
             Utils.exitWithError("A branch with that name does not exist.");
         }
         //case 3
-        
+        if (givenBranch.equals(currentBranch.getName())) {
+            Utils.exitWithError("Cannot merge a branch with itself.");
+        }
     }
 
     private Commit shortId(String ShortId) {

@@ -539,6 +539,10 @@ public class Repository {
         }
     }
 
+    private static void successfullyMerge(Commit mergeCommit, ) {
+        finalCommit();
+    }
+
     private Commit shortId(String ShortId) {
         for (String id : Utils.plainFilenamesIn(Commits)) {
             String subId = id.substring(0, 5);

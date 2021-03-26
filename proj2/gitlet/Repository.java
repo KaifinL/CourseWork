@@ -527,7 +527,7 @@ public class Repository {
 
     private Commit shortId(String ShortId) {
         for (String id : Utils.plainFilenamesIn(Commits)) {
-            if ()
+            String subId = 
         }
     }
 

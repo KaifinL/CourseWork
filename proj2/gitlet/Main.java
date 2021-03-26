@@ -37,7 +37,7 @@ public class Main {
                 break;
 
             case "rm":
-                Repository.remove(args);
+                Repository.remove(args[1]);
                 break;
             case "log":
                 Repository.log();

@@ -571,7 +571,6 @@ public class Repository {
 
 
     /**
-     * TODO: Staged for addition, but with different contents than in the working directory
      * TODO: Not staged for removal, but tracked in the current commit and deleted from the working directory
      * @return
      */
@@ -580,26 +579,23 @@ public class Repository {
         Commit head = Utils.readObject(HEAD, Commit.class);
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File file = Utils.join(CWD, FileName);
-            File inAddition = Utils.join(StagingArea.addition, FileName);
             if (!file.isDirectory() && !untracked(FileName) && different(FileName)) {
                 returnList.put(FileName, "modified");
             }
         }
         for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
-            File
+            if (different2(FileName)) {
+                returnList.put(FileName, "modified");
+            }
         }
         for (String FileName : head.snapshot.keySet()) {
             File targetFile = Utils.join(CWD, FileName);
+            File inRemoval = Utils.join(StagingArea.removal, FileName);
             if (!targetFile.exists()) {
                 returnList.put(FileName, "deleted");
             }
-            if (!targetFile.isDirectory() && targetFile.exists()) {
-                byte[] content = Utils.readContents(targetFile);
-                String BlobId = head.snapshot.get(FileName);
-                byte[] compared = Utils.readContents(Utils.join(Blobs, BlobId));
-                if (!content.equals(compared)) {
-                    returnList.put(FileName, "modified");
-                }
+            if (!inRemoval.exists() && !untracked(FileName) && !targetFile.exists()) {
+                returnList.put(FileName, "deleted");
             }
         }
         return returnList;
@@ -662,9 +658,10 @@ public class Repository {
         File inAddition = Utils.join(StagingArea.addition, fileName);
         String content1 = Utils.readContentsAsString(target);
         String content2 = Utils.readContentsAsString(inAddition);
-        if (content1.equals(content2)) {
-            
+        if (!content1.equals(content2)) {
+            return false;
         }
+        return true;
     }
 
 

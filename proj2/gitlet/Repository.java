@@ -225,7 +225,7 @@ public class Repository {
                 }
             }
         }
-        if (exist == false) {
+        if (!exist) {
             System.out.println("Found no commit with that message.");
         }
     }

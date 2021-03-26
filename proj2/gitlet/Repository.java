@@ -396,6 +396,7 @@ public class Repository {
         Branch givenBranch = Utils.readObject(givenBranchName, Branch.class);
         Commit givenCommit = givenBranch.getCurrentCommit();
         checkoutFailure(givenCommit);
+        mergeFailures2(givenBranch1);
         Commit splitPoint = null;
         for (String commitId : givenBranch.getBranches().keySet()) {
             for (String commitId2 : currentBranch.getBranches().keySet()) {

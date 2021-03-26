@@ -119,7 +119,7 @@ public class Repository {
     public static void log() {
         Commit curr = Utils.readObject(HEAD, Commit.class);
         while(curr != null && curr.id != curr.getParentId()) {
-            if (curr != null && curr.getParent2Id() != null) {
+            if (curr.getParent2Id() != null) {
                 logHelper(curr);
                 curr = curr.getParent();
             }else if (curr.parent2Exist()) {

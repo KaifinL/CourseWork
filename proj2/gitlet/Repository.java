@@ -571,6 +571,9 @@ public class Repository {
 
 
     /**
+     * TODO:Tracked in the current commit, changed in the working directory, but not staged; or
+     * Staged for addition, but with different contents than in the working directory; or
+     * Staged for addition, but deleted in the working directory; or
      * TODO: Not staged for removal, but tracked in the current commit and deleted from the working directory
      * @return
      */
@@ -579,7 +582,8 @@ public class Repository {
         Commit head = Utils.readObject(HEAD, Commit.class);
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File file = Utils.join(CWD, FileName);
-            if (!file.isDirectory() && !untracked(FileName) && different(FileName)) {
+            File inAddition = Utils.join(StagingArea.addition, FileName);
+            if (!file.isDirectory() && !untracked(FileName) && different(FileName) && !inAddition.exists()) {
                 returnList.put(FileName, "modified");
             }
         }

@@ -515,7 +515,9 @@ public class Repository {
     }
 
     private static void mergeFailures2(String givenBranch) {
-        if ()
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            Utils.exitWithError("");
+        }
     }
 
     private Commit shortId(String ShortId) {

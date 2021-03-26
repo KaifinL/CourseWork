@@ -103,16 +103,17 @@ public class Commit implements Serializable {
     /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
     public void makeChange(String message, Date date) {
         for (String x : snapshot.keySet()) {  //if the files in both snapshot and addition
-                                                // it will be removed from the snapshot(check by fileName)
+                                                // it will be removed from the snapshot(checked by fileName)
             File targetFile = Utils.join(StagingArea.addition, x);
             if (targetFile.exists()) {
                 snapshot.remove(x);
             }
         }
-        for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) { // put all the files
-            File targetFile = Utils.join(StagingArea.addition, fileName); // in addition to snapshot
-            Blob newBlob = Utils.readObject(targetFile, Blob.class); // this is the problem the blob we now create is now the same as
-            String blobId = newBlob.getBlobId(); // in the staging area.
+        // to add those files in the staging area to the commit 's snapshot
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            File targetFile = Utils.join(StagingArea.addition, fileName);
+            Blob newBlob = Utils.readObject(targetFile, Blob.class);
+            String blobId = newBlob.getBlobId();
             snapshot.put(fileName, blobId);
         }
         byte[] idPara = Utils.serialize(this);

@@ -572,6 +572,7 @@ public class Repository {
      * TODO: Tracked in the current commit, changed in the working directory, but not staged
      * TODO: Staged for addition, but with different contents than in the working directory;
      * TODO: Staged for addition, but deleted in the working directory
+     * TODO: Not staged for removal, but tracked in the current commit and deleted from the working directory
      * @return
      */
     private static HashMap<String, String> ModifiedButNStag() {
@@ -603,6 +604,11 @@ public class Repository {
             }
         }
         return returnList;
+    }
+
+    // this means that the file in the working directory has different content with the 
+    private static boolean unStaged(String fileName) {
+        File target = Utils.join(CWD, fileName);
     }
 
 

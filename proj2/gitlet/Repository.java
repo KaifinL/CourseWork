@@ -523,6 +523,11 @@ public class Repository {
             Utils.exitWithError("You have uncommitted changes.");
         }
         //case 2
+        File targetBranch = Utils.join(BranchCollection, givenBranch);
+        if (!targetBranch.exists()) {
+            Utils.exitWithError("A branch with that name does not exist.");
+        }
+        //case 3
         
     }
 

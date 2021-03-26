@@ -134,18 +134,6 @@ public class Repository {
 
      */
 
-    private static void logHelper(Commit cur) {
-        System.out.println("===");
-        System.out.println("commit " + cur.id);
-        SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
-        String date = formatter.format(cur.getTimestamp());
-        System.out.println("Date: " + formatter.format(cur.getTimestamp()));
-        System.out.println(cur.getMessage());
-        if (cur.parent2Exist()) {
-            System.out.println("Merged " + cur.parentId);
-        }
-        System.out.println();
-    }
 
     /** haven't done with merge log information yet */
     public static void log() {
@@ -535,6 +523,27 @@ public class Repository {
             }
         }
         return null;
+    }
+
+    private static String shortenId(String id) {
+        return id.substring(0, 6);
+    }
+
+    private static void logHelper(Commit cur) {
+        System.out.println("===");
+        System.out.println("commit " + cur.id);
+        SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
+        String date = formatter.format(cur.getTimestamp());
+        System.out.println("Date: " + formatter.format(cur.getTimestamp()));
+        System.out.println(cur.getMessage());
+        if (cur.parent2Exist()) {
+            System.out.println("Merged " + cur.parentId);
+        }
+        System.out.println();
+    }
+    // this declares that the given commit is the merged commit
+    private static void logMerge(Commit target) {
+
     }
 
 

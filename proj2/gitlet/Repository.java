@@ -407,10 +407,10 @@ public class Repository {
             Utils.exitWithError("Current branch fast-forwarded.");
         }
 
-        // step 4: create the new mergeCommit
+        // step 3: create the new mergeCommit
         Commit mergeCommit = Utils.readObject(HEAD, Commit.class);
 
-        //step 3: follow up steps
+        //step 4: follow up steps
         Commit givenBranchCurrCommit = givenBranch.getCurrentCommit();
         mergeCommit.parent2Id = givenBranchCurrCommit.id;
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);

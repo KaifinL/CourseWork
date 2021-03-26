@@ -247,7 +247,7 @@ public class Repository {
             Utils.exitWithError("No reason to remove the file.");
         }else if (InAddition.exists()) {
             Utils.restrictedDelete(InAddition);
-        }else {
+        }else if (!untracked(fileName)) {
             Commit Head = Utils.readObject(HEAD, Commit.class);
             String blobId = Head.snapshot.get(fileName);
             if (blobId != null) {

@@ -429,7 +429,7 @@ public class Repository {
         merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
         if (merHelper4(givenBranchCurrCommit, mergeCommit) || merHelper5(splitPoint, givenBranchCurrCommit, mergeCommit)
         || merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit)) {
-            
+            System.out.println("Encountered a merge conflict.");
         }
     }
 

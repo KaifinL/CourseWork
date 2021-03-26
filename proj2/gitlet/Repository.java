@@ -543,7 +543,9 @@ public class Repository {
     }
     // this declares that the given commit is the merged commit
     private static void logMerge(Commit target) {
-
+        System.out.println("===");
+        System.out.println("commit " + target.id);
+        
     }
 
 

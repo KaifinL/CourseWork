@@ -567,6 +567,12 @@ public class Repository {
         System.out.println(message);//Merged development into master.
     }
 
+
+    /**
+     * TODO: Tracked in the current commit, changed in the working directory, but not staged
+     * TODO: 
+     * @return
+     */
     private static HashMap<String, String> ModifiedButNStag() {
         HashMap returnList = new HashMap();
         Commit head = Utils.readObject(HEAD, Commit.class);

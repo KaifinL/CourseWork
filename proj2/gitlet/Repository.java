@@ -116,30 +116,6 @@ public class Repository {
         }
     }
 
-
-    /** to be revised
-    public static boolean removeFile(String Filename) {
-        File tobeRemoved = Utils.join(StagingArea.addition, Filename);
-        Commit nHead = Utils.readObject(HEAD, Commit.class);
-        Commit currentCommit = nHead;
-        boolean changed = false;
-        if (!tobeRemoved.exists()) {
-            changed = Utils.restrictedDelete(Filename);
-        }else if(StagingArea.addition.containsKey(Filename)) {
-            StagingArea.addition.remove(Filename);
-            changed = true;
-        }else if(currentCommit.snapshot.containsKey(Filename)) {
-            StagingArea.removal.put(Filename, new Blob(tobeRemoved).getBlobId());
-            tobeRemoved.delete();
-            changed = true;
-        }
-        return changed;
-    }
-
-     */
-
-
-    /** haven't done with merge log information yet */
     public static void log() {
         Commit curr = Utils.readObject(HEAD, Commit.class);
         while(curr != null && curr.id != curr.getParentId()) {
@@ -154,7 +130,7 @@ public class Repository {
 
     /** create the target file if it doesn't exist
      */
-    public static void createFile(File targetFile) {
+    private static void createFile(File targetFile) {
         if (!targetFile.exists()) {
             try {
                 targetFile.createNewFile();

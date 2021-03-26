@@ -590,6 +590,7 @@ public class Repository {
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File targetFile = Utils.join(CWD, FileName);
             Commit head = Utils.readObject(HEAD, Commit.class);
+            
             if (!targetFile.isDirectory() && untracked(FileName) && head.snapshot.containsKey(FileName)) {
                 byte[] content = Utils.readContents(targetFile);
                 String BlobId = head.snapshot.get(FileName);

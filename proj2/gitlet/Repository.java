@@ -587,7 +587,7 @@ public class Repository {
     }
 
     private static HashMap<String, String> ModifiedButNStag() {
-        LinkedList returnList = new LinkedList();
+        HashMap returnList = new HashMap();
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File targetFile = Utils.join(CWD, FileName);
             Commit head = Utils.readObject(HEAD, Commit.class);
@@ -599,7 +599,7 @@ public class Repository {
                 String BlobId = head.snapshot.get(FileName);
                 byte[] compared = Utils.readContents(Utils.join(Blobs, BlobId));
                 if (content.equals(compared)) {
-                    returnList.addLast(FileName);
+                    returnList.put(FileName, "");
                 }
             }
         }

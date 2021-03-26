@@ -430,7 +430,6 @@ public class Repository {
         merHelper4(givenBranchCurrCommit, mergeCommit);
         merHelper5(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit);
-
     }
 
     private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
@@ -450,7 +449,6 @@ public class Repository {
         for (String FileName : splitPoint.snapshot.keySet()) {
             if (mergeCommit.snapshot.containsKey(FileName) && !givenBranchCurrCommit.snapshot.containsKey(FileName)) {
                 String BlobId = splitPoint.snapshot.get(FileName);
-                String curr = mergeCommit.snapshot.get(FileName);
                 if (BlobId.equals(mergeCommit)) {
                     mergeCommit.snapshot.remove(FileName);
                 }
@@ -513,6 +511,10 @@ public class Repository {
             System.out.println(content2);
         }
         System.out.println(">>>>>>>");
+    }
+
+    private static boolean conflict() {
+        
     }
 
     private static void mergeFailures2(String givenBranch) {

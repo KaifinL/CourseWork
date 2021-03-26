@@ -515,9 +515,15 @@ public class Repository {
     }
 
     private static void mergeFailures2(String givenBranch) {
+        // case 1
         for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
-            Utils.exitWithError("");
+            Utils.exitWithError("You have uncommitted changes.");
         }
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
+            Utils.exitWithError("You have uncommitted changes.");
+        }
+        //case 2
+        
     }
 
     private Commit shortId(String ShortId) {

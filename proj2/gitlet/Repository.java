@@ -514,7 +514,7 @@ public class Repository {
         System.out.println(">>>>>>>");
     }
 
-    private static void mergeFailures2() {
+    private static void mergeFailures2(String givenBranch) {
         if ()
     }
 

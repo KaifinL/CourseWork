@@ -571,7 +571,7 @@ public class Repository {
 
 
     /**
-     * TODO: Staged for addition, but deleted in the working directory
+     * TODO: Staged for addition, but with different contents than in the working directory
      * TODO: Not staged for removal, but tracked in the current commit and deleted from the working directory
      * @return
      */
@@ -584,6 +584,9 @@ public class Repository {
             if (!file.isDirectory() && !untracked(FileName) && different(FileName)) {
                 returnList.put(FileName, "modified");
             }
+        }
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            File
         }
         for (String FileName : head.snapshot.keySet()) {
             File targetFile = Utils.join(CWD, FileName);
@@ -651,6 +654,17 @@ public class Repository {
             }
         }
         return true;
+    }
+
+    // basically the same as the last one but this method compare the files in staging are and CWD
+    private static boolean different2(String fileName) {
+        File target = Utils.join(CWD, fileName);
+        File inAddition = Utils.join(StagingArea.addition, fileName);
+        String content1 = Utils.readContentsAsString(target);
+        String content2 = Utils.readContentsAsString(inAddition);
+        if (content1.equals(content2)) {
+            
+        }
     }
 
 

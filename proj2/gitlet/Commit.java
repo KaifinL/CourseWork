@@ -144,6 +144,9 @@ public class Commit implements Serializable {
                 file.delete();
     }
 
+    public void setMessage(String givenMessage) {
+        this.message = givenMessage;
+    }
 
 
 }

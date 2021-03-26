@@ -525,5 +525,11 @@ public class Repository {
         System.out.println(">>>>>>>");
     }
 
+    private Commit shortId(String ShortId) {
+        for (String id : Utils.plainFilenamesIn(Commits)) {
+            if ()
+        }
+    }
+
 
 }

@@ -539,8 +539,8 @@ public class Repository {
         }
     }
 
-    private static void successfullyMerge(Commit mergeCommit, ) {
-        finalCommit();
+    private static void successfullyMerge(Commit mergeCommit, String givenBranch ) {
+        makeCommit("Merged " + givenBranch + " " + currentBranch.getName());
     }
 
     private Commit shortId(String ShortId) {

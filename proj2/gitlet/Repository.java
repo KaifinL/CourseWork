@@ -541,13 +541,13 @@ public class Repository {
         System.out.println();
     }
     // this declares that the given commit is the merged commit
-    private static void logMerge(Commit target) {
+    private static void logMerge(Commit target, String givenBranch) {
         System.out.println("===");
         System.out.println("commit " + target.id);
         System.out.println("Merge: " + shortenId(target.getParentId()) + " " + shortenId(target.getParent2Id()));
         SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
-        System.out.println("Merge " + currentBranch.getName() + " " + );//Merged development into master.
+        System.out.println("Merged " + currentBranch.getName() + " " + );//Merged development into master.
     }
 
 

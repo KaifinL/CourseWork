@@ -178,7 +178,7 @@ public class Repository {
     }
 
     public static void checkout(String[] args) {
-        if (args.length == 3 && args[]) {
+        if (args.length == 3 && args[0].equals("checkout") && args[1].equals("--")) {
             Commit nHead = Utils.readObject(HEAD, Commit.class);
             if (!nHead.snapshot.containsKey(args[2])){
                 exitWithError("File does not exist in that commit.");

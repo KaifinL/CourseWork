@@ -571,7 +571,6 @@ public class Repository {
 
 
     /**
-     * TODO: Staged for addition, but with different contents than in the working directory;
      * TODO: Staged for addition, but deleted in the working directory
      * TODO: Not staged for removal, but tracked in the current commit and deleted from the working directory
      * @return
@@ -584,7 +583,7 @@ public class Repository {
             File inAddition = Utils.join(StagingArea.addition, FileName);
             if (!file.isDirectory() && !untracked(FileName) && different(FileName)) {
                 returnList.put(FileName, "modified");
-            }else if ()
+            }
         }
         for (String FileName : head.snapshot.keySet()) {
             File targetFile = Utils.join(CWD, FileName);

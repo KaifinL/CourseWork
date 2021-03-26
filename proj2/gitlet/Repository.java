@@ -313,11 +313,17 @@ public class Repository {
         System.out.println();
         //phase 4
         System.out.println("=== Modifications Not Staged For Commit ===");
-        // TODO: remind revised
+        HashMap<String, String> modifiedFiles = ModifiedButNStag();
+        for (String FileName : modifiedFiles.keySet()) {
+            System.out.println(FileName + "(" + modifiedFiles.get(FileName) + ")");
+        }
         System.out.println();
         //phase 5
         System.out.println("=== Untracked Files ===");
-        // TODO: remind revised
+        LinkedList<String> untrackedFiles = untrackedFiles();
+        for (String FileName : untrackedFiles) {
+            System.out.println(FileName);
+        }
         System.out.println();
     }
 
@@ -588,22 +594,35 @@ public class Repository {
 
     private static HashMap<String, String> ModifiedButNStag() {
         HashMap returnList = new HashMap();
-        for (String FileName : Utils.plainFilenamesIn(CWD)) {
+        Commit head = Utils.readObject(HEAD, Commit.class);
+        for (String FileName : head.snapshot.keySet()) {
             File targetFile = Utils.join(CWD, FileName);
-            Commit head = Utils.readObject(HEAD, Commit.class);
-            if (!head.snapshot.containsKey(FileName)) {
-
+            if (!targetFile.exists()) {
+                returnList.put(FileName, "deleted");
             }
-            if (!targetFile.isDirectory() && untracked(FileName) && head.snapshot.containsKey(FileName)) {
+            if (!targetFile.isDirectory() && targetFile.exists()) {
                 byte[] content = Utils.readContents(targetFile);
                 String BlobId = head.snapshot.get(FileName);
                 byte[] compared = Utils.readContents(Utils.join(Blobs, BlobId));
-                if (content.equals(compared)) {
-                    returnList.put(FileName, "");
+                if (!content.equals(compared)) {
+                    returnList.put(FileName, "modified");
                 }
             }
         }
+        return returnList;
     }
+
+    private static LinkedList<String> untrackedFiles() {
+        LinkedList<String> returnList = new LinkedList<>();
+        for (String FileName : Utils.plainFilenamesIn(CWD)) {
+            File file = Utils.join(CWD, FileName);
+            if (!file.isDirectory() && untracked(FileName)) {
+                returnList.addLast(FileName);
+            }
+        }
+        return returnList;
+    }
+
 
 
 }

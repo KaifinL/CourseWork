@@ -253,7 +253,9 @@ public class Repository {
             if (blobId != null) {
                 File toRemoval = Utils.join(StagingArea.removal, fileName);
                 createFile(toRemoval);
-                writeContents(toRemoval, blobId);
+                File targetBlob = Utils.join(Blobs, blobId);
+                byte[] content = Utils.readContents(targetBlob);
+                writeContents(toRemoval, content);
                 File InCwd = Utils.join(CWD, fileName);
                 if (InCwd.exists()) {
                     Utils.restrictedDelete(InCwd);

@@ -15,7 +15,6 @@ public class Main {
         if (args.length == 0) {
             Utils.exitWithError("Must have at least one argument.");
         }
-        // TODO: what if args is empty?
         String firstArg = args[0];
         switch(firstArg) {
             case "init":
@@ -25,13 +24,10 @@ public class Main {
                 }else {
                     Repository.setupPersistence();
                 }
-                // TODO: handle the `init` command
                 break;
             case "add":
                 Repository.add(args);
-                // TODO: handle the `add [filename]` command
                 break;
-            // TODO: FILL THE REST IN
             case "commit":
                 Repository.finalCommit(args);
                 break;

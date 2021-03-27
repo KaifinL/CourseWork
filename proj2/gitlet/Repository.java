@@ -198,10 +198,10 @@ public class Repository {
         }else {
             String targetName = args[1];
             File targetBranch = Utils.join(BranchCollection, targetName);
-            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             if (!targetBranch.exists()) {
                 Utils.exitWithError("No such branch exists.");
             }
+            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
             Commit givenCommit = givenBranch.getCurrentCommit();
             checkoutFailure(givenCommit);

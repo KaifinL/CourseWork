@@ -333,7 +333,7 @@ public class Repository {
         boolean error = true;
         for (String branchName : Utils.plainFilenamesIn(BranchCollection)) {
             File targetFile = Utils.join(BranchCollection, branchName);
-            Utils.restrictedDelete(targetFile);
+            targetFile.delete();
             error = false;
         }
         if (error) {

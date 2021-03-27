@@ -55,7 +55,7 @@ public class Main {
             case "status":
                 Repository.status();
             case "branch":
-                Repository.branchFunc(args[1]);
+                Repository.branchFunc(args);
             case "rm-branch":
                 Repository.rmBranch(args[1]);
             case "reset":

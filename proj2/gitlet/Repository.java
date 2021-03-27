@@ -377,13 +377,13 @@ public class Repository {
      * @return
      */
     private static boolean beOverwritten(String FileName, Commit givenCommit) {
-        Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        if (head.snapshot.containsKey(FileName) && givenCommit.snapshot.containsKey(FileName)) {
-            String blobId1 = head.snapshot.get(FileName);
-            String blobId2 = givenCommit.snapshot.get(FileName);
-            if (!blobId1.equals(blobId2)) {
-                return true;
-            }
+        File inCWD = Utils.join(CWD, FileName);
+        String BlobId = givenCommit.snapshot.get(FileName);
+        File targetBlob = Utils.join(Blobs, BlobId);
+        String content1 = readContentsAsString(inCWD);
+        String content2 = readContentsAsString(targetBlob);
+        if (!content1.equals(content2)) {
+            return true;
         }
         return false;
     }

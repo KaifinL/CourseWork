@@ -53,11 +53,11 @@ public class Repository {
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
         createFile(HEAD);
-        writeObject(HEAD, initialCommit);
         Branch master = new Branch("master", initialCommit);
         File masterBranch = Utils.join(BranchCollection, "master");
         createFile(masterBranch);
         Utils.writeObject(masterBranch, master);
+        Utils.writeObject(HEAD, master);
     }
 
     // all this method need to do is to simply move the file to the staging area.

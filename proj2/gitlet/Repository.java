@@ -463,6 +463,11 @@ public class Repository {
             System.out.println("Encountered a merge conflict.");
         }
         mergeCommit.setMessage("Merged " + givenBranch1 + " " + currentBranch.getName());
+        currentBranch.setCurrentCommit(mergeCommit);
+        writeObject(HEAD, currentBranch);
+        File file = Utils.join(BranchCollection, currentBranch.getName());
+        writeObject(file, currentBranch);
+
     }
 
 

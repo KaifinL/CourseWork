@@ -234,9 +234,8 @@ public class Repository {
                     Head.snapshot.remove(FileName);
                 }
             }
-            currentBranch = givenBranch;
+            currentBranch.setAttachBranch(givenBranch);
             Utils.writeObject(HEAD, Head);
-
         }
 
     }

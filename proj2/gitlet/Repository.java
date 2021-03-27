@@ -237,7 +237,6 @@ public class Repository {
             currentBranch.setAttachBranch(givenBranch);
             Utils.writeObject(HEAD, Head);
         }
-
     }
 
     public static void find(String message) {

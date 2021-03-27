@@ -491,7 +491,7 @@ public class Repository {
     private static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (!splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
-                String[] args = {givenBranchCurrentCommit.getId(), "--", FileName};
+                String[] args = {"checkout", givenBranchCurrentCommit.getId(), "--", FileName};
                 checkout(args);
                 mergeCommit.snapshot.put(FileName, givenBranchCurrentCommit.snapshot.get(FileName));
             }

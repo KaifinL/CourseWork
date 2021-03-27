@@ -102,6 +102,9 @@ public class Repository {
         Branch Head = Utils.readObject(HEAD, Branch.class);
         Head.setCurrentCommit(newCommit);
         writeObject(HEAD, Head);
+        Branch HeadBranch = Utils.readObject(HEAD, Branch.class);
+        File currentBranch = Utils.join(BranchCollection, HeadBranch.getName());
+        writeObject(currentBranch, Head);
     }
 
     public static void finalCommit(String[] args) {

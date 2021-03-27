@@ -1,6 +1,4 @@
 package gitlet;
-import net.sf.saxon.trans.SymbolicName;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -65,6 +63,8 @@ public class Repository {
         Branch master = new Branch("master", Head);
         File masterBranch = Utils.join(BranchCollection, "master");
         createFile(masterBranch);
+        Utils.writeObject(masterBranch, master);
+        currentBranch.setCurrentCommit(Head);
         currentBranch.setAttachBranch(master);
     }
 
@@ -111,6 +111,8 @@ public class Repository {
         Commit Head = Utils.readObject(HEAD, Commit.class);
         currentBranch.setCurrentCommit(Head);
         currentBranch.getAttachBranch().setCurrentCommit(Head);
+        File attachBranch = Utils.join(BranchCollection, currentBranch.getAttachBranch().getName());
+        Utils.writeObject(attachBranch, currentBranch.getAttachBranch());
     }
 
     public static void finalCommit(String[] args) {

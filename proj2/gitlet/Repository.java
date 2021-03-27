@@ -105,7 +105,7 @@ public class Repository {
     }
 
     public static void finalCommit(String[] args) {
-        if (args.length == 1) {
+        if (args.length == 1 || args[1].equals("")) {
             Utils.exitWithError("Please enter a commit message.");
         }
         String message = args[1];

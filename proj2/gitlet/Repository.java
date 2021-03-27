@@ -483,7 +483,7 @@ public class Repository {
         }
     }
 
-    //
+    // case 6
     private static void merHelper2(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String FileName : splitPoint.snapshot.keySet()) {
             if (mergeCommit.snapshot.containsKey(FileName) && !givenBranchCurrCommit.snapshot.containsKey(FileName)) {

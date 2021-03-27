@@ -625,6 +625,7 @@ public class Repository {
         SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
         System.out.println(message);//Merged development into master.
+        System.out.println();
     }
 
 

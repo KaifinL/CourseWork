@@ -219,10 +219,11 @@ public class Repository {
                 createFile(targetFile);
                 writeContents(targetFile, content);
             }
-            for (String FileName : Head.snapshot.keySet()) { // remove files that are not present in the
+            for (String FileName : Utils.plainFilenamesIn(CWD)) { // remove files that are not present in the
                                                                 // given commit but present in the current commit
-                if (!givenCommit.snapshot.containsKey(FileName)) {
-                    Head.snapshot.remove(FileName);
+                if (!givenCommit.snapshot.containsKey(FileName) && Head.snapshot.containsKey(FileName)) {
+                    File target = Utils.join(CWD, FileName);
+                    target.delete();
                 }
             }
             Utils.writeObject(HEAD, givenBranch);

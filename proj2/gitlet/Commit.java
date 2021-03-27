@@ -117,7 +117,9 @@ public class Commit implements Serializable {
             snapshot.put(fileName, blobId);
         }
         for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
-            File targetFile = Utils.join(StagingArea.removal, )
+            if (snapshot.containsKey(FileName)) {
+                snapshot.remove(FileName);
+            }
         }
         byte[] idPara = Utils.serialize(this);
         this.id = Utils.sha1(idPara);

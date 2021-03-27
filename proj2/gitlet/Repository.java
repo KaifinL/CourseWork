@@ -394,7 +394,7 @@ public class Repository {
             // given commit but present in the current commit
             File target = Utils.join(CWD, FileName);
             if (!givenCommit.snapshot.containsKey(FileName) && !target.isDirectory() && head.snapshot.containsKey(FileName)) {
-                head.snapshot.remove(FileName);
+                target.delete();
             }
         }
         currentBranch.setCurrentCommit(givenCommit);

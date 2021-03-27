@@ -61,6 +61,8 @@ public class Repository {
         writeObject(HEAD, initialCommit);
         Commit Head = Utils.readObject(HEAD, Commit.class);
         Branch master = new Branch("master", Head);
+        File masterBranch = Utils.join(BranchCollection, "master");
+        createFile(masterBranch);
         currentBranch = master;
     }
 

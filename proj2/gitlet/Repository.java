@@ -238,7 +238,9 @@ public class Repository {
         }
     }
 
-    public static void branchFunc(String branchName) {
+    public static void branchFunc(String[] args) {
+        if ()
+        String branchName = args[1];
         if (Branch.branches.containsKey(branchName)) {
             Utils.exitWithError("A branch with that name already exists.");
         }

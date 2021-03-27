@@ -398,8 +398,8 @@ public class Repository {
             }
         }
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
-        Utils.writeObject(HEAD, givenCommit);
         currentBranch.setCurrentCommit(givenCommit);
+        Utils.writeObject(HEAD, currentBranch);
     }
 
     public static void merge(String givenBranch1) {
@@ -407,6 +407,7 @@ public class Repository {
         File givenBranchName = Utils.join(BranchCollection, givenBranch1);
         Branch givenBranch = Utils.readObject(givenBranchName, Branch.class);
         Commit givenCommit = givenBranch.getCurrentCommit();
+        Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         checkoutFailure(givenCommit);
         mergeFailures2(givenBranch1);
         Commit splitPoint = null;

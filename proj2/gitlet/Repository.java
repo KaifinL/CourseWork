@@ -92,7 +92,7 @@ public class Repository {
             }
             File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
             if (targetFile2.exists()) {
-                Utils.restrictedDelete(targetFile2);
+                targetFile2.delete();
             }
         }
     }

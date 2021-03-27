@@ -347,8 +347,8 @@ public class Repository {
      */
     // return true if the file is untracked by the Head commit.
     private static boolean untracked(String FileName) {
-        Commit currentCommit = currentBranch.getCurrentCommit();
-        return currentCommit.snapshot.containsKey(FileName);
+        Commit head = Utils.readObject(HEAD, Commit.class);
+        return head.snapshot.containsKey(FileName);
     }
 
     /**

@@ -134,10 +134,6 @@ public class Commit implements Serializable {
         return parentCommit;
     }
 
-    /**
-     * TODO: delete all the files in staging area.
-     */
-
     public static void helpDelete(File dir) {
         for(File file: dir.listFiles())   // @ Google
             if (!file.isDirectory())

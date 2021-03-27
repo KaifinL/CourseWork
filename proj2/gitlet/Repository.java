@@ -1,4 +1,6 @@
 package gitlet;
+import net.sf.saxon.trans.SymbolicName;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -526,7 +528,9 @@ public class Repository {
                 String BlobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
                 if (!BlobId1.equals(BlobId2)) {
                     conflict = true;
-                    showConflict(BlobId1, BlobId2);
+                    File target = Utils.join(Blobs, BlobId1);
+                    File compared = Utils.join(Blobs, BlobId2);
+                    writeContents(target, conflict(target, compared));
                 }
             }
         }

@@ -499,6 +499,7 @@ public class Repository {
         }
     }
 
+    //case 8
     private static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (!splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
@@ -509,6 +510,7 @@ public class Repository {
         }
     }
 
+    // case 5
     private static boolean merHelper4(Commit givenBranchCurrentCommit, Commit mergeCommit) {
         boolean conflict = false;
         for (String FileName : mergeCommit.snapshot.keySet()) {

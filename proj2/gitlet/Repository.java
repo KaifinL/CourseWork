@@ -32,7 +32,6 @@ public class Repository {
 
     public static final File Commits = Utils.join(GITLET_DIR, "commits");
 
-    public static final File HEAD = Utils.join(Commits, "Head");
     /* TODO: fill in the rest of this class. */
 
     // named by the blobId
@@ -40,7 +39,7 @@ public class Repository {
 
     public static final File BranchCollection = Utils.join(GITLET_DIR, "Branch");
 
-    public static Branch currentBranch = new Branch("master", null);
+    public static final File HEAD = Utils.join(BranchCollection, "Head");
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -53,19 +52,12 @@ public class Repository {
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
-        try {
-            HEAD.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        createFile(HEAD);
         writeObject(HEAD, initialCommit);
-        Commit Head = Utils.readObject(HEAD, Commit.class);
-        Branch master = new Branch("master", Head);
+        Branch master = new Branch("master", initialCommit);
         File masterBranch = Utils.join(BranchCollection, "master");
         createFile(masterBranch);
         Utils.writeObject(masterBranch, master);
-        currentBranch.setCurrentCommit(Head);
-        currentBranch.setAttachBranch(master);
     }
 
     // all this method need to do is to simply move the file to the staging area.
@@ -80,8 +72,8 @@ public class Repository {
         }else {
             Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
-            Commit Head = Utils.readObject(HEAD, Commit.class);
-            String Id = Head.snapshot.get(fileName);
+            Branch Head = Utils.readObject(HEAD, Branch.class);
+            String Id = Head.getCurrentCommit().snapshot.get(fileName);
             // update the file if already exists in the staging area.
             if (Id == null || !Id.equals(tobeAdd.getBlobId())) {    // the content of the blob is different from head one
                 createFile(targetFile);
@@ -107,12 +99,8 @@ public class Repository {
         newCommit.parentId = newCommit.id;
         newCommit.makeChange(message, dateObj);
         newCommit.saveCommit();
-        writeObject(HEAD, newCommit);
-        Commit Head = Utils.readObject(HEAD, Commit.class);
-        currentBranch.setCurrentCommit(Head);
-        currentBranch.getAttachBranch().setCurrentCommit(Head);
-        File attachBranch = Utils.join(BranchCollection, currentBranch.getAttachBranch().getName());
-        Utils.writeObject(attachBranch, currentBranch.getAttachBranch());
+        Branch Head = Utils.readObject(HEAD, Branch.class);
+        writeObject(HEAD, Head);
     }
 
     public static void finalCommit(String[] args) {
@@ -128,7 +116,7 @@ public class Repository {
     }
 
     public static void log() {
-        Commit curr = Utils.readObject(HEAD, Commit.class);
+        Commit curr = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         while(curr != null && curr.id != curr.getParentId()) {
             if (!curr.parent2Exist()) {
                 logHelper(curr);
@@ -151,6 +139,7 @@ public class Repository {
             }
         }
     }
+
     public static void globalLog() {
         if (Utils.plainFilenamesIn(Commits) != null) {
             for (String name : Utils.plainFilenamesIn(Commits)) {
@@ -166,7 +155,7 @@ public class Repository {
             if (!args[1].equals("--")) {
                 Utils.exitWithError("Incorrect operands.");
             }
-            Commit nHead = Utils.readObject(HEAD, Commit.class);
+            Commit nHead = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             if (!nHead.snapshot.containsKey(args[2])){
                 exitWithError("File does not exist in that commit.");
             }else {
@@ -205,14 +194,15 @@ public class Repository {
         }else {
             String targetName = args[1];
             File targetBranch = Utils.join(BranchCollection, targetName);
-            Commit Head = currentBranch.getCurrentCommit();
+            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             if (!targetBranch.exists()) {
                 Utils.exitWithError("No such branch exists.");
             }
             Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
             Commit givenCommit = givenBranch.getCurrentCommit();
             checkoutFailure(givenCommit);
-            if (givenBranch.equals(currentBranch)) {  //if givenBranch is the same as the currentBranch
+            Branch head = Utils.readObject(HEAD, Branch.class);
+            if (givenBranch.getName().equals(head.getName())) {  //if givenBranch is the same as the currentBranch
                 Utils.exitWithError("No need to checkout the current branch.");
             }else {
                 Commit.helpDelete(StagingArea.addition);
@@ -234,8 +224,7 @@ public class Repository {
                     Head.snapshot.remove(FileName);
                 }
             }
-            currentBranch.setAttachBranch(givenBranch);
-            Utils.writeObject(HEAD, Head);
+            Utils.writeObject(HEAD, givenBranch);
         }
     }
 
@@ -262,10 +251,10 @@ public class Repository {
             if (Branch.branches.containsKey(branchName)) {
                 Utils.exitWithError("A branch with that name already exists.");
             }
-            Commit Head = Utils.readObject(HEAD, Commit.class);
+            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             Branch newBranch = new Branch(branchName, Head);
             File Branch1 = Utils.join(Repository.BranchCollection, branchName);
-            Repository.createFile(Branch1);
+            createFile(Branch1);
             Utils.writeObject(Branch1, newBranch);
         }
     }
@@ -277,7 +266,7 @@ public class Repository {
         }else if (InAddition.exists() && !InAddition.isDirectory()) {
             InAddition.delete();
         }else if (!untracked(fileName)) {
-            Commit Head = Utils.readObject(HEAD, Commit.class);
+            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             String blobId = Head.snapshot.get(fileName);
             if (blobId != null) {
                 File toRemoval = Utils.join(StagingArea.removal, fileName);
@@ -296,9 +285,10 @@ public class Repository {
     public static void status() {
         // phase 1
         System.out.println("=== Branches ===");
-        System.out.println("*" + currentBranch.getName());
+        Branch head = Utils.readObject(HEAD, Branch.class);
+        System.out.println("*" + head.getName());
         for (String branchName : Utils.plainFilenamesIn(BranchCollection)) {
-            if (!branchName.equals(currentBranch.getName())) {
+            if (!branchName.equals(head.getName()) && !branchName.equals("Head")) {
                 System.out.println(branchName);
             }
         }
@@ -332,6 +322,7 @@ public class Repository {
     }
 
     public static void rmBranch(String targetBranch) {
+        Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         if (currentBranch.getName().equals(targetBranch)) {
             Utils.exitWithError("Cannot remove the current branch.");
         }
@@ -365,7 +356,7 @@ public class Repository {
      */
     // return true if the file is untracked by the Head commit.
     private static boolean untracked(String FileName) {
-        Commit head = Utils.readObject(HEAD, Commit.class);
+        Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         return !head.snapshot.containsKey(FileName);
     }
 
@@ -376,7 +367,7 @@ public class Repository {
      * @return
      */
     private static boolean beOverwritten(String FileName, Commit givenCommit) {
-        Commit head = Utils.readObject(HEAD, Commit.class);
+        Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         if (head.snapshot.containsKey(FileName) && givenCommit.snapshot.containsKey(FileName)) {
             String blobId1 = head.snapshot.get(FileName);
             String blobId2 = givenCommit.snapshot.get(FileName);
@@ -388,7 +379,7 @@ public class Repository {
     }
 
     public static void reset(String givenId) {
-        Commit head = Utils.readObject(HEAD, Commit.class);
+        Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         File givenCommitFile = Utils.join(Commits, givenId);
         if (!givenCommitFile.exists()) {
             Utils.exitWithError("No commit with that id exists.");
@@ -406,6 +397,7 @@ public class Repository {
                 target.delete();
             }
         }
+        Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         Utils.writeObject(HEAD, givenCommit);
         currentBranch.setCurrentCommit(givenCommit);
     }

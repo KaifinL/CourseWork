@@ -611,7 +611,7 @@ public class Repository {
     private static void logHelper(Commit cur) {
         System.out.println("===");
         System.out.println("commit " + cur.id);
-        SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
         if (cur.parent2Exist()) {
@@ -624,7 +624,7 @@ public class Repository {
         System.out.println("===");
         System.out.println("commit " + target.id);
         System.out.println("Merge: " + shortenId(target.getParentId()) + " " + shortenId(target.getParent2Id()));
-        SimpleDateFormat formatter= new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
         System.out.println(message);//Merged development into master.
         System.out.println();

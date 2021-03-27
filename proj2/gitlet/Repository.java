@@ -160,7 +160,10 @@ public class Repository {
     }
 
     public static void checkout(String[] args) {
-        if (args[0].equals("checkout") && args[1].equals("--")) {
+        if (args[0].equals("checkout") && args.length == 3) {//java gitlet.Main checkout -- [file name]
+            if (!args[1].equals("--")) {
+                Utils.exitWithError("");
+            }
             Commit nHead = Utils.readObject(HEAD, Commit.class);
             if (!nHead.snapshot.containsKey(args[2])){
                 exitWithError("File does not exist in that commit.");

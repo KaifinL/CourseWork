@@ -689,6 +689,9 @@ public class Repository {
 
     // return false if there is file in the addition area
     private static boolean commitFailure() {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
+            return false;
+        }
         for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
             return false;
         }

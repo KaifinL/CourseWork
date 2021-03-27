@@ -488,7 +488,7 @@ public class Repository {
         for (String FileName : splitPoint.snapshot.keySet()) {
             if (mergeCommit.snapshot.containsKey(FileName) && !givenBranchCurrCommit.snapshot.containsKey(FileName)) {
                 String BlobId = splitPoint.snapshot.get(FileName);
-                if (BlobId.equals(mergeCommit)) {
+                if (BlobId.equals(mergeCommit.snapshot.get(FileName))) {
                     mergeCommit.snapshot.remove(FileName);
                     File inCWD = Utils.join(CWD, FileName);
                     if (inCWD.exists()) {

@@ -603,7 +603,7 @@ public class Repository {
      */
     private static HashMap<String, String> ModifiedButNStag() {
         HashMap returnList = new HashMap();
-        Commit head = Utils.readObject(HEAD, Commit.class);
+        Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File file = Utils.join(CWD, FileName);
             File inAddition = Utils.join(StagingArea.addition, FileName);
@@ -670,7 +670,7 @@ public class Repository {
      */
     private static boolean different(String fileName) {
         File target = Utils.join(CWD, fileName);
-        Commit head = Utils.readObject(HEAD, Commit.class);
+        Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         String blobId = head.snapshot.get(fileName);
         if (blobId != null && target.exists()) {
             File targetBlob = Utils.join(Blobs, blobId);

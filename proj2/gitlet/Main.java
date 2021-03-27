@@ -35,7 +35,6 @@ public class Main {
             case "commit":
                 Repository.finalCommit(args);
                 break;
-
             case "rm":
                 Repository.remove(args[1]);
                 break;

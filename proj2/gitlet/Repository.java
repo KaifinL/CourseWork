@@ -464,6 +464,8 @@ public class Repository {
         mergeCommit.setMessage("Merged " + givenBranch1 + " " + currentBranch.getName());
     }
 
+
+    
     private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String Filename : splitPoint.snapshot.keySet()) {
             if (givenBranchCurrCommit.snapshot.containsKey(Filename) && mergeCommit.snapshot.containsKey(Filename)) {

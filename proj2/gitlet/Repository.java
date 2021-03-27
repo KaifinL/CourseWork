@@ -239,16 +239,17 @@ public class Repository {
     }
 
     public static void branchFunc(String[] args) {
-        if ()
-        String branchName = args[1];
-        if (Branch.branches.containsKey(branchName)) {
-            Utils.exitWithError("A branch with that name already exists.");
+        if (args.length == 2) {
+            String branchName = args[1];
+            if (Branch.branches.containsKey(branchName)) {
+                Utils.exitWithError("A branch with that name already exists.");
+            }
+            Commit Head = Utils.readObject(HEAD, Commit.class);
+            Branch newBranch = new Branch(branchName, Head);
+            File Branch1 = Utils.join(Repository.BranchCollection, branchName);
+            Repository.createFile(Branch1);
+            Utils.writeObject(Branch1, newBranch);
         }
-        Commit Head = Utils.readObject(HEAD, Commit.class);
-        Branch newBranch = new Branch(branchName, Head);
-        File Branch1 = Utils.join(Repository.BranchCollection, branchName);
-        Repository.createFile(Branch1);
-        Utils.writeObject(Branch1, newBranch);
     }
 
     public static void remove(String fileName) {

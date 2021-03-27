@@ -611,10 +611,13 @@ public class Repository {
         for (String FileName : head.snapshot.keySet()) {
             File targetFile = Utils.join(CWD, FileName);
             File inRemoval = Utils.join(StagingArea.removal, FileName);
-            if (!targetFile.exists()) {
+            if (!targetFile.exists() && !inRemoval.exists()) {
                 returnList.put(FileName, "deleted");
             }
-            if (!inRemoval.exists() && !untracked(FileName) && !targetFile.exists()) {
+        }
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            File file = Utils.join(CWD, FileName);
+            if (!file.exists()) {
                 returnList.put(FileName, "deleted");
             }
         }

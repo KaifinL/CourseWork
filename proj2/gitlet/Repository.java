@@ -666,10 +666,10 @@ public class Repository {
             String content1 = Utils.readContentsAsString(targetBlob);
             String content2 = Utils.readContentsAsString(target);
             if (!content1.equals(content2)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     // basically the same as the last one but this method compare the files in staging are and CWD

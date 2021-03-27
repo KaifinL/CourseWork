@@ -385,7 +385,7 @@ public class Repository {
         Commit givenCommit = Utils.readObject(givenCommitFile, Commit.class);
         checkoutFailure(givenCommit);
         for (String fileName : givenCommit.snapshot.keySet()) {
-            String[] args = {givenId, "--", fileName};
+            String[] args = {"checkout", givenId, "--", fileName};
             checkout(args);
         }
         for (String FileName : head.snapshot.keySet()) { // remove files that are not present in the

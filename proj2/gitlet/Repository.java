@@ -449,7 +449,7 @@ public class Repository {
         }
 
         // step 3: create the new mergeCommit
-        Commit mergeCommit = Utils.readObject(HEAD, Commit.class);
+        Commit mergeCommit = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
 
         //step 4: follow up steps
         Commit givenBranchCurrCommit = givenBranch.getCurrentCommit();

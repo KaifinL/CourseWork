@@ -490,6 +490,10 @@ public class Repository {
                 String BlobId = splitPoint.snapshot.get(FileName);
                 if (BlobId.equals(mergeCommit)) {
                     mergeCommit.snapshot.remove(FileName);
+                    File inCWD = Utils.join(CWD, FileName);
+                    if (inCWD.exists()) {
+                        inCWD.delete();
+                    }
                 }
             }
         }

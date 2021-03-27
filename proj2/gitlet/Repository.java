@@ -437,7 +437,9 @@ public class Repository {
                     }
                 }
             }
-            break;
+            if (splitPoint != null) {
+                break;
+            }
         }
         // step 2: 2 failure cases
         if (splitPoint.equals(givenBranch.getCurrentCommit())) {

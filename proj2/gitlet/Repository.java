@@ -65,7 +65,11 @@ public class Repository {
     }
 
     // all this method need to do is to simply move the file to the staging area.
-    public static void add(String fileName) {
+    public static void add(String[] args) {
+        if (args.length == 0) {
+            
+        }
+        String fileName = args[1];
         File tobeAdded = Utils.join(CWD, fileName);
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");

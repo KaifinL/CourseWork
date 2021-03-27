@@ -433,8 +433,10 @@ public class Repository {
                         String splitPointId = commit1.getParentId();
                         File splitFile = Utils.join(Commits, splitPointId);
                         splitPoint = Utils.readObject(splitFile, Commit.class);
+                        break;
                     }
                 }
+                break;
             }
         }
         // step 2: 2 failure cases

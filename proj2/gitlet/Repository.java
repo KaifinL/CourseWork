@@ -126,9 +126,6 @@ public class Repository {
                 logMerge(curr, curr.getMessage());
                 curr = curr.getParent();
             }
-            if (curr.parentId == null) {
-                break;
-            }
         }
     }
 

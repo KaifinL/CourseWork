@@ -13,10 +13,6 @@ public class Blob implements Serializable {
     private byte[] BlobContent;
     public String blobId;
     public File blobs = Repository.Blobs;
-    /**
-     * TODO: some variables like blob itself should be created
-     * TODO: how to represent a file's content by an blob object?I suppose 'readObject' will be useful.
-     */
     // create a blob by the pass-in file
     public Blob(File tobeRead) {
         this.BlobContent = Utils.readContents(tobeRead);

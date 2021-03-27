@@ -110,6 +110,7 @@ public class Repository {
         writeObject(HEAD, newCommit);
         Commit Head = Utils.readObject(HEAD, Commit.class);
         currentBranch.setCurrentCommit(Head);
+        currentBranch.getAttachBranch().setCurrentCommit(Head);
     }
 
     public static void finalCommit(String[] args) {

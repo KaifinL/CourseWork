@@ -332,14 +332,14 @@ public class Repository {
         if (currentBranch.getName().equals(targetBranch)) {
             Utils.exitWithError("Cannot remove the current branch.");
         }
-        boolean error = true;
+        for (String BranchName : Utils.plainFilenamesIn(BranchCollection)) {
+            if (BranchName.equals(targetBranch)) {
+                Utils.exitWithError("");
+            }
+        }
         for (String branchName : Utils.plainFilenamesIn(BranchCollection)) {
             File targetFile = Utils.join(BranchCollection, branchName);
             targetFile.delete();
-            error = false;
-        }
-        if (error) {
-            Utils.exitWithError("A branch with that name does not exist.");
         }
     }
 

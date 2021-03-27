@@ -535,6 +535,7 @@ public class Repository {
     }
 
     private static void mergeFailures2(String givenBranch) {
+        Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         // case 1
         for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
             Utils.exitWithError("You have uncommitted changes.");

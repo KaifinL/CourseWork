@@ -397,6 +397,7 @@ public class Repository {
                 target.delete();
             }
         }
+        Utils.writeObject(HEAD, givenCommit);
         currentBranch.setCurrentCommit(givenCommit);
     }
 

@@ -1,5 +1,6 @@
 package gitlet;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -465,7 +466,8 @@ public class Repository {
     }
 
 
-    
+
+    // case 1
     private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String Filename : splitPoint.snapshot.keySet()) {
             if (givenBranchCurrCommit.snapshot.containsKey(Filename) && mergeCommit.snapshot.containsKey(Filename)) {
@@ -473,12 +475,15 @@ public class Repository {
                 String compared = givenBranchCurrCommit.snapshot.get(Filename);
                 String curr = mergeCommit.snapshot.get(Filename);
                 if (BlobId.equals(curr) && !BlobId.equals(compared)) {
+                    String[] args = {"checkout", givenBranchCurrCommit.id, "--", Filename};
+                    checkout(args);
                     mergeCommit.snapshot.put(Filename, compared);
                 }
             }
         }
     }
 
+    //
     private static void merHelper2(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String FileName : splitPoint.snapshot.keySet()) {
             if (mergeCommit.snapshot.containsKey(FileName) && !givenBranchCurrCommit.snapshot.containsKey(FileName)) {

@@ -423,14 +423,16 @@ public class Repository {
         Commit splitPoint = null;
         for (String commitId : Utils.plainFilenamesIn(Commits)) {
             for (String commitId2 : Utils.plainFilenamesIn(Commits)) {
-                File commit1File = Utils.join(Commits, commitId);
-                File commit2File = Utils.join(Commits, commitId2);
-                Commit commit1 = Utils.readObject(commit1File, Commit.class);
-                Commit commit2 = Utils.readObject(commit2File, Commit.class);
-                if (!commit1.equals(commit2) && commit1.getParentId().equals(commit2.getParentId())) {
-                    String splitPointId = commit1.getParentId();
-                    File splitFile = Utils.join(Commits, splitPointId);
-                    splitPoint = Utils.readObject(splitFile, Commit.class);
+                if (!commitId.equals(commitId2)) {
+                    File commit1File = Utils.join(Commits, commitId);
+                    File commit2File = Utils.join(Commits, commitId2);
+                    Commit commit1 = Utils.readObject(commit1File, Commit.class);
+                    Commit commit2 = Utils.readObject(commit2File, Commit.class);
+                    if (!commit1.equals(commit2) && commit1.getParentId().equals(commit2.getParentId())) {
+                        String splitPointId = commit1.getParentId();
+                        File splitFile = Utils.join(Commits, splitPointId);
+                        splitPoint = Utils.readObject(splitFile, Commit.class);
+                    }
                 }
             }
         }

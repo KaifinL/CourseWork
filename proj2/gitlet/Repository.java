@@ -451,9 +451,9 @@ public class Repository {
 
         // step 3: create the new mergeCommit
         Commit mergeCommit = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-
         //step 4: follow up steps
         Commit givenBranchCurrCommit = givenBranch.getCurrentCommit();
+        mergeCommit.parentId = currentBranch.getCurrentCommit().getId();
         mergeCommit.parent2Id = givenBranchCurrCommit.id;
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
@@ -462,7 +462,7 @@ public class Repository {
         || merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit)) {
             System.out.println("Encountered a merge conflict.");
         }
-        mergeCommit.setMessage("Merged " + givenBranch1 + " " + currentBranch.getName());
+        mergeCommit.setMessage("Merged " + givenBranch1 + " into " + currentBranch.getName());
         currentBranch.setCurrentCommit(mergeCommit);
         writeObject(HEAD, currentBranch);
         File file = Utils.join(BranchCollection, currentBranch.getName());

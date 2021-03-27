@@ -188,8 +188,10 @@ public class Repository {
             }
             Commit targetCommit = Utils.readObject(commitFile, Commit.class);
             String targetId = targetCommit.snapshot.get(args[3]);
+            if (targetId == null) {
+                exitWithError("File does not exist in that commit.");
+            }
             File targetBlob = Utils.join(Blobs, targetId);
-            
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
         }else {

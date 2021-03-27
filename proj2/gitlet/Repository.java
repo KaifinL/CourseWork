@@ -571,6 +571,11 @@ public class Repository {
         System.out.println(">>>>>>>");
     }
 
+    private static void conflict(File file1, File file2) {
+        String firstLine = "<<<<<<< HEAD\n";
+        
+    }
+
     private static void mergeFailures2(String givenBranch) {
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         // case 1
@@ -630,14 +635,6 @@ public class Repository {
         System.out.println();
     }
 
-
-    /**
-     * TODO:Tracked in the current commit, changed in the working directory, but not staged; or
-     * Staged for addition, but with different contents than in the working directory; or
-     * Staged for addition, but deleted in the working directory; or
-     * TODO: Not staged for removal, but tracked in the current commit and deleted from the working directory
-     * @return
-     */
     private static HashMap<String, String> ModifiedButNStag() {
         HashMap returnList = new HashMap();
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();

@@ -573,7 +573,8 @@ public class Repository {
 
     private static void conflict(File file1, File file2) {
         String firstLine = "<<<<<<< HEAD\n";
-        
+        String secondLine = Utils.readContentsAsString(file1);
+        String thirdLine = ""
     }
 
     private static void mergeFailures2(String givenBranch) {

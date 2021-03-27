@@ -421,8 +421,8 @@ public class Repository {
         checkoutFailure(givenCommit);
         mergeFailures2(givenBranch1);
         Commit splitPoint = null;
-        for (String commitId : givenBranch.getBranches().keySet()) {
-            for (String commitId2 : currentBranch.getBranches().keySet()) {
+        for (String commitId : Utils.plainFilenamesIn(Commits)) {
+            for (String commitId2 : Utils.plainFilenamesIn(Commits)) {
                 File commit1File = Utils.join(Commits, commitId);
                 File commit2File = Utils.join(Commits, commitId2);
                 Commit commit1 = Utils.readObject(commit1File, Commit.class);

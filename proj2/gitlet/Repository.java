@@ -690,9 +690,9 @@ public class Repository {
     // return true if there is no file in staging area return false otherwise.
     private static boolean commitFailure() {
         for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
 

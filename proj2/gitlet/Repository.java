@@ -571,13 +571,13 @@ public class Repository {
         System.out.println(">>>>>>>");
     }
 
-    private static void conflict(File file1, File file2) {
+    private static String conflict(File file1, File file2) {
         String firstLine = "<<<<<<< HEAD\n";
         String secondLine = Utils.readContentsAsString(file1);
         String thirdLine = "=======\n";
         String fourthLine = Utils.readContentsAsString(file2);
-        String fifthLine = 
-
+        String fifthLine = ">>>>>>>\n";
+        return firstLine + secondLine + thirdLine + fourthLine + fifthLine;
     }
 
     private static void mergeFailures2(String givenBranch) {

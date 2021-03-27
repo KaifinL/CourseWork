@@ -100,6 +100,7 @@ public class Repository {
         newCommit.makeChange(message, dateObj);
         newCommit.saveCommit();
         Branch Head = Utils.readObject(HEAD, Branch.class);
+        Head.setCurrentCommit(newCommit);
         writeObject(HEAD, Head);
     }
 

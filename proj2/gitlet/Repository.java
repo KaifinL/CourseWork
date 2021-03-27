@@ -65,8 +65,7 @@ public class Repository {
         Branch master = new Branch("master", Head);
         File masterBranch = Utils.join(BranchCollection, "master");
         createFile(masterBranch);
-        currentBranch.setCurrentCommit(Head);
-        currentBranch = master;
+        currentBranch.setAttachBranch(master);
     }
 
     // all this method need to do is to simply move the file to the staging area.

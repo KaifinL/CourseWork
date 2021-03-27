@@ -216,8 +216,7 @@ public class Repository {
             for (String FileName : givenCommit.snapshot.keySet()){ //put all the files to the CWD and overwrite them if necessary.
                 String BlobId = givenCommit.snapshot.get(FileName);
                 File targetBlob = Utils.join(Blobs, BlobId);
-                Blob tobeCopied = Utils.readObject(targetBlob, Blob.class);
-                byte[] content = tobeCopied.getBlobContent();
+                byte[] content = Utils.readContents(targetBlob);
                 File targetFile = Utils.join(CWD, FileName);
                 createFile(targetFile);
                 writeContents(targetFile, content);

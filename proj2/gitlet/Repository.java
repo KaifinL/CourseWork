@@ -63,6 +63,7 @@ public class Repository {
         Branch master = new Branch("master", Head);
         File masterBranch = Utils.join(BranchCollection, "master");
         createFile(masterBranch);
+        
         currentBranch = master;
     }
 

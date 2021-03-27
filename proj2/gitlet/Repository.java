@@ -109,7 +109,7 @@ public class Repository {
             Utils.exitWithError("Please enter a commit message.");
         }
         String message = args[1];
-        if (StagingArea.addition.length() == 0) {
+        if (commitFailure()) {
             Utils.exitWithError("No changes added to the commit.");
         }else {
             Repository.makeCommit(message);
@@ -677,8 +677,12 @@ public class Repository {
         return true;
     }
 
-    private static void commitFailure() {
-        
+    // return true if there is no file in staging area return false otherwise.
+    private static boolean commitFailure() {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            return false;
+        }
+        return true;
     }
 
 

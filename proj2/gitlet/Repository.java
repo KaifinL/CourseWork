@@ -462,7 +462,7 @@ public class Repository {
         || merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit)) {
             System.out.println("Encountered a merge conflict.");
         }
-        mergeCommit.setMessage("Merged " + givenBranch1 + " into " + currentBranch.getName());
+        mergeCommit.setMessage("Merged " + givenBranch1 + " into " + currentBranch.getName() + ".");
         byte[] idPara = Utils.serialize(mergeCommit);
         mergeCommit.id = Utils.sha1(idPara);
         currentBranch.setCurrentCommit(mergeCommit);

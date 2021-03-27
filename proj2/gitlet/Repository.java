@@ -252,8 +252,10 @@ public class Repository {
     public static void branchFunc(String[] args) {
         if (args.length == 2) {
             String branchName = args[1];
-            if (Branch.branches.containsKey(branchName)) {
-                Utils.exitWithError("A branch with that name already exists.");
+            for (String BranchName : Utils.plainFilenamesIn(BranchCollection)) {
+                if (BranchName.equals(branchName)) {
+                    Utils.exitWithError("A branch with that name already exists.");
+                }
             }
             Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             Branch newBranch = new Branch(branchName, Head);

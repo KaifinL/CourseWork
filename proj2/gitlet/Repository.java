@@ -256,7 +256,7 @@ public class Repository {
         File InAddition = Utils.join(StagingArea.addition, fileName);
         if (!InAddition.exists() && untracked(fileName)) {
             Utils.exitWithError("No reason to remove the file.");
-        }else if (InAddition.exists()) {
+        }else if (InAddition.exists() && !InAddition.isDirectory()) {
             Utils.restrictedDelete(InAddition);
         }else if (!untracked(fileName)) {
             Commit Head = Utils.readObject(HEAD, Commit.class);
@@ -268,7 +268,7 @@ public class Repository {
                 byte[] content = Utils.readContents(targetBlob);
                 writeContents(toRemoval, content);
                 File InCwd = Utils.join(CWD, fileName);
-                if (InCwd.exists()) {
+                if (InCwd.exists() && !InCwd.isDirectory()) {
                     Utils.restrictedDelete(InCwd);
                 }
             }

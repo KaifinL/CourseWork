@@ -543,41 +543,25 @@ public class Repository {
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
                 String blobId1 = splitPoint.snapshot.get(FileName);
-                String blobId2 = splitPoint.snapshot.get(FileName);
+                String blobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
                 if (!blobId1.equals(blobId2)) {
                     conflict = true;
-                    showConflict("null", blobId2);
+                    File target = Utils.join(Blobs, blobId1);
+                    File compared = Utils.join(Blobs, blobId2);
+                    writeContents(compared, conflict(target, compared));
                 }
             }
         }
         return conflict;
     }
 
-
-
-    private static void showConflict(String blobId1, String blobId2) {
-        System.out.println("<<<<<<< HEAD");
-        File Blob1 = Utils.join(Blobs, blobId1);
-        if (blobId1.equals("null")) {
-            System.out.println();
-        }else {
-            String content = Utils.readContentsAsString(Blob1);
-            System.out.println(content);
-        }
-        System.out.println("=======");
-        if (blobId2.equals("null")) {
-            System.out.println();
-        }else {
-            File Blob2 = Utils.join(Blobs, blobId2);
-            String content2 = Utils.readContentsAsString(Blob2);
-            System.out.println(content2);
-        }
-        System.out.println(">>>>>>>");
-    }
-
     private static String conflict(File file1, File file2) {
         String firstLine = "<<<<<<< HEAD\n";
-        String secondLine = Utils.readContentsAsString(file1);
+        if (file1.exists()) {
+            String secondLine = Utils.readContentsAsString(file1);
+        }else {
+            String secondLine = "";
+        }
         String thirdLine = "=======\n";
         String fourthLine = Utils.readContentsAsString(file2);
         String fifthLine = ">>>>>>>\n";

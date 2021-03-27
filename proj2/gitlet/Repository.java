@@ -677,6 +677,10 @@ public class Repository {
         return true;
     }
 
+    private static void commitFailure() {
+        
+    }
+
 
 
 }

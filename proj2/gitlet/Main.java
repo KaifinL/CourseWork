@@ -49,14 +49,19 @@ public class Main {
                 break;
             case "status":
                 Repository.status();
+                break;
             case "branch":
                 Repository.branchFunc(args);
+                break;
             case "rm-branch":
                 Repository.rmBranch(args[1]);
+                break;
             case "reset":
                 Repository.reset(args[1]);
+                break;
             case "merge":
                 Repository.merge(args[1]);
+                break;
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

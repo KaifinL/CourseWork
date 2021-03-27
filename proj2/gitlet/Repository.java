@@ -162,7 +162,7 @@ public class Repository {
     public static void checkout(String[] args) {
         if (args[0].equals("checkout") && args.length == 3) {//java gitlet.Main checkout -- [file name]
             if (!args[1].equals("--")) {
-                Utils.exitWithError("");
+                Utils.exitWithError("Incorrect operands.");
             }
             Commit nHead = Utils.readObject(HEAD, Commit.class);
             if (!nHead.snapshot.containsKey(args[2])){
@@ -175,7 +175,10 @@ public class Repository {
                 byte[] content = readContents(targetBlob);
                 Utils.writeContents(targetFile, content);
             }
-        }else if (args[0].equals("checkout") && args[2].equals("--")) { //checkout [commit id] -- [file name]
+        }else if (args[0].equals("checkout") && args.length == 4) { //checkout [commit id] -- [file name]
+            if (!args[2].equals("--")) {
+                Utils.exitWithError("Incorrect operands.");
+            }
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);;

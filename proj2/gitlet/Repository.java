@@ -40,7 +40,7 @@ public class Repository {
 
     public static final File BranchCollection = Utils.join(GITLET_DIR, "Branch");
 
-    public static Branch currentBranch = new Branch(null, null);
+    public static Branch currentBranch = new Branch("master", null);
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -63,7 +63,7 @@ public class Repository {
         Branch master = new Branch("master", Head);
         File masterBranch = Utils.join(BranchCollection, "master");
         createFile(masterBranch);
-        
+
         currentBranch = master;
     }
 

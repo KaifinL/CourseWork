@@ -1,4 +1,6 @@
 package gitlet;
+import net.sf.saxon.trans.SymbolicName;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -388,9 +390,10 @@ public class Repository {
             String[] args = {"checkout", givenId, "--", fileName};
             checkout(args);
         }
-        for (String FileName : head.snapshot.keySet()) { // remove files that are not present in the
+        for (String FileName : Utils.plainFilenamesIn(CWD)) { // remove files that are not present in the
             // given commit but present in the current commit
-            if (!givenCommit.snapshot.containsKey(FileName)) {
+            File target = Utils.join(CWD, FileName);
+            if (!givenCommit.snapshot.containsKey(FileName) && !target.isDirectory() && head.snapshot.containsKey(FileName)) {
                 head.snapshot.remove(FileName);
             }
         }

@@ -792,7 +792,9 @@ public class Repository {
     }
 
     private static void checkIn() {
-        
+        if (!GITLET_DIR.exists()) {
+            Utils.exitWithError("");
+        }
     }
 
 

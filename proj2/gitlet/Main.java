@@ -26,40 +26,52 @@ public class Main {
                 }
                 break;
             case "add":
+                Repository.checkIn();
                 Repository.add(args);
                 break;
             case "commit":
+                Repository.checkIn();
                 Repository.finalCommit(args);
                 break;
             case "rm":
+                Repository.checkIn();
                 Repository.remove(args[1]);
                 break;
             case "log":
+                Repository.checkIn();
                 Repository.log();
                 break;
             case "checkout":
+                Repository.checkIn();
                 Repository.checkout(args);
                 break;
             case "global-log":
+                Repository.checkIn();
                 Repository.globalLog();
                 break;
             case "find":
+                Repository.checkIn();
                 String commitMess = args[1];
                 Repository.find(commitMess);
                 break;
             case "status":
+                Repository.checkIn();
                 Repository.status();
                 break;
             case "branch":
+                Repository.checkIn();
                 Repository.branchFunc(args);
                 break;
             case "rm-branch":
+                Repository.checkIn();
                 Repository.rmBranch(args[1]);
                 break;
             case "reset":
+                Repository.checkIn();
                 Repository.reset(args[1]);
                 break;
             case "merge":
+                Repository.checkIn();
                 Repository.merge(args[1]);
                 break;
             default:

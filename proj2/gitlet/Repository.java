@@ -791,9 +791,9 @@ public class Repository {
         return true;
     }
 
-    private static void checkIn() {
+    public static void checkIn() {
         if (!GITLET_DIR.exists()) {
-            Utils.exitWithError("");
+            Utils.exitWithError("Not in an initialized Gitlet directory.");
         }
     }
 

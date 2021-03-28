@@ -321,6 +321,12 @@ public class Repository {
         //phase 5
         System.out.println("=== Untracked Files ===");
         LinkedList<String> untrackedFiles = untrackedFiles();
+        for (String fileName : untrackedFiles) {
+            File inAdd = Utils.join(StagingArea.addition, fileName);
+            if (inAdd.exists()) {
+                untrackedFiles.remove(fileName);
+            }
+        }
         for (String FileName : untrackedFiles) {
             System.out.println(FileName);
         }

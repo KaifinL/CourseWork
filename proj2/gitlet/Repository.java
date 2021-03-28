@@ -440,27 +440,7 @@ public class Repository {
         Commit givenCommit = givenBranch.getCurrentCommit();
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         checkoutFailure(givenCommit);
-        Commit splitPoint = null;
-        for (String commitId : Utils.plainFilenamesIn(Commits)) {
-            for (String commitId2 : Utils.plainFilenamesIn(Commits)) {
-                if (!commitId.equals(commitId2)) {
-                    File commit1File = Utils.join(Commits, commitId);
-                    File commit2File = Utils.join(Commits, commitId2);
-                    Commit commit1 = Utils.readObject(commit1File, Commit.class);
-                    Commit commit2 = Utils.readObject(commit2File, Commit.class);
-                    if (commit1.parentId != null && commit2.parentId != null
-                            && commit1.getParentId().equals(commit2.getParentId())) {
-                        String splitPointId = commit1.getParentId();
-                        File splitFile = Utils.join(Commits, splitPointId);
-                        splitPoint = Utils.readObject(splitFile, Commit.class);
-                        break;
-                    }
-                }
-            }
-            if (splitPoint != null) {
-                break;
-            }
-        }
+        Commit splitPoint = findSplitPoint(givenCommit, currentBranch.getCurrentCommit());
         // step 2: 2 failure cases
         if (splitPoint == null || (splitPoint != givenCommit && isAncestor(splitPoint, givenCommit))) {
             Utils.exitWithError("Given branch is an ancestor of the current branch.");
@@ -834,7 +814,7 @@ public class Repository {
      * @param commit2 the latter commit;
      * @return true if the commit1 is the ancestor of commit2 return false otherwise;
      */
-    public static boolean isAncestor(Commit commit1, Commit commit2) {
+    private static boolean isAncestor(Commit commit1, Commit commit2) {
         Commit curr = commit2;
         if (curr == null) {
             return false;
@@ -842,6 +822,28 @@ public class Repository {
             return true;
         }
         return isAncestor(commit1, commit2.getParent());
+    }
+
+
+    /**
+     *
+     * @param commit1 one of the commits  the order doesn't matter
+     * @return the split point
+     */
+    private static Commit findSplitPoint(Commit commit1, Commit commit2) {
+        String commit2Id = commit2.getId();
+        while (commit1 != null) {
+            while (commit2 != null) {
+                if (commit1.equals(commit2)) {
+                    return commit1;
+                }
+                commit2 = commit2.getParent();
+            }
+            commit1 = commit1.getParent();
+            File commit2File = Utils.join(Commits, commit2Id);
+            commit2 = Utils.readObject(commit2File, Commit.class);
+        }
+        return null;
     }
 
 

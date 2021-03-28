@@ -462,7 +462,7 @@ public class Repository {
             }
         }
         // step 2: 2 failure cases
-        if (splitPoint.equals(givenBranch.getCurrentCommit())) {
+        if (isAncestor(splitPoint, givenCommit)) {
             Utils.exitWithError("Given branch is an ancestor of the current branch.");
         }else if (splitPoint.equals(currentBranch.getCurrentCommit())) {
             Utils.exitWithError("Current branch fast-forwarded.");
@@ -823,6 +823,22 @@ public class Repository {
         if (!GITLET_DIR.exists()) {
             Utils.exitWithError("Not in an initialized Gitlet directory.");
         }
+    }
+
+    /**
+     *
+     * @param commit1 the former commit;
+     * @param commit2 the latter commit;
+     * @return true if the commit1 is the ancestor of commit2 return false otherwise;
+     */
+    public static boolean isAncestor(Commit commit1, Commit commit2) {
+        Commit curr = commit2;
+        if (curr == null) {
+            return false;
+        }else if (curr.getId().equals(commit1.getId())) {
+            return true;
+        }
+        return isAncestor(commit1, commit2.getParent());
     }
 
 

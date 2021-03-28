@@ -463,9 +463,12 @@ public class Repository {
         }
         // step 2: 2 failure cases
         if (isAncestor(splitPoint, givenCommit)) {
-            System.out.println("");
+            System.out.println("Given branch is an ancestor of the current branch.");
+            return;
         }else if (splitPoint.equals(currentBranch.getCurrentCommit())) {
-            Utils.exitWithError("Current branch fast-forwarded.");
+            String[] args = {"checkout", givenBranch1};
+            checkout(args);
+            System.out.println();
         }
 
         // step 3: create the new mergeCommit

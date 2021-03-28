@@ -415,6 +415,10 @@ public class Repository {
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         currentBranch.setCurrentCommit(givenCommit);
         Utils.writeObject(HEAD, currentBranch);
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+            File target = Utils.join(StagingArea.addition, FileName);
+            target.delete();
+        }
     }
 
     public static void merge(String givenBranch1) {

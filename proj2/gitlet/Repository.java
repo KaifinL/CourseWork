@@ -584,7 +584,7 @@ public class Repository {
         for (String FileName : splitPoint.snapshot.keySet()) {
             if (!mergeCommit.snapshot.containsKey(FileName) && givenBranch.snapshot.containsKey(FileName)) {
                 String gBContent = givenBranch.snapshot.get(FileName);
-                String MergeContent = mergeCommit.snapshot.get(FileName);
+                String MergeContent = "null";
                 String spContent = splitPoint.snapshot.get(FileName);
                 if (!gBContent.equals(spContent)) {
                     conflict = true;
@@ -606,7 +606,7 @@ public class Repository {
         for (String FileName : splitPoint.snapshot.keySet()) {
             if (mergeCommit.snapshot.containsKey(FileName) && !givenBranch.snapshot.containsKey(FileName)) {
                 String spContent = splitPoint.snapshot.get(FileName);
-                String gBContent = givenBranch.snapshot.get(FileName);
+                String gBContent = "null";
                 String MergeContent = mergeCommit.snapshot.get(FileName);
                 if (!MergeContent.equals(spContent)) {
                     conflict = true;

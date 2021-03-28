@@ -179,7 +179,7 @@ public class Repository {
             File commitFile = Utils.join(Commits, args[1]);;
             if (args[1].length() < 10) {
                 for (String commitId : Utils.plainFilenamesIn(Commits)) {
-                    if (shortenId(commitId).equals(args[1])) {
+                    if (shortenId(commitId, args[1].length()).equals(args[1])) {
                         commitFile = Utils.join(Commits, commitId);
                     }
                 }
@@ -653,8 +653,8 @@ public class Repository {
         return null;
     }
 
-    private static String shortenId(String id) {
-        return id.substring(0, 6);
+    private static String shortenId(String id, int length) {
+        return id.substring(0, length);
     }
 
     private static void logHelper(Commit cur) {
@@ -672,7 +672,7 @@ public class Repository {
     private static void logMerge(Commit target, String message) {
         System.out.println("===");
         System.out.println("commit " + target.id);
-        System.out.println("Merge: " + shortenId(target.getParentId()) + " " + shortenId(target.getParent2Id()));
+        System.out.println("Merge: " + shortenId(target.getParentId(), 6) + " " + shortenId(target.getParent2Id(), 6));
         SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
         System.out.println(message);//Merged development into master.

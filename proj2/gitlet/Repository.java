@@ -290,6 +290,7 @@ public class Repository {
 
     public static void status() {
         // phase 1
+        if (CWD.)
         System.out.println("=== Branches ===");
         Branch head = Utils.readObject(HEAD, Branch.class);
         System.out.println("*" + head.getName());

@@ -468,7 +468,7 @@ public class Repository {
         }else if (splitPoint.equals(currentBranch.getCurrentCommit())) {
             String[] args = {"checkout", givenBranch1};
             checkout(args);
-            System.out.println();
+            System.out.println("");
         }
 
         // step 3: create the new mergeCommit

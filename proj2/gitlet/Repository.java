@@ -290,8 +290,6 @@ public class Repository {
 
     public static void status() {
         // phase 1
-        File gitLet = Utils.join(CWD, "..");
-        if (gitLet.)
         System.out.println("=== Branches ===");
         Branch head = Utils.readObject(HEAD, Branch.class);
         System.out.println("*" + head.getName());
@@ -791,6 +789,10 @@ public class Repository {
             return false;
         }
         return true;
+    }
+
+    private static void checkIn() {
+        
     }
 
 

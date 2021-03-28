@@ -379,6 +379,9 @@ public class Repository {
     private static boolean beOverwritten(String FileName, Commit givenCommit) {
         File inCWD = Utils.join(CWD, FileName);
         String BlobId = givenCommit.snapshot.get(FileName);
+        if (BlobId == null) {
+            return false;
+        }
         File targetBlob = Utils.join(Blobs, BlobId);
         if (inCWD.exists() && targetBlob.exists()) {
             String content1 = readContentsAsString(inCWD);

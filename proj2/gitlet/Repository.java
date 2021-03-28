@@ -415,11 +415,11 @@ public class Repository {
     public static void merge(String givenBranch1) {
         // step 1: catch splitPoint;
         File givenBranchName = Utils.join(BranchCollection, givenBranch1);
+        mergeFailures2(givenBranch1);
         Branch givenBranch = Utils.readObject(givenBranchName, Branch.class);
         Commit givenCommit = givenBranch.getCurrentCommit();
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         checkoutFailure(givenCommit);
-        mergeFailures2(givenBranch1);
         Commit splitPoint = null;
         for (String commitId : Utils.plainFilenamesIn(Commits)) {
             for (String commitId2 : Utils.plainFilenamesIn(Commits)) {

@@ -463,8 +463,7 @@ public class Repository {
         }
         // step 2: 2 failure cases
         if (splitPoint == null || (isAncestor(splitPoint, givenCommit))) {
-            System.out.println("Given branch is an ancestor of the current branch.");
-            return;
+            Utils.exitWithError("");
         }else if (splitPoint.equals(currentBranch.getCurrentCommit())) {
             String[] args = {"checkout", givenBranch1};
             checkout(args);

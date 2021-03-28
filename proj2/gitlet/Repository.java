@@ -70,7 +70,7 @@ public class Repository {
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
         }else {
-            Blob tobeAdd = new Blob(tobeAdded); // create a blob based on the specified file
+            Blob tobeAdd = new Blob(tobeAdded, fileName); // create a blob based on the specified file
             File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
             Branch Head = Utils.readObject(HEAD, Branch.class);
             String Id = Head.getCurrentCommit().snapshot.get(fileName);

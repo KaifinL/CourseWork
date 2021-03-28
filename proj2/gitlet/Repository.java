@@ -586,7 +586,7 @@ public class Repository {
                 String gBContent = givenBranch.snapshot.get(FileName);
                 String MergeContent = mergeCommit.snapshot.get(FileName);
                 String spContent = splitPoint.snapshot.get(FileName);
-                if (!MergeContent.equals(spContent)) {
+                if (!gBContent.equals(spContent)) {
                     conflict = true;
                     File file1 = Utils.join(Blobs, MergeContent);
                     File file2 = Utils.join(Blobs, gBContent);

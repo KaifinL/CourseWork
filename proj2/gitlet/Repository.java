@@ -548,6 +548,10 @@ public class Repository {
                     File file2 = Utils.join(Blobs, gBContent);
                     File file1 = Utils.join(Blobs, MergeContent);
                     writeContents(file1, conflict(file1, file2));
+                    File inCWD = Utils.join(CWD, FileName);
+                    if (inCWD.exists()) {
+                        writeContents(inCWD, conflict(file1, file2));
+                    }
                 }
             }
         }
@@ -565,6 +569,10 @@ public class Repository {
                     File file1 = Utils.join(Blobs, MergeContent);
                     File file2 = Utils.join(Blobs, gBContent);
                     writeContents(file1, conflict(file1, file2));
+                    File inCWD = Utils.join(CWD, FileName);
+                    if (inCWD.exists()) {
+                        writeContents(inCWD, conflict(file1, file2));
+                    }
                 }
             }
         }
@@ -583,6 +591,10 @@ public class Repository {
                     File file1 = Utils.join(Blobs, MergeContent);
                     File file2 = Utils.join(Blobs, gBContent);
                     writeContents(file1, conflict(file1, file2));
+                    File inCWD = Utils.join(CWD, FileName);
+                    if (inCWD.exists()) {
+                        writeContents(inCWD, conflict(file1, file2));
+                    }
                 }
             }
         }
@@ -601,6 +613,10 @@ public class Repository {
                     File file1 = Utils.join(Blobs, MergeContent);
                     File file2 = Utils.join(Blobs, gBContent);
                     writeContents(file1, conflict(file1, file2));
+                    File inCWD = Utils.join(CWD, FileName);
+                    if (inCWD.exists()) {
+                        writeContents(inCWD, conflict(file1, file2));
+                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
 package gitlet;
+import edu.princeton.cs.algs4.Merge;
 import net.sf.saxon.trans.SymbolicName;
 
 import java.io.File;
@@ -519,37 +520,35 @@ public class Repository {
         }
     }
 
-    // case 8
-    private static boolean merHelper4(Commit givenBranchCurrentCommit, Commit mergeCommit) {
+    private static boolean conflict1 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
-        for (String FileName : mergeCommit.snapshot.keySet()) {
-            if (givenBranchCurrentCommit.snapshot.containsKey(FileName)) {
-                String BlobId1 = mergeCommit.snapshot.get(FileName);
-                String BlobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
-                if (!BlobId1.equals(BlobId2)) {
+        for (String FileName : splitPoint.snapshot.keySet()) {
+            if (givenBranch.snapshot.containsKey(FileName) && mergeCommit.snapshot.containsKey(FileName)) {
+                String spContent = splitPoint.snapshot.get(FileName);
+                String gBContent = givenBranch.snapshot.get(FileName);
+                String MergeContent = mergeCommit.snapshot.get(FileName);
+                if (!spContent.equals(gBContent) && !spContent.equals(MergeContent) && !gBContent.equals(MergeContent)) {
                     conflict = true;
-                    File target = Utils.join(Blobs, BlobId1);
-                    File compared = Utils.join(Blobs, BlobId2);
-                    writeContents(target, conflict(target, compared));
+                    File file1 = Utils.join(Blobs, gBContent);
+                    File file2 = Utils.join(Blobs, MergeContent);
+                    writeContents(file1, conflict(file1, file2));
                 }
             }
         }
         return conflict;
     }
 
-    //we can change the position of the last two parameters to show the different cases.
-    private static boolean merHelper5(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
+    private static boolean conflict12 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
-        for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
-            if (splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
-                String blobId1 = splitPoint.snapshot.get(FileName);
-                String blobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
-                String blobId3 = mergeCommit.snapshot.get(FileName);
-                if (!blobId1.equals(blobId2)) {
+        for (String FileName : mergeCommit.snapshot.keySet()) {
+            if (!splitPoint.snapshot.containsKey(FileName) && givenBranch.snapshot.containsKey(FileName)) {
+                String gBContent = givenBranch.snapshot.get(FileName);
+                String MergeContent = mergeCommit.snapshot.get(FileName);
+                if (!MergeContent.equals(gBContent)) {
                     conflict = true;
-                    File realTarget = Utils.join(Blobs, blobId3);
-                    File compared = Utils.join(Blobs, blobId2);
-                    writeContents(compared, conflict(realTarget, compared));
+                    File file1 = Utils.join(Blobs, MergeContent);
+                    File file2 = Utils.join(Blobs, gBContent);
+                    writeContents(file1, conflict(file1, file2));
                 }
             }
         }

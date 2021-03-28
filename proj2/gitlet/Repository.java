@@ -1,7 +1,4 @@
 package gitlet;
-import edu.princeton.cs.algs4.Merge;
-import net.sf.saxon.trans.SymbolicName;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -127,7 +127,7 @@ public class Repository {
                 curr = curr.getParent();
             }else if (curr.parent2Exist()) {
                 logMerge(curr, curr.getMessage());
-                curr = curr.getParent();
+                break;
             }
         }
     }

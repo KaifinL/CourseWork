@@ -127,7 +127,7 @@ public class Repository {
                 curr = curr.getParent();
             }else if (curr.parent2Exist()) {
                 logMerge(curr, curr.getMessage());
-                break;
+                curr = curr.getParent();
             }
         }
     }
@@ -679,7 +679,7 @@ public class Repository {
     private static void logMerge(Commit target, String message) {
         System.out.println("===");
         System.out.println("commit " + target.id);
-        System.out.println("Merge: " + shortenId(target.getParentId(), 6) + " " + shortenId(target.getParent2Id(), 6));
+        System.out.println("Merge: " + shortenId(target.getParentId(), 7) + " " + shortenId(target.getParent2Id(), 7));
         SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
         System.out.println(message);//Merged development into master.

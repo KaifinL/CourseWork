@@ -380,10 +380,12 @@ public class Repository {
         File inCWD = Utils.join(CWD, FileName);
         String BlobId = givenCommit.snapshot.get(FileName);
         File targetBlob = Utils.join(Blobs, BlobId);
-        String content1 = readContentsAsString(inCWD);
-        String content2 = readContentsAsString(targetBlob);
-        if (!content1.equals(content2)) {
-            return true;
+        if (inCWD.exists() && targetBlob.exists()) {
+            String content1 = readContentsAsString(inCWD);
+            String content2 = readContentsAsString(targetBlob);
+            if (!content1.equals(content2)) {
+                return true;
+            }
         }
         return false;
     }

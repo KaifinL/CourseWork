@@ -488,7 +488,6 @@ public class Repository {
         writeObject(HEAD, currentBranch);
         File file = Utils.join(BranchCollection, currentBranch.getName());
         writeObject(file, currentBranch);
-
     }
 
 

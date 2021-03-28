@@ -831,10 +831,13 @@ public class Repository {
      * @return the split point
      */
     private static Commit findSplitPoint(Commit commit1, Commit commit2) {
-        while (commit2 != null) {
-            Commit curr = commit2;
+        Commit curr = commit2;
+        while (curr != null) {
             if (isAncestor(curr, commit1)) {
                 return curr;
+            }
+            if (isAncestor(commit1, curr)) {
+                return commit1;
             }
             curr = curr.getParent();
         }

@@ -477,8 +477,20 @@ public class Repository {
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
-        if (conflict1(splitPoint, givenBranchCurrCommit, mergeCommit) || conflict2(splitPoint, givenBranchCurrCommit, mergeCommit)
-        || conflict3(splitPoint, mergeCommit, givenBranchCurrCommit) || conflict4(splitPoint, givenBranchCurrCommit, mergeCommit)) {
+        boolean conflict= false;
+        if (conflict1(splitPoint, givenBranchCurrCommit, mergeCommit)) {
+            conflict = true;
+        }
+        if (conflict2(splitPoint, givenBranchCurrCommit, mergeCommit)) {
+            conflict = true;
+        }
+        if (conflict3(splitPoint, givenBranchCurrCommit, mergeCommit)) {
+            conflict = true;
+        }
+        if (conflict4(splitPoint, givenBranchCurrCommit, mergeCommit)) {
+            conflict = true;
+        }
+        if (conflict) {
             System.out.println("Encountered a merge conflict.");
         }
         mergeCommit.setMessage("Merged " + givenBranch1 + " into " + currentBranch.getName() + ".");

@@ -11,11 +11,13 @@ import java.io.Serializable;
 public class Blob implements Serializable {
 
     private byte[] BlobContent;
-    public String blobId;
+    private String blobId;
+    private String fileName;
     public File blobs = Repository.Blobs;
     // create a blob by the pass-in file
-    public Blob(File tobeRead) {
+    public Blob(File tobeRead, String fileName) {
         this.BlobContent = Utils.readContents(tobeRead);
+        this.fileName = fileName;
         byte[] idPara = Utils.serialize(this);
         this.blobId = Utils.sha1(idPara);
         File aBlob = Utils.join(blobs, this.blobId);

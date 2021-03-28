@@ -462,7 +462,7 @@ public class Repository {
             }
         }
         // step 2: 2 failure cases
-        if (isAncestor(splitPoint, givenCommit)) {
+        if (splitPoint == null || isAncestor(splitPoint, givenCommit)) {
             System.out.println("Given branch is an ancestor of the current branch.");
             return;
         }else if (splitPoint.equals(currentBranch.getCurrentCommit())) {

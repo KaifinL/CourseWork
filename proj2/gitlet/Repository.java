@@ -834,7 +834,7 @@ public class Repository {
         String commit2Id = commit2.getId();
         while (commit1 != null) {
             while (commit2 != null) {
-                if (commit1.equals(commit2)) {
+                if (commit1.getId().equals(commit2.getId())) {
                     return commit1;
                 }
                 commit2 = commit2.getParent();

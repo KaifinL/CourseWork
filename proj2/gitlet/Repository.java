@@ -374,7 +374,7 @@ public class Repository {
     private static boolean untracked(String FileName) {
         File target = Utils.join(StagingArea.addition, FileName);
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        return !head.snapshot.containsKey(FileName) && target.exists();
+        return !head.snapshot.containsKey(FileName) && !target.exists();
     }
 
     /**

@@ -372,8 +372,9 @@ public class Repository {
      */
     // return true if the file is untracked by the Head commit.
     private static boolean untracked(String FileName) {
+        File target = Utils.join(StagingArea.addition, FileName);
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        return !head.snapshot.containsKey(FileName);
+        return !head.snapshot.containsKey(FileName) && target.exists();
     }
 
     /**

@@ -415,6 +415,10 @@ public class Repository {
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         currentBranch.setCurrentCommit(givenCommit);
         Utils.writeObject(HEAD, currentBranch);
+        File lastFile = Utils.join(BranchCollection, currentBranch.getName());
+        Branch lastBranch = Utils.readObject(lastFile, Branch.class);
+        lastBranch.setCurrentCommit(givenCommit);
+        writeObject(lastFile, lastBranch);
         for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
             File target = Utils.join(StagingArea.addition, FileName);
             target.delete();

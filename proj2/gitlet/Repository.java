@@ -529,8 +529,8 @@ public class Repository {
                 String MergeContent = mergeCommit.snapshot.get(FileName);
                 if (!spContent.equals(gBContent) && !spContent.equals(MergeContent) && !gBContent.equals(MergeContent)) {
                     conflict = true;
-                    File file1 = Utils.join(Blobs, gBContent);
-                    File file2 = Utils.join(Blobs, MergeContent);
+                    File file2 = Utils.join(Blobs, gBContent);
+                    File file1 = Utils.join(Blobs, MergeContent);
                     writeContents(file1, conflict(file1, file2));
                 }
             }
@@ -538,7 +538,7 @@ public class Repository {
         return conflict;
     }
 
-    private static boolean conflict12 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
+    private static boolean conflict2 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
         for (String FileName : mergeCommit.snapshot.keySet()) {
             if (!splitPoint.snapshot.containsKey(FileName) && givenBranch.snapshot.containsKey(FileName)) {
@@ -554,6 +554,25 @@ public class Repository {
         }
         return conflict;
     }
+
+    private static boolean conflict3 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
+        boolean conflict = false;
+        for (String FileName : splitPoint.snapshot.keySet()) {
+            if (!mergeCommit.snapshot.containsKey(FileName) && givenBranch.snapshot.containsKey(FileName)) {
+                String gBContent = givenBranch.snapshot.get(FileName);
+                String MergeContent = mergeCommit.snapshot.get(FileName);
+                String spContent = splitPoint.snapshot.get(FileName);
+                if (!MergeContent.equals(spContent)) {
+                    conflict = true;
+                    File file1 = Utils.join(Blobs, MergeContent);
+                    File file2 = Utils.join(Blobs, gBContent);
+                    writeContents(file1, conflict(file1, file2));
+                }
+            }
+        }
+        return conflict;
+    }
+
 
     private static String conflict(File file1, File file2) {
         String firstLine = "<<<<<<< HEAD\n";

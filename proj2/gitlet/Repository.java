@@ -462,9 +462,9 @@ public class Repository {
             }
         }
         // step 2: 2 failure cases
-        if (splitPoint == null || (isAncestor(splitPoint, givenCommit))) {
+        if (splitPoint == null || (splitPoint != givenCommit && isAncestor(splitPoint, givenCommit))) {
             Utils.exitWithError("Given branch is an ancestor of the current branch.");
-        }else if (splitPoint.equals(currentBranch.getCurrentCommit())) {
+        }else if (isAncestor(givenCommit, splitPoint) && splitPoint != givenCommit) {
             String[] args = {"checkout", givenBranch1};
             checkout(args);
             System.out.println("Current branch fast-forwarded.");

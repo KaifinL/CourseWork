@@ -177,7 +177,7 @@ public class Repository {
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
             File commitFile = Utils.join(Commits, args[1]);;
-            if (args[1].length() == 6) {
+            if (args[1].length() < 10) {
                 for (String commitId : Utils.plainFilenamesIn(Commits)) {
                     if (shortenId(commitId).equals(args[1])) {
                         commitFile = Utils.join(Commits, commitId);

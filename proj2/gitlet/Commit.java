@@ -100,7 +100,6 @@ public class Commit implements Serializable {
     /** a method that can change a commit's file
      *  and I think this method works correctly!
      *  */
-    /** TODO: we haven't done anything with removal yet so this still needed to be revised*/
     public void makeChange(String message, Date date) {
         for (String x : snapshot.keySet()) {  //if the files in both snapshot and addition
                                                 // it will be removed from the snapshot(checked by fileName)

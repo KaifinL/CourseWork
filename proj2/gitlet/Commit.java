@@ -101,13 +101,6 @@ public class Commit implements Serializable {
      *  and I think this method works correctly!
      *  */
     public void makeChange(String message, Date date) {
-        for (String x : snapshot.keySet()) {  //if the files in both snapshot and addition
-                                                // it will be removed from the snapshot(checked by fileName)
-            File targetFile = Utils.join(StagingArea.addition, x);
-            if (targetFile.exists()) {
-                snapshot.remove(x);
-            }
-        }
         // to add those files in the staging area to the commit 's snapshot
         for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) {
             File targetFile = Utils.join(StagingArea.addition, fileName);

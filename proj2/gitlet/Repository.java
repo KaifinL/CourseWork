@@ -831,17 +831,12 @@ public class Repository {
      * @return the split point
      */
     private static Commit findSplitPoint(Commit commit1, Commit commit2) {
-        String commit2Id = commit2.getId();
-        while (commit1 != null) {
-            while (commit2 != null) {
-                if (commit1.getId().equals(commit2.getId())) {
-                    return commit1;
-                }
-                commit2 = commit2.getParent();
+        while (commit2 != null) {
+            Commit curr = commit2;
+            if (isAncestor(curr, commit1)) {
+                return curr;
             }
-            commit1 = commit1.getParent();
-            File commit2File = Utils.join(Commits, commit2Id);
-            commit2 = Utils.readObject(commit2File, Commit.class);
+            curr = curr.getParent();
         }
         return null;
     }

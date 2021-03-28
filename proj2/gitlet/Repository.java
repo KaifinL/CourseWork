@@ -603,7 +603,8 @@ public class Repository {
     private static boolean conflict4 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
         for (String FileName : splitPoint.snapshot.keySet()) {
-            if (mergeCommit.snapshot.containsKey(FileName) && !givenBranch.snapshot.containsKey(FileName)) {
+            if (splitPoint.snapshot.containsKey(FileName) && mergeCommit.snapshot.containsKey(FileName) &&
+                    !givenBranch.snapshot.containsKey(FileName)) {
                 String spContent = splitPoint.snapshot.get(FileName);
                 String gBContent = "null";
                 String MergeContent = mergeCommit.snapshot.get(FileName);

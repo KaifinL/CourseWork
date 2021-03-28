@@ -544,11 +544,12 @@ public class Repository {
             if (splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
                 String blobId1 = splitPoint.snapshot.get(FileName);
                 String blobId2 = givenBranchCurrentCommit.snapshot.get(FileName);
+                String blobId3 = mergeCommit.snapshot.get(FileName);
                 if (!blobId1.equals(blobId2)) {
                     conflict = true;
-                    File target = Utils.join(Blobs, blobId1);
+                    File realTarget = Utils.join(Blobs, blobId3);
                     File compared = Utils.join(Blobs, blobId2);
-                    writeContents(compared, conflict(target, compared));
+                    writeContents(compared, conflict(realTarget, compared));
                 }
             }
         }
@@ -557,13 +558,19 @@ public class Repository {
 
     private static String conflict(File file1, File file2) {
         String firstLine = "<<<<<<< HEAD\n";
+        String secondLine;
+        String fourthLine;
         if (file1.exists()) {
-            String secondLine = Utils.readContentsAsString(file1);
+            secondLine = Utils.readContentsAsString(file1);
         }else {
-            String secondLine = "";
+            secondLine = "";
         }
         String thirdLine = "=======\n";
-        String fourthLine = Utils.readContentsAsString(file2);
+        if (file2.exists()) {
+            fourthLine = Utils.readContentsAsString(file2);
+        }else {
+            fourthLine = "";
+        }
         String fifthLine = ">>>>>>>\n";
         return firstLine + secondLine + thirdLine + fourthLine + fifthLine;
     }

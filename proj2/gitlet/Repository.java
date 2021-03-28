@@ -461,8 +461,8 @@ public class Repository {
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
-        if (merHelper4(givenBranchCurrCommit, mergeCommit) || merHelper5(splitPoint, givenBranchCurrCommit, mergeCommit)
-        || merHelper5(splitPoint, mergeCommit, givenBranchCurrCommit)) {
+        if (conflict1(splitPoint, givenBranchCurrCommit, mergeCommit) || conflict2(splitPoint, givenBranchCurrCommit, mergeCommit)
+        || conflict3(splitPoint, mergeCommit, givenBranchCurrCommit) || conflict4(splitPoint, givenBranchCurrCommit, mergeCommit)) {
             System.out.println("Encountered a merge conflict.");
         }
         mergeCommit.setMessage("Merged " + givenBranch1 + " into " + currentBranch.getName() + ".");
@@ -562,6 +562,24 @@ public class Repository {
                 String gBContent = givenBranch.snapshot.get(FileName);
                 String MergeContent = mergeCommit.snapshot.get(FileName);
                 String spContent = splitPoint.snapshot.get(FileName);
+                if (!MergeContent.equals(spContent)) {
+                    conflict = true;
+                    File file1 = Utils.join(Blobs, MergeContent);
+                    File file2 = Utils.join(Blobs, gBContent);
+                    writeContents(file1, conflict(file1, file2));
+                }
+            }
+        }
+        return conflict;
+    }
+
+    private static boolean conflict4 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
+        boolean conflict = false;
+        for (String FileName : splitPoint.snapshot.keySet()) {
+            if (mergeCommit.snapshot.containsKey(FileName) && !givenBranch.snapshot.containsKey(FileName)) {
+                String spContent = splitPoint.snapshot.get(FileName);
+                String gBContent = givenBranch.snapshot.get(FileName);
+                String MergeContent = mergeCommit.snapshot.get(FileName);
                 if (!MergeContent.equals(spContent)) {
                     conflict = true;
                     File file1 = Utils.join(Blobs, MergeContent);

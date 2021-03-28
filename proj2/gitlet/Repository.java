@@ -839,7 +839,11 @@ public class Repository {
             if (isAncestor(commit1, curr)) {
                 return commit1;
             }
-            curr = curr.getParent();
+            if (curr.parent2Exist()) {
+                curr = curr.getParent2();
+            }else {
+                curr = curr.getParent();
+            }
         }
         return null;
     }

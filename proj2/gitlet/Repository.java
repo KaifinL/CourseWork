@@ -815,7 +815,7 @@ public class Repository {
      * @param commit2 the latter commit;
      * @return true if the commit1 is the ancestor of commit2 return false otherwise;
      */
-    private static boolean isAncestor(Commit commit1, Commit commit2) {
+    public static boolean isAncestor(Commit commit1, Commit commit2) {
         Commit curr = commit2;
         if (curr == null) {
             return false;

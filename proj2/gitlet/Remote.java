@@ -35,7 +35,11 @@ public class Remote implements Serializable {
         String address = targetRemote.getNameOfDir();
         File gitLetSystem = new File(address);
         if (!gitLetSystem.exists()) {
-            Utils.exitWithError("");
+            Utils.exitWithError("Remote directory not found.");
+        }
+        File targetBranch = Utils.join(address, "BranchCollection", branchName);
+        if (!targetBranch.exists()) {
+
         }
     }
 
@@ -44,13 +48,29 @@ public class Remote implements Serializable {
      * @param name the given string you want to check
      * @return true if the given name exists in the remotes directory;
      */
-    private  static boolean checkRepetition(String name) {
+    private static boolean checkRepetition(String name) {
         for (String FileName : Utils.plainFilenamesIn(Remotes)) {
             if (FileName.equals(name)) {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * the order of this function matters
+     * we should put the ancestor commit in the first parameter and the latter one in the second one
+     * @param commit1 the commit in the given branch's head
+     * @param commit2 the commit in the current working directory's head
+     * @param address just for convenience it's the same as in the push command
+     */
+
+    private static void pushHelper(Commit commit1, Commit commit2, String address) {
+        while (!commit2.getId().equals(commit1.getId())) {
+            File findCommit = Utils.join(address, "Commits", commit1.getId());
+            Repository.createFile(findCommit);
+            commit2 = commit2.getParent();
+        }
     }
 
     public String getName() {

@@ -41,7 +41,7 @@ public class Remote implements Serializable {
         Commit remoteHead = Utils.readObject(HeadF, Branch.class).getCurrentCommit();
         Commit head = Utils.readObject(Repository.HEAD, Branch.class).getCurrentCommit();
         if (!Repository.isAncestor(remoteHead, head)) {
-            Utils.exitWithError("");
+            Utils.exitWithError("Please pull down remote changes before pushing.");
         }
         File targetBranch = Utils.join(address, "BranchCollection", branchName);
         if (!targetBranch.exists()) {

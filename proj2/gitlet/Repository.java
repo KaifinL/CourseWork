@@ -49,6 +49,7 @@ public class Repository {
         StagingArea.removal.mkdir();
         Blobs.mkdir();
         BranchCollection.mkdir();
+        Remote.Remotes.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
@@ -134,7 +135,7 @@ public class Repository {
 
     /** create the target file if it doesn't exist
      */
-    private static void createFile(File targetFile) {
+    public static void createFile(File targetFile) {
         if (!targetFile.exists()) {
             try {
                 targetFile.createNewFile();

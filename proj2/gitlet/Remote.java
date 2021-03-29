@@ -37,9 +37,15 @@ public class Remote implements Serializable {
         if (!gitLetSystem.exists()) {
             Utils.exitWithError("Remote directory not found.");
         }
+        File HeadF = Utils.join(address,"Branches",  "HEAD");
+        Commit remoteHead = Utils.readObject(HeadF, Branch.class).getCurrentCommit();
+        Commit head = Utils.readObject(Repository.HEAD, Branch.class).getCurrentCommit();
+        if (!Repository.isAncestor(remoteHead, head)) {
+            Utils.exitWithError("");
+        }
         File targetBranch = Utils.join(address, "BranchCollection", branchName);
         if (!targetBranch.exists()) {
-
+            pushHelper();
         }
     }
 

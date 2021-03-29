@@ -131,6 +131,15 @@ public class Commit implements Serializable {
         return parentCommit;
     }
 
+    public Commit getParent2() {
+        if (!parent2Exist()) {
+            return null;
+        }
+        File parent2 = Utils.join(Repository.Commits, getParent2Id());
+        Commit parentCommit = Utils.readObject(parent2, Commit.class);
+        return parentCommit;
+    }
+
     public static void helpDelete(File dir) {
         for(File file: dir.listFiles())   // @ Google
             if (!file.isDirectory())

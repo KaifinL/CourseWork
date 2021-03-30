@@ -81,7 +81,7 @@ public class Commit implements Serializable {
     /** a method that can change a commit's file
      *  and I think this method works correctly!
      *  */
-    public void makeChange(String MESSAGE, Date date) {
+    public void makeChange(String Message, Date date) {
         // to add those files in the staging area to the commit 's snapshot
         for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             File targetFile = Utils.join(StagingArea.ADDITION, fileName);

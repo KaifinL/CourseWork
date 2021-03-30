@@ -89,16 +89,16 @@ public class Commit implements Serializable {
             String blobId = newBlob.getBlobId();
             snapshot.put(fileName, blobId);
         }
-        for (String FILENAME : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
-            if (snapshot.containsKey(FILENAME)) {
-                snapshot.remove(FILENAME);
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
+            if (snapshot.containsKey(fileName)) {
+                snapshot.remove(fileName);
             }
         }
         byte[] idPara = Utils.serialize(this);
         this.id = Utils.sha1(idPara);
         helpDelete(StagingArea.ADDITION); // clean all the files in the staging area.
         helpDelete(StagingArea.REMOVAL);
-        this.message = MESSAGE;
+        this.message = Message;
         this.timestamp = date;
     }
 

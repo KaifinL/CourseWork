@@ -13,7 +13,7 @@ public class Blob implements Serializable {
     private byte[] BlobContent;
     private String blobId;
     private String fileName;
-    public File blobs = Repository.Blobs;
+    private File blobs = Repository.Blobs;
     // create a blob by the pass-in file
     public Blob(File tobeRead, String fileName) {
         this.BlobContent = Utils.readContents(tobeRead);

@@ -481,7 +481,8 @@ public class Repository {
 
 
     // case 1
-    private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
+    private static void merHelper1(Commit splitPoint,
+                                   Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String filename : splitPoint.getSnapshot().keySet()) {
             if (givenBranchCurrCommit.getSnapshot().containsKey(filename)
                     && mergeCommit.getSnapshot().containsKey(filename)) {
@@ -498,12 +499,13 @@ public class Repository {
     }
 
     // case 6
-    private static void merHelper2(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
+    private static void merHelper2(Commit splitPoint,
+                                   Commit givenBranchCurrCommit, Commit mergeCommit) {
         for (String fileName : splitPoint.getSnapshot().keySet()) {
             if (mergeCommit.getSnapshot().containsKey(fileName)
                     && !givenBranchCurrCommit.getSnapshot().containsKey(fileName)) {
-                String BlobId = splitPoint.getSnapshot().get(fileName);
-                if (BlobId.equals(mergeCommit.getSnapshot().get(fileName))) {
+                String blobId = splitPoint.getSnapshot().get(fileName);
+                if (blobId.equals(mergeCommit.getSnapshot().get(fileName))) {
                     mergeCommit.getSnapshot().remove(fileName);
                     File inCWD = Utils.join(CWD, fileName);
                     if (inCWD.exists()) {
@@ -515,7 +517,8 @@ public class Repository {
     }
 
     //case 5
-    private static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
+    private static void merHelper3(Commit splitPoint,
+                                   Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String fileName : givenBranchCurrentCommit.getSnapshot().keySet()) {
             if (!splitPoint.getSnapshot().containsKey(fileName)
                     && !mergeCommit.getSnapshot().containsKey(fileName)) {
@@ -527,19 +530,20 @@ public class Repository {
         }
     }
 
-    private static boolean conflict1 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
+    private static boolean conflict1(Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
-        for (String FileName : splitPoint.getSnapshot().keySet()) {
-            if (givenBranch.getSnapshot().containsKey(FileName) && mergeCommit.getSnapshot().containsKey(FileName)) {
-                String spContent = splitPoint.getSnapshot().get(FileName);
-                String gBContent = givenBranch.getSnapshot().get(FileName);
-                String MergeContent = mergeCommit.getSnapshot().get(FileName);
-                if (!spContent.equals(gBContent) && !spContent.equals(MergeContent)
-                        && !gBContent.equals(MergeContent)) {
+        for (String fileName : splitPoint.getSnapshot().keySet()) {
+            if (givenBranch.getSnapshot().containsKey(fileName)
+                    && mergeCommit.getSnapshot().containsKey(fileName)) {
+                String spContent = splitPoint.getSnapshot().get(fileName);
+                String gBContent = givenBranch.getSnapshot().get(fileName);
+                String mergeContent = mergeCommit.getSnapshot().get(fileName);
+                if (!spContent.equals(gBContent) && !spContent.equals(mergeContent)
+                        && !gBContent.equals(mergeContent)) {
                     conflict = true;
                     File file2 = Utils.join(BLOBS, gBContent);
-                    File file1 = Utils.join(BLOBS, MergeContent);
-                    File inCWD = Utils.join(CWD, FileName);
+                    File file1 = Utils.join(BLOBS, mergeContent);
+                    File inCWD = Utils.join(CWD, fileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
                     }
@@ -550,17 +554,18 @@ public class Repository {
         return conflict;
     }
 
-    private static boolean conflict2 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
+    private static boolean conflict2(Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
-        for (String FileName : mergeCommit.getSnapshot().keySet()) {
-            if (!splitPoint.getSnapshot().containsKey(FileName) && givenBranch.getSnapshot().containsKey(FileName)) {
-                String gBContent = givenBranch.getSnapshot().get(FileName);
-                String MergeContent = mergeCommit.getSnapshot().get(FileName);
-                if (!MergeContent.equals(gBContent)) {
+        for (String fileName : mergeCommit.getSnapshot().keySet()) {
+            if (!splitPoint.getSnapshot().containsKey(fileName)
+                    && givenBranch.getSnapshot().containsKey(fileName)) {
+                String gBContent = givenBranch.getSnapshot().get(fileName);
+                String mergeContent = mergeCommit.getSnapshot().get(fileName);
+                if (!mergeContent.equals(gBContent)) {
                     conflict = true;
-                    File file1 = Utils.join(BLOBS, MergeContent);
+                    File file1 = Utils.join(BLOBS, mergeContent);
                     File file2 = Utils.join(BLOBS, gBContent);
-                    File inCWD = Utils.join(CWD, FileName);
+                    File inCWD = Utils.join(CWD, fileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
                     }
@@ -571,18 +576,19 @@ public class Repository {
         return conflict;
     }
 
-    private static boolean conflict3 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
+    private static boolean conflict3(Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
-        for (String FileName : splitPoint.getSnapshot().keySet()) {
-            if (!mergeCommit.getSnapshot().containsKey(FileName) && givenBranch.getSnapshot().containsKey(FileName)) {
-                String gBContent = givenBranch.getSnapshot().get(FileName);
-                String MergeContent = "null";
-                String spContent = splitPoint.getSnapshot().get(FileName);
+        for (String fileName : splitPoint.getSnapshot().keySet()) {
+            if (!mergeCommit.getSnapshot().containsKey(fileName)
+                    && givenBranch.getSnapshot().containsKey(fileName)) {
+                String gBContent = givenBranch.getSnapshot().get(fileName);
+                String mergeContent = "null";
+                String spContent = splitPoint.getSnapshot().get(fileName);
                 if (!gBContent.equals(spContent)) {
                     conflict = true;
-                    File file1 = Utils.join(BLOBS, MergeContent);
+                    File file1 = Utils.join(BLOBS, mergeContent);
                     File file2 = Utils.join(BLOBS, gBContent);
-                    File inCWD = Utils.join(CWD, FileName);
+                    File inCWD = Utils.join(CWD, fileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
                     }
@@ -593,19 +599,20 @@ public class Repository {
         return conflict;
     }
 
-    private static boolean conflict4 (Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
+    private static boolean conflict4(Commit splitPoint, Commit givenBranch, Commit mergeCommit) {
         boolean conflict = false;
-        for (String FileName : splitPoint.getSnapshot().keySet()) {
-            if (splitPoint.getSnapshot().containsKey(FileName) && mergeCommit.getSnapshot().containsKey(FileName) &&
-                    !givenBranch.getSnapshot().containsKey(FileName)) {
-                String spContent = splitPoint.getSnapshot().get(FileName);
+        for (String fileName : splitPoint.getSnapshot().keySet()) {
+            if (splitPoint.getSnapshot().containsKey(fileName)
+                    && mergeCommit.getSnapshot().containsKey(fileName)
+                    && !givenBranch.getSnapshot().containsKey(fileName)) {
+                String spContent = splitPoint.getSnapshot().get(fileName);
                 String gBContent = "null";
-                String MergeContent = mergeCommit.getSnapshot().get(FileName);
-                if (!MergeContent.equals(spContent)) {
+                String mergeContent = mergeCommit.getSnapshot().get(fileName);
+                if (!mergeContent.equals(spContent)) {
                     conflict = true;
-                    File file1 = Utils.join(BLOBS, MergeContent);
+                    File file1 = Utils.join(BLOBS, mergeContent);
                     File file2 = Utils.join(BLOBS, gBContent);
-                    File inCWD = Utils.join(CWD, FileName);
+                    File inCWD = Utils.join(CWD, fileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
                     }
@@ -623,13 +630,13 @@ public class Repository {
         String fourthLine;
         if (file1.exists()) {
             secondLine = Utils.readContentsAsString(file1);
-        }else {
+        } else {
             secondLine = "";
         }
         String thirdLine = "=======\n";
         if (file2.exists()) {
             fourthLine = Utils.readContentsAsString(file2);
-        }else {
+        } else {
             fourthLine = "";
         }
         String fifthLine = ">>>>>>>\n";
@@ -639,10 +646,10 @@ public class Repository {
     private static void mergeFailures2(String givenBranch) {
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         // case 1
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             Utils.exitWithError("You have uncommitted changes.");
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
             Utils.exitWithError("You have uncommitted changes.");
         }
         //case 2
@@ -657,10 +664,10 @@ public class Repository {
     }
 
 
-    private Commit shortId(String ShortId) {
+    private Commit shortId(String shortId) {
         for (String id : Utils.plainFilenamesIn(COMMITS)) {
             String subId = id.substring(0, 5);
-            if (subId.equals(ShortId)) {
+            if (subId.equals(shortId)) {
                 File target = Utils.join(COMMITS, id);
                 Commit targetCommit = Utils.readObject(target, Commit.class);
                 return targetCommit;
@@ -688,39 +695,41 @@ public class Repository {
     private static void logMerge(Commit target, String message) {
         System.out.println("===");
         System.out.println("commit " + target.getId());
-        System.out.println("Merge: " + shortenId(target.getParentId(), 7) + " " + shortenId(target.getParent2Id(), 7));
+        System.out.println("Merge: " + shortenId(target.getParentId(), 7) + " "
+                + shortenId(target.getParent2Id(), 7));
         SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
-        System.out.println(message);//Merged development into master.
+        System.out.println(message); //Merged development into master.
         System.out.println();
     }
 
     private static HashMap<String, String> ModifiedButNStag() {
         HashMap returnList = new HashMap();
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        for (String FileName : Utils.plainFilenamesIn(CWD)) {
-            File file = Utils.join(CWD, FileName);
-            File inAddition = Utils.join(StagingArea.ADDITION, FileName);
-            if (!file.isDirectory() && !untracked(FileName) && different(FileName) && !inAddition.exists()) {
-                returnList.put(FileName, "modified");
+        for (String fileName : Utils.plainFilenamesIn(CWD)) {
+            File file = Utils.join(CWD, fileName);
+            File inAddition = Utils.join(StagingArea.ADDITION, fileName);
+            if (!file.isDirectory() && !untracked(fileName)
+                    && different(fileName) && !inAddition.exists()) {
+                returnList.put(fileName, "modified");
             }
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
-            if (different2(FileName)) {
-                returnList.put(FileName, "modified");
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+            if (different2(fileName)) {
+                returnList.put(fileName, "modified");
             }
         }
-        for (String FileName : head.getSnapshot().keySet()) {
-            File targetFile = Utils.join(CWD, FileName);
-            File inRemoval = Utils.join(StagingArea.REMOVAL, FileName);
+        for (String fileName : head.getSnapshot().keySet()) {
+            File targetFile = Utils.join(CWD, fileName);
+            File inRemoval = Utils.join(StagingArea.REMOVAL, fileName);
             if (!targetFile.exists() && !inRemoval.exists()) {
-                returnList.put(FileName, "deleted");
+                returnList.put(fileName, "deleted");
             }
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
-            File file = Utils.join(CWD, FileName);
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+            File file = Utils.join(CWD, fileName);
             if (!file.exists()) {
-                returnList.put(FileName, "deleted");
+                returnList.put(fileName, "deleted");
             }
         }
         return returnList;
@@ -728,16 +737,14 @@ public class Repository {
 
     private static LinkedList<String> untrackedFiles() {
         LinkedList<String> returnList = new LinkedList<>();
-        for (String FileName : Utils.plainFilenamesIn(CWD)) {
-            File file = Utils.join(CWD, FileName);
-            if (!file.isDirectory() && untracked(FileName)) {
-                returnList.addLast(FileName);
+        for (String fileName : Utils.plainFilenamesIn(CWD)) {
+            File file = Utils.join(CWD, fileName);
+            if (!file.isDirectory() && untracked(fileName)) {
+                returnList.addLast(fileName);
             }
         }
         return returnList;
     }
-
-    // this means that the file in the working directory has different content with the addition dir.
 
     /**
      *
@@ -746,10 +753,10 @@ public class Repository {
      */
     private static boolean unStaged(String fileName) {
         File target = Utils.join(CWD, fileName);
-        File InAddition = Utils.join(StagingArea.ADDITION, fileName);
-        if (target.exists() && InAddition.exists()) {
+        File inAddition = Utils.join(StagingArea.ADDITION, fileName);
+        if (target.exists() && inAddition.exists()) {
             String content1 = Utils.readContentsAsString(target);
-            String content2 = Utils.readContentsAsString(InAddition);
+            String content2 = Utils.readContentsAsString(inAddition);
             if (content1.equals(content2)) {
                 return false;
             }
@@ -759,7 +766,7 @@ public class Repository {
 
     /**
      *
-     * @param fileName the file you want to check if it is different from what it is in the head commit.
+     * @param fileName the file you want to check
      * @return true if it is different from the head commit return false otherwise
      */
     private static boolean different(String fileName) {
@@ -791,10 +798,10 @@ public class Repository {
 
     // return false if there is file in the addition area
     private static boolean commitFailure() {
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
             return false;
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             return false;
         }
         return true;
@@ -816,7 +823,7 @@ public class Repository {
         Commit curr = commit2;
         if (curr == null) {
             return false;
-        }else if (curr.getId().equals(commit1.getId())) {
+        } else if (curr.getId().equals(commit1.getId())) {
             return true;
         }
         return isAncestor(commit1, commit2.getParent());
@@ -839,7 +846,7 @@ public class Repository {
             }
             if (curr.parent2Exist()) {
                 curr = curr.getParent2();
-            }else {
+            } else {
                 curr = curr.getParent();
             }
         }

@@ -30,7 +30,7 @@ public class Repository {
     /** The .gitlet directory. */
     public static final File GITLET_DIR = Utils.join(CWD, ".gitlet");
 
-    public static final File Commits = Utils.join(GITLET_DIR, "commits");
+    public static final File COMMITS = Utils.join(GITLET_DIR, "commits");
 
     /* TODO: fill in the rest of this class. */
 
@@ -43,7 +43,7 @@ public class Repository {
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
-        Commits.mkdir();
+        COMMITS.mkdir();
         StagingArea.STAGINGAREA.mkdir();
         StagingArea.ADDITION.mkdir();
         StagingArea.REMOVAL.mkdir();
@@ -146,9 +146,9 @@ public class Repository {
     }
 
     public static void globalLog() {
-        if (Utils.plainFilenamesIn(Commits) != null) {
-            for (String name : Utils.plainFilenamesIn(Commits)) {
-                File currFile = Utils.join(Commits, name);
+        if (Utils.plainFilenamesIn(COMMITS) != null) {
+            for (String name : Utils.plainFilenamesIn(COMMITS)) {
+                File currFile = Utils.join(COMMITS, name);
                 Commit curr = Utils.readObject(currFile, Commit.class);
                 logHelper(curr);
             }
@@ -177,11 +177,11 @@ public class Repository {
             }
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
-            File commitFile = Utils.join(Commits, args[1]);;
+            File commitFile = Utils.join(COMMITS, args[1]);;
             if (args[1].length() < 10) {
-                for (String commitId : Utils.plainFilenamesIn(Commits)) {
+                for (String commitId : Utils.plainFilenamesIn(COMMITS)) {
                     if (shortenId(commitId, args[1].length()).equals(args[1])) {
-                        commitFile = Utils.join(Commits, commitId);
+                        commitFile = Utils.join(COMMITS, commitId);
                     }
                 }
             }
@@ -235,9 +235,9 @@ public class Repository {
 
     public static void find(String message) {
         boolean exist = false;
-        if (Utils.plainFilenamesIn(Commits) != null) {
-            for (String name : Utils.plainFilenamesIn(Commits)) {
-                File currFIle = Utils.join(Commits, name);
+        if (Utils.plainFilenamesIn(COMMITS) != null) {
+            for (String name : Utils.plainFilenamesIn(COMMITS)) {
+                File currFIle = Utils.join(COMMITS, name);
                 Commit curr = Utils.readObject(currFIle, Commit.class);
                 if (curr.getMessage().equals(message)) {
                     System.out.println(curr.getId());
@@ -403,7 +403,7 @@ public class Repository {
 
     public static void reset(String givenId) {
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        File givenCommitFile = Utils.join(Commits, givenId);
+        File givenCommitFile = Utils.join(COMMITS, givenId);
         if (!givenCommitFile.exists()) {
             Utils.exitWithError("No commit with that id exists.");
         }
@@ -661,10 +661,10 @@ public class Repository {
 
 
     private Commit shortId(String ShortId) {
-        for (String id : Utils.plainFilenamesIn(Commits)) {
+        for (String id : Utils.plainFilenamesIn(COMMITS)) {
             String subId = id.substring(0, 5);
             if (subId.equals(ShortId)) {
-                File target = Utils.join(Commits, id);
+                File target = Utils.join(COMMITS, id);
                 Commit targetCommit = Utils.readObject(target, Commit.class);
                 return targetCommit;
             }

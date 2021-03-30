@@ -72,8 +72,8 @@ public class Remote implements Serializable {
      */
 
     private static void pushHelper(Commit commit1, Commit commit2, String address) {
-        while (!commit2.id.equals(commit1.id)) {
-            File findCommit = Utils.join(address, "Commits", commit1.id);
+        while (!commit2.getId().equals(commit1.getId())) {
+            File findCommit = Utils.join(address, "Commits", commit1.getId());
             Repository.createFile(findCommit);
             commit2 = commit2.getParent();
         }

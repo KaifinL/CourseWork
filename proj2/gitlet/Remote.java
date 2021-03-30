@@ -45,7 +45,7 @@ public class Remote implements Serializable {
         }
         File targetBranch = Utils.join(address, "BranchCollection", branchName);
         if (!targetBranch.exists()) {
-            pushHelper();
+            pushHelper(remoteHead, head, address);
         }
     }
 

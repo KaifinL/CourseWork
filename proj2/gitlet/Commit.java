@@ -27,9 +27,9 @@ public class Commit implements Serializable {
      * @param String2 the id of the blob.
      * */
     public HashMap<String, String> snapshot;
-    public String parentId;
-    public String parent2Id;
-    public String id;
+    private String parentId;
+    private String parent2Id;
+    private String id;
 
 
 
@@ -81,7 +81,7 @@ public class Commit implements Serializable {
     /** a method that can change a commit's file
      *  and I think this method works correctly!
      *  */
-    public void makeChange(String message, Date date) {
+    public void makeChange(String commit_message, Date date) {
         // to add those files in the staging area to the commit 's snapshot
         for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             File targetFile = Utils.join(StagingArea.ADDITION, fileName);
@@ -89,16 +89,16 @@ public class Commit implements Serializable {
             String blobId = newBlob.getBlobId();
             snapshot.put(fileName, blobId);
         }
-        for (String File_Name : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
-            if (snapshot.containsKey(File_Name)) {
-                snapshot.remove(File_Name);
+        for (String file_name : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
+            if (snapshot.containsKey(file_name)) {
+                snapshot.remove(file_name);
             }
         }
         byte[] idPara = Utils.serialize(this);
         this.id = Utils.sha1(idPara);
         helpDelete(StagingArea.ADDITION); // clean all the files in the staging area.
         helpDelete(StagingArea.REMOVAL);
-        this.message = message;
+        this.message = commit_message;
         this.timestamp = date;
     }
 
@@ -122,7 +122,7 @@ public class Commit implements Serializable {
     }
 
     public static void helpDelete(File dir) {
-        for (File file: dir.listFiles()) { 
+        for (File file: dir.listFiles()) {
             if (!file.isDirectory()) {
                 file.delete();
             }
@@ -133,5 +133,27 @@ public class Commit implements Serializable {
         this.message = givenMessage;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getParent2Id() {
+        return parent2Id;
+    }
+
+    public void setParent2Id(String parent2Id) {
+        this.parent2Id = parent2Id;
+    }
 }

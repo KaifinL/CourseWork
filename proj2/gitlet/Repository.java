@@ -64,12 +64,12 @@ public class Repository {
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
         } else {
-            Blob tobeAdd = new Blob(tobeAdded, fileName); // create a blob based on the specified file
+            Blob tobeAdd = new Blob(tobeAdded, fileName);
             File targetFile = Utils.join(StagingArea.ADDITION, fileName); // to create the file
-            Branch Head = Utils.readObject(HEAD, Branch.class);
-            String Id = Head.getCurrentCommit().getSnapshot().get(fileName);
+            Branch head = Utils.readObject(HEAD, Branch.class);
+            String id = head.getCurrentCommit().getSnapshot().get(fileName);
             // update the file if already exists in the staging area.
-            if (Id == null || !Id.equals(tobeAdd.getBlobId())) {
+            if (id == null || !id.equals(tobeAdd.getBlobId())) {
                 createFile(targetFile);
                 writeObject(targetFile, tobeAdd);
             } else {
@@ -204,11 +204,11 @@ public class Repository {
                 Commit.helpDelete(StagingArea.REMOVAL);
             }
 
-            for (String FileName : givenCommit.getSnapshot().keySet()) {
-                String blobId = givenCommit.getSnapshot().get(FileName);
+            for (String fileName : givenCommit.getSnapshot().keySet()) {
+                String blobId = givenCommit.getSnapshot().get(fileName);
                 File targetBlob = Utils.join(BLOBS, blobId);
                 byte[] content = Utils.readContents(targetBlob);
-                File targetFile = Utils.join(CWD, FileName);
+                File targetFile = Utils.join(CWD, fileName);
                 createFile(targetFile);
                 writeContents(targetFile, content);
             }
@@ -318,8 +318,8 @@ public class Repository {
                 untrackedFiles.remove(fileName);
             }
         }
-        for (String FileName : untrackedFiles) {
-            System.out.println(FileName);
+        for (String fileName : untrackedFiles) {
+            System.out.println(fileName);
         }
         System.out.println();
     }
@@ -352,8 +352,8 @@ public class Repository {
             }
             if (untracked(fileName) && beOverwritten(fileName, givenCommit)) {
                 // to make sure that this file is untracked in the current branch
-                Utils.exitWithError("There is an untracked file in the way;" +
-                        " delete it, or add and commit it first.");
+                Utils.exitWithError("There is an untracked file in the way;"
+                        + " delete it, or add and commit it first.");
             }
         }
     }
@@ -403,7 +403,7 @@ public class Repository {
             String[] args = {"checkout", givenId, "--", fileName};
             checkout(args);
         }
-        for (String fileName : Utils.plainFilenamesIn(CWD)) { // remove files that are not present in the
+        for (String fileName : Utils.plainFilenamesIn(CWD)) {
             // given commit but present in the current commit
             File target = Utils.join(CWD, fileName);
             if (!givenCommit.getSnapshot().containsKey(fileName) && !target.isDirectory()
@@ -453,7 +453,7 @@ public class Repository {
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
-        boolean conflict= false;
+        boolean conflict = false;
         if (conflict1(splitPoint, givenBranchCurrCommit, mergeCommit)) {
             conflict = true;
         }
@@ -485,10 +485,10 @@ public class Repository {
         for (String filename : splitPoint.getSnapshot().keySet()) {
             if (givenBranchCurrCommit.getSnapshot().containsKey(filename)
                     && mergeCommit.getSnapshot().containsKey(filename)) {
-                String BlobId = splitPoint.getSnapshot().get(filename);
+                String blobId = splitPoint.getSnapshot().get(filename);
                 String compared = givenBranchCurrCommit.getSnapshot().get(filename);
                 String curr = mergeCommit.getSnapshot().get(filename);
-                if (BlobId.equals(curr) && !BlobId.equals(compared)) {
+                if (blobId.equals(curr) && !blobId.equals(compared)) {
                     String[] args = {"checkout", givenBranchCurrCommit.getId(), "--", filename};
                     checkout(args);
                     mergeCommit.getSnapshot().put(filename, compared);
@@ -499,12 +499,13 @@ public class Repository {
 
     // case 6
     private static void merHelper2(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
-        for (String FileName : splitPoint.getSnapshot().keySet()) {
-            if (mergeCommit.getSnapshot().containsKey(FileName) && !givenBranchCurrCommit.getSnapshot().containsKey(FileName)) {
-                String BlobId = splitPoint.getSnapshot().get(FileName);
-                if (BlobId.equals(mergeCommit.getSnapshot().get(FileName))) {
-                    mergeCommit.getSnapshot().remove(FileName);
-                    File inCWD = Utils.join(CWD, FileName);
+        for (String fileName : splitPoint.getSnapshot().keySet()) {
+            if (mergeCommit.getSnapshot().containsKey(fileName)
+                    && !givenBranchCurrCommit.getSnapshot().containsKey(fileName)) {
+                String BlobId = splitPoint.getSnapshot().get(fileName);
+                if (BlobId.equals(mergeCommit.getSnapshot().get(fileName))) {
+                    mergeCommit.getSnapshot().remove(fileName);
+                    File inCWD = Utils.join(CWD, fileName);
                     if (inCWD.exists()) {
                         inCWD.delete();
                     }
@@ -515,11 +516,13 @@ public class Repository {
 
     //case 5
     private static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
-        for (String FileName : givenBranchCurrentCommit.getSnapshot().keySet()) {
-            if (!splitPoint.getSnapshot().containsKey(FileName) && !mergeCommit.getSnapshot().containsKey(FileName)) {
-                String[] args = {"checkout", givenBranchCurrentCommit.getId(), "--", FileName};
+        for (String fileName : givenBranchCurrentCommit.getSnapshot().keySet()) {
+            if (!splitPoint.getSnapshot().containsKey(fileName)
+                    && !mergeCommit.getSnapshot().containsKey(fileName)) {
+                String[] args = {"checkout", givenBranchCurrentCommit.getId(), "--", fileName};
                 checkout(args);
-                mergeCommit.getSnapshot().put(FileName, givenBranchCurrentCommit.getSnapshot().get(FileName));
+                mergeCommit.getSnapshot().put(fileName,
+                        givenBranchCurrentCommit.getSnapshot().get(fileName));
             }
         }
     }
@@ -531,7 +534,8 @@ public class Repository {
                 String spContent = splitPoint.getSnapshot().get(FileName);
                 String gBContent = givenBranch.getSnapshot().get(FileName);
                 String MergeContent = mergeCommit.getSnapshot().get(FileName);
-                if (!spContent.equals(gBContent) && !spContent.equals(MergeContent) && !gBContent.equals(MergeContent)) {
+                if (!spContent.equals(gBContent) && !spContent.equals(MergeContent)
+                        && !gBContent.equals(MergeContent)) {
                     conflict = true;
                     File file2 = Utils.join(BLOBS, gBContent);
                     File file1 = Utils.join(BLOBS, MergeContent);

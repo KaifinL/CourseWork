@@ -83,21 +83,21 @@ public class Commit implements Serializable {
      *  */
     public void makeChange(String message, Date date) {
         // to add those files in the staging area to the commit 's snapshot
-        for (String fileName : Utils.plainFilenamesIn(StagingArea.addition)) {
-            File targetFile = Utils.join(StagingArea.addition, fileName);
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+            File targetFile = Utils.join(StagingArea.ADDITION, fileName);
             Blob newBlob = Utils.readObject(targetFile, Blob.class);
             String blobId = newBlob.getBlobId();
             snapshot.put(fileName, blobId);
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
             if (snapshot.containsKey(FileName)) {
                 snapshot.remove(FileName);
             }
         }
         byte[] idPara = Utils.serialize(this);
         this.id = Utils.sha1(idPara);
-        helpDelete(StagingArea.addition); // clean all the files in the staging area.
-        helpDelete(StagingArea.removal);
+        helpDelete(StagingArea.ADDITION); // clean all the files in the staging area.
+        helpDelete(StagingArea.REMOVAL);
         this.message = message;
         this.timestamp = date;
     }

@@ -44,9 +44,9 @@ public class Repository {
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
         Commits.mkdir();
-        StagingArea.StagingArea.mkdir();
-        StagingArea.addition.mkdir();
-        StagingArea.removal.mkdir();
+        StagingArea.STAGINGAREA.mkdir();
+        StagingArea.ADDITION.mkdir();
+        StagingArea.REMOVAL.mkdir();
         Blobs.mkdir();
         BranchCollection.mkdir();
         Remote.Remotes.mkdir();
@@ -72,7 +72,7 @@ public class Repository {
             Utils.exitWithError("File does not exist.");
         }else {
             Blob tobeAdd = new Blob(tobeAdded, fileName); // create a blob based on the specified file
-            File targetFile = Utils.join(StagingArea.addition, fileName); // to create the file
+            File targetFile = Utils.join(StagingArea.ADDITION, fileName); // to create the file
             Branch Head = Utils.readObject(HEAD, Branch.class);
             String Id = Head.getCurrentCommit().snapshot.get(fileName);
             // update the file if already exists in the staging area.
@@ -84,7 +84,7 @@ public class Repository {
                     Utils.restrictedDelete(targetFile);
                 }
             }
-            File targetFile2 = Utils.join(StagingArea.removal, fileName); // to remove the file
+            File targetFile2 = Utils.join(StagingArea.REMOVAL, fileName); // to remove the file
             if (targetFile2.exists()) {
                 targetFile2.delete();
             }
@@ -210,8 +210,8 @@ public class Repository {
             if (givenBranch.getName().equals(head.getName())) {  //if givenBranch is the same as the currentBranch
                 Utils.exitWithError("No need to checkout the current branch.");
             }else {
-                Commit.helpDelete(StagingArea.addition);
-                Commit.helpDelete(StagingArea.removal);
+                Commit.helpDelete(StagingArea.ADDITION);
+                Commit.helpDelete(StagingArea.REMOVAL);
             }
 
             for (String FileName : givenCommit.snapshot.keySet()){ //put all the files to the CWD and overwrite them if necessary.
@@ -267,7 +267,7 @@ public class Repository {
     }
 
     public static void remove(String fileName) {
-        File InAddition = Utils.join(StagingArea.addition, fileName);
+        File InAddition = Utils.join(StagingArea.ADDITION, fileName);
         if (!InAddition.exists() && untracked(fileName)) {
             Utils.exitWithError("No reason to remove the file.");
         }else if (InAddition.exists() && !InAddition.isDirectory()) {
@@ -276,7 +276,7 @@ public class Repository {
             Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             String blobId = Head.snapshot.get(fileName);
             if (blobId != null) {
-                File toRemoval = Utils.join(StagingArea.removal, fileName);
+                File toRemoval = Utils.join(StagingArea.REMOVAL, fileName);
                 createFile(toRemoval);
                 File targetBlob = Utils.join(Blobs, blobId);
                 byte[] content = Utils.readContents(targetBlob);
@@ -302,13 +302,13 @@ public class Repository {
         System.out.println();
         // phase 2
         System.out.println("=== Staged Files ===");
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             System.out.println(FileName);
         }
         System.out.println();
         // phase 3
         System.out.println("=== Removed Files ===");
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
             System.out.println(FileName);
         }
         System.out.println();
@@ -323,7 +323,7 @@ public class Repository {
         System.out.println("=== Untracked Files ===");
         LinkedList<String> untrackedFiles = untrackedFiles();
         for (String fileName : untrackedFiles) {
-            File inAdd = Utils.join(StagingArea.addition, fileName);
+            File inAdd = Utils.join(StagingArea.ADDITION, fileName);
             if (inAdd.exists()) {
                 untrackedFiles.remove(fileName);
             }
@@ -373,7 +373,7 @@ public class Repository {
      */
     // return true if the file is untracked by the Head commit.
     private static boolean untracked(String FileName) {
-        File target = Utils.join(StagingArea.addition, FileName);
+        File target = Utils.join(StagingArea.ADDITION, FileName);
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         return !head.snapshot.containsKey(FileName) && !target.exists();
     }
@@ -427,8 +427,8 @@ public class Repository {
         Branch lastBranch = Utils.readObject(lastFile, Branch.class);
         lastBranch.setCurrentCommit(givenCommit);
         writeObject(lastFile, lastBranch);
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
-            File target = Utils.join(StagingArea.addition, FileName);
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+            File target = Utils.join(StagingArea.ADDITION, FileName);
             target.delete();
         }
     }
@@ -642,10 +642,10 @@ public class Repository {
     private static void mergeFailures2(String givenBranch) {
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         // case 1
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             Utils.exitWithError("You have uncommitted changes.");
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
             Utils.exitWithError("You have uncommitted changes.");
         }
         //case 2
@@ -703,24 +703,24 @@ public class Repository {
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         for (String FileName : Utils.plainFilenamesIn(CWD)) {
             File file = Utils.join(CWD, FileName);
-            File inAddition = Utils.join(StagingArea.addition, FileName);
+            File inAddition = Utils.join(StagingArea.ADDITION, FileName);
             if (!file.isDirectory() && !untracked(FileName) && different(FileName) && !inAddition.exists()) {
                 returnList.put(FileName, "modified");
             }
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             if (different2(FileName)) {
                 returnList.put(FileName, "modified");
             }
         }
         for (String FileName : head.snapshot.keySet()) {
             File targetFile = Utils.join(CWD, FileName);
-            File inRemoval = Utils.join(StagingArea.removal, FileName);
+            File inRemoval = Utils.join(StagingArea.REMOVAL, FileName);
             if (!targetFile.exists() && !inRemoval.exists()) {
                 returnList.put(FileName, "deleted");
             }
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             File file = Utils.join(CWD, FileName);
             if (!file.exists()) {
                 returnList.put(FileName, "deleted");
@@ -749,7 +749,7 @@ public class Repository {
      */
     private static boolean unStaged(String fileName) {
         File target = Utils.join(CWD, fileName);
-        File InAddition = Utils.join(StagingArea.addition, fileName);
+        File InAddition = Utils.join(StagingArea.ADDITION, fileName);
         if (target.exists() && InAddition.exists()) {
             String content1 = Utils.readContentsAsString(target);
             String content2 = Utils.readContentsAsString(InAddition);
@@ -783,7 +783,7 @@ public class Repository {
     // basically the same as the last one but this method compare the files in staging are and CWD
     private static boolean different2(String fileName) {
         File target = Utils.join(CWD, fileName);
-        File inAddition = Utils.join(StagingArea.addition, fileName);
+        File inAddition = Utils.join(StagingArea.ADDITION, fileName);
         String content1 = Utils.readContentsAsString(target);
         String content2 = Utils.readContentsAsString(inAddition);
         if (!content1.equals(content2)) {
@@ -794,10 +794,10 @@ public class Repository {
 
     // return false if there is file in the addition area
     private static boolean commitFailure() {
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.removal)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
             return false;
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.addition)) {
+        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
             return false;
         }
         return true;

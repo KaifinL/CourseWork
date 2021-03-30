@@ -63,16 +63,16 @@ public class Repository {
         File tobeAdded = Utils.join(CWD, fileName);
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
             Utils.exitWithError("File does not exist.");
-        }else {
+        } else {
             Blob tobeAdd = new Blob(tobeAdded, fileName); // create a blob based on the specified file
             File targetFile = Utils.join(StagingArea.ADDITION, fileName); // to create the file
             Branch Head = Utils.readObject(HEAD, Branch.class);
             String Id = Head.getCurrentCommit().getSnapshot().get(fileName);
             // update the file if already exists in the staging area.
-            if (Id == null || !Id.equals(tobeAdd.getBlobId())) {    // the content of the blob is different from head one
+            if (Id == null || !Id.equals(tobeAdd.getBlobId())) {    // the content of the blob is different from head
                 createFile(targetFile);
                 writeObject(targetFile, tobeAdd);
-            }else {
+            } else {
                 if (targetFile.exists()) {
                     Utils.restrictedDelete(targetFile);
                 }
@@ -85,9 +85,6 @@ public class Repository {
     }
 
     private static void makeCommit(String message) {
-        /**
-         * TODO: set the commit message, date, parent(the last commit)
-         */
         Date dateObj = new Date();
         Commit newCommit = readObject(HEAD, Branch.class).getCurrentCommit();
         newCommit.setParentId(newCommit.getId());

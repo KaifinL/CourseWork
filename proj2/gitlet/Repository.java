@@ -35,11 +35,11 @@ public class Repository {
     /* TODO: fill in the rest of this class. */
 
     // named by the blobId
-    public static final File Blobs = Utils.join(GITLET_DIR, "Blobs");
+    public static final File BLOBS = Utils.join(GITLET_DIR, "Blobs");
 
-    public static final File BranchCollection = Utils.join(GITLET_DIR, "Branch");
+    public static final File BRANCHCOLLECTION = Utils.join(GITLET_DIR, "Branch");
 
-    public static final File HEAD = Utils.join(BranchCollection, "Head");
+    public static final File HEAD = Utils.join(BRANCHCOLLECTION, "Head");
 
     public static void setupPersistence() {
         GITLET_DIR.mkdir();
@@ -47,15 +47,15 @@ public class Repository {
         StagingArea.STAGINGAREA.mkdir();
         StagingArea.ADDITION.mkdir();
         StagingArea.REMOVAL.mkdir();
-        Blobs.mkdir();
-        BranchCollection.mkdir();
+        BLOBS.mkdir();
+        BRANCHCOLLECTION.mkdir();
         Remote.Remotes.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();
         createFile(HEAD);
         Branch master = new Branch("master", initialCommit);
-        File masterBranch = Utils.join(BranchCollection, "master");
+        File masterBranch = Utils.join(BRANCHCOLLECTION, "master");
         createFile(masterBranch);
         Utils.writeObject(masterBranch, master);
         Utils.writeObject(HEAD, master);
@@ -63,9 +63,6 @@ public class Repository {
 
     // all this method need to do is to simply move the file to the staging area.
     public static void add(String[] args) {
-        if (args.length == 0) {
-
-        }
         String fileName = args[1];
         File tobeAdded = Utils.join(CWD, fileName);
         if (!tobeAdded.exists()) { // to make sure that the specified file is in the CWD
@@ -104,7 +101,7 @@ public class Repository {
         Head.setCurrentCommit(newCommit);
         writeObject(HEAD, Head);
         Branch HeadBranch = Utils.readObject(HEAD, Branch.class);
-        File currentBranch = Utils.join(BranchCollection, HeadBranch.getName());
+        File currentBranch = Utils.join(BRANCHCOLLECTION, HeadBranch.getName());
         writeObject(currentBranch, Head);
     }
 
@@ -167,7 +164,7 @@ public class Repository {
                 File targetFile = Utils.join(CWD, args[2]);
                 createFile(targetFile);
                 String targetId = nHead.getSnapshot().get(args[2]);
-                File targetBlob = Utils.join(Blobs, targetId);
+                File targetBlob = Utils.join(BLOBS, targetId);
                 byte[] content = readContents(targetBlob);
                 Utils.writeContents(targetFile, content);
             }
@@ -193,12 +190,12 @@ public class Repository {
             if (targetId == null) {
                 exitWithError("File does not exist in that commit.");
             }
-            File targetBlob = Utils.join(Blobs, targetId);
+            File targetBlob = Utils.join(BLOBS, targetId);
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
         }else {
             String targetName = args[1];
-            File targetBranch = Utils.join(BranchCollection, targetName);
+            File targetBranch = Utils.join(BRANCHCOLLECTION, targetName);
             if (!targetBranch.exists()) {
                 Utils.exitWithError("No such branch exists.");
             }
@@ -216,7 +213,7 @@ public class Repository {
 
             for (String FileName : givenCommit.getSnapshot().keySet()){ //put all the files to the CWD and overwrite them if necessary.
                 String BlobId = givenCommit.getSnapshot().get(FileName);
-                File targetBlob = Utils.join(Blobs, BlobId);
+                File targetBlob = Utils.join(BLOBS, BlobId);
                 byte[] content = Utils.readContents(targetBlob);
                 File targetFile = Utils.join(CWD, FileName);
                 createFile(targetFile);
@@ -253,14 +250,14 @@ public class Repository {
     public static void branchFunc(String[] args) {
         if (args.length == 2) {
             String branchName = args[1];
-            for (String BranchName : Utils.plainFilenamesIn(BranchCollection)) {
+            for (String BranchName : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
                 if (BranchName.equals(branchName)) {
                     Utils.exitWithError("A branch with that name already exists.");
                 }
             }
             Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             Branch newBranch = new Branch(branchName, Head);
-            File Branch1 = Utils.join(Repository.BranchCollection, branchName);
+            File Branch1 = Utils.join(Repository.BRANCHCOLLECTION, branchName);
             createFile(Branch1);
             Utils.writeObject(Branch1, newBranch);
         }
@@ -278,7 +275,7 @@ public class Repository {
             if (blobId != null) {
                 File toRemoval = Utils.join(StagingArea.REMOVAL, fileName);
                 createFile(toRemoval);
-                File targetBlob = Utils.join(Blobs, blobId);
+                File targetBlob = Utils.join(BLOBS, blobId);
                 byte[] content = Utils.readContents(targetBlob);
                 writeContents(toRemoval, content);
                 File InCwd = Utils.join(CWD, fileName);
@@ -294,7 +291,7 @@ public class Repository {
         System.out.println("=== Branches ===");
         Branch head = Utils.readObject(HEAD, Branch.class);
         System.out.println("*" + head.getName());
-        for (String branchName : Utils.plainFilenamesIn(BranchCollection)) {
+        for (String branchName : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
             if (!branchName.equals(head.getName()) && !branchName.equals("Head")) {
                 System.out.println(branchName);
             }
@@ -340,7 +337,7 @@ public class Repository {
             Utils.exitWithError("Cannot remove the current branch.");
         }
         boolean error = true;
-        for (String BranchName : Utils.plainFilenamesIn(BranchCollection)) {
+        for (String BranchName : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
             if (BranchName.equals(targetBranch)) {
                 error = false;
             }
@@ -348,8 +345,8 @@ public class Repository {
         if (error) {
             Utils.exitWithError("A branch with that name does not exist.");
         }
-        for (String branchName : Utils.plainFilenamesIn(BranchCollection)) {
-            File targetFile = Utils.join(BranchCollection, branchName);
+        for (String branchName : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
+            File targetFile = Utils.join(BRANCHCOLLECTION, branchName);
             targetFile.delete();
         }
     }
@@ -390,7 +387,7 @@ public class Repository {
         if (BlobId == null) {
             return false;
         }
-        File targetBlob = Utils.join(Blobs, BlobId);
+        File targetBlob = Utils.join(BLOBS, BlobId);
         if (inCWD.exists() && targetBlob.exists()) {
             String content1 = readContentsAsString(inCWD);
             String content2 = readContentsAsString(targetBlob);
@@ -423,7 +420,7 @@ public class Repository {
         Branch currentBranch = Utils.readObject(HEAD, Branch.class);
         currentBranch.setCurrentCommit(givenCommit);
         Utils.writeObject(HEAD, currentBranch);
-        File lastFile = Utils.join(BranchCollection, currentBranch.getName());
+        File lastFile = Utils.join(BRANCHCOLLECTION, currentBranch.getName());
         Branch lastBranch = Utils.readObject(lastFile, Branch.class);
         lastBranch.setCurrentCommit(givenCommit);
         writeObject(lastFile, lastBranch);
@@ -435,7 +432,7 @@ public class Repository {
 
     public static void merge(String givenBranch1) {
         // step 1: catch splitPoint;
-        File givenBranchName = Utils.join(BranchCollection, givenBranch1);
+        File givenBranchName = Utils.join(BRANCHCOLLECTION, givenBranch1);
         mergeFailures2(givenBranch1);
         Branch givenBranch = Utils.readObject(givenBranchName, Branch.class);
         Commit givenCommit = givenBranch.getCurrentCommit();
@@ -482,7 +479,7 @@ public class Repository {
         mergeCommit.setId(Utils.sha1(idPara));
         currentBranch.setCurrentCommit(mergeCommit);
         writeObject(HEAD, currentBranch);
-        File file = Utils.join(BranchCollection, currentBranch.getName());
+        File file = Utils.join(BRANCHCOLLECTION, currentBranch.getName());
         writeObject(file, currentBranch);
     }
 
@@ -540,8 +537,8 @@ public class Repository {
                 String MergeContent = mergeCommit.getSnapshot().get(FileName);
                 if (!spContent.equals(gBContent) && !spContent.equals(MergeContent) && !gBContent.equals(MergeContent)) {
                     conflict = true;
-                    File file2 = Utils.join(Blobs, gBContent);
-                    File file1 = Utils.join(Blobs, MergeContent);
+                    File file2 = Utils.join(BLOBS, gBContent);
+                    File file1 = Utils.join(BLOBS, MergeContent);
                     File inCWD = Utils.join(CWD, FileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
@@ -561,8 +558,8 @@ public class Repository {
                 String MergeContent = mergeCommit.getSnapshot().get(FileName);
                 if (!MergeContent.equals(gBContent)) {
                     conflict = true;
-                    File file1 = Utils.join(Blobs, MergeContent);
-                    File file2 = Utils.join(Blobs, gBContent);
+                    File file1 = Utils.join(BLOBS, MergeContent);
+                    File file2 = Utils.join(BLOBS, gBContent);
                     File inCWD = Utils.join(CWD, FileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
@@ -583,8 +580,8 @@ public class Repository {
                 String spContent = splitPoint.getSnapshot().get(FileName);
                 if (!gBContent.equals(spContent)) {
                     conflict = true;
-                    File file1 = Utils.join(Blobs, MergeContent);
-                    File file2 = Utils.join(Blobs, gBContent);
+                    File file1 = Utils.join(BLOBS, MergeContent);
+                    File file2 = Utils.join(BLOBS, gBContent);
                     File inCWD = Utils.join(CWD, FileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
@@ -606,8 +603,8 @@ public class Repository {
                 String MergeContent = mergeCommit.getSnapshot().get(FileName);
                 if (!MergeContent.equals(spContent)) {
                     conflict = true;
-                    File file1 = Utils.join(Blobs, MergeContent);
-                    File file2 = Utils.join(Blobs, gBContent);
+                    File file1 = Utils.join(BLOBS, MergeContent);
+                    File file2 = Utils.join(BLOBS, gBContent);
                     File inCWD = Utils.join(CWD, FileName);
                     if (inCWD.exists()) {
                         writeContents(inCWD, conflict(file1, file2));
@@ -649,7 +646,7 @@ public class Repository {
             Utils.exitWithError("You have uncommitted changes.");
         }
         //case 2
-        File targetBranch = Utils.join(BranchCollection, givenBranch);
+        File targetBranch = Utils.join(BRANCHCOLLECTION, givenBranch);
         if (!targetBranch.exists()) {
             Utils.exitWithError("A branch with that name does not exist.");
         }
@@ -770,7 +767,7 @@ public class Repository {
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         String blobId = head.getSnapshot().get(fileName);
         if (blobId != null && target.exists()) {
-            File targetBlob = Utils.join(Blobs, blobId);
+            File targetBlob = Utils.join(BLOBS, blobId);
             String content1 = Utils.readContentsAsString(targetBlob);
             String content2 = Utils.readContentsAsString(target);
             if (!content1.equals(content2)) {

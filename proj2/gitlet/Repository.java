@@ -122,7 +122,7 @@ public class Repository {
 
     public static void log() {
         Commit curr = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        while(curr != null && curr.id != curr.getParentId()) {
+        while(curr != null && curr.id != curr.parentId) {
             if (!curr.parent2Exist()) {
                 logHelper(curr);
                 curr = curr.getParent();
@@ -240,7 +240,7 @@ public class Repository {
                 File currFIle = Utils.join(Commits, name);
                 Commit curr = Utils.readObject(currFIle, Commit.class);
                 if (curr.getMessage().equals(message)) {
-                    System.out.println(curr.getId());
+                    System.out.println(curr.id);
                     exist = true;
                 }
             }
@@ -456,7 +456,7 @@ public class Repository {
         Commit mergeCommit = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         //step 4: follow up steps
         Commit givenBranchCurrCommit = givenBranch.getCurrentCommit();
-        mergeCommit.parentId = currentBranch.getCurrentCommit().getId();
+        mergeCommit.parentId = currentBranch.getCurrentCommit().id;
         mergeCommit.parent2Id = givenBranchCurrCommit.id;
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
@@ -524,7 +524,7 @@ public class Repository {
     private static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (!splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
-                String[] args = {"checkout", givenBranchCurrentCommit.getId(), "--", FileName};
+                String[] args = {"checkout", givenBranchCurrentCommit.id, "--", FileName};
                 checkout(args);
                 mergeCommit.snapshot.put(FileName, givenBranchCurrentCommit.snapshot.get(FileName));
             }
@@ -691,7 +691,7 @@ public class Repository {
     private static void logMerge(Commit target, String message) {
         System.out.println("===");
         System.out.println("commit " + target.id);
-        System.out.println("Merge: " + shortenId(target.getParentId(), 7) + " " + shortenId(target.getParent2Id(), 7));
+        System.out.println("Merge: " + shortenId(target.parentId, 7) + " " + shortenId(target.parent2Id, 7));
         SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
         System.out.println(message);//Merged development into master.
@@ -819,7 +819,7 @@ public class Repository {
         Commit curr = commit2;
         if (curr == null) {
             return false;
-        }else if (curr.getId().equals(commit1.getId())) {
+        }else if (curr.id.equals(commit1.id)) {
             return true;
         }
         return isAncestor(commit1, commit2.getParent());

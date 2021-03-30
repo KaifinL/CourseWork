@@ -304,7 +304,7 @@ public class Repository {
         System.out.println();
         //phase 4
         System.out.println("=== Modifications Not Staged For Commit ===");
-        HashMap<String, String> modifiedFiles = ModifiedButNStag();
+        HashMap<String, String> modifiedFiles = modifiedButNStag();
         for (String fileName : modifiedFiles.keySet()) {
             System.out.println(fileName + "(" + modifiedFiles.get(fileName) + ")");
         }
@@ -703,7 +703,7 @@ public class Repository {
         System.out.println();
     }
 
-    private static HashMap<String, String> ModifiedButNStag() {
+    private static HashMap<String, String> modifiedButNStag() {
         HashMap returnList = new HashMap();
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         for (String fileName : Utils.plainFilenamesIn(CWD)) {

@@ -8,10 +8,9 @@ public class StagingArea {
     /**
      * some useful variables are listed here
      */
-
-    public static final File StagingArea = Utils.join(Repository.GITLET_DIR, "StagingArea");
-    public static final File addition = Utils.join(StagingArea, "addition");
-    public static final File removal = Utils.join(StagingArea, "removal");
+    public static final File STAGINGAREA = Utils.join(Repository.GITLET_DIR, "StagingArea");
+    public static final File ADDITION = Utils.join(STAGINGAREA, "addition");
+    public static final File REMOVAL = Utils.join(STAGINGAREA, "removal");
 
 
     /**

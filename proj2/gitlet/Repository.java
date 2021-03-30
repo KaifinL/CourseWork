@@ -97,7 +97,7 @@ public class Repository {
          */
         Date dateObj = new Date();
         Commit newCommit = readObject(HEAD, Branch.class).getCurrentCommit();
-        newCommit.parentId = newCommit.id;
+        newCommit.setParentId(newCommit.getId());
         newCommit.makeChange(message, dateObj);
         newCommit.saveCommit();
         Branch Head = Utils.readObject(HEAD, Branch.class);
@@ -122,7 +122,7 @@ public class Repository {
 
     public static void log() {
         Commit curr = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        while(curr != null && curr.id != curr.parentId) {
+        while(curr != null && curr.getId() != curr.getParentId()) {
             if (!curr.parent2Exist()) {
                 logHelper(curr);
                 curr = curr.getParent();
@@ -240,7 +240,7 @@ public class Repository {
                 File currFIle = Utils.join(Commits, name);
                 Commit curr = Utils.readObject(currFIle, Commit.class);
                 if (curr.getMessage().equals(message)) {
-                    System.out.println(curr.id);
+                    System.out.println(curr.getId());
                     exist = true;
                 }
             }
@@ -456,8 +456,8 @@ public class Repository {
         Commit mergeCommit = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
         //step 4: follow up steps
         Commit givenBranchCurrCommit = givenBranch.getCurrentCommit();
-        mergeCommit.parentId = currentBranch.getCurrentCommit().id;
-        mergeCommit.parent2Id = givenBranchCurrCommit.id;
+        mergeCommit.setParentId(currentBranch.getCurrentCommit().getId());
+        mergeCommit.setParent2Id(givenBranchCurrCommit.getId());
         merHelper1(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper2(splitPoint, givenBranchCurrCommit, mergeCommit);
         merHelper3(splitPoint, givenBranchCurrCommit, mergeCommit);
@@ -479,7 +479,7 @@ public class Repository {
         }
         mergeCommit.setMessage("Merged " + givenBranch1 + " into " + currentBranch.getName() + ".");
         byte[] idPara = Utils.serialize(mergeCommit);
-        mergeCommit.id = Utils.sha1(idPara);
+        mergeCommit.setId(Utils.sha1(idPara));
         currentBranch.setCurrentCommit(mergeCommit);
         writeObject(HEAD, currentBranch);
         File file = Utils.join(BranchCollection, currentBranch.getName());
@@ -496,7 +496,7 @@ public class Repository {
                 String compared = givenBranchCurrCommit.snapshot.get(Filename);
                 String curr = mergeCommit.snapshot.get(Filename);
                 if (BlobId.equals(curr) && !BlobId.equals(compared)) {
-                    String[] args = {"checkout", givenBranchCurrCommit.id, "--", Filename};
+                    String[] args = {"checkout", givenBranchCurrCommit.getId(), "--", Filename};
                     checkout(args);
                     mergeCommit.snapshot.put(Filename, compared);
                 }
@@ -524,7 +524,7 @@ public class Repository {
     private static void merHelper3(Commit splitPoint, Commit givenBranchCurrentCommit, Commit mergeCommit) {
         for (String FileName : givenBranchCurrentCommit.snapshot.keySet()) {
             if (!splitPoint.snapshot.containsKey(FileName) && !mergeCommit.snapshot.containsKey(FileName)) {
-                String[] args = {"checkout", givenBranchCurrentCommit.id, "--", FileName};
+                String[] args = {"checkout", givenBranchCurrentCommit.getId(), "--", FileName};
                 checkout(args);
                 mergeCommit.snapshot.put(FileName, givenBranchCurrentCommit.snapshot.get(FileName));
             }
@@ -678,20 +678,20 @@ public class Repository {
 
     private static void logHelper(Commit cur) {
         System.out.println("===");
-        System.out.println("commit " + cur.id);
+        System.out.println("commit " + cur.getId());
         SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(cur.getTimestamp()));
         System.out.println(cur.getMessage());
         if (cur.parent2Exist()) {
-            System.out.println("Merged " + cur.parentId);
+            System.out.println("Merged " + cur.getParentId());
         }
         System.out.println();
     }
     // this declares that the given commit is the merged commit
     private static void logMerge(Commit target, String message) {
         System.out.println("===");
-        System.out.println("commit " + target.id);
-        System.out.println("Merge: " + shortenId(target.parentId, 7) + " " + shortenId(target.parent2Id, 7));
+        System.out.println("commit " + target.getId());
+        System.out.println("Merge: " + shortenId(target.getParentId(), 7) + " " + shortenId(target.getParent2Id(), 7));
         SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy Z");
         System.out.println("Date: " + formatter.format(target.getTimestamp()));
         System.out.println(message);//Merged development into master.
@@ -819,7 +819,7 @@ public class Repository {
         Commit curr = commit2;
         if (curr == null) {
             return false;
-        }else if (curr.id.equals(commit1.id)) {
+        }else if (curr.getId().equals(commit1.getId())) {
             return true;
         }
         return isAncestor(commit1, commit2.getParent());

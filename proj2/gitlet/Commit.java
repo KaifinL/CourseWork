@@ -1,24 +1,17 @@
 package gitlet;
-
-// TODO: any imports you need here
-
-
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Date; // TODO: You'll likely use this in this class
+import java.util.Date;
 import java.util.HashMap;
 
 /** Represents a gitlet commit object.
- *  TODO: It's a good idea to give a description here of what else this Class
  *  does at a high level.
  *
- *  @author TODO
+ *  @author Kaifeng
  */
 public class Commit implements Serializable {
     /**
-     * TODO: add instance variables here.
-     *
      * List all instance variables of the Commit class here with a useful
      * comment above them describing what that variable represents and how that
      * variable is used. We've provided one example for `message`.
@@ -38,7 +31,6 @@ public class Commit implements Serializable {
     public String parent2Id;
     public String id;
 
-    /* TODO: fill in the rest of this class. */
 
 
     /** initialize the commit */
@@ -79,20 +71,9 @@ public class Commit implements Serializable {
     }
 
     /** get the commit's id */
-    public String getId() {
-        return this.id;
-    }
-
-    public String getParentId() {
-        return this.parentId;
-    }
     public Date getTimestamp() {
         return timestamp;
     }
-    public String getParent2Id() {
-        return this.parent2Id;
-    }
-
     public boolean parent2Exist() {
         return parent2Id != null;
     }
@@ -126,7 +107,7 @@ public class Commit implements Serializable {
         if (parentId == null) {
             return null;
         }
-        File parent =Utils.join(Repository.Commits, getParentId()) ;
+        File parent =Utils.join(Repository.Commits, this.parentId) ;
         Commit parentCommit = Utils.readObject(parent, Commit.class);
         return parentCommit;
     }
@@ -135,7 +116,7 @@ public class Commit implements Serializable {
         if (!parent2Exist()) {
             return null;
         }
-        File parent2 = Utils.join(Repository.Commits, getParent2Id());
+        File parent2 = Utils.join(Repository.Commits, this.parent2Id);
         Commit parentCommit = Utils.readObject(parent2, Commit.class);
         return parentCommit;
     }

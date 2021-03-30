@@ -69,7 +69,7 @@ public class Repository {
             Branch Head = Utils.readObject(HEAD, Branch.class);
             String Id = Head.getCurrentCommit().getSnapshot().get(fileName);
             // update the file if already exists in the staging area.
-            if (Id == null || !Id.equals(tobeAdd.getBlobId())) {    // the content of the blob is different from head
+            if (Id == null || !Id.equals(tobeAdd.getBlobId())) {
                 createFile(targetFile);
                 writeObject(targetFile, tobeAdd);
             } else {
@@ -90,12 +90,12 @@ public class Repository {
         newCommit.setParentId(newCommit.getId());
         newCommit.makeChange(message, dateObj);
         newCommit.saveCommit();
-        Branch Head = Utils.readObject(HEAD, Branch.class);
-        Head.setCurrentCommit(newCommit);
-        writeObject(HEAD, Head);
-        Branch HeadBranch = Utils.readObject(HEAD, Branch.class);
-        File currentBranch = Utils.join(BRANCHCOLLECTION, HeadBranch.getName());
-        writeObject(currentBranch, Head);
+        Branch head = Utils.readObject(HEAD, Branch.class);
+        head.setCurrentCommit(newCommit);
+        writeObject(HEAD, head);
+        Branch headBranch = Utils.readObject(HEAD, Branch.class);
+        File currentBranch = Utils.join(BRANCHCOLLECTION, headBranch.getName());
+        writeObject(currentBranch, head);
     }
 
     public static void finalCommit(String[] args) {
@@ -105,18 +105,18 @@ public class Repository {
         String message = args[1];
         if (commitFailure()) {
             Utils.exitWithError("No changes added to the commit.");
-        }else {
+        } else {
             Repository.makeCommit(message);
         }
     }
 
     public static void log() {
         Commit curr = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        while(curr != null && curr.getId() != curr.getParentId()) {
+        while (curr != null && curr.getId() != curr.getParentId()) {
             if (!curr.parent2Exist()) {
                 logHelper(curr);
                 curr = curr.getParent();
-            }else if (curr.parent2Exist()) {
+            } else if (curr.parent2Exist()) {
                 logMerge(curr, curr.getMessage());
                 curr = curr.getParent();
             }
@@ -146,14 +146,14 @@ public class Repository {
     }
 
     public static void checkout(String[] args) {
-        if (args[0].equals("checkout") && args.length == 3) {//java gitlet.Main checkout -- [file name]
+        if (args[0].equals("checkout") && args.length == 3) {
             if (!args[1].equals("--")) {
                 Utils.exitWithError("Incorrect operands.");
             }
             Commit nHead = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-            if (!nHead.getSnapshot().containsKey(args[2])){
+            if (!nHead.getSnapshot().containsKey(args[2])) {
                 exitWithError("File does not exist in that commit.");
-            }else {
+            } else {
                 File targetFile = Utils.join(CWD, args[2]);
                 createFile(targetFile);
                 String targetId = nHead.getSnapshot().get(args[2]);
@@ -161,13 +161,13 @@ public class Repository {
                 byte[] content = readContents(targetBlob);
                 Utils.writeContents(targetFile, content);
             }
-        }else if (args[0].equals("checkout") && args.length == 4) { //checkout [commit id] -- [file name]
+        } else if (args[0].equals("checkout") && args.length == 4) {
             if (!args[2].equals("--")) {
                 Utils.exitWithError("Incorrect operands.");
             }
             File targetFile = Utils.join(CWD, args[3]);
             createFile(targetFile);
-            File commitFile = Utils.join(COMMITS, args[1]);;
+            File commitFile = Utils.join(COMMITS, args[1]);
             if (args[1].length() < 10) {
                 for (String commitId : Utils.plainFilenamesIn(COMMITS)) {
                     if (shortenId(commitId, args[1].length()).equals(args[1])) {
@@ -186,36 +186,36 @@ public class Repository {
             File targetBlob = Utils.join(BLOBS, targetId);
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
-        }else {
+        } else {
             String targetName = args[1];
             File targetBranch = Utils.join(BRANCHCOLLECTION, targetName);
             if (!targetBranch.exists()) {
                 Utils.exitWithError("No such branch exists.");
             }
-            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
+            Commit headCommit = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
             Commit givenCommit = givenBranch.getCurrentCommit();
             checkoutFailure(givenCommit);
             Branch head = Utils.readObject(HEAD, Branch.class);
-            if (givenBranch.getName().equals(head.getName())) {  //if givenBranch is the same as the currentBranch
+            if (givenBranch.getName().equals(head.getName())) {
                 Utils.exitWithError("No need to checkout the current branch.");
-            }else {
+            } else {
                 Commit.helpDelete(StagingArea.ADDITION);
                 Commit.helpDelete(StagingArea.REMOVAL);
             }
 
-            for (String FileName : givenCommit.getSnapshot().keySet()){ //put all the files to the CWD and overwrite them if necessary.
-                String BlobId = givenCommit.getSnapshot().get(FileName);
-                File targetBlob = Utils.join(BLOBS, BlobId);
+            for (String FileName : givenCommit.getSnapshot().keySet()) {
+                String blobId = givenCommit.getSnapshot().get(FileName);
+                File targetBlob = Utils.join(BLOBS, blobId);
                 byte[] content = Utils.readContents(targetBlob);
                 File targetFile = Utils.join(CWD, FileName);
                 createFile(targetFile);
                 writeContents(targetFile, content);
             }
-            for (String FileName : Utils.plainFilenamesIn(CWD)) { // remove files that are not present in the
-                                                                // given commit but present in the current commit
-                if (!givenCommit.getSnapshot().containsKey(FileName) && Head.getSnapshot().containsKey(FileName)) {
-                    File target = Utils.join(CWD, FileName);
+            for (String fileName : Utils.plainFilenamesIn(CWD)) {
+                if (!givenCommit.getSnapshot().containsKey(fileName)
+                        && headCommit.getSnapshot().containsKey(fileName)) {
+                    File target = Utils.join(CWD, fileName);
                     target.delete();
                 }
             }
@@ -243,37 +243,37 @@ public class Repository {
     public static void branchFunc(String[] args) {
         if (args.length == 2) {
             String branchName = args[1];
-            for (String BranchName : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
-                if (BranchName.equals(branchName)) {
+            for (String branchName2 : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
+                if (branchName2.equals(branchName)) {
                     Utils.exitWithError("A branch with that name already exists.");
                 }
             }
-            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-            Branch newBranch = new Branch(branchName, Head);
-            File Branch1 = Utils.join(Repository.BRANCHCOLLECTION, branchName);
-            createFile(Branch1);
-            Utils.writeObject(Branch1, newBranch);
+            Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
+            Branch newBranch = new Branch(branchName, head);
+            File branch1 = Utils.join(Repository.BRANCHCOLLECTION, branchName);
+            createFile(branch1);
+            Utils.writeObject(branch1, newBranch);
         }
     }
 
     public static void remove(String fileName) {
-        File InAddition = Utils.join(StagingArea.ADDITION, fileName);
-        if (!InAddition.exists() && untracked(fileName)) {
+        File inAddition = Utils.join(StagingArea.ADDITION, fileName);
+        if (!inAddition.exists() && untracked(fileName)) {
             Utils.exitWithError("No reason to remove the file.");
-        }else if (InAddition.exists() && !InAddition.isDirectory()) {
-            InAddition.delete();
-        }else if (!untracked(fileName)) {
-            Commit Head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-            String blobId = Head.getSnapshot().get(fileName);
+        } else if (inAddition.exists() && !inAddition.isDirectory()) {
+            inAddition.delete();
+        } else if (!untracked(fileName)) {
+            Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
+            String blobId = head.getSnapshot().get(fileName);
             if (blobId != null) {
                 File toRemoval = Utils.join(StagingArea.REMOVAL, fileName);
                 createFile(toRemoval);
                 File targetBlob = Utils.join(BLOBS, blobId);
                 byte[] content = Utils.readContents(targetBlob);
                 writeContents(toRemoval, content);
-                File InCwd = Utils.join(CWD, fileName);
-                if (InCwd.exists() && !InCwd.isDirectory()) {
-                    Utils.restrictedDelete(InCwd);
+                File inCwd = Utils.join(CWD, fileName);
+                if (inCwd.exists() && !inCwd.isDirectory()) {
+                    Utils.restrictedDelete(inCwd);
                 }
             }
         }
@@ -292,21 +292,21 @@ public class Repository {
         System.out.println();
         // phase 2
         System.out.println("=== Staged Files ===");
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
-            System.out.println(FileName);
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+            System.out.println(fileName);
         }
         System.out.println();
         // phase 3
         System.out.println("=== Removed Files ===");
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
-            System.out.println(FileName);
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
+            System.out.println(fileName);
         }
         System.out.println();
         //phase 4
         System.out.println("=== Modifications Not Staged For Commit ===");
         HashMap<String, String> modifiedFiles = ModifiedButNStag();
-        for (String FileName : modifiedFiles.keySet()) {
-            System.out.println(FileName + "(" + modifiedFiles.get(FileName) + ")");
+        for (String fileName : modifiedFiles.keySet()) {
+            System.out.println(fileName + "(" + modifiedFiles.get(fileName) + ")");
         }
         System.out.println();
         //phase 5
@@ -330,8 +330,8 @@ public class Repository {
             Utils.exitWithError("Cannot remove the current branch.");
         }
         boolean error = true;
-        for (String BranchName : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
-            if (BranchName.equals(targetBranch)) {
+        for (String branchName : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
+            if (branchName.equals(targetBranch)) {
                 error = false;
             }
         }
@@ -345,42 +345,42 @@ public class Repository {
     }
 
     private static void checkoutFailure(Commit givenCommit) {
-        for (String FileName : Utils.plainFilenamesIn(CWD)) {
-            File untracked = Utils.join(CWD, FileName);
+        for (String fileName : Utils.plainFilenamesIn(CWD)) {
+            File untracked = Utils.join(CWD, fileName);
             if (untracked.isDirectory()) {
                 continue;
             }
-            if (untracked(FileName) && beOverwritten(FileName, givenCommit)) {
+            if (untracked(fileName) && beOverwritten(fileName, givenCommit)) {
                 // to make sure that this file is untracked in the current branch
-                Utils.exitWithError("There is an untracked file in the way; delete it, or add and commit it first.");
+                Utils.exitWithError("There is an untracked file in the way;" +
+                        " delete it, or add and commit it first.");
             }
         }
     }
 
     /**
-     * @param FileName
-     * @return return true if the file is tracked by the head of the current branch,return false otherwise.
+     * @param fileName
      */
     // return true if the file is untracked by the Head commit.
-    private static boolean untracked(String FileName) {
-        File target = Utils.join(StagingArea.ADDITION, FileName);
+    private static boolean untracked(String fileName) {
+        File target = Utils.join(StagingArea.ADDITION, fileName);
         Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-        return !head.getSnapshot().containsKey(FileName) && !target.exists();
+        return !head.getSnapshot().containsKey(fileName) && !target.exists();
     }
 
     /**
      * when will the file be overwritten?
      * The file in the current branch has the different content as the given Commit
-     * @param FileName
+     * @param fileName
      * @return
      */
-    private static boolean beOverwritten(String FileName, Commit givenCommit) {
-        File inCWD = Utils.join(CWD, FileName);
-        String BlobId = givenCommit.getSnapshot().get(FileName);
-        if (BlobId == null) {
+    private static boolean beOverwritten(String fileName, Commit givenCommit) {
+        File inCWD = Utils.join(CWD, fileName);
+        String blobId = givenCommit.getSnapshot().get(fileName);
+        if (blobId == null) {
             return false;
         }
-        File targetBlob = Utils.join(BLOBS, BlobId);
+        File targetBlob = Utils.join(BLOBS, blobId);
         if (inCWD.exists() && targetBlob.exists()) {
             String content1 = readContentsAsString(inCWD);
             String content2 = readContentsAsString(targetBlob);
@@ -403,10 +403,11 @@ public class Repository {
             String[] args = {"checkout", givenId, "--", fileName};
             checkout(args);
         }
-        for (String FileName : Utils.plainFilenamesIn(CWD)) { // remove files that are not present in the
+        for (String fileName : Utils.plainFilenamesIn(CWD)) { // remove files that are not present in the
             // given commit but present in the current commit
-            File target = Utils.join(CWD, FileName);
-            if (!givenCommit.getSnapshot().containsKey(FileName) && !target.isDirectory() && head.getSnapshot().containsKey(FileName)) {
+            File target = Utils.join(CWD, fileName);
+            if (!givenCommit.getSnapshot().containsKey(fileName) && !target.isDirectory()
+                    && head.getSnapshot().containsKey(fileName)) {
                 target.delete();
             }
         }
@@ -417,8 +418,8 @@ public class Repository {
         Branch lastBranch = Utils.readObject(lastFile, Branch.class);
         lastBranch.setCurrentCommit(givenCommit);
         writeObject(lastFile, lastBranch);
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
-            File target = Utils.join(StagingArea.ADDITION, FileName);
+        for (String fileName : Utils.plainFilenamesIn(StagingArea.ADDITION)) {
+            File target = Utils.join(StagingArea.ADDITION, fileName);
             target.delete();
         }
     }
@@ -435,7 +436,8 @@ public class Repository {
         // step 2: 2 failure cases
         if (splitPoint == null || isAncestor(givenCommit, currentBranch.getCurrentCommit())) {
             Utils.exitWithError("Given branch is an ancestor of the current branch.");
-        }else if (isAncestor(currentBranch.getCurrentCommit(), givenCommit) && splitPoint != givenCommit) {
+        } else if (isAncestor(currentBranch.getCurrentCommit(), givenCommit)
+                && splitPoint != givenCommit) {
             String[] args = {"checkout", givenBranch1};
             checkout(args);
             System.out.println("Current branch fast-forwarded.");
@@ -480,15 +482,16 @@ public class Repository {
 
     // case 1
     private static void merHelper1(Commit splitPoint, Commit givenBranchCurrCommit, Commit mergeCommit) {
-        for (String Filename : splitPoint.getSnapshot().keySet()) {
-            if (givenBranchCurrCommit.getSnapshot().containsKey(Filename) && mergeCommit.getSnapshot().containsKey(Filename)) {
-                String BlobId = splitPoint.getSnapshot().get(Filename);
-                String compared = givenBranchCurrCommit.getSnapshot().get(Filename);
-                String curr = mergeCommit.getSnapshot().get(Filename);
+        for (String filename : splitPoint.getSnapshot().keySet()) {
+            if (givenBranchCurrCommit.getSnapshot().containsKey(filename)
+                    && mergeCommit.getSnapshot().containsKey(filename)) {
+                String BlobId = splitPoint.getSnapshot().get(filename);
+                String compared = givenBranchCurrCommit.getSnapshot().get(filename);
+                String curr = mergeCommit.getSnapshot().get(filename);
                 if (BlobId.equals(curr) && !BlobId.equals(compared)) {
-                    String[] args = {"checkout", givenBranchCurrCommit.getId(), "--", Filename};
+                    String[] args = {"checkout", givenBranchCurrCommit.getId(), "--", filename};
                     checkout(args);
-                    mergeCommit.getSnapshot().put(Filename, compared);
+                    mergeCommit.getSnapshot().put(filename, compared);
                 }
             }
         }

@@ -89,9 +89,9 @@ public class Commit implements Serializable {
             String blobId = newBlob.getBlobId();
             snapshot.put(fileName, blobId);
         }
-        for (String FileName : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
-            if (snapshot.containsKey(FileName)) {
-                snapshot.remove(FileName);
+        for (String File_Name : Utils.plainFilenamesIn(StagingArea.REMOVAL)) {
+            if (snapshot.containsKey(File_Name)) {
+                snapshot.remove(File_Name);
             }
         }
         byte[] idPara = Utils.serialize(this);
@@ -107,7 +107,7 @@ public class Commit implements Serializable {
         if (parentId == null) {
             return null;
         }
-        File parent =Utils.join(Repository.Commits, this.parentId) ;
+        File parent = Utils.join(Repository.Commits, this.parentId);
         Commit parentCommit = Utils.readObject(parent, Commit.class);
         return parentCommit;
     }
@@ -122,9 +122,11 @@ public class Commit implements Serializable {
     }
 
     public static void helpDelete(File dir) {
-        for(File file: dir.listFiles())   // @ Google
-            if (!file.isDirectory())
+        for (File file: dir.listFiles()) { 
+            if (!file.isDirectory()) {
                 file.delete();
+            }
+        }
     }
 
     public void setMessage(String givenMessage) {

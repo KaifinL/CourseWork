@@ -8,17 +8,14 @@ import java.util.LinkedList;
 
 import static gitlet.Utils.*;
 
-// TODO: any imports you need here
 
 /** Represents a gitlet repository.
- *  TODO: It's a good idea to give a description here of what else this Class
  *  does at a high level.
  *
  *  @author Kaifeng Lin
  */
 public class Repository {
     /**
-     * TODO: add instance variables here.
      *
      * List all instance variables of the Repository class here with a useful
      * comment above them describing what that variable represents and how that
@@ -32,7 +29,6 @@ public class Repository {
 
     public static final File COMMITS = Utils.join(GITLET_DIR, "commits");
 
-    /* TODO: fill in the rest of this class. */
 
     // named by the blobId
     public static final File BLOBS = Utils.join(GITLET_DIR, "Blobs");

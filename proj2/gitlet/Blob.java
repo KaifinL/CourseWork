@@ -10,13 +10,13 @@ import java.io.Serializable;
  */
 public class Blob implements Serializable {
 
-    private byte[] BlobContent;
+    private byte[] blobContent;
     private String blobId;
     private String fileName;
-    private File blobs = Repository.Blobs;
+    private File blobs = Repository.BLOBS;
     // create a blob by the pass-in file
     public Blob(File tobeRead, String fileName) {
-        this.BlobContent = Utils.readContents(tobeRead);
+        this.blobContent = Utils.readContents(tobeRead);
         this.fileName = fileName;
         byte[] idPara = Utils.serialize(this);
         this.blobId = Utils.sha1(idPara);
@@ -26,13 +26,13 @@ public class Blob implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Utils.writeContents(aBlob, this.BlobContent);
+        Utils.writeContents(aBlob, this.blobContent);
     }
 
 
     // return the content of a Blob
     public byte[] getBlobContent() {
-        return this.BlobContent;
+        return this.blobContent;
     }
 
     public String getBlobId() {

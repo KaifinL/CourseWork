@@ -7,12 +7,12 @@ public class Remote implements Serializable {
     // variables here
     private String name;
     private String nameOfDir;
-    public static final File Remotes = Utils.join(Repository.CWD, "Remotes");
+    public static final File REMOTES = Utils.join(Repository.CWD, "Remotes");
 
     public Remote(String name, String nameOfDir) {
         this.name = name;
         this.nameOfDir = nameOfDir;
-        File newRemote = Utils.join(Remotes, this.name);
+        File newRemote = Utils.join(REMOTES, this.name);
         Repository.createFile(newRemote);
         Utils.writeObject(newRemote, this);
     }
@@ -25,20 +25,20 @@ public class Remote implements Serializable {
         if (!checkRepetition(name)) {
             Utils.exitWithError("A remote with that name does not exists");
         }
-        File target = Utils.join(Remotes, name);
+        File target = Utils.join(REMOTES, name);
         target.delete();
     }
 
     public static void push(String name, String branchName) {
-        File targetRemoteF = Utils.join(Remotes, name);
+        File targetRemoteF = Utils.join(REMOTES, name);
         Remote targetRemote = Utils.readObject(targetRemoteF, Remote.class);
         String address = targetRemote.getNameOfDir();
         File gitLetSystem = new File(address);
         if (!gitLetSystem.exists()) {
             Utils.exitWithError("Remote directory not found.");
         }
-        File HeadF = Utils.join(address,"Branches",  "HEAD");
-        Commit remoteHead = Utils.readObject(HeadF, Branch.class).getCurrentCommit();
+        File headF = Utils.join(address, "Branches",  "HEAD");
+        Commit remoteHead = Utils.readObject(headF, Branch.class).getCurrentCommit();
         Commit head = Utils.readObject(Repository.HEAD, Branch.class).getCurrentCommit();
         if (!Repository.isAncestor(remoteHead, head)) {
             Utils.exitWithError("Please pull down remote changes before pushing.");
@@ -55,8 +55,8 @@ public class Remote implements Serializable {
      * @return true if the given name exists in the remotes directory;
      */
     private static boolean checkRepetition(String name) {
-        for (String FileName : Utils.plainFilenamesIn(Remotes)) {
-            if (FileName.equals(name)) {
+        for (String fileName : Utils.plainFilenamesIn(REMOTES)) {
+            if (fileName.equals(name)) {
                 return true;
             }
         }

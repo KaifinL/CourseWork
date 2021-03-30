@@ -26,7 +26,7 @@ public class Commit implements Serializable {
      * @param String the fileName of a file.
      * @param String2 the id of the blob.
      * */
-    public HashMap<String, String> snapshot;
+    private HashMap<String, String> snapshot;
     private String parentId;
     private String parent2Id;
     private String id;
@@ -155,5 +155,13 @@ public class Commit implements Serializable {
 
     public void setParent2Id(String parent2Id) {
         this.parent2Id = parent2Id;
+    }
+
+    public void setSnapshot(HashMap<String, String> snapshot) {
+        this.snapshot = snapshot;
+    }
+
+    public HashMap<String, String> getSnapshot() {
+        return snapshot;
     }
 }

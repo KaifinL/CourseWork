@@ -89,7 +89,8 @@ public class Remote implements Serializable {
 
     public static void pull(String[] args) {
         fetch(args);
-        
+        String branchName2 = args[1] + File.separator + args[2];
+        Repository.merge(branchName2);
     }
 
     /**

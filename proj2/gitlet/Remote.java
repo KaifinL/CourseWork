@@ -72,10 +72,11 @@ public class Remote implements Serializable {
         Commit remoteCommit = remoteBranch.getCurrentCommit();
         File remoteCommits = Utils.join(address, "COMMITS");
         File localCommit = Utils.join(Repository.COMMITS, remoteCommit.getId());
+        File remoteBlobs = Utils.join(address, "Blobs");
         while (!localCommit.exists()) {
             Repository.createFile(localCommit);
             Utils.writeObject(localCommit, remoteCommit);
-            copyBlobs(remoteCommit);
+            copyBlobs(remoteCommit, remoteBlobs);
             remoteCommit = remoteCommit.getRemoteParent(remoteCommit, remoteCommits);
             localCommit = Utils.join(Repository.COMMITS, remoteCommit.getId());
         }
@@ -84,6 +85,10 @@ public class Remote implements Serializable {
         Repository.branchFunc(args2);
         File localBranch = Utils.join(Repository.BRANCHCOLLECTION, branchName2);
         Utils.writeObject(localBranch, remoteBranch);
+    }
+
+    public static void pull(String[] args) {
+        
     }
 
     /**
@@ -130,8 +135,15 @@ public class Remote implements Serializable {
         }
     }
 
-    private static void copyBlobs(Commit remoteCommit) {
-        
+    private static void copyBlobs(Commit remoteCommit, File remoteBlobs) {
+        for (String fileName : remoteCommit.getSnapshot().keySet()) {
+            String blobId = remoteCommit.getSnapshot().get(fileName);
+            File blob = Utils.join(remoteBlobs, blobId);
+            String blobContent = Utils.readContentsAsString(blob);
+            File localBlob = Utils.join(Repository.BLOBS, blobId);
+            Repository.createFile(localBlob);
+            Utils.writeContents(localBlob, blobContent);
+        }
     }
 
     public String getName() {

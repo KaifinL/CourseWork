@@ -29,7 +29,9 @@ public class Remote implements Serializable {
         target.delete();
     }
 
-    public static void push(String name, String branchName) {
+    public static void push(String[] args) {
+        String name = args[1];
+        String branchName = args[2];
         File targetRemoteF = Utils.join(REMOTES, name);
         Remote targetRemote = Utils.readObject(targetRemoteF, Remote.class);
         String address = targetRemote.getNameOfDir();
@@ -50,7 +52,17 @@ public class Remote implements Serializable {
     }
 
     public static void fetch(String[] args) {
-
+        // phase 1 simply check if specified git let repository did exist;
+        String name = args[1];
+        String branchName = args[2];
+        File targetRemoteF = Utils.join(REMOTES, name);
+        Remote targetRemote = Utils.readObject(targetRemoteF, Remote.class);
+        String address = targetRemote.getNameOfDir();
+        File gitLetSystem = new File(address);
+        if (!gitLetSystem.exists()) {
+            Utils.exitWithError("Remote directory not found.");
+        }
+        // phase 2 : check if the given branch exists
     }
 
     /**
@@ -80,6 +92,20 @@ public class Remote implements Serializable {
             File findCommit = Utils.join(address, "Commits", commit1.getId());
             Repository.createFile(findCommit);
             commit2 = commit2.getParent();
+        }
+    }
+
+    /**
+     * this helper function is designed to check if 'gitlet' directory did exist;
+     * @param remoteName this is simply the remote name;
+     */
+    private static void checkGitLet(String remoteName) {
+        File targetRemoteF = Utils.join(REMOTES, remoteName);
+        Remote targetRemote = Utils.readObject(targetRemoteF, Remote.class);
+        String address = targetRemote.getNameOfDir();
+        File gitLetSystem = new File(address);
+        if (!gitLetSystem.exists()) {
+            Utils.exitWithError("Remote directory not found.");
         }
     }
 

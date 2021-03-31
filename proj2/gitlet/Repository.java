@@ -45,7 +45,7 @@ public class Repository {
         StagingArea.REMOVAL.mkdir();
         BLOBS.mkdir();
         BRANCHCOLLECTION.mkdir();
-        Remote.Remotes.mkdir();
+        Remote.REMOTES.mkdir();
         Date initDate = new Date(0);
         Commit initialCommit = new Commit("initial commit", initDate);
         initialCommit.saveCommit();

@@ -53,8 +53,9 @@ public class Remote implements Serializable {
             Repository.createFile(targetBranch);
             Branch remoteBranch = Utils.readObject(headF, Branch.class);
             Utils.writeContents(targetBranch, remoteBranch);
-            
         }
+        pushHelper(remoteHead, head, address);
+
     }
 
     public static void fetch(String[] args) {

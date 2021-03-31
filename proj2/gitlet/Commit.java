@@ -121,6 +121,15 @@ public class Commit implements Serializable {
         return parentCommit;
     }
 
+    public Commit getRemoteParent(Commit remoteCommit, File remoteCommits) {
+        if (parentId == null) {
+            return null;
+        }
+        File remoteParent = Utils.join(remoteCommits, this.parentId);
+        Commit parentCommit = Utils.readObject(remoteParent, Commit.class);
+        return parentCommit;
+    }
+
     public static void helpDelete(File dir) {
         for (File file: dir.listFiles()) {
             if (!file.isDirectory()) {

@@ -30,6 +30,7 @@ public class Remote implements Serializable {
     }
 
     public static void push(String[] args) {
+        // phase 1 : check if the gitlet repo exists
         String name = args[1];
         String branchName = args[2];
         File targetRemoteF = Utils.join(REMOTES, name);
@@ -39,15 +40,20 @@ public class Remote implements Serializable {
         if (!gitLetSystem.exists()) {
             Utils.exitWithError("Remote directory not found.");
         }
+        // phase 2 : check if the head commit exists
         File headF = Utils.join(address, "Branches",  "HEAD");
         Commit remoteHead = Utils.readObject(headF, Branch.class).getCurrentCommit();
         Commit head = Utils.readObject(Repository.HEAD, Branch.class).getCurrentCommit();
         if (!Repository.isAncestor(remoteHead, head)) {
             Utils.exitWithError("Please pull down remote changes before pushing.");
         }
-        File targetBranch = Utils.join(address, "BranchCollection", branchName);
+        // pull everything from local to remote
+        File targetBranch = Utils.join(address, "Branch", branchName);
         if (!targetBranch.exists()) {
-            pushHelper(remoteHead, head, address);
+            Repository.createFile(targetBranch);
+            Branch remoteBranch = Utils.readObject(headF, Branch.class);
+            Utils.writeContents(targetBranch, remoteBranch);
+            
         }
     }
 
@@ -63,14 +69,14 @@ public class Remote implements Serializable {
             Utils.exitWithError("Remote directory not found.");
         }
         // phase 2 : check if the given branch exists
-        File givenBranchF = Utils.join(address, "BRANCHCOLLECTION", branchName);
+        File givenBranchF = Utils.join(address, "Branch", branchName);
         if (!givenBranchF.exists()) {
             Utils.exitWithError("That remote does not have that branch.");
         }
         // phase 3 : copy commits and blobs
         Branch remoteBranch = Utils.readObject(givenBranchF, Branch.class);
         Commit remoteCommit = remoteBranch.getCurrentCommit();
-        File remoteCommits = Utils.join(address, "COMMITS");
+        File remoteCommits = Utils.join(address, "commits");
         File localCommit = Utils.join(Repository.COMMITS, remoteCommit.getId());
         File remoteBlobs = Utils.join(address, "Blobs");
         while (!localCommit.exists()) {
@@ -117,7 +123,7 @@ public class Remote implements Serializable {
 
     private static void pushHelper(Commit commit1, Commit commit2, String address) {
         while (!commit2.getId().equals(commit1.getId())) {
-            File findCommit = Utils.join(address, "Commits", commit1.getId());
+            File findCommit = Utils.join(address, "commits", commit1.getId());
             Repository.createFile(findCommit);
             commit2 = commit2.getParent();
         }

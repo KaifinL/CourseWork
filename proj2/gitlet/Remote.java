@@ -49,6 +49,10 @@ public class Remote implements Serializable {
         }
     }
 
+    public static void fetch(String[] args) {
+
+    }
+
     /**
      * this is a helper function
      * @param name the given string you want to check

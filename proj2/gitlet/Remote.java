@@ -65,8 +65,25 @@ public class Remote implements Serializable {
         // phase 2 : check if the given branch exists
         File givenBranchF = Utils.join(address, "BRANCHCOLLECTION", branchName);
         if (!givenBranchF.exists()) {
-            Utils.exitWithError("");
+            Utils.exitWithError("That remote does not have that branch.");
         }
+        // phase 3 : copy commits and blobs
+        Branch remoteBranch = Utils.readObject(givenBranchF, Branch.class);
+        Commit remoteCommit = remoteBranch.getCurrentCommit();
+        File remoteCommits = Utils.join(address, "COMMITS");
+        File localCommit = Utils.join(Repository.COMMITS, remoteCommit.getId());
+        while (!localCommit.exists()) {
+            Repository.createFile(localCommit);
+            Utils.writeObject(localCommit, remoteCommit);
+            copyBlobs(remoteCommit);
+            remoteCommit = remoteCommit.getRemoteParent(remoteCommit, remoteCommits);
+            localCommit = Utils.join(Repository.COMMITS, remoteCommit.getId());
+        }
+        String branchName2 = args[1] + File.separator + args[2];
+        String[] args2 = {"branch", branchName2};
+        Repository.branchFunc(args2);
+        File localBranch = Utils.join(Repository.BRANCHCOLLECTION, branchName2);
+        Utils.writeObject(localBranch, remoteBranch);
     }
 
     /**
@@ -111,6 +128,10 @@ public class Remote implements Serializable {
         if (!gitLetSystem.exists()) {
             Utils.exitWithError("Remote directory not found.");
         }
+    }
+
+    private static void copyBlobs(Commit remoteCommit) {
+        
     }
 
     public String getName() {

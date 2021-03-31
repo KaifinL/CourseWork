@@ -56,7 +56,7 @@ public class Commit implements Serializable {
      * save each commit in a file just something like 'dog' in lab6
      */
     public void saveCommit() {
-        File newCommit = Utils.join(Repository.Commits, this.id);
+        File newCommit = Utils.join(Repository.COMMITS, this.id);
         Utils.writeObject(newCommit, this);
         try {
             newCommit.createNewFile();
@@ -107,7 +107,7 @@ public class Commit implements Serializable {
         if (parentId == null) {
             return null;
         }
-        File parent = Utils.join(Repository.Commits, this.parentId);
+        File parent = Utils.join(Repository.COMMITS, this.parentId);
         Commit parentCommit = Utils.readObject(parent, Commit.class);
         return parentCommit;
     }
@@ -116,7 +116,7 @@ public class Commit implements Serializable {
         if (!parent2Exist()) {
             return null;
         }
-        File parent2 = Utils.join(Repository.Commits, this.parent2Id);
+        File parent2 = Utils.join(Repository.COMMITS, this.parent2Id);
         Commit parentCommit = Utils.readObject(parent2, Commit.class);
         return parentCommit;
     }

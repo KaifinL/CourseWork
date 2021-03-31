@@ -65,7 +65,7 @@ public class Remote implements Serializable {
         // phase 2 : check if the given branch exists
         File givenBranchF = Utils.join(address, "BRANCHCOLLECTION", branchName);
         if (!givenBranchF.exists()) {
-            Utils.exitWithError("Remote directory not found.");
+            Utils.exitWithError("");
         }
     }
 

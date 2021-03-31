@@ -88,6 +88,7 @@ public class Remote implements Serializable {
     }
 
     public static void pull(String[] args) {
+        fetch(args);
         
     }
 

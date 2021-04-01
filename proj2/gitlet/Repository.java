@@ -194,7 +194,7 @@ public class Repository {
             String targetName = args[1];
             if (targetName.contains("/")) {
                 String[] middle = targetName.split("/");
-                targetName = middle[0] + middle[1];
+                targetName = middle[0] + "." + middle[1];
             }
             File targetBranch = Utils.join(BRANCHCOLLECTION, targetName);
             if (!targetBranch.exists()) {

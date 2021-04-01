@@ -101,7 +101,7 @@ public class Remote implements Serializable {
             remoteCommit = remoteCommit.getRemoteParent(remoteCommit, remoteCommits);
             localCommit = Utils.join(Repository.COMMITS, remoteCommit.getId());
         }
-        String branchName2 = args[1] + File.separator + args[2];
+        String branchName2 = args[1] + "." + args[2];
         String[] args2 = {"branch", branchName2};
         Repository.branchFunc(args2);
         File localBranch = Utils.join(Repository.BRANCHCOLLECTION, branchName2);

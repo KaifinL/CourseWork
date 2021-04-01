@@ -25,10 +25,10 @@ public class Remote implements Serializable {
     }
 
     public static void rmRemote(String name) {
-        if (!checkRepetition(name)) {
-            Utils.exitWithError("A remote with that name does not exists");
-        }
         File target = Utils.join(REMOTES, name);
+        if (!target.exists()) {
+            Utils.exitWithError("");
+        }
         target.delete();
     }
 

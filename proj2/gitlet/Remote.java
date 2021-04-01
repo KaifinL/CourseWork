@@ -14,7 +14,7 @@ public class Remote implements Serializable {
         this.nameOfDir = nameOfDir;
         File newRemote = Utils.join(REMOTES, this.name);
         if (newRemote.exists()) {
-            Utils.exitWithError("");
+            Utils.exitWithError("A remote with that name already exists.");
         }
         Repository.createFile(newRemote);
         Utils.writeObject(newRemote, this);

@@ -404,7 +404,7 @@ public class Repository {
             checkout(args);
         }
         for (String fileName : Utils.plainFilenamesIn(CWD)) {
-            // given commit but present in the current commit
+            //not in given commit but present in the current commit
             File target = Utils.join(CWD, fileName);
             if (!givenCommit.getSnapshot().containsKey(fileName) && !target.isDirectory()
                     && head.getSnapshot().containsKey(fileName)) {

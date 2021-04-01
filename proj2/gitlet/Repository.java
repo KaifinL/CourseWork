@@ -247,7 +247,8 @@ public class Repository {
     public static void branchFunc(String[] args) {
         if (args.length == 2) {
             String branchName = args[1];
-            String[] remote
+            String[] remoteNames = branchName.split(File.separator);
+            String remoteName = remoteNames[0];
             for (String branchName2 : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
                 if (branchName2.equals(branchName)) {
                     Utils.exitWithError("A branch with that name already exists.");
@@ -256,11 +257,9 @@ public class Repository {
             Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             Branch newBranch = new Branch(branchName, head);
             File branch1 = Utils.join(Repository.BRANCHCOLLECTION, branchName);
-            try {
-                branch1.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            File remoteNameFile = Utils.join(Repository.BRANCHCOLLECTION, remoteName);
+            createFile(remoteNameFile);
+            createFile(branch1);
             Utils.writeObject(branch1, newBranch);
         }
     }

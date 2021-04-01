@@ -258,7 +258,9 @@ public class Repository {
             Branch newBranch = new Branch(branchName, head);
             File branch1 = Utils.join(Repository.BRANCHCOLLECTION, branchName);
             File remoteNameFile = Utils.join(Repository.BRANCHCOLLECTION, remoteName);
-            createFile(remoteNameFile);
+            if (!remoteNameFile.exists()) {
+                remoteNameFile.mkdir();
+            }
             createFile(branch1);
             Utils.writeObject(branch1, newBranch);
         }

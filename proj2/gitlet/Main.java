@@ -18,13 +18,7 @@ public class Main {
         String firstArg = args[0];
         switch (firstArg) {
             case "init":
-                File initial = Repository.GITLET_DIR;
-                if (initial.exists()) {
-                    Utils.exitWithError("A Gitlet version-control system " +
-                            "already exists in the current directory.");
-                } else {
-                    Repository.setupPersistence();
-                }
+                Repository.setupPersistence();
                 break;
             case "add":
                 Repository.checkIn();

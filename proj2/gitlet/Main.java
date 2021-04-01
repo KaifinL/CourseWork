@@ -77,6 +77,7 @@ public class Main {
                 break;
             case "add-remote":
                 Remote.addRemote(args[1], args[2]);
+            case ""
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

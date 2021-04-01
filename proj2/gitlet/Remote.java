@@ -55,7 +55,10 @@ public class Remote implements Serializable {
             Utils.writeContents(targetBranch, remoteBranch);
         }
         pushHelper(remoteHead, head, address);
-
+        // phase 3 : reset the head commit to the new commit
+        Branch remoteBranch = Utils.readObject(headF, Branch.class);
+        remoteBranch.setCurrentCommit(head);
+        Utils.writeObject(headF, remoteBranch);
     }
 
     public static void fetch(String[] args) {

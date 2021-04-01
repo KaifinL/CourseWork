@@ -477,7 +477,7 @@ public class Repository {
         if (conflict) {
             System.out.println("Encountered a merge conflict.");
         }
-        mergeCommit.setMessage("Merged " + givenBranch1 + " into " + currentBranch.getName() + ".");
+        mergeCommit.setMessage("Merged " + givenBranch.getName() + " into " + currentBranch.getName() + ".");
         byte[] idPara = Utils.serialize(mergeCommit);
         mergeCommit.setId(Utils.sha1(idPara));
         currentBranch.setCurrentCommit(mergeCommit);

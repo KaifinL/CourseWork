@@ -191,43 +191,7 @@ public class Repository {
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
         } else {
-            String targetName = args[1];
-            if (targetName.contains("/")) {
-                String[] middle = targetName.split("/");
-                targetName = middle[0] + "." + middle[1];
-            }
-            File targetBranch = Utils.join(BRANCHCOLLECTION, targetName);
-            if (!targetBranch.exists()) {
-                Utils.exitWithError("No such branch exists.");
-            }
-            Commit headCommit = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
-            Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
-            Commit givenCommit = givenBranch.getCurrentCommit();
-            checkoutFailure(givenCommit);
-            Branch head = Utils.readObject(HEAD, Branch.class);
-            if (givenBranch.getName().equals(head.getName()) && !targetName.contains("/")) {
-                Utils.exitWithError("No need to checkout the current branch.");
-            } else {
-                Commit.helpDelete(StagingArea.ADDITION);
-                Commit.helpDelete(StagingArea.REMOVAL);
-            }
-
-            for (String fileName : givenCommit.getSnapshot().keySet()) {
-                String blobId = givenCommit.getSnapshot().get(fileName);
-                File targetBlob = Utils.join(BLOBS, blobId);
-                byte[] content = Utils.readContents(targetBlob);
-                File targetFile = Utils.join(CWD, fileName);
-                createFile(targetFile);
-                writeContents(targetFile, content);
-            }
-            for (String fileName : Utils.plainFilenamesIn(CWD)) {
-                if (!givenCommit.getSnapshot().containsKey(fileName)
-                        && headCommit.getSnapshot().containsKey(fileName)) {
-                    File target = Utils.join(CWD, fileName);
-                    target.delete();
-                }
-            }
-            Utils.writeObject(HEAD, givenBranch);
+            checkout3(args);
         }
     }
 
@@ -873,5 +837,25 @@ public class Repository {
         }
     }
 
-
+    private static void checkout3(String[] args) {
+        String targetName = args[1];
+        if (targetName.contains("/")) {
+            String[] middle = targetName.split("/");
+            targetName = middle[0] + "." + middle[1];
+        }
+        File targetBranch = Utils.join(BRANCHCOLLECTION, targetName);
+        if (!targetBranch.exists()) {
+            Utils.exitWithError("No such branch exists.");
+        }
+        Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
+        Commit givenCommit = givenBranch.getCurrentCommit();
+        checkoutFailure(givenCommit);
+        Branch head = Utils.readObject(HEAD, Branch.class);
+        if (givenBranch.getName().equals(head.getName()) && !targetName.contains("/")) {
+            Utils.exitWithError("No need to checkout the current branch.");
+        } else {
+            Commit.helpDelete(StagingArea.ADDITION);
+            Commit.helpDelete(StagingArea.REMOVAL);
+        }
+    }
 }

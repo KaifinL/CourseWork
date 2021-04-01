@@ -61,6 +61,15 @@ public class Remote implements Serializable {
         Utils.writeObject(headF, remoteBranch);
         File addition = Utils.join(address, "StagingArea", "addition");
         Commit.helpDelete(addition);
+        // phase 4 : removes files in CWD that are present in the original head commit
+        // but not present in the local commit
+        for (String fileName : Utils.plainFilenamesIn(targetRemoteF)) {
+            File target = Utils.join(targetRemoteF, fileName);
+            if (!target.isDirectory() && remoteHead.getSnapshot().containsKey(fileName)
+                    && head.getSnapshot().containsKey(fileName)) {
+                target.delete();
+            }
+        }
     }
 
     public static void fetch(String[] args) {

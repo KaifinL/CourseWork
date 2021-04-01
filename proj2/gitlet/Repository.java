@@ -38,6 +38,10 @@ public class Repository {
     public static final File HEAD = Utils.join(BRANCHCOLLECTION, "Head");
 
     public static void setupPersistence() {
+        if (GITLET_DIR.exists()) {
+            Utils.exitWithError("A Gitlet version-control system " +
+                    "already exists in the current directory.");
+        }
         GITLET_DIR.mkdir();
         COMMITS.mkdir();
         StagingArea.STAGINGAREA.mkdir();

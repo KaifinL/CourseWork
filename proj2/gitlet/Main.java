@@ -79,6 +79,10 @@ public class Main {
                 Remote.addRemote(args[1], args[2]);
             case "rm-remote":
                 Remote.rmRemote(args[1]);
+            case "push":
+                Remote.push(args);
+            case "fetch":
+                Remote.fetch(args);
             case ""
             default:
                 Utils.exitWithError("No command with that name exists.");

@@ -191,7 +191,25 @@ public class Repository {
             byte[] content = readContents(targetBlob);
             Utils.writeContents(targetFile, content);
         } else {
-            checkout3(args);
+            String targetName = args[1];
+            if (targetName.contains("/")) {
+                String[] middle = targetName.split("/");
+                targetName = middle[0] + "." + middle[1];
+            }
+            File targetBranch = Utils.join(BRANCHCOLLECTION, targetName);
+            if (!targetBranch.exists()) {
+                Utils.exitWithError("No such branch exists.");
+            }
+            Branch givenBranch = Utils.readObject(targetBranch, Branch.class);
+            Commit givenCommit = givenBranch.getCurrentCommit();
+            checkoutFailure(givenCommit);
+            Branch head = Utils.readObject(HEAD, Branch.class);
+            if (givenBranch.getName().equals(head.getName()) && !targetName.contains("/")) {
+                Utils.exitWithError("No need to checkout the current branch.");
+            } else {
+                Commit.helpDelete(StagingArea.ADDITION);
+                Commit.helpDelete(StagingArea.REMOVAL);
+            }
         }
     }
 
@@ -441,8 +459,7 @@ public class Repository {
         if (conflict) {
             System.out.println("Encountered a merge conflict.");
         }
-        mergeCommit.setMessage("Merged " + givenBranch.getName() + " into "
-                + currentBranch.getName() + ".");
+        mergeCommit.setMessage("Merged " + givenBranch.getName() + " into " + currentBranch.getName() + ".");
         byte[] idPara = Utils.serialize(mergeCommit);
         mergeCommit.setId(Utils.sha1(idPara));
         currentBranch.setCurrentCommit(mergeCommit);

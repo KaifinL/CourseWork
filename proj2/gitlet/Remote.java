@@ -63,7 +63,7 @@ public class Remote implements Serializable {
         Commit.helpDelete(addition);
         // phase 4 : removes files in CWD that are present in the original head commit
         // but not present in the local commit
-        for (String fileName : Utils.plainFilenamesIn(targetRemoteF)) {
+        for (String fileName : Utils.plainFilenamesIn(Repository.CWD)) {
             File target = Utils.join(targetRemoteF, fileName);
             if (!target.isDirectory() && remoteHead.getSnapshot().containsKey(fileName)
                     && head.getSnapshot().containsKey(fileName)) {

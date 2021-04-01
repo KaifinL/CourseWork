@@ -247,6 +247,7 @@ public class Repository {
     public static void branchFunc(String[] args) {
         if (args.length == 2) {
             String branchName = args[1];
+            String[] remote
             for (String branchName2 : Utils.plainFilenamesIn(BRANCHCOLLECTION)) {
                 if (branchName2.equals(branchName)) {
                     Utils.exitWithError("A branch with that name already exists.");

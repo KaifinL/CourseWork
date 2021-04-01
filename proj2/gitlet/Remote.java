@@ -7,7 +7,7 @@ public class Remote implements Serializable {
     // variables here
     private String name;
     private String nameOfDir;
-    public static final File REMOTES = Utils.join(Repository.CWD, "Remotes");
+    public static final File REMOTES = Utils.join(Repository.GITLET_DIR, "Remotes");
 
     public Remote(String name, String nameOfDir) {
         this.name = name;

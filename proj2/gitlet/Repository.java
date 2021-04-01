@@ -201,7 +201,7 @@ public class Repository {
             Commit givenCommit = givenBranch.getCurrentCommit();
             checkoutFailure(givenCommit);
             Branch head = Utils.readObject(HEAD, Branch.class);
-            if (givenBranch.getName().equals(head.getName()) && !givenBranch.getName().contains("/")) {
+            if (givenBranch.getName().equals(head.getName()) && !targetName.contains("/")) {
                 Utils.exitWithError("No need to checkout the current branch.");
             } else {
                 Commit.helpDelete(StagingArea.ADDITION);

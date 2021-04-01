@@ -13,6 +13,9 @@ public class Remote implements Serializable {
         this.name = name;
         this.nameOfDir = nameOfDir;
         File newRemote = Utils.join(REMOTES, this.name);
+        if (newRemote.exists()) {
+            Utils.exitWithError("");
+        }
         Repository.createFile(newRemote);
         Utils.writeObject(newRemote, this);
     }

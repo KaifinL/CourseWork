@@ -255,7 +255,11 @@ public class Repository {
             Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
             Branch newBranch = new Branch(branchName, head);
             File branch1 = Utils.join(Repository.BRANCHCOLLECTION, branchName);
-            createFile(branch1);
+            try {
+                branch1.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             Utils.writeObject(branch1, newBranch);
         }
     }

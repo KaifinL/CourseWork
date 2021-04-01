@@ -16,12 +16,13 @@ public class Main {
             Utils.exitWithError("Please enter a command.");
         }
         String firstArg = args[0];
-        switch(firstArg) {
+        switch (firstArg) {
             case "init":
                 File initial = Repository.GITLET_DIR;
                 if (initial.exists()) {
-                    Utils.exitWithError("A Gitlet version-control system already exists in the current directory.");
-                }else {
+                    Utils.exitWithError("A Gitlet version-control system " +
+                            "already exists in the current directory.");
+                } else {
                     Repository.setupPersistence();
                 }
                 break;
@@ -74,6 +75,7 @@ public class Main {
                 Repository.checkIn();
                 Repository.merge(args[1]);
                 break;
+            case ""
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

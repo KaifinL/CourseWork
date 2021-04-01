@@ -861,6 +861,17 @@ public class Repository {
         return null;
     }
 
+    public static void branchFunc2(String[] args) {
+        if (args.length == 2) {
+            String branchName = args[1];
+            Commit head = Utils.readObject(HEAD, Branch.class).getCurrentCommit();
+            Branch newBranch = new Branch(branchName, head);
+            File branch1 = Utils.join(Repository.BRANCHCOLLECTION, branchName);
+            createFile(branch1);
+            Utils.writeObject(branch1, newBranch);
+        }
+    }
+
 
 
 }

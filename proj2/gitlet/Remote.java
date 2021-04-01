@@ -103,7 +103,7 @@ public class Remote implements Serializable {
         }
         String branchName2 = args[1] + "." + args[2];
         String realBranchName = args[1] + File.separator + args[2];
-        remoteBranch.setName(branchName2);
+        remoteBranch.setName(realBranchName);
         String[] args2 = {"branch", branchName2};
         File branch2 = Utils.join(Repository.BRANCHCOLLECTION, branchName2);
         if (!branch2.exists()) {

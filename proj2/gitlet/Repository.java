@@ -192,6 +192,9 @@ public class Repository {
             Utils.writeContents(targetFile, content);
         } else {
             String targetName = args[1];
+            if (targetName.contains("/")) {
+                targetName.replace("/", ".");
+            }
             File targetBranch = Utils.join(BRANCHCOLLECTION, targetName);
             if (!targetBranch.exists()) {
                 Utils.exitWithError("No such branch exists.");

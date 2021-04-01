@@ -75,7 +75,8 @@ public class Main {
                 Repository.checkIn();
                 Repository.merge(args[1]);
                 break;
-            case ""
+            case "add-remote":
+                Remote.addRemote(args[1], args[2]);
             default:
                 Utils.exitWithError("No command with that name exists.");
         }

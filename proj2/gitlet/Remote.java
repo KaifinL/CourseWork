@@ -41,7 +41,7 @@ public class Remote implements Serializable {
             Utils.exitWithError("Remote directory not found.");
         }
         // phase 2 : check if the head commit exists
-        File headF = Utils.join(address, "Branches",  "HEAD");
+        File headF = Utils.join(address, "Branch",  "HEAD");
         Commit remoteHead = Utils.readObject(headF, Branch.class).getCurrentCommit();
         Commit head = Utils.readObject(Repository.HEAD, Branch.class).getCurrentCommit();
         if (!Repository.isAncestor(remoteHead, head)) {

@@ -27,7 +27,7 @@ public class Remote implements Serializable {
     public static void rmRemote(String name) {
         File target = Utils.join(REMOTES, name);
         if (!target.exists()) {
-            Utils.exitWithError("");
+            Utils.exitWithError("A remote with that name does not exist.");
         }
         target.delete();
     }

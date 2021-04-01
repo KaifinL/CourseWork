@@ -59,7 +59,7 @@ public class Remote implements Serializable {
         Branch remoteBranch = Utils.readObject(headF, Branch.class);
         remoteBranch.setCurrentCommit(head);
         Utils.writeObject(headF, remoteBranch);
-        File addition = Utils.join(address, "StagingArea", "addition")
+        File addition = Utils.join(address, "StagingArea", "addition");
         Commit.helpDelete(addition);
     }
 

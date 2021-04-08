@@ -18,8 +18,11 @@ Answer:
 Think back to the lab and the process used to eventually get to tessellating hexagons.**
 
 Answer:
-
+Well I think I will start by writing a room class and a hallway class, who were there to help create a
+room or hallway for me.
 -----
 **What distinguishes a hallway from a room? How are they similar?**
 
 Answer:
+Well a room has much more spaces than hallways.For example a room can be a 4 * 4 rectangle.However,
+it is likely that a hallway can only be a linear.

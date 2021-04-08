@@ -5,14 +5,14 @@ After looking at your own implementation, consider the implementation provided n
 How did your implementation differ from the given one? What lessons can be learned from it?**
 
 Answer:
-
+For me 
 -----
 
 **Can you think of an analogy between the process of tessellating hexagons and randomly generating a world using rooms and hallways?
 What is the hexagon and what is the tesselation on the Project 3 side?**
 
 Answer:
-
+Well the only analogy I can tell is that they both show a way where we can put a nearly 2D demo on the screen.
 -----
 **If you were to start working on world generation, what kind of method would you think of writing first? 
 Think back to the lab and the process used to eventually get to tessellating hexagons.**

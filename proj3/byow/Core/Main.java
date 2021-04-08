@@ -14,11 +14,7 @@ public class Main {
             engine.interactWithInputString(args[1]);
             System.out.println(engine.toString());
         // DO NOT CHANGE THESE LINES YET ;)
-<<<<<<< HEAD
         } else if (args.length == 2 && args[0].equals("-p")) { System.out.println("Coming soon."); }
-=======
-        } else if (args.length == 2 && args[0].equals("-p")) { System.out.println("Coming soon."); } 
->>>>>>> 28433b113cf115a7e36fd914323488eece1f0f1f
         // DO NOT CHANGE THESE LINES YET ;)
         else {
             Engine engine = new Engine();

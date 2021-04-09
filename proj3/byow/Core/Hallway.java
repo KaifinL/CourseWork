@@ -17,7 +17,7 @@ public class Hallway {
     }
 
     public void drawHallway() {
-        
+
     }
 
 }

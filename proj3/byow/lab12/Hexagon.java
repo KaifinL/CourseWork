@@ -77,7 +77,7 @@ public class Hexagon {
         ter.initialize(50, 50);
         Hexagon test = new Hexagon(4, Tileset.FLOWER);
         ter.renderFrame(test.getRealHexagon());
-        
+
     }
 
 }

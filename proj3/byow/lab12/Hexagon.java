@@ -52,7 +52,7 @@ public class Hexagon {
     }
 
     private void fillLine(int row, int tileNumber) {
-        int begin = (width / 2) - 1;
+        int begin = (width - tileNumber) / 2;
         for (int i = 0; i < tileNumber; i++) {
             realHexagon[begin + i][row] = this.pattern;
         }

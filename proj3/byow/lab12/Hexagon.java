@@ -6,14 +6,18 @@ import byow.TileEngine.Tileset;
 public class Hexagon {
     // variable here
     int sideLength;
+    int height;
+    int width;
     TETile[][] realHexagon;
     TETile pattern;
 
 
     public Hexagon(int sideLength, TETile pattern) {
         this.sideLength = sideLength;
+        this.height = 2 * sideLength;
+        this.width = 3 * sideLength - 2;
         this.pattern = pattern;
-
+        realHexagon = new TETile[width][height];
     }
 
     public void drawIt() {

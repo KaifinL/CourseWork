@@ -13,7 +13,7 @@ public class Hexagon {
     public Hexagon(int sideLength, TETile pattern) {
         this.sideLength = sideLength;
         this.pattern = pattern;
-        
+
     }
 
     public void drawIt() {

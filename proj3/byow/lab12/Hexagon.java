@@ -1,5 +1,6 @@
 package byow.lab12;
 
+import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
@@ -18,6 +19,7 @@ public class Hexagon {
         this.width = 3 * sideLength - 2;
         this.pattern = pattern;
         realHexagon = new TETile[width][height];
+        fillHexagon();
     }
 
     public void drawIt() {
@@ -49,9 +51,33 @@ public class Hexagon {
         System.out.println();
     }
 
+    private void fillLine(int row, int tileNumber) {
+        int begin = (width / 2) - 1;
+        for (int i = 0; i < tileNumber; i++) {
+            realHexagon[begin + i][row] = this.pattern;
+        }
+    }
+
+    private void fillHexagon() {
+        int tileNumber = sideLength;
+        for (int row = 0; row < sideLength; row++, tileNumber += 2) {
+            fillLine(row, tileNumber);
+        }
+        for (int row = sideLength; row < height; row++, tileNumber -= 2) {
+            fillLine(row, tileNumber);
+        }
+    }
+
+    public TETile[][] getRealHexagon() {
+        return realHexagon;
+    }
+
     public static void main(String[] args) {
+        TERenderer ter = new TERenderer();
+        ter.initialize(50, 50);
         Hexagon test = new Hexagon(4, Tileset.FLOWER);
-        test.drawIt();
+        ter.renderFrame(test.getRealHexagon());
+        
     }
 
 }

@@ -8,10 +8,17 @@ package byow.Core;
 public class Position {
     public int x;
     public int y;
+    public int direction;
 
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Position(int x, int y, int direction) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
     }
 
     public void changePos(int x, int y) {

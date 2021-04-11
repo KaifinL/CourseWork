@@ -63,6 +63,7 @@ public class Hexagon {
         for (int row = 0; row < sideLength; row++, tileNumber += 2) {
             fillLine(row, tileNumber);
         }
+        tileNumber -= 2;
         for (int row = sideLength; row < height; row++, tileNumber -= 2) {
             fillLine(row, tileNumber);
         }

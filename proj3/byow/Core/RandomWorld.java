@@ -24,6 +24,11 @@ public class RandomWorld {
      * This is just skeleton code.
      */
     private static void worldGenerator() {
+        /**
+         * in this method 'world' is only a variable name represents a matrix
+         * the initial world has been generated filled with 'nothing'
+         */
+
         // generate a room
         RoomUnit r = new RoomUnit();
         r.setFocus(randomFocus()); // set the location
@@ -43,6 +48,12 @@ public class RandomWorld {
         // draws the world to the screen
         ter.renderFrame(world);
 
+    }
+
+    private static TETile[][] dequeRoom() {
+        RoomUnit newRoom = new RoomUnit();
+        newRoom.setFocus(randomFocus());
+        Position newFocus = new Position()
     }
 
     /**

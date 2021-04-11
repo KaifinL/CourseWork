@@ -49,13 +49,6 @@ public class RandomWorld {
         ter.renderFrame(world);
 
     }
-
-    private static TETile[][] dequeRoom() {
-        RoomUnit newRoom = new RoomUnit();
-        newRoom.setFocus(randomFocus());
-        Position newFocus = new Position()
-    }
-
     /**
      * This is used for debugging.
      */

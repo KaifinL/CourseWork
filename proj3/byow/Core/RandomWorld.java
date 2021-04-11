@@ -73,7 +73,7 @@ public class RandomWorld {
             newObject = generateHallway(seed);
         }
         newObject.setFocus(randomFocus());
-        newObject.checkIndexErrorDown(world);
+        newObject.checkIndexError(world);
         newObject.checkOverlap(world);
         newObject.generate(world);
     }

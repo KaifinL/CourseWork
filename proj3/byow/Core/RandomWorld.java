@@ -25,10 +25,8 @@ public class RandomWorld {
      */
     private static void worldGenerator() {
         long pseudoSeed = SEED;
-        /**
          RoomUnit r = new RoomUnit(pseudoSeed);
          r.setFocus(randomFocus());
-         */
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
         ter.initialize(WIDTH, HEIGHT);
@@ -43,10 +41,8 @@ public class RandomWorld {
 
         //Index?
         //Overlap?
-        /**
+
          r.generate(world);
-         */
-        randomlyGeneration(pseudoSeed, world);
         // draws the world to the screen
         ter.renderFrame(world);
 

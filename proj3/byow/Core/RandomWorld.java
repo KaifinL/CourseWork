@@ -65,6 +65,7 @@ public class RandomWorld {
     }
 
     private static void randomlyGeneration(long seed, TETile[][] world) {
+        seed = 123;
         double randomNum = Math.random();
         RoomUnit newObject;
         if (randomNum < 0.3) {

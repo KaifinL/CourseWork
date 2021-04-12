@@ -79,6 +79,8 @@ public class RandomWorld {
         }
         newObject.generate(world);
         Counter.changeSize(newObject.getSize());
+        Position exit = newObject.getExits()[0];
+        world[exit.getX()][exit.getY()] = Tileset.NOTHING;
         return newObject;
     }
 

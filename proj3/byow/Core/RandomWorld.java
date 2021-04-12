@@ -95,6 +95,9 @@ public class RandomWorld {
         RoomUnit r = randomlyGeneration(seed, world, focus);
         seed = RANDOM.nextInt((int) seed);
         RoomUnit w = randomlyGeneration(seed, world, (r.getExits()[0]));
+        if (r.getExits().length == 2) {
+            w = randomlyGeneration(seed, world, (r.getExits()[1]));
+        }
         variable = RANDOM.nextInt((int) seed);
         randomlyGeneration(variable, world, (w.getExits()[0]));
 

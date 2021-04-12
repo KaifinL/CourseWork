@@ -12,12 +12,11 @@ public class RandomWorld {
 
     private static final long SEED = 28723;
     private static final Random RANDOM = new Random(SEED);
-    private static final double SQUARE = 4000;
-    private static int size;
 
     /**
      * Return a random location on the map.
      */
+
     private static Position randomFocus() {
         return new Position(RANDOM.nextInt(HEIGHT), RANDOM.nextInt(WIDTH));
     }
@@ -78,7 +77,7 @@ public class RandomWorld {
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
         }
         newObject.generate(world);
-        size
+        Counter.changeSize(newObject.getSize());
         return newObject;
     }
 
@@ -88,9 +87,15 @@ public class RandomWorld {
      * @param seed
      * @param world
      * @param focus
+     * here I want to use a recursion since I think it will be more convenient to get the focus;
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
-        double complexity =
+        double complexity = Counter.getComplexity();
+        if (complexity > 0.75) {
+            return;
+        }
+        RoomUnit r = randomlyGeneration(seed, world, focus);
+        generateWorld(seed, world, r.getExits()[0]);
     }
 
     /**

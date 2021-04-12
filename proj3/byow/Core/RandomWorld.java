@@ -4,6 +4,8 @@ import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 public class RandomWorld {
@@ -11,6 +13,7 @@ public class RandomWorld {
     private static final int HEIGHT = 40;
 
     private static final long SEED = 28723;
+    static Queue<Position> exitsQueue = new LinkedList<>();
     private static final Random RANDOM = new Random(SEED);
 
     /**
@@ -76,6 +79,10 @@ public class RandomWorld {
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
+        }
+        // add all the exits given by exits to the queue.
+        for (Position exit : newObject.getExits()) {
+            exitsQueue.offer(exit);
         }
         newObject.generate(world);
         return newObject;

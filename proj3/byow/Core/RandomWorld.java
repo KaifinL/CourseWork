@@ -94,7 +94,6 @@ public class RandomWorld {
         double complexity = 0;
         while (complexity < 0.75) {
             RoomUnit r = randomlyGeneration(seed, world, randomFocus());
-            seed = RANDOM.nextInt((int)seed);
             randomlyGeneration(seed, world, (r.getExits()[0]));
             complexity += 0.1;
         }

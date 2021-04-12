@@ -81,10 +81,10 @@ public class RandomWorld {
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
         }
         // add all the exits given by exits to the queue.
+        newObject.generate(world);
         for (Position exit : newObject.getExits()) {
             exitsQueue.offer(exit);
         }
-        newObject.generate(world);
         return newObject;
     }
 

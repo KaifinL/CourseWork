@@ -91,11 +91,12 @@ public class RandomWorld {
      * here I want to use a recursion since I think it will be more convenient to get the focus;
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
-        double complexity = Counter.getComplexity();
+        double complexity = 0;
         while (complexity < 0.75) {
             RoomUnit r = randomlyGeneration(seed, world, randomFocus());
             seed = RANDOM.nextInt((int)seed);
             randomlyGeneration(seed, world, (r.getExits()[0]));
+            complexity += 0.1;
         }
     }
 

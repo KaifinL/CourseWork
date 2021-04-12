@@ -134,7 +134,7 @@ public class RandomWorld {
 
     /**
      * this function is to make a exit and focus visible
-     * @param target 
+     * @param target
      * @param world
      */
     private static void chisel(Position target, TETile[][] world) {

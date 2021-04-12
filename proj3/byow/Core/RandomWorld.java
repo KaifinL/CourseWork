@@ -71,7 +71,7 @@ public class RandomWorld {
     private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus) {
         double randomNum = Math.random();
         RoomUnit newObject;
-        if (randomNum < 0.3) {
+        if (randomNum < 0.8) {
             newObject = generateRoom(seed);
         }else {
             newObject = generateHallway(seed);

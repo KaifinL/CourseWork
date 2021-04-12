@@ -42,8 +42,7 @@ public class RandomWorld {
         /**
          * it does work! but there is a bug in it. I fail to connect the two rooms
          */
-        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus());
-        randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world,(r.getExits()[0]));
+        generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
 

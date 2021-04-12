@@ -61,11 +61,11 @@ public class RoomUnit {
      * Constructors
      */
     public RoomUnit(long seed) {
-        this(randomEdge(seed), randomEdge(seed+1), randomDirection(seed), seed);
+        this(randomEdge(seed), randomEdge(seed + 1), randomDirection(seed), seed);
     }
 
     public RoomUnit(int direction, long seed) {
-        this(randomEdge(seed), randomEdge(seed+1), direction, seed);
+        this(randomEdge(seed), randomEdge(seed + 1), direction, seed);
     }
 
     public RoomUnit(int width, int length, int direction, long seed) {

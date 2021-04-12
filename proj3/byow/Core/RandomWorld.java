@@ -92,12 +92,10 @@ public class RandomWorld {
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
         RoomUnit r = randomlyGeneration(seed, world, focus);
-        double complexity = 0;
-        while (complexity < 0.5) {
-            seed = RANDOM.nextInt((int) seed);
-            r = randomlyGeneration(seed, world, (r.getExits()[0]));
-            complexity += 0.1;
-        }
+        seed = RANDOM.nextInt((int) seed);
+        RoomUnit w = randomlyGeneration(seed, world, (r.getExits()[0]));
+        seed = RANDOM.nextInt((int) seed);
+        randomlyGeneration(seed, world, (w.getExits()[0]));
 
     }
 

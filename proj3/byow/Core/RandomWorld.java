@@ -38,7 +38,6 @@ public class RandomWorld {
         }
         //Index?
         //Overlap?
-        // draw the room/hallway to the world
         randomlyGeneration(pseudoSeed, world);
         // draws the world to the screen
         ter.renderFrame(world);
@@ -62,6 +61,9 @@ public class RandomWorld {
             newObject = generateHallway(seed);
         }
         newObject.setFocus(randomFocus());
+        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world);
+        }
         newObject.generate(world);
         return newObject;
     }

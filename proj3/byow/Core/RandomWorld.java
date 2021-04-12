@@ -97,24 +97,26 @@ public class RandomWorld {
      * here I want to use a recursion since I think it will be more convenient to get the focus;
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
-        long variable;
-        RoomUnit r = randomlyGeneration(seed, world, focus);
+        double complexity = 0;
+        RoomUnit r = randomlyGeneration(seed, world, randomFocus());
         long newSeed = RANDOM.nextInt((int) seed);
-        RoomUnit w = randomlyGeneration(newSeed, world, (r.getExits()[0]));
-        variable = RANDOM.nextInt((int) seed);
-        randomlyGeneration(variable, world, (w.getExits()[0]));
-
+        while (complexity < 0.75) {
+            Position currExit = exitsQueue.poll();
+            newSeed = RANDOM.nextInt((int) newSeed);
+            RoomUnit newRoom = randomlyGeneration(newSeed, world, newFocus(currExit));
+            complexity += newRoom.getSize() / 4000;
+        }
     }
 
     /**
      * this function is to return the focus of a new room
      * @param exit the previous room's exit
-     * @param direction the direction where the exit lies on in the previous room
      * @return the generated new focus's position
      */
-    private static Position newFocus(Position exit, int direction) {
+    private static Position newFocus(Position exit) {
         int m;
         int n;
+        int direction = exit.getDirection();
         switch (direction) {
             case '0': m = 0;
                       n = 1;

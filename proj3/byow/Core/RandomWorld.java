@@ -52,30 +52,33 @@ public class RandomWorld {
 
     }
 
-    private static RoomUnit generateRoom(long seed) {
+    private static RoomUnit generateRoom(long seed, TETile[][] world) {
         RoomUnit r = new RoomUnit(seed);
         r.setFocus(randomFocus());
+        if (r.checkIndexError(world) || r.checkOverlap(world)) {
+            r = generateRoom(RANDOM.nextInt((int) seed), world);
+        }
         return r;
     }
 
-    private static HallwayUnit generateHallway(long seed) {
+    private static HallwayUnit generateHallway(long seed, TETile[][] world) {
         HallwayUnit hw = new HallwayUnit(seed);
         hw.setFocus(randomFocus());
+        if (hw.checkIndexError(world) || hw.checkOverlap(world)) {
+            hw = generateHallway(RANDOM.nextInt((int) seed), world);
+        }
         return hw;
     }
 
     private static void randomlyGeneration(long seed, TETile[][] world) {
-        seed = 123;
         double randomNum = Math.random();
         RoomUnit newObject;
         if (randomNum < 0.3) {
-            newObject = generateRoom(seed);
+            newObject = generateRoom(seed, world);
         }else {
-            newObject = generateHallway(seed);
+            newObject = generateHallway(seed, world);
         }
         newObject.setFocus(randomFocus());
-        newObject.checkIndexError(world);
-        newObject.checkOverlap(world);
         newObject.generate(world);
     }
 

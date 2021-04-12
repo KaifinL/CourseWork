@@ -51,7 +51,6 @@ public class RandomWorld {
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
-
     }
 
     private static RoomUnit generateRoom(long seed, Position focus) {

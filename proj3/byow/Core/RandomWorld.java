@@ -26,7 +26,7 @@ public class RandomWorld {
     private static void worldGenerator() {
         long pseudoSeed = SEED;
 
-         RoomUnit r = generateRoom(pseudoSeed);
+         RoomUnit r = new RoomUnit(pseudoSeed);
          r.setFocus(randomFocus());
 
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT

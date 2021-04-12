@@ -81,10 +81,7 @@ public class RoomUnit {
      * Check if creating the room will cause out of bound error.
      * This method will also shift focus or exchange width and length
      * ro get the Down version.
-     * question here:
-     * 1. still the parameter problem it is really hard to pass the created
-     * Room to this method I will need to firstly convert the room into a 2D world.
-     * 2. the checkIn series should be set private?(style problem not a big deal)
+     * return true if there is a error return false otherwise
      */
     public boolean checkIndexError(TETile[][] world){
         switch (this.direction) {
@@ -207,6 +204,10 @@ public class RoomUnit {
                         this.focus.y - r.nextInt(this.length), direction);
         }
         return exit;
+    }
+
+    public Position[] getExits() {
+        return exits;
     }
 
     /**

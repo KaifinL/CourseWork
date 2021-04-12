@@ -26,9 +26,8 @@ public class RandomWorld {
     private static void worldGenerator() {
         long pseudoSeed = SEED;
 
-         RoomUnit r = new RoomUnit(pseudoSeed);
+         RoomUnit r = randomlyGeneration(pseudoSeed);
          r.setFocus(randomFocus());
-
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
         ter.initialize(WIDTH, HEIGHT);
@@ -49,15 +48,11 @@ public class RandomWorld {
     }
 
     private static RoomUnit generateRoom(long seed) {
-        RoomUnit r = new RoomUnit(seed);
-        r.setFocus(randomFocus());
-        return r;
+        return new RoomUnit(seed);
     }
 
     private static HallwayUnit generateHallway(long seed) {
-        HallwayUnit hw = new HallwayUnit(seed);
-        hw.setFocus(randomFocus());
-        return hw;
+        return new HallwayUnit(seed);
     }
 
     private static RoomUnit randomlyGeneration(long seed) {
@@ -68,7 +63,6 @@ public class RandomWorld {
         }else {
             newObject = generateHallway(seed);
         }
-        newObject.setFocus(randomFocus());
         return newObject;
     }
 

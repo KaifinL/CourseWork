@@ -99,6 +99,12 @@ public class RandomWorld {
 
     }
 
+    /**
+     * this function is to return the focus of a new room
+     * @param exit the previous room's exit
+     * @param direction the direction where the exit lies on in the previous room
+     * @return the generated new focus's position
+     */
     private static Position newFocus(Position exit, int direction) {
         int m;
         int n;
@@ -114,6 +120,15 @@ public class RandomWorld {
         }
         Position returnFocus = new Position(exit.getX() + m, exit.getY() + n);
         return returnFocus;
+    }
+
+    /**
+     * this function is to make a exit vis
+     * @param target
+     * @param world
+     */
+    private static void chisel(Position target, TETile[][] world) {
+        world[target.getX()][target.getY()] = Tileset.FLOOR;
     }
 
     /**

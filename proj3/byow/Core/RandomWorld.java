@@ -25,7 +25,6 @@ public class RandomWorld {
      */
     private static void worldGenerator() {
         long pseudoSeed = SEED;
-        RoomUnit r = randomlyGeneration(pseudoSeed);
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
         ter.initialize(WIDTH, HEIGHT);
@@ -40,6 +39,7 @@ public class RandomWorld {
         //Index?
         //Overlap?
         // draw the room/hallway to the world
+        RoomUnit r = randomlyGeneration(pseudoSeed);
         r.generate(world);
         // draws the world to the screen
         ter.renderFrame(world);

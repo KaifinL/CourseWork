@@ -104,7 +104,7 @@ public class RandomWorld {
             Position currExit = exitsQueue.poll();
             newSeed = RANDOM.nextInt((int) newSeed);
             RoomUnit newRoom = randomlyGeneration(newSeed, world, newFocus(currExit));
-            complexity += (double) newRoom.getSize() / 400;
+            complexity += (double) newRoom.getSize() / 100;
         }
     }
 

@@ -39,8 +39,7 @@ public class RandomWorld {
         //Index?
         //Overlap?
         // draw the room/hallway to the world
-        RoomUnit r = randomlyGeneration(pseudoSeed);
-        r.generate(world);
+        randomlyGeneration(pseudoSeed, world);
         // draws the world to the screen
         ter.renderFrame(world);
 
@@ -54,7 +53,7 @@ public class RandomWorld {
         return new HallwayUnit(seed);
     }
 
-    private static RoomUnit randomlyGeneration(long seed) {
+    private static RoomUnit randomlyGeneration(long seed, TETile[][] world) {
         double randomNum = Math.random();
         RoomUnit newObject;
         if (randomNum < 0.3) {
@@ -63,6 +62,7 @@ public class RandomWorld {
             newObject = generateHallway(seed);
         }
         newObject.setFocus(randomFocus());
+        newObject.generate(world);
         return newObject;
     }
 

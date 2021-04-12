@@ -54,12 +54,12 @@ public class RandomWorld {
 
     }
 
-    private static RoomUnit generateRoom(long seed) {
-        return new RoomUnit(seed);
+    private static RoomUnit generateRoom(long seed, Position focus) {
+        return new RoomUnit(focus.getDirection(), seed);
     }
 
-    private static HallwayUnit generateHallway(long seed) {
-        return new HallwayUnit(seed);
+    private static HallwayUnit generateHallway(long seed, Position focus) {
+        return new HallwayUnit(focus.getDirection(), seed);
     }
 
     /**
@@ -73,9 +73,9 @@ public class RandomWorld {
         double randomNum = Math.random();
         RoomUnit newObject;
         if (randomNum < 0.8) {
-            newObject = generateRoom(seed);
+            newObject = generateRoom(seed, focus);
         }else {
-            newObject = generateHallway(seed);
+            newObject = generateHallway(seed, focus);
         }
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {

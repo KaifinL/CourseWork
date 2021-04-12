@@ -75,7 +75,7 @@ public class RandomWorld {
         }
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
+            newObject = randomlyGeneration(seed, world, focus);
         }
         newObject.generate(world);
         Counter.changeSize(newObject.getSize());

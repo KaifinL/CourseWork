@@ -92,7 +92,13 @@ public class RandomWorld {
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
         RoomUnit r = randomlyGeneration(seed, world, focus);
-        randomlyGeneration(RANDOM.nextInt((int) seed), world, (r.getExits()[0]));
+        int complexity = 0;
+        while (complexity < 0.5) {
+            seed = RANDOM.nextInt((int) seed);
+            r = randomlyGeneration(seed, world, (r.getExits()[0]));
+            complexity += 0.1;
+        }
+
     }
 
     /**

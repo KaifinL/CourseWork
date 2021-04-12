@@ -40,7 +40,7 @@ public class RandomWorld {
                 world[x][y] = Tileset.NOTHING;
             }
         }
-        RoomUnit r = randomlyGeneration(pseudoSeed, world);
+        RoomUnit r = randomlyGeneration(pseudoSeed);
         //Index?
         //Overlap?
         r.generate(world);
@@ -49,31 +49,25 @@ public class RandomWorld {
 
     }
 
-    private static RoomUnit generateRoom(long seed, TETile[][] world) {
+    private static RoomUnit generateRoom(long seed) {
         RoomUnit r = new RoomUnit(seed);
         r.setFocus(randomFocus());
-        if (r.checkIndexError(world) || r.checkOverlap(world)) {
-            r = generateRoom(RANDOM.nextInt((int) seed), world);
-        }
         return r;
     }
 
-    private static HallwayUnit generateHallway(long seed, TETile[][] world) {
+    private static HallwayUnit generateHallway(long seed) {
         HallwayUnit hw = new HallwayUnit(seed);
         hw.setFocus(randomFocus());
-        if (hw.checkIndexError(world) || hw.checkOverlap(world)) {
-            hw = generateHallway(RANDOM.nextInt((int) seed), world);
-        }
         return hw;
     }
 
-    private static RoomUnit randomlyGeneration(long seed, TETile[][] world) {
+    private static RoomUnit randomlyGeneration(long seed) {
         double randomNum = Math.random();
         RoomUnit newObject;
         if (randomNum < 0.3) {
-            newObject = generateRoom(seed, world);
+            newObject = generateRoom(seed);
         }else {
-            newObject = generateHallway(seed, world);
+            newObject = generateHallway(seed);
         }
         newObject.setFocus(randomFocus());
         return newObject;

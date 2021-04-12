@@ -41,9 +41,10 @@ public class RandomWorld {
         //Overlap?
         /**
          * it does work! but there is a bug in it. I fail to connect the two rooms
-         */
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus());
         randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world,(r.getExits()[0]));
+         */
+        generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
 
@@ -91,11 +92,11 @@ public class RandomWorld {
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
         double complexity = Counter.getComplexity();
-        if (complexity > 0.75) {
-            return;
+        while (complexity < 0.75) {
+            RoomUnit r = randomlyGeneration(seed, world, randomFocus());
+            seed = RANDOM.nextInt((int)seed);
+            randomlyGeneration(seed, world, (r.getExits()[0]));
         }
-        RoomUnit r = randomlyGeneration(seed, world, focus);
-        generateWorld(seed, world, r.getExits()[0]);
     }
 
     /**

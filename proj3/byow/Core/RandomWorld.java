@@ -46,8 +46,8 @@ public class RandomWorld {
         chisel(r.exits[0], world);
         for (Position exit : r.getExits()){
             chisel(realExit(exit), world);
+            randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world, newFocus(exit));
         }
-        randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world,(r.getExits()[0]));
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
@@ -140,7 +140,12 @@ public class RandomWorld {
     private static void chisel(Position target, TETile[][] world) {
         world[target.getX()][target.getY()] = Tileset.FLOOR;
     }
-    
+
+    /**
+     *
+     * @param exit the original exit which is in the matrix
+     * @return the new focus
+     */
     private static Position newFocus(Position exit) {
         return realExit(realExit(exit));
     }

@@ -94,7 +94,7 @@ public class RandomWorld {
             return;
         }
         RoomUnit r = randomlyGeneration(seed, world, focus);
-        generateWorld(seed, world, r.getExits()[0]);
+        generateWorld(RANDOM.nextInt((int) seed), world, r.getExits()[0]);
     }
 
     /**

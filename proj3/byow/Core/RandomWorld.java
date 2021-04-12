@@ -58,7 +58,7 @@ public class RandomWorld {
     private static RoomUnit randomlyGeneration(long seed) {
         double randomNum = Math.random();
         RoomUnit newObject;
-        if (randomNum < 0.9) {
+        if (randomNum < 0.3) {
             newObject = generateRoom(seed);
         }else {
             newObject = generateHallway(seed);

@@ -97,7 +97,7 @@ public class RoomUnit {
 
 
 
-    public boolean checkIndexErrorDown(TETile[][] world){
+    private boolean checkIndexErrorDown(TETile[][] world){
         int xLow = this.focus.x - 1;
         int xHigh = this.focus.x + this.width;
         int yLow = this.focus.y - this.length;
@@ -109,18 +109,18 @@ public class RoomUnit {
         return false;
     }
 
-    public boolean checkIndexErrorUp(TETile[][] world){
+    private boolean checkIndexErrorUp(TETile[][] world){
         this.focus.changePos(0,this.length - 1);
         return checkIndexErrorDown(world);
     }
 
-    public boolean checkIndexErrorLeft(TETile[][] world) {
+    private boolean checkIndexErrorLeft(TETile[][] world) {
         this.focus.changePos(1 - this.length,0);
         this.changeLenWid();
         return checkIndexErrorDown(world);
     }
 
-    public boolean checkIndexErrorRight(TETile[][] world) {
+    private boolean checkIndexErrorRight(TETile[][] world) {
         this.changeLenWid();
         return checkIndexErrorDown(world);
     }

@@ -42,12 +42,10 @@ public class RandomWorld {
         }
         //Index?
         //Overlap?
-        /**
-         * it does work! but there is a bug in it. I fail to connect the two rooms
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus());
+        chisel(r.exits[0], world);
         randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world,(r.getExits()[0]));
-         */
-        generateWorld(pseudoSeed, world, randomFocus());
+        //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
 

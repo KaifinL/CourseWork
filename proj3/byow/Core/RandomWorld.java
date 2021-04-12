@@ -38,7 +38,8 @@ public class RandomWorld {
         }
         //Index?
         //Overlap?
-        randomlyGeneration(pseudoSeed, world);
+        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus());
+        randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world,(r.getExits()[0]));
         // draws the world to the screen
         ter.renderFrame(world);
 
@@ -52,7 +53,7 @@ public class RandomWorld {
         return new HallwayUnit(seed);
     }
 
-    private static RoomUnit randomlyGeneration(long seed, TETile[][] world) {
+    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus) {
         double randomNum = Math.random();
         RoomUnit newObject;
         if (randomNum < 0.3) {
@@ -60,9 +61,9 @@ public class RandomWorld {
         }else {
             newObject = generateHallway(seed);
         }
-        newObject.setFocus(randomFocus());
+        newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world);
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
         }
         newObject.generate(world);
         return newObject;

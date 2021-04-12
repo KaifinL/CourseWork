@@ -99,6 +99,23 @@ public class RandomWorld {
 
     }
 
+    private static Position newFocus(Position exit, int direction) {
+        int m;
+        int n;
+        switch (direction) {
+            case '0': m = 0;
+                      n = 1;
+            case '1': m = 0;
+                      n = -1;
+            case '2': m = -1;
+                      n = 0;
+            default: m = 1;
+                      n = 0;
+        }
+        Position returnFocus = new Position(exit.getX() + m, exit.getY() + n);
+        return returnFocus;
+    }
+
     /**
      * This is used for debugging.
      */

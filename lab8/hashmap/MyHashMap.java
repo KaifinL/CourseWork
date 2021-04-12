@@ -241,7 +241,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     private int hash(K key) {
         int h = key.hashCode();
         h ^= (h >>> 20) ^ (h >>> 12) ^ (h >>> 7) ^ (h >>> 4);
-        return h & (this.initialSize-1);
+        return h & (this.initialSize - 1);
     }
 
     private void resize(int capacity) {

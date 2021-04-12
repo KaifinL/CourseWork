@@ -45,7 +45,7 @@ public class RandomWorld {
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus());
         chisel(r.exits[0], world);
         for (Position exit : r.getExits()){
-            chisel(newFocus(exit), world);
+            chisel(realExit(exit), world);
         }
         randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world,(r.getExits()[0]));
         //generateWorld(pseudoSeed, world, randomFocus());
@@ -104,7 +104,7 @@ public class RandomWorld {
         while (complexity < 0.75) {
             Position currExit = exitsQueue.poll();
             newSeed = RANDOM.nextInt((int) newSeed);
-            RoomUnit newRoom = randomlyGeneration(newSeed, world, newFocus(currExit));
+            RoomUnit newRoom = randomlyGeneration(newSeed, world, realExit(currExit));
             complexity += (double) newRoom.getSize() / 50;
         }
     }
@@ -114,7 +114,7 @@ public class RandomWorld {
      * @param exit the previous room's exit
      * @return the generated new focus's position
      */
-    private static Position newFocus(Position exit) {
+    private static Position realExit(Position exit) {
         int m;
         int n;
         int direction = exit.getDirection();
@@ -139,6 +139,10 @@ public class RandomWorld {
      */
     private static void chisel(Position target, TETile[][] world) {
         world[target.getX()][target.getY()] = Tileset.FLOOR;
+    }
+    
+    private static Position newFocus(Position exit) {
+        return realExit(realExit(exit));
     }
 
     /**

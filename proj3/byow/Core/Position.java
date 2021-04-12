@@ -33,4 +33,8 @@ public class Position {
     public int getY() {
         return y;
     }
+
+    public int getDirection() {
+        return direction;
+    }
 }

@@ -78,7 +78,6 @@ public class RandomWorld {
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
         }
         newObject.generate(world);
-        Counter.changeSize(newObject.getSize());
         return newObject;
     }
 
@@ -93,8 +92,8 @@ public class RandomWorld {
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
         long variable;
         RoomUnit r = randomlyGeneration(seed, world, focus);
-        seed = RANDOM.nextInt((int) seed);
-        RoomUnit w = randomlyGeneration(seed, world, (r.getExits()[0]));
+        long newSeed = RANDOM.nextInt((int) seed);
+        RoomUnit w = randomlyGeneration(newSeed, world, (r.getExits()[0]));
         if (r.getExits().length == 2) {
             w = randomlyGeneration(seed, world, (r.getExits()[1]));
         }

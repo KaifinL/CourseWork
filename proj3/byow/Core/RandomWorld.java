@@ -98,7 +98,7 @@ public class RandomWorld {
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
         double complexity = 0;
-        RoomUnit r = randomlyGeneration(seed, world, randomFocus());
+        RoomUnit r = randomlyGeneration(seed, world, focus);
         long newSeed = RANDOM.nextInt((int) seed);
         while (complexity < 0.75) {
             Position currExit = exitsQueue.poll();

@@ -12,6 +12,8 @@ public class RandomWorld {
 
     private static final long SEED = 28723;
     private static final Random RANDOM = new Random(SEED);
+    private static final double SQUARE = 4000;
+    private static int size;
 
     /**
      * Return a random location on the map.
@@ -38,6 +40,9 @@ public class RandomWorld {
         }
         //Index?
         //Overlap?
+        /**
+         * it does work! but there is a bug in it. I fail to connect the two rooms
+         */
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus());
         randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world,(r.getExits()[0]));
         // draws the world to the screen
@@ -53,6 +58,13 @@ public class RandomWorld {
         return new HallwayUnit(seed);
     }
 
+    /**
+     * this method simply return a room or a hallway randomly
+     * @param seed nothing special here
+     * @param world the whole board this should not be changed
+     * @param focus this should be changed as you might use recursion.You should pass the exit position to it.
+     * @return just for a better use of recursion in case there is an IndexError or overloadError.
+     */
     private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus) {
         double randomNum = Math.random();
         RoomUnit newObject;
@@ -66,7 +78,19 @@ public class RandomWorld {
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
         }
         newObject.generate(world);
+        size
         return newObject;
+    }
+
+    /**
+     * the reason why I create this method is to avoid writing to many codes in one method.
+     * Therefore, the parameters and the meaning are all the same as in the previous method.
+     * @param seed
+     * @param world
+     * @param focus
+     */
+    private static void generateWorld(long seed, TETile[][] world, Position focus) {
+        double complexity =
     }
 
     /**

@@ -127,7 +127,7 @@ public class RandomWorld {
             default: m = 1;
                       n = 0;
         }
-        Position returnFocus = new Position(exit.getX() + m, exit.getY() + n);
+        Position returnFocus = new Position(exit.getX() + m, exit.getY() + n, direction);
         return returnFocus;
     }
 

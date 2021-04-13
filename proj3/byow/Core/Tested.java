@@ -1,6 +1,6 @@
 package byow.Core;
 
-import org.junit.Test;
+import org.junit.*;
 import java.util.PriorityQueue;
 
 public class Tested {
@@ -10,6 +10,6 @@ public class Tested {
     public static void test() {
         Position test1 = new Position(3, 5);
         pq.add(test1);
-        
+        AssertEqual
     }
 }

@@ -49,7 +49,6 @@ public class RandomWorld {
         int counter = 0;
         while (counter < 18){
             Position exit = exitsQueue.poll();
-            chisel(realExit(exit), world);
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
                     world, newFocus(exit), 1, exitsQueue);
             if (child != null) {

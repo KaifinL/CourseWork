@@ -92,7 +92,7 @@ public class RandomWorld {
             if (tries > 3) {
                 return null;
             }
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, getFocus, tries + 1, exitsQueue);
+            newObject = null;
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {

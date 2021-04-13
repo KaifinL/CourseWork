@@ -156,7 +156,7 @@ public class RandomWorld {
         RoomUnit newObject = generateHallway(seed, focus);
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            if (tries > 6) {
+            if (tries > 10) {
                 return null;
             }
             focus.changeDirection();

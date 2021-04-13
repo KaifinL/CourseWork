@@ -14,7 +14,6 @@ public class RandomWorld {
     private static final int HEIGHT = 40;
 
     private static final long SEED = 287223;
-    static Queue<Position> exitsQueue = new PriorityQueue<>();
     private static final Random RANDOM = new Random(SEED);
 
     /**
@@ -30,6 +29,7 @@ public class RandomWorld {
      * This is just skeleton code.
      */
     private static void worldGenerator() {
+        PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         long pseudoSeed = SEED;
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
@@ -44,13 +44,15 @@ public class RandomWorld {
         }
         //Index?
         //Overlap?
-        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed), 1);
+        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed),
+                1, exitsQueue);
         int counter = 0;
         while (counter < 4){
             Position exit = exitsQueue.poll();
             chisel(realExit(exit), world);
             chisel(realExit(realExit(exit)), world);
-            RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit), 1);
+            RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
+                    world, newFocus(exit), 1, exitsQueue);
             if (child != null) {
                 child.generate(world);
             }
@@ -79,7 +81,8 @@ public class RandomWorld {
      * @return generally return a random room or hallway
      * however, it should return null if attempt more than 3 times.
      */
-    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries) {
+    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries,
+                                               PriorityQueue exitsQueue) {
         int randomNum = (int) (seed % 3);
         RoomUnit newObject;
         if (randomNum < 2) {
@@ -92,7 +95,7 @@ public class RandomWorld {
             if (tries > 3) {
                 return null;
             }
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1);
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {
@@ -109,7 +112,7 @@ public class RandomWorld {
      * @param world
      * @param focus
      * here I want to use a recursion since I think it will be more convenient to get the focus;
-     */
+
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
         double complexity = 0;
         RoomUnit r = randomlyGeneration(seed, world, focus, 1);
@@ -121,6 +124,7 @@ public class RandomWorld {
             complexity += (double) newRoom.getSize() / 50;
         }
     }
+    */
 
     /**
      * this function is to return the focus of a new room

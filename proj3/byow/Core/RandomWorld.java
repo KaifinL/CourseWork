@@ -12,16 +12,17 @@ public class RandomWorld {
     private static final int WIDTH = 100;
     private static final int HEIGHT = 40;
 
-    private static final long SEED = 28723;
-    static Queue<Position> exitsQueue = new LinkedList<>();
+    private static final long SEED = 287223;
+    static Queue<Position> exitsQueue = new LinkedList<Position>();
     private static final Random RANDOM = new Random(SEED);
 
     /**
      * Return a random location on the map.
      */
 
-    private static Position randomFocus() {
-        return new Position(RANDOM.nextInt(HEIGHT), RANDOM.nextInt(WIDTH));
+    private static Position randomFocus(long seed) {
+        Random r = new Random(seed);
+        return new Position(r.nextInt(HEIGHT), r.nextInt(WIDTH), 1);
     }
 
     /**
@@ -42,15 +43,19 @@ public class RandomWorld {
         }
         //Index?
         //Overlap?
-        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus());
-        chisel(r.exits[0], world);
+        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed));
+        r.generate(world);
         for (Position exit : r.getExits()){
+            System.out.println(exit.getDirection());
             chisel(realExit(exit), world);
-            randomlyGeneration(RANDOM.nextInt((int) pseudoSeed), world, newFocus(exit));
+            /**RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit));
+             child.generate(world);
+             break;*/
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
+
     }
 
     private static RoomUnit generateRoom(long seed, Position focus) {
@@ -77,13 +82,10 @@ public class RandomWorld {
             newObject = generateHallway(seed, focus);
         }
         newObject.setFocus(focus);
-        if (!newObject.checkIndexError(world) && !newObject.checkOverlap(world)) {
+        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
+        } else {
             newObject.generate(world);
-        }
-        // add all the exits given by exits to the queue.
-        newObject.generate(world);
-        for (Position exit : newObject.getExits()) {
-            exitsQueue.offer(exit);
         }
         return newObject;
     }
@@ -119,17 +121,16 @@ public class RandomWorld {
         int direction = exit.getDirection();
         switch (direction) {
             case 0: m = 0;
-                    n = 1;
-                    break;
+                n = 1;
+                break;
             case 1: m = 0;
-                    n = -1;
-                    break;
+                n = -1;
+                break;
             case 2: m = -1;
-                    n = 0;
-                    break;
+                n = 0;
+                break;
             default: m = 1;
-                     n = 0;
-                     break;
+                n = 0;
         }
         Position returnFocus = new Position(exit.getX() + m, exit.getY() + n, exit.getDirection());
         return returnFocus;
@@ -141,7 +142,7 @@ public class RandomWorld {
      * @param world
      */
     private static void chisel(Position target, TETile[][] world) {
-        world[target.getX()][target.getY()] = Tileset.FLOOR;
+        world[target.getX()][target.getY()] = Tileset.FLOWER;
     }
 
     /**
@@ -150,7 +151,7 @@ public class RandomWorld {
      * @return the new focus
      */
     private static Position newFocus(Position exit) {
-        return realExit(realExit(exit));
+        return realExit(realExit(realExit(exit)));
     }
 
     /**

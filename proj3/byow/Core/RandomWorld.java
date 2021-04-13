@@ -45,7 +45,7 @@ public class RandomWorld {
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed),
                 1, exitsQueue);
         int counter = 0;
-        while (counter < 30){
+        while (counter < 50){
             Position exit = exitsQueue.poll();
             if (exit == null) {
                 break;

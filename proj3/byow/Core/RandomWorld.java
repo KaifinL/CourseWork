@@ -153,6 +153,7 @@ public class RandomWorld {
     private static RoomUnit initialization(TETile[][] world,long seed, PriorityQueue exitsQueue) {
         Position focus = new Position(50, 20, 0);
         RoomUnit newObject = generateRoom(seed, focus);
+        newObject.setFocus(focus);
         newObject.generate(world);
         for (Position exit : newObject.getExits()) {
             exitsQueue.add(exit);

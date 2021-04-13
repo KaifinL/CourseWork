@@ -47,6 +47,9 @@ public class RandomWorld {
         int counter = 0;
         while (counter < 30){
             Position exit = exitsQueue.poll();
+            if (exit == null) {
+                break;
+            }
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
                     world, newFocus(exit), 1, exitsQueue);
             if (child != null) {

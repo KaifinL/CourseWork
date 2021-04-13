@@ -85,7 +85,7 @@ public class RandomWorld {
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (seed % 3);
         RoomUnit newObject;
-        if (randomNum < 2) {
+        if (randomNum < 1) {
             newObject = generateRoom(seed, focus);
         }else {
             newObject = generateHallway(seed, focus);

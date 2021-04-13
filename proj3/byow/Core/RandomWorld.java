@@ -13,7 +13,7 @@ public class RandomWorld {
     private static final int WIDTH = 100;
     private static final int HEIGHT = 40;
 
-    private static final long SEED = 287223;
+    private static final long SEED = 287323;
     private static final Random RANDOM = new Random(SEED);
 
     /**
@@ -147,6 +147,30 @@ public class RandomWorld {
      */
     private static Position newFocus(Position exit) {
         return realExit(realExit(realExit(exit)));
+    }
+
+    private static RoomUnit initialization(long seed, TETile[][] world, Position focus, int tries,
+                                               PriorityQueue exitsQueue) {
+        int randomNum = (int) (seed % 3);
+        RoomUnit newObject;
+        if (randomNum < 1) {
+            newObject = generateRoom(seed, focus);
+        }else {
+            newObject = generateHallway(seed, focus);
+        }
+        newObject.setFocus(focus);
+        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
+            if (tries > 3) {
+                return null;
+            }
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
+        } else {
+            newObject.generate(world);
+            for (Position exit : newObject.getExits()) {
+                exitsQueue.add(exit);
+            }
+        }
+        return newObject;
     }
 
     /**

@@ -2,10 +2,12 @@ package byow.Core;
 
 //this is actually a focus.
 
+import java.util.Iterator;
+
 /**
  * A position (x, y) on the map.
  */
-public class Position {
+public class Position implements Iterable {
     public int x;
     public int y;
     public int direction;
@@ -37,4 +39,10 @@ public class Position {
     public int getDirection() {
         return direction;
     }
+
+    @Override
+    public Iterator iterator() {
+        return null;
+    }
+
 }

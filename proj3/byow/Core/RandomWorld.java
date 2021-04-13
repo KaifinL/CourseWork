@@ -51,9 +51,6 @@ public class RandomWorld {
             Position exit = exitsQueue.poll();
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
                     world, newFocus(exit), 1, exitsQueue);
-            if (child != null) {
-                child.generate(world);
-            }
             counter += 1;
         }
         //generateWorld(pseudoSeed, world, randomFocus());

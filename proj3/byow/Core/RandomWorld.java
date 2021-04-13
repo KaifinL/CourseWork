@@ -44,8 +44,7 @@ public class RandomWorld {
         }
         Position initialFocus = randomFocus(pseudoSeed);
         initialFocus.setDirection();
-        RoomUnit r = initialization(pseudoSeed, world, initialFocus,
-                1, exitsQueue);
+        RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
         int counter = 0;
         while (counter < 50){
             Position exit = exitsQueue.poll();
@@ -151,22 +150,12 @@ public class RandomWorld {
         return realExit(realExit(realExit(exit)));
     }
 
-    private static RoomUnit initialization(long seed, TETile[][] world, Position focus, int tries,
-                                               PriorityQueue exitsQueue) {
-        Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
-        RoomUnit newObject = generateHallway(seed, focus);
-        newObject.setFocus(focus);
-        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            if (tries > 6) {
-                return null;
-            }
-            getOrigin.changeDirection();
-            newObject = initialization(RANDOM.nextInt((int) seed), world, getOrigin, tries + 1, exitsQueue);
-        } else {
-            newObject.generate(world);
-            for (Position exit : newObject.getExits()) {
-                exitsQueue.add(exit);
-            }
+    private static RoomUnit initialization(TETile[][] world,long seed, PriorityQueue exitsQueue) {
+        Position focus = new Position(50, 20, 0);
+        RoomUnit newObject = generateRoom(seed, focus);
+        newObject.generate(world);
+        for (Position exit : newObject.getExits()) {
+            exitsQueue.add(exit);
         }
         return newObject;
     }

@@ -13,7 +13,7 @@ public class RandomWorld {
     private static final int WIDTH = 100;
     private static final int HEIGHT = 40;
 
-    private static final long SEED = 287230;
+    private static final long SEED = 28720;
     private static final Random RANDOM = new Random(SEED);
 
     /**

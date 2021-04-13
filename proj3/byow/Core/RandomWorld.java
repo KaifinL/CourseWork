@@ -92,7 +92,7 @@ public class RandomWorld {
         }
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            if (tries > 6) {
+            if (tries > 10) {
                 return null;
             }
             newObject = randomlyGeneration(seed, world, getOrigin, tries + 1, exitsQueue);

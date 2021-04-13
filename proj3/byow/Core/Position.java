@@ -43,7 +43,7 @@ public class Position implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return this.hashCode() - o.hashCode();
+        return this.x;
     }
 
 }

@@ -42,7 +42,9 @@ public class RandomWorld {
                 world[x][y] = Tileset.NOTHING;
             }
         }
-        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed),
+        Position initialFocus = randomFocus(pseudoSeed);
+        initialFocus.setDirection();
+        RoomUnit r = initialization(pseudoSeed, world, initialFocus,
                 1, exitsQueue);
         int counter = 0;
         while (counter < 50){
@@ -151,18 +153,13 @@ public class RandomWorld {
 
     private static RoomUnit initialization(long seed, TETile[][] world, Position focus, int tries,
                                                PriorityQueue exitsQueue) {
-        int randomNum = (int) (seed % 3);
-        RoomUnit newObject;
-        if (randomNum < 1) {
-            newObject = generateRoom(seed, focus);
-        }else {
-            newObject = generateHallway(seed, focus);
-        }
+        RoomUnit newObject = generateHallway(seed, focus);
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
             if (tries > 3) {
                 return null;
             }
+            focus.changeDirection();
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);

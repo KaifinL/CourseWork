@@ -79,6 +79,7 @@ public class RandomWorld {
      */
     private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries,
                                                PriorityQueue exitsQueue) {
+        Position getFocus = focus;
         int randomNum = (int) (seed % 3);
         RoomUnit newObject;
         if (randomNum < 2) {
@@ -91,7 +92,7 @@ public class RandomWorld {
             if (tries > 3) {
                 return null;
             }
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, getFocus, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {

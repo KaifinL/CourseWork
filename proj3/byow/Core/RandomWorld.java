@@ -77,8 +77,8 @@ public class RandomWorld {
             newObject = generateHallway(seed, focus);
         }
         newObject.setFocus(focus);
-        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
+        if (!newObject.checkIndexError(world) && !newObject.checkOverlap(world)) {
+            newObject.generate(world);
         }
         // add all the exits given by exits to the queue.
         newObject.generate(world);

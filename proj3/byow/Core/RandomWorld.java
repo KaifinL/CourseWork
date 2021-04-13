@@ -44,7 +44,7 @@ public class RandomWorld {
         }
         Position initialFocus = randomFocus(pseudoSeed);
         initialFocus.setDirection();
-        RoomUnit r = initialization(pseudoSeed, world, initialFocus,
+        RoomUnit r = randomlyGeneration(pseudoSeed, world, initialFocus,
                 1, exitsQueue);
         int counter = 0;
         while (counter < 50){

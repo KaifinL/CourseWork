@@ -42,17 +42,13 @@ public class RandomWorld {
                 world[x][y] = Tileset.NOTHING;
             }
         }
-        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed),
+        RoomUnit r = randomlyGeneration2(pseudoSeed, world, randomFocus(pseudoSeed),
                 1, exitsQueue);
         int counter = 0;
         while (counter < 16){
             Position exit = exitsQueue.poll();
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
-                    world, newFocus(exit), 1, exitsQueue);
-            if (child != null) {
-                chisel(realExit(exit), world);
-                chisel(realExit(realExit(exit)), world);
-            }
+                    world, newFocus(exit), 1, exitsQueue, exit);
             counter += 1;
         }
         //generateWorld(pseudoSeed, world, randomFocus());
@@ -78,7 +74,7 @@ public class RandomWorld {
      * however, it should return null if attempt more than 3 times.
      */
     private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries,
-                                               PriorityQueue exitsQueue) {
+                                               PriorityQueue exitsQueue, Position exit) {
         int randomNum = (int) (seed % 3);
         RoomUnit newObject;
         if (randomNum < 2) {
@@ -91,11 +87,14 @@ public class RandomWorld {
             if (tries > 3) {
                 return null;
             }
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world,
+                    focus, tries + 1, exitsQueue, exit);
         } else {
             newObject.generate(world);
-            for (Position exit : newObject.getExits()) {
-                exitsQueue.add(exit);
+            chisel(realExit(exit), world);
+            chisel(realExit(realExit(exit)), world);
+            for (Position newExit : newObject.getExits()) {
+                exitsQueue.add(newExit);
             }
         }
         return newObject;
@@ -165,6 +164,31 @@ public class RandomWorld {
     private static Position newFocus(Position exit) {
         return realExit(realExit(realExit(exit)));
     }
+    private static RoomUnit randomlyGeneration2(long seed, TETile[][] world, Position focus, int tries,
+                                               PriorityQueue exitsQueue) {
+        int randomNum = (int) (seed % 3);
+        RoomUnit newObject;
+        if (randomNum < 2) {
+            newObject = generateRoom(seed, focus);
+        }else {
+            newObject = generateHallway(seed, focus);
+        }
+        newObject.setFocus(focus);
+        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
+            if (tries > 3) {
+                return null;
+            }
+            newObject = randomlyGeneration2(RANDOM.nextInt((int) seed), world,
+                    focus, tries + 1, exitsQueue);
+        } else {
+            newObject.generate(world);
+            for (Position newExit : newObject.getExits()) {
+                exitsQueue.add(newExit);
+            }
+        }
+        return newObject;
+    }
+
 
     /**
      * This is used for debugging.

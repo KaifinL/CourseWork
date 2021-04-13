@@ -44,7 +44,6 @@ public class RandomWorld {
         //Index?
         //Overlap?
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed), 1);
-        r.generate(world);
         for (Position exit : exitsQueue){
             chisel(realExit(exit), world);
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit), 1);
@@ -90,6 +89,7 @@ public class RandomWorld {
             }
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1);
         } else {
+            newObject.generate(world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.offer(exit);
             }

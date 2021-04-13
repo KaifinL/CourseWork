@@ -52,8 +52,8 @@ public class RandomWorld {
             if (child != null) {
                 chisel(realExit(exit), world);
                 chisel(realExit(realExit(exit)), world);
-                counter += 1;
             }
+            counter += 1;
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen

@@ -87,8 +87,6 @@ public class RandomWorld {
                 return null;
             }
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1);
-        } else {
-            newObject.generate(world);
         }
         return newObject;
     }

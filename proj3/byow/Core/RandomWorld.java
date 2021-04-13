@@ -79,7 +79,7 @@ public class RandomWorld {
                                                PriorityQueue exitsQueue) {
         int randomNum = (int) (seed % 3);
         RoomUnit newObject;
-        if (randomNum < 2) {
+        if (randomNum < 1) {
             newObject = generateRoom(seed, focus);
         }else {
             newObject = generateHallway(seed, focus);

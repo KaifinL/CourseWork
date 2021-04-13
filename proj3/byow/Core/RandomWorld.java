@@ -56,6 +56,7 @@ public class RandomWorld {
                 child.generate(world);
             }
             counter += 1;
+            exitsQueue.poll(exit);
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
@@ -96,7 +97,7 @@ public class RandomWorld {
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {
-                exitsQueue.offer(exit);
+                exitsQueue.add(exit);
             }
         }
         return newObject;

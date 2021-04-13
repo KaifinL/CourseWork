@@ -154,7 +154,7 @@ public class RandomWorld {
      * @param world
      */
     private static void chisel(Position target, TETile[][] world) {
-        world[target.getX()][target.getY()] = Tileset.FLOOR;
+        world[target.getX()][target.getY()] = Tileset.FLOWER;
     }
 
     /**

@@ -95,7 +95,8 @@ public class RandomWorld {
             if (tries > 3) {
                 return null;
             }
-            newObject = randomlyGeneration(seed, world, getOrigin, tries + 1, exitsQueue);
+            newObject = null;
+            //newObject = randomlyGeneration(seed, world, getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {

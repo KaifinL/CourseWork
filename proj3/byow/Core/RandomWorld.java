@@ -46,11 +46,10 @@ public class RandomWorld {
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed), 1);
         r.generate(world);
         for (Position exit : r.getExits()){
-            System.out.println(exit.getDirection());
             chisel(realExit(exit), world);
-            /**RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit));
-             child.generate(world);
-             break;*/
+            RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit), 1);
+            child.generate(world);
+            break;
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
@@ -71,12 +70,13 @@ public class RandomWorld {
      * @param seed nothing special here
      * @param world the whole board this should not be changed
      * @param focus this should be changed as you might use recursion.You should pass the exit position to it.
-     * @return just for a better use of recursion in case there is an IndexError or overloadError.
+     * @return generally return a random room or hallway
+     * however, it should return null if attempt more than 3 times.
      */
     private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries) {
-        double randomNum = Math.random();
+        int randomNum = (int) (seed % 3);
         RoomUnit newObject;
-        if (randomNum < 0.8) {
+        if (randomNum < 2) {
             newObject = generateRoom(seed, focus);
         }else {
             newObject = generateHallway(seed, focus);

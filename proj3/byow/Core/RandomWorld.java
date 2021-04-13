@@ -82,7 +82,7 @@ public class RandomWorld {
      */
     private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries,
                                                PriorityQueue exitsQueue) {
-        Position getFocus = focus;
+        Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (seed % 3);
         RoomUnit newObject;
         if (randomNum < 2) {
@@ -95,7 +95,7 @@ public class RandomWorld {
             if (tries > 3) {
                 return null;
             }
-            newObject = null;
+            newObject = randomlyGeneration(seed, world, getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {
@@ -104,27 +104,6 @@ public class RandomWorld {
         }
         return newObject;
     }
-
-    /**
-     * the reason why I create this method is to avoid writing to many codes in one method.
-     * Therefore, the parameters and the meaning are all the same as in the previous method.
-     * @param seed
-     * @param world
-     * @param focus
-     * here I want to use a recursion since I think it will be more convenient to get the focus;
-
-    private static void generateWorld(long seed, TETile[][] world, Position focus) {
-        double complexity = 0;
-        RoomUnit r = randomlyGeneration(seed, world, focus, 1);
-        long newSeed = RANDOM.nextInt((int) seed);
-        while (complexity < 0.75) {
-            Position currExit = exitsQueue.poll();
-            newSeed = RANDOM.nextInt((int) newSeed);
-            RoomUnit newRoom = randomlyGeneration(newSeed, world, realExit(currExit), 1);
-            complexity += (double) newRoom.getSize() / 50;
-        }
-    }
-    */
 
     /**
      * this function is to return the focus of a new room

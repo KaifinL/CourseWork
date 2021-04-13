@@ -89,6 +89,7 @@ public class RandomWorld {
                 return null;
             }
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1);
+        } else {
             for (Position exit : newObject.getExits()) {
                 exitsQueue.offer(exit);
             }

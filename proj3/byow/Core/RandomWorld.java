@@ -48,7 +48,9 @@ public class RandomWorld {
         for (Position exit : r.getExits()){
             chisel(realExit(exit), world);
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit), 1);
-            child.generate(world);
+            if (child != null) {
+                child.generate(world);
+            }
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
@@ -86,6 +88,9 @@ public class RandomWorld {
                 return null;
             }
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1);
+            for (Position exit : newObject.getExits()) {
+                exitsQueue.offer(exit);
+            }
         }
         return newObject;
     }

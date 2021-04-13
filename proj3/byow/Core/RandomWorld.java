@@ -43,7 +43,7 @@ public class RandomWorld {
         }
         //Index?
         //Overlap?
-        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed));
+        RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed), 1);
         r.generate(world);
         for (Position exit : r.getExits()){
             System.out.println(exit.getDirection());
@@ -73,7 +73,7 @@ public class RandomWorld {
      * @param focus this should be changed as you might use recursion.You should pass the exit position to it.
      * @return just for a better use of recursion in case there is an IndexError or overloadError.
      */
-    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus) {
+    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries) {
         double randomNum = Math.random();
         RoomUnit newObject;
         if (randomNum < 0.8) {
@@ -83,7 +83,10 @@ public class RandomWorld {
         }
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus);
+            if (tries > 3) {
+                return null;
+            }
+            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1);
         } else {
             newObject.generate(world);
         }
@@ -100,12 +103,12 @@ public class RandomWorld {
      */
     private static void generateWorld(long seed, TETile[][] world, Position focus) {
         double complexity = 0;
-        RoomUnit r = randomlyGeneration(seed, world, focus);
+        RoomUnit r = randomlyGeneration(seed, world, focus, 1);
         long newSeed = RANDOM.nextInt((int) seed);
         while (complexity < 0.75) {
             Position currExit = exitsQueue.poll();
             newSeed = RANDOM.nextInt((int) newSeed);
-            RoomUnit newRoom = randomlyGeneration(newSeed, world, realExit(currExit));
+            RoomUnit newRoom = randomlyGeneration(newSeed, world, realExit(currExit), 1);
             complexity += (double) newRoom.getSize() / 50;
         }
     }

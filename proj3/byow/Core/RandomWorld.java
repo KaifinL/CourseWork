@@ -160,7 +160,7 @@ public class RandomWorld {
                 return null;
             }
             focus.changeDirection();
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
+            newObject = initialization(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {

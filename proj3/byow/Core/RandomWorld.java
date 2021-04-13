@@ -42,8 +42,6 @@ public class RandomWorld {
                 world[x][y] = Tileset.NOTHING;
             }
         }
-        //Index?
-        //Overlap?
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed),
                 1, exitsQueue);
         int counter = 0;
@@ -51,6 +49,10 @@ public class RandomWorld {
             Position exit = exitsQueue.poll();
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
                     world, newFocus(exit), 1, exitsQueue);
+            if (child != null) {
+                chisel(realExit(exit), world);
+                chisel(realExit(realExit(exit)), world);
+            }
             counter += 1;
         }
         //generateWorld(pseudoSeed, world, randomFocus());
@@ -152,7 +154,7 @@ public class RandomWorld {
      * @param world
      */
     private static void chisel(Position target, TETile[][] world) {
-        world[target.getX()][target.getY()] = Tileset.FLOWER;
+        world[target.getX()][target.getY()] = Tileset.NOTHING;
     }
 
     /**

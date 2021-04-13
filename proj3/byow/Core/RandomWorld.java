@@ -119,13 +119,17 @@ public class RandomWorld {
         int direction = exit.getDirection();
         switch (direction) {
             case 0: m = 0;
-                      n = 1;
+                    n = 1;
+                    break;
             case 1: m = 0;
-                      n = -1;
+                    n = -1;
+                    break;
             case 2: m = -1;
-                      n = 0;
+                    n = 0;
+                    break;
             default: m = 1;
-                      n = 0;
+                     n = 0;
+                     break;
         }
         Position returnFocus = new Position(exit.getX() + m, exit.getY() + n, direction);
         return returnFocus;

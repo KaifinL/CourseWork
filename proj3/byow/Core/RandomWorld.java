@@ -14,7 +14,7 @@ public class RandomWorld {
     private static final int HEIGHT = 40;
 
     private static final long SEED = 287223;
-    static Queue<Position> exitsQueue = new PriorityQueue<>();
+    static PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
     private static final Random RANDOM = new Random(SEED);
 
     /**

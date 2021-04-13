@@ -5,6 +5,7 @@ import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ public class RandomWorld {
     private static final int HEIGHT = 40;
 
     private static final long SEED = 287223;
-    static Queue<Position> exitsQueue = new LinkedList<>();
+    static Queue<Position> exitsQueue = new PriorityQueue<>();
     private static final Random RANDOM = new Random(SEED);
 
     /**

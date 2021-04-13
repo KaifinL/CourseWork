@@ -160,10 +160,6 @@ public class RoomUnit {
             world[this.focus.x + this.width][this.focus.y - j] = Tileset.WALL;
         }
         creatExits(this.SEED);
-        for (Position exit : this.exits) {
-            world[exit.getX()][exit.getY()] = Tileset.GRASS;
-        }
-        world[this.focus.getX()][this.focus.getY()] = Tileset.WATER;
     }
 
     /**

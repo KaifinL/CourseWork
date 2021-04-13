@@ -61,11 +61,11 @@ public class RoomUnit {
      * Constructors
      */
     public RoomUnit(long seed) {
-        this(randomEdge(seed), randomEdge(seed + 1), randomDirection(seed), seed);
+        this(randomEdge(seed), randomEdge(seed+1), randomDirection(seed), seed);
     }
 
     public RoomUnit(int direction, long seed) {
-        this(randomEdge(seed), randomEdge(seed + 1), direction, seed);
+        this(randomEdge(seed), randomEdge(seed+1), direction, seed);
     }
 
     public RoomUnit(int width, int length, int direction, long seed) {
@@ -81,7 +81,10 @@ public class RoomUnit {
      * Check if creating the room will cause out of bound error.
      * This method will also shift focus or exchange width and length
      * ro get the Down version.
-     * return true if there is a error return false otherwise
+     * question here:
+     * 1. still the parameter problem it is really hard to pass the created
+     * Room to this method I will need to firstly convert the room into a 2D world.
+     * 2. the checkIn series should be set private?(style problem not a big deal)
      */
     public boolean checkIndexError(TETile[][] world){
         switch (this.direction) {
@@ -94,7 +97,7 @@ public class RoomUnit {
 
 
 
-    private boolean checkIndexErrorDown(TETile[][] world){
+    public boolean checkIndexErrorDown(TETile[][] world){
         int xLow = this.focus.x - 1;
         int xHigh = this.focus.x + this.width;
         int yLow = this.focus.y - this.length;
@@ -106,18 +109,18 @@ public class RoomUnit {
         return false;
     }
 
-    private boolean checkIndexErrorUp(TETile[][] world){
+    public boolean checkIndexErrorUp(TETile[][] world){
         this.focus.changePos(0,this.length - 1);
         return checkIndexErrorDown(world);
     }
 
-    private boolean checkIndexErrorLeft(TETile[][] world) {
+    public boolean checkIndexErrorLeft(TETile[][] world) {
         this.focus.changePos(1 - this.length,0);
         this.changeLenWid();
         return checkIndexErrorDown(world);
     }
 
-    private boolean checkIndexErrorRight(TETile[][] world) {
+    public boolean checkIndexErrorRight(TETile[][] world) {
         this.changeLenWid();
         return checkIndexErrorDown(world);
     }
@@ -141,7 +144,6 @@ public class RoomUnit {
 
     /**
      * Generate this random room unit.
-     * this function can work! you only need to pass in the initial board to this function
      */
     public void generate(TETile[][] world) {
         for (int i = 0; i < this.width; i += 1) {
@@ -158,6 +160,10 @@ public class RoomUnit {
             world[this.focus.x + this.width][this.focus.y - j] = Tileset.WALL;
         }
         creatExits(this.SEED);
+        for (Position exit : this.exits) {
+            world[exit.getX()][exit.getY()] = Tileset.GRASS;
+        }
+        world[this.focus.getX()][this.focus.getY()] = Tileset.WATER;
     }
 
     /**
@@ -188,22 +194,20 @@ public class RoomUnit {
      */
     public Position creatOneExit(int direction, long seed) {
         Random r = new Random(seed);
-        Position exit;
         switch (direction) {
             case 0:
-                exit = new Position(this.focus.x + r.nextInt(this.width),
+                return new Position(this.focus.x + r.nextInt(this.width),
                         this.focus.y, direction);
             case 1:
-                exit = new Position(this.focus.x + r.nextInt(this.width),
+                return new Position(this.focus.x + r.nextInt(this.width),
                         this.focus.y - this.length + 1, direction);
             case 2:
-                exit = new Position(this.focus.x,
+                return new Position(this.focus.x,
                         this.focus.y - r.nextInt(this.length), direction);
             default:
-                exit = new Position(this.focus.x + this.width - 1,
+                return new Position(this.focus.x + this.width - 1,
                         this.focus.y - r.nextInt(this.length), direction);
         }
-        return exit;
     }
 
     public Position[] getExits() {

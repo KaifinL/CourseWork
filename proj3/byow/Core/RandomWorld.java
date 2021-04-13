@@ -153,14 +153,15 @@ public class RandomWorld {
 
     private static RoomUnit initialization(long seed, TETile[][] world, Position focus, int tries,
                                                PriorityQueue exitsQueue) {
+        Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         RoomUnit newObject = generateHallway(seed, focus);
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
             if (tries > 6) {
                 return null;
             }
-            focus.changeDirection();
-            newObject = initialization(RANDOM.nextInt((int) seed), world, focus, tries + 1, exitsQueue);
+            getOrigin.changeDirection();
+            newObject = initialization(RANDOM.nextInt((int) seed), world, getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {

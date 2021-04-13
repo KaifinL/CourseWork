@@ -7,7 +7,7 @@ import java.util.Iterator;
 /**
  * A position (x, y) on the map.
  */
-public class Position implements Iterable {
+public class Position implements Comparable {
     public int x;
     public int y;
     public int direction;
@@ -40,9 +40,14 @@ public class Position implements Iterable {
         return direction;
     }
 
+
     @Override
-    public Iterator iterator() {
-        return null;
+    public int compareTo(Object o) {
+        return this.hashCode() - o.hashCode();
+    }
+
+    private int averageFocus() {
+        return (this.getX() + this.getY()) / 2;
     }
 
 }

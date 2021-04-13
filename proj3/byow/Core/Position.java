@@ -46,8 +46,4 @@ public class Position implements Comparable {
         return this.hashCode() - o.hashCode();
     }
 
-    private int averageFocus() {
-        return (this.getX() + this.getY()) / 2;
-    }
-
 }

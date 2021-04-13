@@ -13,7 +13,7 @@ public class RandomWorld {
     private static final int HEIGHT = 40;
 
     private static final long SEED = 287223;
-    static Queue<Position> exitsQueue = new LinkedList<Position>();
+    static Queue<Position> exitsQueue = new LinkedList<>();
     private static final Random RANDOM = new Random(SEED);
 
     /**
@@ -49,7 +49,6 @@ public class RandomWorld {
             chisel(realExit(exit), world);
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit), 1);
             child.generate(world);
-            break;
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen

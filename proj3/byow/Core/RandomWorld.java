@@ -45,12 +45,13 @@ public class RandomWorld {
         //Overlap?
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed), 1);
         r.generate(world);
-        for (Position exit : r.getExits()){
+        for (Position exit : exitsQueue){
             chisel(realExit(exit), world);
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED), world, newFocus(exit), 1);
             if (child != null) {
                 child.generate(world);
             }
+            break;
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen

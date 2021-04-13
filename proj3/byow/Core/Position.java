@@ -46,4 +46,11 @@ public class Position implements Comparable {
         return this.x;
     }
 
+    public void setDirection() {
+        this.direction = 0;
+    }
+
+    public void changeDirection() {
+        this.direction += 1;
+    }
 }

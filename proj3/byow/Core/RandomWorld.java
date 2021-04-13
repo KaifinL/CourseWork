@@ -45,15 +45,15 @@ public class RandomWorld {
         RoomUnit r = randomlyGeneration(pseudoSeed, world, randomFocus(pseudoSeed),
                 1, exitsQueue);
         int counter = 0;
-        while (counter < 16){
+        while (counter < 30){
             Position exit = exitsQueue.poll();
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
                     world, newFocus(exit), 1, exitsQueue);
             if (child != null) {
                 chisel(realExit(exit), world);
                 chisel(realExit(realExit(exit)), world);
+                counter += 1;
             }
-            counter += 1;
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen

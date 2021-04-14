@@ -53,16 +53,18 @@ public class MemoryGame {
         StdDraw.clear(Color.BLACK);
         StdDraw.enableDoubleBuffering();
 
-        Random r = new Random(seed);
+        rand = new Random(seed);
     }
 
     public String generateRandomString(int n) {
+        rand = new Random(789238);
         String returnStuff = new String();
         for (int i = 0; i < n; i++) {
-            
+            int p = rand.nextInt(CHARACTERS.length);
+            returnStuff += CHARACTERS[p];
         }
+        return returnStuff;
         //TODO: Generate random string of letters of length n
-        return null;
     }
 
     public void drawFrame(String s) {

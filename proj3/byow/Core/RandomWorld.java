@@ -41,7 +41,7 @@ public class RandomWorld {
             }
         }
         Position initialFocus = randomFocus(pseudoSeed);
-        initialFocus.setDirection();
+        //initialFocus.setDirection();
         RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
         int counter = 0;
         // generate the rooms by exits
@@ -61,7 +61,7 @@ public class RandomWorld {
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
-        ter.renderFrame(world);
+        //ter.renderFrame(world);
         return world;
     }
 

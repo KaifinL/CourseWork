@@ -13,7 +13,7 @@ public class RandomWorld {
     private static final int WIDTH = 100;
     private static final int HEIGHT = 40;
 
-    private static final long SEED = 2872239;
+    private static long SEED = 2872239;
     private static final Random RANDOM = new Random(SEED);
 
     /**
@@ -28,7 +28,8 @@ public class RandomWorld {
     /**
      * This is just skeleton code.
      */
-    private static void worldGenerator() {
+    public static TETile[][] worldGenerator(long seed) {
+        SEED = seed;
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         long pseudoSeed = SEED;
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
@@ -62,7 +63,7 @@ public class RandomWorld {
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
-
+        return world;
     }
 
     private static RoomUnit generateRoom(long seed, Position focus) {
@@ -164,8 +165,8 @@ public class RandomWorld {
     /**
      * This is used for debugging.
      */
-    public static void main(String[] args) {
-        worldGenerator();
-    }
+    //public static void main(String[] args) {
+        //worldGenerator();
+    //}
 
 }

@@ -80,7 +80,6 @@ public class RandomWorld {
 
     /**
      * this method simply return a room or a hallway randomly
-     * @param seed nothing special here
      * @param world the whole board this should not be changed
      * @return generally return a random room or hallway
      * however, it should return null if attempt more than 3 times.

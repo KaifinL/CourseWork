@@ -29,7 +29,7 @@ public class RandomWorld {
      * This is just skeleton code.
      */
     public static TETile[][] worldGenerator(long seed) {
-        SEED = seed;
+        SEED = turnPositive(seed);
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         long pseudoSeed = SEED;
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT

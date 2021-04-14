@@ -50,6 +50,7 @@ public class RandomWorld {
             if (exit == null) {
                 break;
             }
+            r.reviseSeed();
             RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.getSEED()),
                     world, newFocus(exit), 1, exitsQueue);
             if (child != null) {

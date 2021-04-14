@@ -7,8 +7,8 @@ import java.util.Random;
  * Abstractly speaking, hallway is a kind of room.
  */
 public class HallwayUnit extends RoomUnit {
-    public static final int scope1 = 12;
-    public static final int scope2 = 12;
+    public static final int SCOPE1 = 12;
+    public static final int SCOPE2 = 12;
 
 
     /**
@@ -33,7 +33,7 @@ public class HallwayUnit extends RoomUnit {
      */
     public static int randomWidth(long seed) {
         Random r = new Random(seed);
-        return 1 + r.nextInt(scope1);
+        return 1 + r.nextInt(SCOPE1);
     }
 
     /**
@@ -41,7 +41,7 @@ public class HallwayUnit extends RoomUnit {
      */
     public static int randomLength(long seed) {
         Random r = new Random(seed);
-        return 2 + r.nextInt(scope2);
+        return 2 + r.nextInt(SCOPE2);
     }
 
 }

@@ -51,6 +51,6 @@ public class Engine {
     }
 
     public static void main(String[] args) {
-        interactWithInputString("n-9999s");
+        interactWithInputString("n5197880843569031643s");
     }
 }

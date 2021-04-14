@@ -210,6 +210,9 @@ public class RoomUnit {
         } else if (this.SEED == 0) {
             this.SEED = 28973;
         }
+        while (this.SEED > 2147483647) {
+            this.SEED = this.SEED / 100;
+        }
     }
 
     public Position[] getExits() {

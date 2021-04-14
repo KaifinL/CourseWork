@@ -10,12 +10,17 @@ public class RandomWorld {
     private static final int WIDTH = 100;
     private static final int HEIGHT = 40;
 
-    private static long SEED = 2872239;
-    private static final Random RANDOM = new Random(SEED);
+    private long seed;
+    private Random random;
 
     /**
      * Return a random location on the map.
      */
+
+    public RandomWorld(long seed) {
+        this.seed = seed;
+        this.random = new Random(seed);
+    }
 
     private static Position randomFocus(long seed) {
         Random r = new Random(seed);
@@ -25,10 +30,10 @@ public class RandomWorld {
     /**
      * This is just skeleton code.
      */
-    public static TETile[][] worldGenerator(long seed) {
-        SEED = turnPositive(seed);
+    public TETile[][] worldGenerator() {
+        long seed2 = turnPositive(this.seed);
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
-        long pseudoSeed = SEED;
+        long pseudoSeed = seed2;
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
         //ter.initialize(WIDTH, HEIGHT);
@@ -51,7 +56,7 @@ public class RandomWorld {
                 break;
             }
             r.reviseSeed();
-            RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.getSEED()),
+            RoomUnit child = randomlyGeneration(this.random.nextInt((int) r.getSEED()),
                     world, newFocus(exit), 1, exitsQueue);
             if (child != null) {
                 chisel(realExit(exit), world);
@@ -80,7 +85,7 @@ public class RandomWorld {
      * @return generally return a random room or hallway
      * however, it should return null if attempt more than 3 times.
      */
-    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus,
+    private RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus,
                                                int tries, PriorityQueue exitsQueue) {
         long originSeed = turnPositive(seed);
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
@@ -96,7 +101,7 @@ public class RandomWorld {
             if (tries > 6) {
                 return null;
             }
-            newObject = randomlyGeneration(RANDOM.nextInt((int) originSeed), world,
+            newObject = randomlyGeneration(this.random.nextInt((int) originSeed), world,
                     getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);

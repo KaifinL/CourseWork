@@ -3,10 +3,7 @@ package byow.Core;
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
-
-import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Random;
 
 public class RandomWorld {
@@ -48,12 +45,12 @@ public class RandomWorld {
         RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
         int counter = 0;
         // generate the rooms by exits
-        while (counter < 50){
+        while (counter < 50) {
             Position exit = exitsQueue.poll();
             if (exit == null) {
                 break;
             }
-            RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.SEED),
+            RoomUnit child = randomlyGeneration(RANDOM.nextInt((int) r.getSEED()),
                     world, newFocus(exit), 1, exitsQueue);
             if (child != null) {
                 chisel(realExit(exit), world);
@@ -79,19 +76,18 @@ public class RandomWorld {
      * this method simply return a room or a hallway randomly
      * @param seed nothing special here
      * @param world the whole board this should not be changed
-     * @param focus this should be changed as you might use recursion.You should pass the exit position to it.
      * @return generally return a random room or hallway
      * however, it should return null if attempt more than 3 times.
      */
-    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries,
-                                               PriorityQueue exitsQueue) {
+    private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus,
+                                               int tries, PriorityQueue exitsQueue) {
         long originSeed = turnPositive(seed);
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (originSeed % 3);
         RoomUnit newObject;
         if (randomNum < 1 && tries < 2) {
             newObject = generateRoom(originSeed, focus);
-        }else {
+        } else {
             newObject = generateHallway(originSeed, focus);
         }
         newObject.setFocus(focus);
@@ -99,7 +95,8 @@ public class RandomWorld {
             if (tries > 6) {
                 return null;
             }
-            newObject = randomlyGeneration(RANDOM.nextInt((int) originSeed), world, getOrigin, tries + 1, exitsQueue);
+            newObject = randomlyGeneration(RANDOM.nextInt((int) originSeed), world,
+                    getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {
@@ -153,7 +150,7 @@ public class RandomWorld {
         return realExit(realExit(realExit(exit)));
     }
 
-    private static RoomUnit initialization(TETile[][] world,long seed, PriorityQueue exitsQueue) {
+    private static RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
         Position focus = new Position(50, 20, 0);
         RoomUnit newObject = generateRoom(seed, focus);
         newObject.setFocus(focus);

@@ -46,7 +46,7 @@ public class Engine {
         // See proj3.byow.InputDemo for a demo of how you can make a nice clean interface
         // that works for many different input types.
         String realSeed = (input.substring(1, input.length() - 1));
-        TETile[][] finalWorldFrame = RandomWorld.worldGenerator(Integer.parseLong(realSeed));
+        TETile[][] finalWorldFrame = RandomWorld.worldGenerator(Long.parseLong(realSeed));
         return finalWorldFrame;
     }
 

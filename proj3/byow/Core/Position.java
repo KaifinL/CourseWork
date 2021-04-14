@@ -2,8 +2,6 @@ package byow.Core;
 
 //this is actually a focus.
 
-import java.util.Iterator;
-
 /**
  * A position (x, y) on the map.
  */

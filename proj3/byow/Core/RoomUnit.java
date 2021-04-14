@@ -185,24 +185,24 @@ public class RoomUnit {
 
     /**
      * Create one exit.
-     * @param direc Indicate which side the exit lies on.
+     * @param direction Indicate which side the exit lies on.
      * @param seed
      */
-    public Position creatOneExit(int direc, long seed) {
+    public Position creatOneExit(int direction, long seed) {
         Random r = new Random(seed);
         switch (direction) {
             case 0:
                 return new Position(this.focus.x + r.nextInt(this.width),
-                        this.focus.y, direc);
+                        this.focus.y, direction);
             case 1:
                 return new Position(this.focus.x + r.nextInt(this.width),
-                        this.focus.y - this.length + 1, direc);
+                        this.focus.y - this.length + 1, direction);
             case 2:
                 return new Position(this.focus.x,
-                        this.focus.y - r.nextInt(this.length), direc);
+                        this.focus.y - r.nextInt(this.length), direction);
             default:
                 return new Position(this.focus.x + this.width - 1,
-                        this.focus.y - r.nextInt(this.length), direc);
+                        this.focus.y - r.nextInt(this.length), direction);
         }
     }
 

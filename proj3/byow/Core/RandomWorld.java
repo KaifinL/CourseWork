@@ -31,7 +31,7 @@ public class RandomWorld {
         long pseudoSeed = SEED;
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
-        ter.initialize(WIDTH, HEIGHT);
+        //ter.initialize(WIDTH, HEIGHT);
 
         // initialize tiles
         TETile[][] world = new TETile[WIDTH][HEIGHT];

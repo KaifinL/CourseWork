@@ -7,8 +7,8 @@ import java.util.PriorityQueue;
 import java.util.Random;
 
 public class RandomWorld {
-    private static final int WIDTH = 100;
-    private static final int HEIGHT = 40;
+    private static final int WIDTH = 80;
+    private static final int HEIGHT = 30;
 
     private long seed;
     private Random random;

@@ -204,6 +204,14 @@ public class RoomUnit {
         }
     }
 
+    public void reviseSeed() {
+        if (this.SEED < 0) {
+            this.SEED = -this.SEED;
+        } else if (this.SEED == 0) {
+            this.SEED = 28973;
+        }
+    }
+
     public Position[] getExits() {
         return exits;
     }

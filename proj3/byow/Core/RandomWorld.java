@@ -85,9 +85,9 @@ public class RandomWorld {
      * @return generally return a random room or hallway
      * however, it should return null if attempt more than 3 times.
      */
-    private RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus,
+    private RoomUnit randomlyGeneration(long seed2, TETile[][] world, Position focus,
                                                int tries, PriorityQueue exitsQueue) {
-        long originSeed = turnPositive(seed);
+        long originSeed = turnPositive(seed2);
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (originSeed % 3);
         RoomUnit newObject;

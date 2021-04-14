@@ -47,6 +47,7 @@ public class RandomWorld {
         initialFocus.setDirection();
         RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
         int counter = 0;
+        // generate the rooms by exits
         while (counter < 50){
             Position exit = exitsQueue.poll();
             if (exit == null) {

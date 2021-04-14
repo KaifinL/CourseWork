@@ -87,14 +87,14 @@ public class RandomWorld {
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (seed % 3);
         RoomUnit newObject;
-        if (randomNum < 1) {
+        if (randomNum < 1 && tries < 3) {
             newObject = generateRoom(seed, focus);
         }else {
             newObject = generateHallway(seed, focus);
         }
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            if (tries > 3) {
+            if (tries > 6) {
                 return null;
             }
             newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, getOrigin, tries + 1, exitsQueue);

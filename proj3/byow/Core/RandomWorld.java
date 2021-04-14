@@ -84,20 +84,21 @@ public class RandomWorld {
      */
     private static RoomUnit randomlyGeneration(long seed, TETile[][] world, Position focus, int tries,
                                                PriorityQueue exitsQueue) {
+        long originSeed = turnPositive(seed);
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
-        int randomNum = (int) (seed % 3);
+        int randomNum = (int) (originSeed % 3);
         RoomUnit newObject;
         if (randomNum < 1 && tries < 2) {
-            newObject = generateRoom(seed, focus);
+            newObject = generateRoom(originSeed, focus);
         }else {
-            newObject = generateHallway(seed, focus);
+            newObject = generateHallway(originSeed, focus);
         }
         newObject.setFocus(focus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
-            if (tries > 4) {
+            if (tries > 6) {
                 return null;
             }
-            newObject = randomlyGeneration(RANDOM.nextInt((int) seed), world, getOrigin, tries + 1, exitsQueue);
+            newObject = randomlyGeneration(RANDOM.nextInt((int) originSeed), world, getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
             for (Position exit : newObject.getExits()) {
@@ -160,6 +161,16 @@ public class RandomWorld {
             exitsQueue.add(exit);
         }
         return newObject;
+    }
+
+    private static long turnPositive(long seed) {
+        if (seed < 0) {
+            return -seed;
+        }
+        if (seed == 0) {
+            return 28739;
+        }
+        return seed;
     }
 
     /**

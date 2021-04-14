@@ -54,10 +54,13 @@ public class MemoryGame {
         StdDraw.enableDoubleBuffering();
 
         Random r = new Random(seed);
-        //TODO: Initialize random number generator
     }
 
     public String generateRandomString(int n) {
+        String returnStuff = new String();
+        for (int i = 0; i < n; i++) {
+            
+        }
         //TODO: Generate random string of letters of length n
         return null;
     }

@@ -37,7 +37,7 @@ public class Engine {
      * @param input the input string to feed to your program
      * @return the 2D TETile[][] representing the state of the world
      */
-    public TETile[][] interactWithInputString(String input) {
+    public static TETile[][] interactWithInputString(String input) {
         // TODO: Fill out this method so that it run the engine using the input
         // passed in as an argument, and return a 2D tile representation of the
         // world that would have been drawn if the same inputs had been given
@@ -48,5 +48,9 @@ public class Engine {
 
         TETile[][] finalWorldFrame = RandomWorld.worldGenerator(Integer.parseInt(input));
         return finalWorldFrame;
+    }
+
+    public static void main(String[] args) {
+        interactWithInputString("12345");
     }
 }

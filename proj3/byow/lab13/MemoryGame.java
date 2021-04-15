@@ -114,7 +114,8 @@ public class MemoryGame {
         String roundNumber = "Round: " + n;
         MemoryGame m = new MemoryGame(width, height, SEED);
         m.drawFrame(roundNumber);
-        
+        String randomGenerate = generateRandomString(n);
+        m.drawFrame(randomGenerate);
     }
 
 

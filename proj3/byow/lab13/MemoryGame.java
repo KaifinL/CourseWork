@@ -80,7 +80,10 @@ public class MemoryGame {
     }
 
     public void flashSequence(String letters) {
-        
+        for (int i = 0; i < letters.length(); i++) {
+            String letter = letters.substring(i, i + 1);
+            drawFrame(letter);
+        }
         //TODO: Display each character in letters, making sure to blank the screen between letters
     }
 

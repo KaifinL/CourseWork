@@ -80,6 +80,7 @@ public class MemoryGame {
     }
 
     public void flashSequence(String letters) {
+        
         //TODO: Display each character in letters, making sure to blank the screen between letters
     }
 

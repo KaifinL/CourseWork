@@ -88,6 +88,7 @@ public class MemoryGame {
     }
 
     public String solicitNCharsInput(int n) {
+
         //TODO: Read n letters of player input
         return null;
     }

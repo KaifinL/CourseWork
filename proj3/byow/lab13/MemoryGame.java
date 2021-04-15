@@ -122,6 +122,7 @@ public class MemoryGame {
         }
         String message = "Game Over! You made it to round:" + n;
         m.drawFrame(message);
+        return false;
     }
 
 

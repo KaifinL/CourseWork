@@ -70,6 +70,7 @@ public class MemoryGame {
     public void drawFrame(String s) {
         StdDraw.clear(Color.BLACK);
         Font font = new Font("Arial", Font.BOLD, 30);
+        StdDraw.setPenColor(Color.WHITE);
         StdDraw.setFont(font);
         StdDraw.text(0.5, 0.5, s);
         StdDraw.show();

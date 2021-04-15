@@ -54,7 +54,7 @@ public class MemoryGame {
         StdDraw.clear(Color.BLACK);
         StdDraw.enableDoubleBuffering();
 
-        rand = new Random(seed);
+        startGame();
     }
 
     public String generateRandomString(int n) {
@@ -105,7 +105,10 @@ public class MemoryGame {
 
     public void startGame() {
         //TODO: Set any relevant variables before the game starts
-
+        int counter = 1;
+        while (rounds(counter)) {
+            counter += 1;
+        }
         //TODO: Establish Engine loop
 
     }

@@ -89,13 +89,16 @@ public class MemoryGame {
 
     public String solicitNCharsInput(int n) {
         int starter = 0;
+        String returnString = "";
         while (starter < n) {
             if (StdDraw.hasNextKeyTyped()) {
-                
+                char curr = StdDraw.nextKeyTyped();
+                returnString += curr;
+                starter += 1;
             }
         }
         //TODO: Read n letters of player input
-        return null;
+        return returnString;
     }
 
     public void startGame() {

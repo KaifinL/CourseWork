@@ -74,7 +74,7 @@ public class MemoryGame {
         StdDraw.setFont(font);
         StdDraw.text(width / 2, height / 2, s);
         StdDraw.show();
-        StdDraw.pause(50);
+        StdDraw.pause(500);
         //TODO: Take the string and display it in the center of the screen
         //TODO: If game is not over, display relevant game information at the top of the screen
     }

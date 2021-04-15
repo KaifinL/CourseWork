@@ -116,6 +116,8 @@ public class MemoryGame {
         m.drawFrame(roundNumber);
         String randomGenerate = generateRandomString(n);
         m.drawFrame(randomGenerate);
+        String catchUser = solicitNCharsInput(n);
+        
     }
 
 

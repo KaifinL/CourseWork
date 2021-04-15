@@ -94,6 +94,7 @@ public class MemoryGame {
             if (StdDraw.hasNextKeyTyped()) {
                 char curr = StdDraw.nextKeyTyped();
                 returnString += curr;
+                drawFrame(returnString);
                 starter += 1;
             }
         }

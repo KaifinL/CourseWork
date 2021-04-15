@@ -27,6 +27,7 @@ public class MemoryGame {
     private static final String[] ENCOURAGEMENT = {"You can do this!", "I believe in you!",
                                                    "You got this!", "You're a star!", "Go Bears!",
                                                    "Too easy for you!", "Wow, so impressive!"};
+    private static final long SEED = 43239;
 
     public static void main(String[] args) {
         if (args.length < 1) {
@@ -109,8 +110,10 @@ public class MemoryGame {
 
     }
 
-    public static void rounds(int n) {
+    public void rounds(int n) {
         String roundNumber = "Round: " + n;
+        MemoryGame m = new MemoryGame(width, height, SEED);
+        m.drawFrame(roundNumber);
         
     }
 

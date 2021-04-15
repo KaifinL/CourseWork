@@ -57,7 +57,7 @@ public class MemoryGame {
     }
 
     public String generateRandomString(int n) {
-        rand = new Random(789238);
+        rand = new Random(2923);
         String returnStuff = new String();
         for (int i = 0; i < n; i++) {
             int p = rand.nextInt(CHARACTERS.length);

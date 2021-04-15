@@ -111,8 +111,7 @@ public class MemoryGame {
 
     public static void rounds(int n) {
         String roundNumber = "Round: " + n;
-        MemoryGame test = new MemoryGame(30, 30, 8962);
-        test.drawFrame(roundNumber);
+        
     }
 
 

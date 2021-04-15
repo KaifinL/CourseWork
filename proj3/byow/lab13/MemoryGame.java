@@ -120,7 +120,8 @@ public class MemoryGame {
         if (randomGenerate.equals(catchUser)) {
             return true;
         }
-        
+        String message = "Game Over! You made it to round:" + n;
+        m.drawFrame(message);
     }
 
 

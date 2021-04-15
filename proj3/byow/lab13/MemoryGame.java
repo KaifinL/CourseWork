@@ -53,8 +53,6 @@ public class MemoryGame {
         StdDraw.setYscale(0, this.height);
         StdDraw.clear(Color.BLACK);
         StdDraw.enableDoubleBuffering();
-
-        startGame();
     }
 
     public String generateRandomString(int n) {
@@ -106,8 +104,12 @@ public class MemoryGame {
     public void startGame() {
         //TODO: Set any relevant variables before the game starts
         int counter = 1;
-        while (rounds(counter)) {
-            counter += 1;
+        while (counter < 10) {
+            if (rounds(counter)) {
+                counter += 1;
+                continue;
+            }
+            break;
         }
         //TODO: Establish Engine loop
 

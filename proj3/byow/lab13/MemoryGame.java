@@ -59,7 +59,8 @@ public class MemoryGame {
         rand = new Random(2923);
         String returnStuff = "";
         for (int i = 0; i < n; i++) {
-            int p = RandomUtils.uniform(rand, 26);
+            Random r = new Random();
+            int p = r.nextInt(26);
             returnStuff += CHARACTERS[p];
         }
         return returnStuff;

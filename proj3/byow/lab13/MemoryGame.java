@@ -110,13 +110,16 @@ public class MemoryGame {
 
     }
 
-    public void rounds(int n) {
+    public boolean rounds(int n) {
         String roundNumber = "Round: " + n;
         MemoryGame m = new MemoryGame(width, height, SEED);
         m.drawFrame(roundNumber);
         String randomGenerate = generateRandomString(n);
         m.drawFrame(randomGenerate);
         String catchUser = solicitNCharsInput(n);
+        if (randomGenerate.equals(catchUser)) {
+            return true;
+        }
         
     }
 

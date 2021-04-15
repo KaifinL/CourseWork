@@ -7,7 +7,6 @@ public class lab13Tests {
     @Test
     public void test1() {
         MemoryGame module1 = new MemoryGame(30, 40, 239872);
-        System.out.println(module1.generateRandomString(7));
         module1.drawFrame("I like you");
     }
 

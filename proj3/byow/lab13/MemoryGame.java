@@ -120,7 +120,7 @@ public class MemoryGame {
         MemoryGame m = new MemoryGame(width, height, SEED);
         m.drawFrame(roundNumber);
         String randomGenerate = generateRandomString(n);
-        m.drawFrame(randomGenerate);
+        flashSequence(randomGenerate);
         String catchUser = solicitNCharsInput(n);
         if (randomGenerate.equals(catchUser)) {
             return true;

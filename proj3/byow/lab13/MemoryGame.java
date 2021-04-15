@@ -72,7 +72,7 @@ public class MemoryGame {
         Font font = new Font("Arial", Font.BOLD, 30);
         StdDraw.setPenColor(Color.WHITE);
         StdDraw.setFont(font);
-        StdDraw.text(0.5, 0.5, s);
+        StdDraw.text(10, 10, s);
         StdDraw.show();
         StdDraw.pause(20);
         //TODO: Take the string and display it in the center of the screen

@@ -83,6 +83,7 @@ public class MemoryGame {
             String letter = letters.substring(i, i + 1);
             drawFrame(letter);
         }
+        drawFrame("");
         //TODO: Display each character in letters, making sure to blank the screen between letters
     }
 

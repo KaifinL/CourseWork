@@ -35,6 +35,7 @@ public class Engine {
                 switch (typed) {
                     case "N":
                         //Start to Create NewWorld
+                        avatar.drawStartTwo();
                         flag = 1;
                         break;
                     case "Q":
@@ -48,6 +49,16 @@ public class Engine {
                 }
             }
         }
+        long realSeed = Long.parseLong(seed);
+        RandomWorld newRandomWorld = new RandomWorld(realSeed);
+        TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
+        Position door = newRandomWorld.getDoor();
+        Position startPos = newRandomWorld.getStartPos();
+        Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
+        avatar.setStartpos(startPos);
+        avatar.setPos(Pos);
+        avatar.setDoor(door);
+        avatar.setWorld(finalWorldFrame);
         avatar.playerInput();
     }
 
@@ -88,10 +99,14 @@ public class Engine {
         int seedNum = String.valueOf(realSeed).length();
         // the string represent"wwwddddaaaaffff"
         String manipulation = input.substring(seedNum + 1);
-        //Position door = newRandomWorld.getDoor();
-        //Position startPos = newRandomWorld.getStartPos();
-        //Position start = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
-        avatar.systemInput("WASD");
+        Position door = newRandomWorld.getDoor();
+        Position startPos = newRandomWorld.getStartPos();
+        Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
+        avatar.setStartpos(startPos);
+        avatar.setPos(Pos);
+        avatar.setDoor(door);
+        avatar.setWorld(finalWorldFrame);
+        avatar.systemInput(manipulation);
         return finalWorldFrame;
     }
 

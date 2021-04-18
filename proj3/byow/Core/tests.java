@@ -16,4 +16,10 @@ public class tests {
         TETile[][] world2 = Engine.interactWithInputString(testInput);
         assertArrayEquals(world1, world2);
     }
+
+    @Test
+    public void testMethod() {
+        String str="sdfvsdf68fsdfsf8999fsdf09";
+        String numberOnly= str.replaceAll("[^0-9]", "");
+    }
 }

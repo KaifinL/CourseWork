@@ -3,6 +3,8 @@ package byow.Core;
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
+import org.junit.Test;
+
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -251,6 +253,7 @@ public class RandomWorld {
     private void finalDoor(PriorityQueue<Position> allExit, TETile[][] world) {
         for (Position exit : allExit) {
             Position indeedExit = realExit(exit);
+            world[indeedExit.getX()][indeedExit.getY()] = Tileset.SAND;
             if (isWall(indeedExit, world)) {
                 makeDoor(indeedExit, world);
             }

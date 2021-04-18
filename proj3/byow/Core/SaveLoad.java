@@ -20,7 +20,7 @@ public class SaveLoad {
 
     /**
      * Load a previous saved world.
-     * I think we can modified this so we can choose which one to load.
+     * I think we can modify this so we can choose which one to load.
      * If no previous save, simply quit and the UI interface should close with no errors produced
      */
     public static TETile[][] load() {
@@ -30,3 +30,12 @@ public class SaveLoad {
         return world;
     }
 }
+
+/**
+ * kefin's thinking:
+ * 1. maybe we should also record the avatar? since the avatar is also very important
+ * 2. what do you mean by choose one to load? if there are multiple choices, we will need
+ * to provide those information in the menu.
+ * 3. it seems like we lack the path since the statement above will definitely fail.
+ */
+

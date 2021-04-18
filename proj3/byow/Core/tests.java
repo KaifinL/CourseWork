@@ -20,7 +20,7 @@ public class tests {
     @Test
     public void testMethod() {
         String str="N543SWWWWAA";
-        String numberOnly= str.replaceAll("[^0-9]", "");
-        System.out.println(Long.parseLong(numberOnly));
+        long numberOnly= Long.parseLong(str.replaceAll("[^0-9]", ""));
+        System.out.println(numberOnly);
     }
 }

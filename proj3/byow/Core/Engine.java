@@ -85,6 +85,7 @@ public class Engine {
         RandomWorld newRandomWorld = new RandomWorld(realSeed);
         Avatar avatar = new Avatar();
         TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
+        int seedNum = 
         avatar.systemInput("WASD");
         return finalWorldFrame;
     }

@@ -20,7 +20,9 @@ public class tests {
     @Test
     public void testMethod() {
         String str="N543SWWWWAA";
-        long numberOnly= Long.parseLong(str.replaceAll("[^0-9]", ""));
-        System.out.println(numberOnly);
+        long realSeed= Long.parseLong(str.replaceAll("[^0-9]", ""));
+        int seedNum = String.valueOf(realSeed).length();
+        String manipulation = str.substring(seedNum + 1, str.length() - 1);
+        System.out.println(manipulation);
     }
 }

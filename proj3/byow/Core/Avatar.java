@@ -27,6 +27,23 @@ public class Avatar {
         initialTER();
     }
 
+    public void setWorld(TETile[][] world) {
+        this.world = world;
+        world[startpos.getX()][startpos.getY()] = Tileset.AVATAR;
+    }
+
+    public void setPos(Position pos) {
+        this.pos = pos;
+    }
+
+    public void setStartpos(Position startpos) {
+        this.startpos = startpos;
+    }
+
+    public void setDoor(Position door) {
+        this.door = door;
+    }
+
     public void initialTER() {
         ter.initialize(WIDTH, HEIGHT);
         // initialize tiles
@@ -93,9 +110,29 @@ public class Avatar {
     /**
      * Draw the current board.
      */
-    public void drawBoard() {
-        ter.renderFrame(world);
+    private void drawBoard() {
         Font font = new Font("Monaco", Font.BOLD, 10);
+        StdDraw.setFont(font);
+        int numXTiles = world.length;
+        int numYTiles = world[0].length;
+        StdDraw.clear(new Color(0, 0, 0));
+        for (int x = 0; x < numXTiles; x += 1) {
+            for (int y = 0; y < numYTiles; y += 1) {
+                if (world[x][y] == null) {
+                    throw new IllegalArgumentException("Tile at position x=" + x + ", y=" + y
+                            + " is null.");
+                }
+                world[x][y].draw(x, y);
+            }
+        }
+        drawAddition();
+    }
+
+    /**
+     * Draw additional message while playing the game.
+     */
+    private void drawAddition() {
+        Font font = new Font("Monaco", Font.BOLD, 20);
         StdDraw.setFont(font);
         StdDraw.setPenColor(StdDraw.WHITE);
         String showMessage = "Score : " + Integer.toString(this.points);
@@ -105,11 +142,19 @@ public class Avatar {
 
     public void drawStart() {
         // Draw starting message here!
-        ter.renderFrame(world);
         Font font = new Font("Monaco", Font.BOLD, 20);
         StdDraw.setFont(font);
         StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE);
-        String showMessage = "Start Message";
+        String showMessage0 = "CS 61B";
+        StdDraw.text(WIDTH/2, HEIGHT/2+1, showMessage0);
+        String showMessage1 = "N: CREATE NEW WORLD";
+        StdDraw.text(WIDTH/2, HEIGHT/2-1, showMessage1);
+        StdDraw.show();
+    }
+
+    public void drawStartTwo() {
+        StdDraw.clear(StdDraw.BLACK);
+        String showMessage = "PLEASE INPUT YOUR SEED";
         StdDraw.text(WIDTH/2, HEIGHT/2, showMessage);
         StdDraw.show();
     }
@@ -202,20 +247,4 @@ public class Avatar {
         }
     }
 
-    public void setPos(Position pos) {
-        this.pos = pos;
-    }
-
-    public void setStartpos(Position startpos) {
-        this.startpos = startpos;
-    }
-
-    public void setDoor(Position door) {
-        this.door = door;
-    }
-
-    public void setWorld(TETile[][] world) {
-        this.world = world;
-    }
 }
-

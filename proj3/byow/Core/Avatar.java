@@ -202,5 +202,20 @@ public class Avatar {
         }
     }
 
+    public void setPos(Position pos) {
+        this.pos = pos;
+    }
+
+    public void setStartpos(Position startpos) {
+        this.startpos = startpos;
+    }
+
+    public void setDoor(Position door) {
+        this.door = door;
+    }
+
+    public void setWorld(TETile[][] world) {
+        this.world = world;
+    }
 }
 

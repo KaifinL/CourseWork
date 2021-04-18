@@ -19,7 +19,7 @@ public class tests {
 
     @Test
     public void testMethod() {
-        String str="sdfvsdf68fsdfsf8999fsdf09";
+        String str="N543SWWWWAA";
         String numberOnly= str.replaceAll("[^0-9]", "");
     }
 }

@@ -3,6 +3,7 @@ package byow.Core;
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
+
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -12,6 +13,10 @@ public class RandomWorld {
     private int roomNum;
     private long seed;
     private Random random;
+    private Position door;
+    private Position start;
+    private Avatar avatar;
+    private TETile[][] world;
 
     /**
      * Return a random location on the map.
@@ -30,7 +35,8 @@ public class RandomWorld {
     /**
      * This is just skeleton code.
      */
-    public TETile[][] worldGenerator() {
+    public TETile[][] worldGenerator(Avatar avatar) {
+        this.avatar = avatar;
         long seed2 = turnPositive(this.seed);
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         long pseudoSeed = seed2;
@@ -67,6 +73,7 @@ public class RandomWorld {
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
+        this.world = world;
         return world;
     }
 
@@ -158,7 +165,7 @@ public class RandomWorld {
         return realExit(realExit(realExit(exit)));
     }
 
-    private static RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
+    private RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
         Position focus = new Position(50, 20, 0);
         RoomUnit newObject = generateRoom(seed, focus);
         newObject.setFocus(focus);
@@ -166,6 +173,7 @@ public class RandomWorld {
         for (Position exit : newObject.getExits()) {
             exitsQueue.add(exit);
         }
+        this.start = new Position(focus.getX(), focus.getY(), focus.getDirection());
         return newObject;
     }
 
@@ -218,6 +226,8 @@ public class RandomWorld {
         }
         if (isWall(realExit(newFocus), world)) {
             world[realExit(newFocus).getX()][realExit(newFocus).getY()] = Tileset.LOCKED_DOOR;
+            this.door = new Position(realExit(newFocus).getX(), realExit(newFocus).getY(),
+                     realExit(newFocus).getDirection());
             return;
         }
         newFocus.changeDirection();
@@ -229,6 +239,12 @@ public class RandomWorld {
             return true;
         }
         return false;
+    }
+
+    private void initializeAvatar() {
+        avatar.setDoor(this.door);
+        avatar.setWorld(this.world);
+        avatar.setPos();
     }
 
     /**

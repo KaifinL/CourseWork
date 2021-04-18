@@ -8,10 +8,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class tests {
+    private static final String testInput = "n5197880843569031643s";
+
     @Test
     public void testTwoSameInput() {
-        TETile[][] world1 = Engine.interactWithInputString("n5197880843569031643s");
-        TETile[][] world2 = Engine.interactWithInputString("n5197880843569031643s");
+        TETile[][] world1 = Engine.interactWithInputString(testInput);
+        TETile[][] world2 = Engine.interactWithInputString(testInput);
         assertArrayEquals(world1, world2);
     }
 }

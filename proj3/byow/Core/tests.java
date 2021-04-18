@@ -33,7 +33,7 @@ public class tests {
         RandomWorld newWorld = new RandomWorld(292382);
         Position door = newWorld.getDoor();
         Position start = newWorld.getStart();
-        System.out.println(door.getX() + "   " + door.getY() + "    " + door.getDirection());
+        //System.out.println(door.getX() + "   " + door.getY() + "    " + door.getDirection());
         System.out.println(start.getX() + "    " + start.getY() + "     " + start.getDirection());
     }
 }

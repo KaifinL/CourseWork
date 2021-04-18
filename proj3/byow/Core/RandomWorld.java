@@ -207,9 +207,28 @@ public class RandomWorld {
      */
     private void makeDoor(Position focus, TETile[][] world) {
         if (createDoor()) {
-            Position door = realExit(focus);
-            world[door.getX()][door.getY()] = Tileset.LOCKED_DOOR;
+            Position newFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
+            doorHelper(newFocus, world, 0);
         }
+    }
+    
+    private void doorHelper(Position newFocus, TETile[][] world, int tries) {
+        if (tries > 4) {
+            return;
+        }
+        if (isWall(realExit(newFocus), world)) {
+            world[realExit(newFocus).getX()][realExit(newFocus).getY()] = Tileset.LOCKED_DOOR;
+            return;
+        }
+        newFocus.changeDirection();
+        doorHelper(newFocus, world, tries + 1);
+    }
+
+    private boolean isWall(Position focus, TETile[][] world) {
+        if (world[focus.getX()][focus.getY()].equals(Tileset.WALL)) {
+            return true;
+        }
+        return false;
     }
 
     /**

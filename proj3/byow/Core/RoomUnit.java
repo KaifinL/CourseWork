@@ -96,10 +96,10 @@ public class RoomUnit {
 
 
     public boolean checkIndexErrorDown(TETile[][] world) {
-        int xLow = this.focus.x - 1;
-        int xHigh = this.focus.x + this.width;
-        int yLow = this.focus.y - this.length;
-        int yHigh = this.focus.y + 1;
+        int xLow = this.focus.getX() - 1;
+        int xHigh = this.focus.getX() + this.width;
+        int yLow = this.focus.getY() - this.length;
+        int yHigh = this.focus.getY() + 1;
         if (xLow < 0 || xHigh >= world.length
                 || yLow < 0 || yHigh >= world[0].length) {
             return true;
@@ -131,7 +131,9 @@ public class RoomUnit {
     public boolean checkOverlap(TETile[][] world) {
         for (int i = 0; i < this.width + 2; i += 1) {
             for (int j = 0; j < this.length + 2; j += 1) {
-                if (!world[this.focus.x - 1 + i][this.focus.y + 1 - j].equals(Tileset.NOTHING)) {
+                int focusX = this.focus.getX();
+                int focusY = this.focus.getY();
+                if (!world[focusX - 1 + i][focusY + 1 - j].equals(Tileset.NOTHING)) {
                     return true;
                 }
             }
@@ -146,16 +148,16 @@ public class RoomUnit {
     public void generate(TETile[][] world) {
         for (int i = 0; i < this.width; i += 1) {
             for (int j = 0; j < this.length; j += 1) {
-                world[this.focus.x + i][this.focus.y - j] = Tileset.FLOOR;
+                world[this.focus.getX() + i][this.focus.getY() - j] = Tileset.FLOOR;
             }
         }
         for (int i = 0; i < this.width + 2; i += 1) {
-            world[this.focus.x - 1 + i][this.focus.y + 1] = Tileset.WALL;
-            world[this.focus.x - 1 + i][this.focus.y - length] = Tileset.WALL;
+            world[this.focus.getX() - 1 + i][this.focus.getY() + 1] = Tileset.WALL;
+            world[this.focus.getX() - 1 + i][this.focus.getY() - length] = Tileset.WALL;
         }
         for (int j = 0; j < this.length; j += 1) {
-            world[this.focus.x - 1][this.focus.y - j] = Tileset.WALL;
-            world[this.focus.x + this.width][this.focus.y - j] = Tileset.WALL;
+            world[this.focus.getX() - 1][this.focus.getY() - j] = Tileset.WALL;
+            world[this.focus.getX() + this.width][this.focus.getY() - j] = Tileset.WALL;
         }
         creatExits(this.SEED);
     }
@@ -183,24 +185,24 @@ public class RoomUnit {
 
     /**
      * Create one exit.
-     * @param direction Indicate which side the exit lies on.
+     * @param direction0 Indicate which side the exit lies on.
      * @param seed
      */
-    public Position creatOneExit(int direction, long seed) {
+    public Position creatOneExit(int direction0, long seed) {
         Random r = new Random(seed);
-        switch (direction) {
+        switch (direction0) {
             case 0:
-                return new Position(this.focus.x + r.nextInt(this.width),
-                        this.focus.y, direction);
+                return new Position(this.focus.getX() + r.nextInt(this.width),
+                        this.focus.getY(), direction0);
             case 1:
-                return new Position(this.focus.x + r.nextInt(this.width),
-                        this.focus.y - this.length + 1, direction);
+                return new Position(this.focus.getX() + r.nextInt(this.width),
+                        this.focus.getY() - this.length + 1, direction0);
             case 2:
-                return new Position(this.focus.x,
-                        this.focus.y - r.nextInt(this.length), direction);
+                return new Position(this.focus.getX(),
+                        this.focus.getY() - r.nextInt(this.length), direction0);
             default:
-                return new Position(this.focus.x + this.width - 1,
-                        this.focus.y - r.nextInt(this.length), direction);
+                return new Position(this.focus.getX() + this.width - 1,
+                        this.focus.getY() - r.nextInt(this.length), direction0);
         }
     }
 

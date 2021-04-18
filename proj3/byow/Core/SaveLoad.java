@@ -3,6 +3,7 @@ package byow.Core;
 import byow.TileEngine.TETile;
 
 import java.io.File;
+import java.io.IOException;
 
 import static byow.Core.Utils.*;
 import static byow.Core.Utils.readObject;
@@ -13,7 +14,9 @@ public class SaveLoad {
      * Save the current world, essentially TETile[][]
      * and quit.
      */
-    private static final File CWD = new File(System.getProperty("user.dire"))
+    private static final File CWD = new File(System.getProperty("user.dir"));
+
+    public static void initialize()
 
     public static void save(TETile[][] world) {
         File outFile = new File("newest world");//We can change the pathname(maybe time) to show different saves.
@@ -31,6 +34,14 @@ public class SaveLoad {
         world = readObject(inFile, TETile[][].class);
         return world;
     }
+
+    private static void createFile(File fileName) throws IOException {
+        if (fileName.exists()) {
+            return;
+        }
+        fileName.createNewFile();
+    }
+
 }
 
 /**

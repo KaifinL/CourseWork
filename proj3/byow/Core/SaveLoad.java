@@ -16,7 +16,7 @@ public class SaveLoad {
      */
     private static final File CWD = new File(System.getProperty("user.dir"));
 
-    public static void initialize()
+    public static void initialize() {}
 
     public static void save(TETile[][] world) {
         File outFile = new File("newest world");//We can change the pathname(maybe time) to show different saves.

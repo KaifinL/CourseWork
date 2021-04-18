@@ -211,7 +211,7 @@ public class RandomWorld {
             doorHelper(newFocus, world, 0);
         }
     }
-    
+
     private void doorHelper(Position newFocus, TETile[][] world, int tries) {
         if (tries > 4) {
             return;

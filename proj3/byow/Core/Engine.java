@@ -2,6 +2,7 @@ package byow.Core;
 
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
+import edu.princeton.cs.introcs.StdDraw;
 
 public class Engine {
     TERenderer ter = new TERenderer();
@@ -14,6 +15,40 @@ public class Engine {
      * including inputs from the main menu.
      */
     public void interactWithKeyboard() {
+        Avatar avatar = new Avatar();
+        avatar.drawStart();
+        String seed = "";
+        String typed;
+        int  flag = 0;
+        for (int i = 0; true; i += 1) {
+            if (StdDraw.hasNextKeyTyped()) {
+                typed = Character.toString(StdDraw.nextKeyTyped());
+                typed.toUpperCase();
+                if (flag == 1) {
+                    if (typed.equals("S")) {
+                        //input seed to create the world.
+                        break;
+                    }
+                    seed += typed;
+                    continue;
+                }
+                switch (typed) {
+                    case "N":
+                        //Start to Create NewWorld
+                        flag = 1;
+                        break;
+                    case "Q":
+                        //nothing happend, end the game, close the UI
+                        break;
+                    case "L":
+                        //load
+                        break;
+                    default:
+                        //maybe we can add some other keyboard control selection.
+                }
+            }
+        }
+        avatar.playerInput();
     }
 
     /**
@@ -44,13 +79,16 @@ public class Engine {
         //
         // See proj3.byow.InputDemo for a demo of how you can make a nice clean interface
         // that works for many different input types.
+        
         String realSeed = (input.substring(1, input.length() - 1));
         RandomWorld newRandomWorld = new RandomWorld(Long.parseLong(realSeed));
+        Avatar avatar = new Avatar();
         TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
+        avatar.systemInput("WASD");
         return finalWorldFrame;
     }
 
     public static void main(String[] args) {
-        interactWithInputString("n2760636605756985376s");
+        interactWithInputString("5197880843569031643");
     }
 }

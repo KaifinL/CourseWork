@@ -13,6 +13,8 @@ public class SaveLoad {
      * Save the current world, essentially TETile[][]
      * and quit.
      */
+    private static final File CWD = new File()
+
     public static void save(TETile[][] world) {
         File outFile = new File("newest world");//We can change the pathname(maybe time) to show different saves.
         writeObject(outFile, world);//I think this world may not be the final object.

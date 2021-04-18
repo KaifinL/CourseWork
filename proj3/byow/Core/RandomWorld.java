@@ -12,8 +12,6 @@ public class RandomWorld {
     private int roomNum;
     private long seed;
     private Random random;
-    private Position door;
-    private Position start;
 
     /**
      * Return a random location on the map.
@@ -160,7 +158,7 @@ public class RandomWorld {
         return realExit(realExit(realExit(exit)));
     }
 
-    private RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
+    private static RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
         Position focus = new Position(50, 20, 0);
         RoomUnit newObject = generateRoom(seed, focus);
         newObject.setFocus(focus);
@@ -168,7 +166,6 @@ public class RandomWorld {
         for (Position exit : newObject.getExits()) {
             exitsQueue.add(exit);
         }
-        this.start = new Position(focus.getX(), focus.getY(), focus.getDirection());
         return newObject;
     }
 
@@ -197,7 +194,7 @@ public class RandomWorld {
      * @return true if we need to create a door false otherwise
      */
     private boolean createDoor() {
-        if (this.roomNum == this.seed % 3) {
+        if (this.roomNum == this.seed % 5) {
             return true;
         }
         return false;
@@ -221,8 +218,6 @@ public class RandomWorld {
         }
         if (isWall(realExit(newFocus), world)) {
             world[realExit(newFocus).getX()][realExit(newFocus).getY()] = Tileset.LOCKED_DOOR;
-            this.door = new Position(realExit(newFocus).getX(), realExit(newFocus).getY(),
-                     realExit(newFocus).getDirection());
             return;
         }
         newFocus.changeDirection();
@@ -234,14 +229,6 @@ public class RandomWorld {
             return true;
         }
         return false;
-    }
-
-    public Position getDoor() {
-        return door;
-    }
-
-    public Position getStart() {
-        return start;
     }
 
     /**

@@ -28,14 +28,16 @@ public class tests {
         System.out.println(manipulation);
     }
 
-    /**
+
     @Test
     public void paradigm() {
         RandomWorld newWorld = new RandomWorld(292382);
+        TETile[][] finalWorldFrame = newWorld.worldGenerator();
         Position door = newWorld.getDoor();
-        Position start = newWorld.getStart();
-        //System.out.println(door.getX() + "   " + door.getY() + "    " + door.getDirection());
+        Position start = newWorld.getStartPos();
+        System.out.println(door.getX() + "   " + door.getY() + "    " + door.getDirection());
         System.out.println(start.getX() + "    " + start.getY() + "     " + start.getDirection());
+
     }
-    */
+
 }

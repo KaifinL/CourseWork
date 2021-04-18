@@ -14,6 +14,7 @@ public class RandomWorld {
     private Random random;
     private Position door;
     private Position startPos;
+    private PriorityQueue<Position> allExits = new PriorityQueue<>();
 
     /**
      * Return a random location on the map.
@@ -66,6 +67,7 @@ public class RandomWorld {
             }
             counter += 1;
         }
+        finalDoor(allExits, world);
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
@@ -111,6 +113,7 @@ public class RandomWorld {
             makeDoor(focus, world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
+                allExits.add(exit);
                 world[exit.getX()][exit.getY()] = Tileset.MOUNTAIN;
             }
         }
@@ -245,6 +248,14 @@ public class RandomWorld {
         return startPos;
     }
 
+    private void finalDoor(PriorityQueue<Position> allExit, TETile[][] world) {
+        for (Position exit : allExit) {
+            Position indeedExit = realExit(exit);
+            if (isWall(indeedExit, world)) {
+                makeDoor(indeedExit, world);
+            }
+        }
+    }
     /**
      * This is used for debugging.
      */

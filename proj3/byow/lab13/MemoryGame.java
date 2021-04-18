@@ -83,7 +83,7 @@ public class MemoryGame {
         for (int i = 0; i < letters.length(); i++) {
             String letter = letters.substring(i, i + 1);
             drawFrame(letter);
-            StdDraw.pause(1000);
+            StdDraw.pause(500);
             drawFrame("");
             StdDraw.pause(500);
         }

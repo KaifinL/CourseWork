@@ -104,6 +104,7 @@ public class RandomWorld {
                     getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
+            makeFlower(focus, world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
             }
@@ -176,6 +177,9 @@ public class RandomWorld {
         return seed;
     }
 
+    private static void makeFlower(Position focus, TETile[][] world) {
+        world[focus.getX()][focus.getY()] = Tileset.FLOWER;
+    }
     /**
      * This is used for debugging.
      */

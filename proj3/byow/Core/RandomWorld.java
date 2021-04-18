@@ -197,7 +197,7 @@ public class RandomWorld {
      * @return true if we need to create a door false otherwise
      */
     private boolean createDoor() {
-        if (this.roomNum == this.seed % 5) {
+        if (this.roomNum == this.seed % 3) {
             return true;
         }
         return false;

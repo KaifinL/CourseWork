@@ -9,7 +9,7 @@ import java.util.Random;
 public class RandomWorld {
     private static final int WIDTH = 80;
     private static final int HEIGHT = 30;
-
+    private int roomNum;
     private long seed;
     private Random random;
 
@@ -105,6 +105,8 @@ public class RandomWorld {
         } else {
             newObject.generate(world);
             makeFlower(focus, world);
+            roomNum += 1;
+            makeDoor(focus, world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
             }
@@ -177,9 +179,39 @@ public class RandomWorld {
         return seed;
     }
 
+    /**
+     * create the flower in the exit to help the user where to go next
+     * @param focus the exit's focus
+     * @param world the 2D world we initially created
+     */
     private static void makeFlower(Position focus, TETile[][] world) {
         world[focus.getX()][focus.getY()] = Tileset.FLOWER;
     }
+
+
+    /**
+     * this function will judge if we should create the door according to the roomNum
+     * @return true if we need to create a door false otherwise
+     */
+    private boolean createDoor() {
+        if (this.roomNum == this.seed % 5) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * this fuction will automatically judge if we will need to create the door.
+     * @param focus the beginning focus we need to pass in
+     * @param world the 2D world we initialized at the beginning of the proj.
+     */
+    private void makeDoor(Position focus, TETile[][] world) {
+        if (createDoor()) {
+            Position door = realExit(focus);
+            world[door.getX()][door.getY()] = Tileset.LOCKED_DOOR;
+        }
+    }
+
     /**
      * This is used for debugging.
      */

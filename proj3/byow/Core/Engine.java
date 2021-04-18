@@ -84,7 +84,7 @@ public class Engine {
         long realSeed= Long.parseLong(input.replaceAll("[^0-9]", ""));
         RandomWorld newRandomWorld = new RandomWorld(realSeed);
         Avatar avatar = new Avatar();
-        TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
+        TETile[][] finalWorldFrame = newRandomWorld.worldGenerator(avatar);
         int seedNum = String.valueOf(realSeed).length();
         String manipulation = input.substring(seedNum + 1);
         avatar.systemInput("WASD");

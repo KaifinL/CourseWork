@@ -22,7 +22,7 @@ public class tests {
         String str="N543SWWWWAA";
         long realSeed= Long.parseLong(str.replaceAll("[^0-9]", ""));
         int seedNum = String.valueOf(realSeed).length();
-        String manipulation = str.substring(seedNum + 1, str.length() - 1);
+        String manipulation = str.substring(seedNum + 1, str.length());
         System.out.println(manipulation);
     }
 }

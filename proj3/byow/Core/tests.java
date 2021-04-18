@@ -28,6 +28,7 @@ public class tests {
         System.out.println(manipulation);
     }
 
+    /**
     @Test
     public void paradigm() {
         RandomWorld newWorld = new RandomWorld(292382);
@@ -36,4 +37,5 @@ public class tests {
         //System.out.println(door.getX() + "   " + door.getY() + "    " + door.getDirection());
         System.out.println(start.getX() + "    " + start.getY() + "     " + start.getDirection());
     }
+    */
 }

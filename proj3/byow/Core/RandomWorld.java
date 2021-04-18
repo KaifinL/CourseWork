@@ -68,7 +68,6 @@ public class RandomWorld {
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
-        world[57][26] = Tileset.SAND;
         ter.renderFrame(world);
         return world;
     }

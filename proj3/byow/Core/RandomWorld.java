@@ -3,7 +3,6 @@ package byow.Core;
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
-
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -15,8 +14,6 @@ public class RandomWorld {
     private Random random;
     private Position door;
     private Position start;
-    private Avatar avatar;
-    private TETile[][] world;
 
     /**
      * Return a random location on the map.
@@ -35,8 +32,7 @@ public class RandomWorld {
     /**
      * This is just skeleton code.
      */
-    public TETile[][] worldGenerator(Avatar avatar) {
-        this.avatar = avatar;
+    public TETile[][] worldGenerator() {
         long seed2 = turnPositive(this.seed);
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         long pseudoSeed = seed2;
@@ -73,7 +69,6 @@ public class RandomWorld {
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
-        this.world = world;
         return world;
     }
 
@@ -241,10 +236,12 @@ public class RandomWorld {
         return false;
     }
 
-    private void initializeAvatar() {
-        avatar.setDoor(this.door);
-        avatar.setWorld(this.world);
-        avatar.setPos();
+    public Position getDoor() {
+        return door;
+    }
+
+    public Position getStart() {
+        return start;
     }
 
     /**

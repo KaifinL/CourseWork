@@ -7,6 +7,8 @@ import byow.TileEngine.TETile;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Random;
+
 public class tests {
     private static final String testInput = "n5197880843569031643s";
 
@@ -24,5 +26,14 @@ public class tests {
         int seedNum = String.valueOf(realSeed).length();
         String manipulation = str.substring(seedNum + 1);
         System.out.println(manipulation);
+    }
+
+    @Test
+    public void paradigm() {
+        RandomWorld newWorld = new RandomWorld(292382);
+        Position door = newWorld.getDoor();
+        Position start = newWorld.getStart();
+        System.out.println(door.getX() + "   " + door.getY() + "    " + door.getDirection());
+        System.out.println(start.getX() + "    " + start.getY() + "     " + start.getDirection());
     }
 }

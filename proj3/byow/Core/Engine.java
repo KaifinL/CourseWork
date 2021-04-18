@@ -88,7 +88,9 @@ public class Engine {
         int seedNum = String.valueOf(realSeed).length();
         // the string represent"wwwddddaaaaffff"
         String manipulation = input.substring(seedNum + 1);
-        System.out.println(newRandomWorld.getDoor().getX());
+        //Position door = newRandomWorld.getDoor();
+        //Position startPos = newRandomWorld.getStartPos();
+        //Position start = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
         avatar.systemInput("WASD");
         return finalWorldFrame;
     }

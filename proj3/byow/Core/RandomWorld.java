@@ -253,9 +253,9 @@ public class RandomWorld {
     private void finalDoor(PriorityQueue<Position> allExit, TETile[][] world) {
         for (Position exit : allExit) {
             Position indeedExit = realExit(exit);
-            world[indeedExit.getX()][indeedExit.getY()] = Tileset.SAND;
             if (isWall(indeedExit, world)) {
                 makeDoor(indeedExit, world);
+                return;
             }
         }
     }

@@ -85,7 +85,7 @@ public class RandomWorld {
      * however, it should return null if attempt more than 3 times.
      */
     private RoomUnit randomlyGeneration(long seed2, TETile[][] world, Position focus,
-                                               int tries, PriorityQueue exitsQueue) {
+                                        int tries, PriorityQueue exitsQueue) {
         long originSeed = turnPositive(seed2);
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (originSeed % 3);
@@ -180,7 +180,7 @@ public class RandomWorld {
      * This is used for debugging.
      */
     //public static void main(String[] args) {
-        //worldGenerator();
+    //worldGenerator();
     //}
 
 }

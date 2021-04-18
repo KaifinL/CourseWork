@@ -87,11 +87,11 @@ public class Engine {
         TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
         int seedNum = String.valueOf(realSeed).length();
         String manipulation = input.substring(seedNum + 1);
-        avatar.systemInput(manipulation);
+        avatar.systemInput("WASD");
         return finalWorldFrame;
     }
 
     public static void main(String[] args) {
-        interactWithInputString("N519788084356WWWWSSS");
+        interactWithInputString("N5197880843569031643SWWWWW");
     }
 }

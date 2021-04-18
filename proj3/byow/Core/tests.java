@@ -21,7 +21,6 @@ public class tests {
     public void testMethod() {
         String str="N543SWWWWAA";
         String numberOnly= str.replaceAll("[^0-9]", "");
-        Long.parseLong(numberOnly);
-        System.out.println(numberOnly.getClass());
+        System.out.println(Long.parseLong(numberOnly));
     }
 }

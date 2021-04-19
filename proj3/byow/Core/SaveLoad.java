@@ -28,10 +28,12 @@ public class SaveLoad {
         AVATARS.mkdir();
         File initialAvatar = join(AVATARS, "newest avatar");
         initialAvatar.createNewFile();
-        //writeObject(initialAvatar, avatar);
+        writeObject(initialAvatar, avatar);
     }
 
     public static void save(Avatar avatar) throws IOException {
+        makedir(GAME);
+        makedir(AVATARS);
         File targetAvatar = Utils.join(AVATARS, "newest avatar");
         targetAvatar.createNewFile();
         writeObject(targetAvatar, avatar);
@@ -52,6 +54,12 @@ public class SaveLoad {
         }
         target = readObject(targetAvatar, Avatar.class);
         return target;
+    }
+
+    private static void makedir(File dire) {
+        if (!dire.exists()) {
+            dire.mkdir();
+        }
     }
 
 }

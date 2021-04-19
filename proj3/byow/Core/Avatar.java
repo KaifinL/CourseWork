@@ -6,8 +6,9 @@ import byow.TileEngine.Tileset;
 import edu.princeton.cs.introcs.StdDraw;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Avatar {
+public class Avatar implements Serializable {
     private int points = 0;
     private Position startpos;
     private Position pos;

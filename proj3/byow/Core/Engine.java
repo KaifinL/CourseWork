@@ -115,6 +115,27 @@ public class Engine {
         return finalWorldFrame;
     }
 
+    private static void stringManipulation(String target) {
+        String firstLetter = target.substring(0, 1);
+        switch (firstLetter) {
+            case "N":
+
+                break;
+            case "L":
+
+
+        }
+    }
+
+    /**
+     * this function is help to judge if a target string contains a digit or not
+     * @param target
+     * @return
+     */
+    private static boolean digitExist(String target) {
+        
+    }
+
     public static void main(String[] args) throws IOException {
         interactWithInputString("N519788031643SWWWWW");
     }

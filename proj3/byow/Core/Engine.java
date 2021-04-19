@@ -97,12 +97,13 @@ public class Engine {
         // that works for many different input types.
 
         // from online :Extract digits from string - StringUtils Java @stack overflow
-        long realSeed= Long.parseLong(input.replaceAll("[^0-9]", ""));
+        String excludeQ = excludeTermination(input);
+        long realSeed= Long.parseLong(excludeQ.replaceAll("[^0-9]", ""));
         RandomWorld newRandomWorld = new RandomWorld(realSeed);
         Avatar avatar = new Avatar();
         TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
         int seedNum = String.valueOf(realSeed).length();
-        String manipulation = input.substring(seedNum + 1);
+        String manipulation = excludeQ.substring(seedNum + 1);
         Position door = newRandomWorld.getDoor();
         Position startPos = newRandomWorld.getStartPos();
         Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
@@ -112,6 +113,7 @@ public class Engine {
         avatar.setWorld(finalWorldFrame);
         avatar.systemInput(manipulation);
         SaveLoad.initialize(finalWorldFrame, avatar);
+        save(finalWorldFrame, avatar, input);
         return finalWorldFrame;
     }
 
@@ -120,7 +122,7 @@ public class Engine {
         switch (firstLetter) {
             // generate a new world
             case "N":
-                interactWithInputString(excludeTermination(target));
+                interactWithInputString(target);
                 break;
             case "L":
 
@@ -149,6 +151,12 @@ public class Engine {
             return target.indexOf(":Q");
         }
         return target.length() - 1;
+    }
+
+    private static void save(TETile[][] world, Avatar avatar, String target) throws IOException {
+        if (target.contains(":Q")) {
+            SaveLoad.save(world, avatar);
+        }
     }
 
     public static void main(String[] args) throws IOException {

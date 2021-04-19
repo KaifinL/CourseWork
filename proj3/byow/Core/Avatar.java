@@ -6,10 +6,10 @@ import byow.TileEngine.Tileset;
 import edu.princeton.cs.introcs.StdDraw;
 
 import java.awt.*;
-import java.io.Serializable;
 
-public class Avatar implements Serializable {
+public class Avatar {
     private int points = 0;
+    private TETile appearance = Tileset.AVATAR;
     private Position startpos;
     private Position pos;
     private Position door;
@@ -30,7 +30,32 @@ public class Avatar implements Serializable {
 
     public void setWorld(TETile[][] world) {
         this.world = world;
-        world[startpos.getX()][startpos.getY()] = Tileset.AVATAR;
+        world[startpos.getX()][startpos.getY()] = appearance;
+    }
+
+    public void setAppearance() {
+        drawAppearance();
+        String option;
+        for (int i = 0; true; i += 1) {
+            if (StdDraw.hasNextKeyTyped()) {
+                option = Character.toString(StdDraw.nextKeyTyped());
+                switch (option) {
+                    case "1":
+                        this.appearance = Tileset.WATER;
+                        break;
+                    case "2":
+                        this.appearance = Tileset.SAND;
+                        break;
+                    case "3":
+                        this.appearance = Tileset.MOUNTAIN;
+                        break;
+                    case "4":
+                        this.appearance = Tileset.TREE;
+                        break;
+                }
+                break;
+            }
+        }
     }
 
     public void setPos(Position pos) {
@@ -47,7 +72,6 @@ public class Avatar implements Serializable {
 
     public void initialTER() {
         ter.initialize(WIDTH, HEIGHT);
-        // initialize tiles
         world = new TETile[WIDTH][HEIGHT];
         for (int x = 0; x < WIDTH; x += 1) {
             for (int y = 0; y < HEIGHT; y += 1) {
@@ -61,7 +85,6 @@ public class Avatar implements Serializable {
      */
     private void addPoints() {
         this.points += 1;
-        // If points are more than 1, the locked door turn to be unlocked door.
         if (points == GOAL) {
             world[door.getX()][door.getY()] = Tileset.UNLOCKED_DOOR;
         }
@@ -97,15 +120,13 @@ public class Avatar implements Serializable {
         }
         TETile nextTile =  world[x + m][y + n];
         if (nextTile.equals(Tileset.FLOOR)) {
-            this.pos.changeAvatarPos(m, n, world);
+            this.pos.changeAvatarPos(m, n, world, appearance);
         }  else if (nextTile.equals(Tileset.FLOWER) ){
             addPoints();
-            this.pos.changeAvatarPos(m, n, world);
+            this.pos.changeAvatarPos(m, n, world, appearance);
         } else if (nextTile.equals(Tileset.UNLOCKED_DOOR)) {
-            //Game Over.
             GameOver = true;
         }
-        // If nextTile is wall or locked_door, do nothing.
     }
 
     /**
@@ -133,23 +154,44 @@ public class Avatar implements Serializable {
      * Draw additional message while playing the game.
      */
     private void drawAddition() {
-        Font font = new Font("Monaco", Font.BOLD, 20);
+        Font font = new Font("Monaco", Font.BOLD, 15);
         StdDraw.setFont(font);
         StdDraw.setPenColor(StdDraw.WHITE);
         String showMessage = "Score : " + Integer.toString(this.points);
-        StdDraw.text(WIDTH/2, HEIGHT-2, showMessage);
+        StdDraw.text(WIDTH/20, HEIGHT+8, showMessage);
         StdDraw.show();
     }
 
-    public void drawStart() {
-        // Draw starting message here!
-        Font font = new Font("Monaco", Font.BOLD, 20);
+    /**
+     * Draw appearance selection.
+     */
+    public void drawAppearance() {
+        StdDraw.clear(StdDraw.BLACK);
+        Font font = new Font("Arial", Font.BOLD, 20);
         StdDraw.setFont(font);
-        StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE);
-        String showMessage0 = "CS 61B";
-        StdDraw.text(WIDTH/2, HEIGHT/2+1, showMessage0);
-        String showMessage1 = "N: CREATE NEW WORLD";
-        StdDraw.text(WIDTH/2, HEIGHT/2-1, showMessage1);
+        StdDraw.text(WIDTH/2, HEIGHT/2+2, "1: WATER");
+        StdDraw.text(WIDTH/2, HEIGHT/2, "2: SAND");
+        StdDraw.text(WIDTH/2, HEIGHT/2-2, "3: MOUNTAIN");
+        StdDraw.text(WIDTH/2, HEIGHT/2-4, "4: TREE");
+        StdDraw.show();
+    }
+
+    /**
+     * Draw starting message if user uses keyboard.
+     */
+    public void drawStart() {
+        StdDraw.clear(StdDraw.BLACK);
+        Font font = new Font("Arial", Font.BOLD, 25);
+        StdDraw.setFont(font);
+        StdDraw.setPenColor(StdDraw.WHITE);
+        String showMessage0 = "CS61B: THE GAME";
+        StdDraw.text(WIDTH/2, HEIGHT/2+6, showMessage0);
+        Font font1 = new Font("Arial", Font.BOLD, 20);
+        StdDraw.setFont(font1);
+        StdDraw.text(WIDTH/2, HEIGHT/2+2, "New Game (N)");
+        StdDraw.text(WIDTH/2, HEIGHT/2, "Load Game (L)");
+        StdDraw.text(WIDTH/2, HEIGHT/2-2, "Quit (Q)");
+        StdDraw.text(WIDTH/2, HEIGHT/2-4, "Change Appearance (C)");
         StdDraw.show();
     }
 
@@ -160,20 +202,37 @@ public class Avatar implements Serializable {
         StdDraw.show();
     }
 
-    public void drawEnd() {
-        Font font = new Font("Monaco", Font.BOLD, 40);
+    /**
+     * Show the corresponding seed user inputs.
+     */
+    public void drawFrame(String s) {
+        StdDraw.clear(StdDraw.BLACK);
+        Font font = new Font("Monaco", Font.BOLD, 25);
         StdDraw.setFont(font);
-        StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE);
-        String showMessage = "YOU WIN!";
-        StdDraw.text(WIDTH/2, HEIGHT/2, showMessage);
+        StdDraw.setPenColor(StdDraw.WHITE);
+        StdDraw.text(WIDTH/2, HEIGHT/2, s);
         StdDraw.show();
     }
 
     /**
-     *
+     * Draw the end message when game over.
+     */
+    public void drawEnd() {
+        StdDraw.clear(StdDraw.BLACK);
+        Font font = new Font("Monaco", Font.BOLD, 40);
+        StdDraw.setFont(font);
+        StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE);
+        String showMessage = "YOU WIN!";
+        StdDraw.text(WIDTH/2, HEIGHT/2+5, showMessage);
+        StdDraw.show();
+    }
+
+    /**
+     * Interact with InputString.
+     * Don't support changing appearance in this mode.
      */
     public void systemInput(String input) {
-        String output = "";//Should output include :Q/L?
+        String output = "";
         String typed;
         char[] arrayInput = input.toCharArray();
         int  flag = 0;
@@ -186,21 +245,20 @@ public class Avatar implements Serializable {
                     break;
                 case "Q":
                     if (flag == 1) {
+                        this.commands = output;
                         //save
-                        //Should I return? Terminate the game.
+                        //quit the game
                     }
-                    //nothing happend
                     break;
                 case "L":
                     //load
                     flag = 0;
                     break;
-                default: //this should receive W A S D. If there's no such command, no reaction.
+                default:
                     flag = 0;
                     move(typed);
             }
             if (GameOver) {
-                //Draw the end pic.
                 drawEnd();
                 break;
             }
@@ -209,10 +267,10 @@ public class Avatar implements Serializable {
     }
 
     /**
-     * This method is currently wrong, don't know how to deal with :Q.
+     * Interact with user in keyboard mode.
      */
     public void playerInput() {
-        String output = "";//Should output include :Q/L?
+        String output = "";
         String typed;
         int  flag = 0;
         for (int i = 0; true; i += 1) {
@@ -225,22 +283,21 @@ public class Avatar implements Serializable {
                         break;
                     case "Q":
                         if (flag == 1) {
+                            this.commands = output;
                             //save
-                            //Should I return? Terminate the game.
+                            //quit the game
                         }
-                        //nothing happend
                         break;
                     case "L":
                         //load
                         flag = 0;
                         break;
-                    default: //this should receive W A S D. If there's no such command, no reaction.
+                    default:
                         flag = 0;
                         move(typed);
                 }
             }
             if (GameOver) {
-                //Draw the end pic.
                 drawEnd();
                 break;
             }
@@ -248,4 +305,11 @@ public class Avatar implements Serializable {
         }
     }
 
+    /**
+     * The ability for the user to “replay” their most recent save,
+     * visually displaying all of the actions taken since the last time a new world was created.
+     */
+    public void replay() {
+        systemInput(commands);
+    }
 }

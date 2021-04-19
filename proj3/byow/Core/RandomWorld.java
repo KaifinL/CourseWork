@@ -229,10 +229,10 @@ public class RandomWorld {
             this.door = new Position(realDoor.getX(), realDoor.getY(), realDoor.getDirection());
             return;
         }
-        if (newFocus.getDirection() != 0) {
+        newFocus.changeDirection();
+        if (newFocus.getDirection() >3) {
             newFocus.setDirection();
         }
-        newFocus.changeDirection();
         doorHelper(newFocus, world, tries + 1);
     }
 

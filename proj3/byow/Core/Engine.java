@@ -116,11 +116,11 @@ public class Engine {
         avatar.setWorld(finalWorldFrame);
         avatar.systemInput(manipulation);
         SaveLoad.initialize(finalWorldFrame, avatar);
-        save(finalWorldFrame, avatar, input);
+        save(avatar, input);
         return finalWorldFrame;
     }
 
-    private static void stringManipulation(String target) throws IOException {
+    public static void stringManipulation(String target) throws IOException {
         String firstLetter = target.substring(0, 1);
         switch (firstLetter) {
             // generate a new world
@@ -160,13 +160,13 @@ public class Engine {
         return target.length() - 1;
     }
 
-    private static void save(TETile[][] world, Avatar avatar, String target) throws IOException {
+    private static void save(Avatar avatar, String target) throws IOException {
         if (target.contains(":Q")) {
-            SaveLoad.save(world, avatar);
+            SaveLoad.save(avatar);
         }
     }
 
-    private static void interactInLoading(String input) {
+    private static void interactInLoading(String input) throws IOException {
         File previousAvatarFile = join(SaveLoad.AVATARS, "newest avatar");
         Avatar previousAvatar = readObject(previousAvatarFile, Avatar.class);
         String excludeQ = excludeTermination(input);
@@ -174,7 +174,8 @@ public class Engine {
         if (excludeQ.length() > 3) {
             manipulation += excludeQ.substring(1);
         }
-        TETile[][] previousWorld = previousAvatar.getWorld();
+        previousAvatar.systemInput(manipulation);
+        save(previousAvatar, input);
     }
 
     public static void main(String[] args) throws IOException {

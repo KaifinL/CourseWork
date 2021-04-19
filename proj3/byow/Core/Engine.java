@@ -132,7 +132,7 @@ public class Engine {
                 if (!newestAvatar.exists()) {
                     Utils.exitWithError("No previous file exists, please create one first");
                 }
-                Avatar previous = readObject(newestAvatar, Avatar.class);
+                interactInLoading(target);
         }
     }
 
@@ -166,12 +166,15 @@ public class Engine {
         }
     }
 
-    private static void interactInLoading(String input, Avatar previousAvatar) {
+    private static void interactInLoading(String input) {
+        File previousAvatarFile = join(SaveLoad.AVATARS, "newest avatar");
+        Avatar previousAvatar = readObject(previousAvatarFile, Avatar.class);
         String excludeQ = excludeTermination(input);
         String manipulation = "";
         if (excludeQ.length() > 3) {
             manipulation += excludeQ.substring(1);
         }
+        TETile[][] previousWorld = previousAvatar.getWorld();
     }
 
     public static void main(String[] args) throws IOException {

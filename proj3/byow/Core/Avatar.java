@@ -25,7 +25,7 @@ public class Avatar implements Serializable {
     /**
      * Constructor
      */
-    public Avatar( ) {
+    public Avatar() {
         initialTER();
     }
 

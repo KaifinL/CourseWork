@@ -1,9 +1,11 @@
 package byow.Core;
 
+
+import static byow.Core.Utils.*;
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import edu.princeton.cs.introcs.StdDraw;
-
+import java.io.File;
 import java.io.IOException;
 
 
@@ -126,7 +128,12 @@ public class Engine {
                 interactWithInputString(target);
                 break;
             case "L":
-
+                File newestAvatar = join(SaveLoad.AVATARS, "newest");
+                if (!newestAvatar.exists()) {
+                    Utils.exitWithError("No previous file exists, please create one first");
+                }
+                Avatar previous = readObject(newestAvatar, Avatar.class);
+                
         }
     }
 

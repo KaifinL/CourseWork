@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class RandomWorld {
     private static final int WIDTH = 80;
-    private static final int HEIGHT = 30;
+    private static final int HEIGHT = 60;
     private int roomNum;
     private long seed;
     private Random random;

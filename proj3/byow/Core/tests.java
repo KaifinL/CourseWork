@@ -15,8 +15,8 @@ public class tests {
 
     @Test
     public void testTwoSameInput() throws IOException {
-        TETile[][] world1 = Engine.interactWithInputString(testInput);
-        TETile[][] world2 = Engine.interactWithInputString(testInput);
+        TETile[][] world1 = Engine.interactWithInputString(testInput, null);
+        TETile[][] world2 = Engine.interactWithInputString(testInput, null);
         assertArrayEquals(world1, world2);
     }
 

@@ -49,4 +49,9 @@ public class tests {
         //System.out.println(Engine.getQIndex(str));
     }
 
+    @Test
+    public void setTestInput() throws IOException {
+        Engine.stringManipulation("");
+    }
+
 }

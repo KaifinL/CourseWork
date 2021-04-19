@@ -111,6 +111,6 @@ public class Engine {
     }
 
     public static void main(String[] args) {
-        interactWithInputString("N5133643SWWWWW");
+        interactWithInputString("N513457843SWWWWW");
     }
 }

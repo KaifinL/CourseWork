@@ -91,7 +91,8 @@ public class Engine {
      * @param input the input string to feed to your program
      * @return the 2D TETile[][] representing the state of the world
      */
-    public static TETile[][] interactWithInputString(String input) throws IOException {
+    public static TETile[][] interactWithInputString(String input,
+                                                     Avatar previousAvatar) throws IOException {
         // passed in as an argument, and return a 2D tile representation of the
         // world that would have been drawn if the same inputs had been given
         // to interactWithKeyboard().
@@ -103,7 +104,11 @@ public class Engine {
         String excludeQ = excludeTermination(input);
         long realSeed= Long.parseLong(excludeQ.replaceAll("[^0-9]", ""));
         RandomWorld newRandomWorld = new RandomWorld(realSeed);
-        Avatar avatar = new Avatar();
+        Avatar avatar = previousAvatar;
+        if (previousAvatar == null) {
+            avatar = new Avatar();
+        }
+
         TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
         int seedNum = String.valueOf(realSeed).length();
         String manipulation = excludeQ.substring(seedNum + 1);
@@ -125,7 +130,7 @@ public class Engine {
         switch (firstLetter) {
             // generate a new world
             case "N":
-                interactWithInputString(target);
+                interactWithInputString(target, null);
                 break;
             case "L":
                 File newestAvatar = join(SaveLoad.AVATARS, "newest");
@@ -133,7 +138,7 @@ public class Engine {
                     Utils.exitWithError("No previous file exists, please create one first");
                 }
                 Avatar previous = readObject(newestAvatar, Avatar.class);
-                
+
         }
     }
 
@@ -168,6 +173,6 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("N519788031643SWWWWW");
+        interactWithInputString("N519788031643SWWWWW", null);
     }
 }

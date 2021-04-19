@@ -17,15 +17,26 @@ public class SaveLoad {
     private static final File WORLDS = Utils.join(GAME, "worlds");
     private static final File AVATARS = Utils.join(GAME, "avatars");
 
-    public static void initialize() throws IOException {
+    /**
+     * this function is basically initialize the whole world
+     * @param world pass in the outside 2D world we initially make.
+     * @param avatar pass in the initial avatar we first made.
+     * @throws IOException no use!
+     */
+    public static void initialize(TETile[][] world, Avatar avatar) throws IOException {
         // actually if we want to have different versions we will need a directory
         GAME.mkdir();
         WORLDS.mkdir();
         AVATARS.mkdir();
+        File initialWorld = join(WORLDS, "newest world");
+        initialWorld.createNewFile();
+        File initialAvatar = join(AVATARS, "newest avatar");
+        initialAvatar.createNewFile();
+        writeObject(initialAvatar, avatar);
+        writeObject(initialWorld, avatar);
     }
 
     public static void save(TETile[][] world, Avatar avatar) throws IOException {
-        initialize();
         File outFile = Utils.join(WORLDS, "newest world");//We can change the pathname(maybe time) to show different saves.
         outFile.createNewFile();
         writeObject(outFile, world);//I think this world may not be the final object.
@@ -43,6 +54,9 @@ public class SaveLoad {
     public static TETile[][] load() {
         TETile[][] world;
         File inFile = new File("newest world");
+        if (!inFile.exists()) {
+            return null;
+        }
         world = readObject(inFile, TETile[][].class);
         return world;
     }
@@ -50,6 +64,9 @@ public class SaveLoad {
     public static Avatar loadAvatar() {
         Avatar target;
         File targetAvatar = join(AVATARS, "newest avatar");
+        if (!targetAvatar.exists()) {
+            return null;
+        }
         target = readObject(targetAvatar, Avatar.class);
         return target;
     }

@@ -306,6 +306,10 @@ public class Avatar implements Serializable {
         }
     }
 
+    public TETile[][] getWorld() {
+        return world;
+    }
+
     /**
      * The ability for the user to “replay” their most recent save,
      * visually displaying all of the actions taken since the last time a new world was created.

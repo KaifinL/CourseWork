@@ -41,7 +41,6 @@ public class SaveLoad {
         File targetAvatar = Utils.join(AVATARS, "newest avatar");
         targetAvatar.createNewFile();
         writeObject(targetAvatar, avatar);
-
     }
 
     /**

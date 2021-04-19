@@ -3,7 +3,6 @@ package byow.Core;
 import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
-import org.junit.Test;
 
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -16,7 +15,7 @@ public class RandomWorld {
     private Random random;
     private Position door;
     private Position startPos;
-    private PriorityQueue<Position> allExits = new PriorityQueue<>();
+    private boolean doorExist = false;
 
     /**
      * Return a random location on the map.
@@ -69,7 +68,6 @@ public class RandomWorld {
             }
             counter += 1;
         }
-        finalDoor(allExits, world);
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);
@@ -115,7 +113,6 @@ public class RandomWorld {
             makeDoor(focus, world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
-                allExits.add(exit);
                 world[exit.getX()][exit.getY()] = Tileset.MOUNTAIN;
             }
         }
@@ -203,7 +200,7 @@ public class RandomWorld {
      * @return true if we need to create a door false otherwise
      */
     private boolean createDoor() {
-        if (this.roomNum == this.seed % 5) {
+        if (this.roomNum % 3 == 0 && doorExist == false) {
             return true;
         }
         return false;
@@ -228,6 +225,7 @@ public class RandomWorld {
         if (isWall(realExit(newFocus), world)) {
             Position realDoor = realExit(newFocus);
             world[realDoor.getX()][realDoor.getY()] = Tileset.LOCKED_DOOR;
+            doorExist = true;
             this.door = new Position(realDoor.getX(), realDoor.getY(), realDoor.getDirection());
             return;
         }
@@ -250,15 +248,6 @@ public class RandomWorld {
         return startPos;
     }
 
-    private void finalDoor(PriorityQueue<Position> allExit, TETile[][] world) {
-        for (Position exit : allExit) {
-            Position indeedExit = realExit(exit);
-            if (isWall(indeedExit, world)) {
-                makeDoor(indeedExit, world);
-                return;
-            }
-        }
-    }
     /**
      * This is used for debugging.
      */

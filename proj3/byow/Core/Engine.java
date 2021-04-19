@@ -137,10 +137,12 @@ public class Engine {
         return target.matches(".*\\d.*");
     }
 
-    private static String excludeTermination(String target) {
-        if (target.contains(":D")) {
-
+    public static String excludeTermination(String target) {
+        if (target.contains(":Q")) {
+            int index = target.indexOf(":D");
+            return target.substring(0, index);
         }
+        return target;
     }
 
     public static void main(String[] args) throws IOException {

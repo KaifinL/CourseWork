@@ -115,15 +115,14 @@ public class Engine {
         return finalWorldFrame;
     }
 
-    private static void stringManipulation(String target) {
+    private static void stringManipulation(String target) throws IOException {
         String firstLetter = target.substring(0, 1);
         switch (firstLetter) {
             // generate a new world
             case "N":
-                //interactWithInputString()
+                interactWithInputString(excludeTermination(target));
                 break;
             case "L":
-
 
         }
     }
@@ -137,12 +136,19 @@ public class Engine {
         return target.matches(".*\\d.*");
     }
 
-    public static String excludeTermination(String target) {
+    private static String excludeTermination(String target) {
         if (target.contains(":Q")) {
             int index = target.indexOf(":Q");
             return target.substring(0, index);
         }
         return target;
+    }
+
+    public static int getQIndex(String target) {
+        if (target.contains(":Q")) {
+            return target.indexOf(":Q");
+        }
+        return target.length() - 1;
     }
 
     public static void main(String[] args) throws IOException {

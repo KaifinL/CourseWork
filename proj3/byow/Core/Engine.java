@@ -120,7 +120,7 @@ public class Engine {
         switch (firstLetter) {
             // generate a new world
             case "N":
-                interactWithInputString()
+                //interactWithInputString()
                 break;
             case "L":
 

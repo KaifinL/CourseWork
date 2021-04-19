@@ -31,7 +31,7 @@ public class SaveLoad {
         writeObject(initialAvatar, avatar);
     }
 
-    public static void save(TETile[][] world, Avatar avatar) throws IOException {
+    public static void save(Avatar avatar) throws IOException {
         File targetAvatar = Utils.join(AVATARS, "newest avatar");
         targetAvatar.createNewFile();
         writeObject(targetAvatar, avatar);

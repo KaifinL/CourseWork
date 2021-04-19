@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import static byow.Core.Utils.*;
-import static byow.Core.Utils.readObject;
-import static byow.Core.Utils.writeObject;
 
 public class SaveLoad {
     /**
@@ -27,6 +25,7 @@ public class SaveLoad {
     }
 
     public static void save(TETile[][] world, Avatar avatar) throws IOException {
+        initialize();
         File outFile = Utils.join(WORLDS, "newest world");//We can change the pathname(maybe time) to show different saves.
         outFile.createNewFile();
         writeObject(outFile, world);//I think this world may not be the final object.
@@ -48,11 +47,11 @@ public class SaveLoad {
         return world;
     }
 
-    private static void createFile(File fileName) throws IOException {
-        if (fileName.exists()) {
-            return;
-        }
-        fileName.createNewFile();
+    public static Avatar loadAvatar() {
+        Avatar target;
+        File targetAvatar = join(AVATARS, "newest avatar");
+        target = readObject(targetAvatar, Avatar.class);
+        return target;
     }
 
 }

@@ -2,13 +2,16 @@ package byow.Core;
 
 //this is actually a focus.
 
+import byow.TileEngine.TETile;
+import byow.TileEngine.Tileset;
+
 /**
  * A position (x, y) on the map.
  */
 public class Position implements Comparable {
-    public int x;
-    public int y;
-    public int direction;
+    private int x;
+    private int y;
+    private int direction;
 
     public Position(int x, int y) {
         this.x = x;
@@ -21,9 +24,16 @@ public class Position implements Comparable {
         this.direction = direction;
     }
 
-    public void changePos(int x, int y) {
-        this.x += x;
-        this.y += y;
+    public void changePos(int x0, int y0) {
+        this.x += x0;
+        this.y += y0;
+    }
+
+    public void changeAvatarPos(int m, int n, TETile[][] world) {
+        world[x][y] = Tileset.FLOOR;
+        this.x += m;
+        this.y += n;
+        world[x][y] = Tileset.AVATAR;
     }
 
     public int getX() {

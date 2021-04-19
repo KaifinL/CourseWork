@@ -139,7 +139,7 @@ public class Engine {
 
     public static String excludeTermination(String target) {
         if (target.contains(":Q")) {
-            int index = target.indexOf(":D");
+            int index = target.indexOf(":Q");
             return target.substring(0, index);
         }
         return target;

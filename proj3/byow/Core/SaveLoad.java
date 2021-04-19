@@ -14,7 +14,7 @@ public class SaveLoad {
      */
     private static final File CWD = new File(System.getProperty("user.dir"));
     private static final File GAME = Utils.join(CWD, "game");
-    private static final File AVATARS = Utils.join(GAME, "avatars");
+    public static final File AVATARS = Utils.join(GAME, "avatars");
 
     /**
      * this function is basically initialize the whole world

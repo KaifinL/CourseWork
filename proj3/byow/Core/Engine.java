@@ -168,7 +168,10 @@ public class Engine {
 
     private static void interactInLoading(String input, Avatar previousAvatar) {
         String excludeQ = excludeTermination(input);
-        
+        String manipulation = "";
+        if (excludeQ.length() > 3) {
+            manipulation += excludeQ.substring(1);
+        }
     }
 
     public static void main(String[] args) throws IOException {

@@ -144,7 +144,7 @@ public class Engine {
         return target;
     }
 
-    public static int getQIndex(String target) {
+    private static int getQIndex(String target) {
         if (target.contains(":Q")) {
             return target.indexOf(":Q");
         }

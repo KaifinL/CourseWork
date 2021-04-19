@@ -45,7 +45,7 @@ public class tests {
     public void testDigitFunc() {
         String str = "you are my sunshine 002931323";
         assertTrue(str.matches(".*\\d.*"));
-        assertTrue(str.contains("you are"));
+        System.out.println(Engine.excludeTermination("N2384318WWW:Q"));
     }
 
 }

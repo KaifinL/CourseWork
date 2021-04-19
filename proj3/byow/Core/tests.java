@@ -7,13 +7,14 @@ import byow.TileEngine.TETile;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Random;
 
 public class tests {
     private static final String testInput = "n5197880843569031643s";
 
     @Test
-    public void testTwoSameInput() {
+    public void testTwoSameInput() throws IOException {
         TETile[][] world1 = Engine.interactWithInputString(testInput);
         TETile[][] world2 = Engine.interactWithInputString(testInput);
         assertArrayEquals(world1, world2);

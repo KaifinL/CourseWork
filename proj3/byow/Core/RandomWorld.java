@@ -113,7 +113,6 @@ public class RandomWorld {
             makeDoor(focus, world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
-                world[exit.getX()][exit.getY()] = Tileset.MOUNTAIN;
             }
         }
         return newObject;

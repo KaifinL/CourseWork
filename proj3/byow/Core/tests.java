@@ -51,7 +51,7 @@ public class tests {
 
     @Test
     public void setTestInput() throws IOException {
-        Engine.stringManipulation("N999SDDDWWWDDD:Q");
+        Engine.stringManipulation("N999SDDDWWWDDD");
     }
 
 }

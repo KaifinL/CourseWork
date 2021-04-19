@@ -45,7 +45,7 @@ public class tests {
     public void testDigitFunc() {
         String str = "23";
         assertTrue(str.matches(".*\\d.*"));
-        System.out.println(Engine.getQIndex(str));
+        //System.out.println(Engine.getQIndex(str));
     }
 
 }

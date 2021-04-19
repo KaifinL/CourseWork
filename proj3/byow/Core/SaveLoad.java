@@ -22,12 +22,16 @@ public class SaveLoad {
      * @param avatar pass in the initial avatar we first made.
      * @throws IOException no use!
      */
-    public static void initialize(TETile[][] world, Avatar avatar) throws IOException {
+    public static void initialize(TETile[][] world, Avatar avatar) {
         // actually if we want to have different versions we will need a directory
         GAME.mkdir();
         AVATARS.mkdir();
         File initialAvatar = join(AVATARS, "newest avatar");
-        initialAvatar.createNewFile();
+        try {
+            initialAvatar.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         writeObject(initialAvatar, avatar);
     }
 

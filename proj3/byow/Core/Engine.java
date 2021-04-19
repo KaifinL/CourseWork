@@ -4,6 +4,9 @@ import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import edu.princeton.cs.introcs.StdDraw;
 
+import java.io.IOException;
+
+
 public class Engine {
     TERenderer ter = new TERenderer();
     /* Feel free to change the width and height. */
@@ -85,7 +88,7 @@ public class Engine {
      * @param input the input string to feed to your program
      * @return the 2D TETile[][] representing the state of the world
      */
-    public static TETile[][] interactWithInputString(String input) {
+    public static TETile[][] interactWithInputString(String input) throws IOException {
         // passed in as an argument, and return a 2D tile representation of the
         // world that would have been drawn if the same inputs had been given
         // to interactWithKeyboard().
@@ -108,10 +111,11 @@ public class Engine {
         avatar.setDoor(door);
         avatar.setWorld(finalWorldFrame);
         avatar.systemInput(manipulation);
+        SaveLoad.initialize(finalWorldFrame, avatar);
         return finalWorldFrame;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         interactWithInputString("N519788031643SWWWWW");
     }
 }

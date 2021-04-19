@@ -54,7 +54,7 @@ public class RandomWorld {
         RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
         int counter = 0;
         // generate the rooms by exits
-        while (counter < 3) {
+        while (counter < 4) {
             Position exit = exitsQueue.poll();
             if (exit == null) {
                 break;

@@ -14,7 +14,6 @@ public class SaveLoad {
      */
     private static final File CWD = new File(System.getProperty("user.dir"));
     private static final File GAME = Utils.join(CWD, "game");
-    private static final File WORLDS = Utils.join(GAME, "worlds");
     private static final File AVATARS = Utils.join(GAME, "avatars");
 
     /**
@@ -26,20 +25,13 @@ public class SaveLoad {
     public static void initialize(TETile[][] world, Avatar avatar) throws IOException {
         // actually if we want to have different versions we will need a directory
         GAME.mkdir();
-        WORLDS.mkdir();
         AVATARS.mkdir();
-        File initialWorld = join(WORLDS, "newest world");
-        initialWorld.createNewFile();
         File initialAvatar = join(AVATARS, "newest avatar");
         initialAvatar.createNewFile();
         writeObject(initialAvatar, avatar);
-        writeObject(initialWorld, avatar);
     }
 
     public static void save(TETile[][] world, Avatar avatar) throws IOException {
-        File outFile = Utils.join(WORLDS, "newest world");//We can change the pathname(maybe time) to show different saves.
-        outFile.createNewFile();
-        writeObject(outFile, world);//I think this world may not be the final object.
         File targetAvatar = Utils.join(AVATARS, "newest avatar");
         targetAvatar.createNewFile();
         writeObject(targetAvatar, avatar);
@@ -51,15 +43,6 @@ public class SaveLoad {
      * I think we can modify this so we can choose which one to load.
      * If no previous save, simply quit and the UI interface should close with no errors produced
      */
-    public static TETile[][] load() {
-        TETile[][] world;
-        File inFile = new File("newest world");
-        if (!inFile.exists()) {
-            return null;
-        }
-        world = readObject(inFile, TETile[][].class);
-        return world;
-    }
 
     public static Avatar loadAvatar() {
         Avatar target;

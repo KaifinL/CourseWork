@@ -15,12 +15,25 @@ public class SaveLoad {
      * and quit.
      */
     private static final File CWD = new File(System.getProperty("user.dir"));
+    private static final File GAME = Utils.join(CWD, "game");
+    private static final File WORLDS = Utils.join(GAME, "worlds");
+    private static final File AVATARS = Utils.join(GAME, "avatars");
 
-    public static void initialize() {}
+    public static void initialize() throws IOException {
+        // actually if we want to have different versions we will need a directory
+        GAME.mkdir();
+        WORLDS.mkdir();
+        AVATARS.mkdir();
+    }
 
-    public static void save(TETile[][] world) {
-        File outFile = new File("newest world");//We can change the pathname(maybe time) to show different saves.
+    public static void save(TETile[][] world, Avatar avatar) throws IOException {
+        File outFile = Utils.join(WORLDS, "newest world");//We can change the pathname(maybe time) to show different saves.
+        outFile.createNewFile();
         writeObject(outFile, world);//I think this world may not be the final object.
+        File targetAvatar = Utils.join(AVATARS, "newest avatar");
+        targetAvatar.createNewFile();
+        writeObject(targetAvatar, avatar);
+
     }
 
     /**

@@ -17,6 +17,7 @@ public class Engine {
      * Method used for exploring a fresh world. This method should handle all inputs,
      * including inputs from the main menu.
      */
+
     public void interactWithKeyboard() {
         Avatar avatar = new Avatar();
         avatar.drawStart();

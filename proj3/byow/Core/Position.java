@@ -29,11 +29,11 @@ public class Position implements Comparable {
         this.y += y0;
     }
 
-    public void changeAvatarPos(int m, int n, TETile[][] world) {
+    public void changeAvatarPos(int m, int n, TETile[][] world, TETile tileset) {
         world[x][y] = Tileset.FLOOR;
         this.x += m;
         this.y += n;
-        world[x][y] = Tileset.AVATAR;
+        world[x][y] = tileset;
     }
 
     public int getX() {

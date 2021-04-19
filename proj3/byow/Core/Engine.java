@@ -26,15 +26,14 @@ public class Engine {
                 typed.toUpperCase();
                 if (flag == 1) {
                     if (typed.equals("S")) {
-                        //input seed to create the world.
                         break;
                     }
                     seed += typed;
+                    avatar.drawFrame(seed);
                     continue;
                 }
                 switch (typed) {
                     case "N":
-                        //Start to Create NewWorld
                         avatar.drawStartTwo();
                         flag = 1;
                         break;
@@ -44,6 +43,9 @@ public class Engine {
                     case "L":
                         //load
                         break;
+                    case "C":
+                        avatar.setAppearance();
+                        avatar.drawStart();
                     default:
                         //maybe we can add some other keyboard control selection.
                 }
@@ -97,7 +99,6 @@ public class Engine {
         Avatar avatar = new Avatar();
         TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
         int seedNum = String.valueOf(realSeed).length();
-        // the string represent"wwwddddaaaaffff"
         String manipulation = input.substring(seedNum + 1);
         Position door = newRandomWorld.getDoor();
         Position startPos = newRandomWorld.getStartPos();

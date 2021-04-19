@@ -31,7 +31,7 @@ public class SaveLoad {
         writeObject(outFile, world);//I think this world may not be the final object.
         File targetAvatar = Utils.join(AVATARS, "newest avatar");
         targetAvatar.createNewFile();
-        writeObject(targetAvatar, avatar);
+        //writeObject(targetAvatar, avatar);
 
     }
 
@@ -50,7 +50,7 @@ public class SaveLoad {
     public static Avatar loadAvatar() {
         Avatar target;
         File targetAvatar = join(AVATARS, "newest avatar");
-        target = readObject(targetAvatar, Avatar.class);
+        //target = readObject(targetAvatar, Avatar.class);
         return target;
     }
 

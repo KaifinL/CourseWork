@@ -28,7 +28,7 @@ public class SaveLoad {
         AVATARS.mkdir();
         File initialAvatar = join(AVATARS, "newest avatar");
         initialAvatar.createNewFile();
-        writeObject(initialAvatar, avatar);
+        //writeObject(initialAvatar, avatar);
     }
 
     public static void save(Avatar avatar) throws IOException {

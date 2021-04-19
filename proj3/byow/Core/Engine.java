@@ -168,10 +168,7 @@ public class Engine {
 
     private static void interactInLoading(String input, Avatar previousAvatar) {
         String excludeQ = excludeTermination(input);
-        if (digitExist(input)) {
-            long realSeed = Long.parseLong(excludeQ.replaceAll("[^0-9]", ""));
-            RandomWorld newRandomWorld = new RandomWorld(realSeed);
-        }
+        
     }
 
     public static void main(String[] args) throws IOException {

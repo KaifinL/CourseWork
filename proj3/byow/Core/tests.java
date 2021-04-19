@@ -41,4 +41,10 @@ public class tests {
 
     }
 
+    @Test
+    public void testDigitFunc() {
+        String str = "you are my sunshine 002931323";
+        assertTrue(str.matches(".*\\d.*"));
+    }
+
 }

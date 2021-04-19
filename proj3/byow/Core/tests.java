@@ -43,7 +43,7 @@ public class tests {
 
     @Test
     public void testDigitFunc() {
-        String str = "you are my sunshine 002931323:Q";
+        String str = "23:Q";
         assertTrue(str.matches(".*\\d.*"));
         System.out.println(Engine.getQIndex(str));
     }

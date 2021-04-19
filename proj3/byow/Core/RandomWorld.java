@@ -219,7 +219,7 @@ public class RandomWorld {
     }
 
     private void doorHelper(Position newFocus, TETile[][] world, int tries) {
-        if (tries > 4) {
+        if (tries > 5) {
             return;
         }
         if (isWall(realExit(newFocus), world)) {

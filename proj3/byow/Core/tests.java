@@ -43,9 +43,9 @@ public class tests {
 
     @Test
     public void testDigitFunc() {
-        String str = "you are my sunshine 002931323";
+        String str = "you are my sunshine 002931323:Q";
         assertTrue(str.matches(".*\\d.*"));
-        System.out.println(Engine.excludeTermination("N2384318WWW"));
+        System.out.println(Engine.getQIndex(str));
     }
 
 }

@@ -118,8 +118,9 @@ public class Engine {
     private static void stringManipulation(String target) {
         String firstLetter = target.substring(0, 1);
         switch (firstLetter) {
+            // generate a new world
             case "N":
-
+                interactWithInputString()
                 break;
             case "L":
 
@@ -129,11 +130,17 @@ public class Engine {
 
     /**
      * this function is help to judge if a target string contains a digit or not
-     * @param target
-     * @return
+     * @param target the target string you want to judge
+     * @return true if there is a digit in the string false otherwise
      */
     private static boolean digitExist(String target) {
-        return true;
+        return target.matches(".*\\d.*");
+    }
+
+    private static String excludeTermination(String target) {
+        if (target.contains(":D")) {
+
+        }
     }
 
     public static void main(String[] args) throws IOException {

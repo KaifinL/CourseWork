@@ -115,7 +115,7 @@ public class Engine {
         avatar.setDoor(door);
         avatar.setWorld(finalWorldFrame);
         avatar.systemInput(manipulation);
-        SaveLoad.initialize(finalWorldFrame, avatar);
+        SaveLoad.initialize(avatar);
         save(avatar, input);
         return finalWorldFrame;
     }

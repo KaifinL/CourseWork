@@ -128,7 +128,7 @@ public class Engine {
                 interactWithInputString(target);
                 break;
             case "L":
-                File newestAvatar = join(SaveLoad.AVATARS, "newest");
+                File newestAvatar = join(SaveLoad.AVATARS, "newest avatar");
                 if (!newestAvatar.exists()) {
                     Utils.exitWithError("No previous file exists, please create one first");
                 }

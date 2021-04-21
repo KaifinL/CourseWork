@@ -5,12 +5,10 @@ package byow.Core;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
-import java.io.Serializable;
-
 /**
  * A position (x, y) on the map.
  */
-public class Position implements Comparable, Serializable {
+public class Position implements Comparable {
     private int x;
     private int y;
     private int direction;

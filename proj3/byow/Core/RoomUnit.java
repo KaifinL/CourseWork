@@ -2,7 +2,6 @@ package byow.Core;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
-import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -15,7 +14,7 @@ import java.util.Random;
  *      c.check load and index but the parameter is still a problem.
  *      d.create exits actually there are two methods for this.
  */
-public class RoomUnit implements Serializable {
+public class RoomUnit {
     private int width;
     private int length;
     private int direction;

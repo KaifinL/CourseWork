@@ -18,7 +18,6 @@ public class SaveLoad {
 
     /**
      * this function is basically initialize the whole world
-     * @param avatar pass in the initial avatar we first made.
      * @throws IOException no use!
      */
     public static void initialize() {
@@ -33,11 +32,15 @@ public class SaveLoad {
         }
     }
 
-    public static void save(Avatar avatar) throws IOException {
+    public static void save(Avatar avatar) {
         makedir(GAME);
         makedir(AVATARS);
         File targetAvatar = Utils.join(AVATARS, "newest avatar");
-        targetAvatar.createNewFile();
+        try {
+            targetAvatar.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         writeObject(targetAvatar, avatar);
     }
 

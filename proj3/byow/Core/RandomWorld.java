@@ -4,10 +4,11 @@ import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
+import java.io.Serializable;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-public class RandomWorld {
+public class RandomWorld implements Serializable {
     private static final int WIDTH = 80;
     private static final int HEIGHT = 40;
     private int roomNum;

@@ -21,7 +21,7 @@ public class SaveLoad {
      * @param avatar pass in the initial avatar we first made.
      * @throws IOException no use!
      */
-    public static void initialize(Avatar avatar) {
+    public static void initialize() {
         // actually if we want to have different versions we will need a directory
         GAME.mkdir();
         AVATARS.mkdir();
@@ -31,7 +31,6 @@ public class SaveLoad {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        writeObject(initialAvatar, avatar);
     }
 
     public static void save(Avatar avatar) throws IOException {

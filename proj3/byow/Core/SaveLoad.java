@@ -18,11 +18,10 @@ public class SaveLoad {
 
     /**
      * this function is basically initialize the whole world
-     * @param world pass in the outside 2D world we initially make.
      * @param avatar pass in the initial avatar we first made.
      * @throws IOException no use!
      */
-    public static void initialize(TETile[][] world, Avatar avatar) {
+    public static void initialize(Avatar avatar) {
         // actually if we want to have different versions we will need a directory
         GAME.mkdir();
         AVATARS.mkdir();

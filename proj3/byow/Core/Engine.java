@@ -175,7 +175,11 @@ public class Engine {
             manipulation += excludeQ.substring(1);
         }
         previousAvatar.systemInput(manipulation);
-        save(previousAvatar, input);
+        if (input.contains(":Q")) {
+            save(previousAvatar, input);
+        } else {
+            previousAvatarFile.delete();
+        }
     }
 
     public static void main(String[] args) throws IOException {

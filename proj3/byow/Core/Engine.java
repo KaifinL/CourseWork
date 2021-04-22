@@ -21,12 +21,13 @@ public class Engine {
      */
 
     public void interactWithKeyboard() {
+        boolean RUN = true;
         Avatar avatar = new Avatar();
         avatar.drawStart();
         String seed = "";
         String typed;
         int  flag = 0;
-        for (int i = 0; true; i += 1) {
+        for (int i = 0; RUN; i += 1) {
             if (StdDraw.hasNextKeyTyped()) {
                 typed = Character.toString(StdDraw.nextKeyTyped());
                 typed.toUpperCase();
@@ -44,30 +45,50 @@ public class Engine {
                         flag = 1;
                         break;
                     case "Q":
-                        //nothing happend, end the game, close the UI
+                        //End the game. Do not save, since the game didn't start.
+                        System.out.println(RUN);
+                        RUN = false;
+                        System.out.println(RUN);
                         break;
                     case "L":
                         //load
+                        flag = 2;
+                        avatar = SaveLoad.loadAvatar();
                         break;
                     case "C":
                         avatar.setAppearance();
                         avatar.drawStart();
+                        break;
+                    case "R":
+                        flag = 2;
+                        avatar = SaveLoad.loadAvatar();
+                        avatar.replay();
+                        break;
                     default:
                         //maybe we can add some other keyboard control selection.
                 }
+                if (flag == 2) {
+                    break;
+                }
             }
         }
-        long realSeed = Long.parseLong(seed);
-        RandomWorld newRandomWorld = new RandomWorld(realSeed);
-        TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
-        Position door = newRandomWorld.getDoor();
-        Position startPos = newRandomWorld.getStartPos();
-        Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
-        avatar.setStartpos(startPos);
-        avatar.setPos(Pos);
-        avatar.setDoor(door);
-        avatar.setWorld(finalWorldFrame);
-        avatar.playerInput();
+        if (RUN) {
+            if (flag == 2) {
+                avatar.playerInput();
+            } else {
+                long realSeed = Long.parseLong(seed);
+                RandomWorld newRandomWorld = new RandomWorld(realSeed);
+                TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
+                Position door = newRandomWorld.getDoor();
+                Position startPos = newRandomWorld.getStartPos();
+                Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
+                avatar.setStartpos(startPos);
+                avatar.setPos(Pos);
+                avatar.setDoor(door);
+                avatar.setWorld(finalWorldFrame);
+                avatar.playerInput();
+            }
+        }
     }
 
     /**
@@ -91,7 +112,7 @@ public class Engine {
      * @param input the input string to feed to your program
      * @return the 2D TETile[][] representing the state of the world
      */
-    public static TETile[][] interactWithInputString(String input) throws IOException {
+    public static TETile[][] interactWithInputString(String input){
         // passed in as an argument, and return a 2D tile representation of the
         // world that would have been drawn if the same inputs had been given
         // to interactWithKeyboard().
@@ -100,23 +121,29 @@ public class Engine {
         // that works for many different input types.
 
         // from online :Extract digits from string - StringUtils Java @stack overflow
-        String excludeQ = excludeTermination(input);
-        long realSeed= Long.parseLong(excludeQ.replaceAll("[^0-9]", ""));
-        RandomWorld newRandomWorld = new RandomWorld(realSeed);
+        TETile[][] finalWorldFrame;
         Avatar avatar = new Avatar();
-        TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
-        int seedNum = String.valueOf(realSeed).length();
-        String manipulation = excludeQ.substring(seedNum + 1);
-        Position door = newRandomWorld.getDoor();
-        Position startPos = newRandomWorld.getStartPos();
-        Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
-        avatar.setStartpos(startPos);
-        avatar.setPos(Pos);
-        avatar.setDoor(door);
-        avatar.setWorld(finalWorldFrame);
-        avatar.systemInput(manipulation);
-        SaveLoad.initialize();
-        save(avatar, input);
+        String manipulation = input.substring(1);
+        System.out.println(manipulation);
+        if (input.contains("L")) {
+            avatar = SaveLoad.loadAvatar();
+            finalWorldFrame = avatar.getWorld();
+            avatar.systemInput(manipulation);
+        } else {
+            long realSeed= Long.parseLong(input.replaceAll("[^0-9]", ""));
+            int seedNum = String.valueOf(realSeed).length();
+            manipulation = input.substring(seedNum + 1);
+            RandomWorld newRandomWorld = new RandomWorld(realSeed);
+            finalWorldFrame = newRandomWorld.worldGenerator();
+            Position door = newRandomWorld.getDoor();
+            Position startPos = newRandomWorld.getStartPos();
+            Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
+            avatar.setStartpos(startPos);
+            avatar.setPos(Pos);
+            avatar.setDoor(door);
+            avatar.setWorld(finalWorldFrame);
+            avatar.systemInput(manipulation);
+        }
         return finalWorldFrame;
     }
 
@@ -128,7 +155,7 @@ public class Engine {
                 interactWithInputString(target);
                 break;
             case "L":
-                File newestAvatar = join(SaveLoad.AVATARS, "newest avatar.txt");
+                File newestAvatar = join(SaveLoad.AVATARS, "newest avatar");
                 if (!newestAvatar.exists()) {
                     Utils.exitWithError("No previous file exists, please create one first");
                 }
@@ -167,7 +194,7 @@ public class Engine {
     }
 
     private static void interactInLoading(String input) throws IOException {
-        File previousAvatarFile = join(SaveLoad.AVATARS, "newest avatar.txt");
+        File previousAvatarFile = join(SaveLoad.AVATARS, "newest avatar");
         Avatar previousAvatar = readObject(previousAvatarFile, Avatar.class);
         String excludeQ = excludeTermination(input);
         String manipulation = "";
@@ -175,11 +202,7 @@ public class Engine {
             manipulation += excludeQ.substring(1);
         }
         previousAvatar.systemInput(manipulation);
-        if (input.contains(":Q")) {
-            save(previousAvatar, input);
-        } else {
-            previousAvatarFile.delete();
-        }
+        save(previousAvatar, input);
     }
 
     public static void main(String[] args) throws IOException {

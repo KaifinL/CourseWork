@@ -21,7 +21,7 @@ public class SaveLoad {
         // actually if we want to have different versions we will need a directory
         GAME.mkdir();
         AVATARS.mkdir();
-        File initialAvatar = join(AVATARS, "newest avatar");
+        File initialAvatar = join(AVATARS, "newest avatar.txt");
         try {
             initialAvatar.createNewFile();
         } catch (IOException e) {
@@ -32,7 +32,7 @@ public class SaveLoad {
     public static void save(Avatar avatar) {
         makedir(GAME);
         makedir(AVATARS);
-        File targetAvatar = Utils.join(AVATARS, "newest avatar");
+        File targetAvatar = Utils.join(AVATARS, "newest avatar.txt");
         try {
             targetAvatar.createNewFile();
         } catch (IOException e) {
@@ -49,7 +49,7 @@ public class SaveLoad {
 
     public static Avatar loadAvatar() {
         Avatar target;
-        File targetAvatar = join(AVATARS, "newest avatar");
+        File targetAvatar = join(AVATARS, "newest avatar.txt");
         if (!targetAvatar.exists()) {
             return null;
         }

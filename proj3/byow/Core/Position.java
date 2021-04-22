@@ -31,8 +31,8 @@ public class Position implements Comparable, Serializable {
         this.y += y0;
     }
 
-    public void changeAvatarPos(int m, int n, TETile[][] world, TETile tileset) {
-        world[x][y] = Tileset.FLOOR;
+    public void changeAvatarPos(int m, int n, TETile[][] world, TETile floor, TETile tileset) {
+        world[x][y] = floor;
         this.x += m;
         this.y += n;
         world[x][y] = tileset;

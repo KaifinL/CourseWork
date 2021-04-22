@@ -18,6 +18,9 @@ public class Avatar implements Serializable {
     private TERenderer ter = new TERenderer();
     private TETile[][] world;
     private Boolean GameOver = false;
+    private TETile floor = Tileset.FLOOR;
+    private TETile flower = Tileset.FLOWER;
+    private TETile unlockedDoor = Tileset.UNLOCKED_DOOR;
 
     public static final int GOAL = 2;
     private static final int WIDTH = 80;
@@ -25,7 +28,7 @@ public class Avatar implements Serializable {
     /**
      * Constructor
      */
-    public Avatar() {
+    public Avatar( ) {
         initialTER();
     }
 
@@ -71,6 +74,10 @@ public class Avatar implements Serializable {
         this.door = door;
     }
 
+    public TETile[][] getWorld() {
+        return this.world;
+    }
+
     public void initialTER() {
         ter.initialize(WIDTH, HEIGHT);
         world = new TETile[WIDTH][HEIGHT];
@@ -87,7 +94,7 @@ public class Avatar implements Serializable {
     private void addPoints() {
         this.points += 1;
         if (points == GOAL) {
-            world[door.getX()][door.getY()] = Tileset.UNLOCKED_DOOR;
+            world[door.getX()][door.getY()] = unlockedDoor;
         }
     }
 
@@ -120,12 +127,12 @@ public class Avatar implements Serializable {
                 n = 0;
         }
         TETile nextTile =  world[x + m][y + n];
-        if (nextTile.equals(Tileset.FLOOR)) {
-            this.pos.changeAvatarPos(m, n, world, appearance);
-        }  else if (nextTile.equals(Tileset.FLOWER) ){
+        if (nextTile.equals(floor)) {
+            this.pos.changeAvatarPos(m, n, world, floor, appearance);
+        }  else if (nextTile.equals(flower) ){
             addPoints();
-            this.pos.changeAvatarPos(m, n, world, appearance);
-        } else if (nextTile.equals(Tileset.UNLOCKED_DOOR)) {
+            this.pos.changeAvatarPos(m, n, world, floor, appearance);
+        } else if (nextTile.equals(unlockedDoor)) {
             GameOver = true;
         }
     }
@@ -159,7 +166,7 @@ public class Avatar implements Serializable {
         StdDraw.setFont(font);
         StdDraw.setPenColor(StdDraw.WHITE);
         String showMessage = "Score : " + Integer.toString(this.points);
-        StdDraw.text(WIDTH/20, HEIGHT+8, showMessage);
+        StdDraw.text(WIDTH-5, HEIGHT/2, showMessage);
         StdDraw.show();
     }
 
@@ -193,6 +200,7 @@ public class Avatar implements Serializable {
         StdDraw.text(WIDTH/2, HEIGHT/2, "Load Game (L)");
         StdDraw.text(WIDTH/2, HEIGHT/2-2, "Quit (Q)");
         StdDraw.text(WIDTH/2, HEIGHT/2-4, "Change Appearance (C)");
+        StdDraw.text(WIDTH/2, HEIGHT/2-6, "Replay (R)");
         StdDraw.show();
     }
 
@@ -239,7 +247,7 @@ public class Avatar implements Serializable {
         int  flag = 0;
         for (int i = 0; i < arrayInput.length; i += 1) {
             typed = Character.toString(arrayInput[i]);
-            output += typed;
+            System.out.println(typed);
             switch (typed) {
                 case ":":
                     flag = 1;
@@ -247,17 +255,17 @@ public class Avatar implements Serializable {
                 case "Q":
                     if (flag == 1) {
                         this.commands = output;
-                        //save
-                        //quit the game
+                        SaveLoad.save(this);
+                        flag = 2;
                     }
-                    break;
-                case "L":
-                    //load
-                    flag = 0;
                     break;
                 default:
                     flag = 0;
                     move(typed);
+            }
+            output += typed;
+            if (flag == 2) {
+                break;
             }
             if (GameOver) {
                 drawEnd();
@@ -277,7 +285,6 @@ public class Avatar implements Serializable {
         for (int i = 0; true; i += 1) {
             if (StdDraw.hasNextKeyTyped()) {
                 typed = Character.toString(StdDraw.nextKeyTyped());
-                output += typed;
                 switch (typed) {
                     case ":":
                         flag = 1;
@@ -287,6 +294,8 @@ public class Avatar implements Serializable {
                             this.commands = output;
                             //save
                             //quit the game
+                            SaveLoad.save(this);
+                            flag = 2;
                         }
                         break;
                     case "L":
@@ -297,6 +306,10 @@ public class Avatar implements Serializable {
                         flag = 0;
                         move(typed);
                 }
+                output += typed;
+            }
+            if (flag == 2) {
+                break;
             }
             if (GameOver) {
                 drawEnd();
@@ -306,15 +319,30 @@ public class Avatar implements Serializable {
         }
     }
 
-    public TETile[][] getWorld() {
-        return world;
-    }
-
     /**
      * The ability for the user to “replay” their most recent save,
      * visually displaying all of the actions taken since the last time a new world was created.
      */
     public void replay() {
-        systemInput(commands);
+        world[pos.getX()][pos.getY()] = floor;
+        pos = new Position(startpos.getX(),startpos.getY(),startpos.getDirection());
+        String typed;
+        char[] arrayInput = commands.toCharArray();
+        for (int i = 0; i < arrayInput.length; i += 1) {
+            typed = Character.toString(arrayInput[i]);
+            switch (typed) {
+                case ":":
+                    break;
+                default:
+                    move(typed);
+            }
+            if (GameOver) {
+                drawEnd();
+                break;
+            }
+            drawBoard();
+            StdDraw.pause(400);
+        }
+        startpos = new Position(pos.getX(),pos.getY(), pos.getDirection());
     }
 }

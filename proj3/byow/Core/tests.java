@@ -49,7 +49,7 @@ public class tests {
 
     @Test
     public void setTestInput() throws IOException {
-        Engine.stringManipulation("LD:Q");
+        Engine.stringManipulation("LDSS:Q");
     }
 
 }

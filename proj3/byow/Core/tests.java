@@ -52,4 +52,24 @@ public class tests {
         Engine.stringManipulation("LDS:Q");
     }
 
+    /**
+     * some thinkings about the extra credits:
+     * 1. add a new door,which is fake.If you enter a fake door, you will need
+     * to enter another completely new world.We won't tell you which one is true
+     * unless you have eaten all the possible points.
+     * (To complete this, we can create a door class which has a distribution of
+     * type Boolean)
+     *
+     * 2. whenever you choose to pass a hallway, you may create a door which will
+     * no longer allow you to in again.By 'may' I mean this can be random or by some
+     * specific manipulation, this depends on how we design it.
+     *
+     * 3. to get more points you want we give you a chance to chisel a wall, which
+     * allows you to nearly generate a small world randomly,but it is comprehensively
+     * connect with the previous world.(by doing this , we can design a 'skill' like
+     * pressing 'c' and than we will make a wall into a 'floor' and again generate another
+     * world.)
+     *
+     */
+
 }

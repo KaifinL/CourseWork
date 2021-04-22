@@ -4,11 +4,9 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
 import byow.TileEngine.TETile;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Random;
 
 public class tests {
     private static final String testInput = "n5197880843569031643s";

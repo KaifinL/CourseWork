@@ -128,7 +128,7 @@ public class Engine {
                 interactWithInputString(target);
                 break;
             case "L":
-                File newestAvatar = join(SaveLoad.AVATARS, "newest avatar");
+                File newestAvatar = join(SaveLoad.AVATARS, "newest avatar.txt");
                 if (!newestAvatar.exists()) {
                     Utils.exitWithError("No previous file exists, please create one first");
                 }
@@ -167,7 +167,7 @@ public class Engine {
     }
 
     private static void interactInLoading(String input) throws IOException {
-        File previousAvatarFile = join(SaveLoad.AVATARS, "newest avatar");
+        File previousAvatarFile = join(SaveLoad.AVATARS, "newest avatar.txt");
         Avatar previousAvatar = readObject(previousAvatarFile, Avatar.class);
         String excludeQ = excludeTermination(input);
         String manipulation = "";

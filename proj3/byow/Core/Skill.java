@@ -18,7 +18,6 @@ public class Skill {
     private int width;
     private int height;
     private long seed;
-    private PriorityQueue<Position> exits2 = new PriorityQueue<>();
     private Random random = new Random();
     private int roomNum;
 
@@ -32,7 +31,7 @@ public class Skill {
     }
 
 
-    public void chisel(Avatar avatar, TETile[][] world, int width, int height, long seed) {
+    public void chiselNewWorld(Avatar avatar, TETile[][] world, int width, int height, long seed) {
         initialize(avatar, world, width, height, seed);
         int direction = getDirection();
         switch (direction) {
@@ -63,16 +62,33 @@ public class Skill {
     }
 
     private void explore(int direction, Position focus) {
+        PriorityQueue exits2 = new PriorityQueue();
         focus.setDirection(direction);
         Position realFocus = RandomWorld.realExit(focus);
         world[focus.getX()][focus.getY()] = Tileset.FLOOR;
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         TERenderer ter = new TERenderer();
         ter.initialize(width, height);
-        
+        int counter = 0;
+        RoomUnit r = roomGeneration(direction, realFocus, 0);
+        while (counter < 40) {
+            Position exit = exitsQueue.poll();
+            if (exit == null) {
+                break;
+            }
+            r.reviseSeed();
+            RoomUnit child = roomGeneration(this.random.nextInt((int) r.getSEED()),
+                    newFocus(exit), 1, exitsQueue);
+            if (child != null) {
+                chisel(realExit(exit), world);
+                chisel(realExit(realExit(exit)), world);
+            }
+            counter += 1;
+        }
     }
 
-    private RoomUnit roomGeneration(int direction, Position realFocus, int tries) {
+    private RoomUnit roomGeneration(int direction, Position realFocus,
+                                    int tries, PriorityQueue exits2) {
         Position getOrigin = new Position(realFocus.getX(), realFocus.getY(), realFocus.getDirection());
         int randomNum = (int) (this.seed % 3);
         RoomUnit newObject;
@@ -88,7 +104,7 @@ public class Skill {
             }
 
             newObject = roomGeneration(this.random.nextInt((int) seed),
-                    getOrigin, tries + 1);
+                    getOrigin, tries + 1, exits2);
         } else {
             newObject.generate(world);
             RandomWorld.makeFlower(realFocus, world);
@@ -99,5 +115,32 @@ public class Skill {
         }
         return newObject;
     }
+
+    public static Position realExit(Position exit) {
+        int m;
+        int n;
+        int direction = exit.getDirection();
+        switch (direction) {
+            case 0: m = 0;
+                n = 1;
+                break;
+            case 1: m = 0;
+                n = -1;
+                break;
+            case 2: m = -1;
+                n = 0;
+                break;
+            default: m = 1;
+                n = 0;
+        }
+        Position returnFocus = new Position(exit.getX() + m, exit.getY() + n, exit.getDirection());
+        return returnFocus;
+    }
+
+
+    private static Position newFocus(Position exit) {
+        return realExit(realExit(realExit(exit)));
+    }
+
 
 }

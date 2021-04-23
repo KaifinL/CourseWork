@@ -1,4 +1,7 @@
 package byow.Core;
+
+import byow.TileEngine.TETile;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -21,7 +24,7 @@ public class SaveLoad {
         // actually if we want to have different versions we will need a directory
         GAME.mkdir();
         AVATARS.mkdir();
-        File initialAvatar = join(AVATARS, "newest avatar.txt");
+        File initialAvatar = join(AVATARS, "newest avatar");
         try {
             initialAvatar.createNewFile();
         } catch (IOException e) {
@@ -32,7 +35,7 @@ public class SaveLoad {
     public static void save(Avatar avatar) {
         makedir(GAME);
         makedir(AVATARS);
-        File targetAvatar = Utils.join(AVATARS, "newest avatar.txt");
+        File targetAvatar = Utils.join(AVATARS, "NewestAvatar.txt");
         try {
             targetAvatar.createNewFile();
         } catch (IOException e) {
@@ -49,7 +52,7 @@ public class SaveLoad {
 
     public static Avatar loadAvatar() {
         Avatar target;
-        File targetAvatar = join(AVATARS, "newest avatar.txt");
+        File targetAvatar = join(AVATARS, "NewestAvatar.txt");
         if (!targetAvatar.exists()) {
             return null;
         }

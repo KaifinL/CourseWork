@@ -61,6 +61,7 @@ public class Skill {
         return 4;
     }
 
+    /**
     private void explore(int direction, Position focus) {
         PriorityQueue exits2 = new PriorityQueue();
         focus.setDirection(direction);
@@ -86,7 +87,9 @@ public class Skill {
             counter += 1;
         }
     }
+     */
 
+    /**
     private RoomUnit roomGeneration(int direction, Position realFocus,
                                     int tries, PriorityQueue exits2) {
         Position getOrigin = new Position(realFocus.getX(), realFocus.getY(), realFocus.getDirection());
@@ -115,6 +118,7 @@ public class Skill {
         }
         return newObject;
     }
+     */
 
     public static Position realExit(Position exit) {
         int m;

@@ -119,8 +119,13 @@ public class RandomWorld implements Serializable {
                 exitsQueue2.add(exit);
             }
         }
-        Position latestPos = (Position) exitsQueue2.poll();
-        makeDoor(latestPos, world);
+        while (!exitsQueue2.isEmpty()) {
+            Position possibleDoor = (Position) exitsQueue2.poll();
+            if (isWall(realExit(possibleDoor), world)) {
+                makeDoor(realExit(possibleDoor), world);
+                break;
+            }
+        }
         return newObject;
     }
 

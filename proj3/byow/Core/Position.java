@@ -56,6 +56,10 @@ public class Position implements Comparable, Serializable {
         return this.x;
     }
 
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
     public void setDirection() {
         this.direction = 0;
     }

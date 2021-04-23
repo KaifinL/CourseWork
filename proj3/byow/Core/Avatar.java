@@ -21,6 +21,8 @@ public class Avatar implements Serializable {
     private TETile floor = Tileset.FLOOR;
     private TETile flower = Tileset.FLOWER;
     private TETile unlockedDoor = Tileset.UNLOCKED_DOOR;
+    private TETile mashroom = Tileset.GRASS;
+    private boolean poisoned = false;
 
     public static final int GOAL = 2;
     private static final int WIDTH = 80;
@@ -105,26 +107,22 @@ public class Avatar implements Serializable {
         int m; int n;
         int x = this.pos.getX();
         int y = this.pos.getY();
-        switch (input) {
-            case "W":
-                m = 0;
-                n = 1;
-                break;
-            case "S":
-                m = 0;
-                n = -1;
-                break;
-            case "A":
-                m = -1;
-                n = 0;
-                break;
-            case "D":
-                m = 1;
-                n = 0;
-                break;
-            default:
-                m = 0;
-                n = 0;
+        if (poisoned) {
+            switch (input) {
+                case "W": m = 0;n = -1;break;
+                case "S": m = 0;n = 1;break;
+                case "A": m = 1;n = 0;break;
+                case "D": m = -1;n = 0;break;
+                default: m = 0; n = 0;break;
+            }
+        } else {
+            switch (input) {
+                case "W": m = 0;n = 1;break;
+                case "S": m = 0;n = -1;break;
+                case "A": m = -1;n = 0;break;
+                case "D": m = 1;n = 0;break;
+                default: m = 0; n = 0;break;
+            }
         }
         TETile nextTile =  world[x + m][y + n];
         if (nextTile.equals(floor)) {
@@ -133,7 +131,58 @@ public class Avatar implements Serializable {
             addPoints();
             this.pos.changeAvatarPos(m, n, world, floor, appearance);
         } else if (nextTile.equals(unlockedDoor)) {
+            if (points > 4) {
+                GameOver = true;
+                return;
+            }
+            solvepuzzle();
             GameOver = true;
+        } else if (nextTile.equals(mashroom)) {
+            poisoned = !poisoned;
+            this.pos.changeAvatarPos(m, n, world, floor, appearance);
+        }
+    }
+
+    /**
+     * Solve a math problem to win the game.
+     */
+    private void solvepuzzle() {
+        int a = (int)(1+Math.random()*10);
+        int b  = (int)(1+Math.random()*10);
+        int c  = (int)(1+Math.random()*10);
+        double x = ((double)c - (double)b)/(double)a;
+        float  answer =( float )(Math.round(x * 10 ))/ 10;
+        StdDraw.clear(new Color(0, 0, 0));
+        Font font = new Font("Monaco", Font.BOLD, 25);
+        StdDraw.setFont(font);
+        StdDraw.setPenColor(StdDraw.WHITE);
+        String showMessage = Integer.toString(a) + "x + " +
+                Integer.toString(b) + " = " + Integer.toString(c);
+        StdDraw.text(WIDTH/2, HEIGHT/2+5, showMessage);
+        StdDraw.show();
+
+        String stranswer = Float.toString(answer);
+        String typed;
+        String input = "";
+        System.out.println(stranswer); //We can delete this line, later.
+        for (int i = 0; true; i += 1) {
+            if (StdDraw.hasNextKeyTyped()) {
+                typed = Character.toString(StdDraw.nextKeyTyped());
+                input += typed;
+                StdDraw.clear(new Color(0, 0, 0));
+                StdDraw.text(WIDTH/2, HEIGHT/2+5, showMessage);
+                StdDraw.text(WIDTH/2, HEIGHT/2, input);
+                StdDraw.show();
+                if (input.equals(stranswer)) {
+                    StdDraw.pause(300);
+                    break;
+                } else if (input.length()==stranswer.length()) {
+                    StdDraw.clear(new Color(0, 0, 0));
+                    StdDraw.text(WIDTH/2, HEIGHT/2+5, "Wrong Answer, Try again!");
+                    StdDraw.show();
+                    input = "";
+                }
+            }
         }
     }
 
@@ -344,9 +393,5 @@ public class Avatar implements Serializable {
             StdDraw.pause(400);
         }
         startpos = new Position(pos.getX(),pos.getY(), pos.getDirection());
-    }
-
-    public Position getPos() {
-        return pos;
     }
 }

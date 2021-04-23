@@ -124,7 +124,7 @@ public class RandomWorld implements Serializable {
      * @param exit the previous room's exit
      * @return the generated new focus's position
      */
-    private static Position realExit(Position exit) {
+    public static Position realExit(Position exit) {
         int m;
         int n;
         int direction = exit.getDirection();

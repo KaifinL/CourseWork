@@ -119,13 +119,7 @@ public class RandomWorld implements Serializable {
                 exitsQueue2.add(exit);
             }
         }
-        while (!exitsQueue2.isEmpty()) {
-            Position possibleDoor = (Position) exitsQueue2.poll();
-            if (isWall(realExit(possibleDoor), world)) {
-                makeDoor(possibleDoor, world);
-                break;
-            }
-        }
+        makeDoor(newObject.getExits()[0], world);
         return newObject;
     }
 
@@ -207,16 +201,6 @@ public class RandomWorld implements Serializable {
     }
 
 
-    /**
-     * this function will judge if we should create the door according to the roomNum
-     * @return true if we need to create a door false otherwise
-     */
-    private boolean createDoor() {
-        if (doorExist == false) {
-            return true;
-        }
-        return false;
-    }
 
     /**
      * this fuction will automatically judge if we will need to create the door.
@@ -224,10 +208,9 @@ public class RandomWorld implements Serializable {
      * @param world the 2D world we initialized at the beginning of the proj.
      */
     private void makeDoor(Position focus, TETile[][] world) {
-        if (createDoor()) {
-            Position newFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
-            doorHelper(newFocus, world, 0);
-        }
+        Position newFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
+        doorHelper(newFocus, world, 0);
+
     }
 
     private void doorHelper(Position newFocus, TETile[][] world, int tries) {

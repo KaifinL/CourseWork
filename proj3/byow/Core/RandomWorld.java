@@ -70,6 +70,7 @@ public class RandomWorld implements Serializable {
             }
             counter += 1;
         }
+        world[25][12] = Tileset.SAND;
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);

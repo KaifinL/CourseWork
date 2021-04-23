@@ -112,11 +112,11 @@ public class RandomWorld implements Serializable {
             newObject.generate(world);
             makeFlower(focus, world);
             roomNum += 1;
-            makeDoor(focus, world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
             }
         }
+        makeDoor(focus, world);
         return newObject;
     }
 

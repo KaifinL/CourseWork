@@ -209,4 +209,9 @@ public class Engine {
         interactWithInputString("N519788031643SWWWWW");
     }
 
+    /**
+     * something need to be revised:
+     * 1. how to put the all manipulation into the keyboard interaction.
+     */
+
 }

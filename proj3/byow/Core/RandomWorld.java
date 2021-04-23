@@ -39,6 +39,7 @@ public class RandomWorld implements Serializable {
     public TETile[][] worldGenerator() {
         long seed2 = turnPositive(this.seed);
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
+        PriorityQueue<Position> exitsQueue2 = new PriorityQueue<>();
         long pseudoSeed = seed2;
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
@@ -53,7 +54,7 @@ public class RandomWorld implements Serializable {
         }
         Position initialFocus = randomFocus(pseudoSeed);
         initialFocus.setDirection();
-        RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
+        RoomUnit r = initialization(world, pseudoSeed, exitsQueue, exitsQueue2);
         int counter = 0;
         // generate the rooms by exits
         while (counter < 40) {
@@ -63,7 +64,7 @@ public class RandomWorld implements Serializable {
             }
             r.reviseSeed();
             RoomUnit child = randomlyGeneration(this.random.nextInt((int) r.getSEED()),
-                    world, newFocus(exit), 1, exitsQueue);
+                    world, newFocus(exit), 1, exitsQueue, exitsQueue2);
             if (child != null) {
                 chisel(realExit(exit), world);
                 chisel(realExit(realExit(exit)), world);
@@ -92,7 +93,7 @@ public class RandomWorld implements Serializable {
      * however, it should return null if attempt more than 3 times.
      */
     private RoomUnit randomlyGeneration(long seed2, TETile[][] world, Position focus,
-                                        int tries, PriorityQueue exitsQueue) {
+                                        int tries, PriorityQueue exitsQueue, PriorityQueue exitsQueue2) {
         long originSeed = turnPositive(seed2);
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (originSeed % 3);
@@ -108,16 +109,18 @@ public class RandomWorld implements Serializable {
                 return null;
             }
             newObject = randomlyGeneration(this.random.nextInt((int) originSeed), world,
-                    getOrigin, tries + 1, exitsQueue);
+                    getOrigin, tries + 1, exitsQueue, exitsQueue2);
         } else {
             newObject.generate(world);
             makeFlower(focus, world);
             roomNum += 1;
-            makeDoor(focus, world);
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
+                exitsQueue2.add(exit);
             }
         }
+        Position latestPos = (Position) exitsQueue2.poll();
+        makeDoor(latestPos, world);
         return newObject;
     }
 
@@ -165,13 +168,15 @@ public class RandomWorld implements Serializable {
         return realExit(realExit(realExit(exit)));
     }
 
-    private RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
+    private RoomUnit initialization(TETile[][] world, long seed,
+                                    PriorityQueue exitsQueue, PriorityQueue exitsQueue2) {
         Position focus = new Position(50, 20, 0);
         RoomUnit newObject = generateRoom(seed, focus);
         newObject.setFocus(focus);
         newObject.generate(world);
         for (Position exit : newObject.getExits()) {
             exitsQueue.add(exit);
+            exitsQueue2.add(exit);
         }
         this.startPos = new Position(focus.getX(), focus.getY(), focus.getDirection());
         return newObject;
@@ -202,7 +207,7 @@ public class RandomWorld implements Serializable {
      * @return true if we need to create a door false otherwise
      */
     private boolean createDoor() {
-        if (this.roomNum % 3 == 0 && doorExist == false) {
+        if (doorExist == false) {
             return true;
         }
         return false;

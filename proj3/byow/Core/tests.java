@@ -36,7 +36,6 @@ public class tests {
         Position start = newWorld.getStartPos();
         System.out.println(door.getX() + "   " + door.getY() + "    " + door.getDirection());
         System.out.println(start.getX() + "    " + start.getY() + "     " + start.getDirection());
-
     }
 
     @Test
@@ -69,6 +68,7 @@ public class tests {
      * connect with the previous world.(by doing this , we can design a 'skill' like
      * pressing 'c' and than we will make a wall into a 'floor' and again generate another
      * world.)
+     *
      *
      */
 

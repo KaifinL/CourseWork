@@ -346,5 +346,7 @@ public class Avatar implements Serializable {
         startpos = new Position(pos.getX(),pos.getY(), pos.getDirection());
     }
 
-    
+    public Position getPos() {
+        return pos;
+    }
 }

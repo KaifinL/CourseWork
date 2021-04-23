@@ -5,6 +5,7 @@ import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
 import java.util.PriorityQueue;
+import java.util.Random;
 
 /**
  * this class is about achieving a function that is if the avatar is near a wall,
@@ -14,19 +15,25 @@ public class Skill {
     private Avatar avatar;
     // we need to pass in the previous world so that it can copy the tiles
     private TETile[][] world;
-    int width;
-    int height;
+    private int width;
+    private int height;
+    private long seed;
+    private PriorityQueue<Position> exits2 = new PriorityQueue<>();
+    private Random random = new Random();
+    private int roomNum;
 
-    private void initialize(Avatar avatar, TETile[][] world, int width, int height) {
+    private void initialize(Avatar avatar, TETile[][] world,
+                            int width, int height, long seed) {
         this.avatar = avatar;
         this.world = world;
         this.width = width;
         this.height = height;
+        this.seed = seed;
     }
 
 
-    public void chisel(Avatar avatar, TETile[][] world, int width, int height) {
-        initialize(avatar, world, width, height);
+    public void chisel(Avatar avatar, TETile[][] world, int width, int height, long seed) {
+        initialize(avatar, world, width, height, seed);
         int direction = getDirection();
         switch (direction) {
             case 4:
@@ -62,7 +69,35 @@ public class Skill {
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         TERenderer ter = new TERenderer();
         ter.initialize(width, height);
+        
+    }
 
+    private RoomUnit roomGeneration(int direction, Position realFocus, int tries) {
+        Position getOrigin = new Position(realFocus.getX(), realFocus.getY(), realFocus.getDirection());
+        int randomNum = (int) (this.seed % 3);
+        RoomUnit newObject;
+        if (randomNum < 1 && tries < 2) {
+            newObject = RandomWorld.generateRoom(seed, realFocus);
+        } else {
+            newObject = RandomWorld.generateHallway(seed, realFocus);
+        }
+        newObject.setFocus(realFocus);
+        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
+            if (tries > 6) {
+                return null;
+            }
+
+            newObject = roomGeneration(this.random.nextInt((int) seed),
+                    getOrigin, tries + 1);
+        } else {
+            newObject.generate(world);
+            RandomWorld.makeFlower(realFocus, world);
+            roomNum += 1;
+            for (Position exit : newObject.getExits()) {
+                exits2.add(exit);
+            }
+        }
+        return newObject;
     }
 
 }

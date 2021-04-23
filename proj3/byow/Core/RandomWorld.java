@@ -17,6 +17,7 @@ public class RandomWorld implements Serializable {
     private Position door;
     private Position startPos;
     private boolean doorExist = false;
+    private PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
 
     /**
      * Return a random location on the map.
@@ -53,17 +54,17 @@ public class RandomWorld implements Serializable {
         }
         Position initialFocus = randomFocus(pseudoSeed);
         initialFocus.setDirection();
-        RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
+        RoomUnit r = initialization(world, pseudoSeed, this.exitsQueue);
         int counter = 0;
         // generate the rooms by exits
         while (counter < 40) {
-            Position exit = exitsQueue.poll();
+            Position exit = this.exitsQueue.poll();
             if (exit == null) {
                 break;
             }
             r.reviseSeed();
             RoomUnit child = randomlyGeneration(this.random.nextInt((int) r.getSEED()),
-                    world, newFocus(exit), 1, exitsQueue);
+                    world, newFocus(exit), 1, this.exitsQueue);
             if (child != null) {
                 chisel(realExit(exit), world);
                 chisel(realExit(realExit(exit)), world);
@@ -116,7 +117,6 @@ public class RandomWorld implements Serializable {
                 exitsQueue.add(exit);
             }
         }
-        makeDoor(focus, world);
         return newObject;
     }
 

@@ -12,6 +12,7 @@ import java.util.PriorityQueue;
  */
 public class Skill {
     private Avatar avatar;
+    // we need to pass in the previous world so that it can copy the tiles
     private TETile[][] world;
     int width;
     int height;
@@ -61,7 +62,7 @@ public class Skill {
         PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
         TERenderer ter = new TERenderer();
         ter.initialize(width, height);
-        
+
     }
 
 }

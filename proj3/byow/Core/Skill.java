@@ -22,8 +22,8 @@ public class Skill {
     private int roomNum;
 
 
-    private Skill(Avatar avatar, TETile[][] world,
-                            int width, int height, long seed) {
+    public Skill(Avatar avatar, TETile[][] world,
+                 int width, int height, long seed) {
         this.avatar = avatar;
         this.world = world;
         this.width = width;
@@ -45,7 +45,8 @@ public class Skill {
     }
 
     private int getDirection() {
-        Position avatarPos = avatar.getPos();
+        //Position avatarPos = avatar.getPos();
+        Position avatarPos = new Position(39, 10, 0);
         if (world[avatarPos.getX() + 1][avatarPos.getY()].equals(Tileset.WALL)) {
             return 3;
         }
@@ -63,7 +64,7 @@ public class Skill {
 
     private Position worldEntrance() {
         //Position avatarPos = avatar.getPos();
-        Position avatarPos = new Position(39, 10, 3);
+        Position avatarPos = new Position(39, 10, 0);
         if (world[avatarPos.getX() + 1][avatarPos.getY()].equals(Tileset.WALL)) {
             return new Position(avatarPos.getX() + 1, avatarPos.getY(), 3);
         }

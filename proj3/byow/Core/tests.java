@@ -7,6 +7,8 @@ import byow.TileEngine.TETile;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class tests {
     private static final String testInput = "n5197880843569031643s";
@@ -49,6 +51,18 @@ public class tests {
     @Test
     public void setTestInput() throws IOException {
         Engine.stringManipulation("LDS:Q");
+    }
+
+    @Test
+    public void testQueue() {
+        LinkedList<RoomUnit> roomLists = new LinkedList();
+        RoomUnit r1 = new RoomUnit(1, 21, 2, 1234);
+        RoomUnit r2 = new RoomUnit(4,2,3,1234);
+        roomLists.addLast(r1);
+        roomLists.addLast(r2);
+        System.out.println(r1);
+        System.out.println(r2);
+        
     }
 
     /**

@@ -89,7 +89,7 @@ public class Skill {
         world[entrance.getX()][entrance.getY()] = Tileset.TREE;
         Position realEntrance = realExit(entrance);
         RoomUnit initialRoom = roomGeneration(this.seed, realEntrance, 0, exitsQueue);
-        while (roomNum < 10) {
+        while (roomNum < 10 && !exitsQueue.isEmpty()) {
             Position previousExit = exitsQueue.poll();
             Position newFocus = realExit(realExit(previousExit));
             RoomUnit newRoom = roomGeneration(this.seed, newFocus, 0, exitsQueue);

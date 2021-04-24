@@ -37,8 +37,8 @@ public class Skill {
             case 4:
                 System.out.println("Please approach the wall");
                 break;
-            case 3:
-
+            default:
+                worldGeneration();
         }
 
     }
@@ -60,11 +60,47 @@ public class Skill {
         return 4;
     }
 
+    private Position worldEntrance() {
+        Position avatarPos = avatar.getPos();
+        if (world[avatarPos.getX() + 1][avatarPos.getY()].equals(Tileset.WALL)) {
+            return new Position(avatarPos.getX() + 1, avatarPos.getY(), 3);
+        }
+        if (world[avatarPos.getX() - 1][avatarPos.getY()].equals(Tileset.WALL)) {
+            return new Position(avatarPos.getX() - 1, avatarPos.getY(), 2);
+        }
+        if (world[avatarPos.getX()][avatarPos.getY() + 1].equals(Tileset.WALL)) {
+            return new Position(avatarPos.getX(), avatarPos.getY() + 1, 0);
+        }
+        if (world[avatarPos.getX()][avatarPos.getY() - 1].equals(Tileset.WALL)) {
+            return new Position(avatarPos.getX(), avatarPos.getY() - 1, 1);
+        }
+        return null;
+    }
 
-    private RoomUnit roomGeneration(int direction, Position realFocus,
+    private TETile[][] worldGeneration() {
+        // variables
+        PriorityQueue<Position> exitsQueue = new PriorityQueue();
+        int roomNum = 0;
+        // main function achievement
+        Position entrance = worldEntrance();
+        world[entrance.getX()][entrance.getY()] = Tileset.TREE;
+        Position realEntrance = realExit(entrance);
+        RoomUnit initialRoom = roomGeneration(this.seed, realEntrance, 0, exitsQueue);
+        while (roomNum < 10) {
+            Position previousExit = exitsQueue.poll();
+            Position newFocus = realExit(realExit(previousExit));
+            RoomUnit newRoom = roomGeneration(this.seed, newFocus, 0, exitsQueue);
+            roomNum += 1;
+        }
+        world[realEntrance.getX()][realEntrance.getY()] = Tileset.TREE;
+        return this.world;
+    }
+
+
+    private RoomUnit roomGeneration(long seed, Position realFocus,
                                     int tries, PriorityQueue exits2) {
         Position getOrigin = new Position(realFocus.getX(), realFocus.getY(), realFocus.getDirection());
-        int randomNum = (int) (this.seed % 3);
+        int randomNum = (int) (seed % 3);
         RoomUnit newObject;
         if (randomNum < 1 && tries < 2) {
             newObject = RandomWorld.generateRoom(seed, realFocus);

@@ -143,7 +143,7 @@ public class Engine {
             avatar.setDoor(door);
             avatar.setWorld(finalWorldFrame);
             avatar.systemInput(manipulation);
-            Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
+            //Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
             //c.chiselNewWorld();
             System.out.println(String.valueOf(avatar.getPos().getX())
                     + String.valueOf(avatar.getPos().getY()) + "" + avatar.getPos().getDirection());

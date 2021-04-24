@@ -182,6 +182,7 @@ public class Skill {
                                      PriorityQueue<Position> exitsQueue, int tries) {
         RoomUnit newObject = generateHallway(1, 7, realEntrance.getDirection());
         newObject.setFocus(realEntrance);
+        /**
         if (newObject.checkOverlap(world) || newObject.checkIndexError(world)) {
             if (tries > 5) {
                 return null;
@@ -193,6 +194,7 @@ public class Skill {
             }
             newObject = initialization(realEntrance, world, exitsQueue, tries + 1);
         }
+         */
         if (newObject == null) {
             return null;
         }

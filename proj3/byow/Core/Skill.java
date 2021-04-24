@@ -4,6 +4,7 @@ import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -12,13 +13,13 @@ import java.util.Random;
  * it can press 'c' to make a new world and further explore it!
  */
 public class Skill {
-    private Avatar avatar;
+    private final Avatar avatar;
     // we need to pass in the previous world so that it can copy the tiles
     private TETile[][] world;
-    private int width;
-    private int height;
-    private long seed;
-    private Random random = new Random();
+    private final int width;
+    private final int height;
+    private final long seed;
+    private final Random random = new Random();
     private int roomNum;
 
 
@@ -34,12 +35,10 @@ public class Skill {
 
     public void chiselNewWorld() {
         int direction = getDirection();
-        switch (direction) {
-            case 4:
-                System.out.println("Please approach the wall");
-                break;
-            default:
-                worldGeneration();
+        if (direction == 4) {
+            System.out.println("Please approach the wall");
+        } else {
+            worldGeneration();
         }
 
     }
@@ -88,7 +87,7 @@ public class Skill {
         Position entrance = worldEntrance();
         world[entrance.getX()][entrance.getY()] = Tileset.TREE;
         Position realEntrance = realExit(entrance);
-        RoomUnit initial = initialHallway(2, realEntrance, exitsQueue, 5);
+        RoomUnit initial = initialization(realEntrance, world, exitsQueue);
         if (initial == null) {
             return world;
         }
@@ -156,6 +155,7 @@ public class Skill {
     }
 
 
+    /**
     private RoomUnit initialHallway(int direction, Position focus, PriorityQueue exits, int length) {
 
         Position originFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
@@ -175,8 +175,24 @@ public class Skill {
         }
         return returnHallway;
     }
+     */
 
 
+    private RoomUnit initialization(Position realEntrance, TETile[][] world,
+                                     PriorityQueue<Position> exitsQueue) {
+        RoomUnit newObject = generateHallway(1, 7, realEntrance.getDirection());
+        newObject.setFocus(realEntrance);
+        if (newObject.checkOverlap(world) || newObject.checkIndexError(world)) {
+            return null;
+        }
+        newObject.generate(world);
+        Collections.addAll(exitsQueue, newObject.getExits());
+        return newObject;
+    }
+
+    private RoomUnit generateHallway(int width, int length, int direction) {
+        return new RoomUnit(width, length, direction, this.seed);
+    }
 
 
 

@@ -142,6 +142,20 @@ public class RoomUnit implements Serializable {
         return false;
     }
 
+    public boolean checkOverlap2(TETile[][] world) {
+        for (int i = 0; i < this.width + 2; i += 1) {
+            for (int j = 0; j < this.length + 2; j += 1) {
+                int focusX = this.focus.getX();
+                int focusY = this.focus.getY();
+                if (!world[focusX - 1 + i][focusY + 1 - j].equals(Tileset.NOTHING)
+                        && !world[focusX - 1 + i][focusY + 1 - j].equals(Tileset.WALL)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Generate this random room unit.

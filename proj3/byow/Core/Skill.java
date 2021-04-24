@@ -44,8 +44,7 @@ public class Skill {
     }
 
     private int getDirection() {
-        //Position avatarPos = avatar.getPos();
-        Position avatarPos = new Position(39, 9, 2);
+        Position avatarPos = avatar.getPos();
         if (world[avatarPos.getX() + 1][avatarPos.getY()].equals(Tileset.WALL)) {
             return 3;
         }
@@ -62,8 +61,7 @@ public class Skill {
     }
 
     private Position worldEntrance() {
-        //Position avatarPos = avatar.getPos();
-        Position avatarPos = new Position(39, 9, 2);
+        Position avatarPos = avatar.getPos();
         if (world[avatarPos.getX() + 1][avatarPos.getY()].equals(Tileset.WALL)) {
             return new Position(avatarPos.getX() + 1, avatarPos.getY(), 3);
         }

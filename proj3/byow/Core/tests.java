@@ -4,6 +4,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
 import byow.TileEngine.TETile;
+import byow.TileEngine.Tileset;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -62,6 +63,19 @@ public class tests {
         roomLists.addLast(r2);
         System.out.println(r1);
         System.out.println(r2);
+
+    }
+
+    @Test
+    public void testHallwayDrawing() {
+        TETile[][] world = new TETile[80][30];
+        for (int x = 0; x < 80; x += 1) {
+            for (int y = 0; y < 30; y += 1) {
+                world[x][y] = Tileset.NOTHING;
+            }
+        }
+        HallwayUnit testHallway = new HallwayUnit(7, 1, 2, 271626);
+        testHallway.setFocus(new Position(39, 18, 0));
 
     }
 

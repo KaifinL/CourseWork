@@ -106,6 +106,7 @@ public class Skill {
                                     int tries, PriorityQueue exits2) {
         Position getOrigin = new Position(realFocus.getX(), realFocus.getY(), realFocus.getDirection());
         int randomNum = (int) (seed % 3);
+        long originSeed = RandomWorld.turnPositive(seed);
         RoomUnit newObject;
         if (randomNum < 1 && tries < 2) {
             newObject = RandomWorld.generateRoom(seed, realFocus);
@@ -117,8 +118,7 @@ public class Skill {
             if (tries > 6) {
                 return null;
             }
-
-            newObject = roomGeneration(this.random.nextInt((int) seed),
+            newObject = roomGeneration(this.random.nextInt((int) originSeed),
                     getOrigin, tries + 1, exits2);
         } else {
             newObject.generate(world);

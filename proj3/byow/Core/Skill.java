@@ -85,7 +85,6 @@ public class Skill {
         int roomNum = 0;
         // main function achievement
         Position entrance = worldEntrance();
-        world[entrance.getX()][entrance.getY()] = Tileset.TREE;
         Position realEntrance = realExit(entrance);
         RoomUnit initial = initialization(realEntrance, world, exitsQueue, 0);
         if (initial == null) {

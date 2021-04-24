@@ -88,7 +88,7 @@ public class Skill {
         Position entrance = worldEntrance();
         world[entrance.getX()][entrance.getY()] = Tileset.TREE;
         Position realEntrance = realExit(entrance);
-        RoomUnit initial = initialHallway(getDirection(), realEntrance, exitsQueue, 7);
+        RoomUnit initial = initialHallway(2, realEntrance, exitsQueue, 7);
         if (initial == null) {
             return world;
         }

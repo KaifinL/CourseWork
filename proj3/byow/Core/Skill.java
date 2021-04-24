@@ -87,6 +87,7 @@ public class Skill {
         Position entrance = worldEntrance();
         Position realEntrance = realExit(entrance);
         RoomUnit initial = initialization(realEntrance, world, exitsQueue, 0);
+        world[entrance.getX()][entrance.getY()] = Tileset.TREE;
         if (initial == null) {
             return world;
         }
@@ -198,6 +199,7 @@ public class Skill {
 
         newObject.generate(world);
         Collections.addAll(exitsQueue, newObject.getExits());
+
         return newObject;
     }
 

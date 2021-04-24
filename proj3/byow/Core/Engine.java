@@ -144,7 +144,7 @@ public class Engine {
             avatar.setWorld(finalWorldFrame);
             avatar.systemInput(manipulation);
             System.out.println(String.valueOf(avatar.getPos().getX())
-                    + String.valueOf(avatar.getPos().getY()));
+                    + String.valueOf(avatar.getPos().getY()) + "" + avatar.getPos().getDirection());
         }
         return finalWorldFrame;
     }

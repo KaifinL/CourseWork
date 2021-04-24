@@ -74,7 +74,8 @@ public class RandomWorld implements Serializable {
             counter += 1;
         }
         while (!doorExist) {
-            
+            Position possibleDoor = roomUnitLinkedList.getLast().getExits()[0];
+            makeDoor(possibleDoor, world);
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
@@ -205,12 +206,6 @@ public class RandomWorld implements Serializable {
      * this function will judge if we should create the door according to the roomNum
      * @return true if we need to create a door false otherwise
      */
-    private boolean createDoor() {
-        if (this.roomNum % 3 == 0 && doorExist == false) {
-            return true;
-        }
-        return false;
-    }
 
     /**
      * this fuction will automatically judge if we will need to create the door.
@@ -218,7 +213,7 @@ public class RandomWorld implements Serializable {
      * @param world the 2D world we initialized at the beginning of the proj.
      */
     private void makeDoor(Position focus, TETile[][] world) {
-        if (createDoor()) {
+        if (!doorExist) {
             Position newFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
             doorHelper(newFocus, world, 0);
         }

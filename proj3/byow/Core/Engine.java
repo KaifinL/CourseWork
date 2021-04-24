@@ -144,6 +144,7 @@ public class Engine {
             avatar.systemInput(manipulation);
             Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
             c.chiselNewWorld();
+            TETile[][] newWorld = c.getWorld();
         }
         return finalWorldFrame;
     }

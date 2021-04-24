@@ -226,6 +226,10 @@ public class RoomUnit implements Serializable {
         return SEED;
     }
 
+    public void setSEED(long SEED) {
+        this.SEED = SEED;
+    }
+
     /**
      * This is used for debugging.
      */

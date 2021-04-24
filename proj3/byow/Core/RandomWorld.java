@@ -115,8 +115,7 @@ public class RandomWorld implements Serializable {
                     getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
-            long realSeed = turnPositive(this.seed);
-            makeFlower(focus, world, realSeed);
+            makeFlower(focus, world, this.seed);
             roomNum += 1;
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);
@@ -252,8 +251,9 @@ public class RandomWorld implements Serializable {
     }
 
     public static TETile Psychedelic(long seed) {
+        long realSeed = turnPositive(seed);
         Random random = new Random();
-        int pseudoNum = random.nextInt((int) seed) % 5;
+        int pseudoNum = random.nextInt((int) realSeed) % 5;
         if (pseudoNum < 2) {
             return Tileset.GRASS;
         }

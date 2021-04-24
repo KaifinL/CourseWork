@@ -50,7 +50,7 @@ public class tests {
 
     @Test
     public void setTestInput() throws IOException {
-        Engine.stringManipulation("LDS:Q");
+        Engine.stringManipulation("N82827WEDS:Q");
     }
 
     @Test

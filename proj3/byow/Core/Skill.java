@@ -195,6 +195,7 @@ public class Skill {
         }
         newObject.generate(world);
         Collections.addAll(exitsQueue, newObject.getExits());
+        world[realFocus.getX()][realFocus.getY()] = Tileset.SAND;
         return newObject;
     }
 

@@ -83,11 +83,11 @@ public class RandomWorld implements Serializable {
         return world;
     }
 
-    private static RoomUnit generateRoom(long seed, Position focus) {
+    public static RoomUnit generateRoom(long seed, Position focus) {
         return new RoomUnit(focus.getDirection(), seed);
     }
 
-    private static HallwayUnit generateHallway(long seed, Position focus) {
+    public static HallwayUnit generateHallway(long seed, Position focus) {
         return new HallwayUnit(focus.getDirection(), seed);
     }
 
@@ -197,7 +197,7 @@ public class RandomWorld implements Serializable {
      * @param focus the exit's focus
      * @param world the 2D world we initially created
      */
-    private static void makeFlower(Position focus, TETile[][] world) {
+    public static void makeFlower(Position focus, TETile[][] world) {
         world[focus.getX()][focus.getY()] = Tileset.FLOWER;
     }
 

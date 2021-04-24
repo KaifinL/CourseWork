@@ -182,6 +182,7 @@ public class Skill {
         Position realFocus = new Position(realEntrance.getX() + 7, realEntrance.getY(), realEntrance.getDirection());
         RoomUnit newObject = generateHallway(1, 7, realEntrance.getDirection());
         newObject.setFocus(realFocus);
+        world[realFocus.getX()][realFocus.getY()] = Tileset.SAND;
 
 
         if (newObject.checkOverlap(world) || newObject.checkIndexError(world)) {
@@ -195,7 +196,6 @@ public class Skill {
         }
         newObject.generate(world);
         Collections.addAll(exitsQueue, newObject.getExits());
-        world[realFocus.getX()][realFocus.getY()] = Tileset.SAND;
         return newObject;
     }
 

@@ -250,7 +250,9 @@ public class RandomWorld implements Serializable {
         return startPos;
     }
 
-    public TETile confusionMash
+    public TETile Psychedelic() {
+        int psudoNum
+    }
 
     /**
      * This is used for debugging.

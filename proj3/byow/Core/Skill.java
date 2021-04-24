@@ -211,5 +211,7 @@ public class Skill {
         return realExit(realExit(realExit(exit)));
     }
 
-
+    public TETile[][] getWorld() {
+        return world;
+    }
 }

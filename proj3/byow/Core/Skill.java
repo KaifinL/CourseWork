@@ -180,7 +180,7 @@ public class Skill {
 
     private RoomUnit initialization(Position realEntrance, TETile[][] world,
                                      PriorityQueue<Position> exitsQueue, int tries) {
-        RoomUnit newObject = generateHallway(1, 7, realEntrance.getDirection());
+        RoomUnit newObject = generateHallway(7, 1, realEntrance.getDirection());
         newObject.setFocus(realEntrance);
         /**
         if (newObject.checkOverlap(world) || newObject.checkIndexError(world)) {

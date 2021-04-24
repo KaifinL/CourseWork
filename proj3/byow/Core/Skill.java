@@ -158,13 +158,14 @@ public class Skill {
 
     private RoomUnit initialHallway(int direction, Position focus, PriorityQueue exits, int length) {
 
+        Position originFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
         RoomUnit returnHallway = new RoomUnit(1, length, direction, this.seed);
         returnHallway.setFocus(focus);
         if ((returnHallway.checkIndexError(world) || returnHallway.checkOverlap(world))) {
             if (length < 4) {
                 return null;
             }
-            returnHallway = initialHallway(direction, focus, exits, length - 1);
+            returnHallway = initialHallway(direction, originFocus, exits, length - 1);
         } else {
             returnHallway.generate(world);
             for (Position exit : returnHallway.getExits()) {

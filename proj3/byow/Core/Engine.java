@@ -119,7 +119,6 @@ public class Engine {
         //
         // See proj3.byow.InputDemo for a demo of how you can make a nice clean interface
         // that works for many different input types.
-
         // from online :Extract digits from string - StringUtils Java @stack overflow
         TETile[][] finalWorldFrame;
         Avatar avatar = new Avatar();
@@ -145,8 +144,6 @@ public class Engine {
             avatar.systemInput(manipulation);
             Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
             c.chiselNewWorld();
-            System.out.println(String.valueOf(avatar.getPos().getX())
-                    + String.valueOf(avatar.getPos().getY()) + "" + avatar.getPos().getDirection());
         }
         return finalWorldFrame;
     }

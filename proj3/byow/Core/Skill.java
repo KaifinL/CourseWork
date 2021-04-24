@@ -180,7 +180,7 @@ public class Skill {
 
     private RoomUnit initialization(Position realEntrance, TETile[][] world,
                                      PriorityQueue<Position> exitsQueue, int tries) {
-        Position realFocus = new Position(realEntrance.getX() - 7, realEntrance.getY(), realEntrance.getDirection());
+        Position realFocus = new Position(realEntrance.getX(), realEntrance.getY(), realEntrance.getDirection());
         RoomUnit newObject = generateHallway(1, 7, realEntrance.getDirection());
         newObject.setFocus(realFocus);
 

@@ -77,7 +77,6 @@ public class RandomWorld implements Serializable {
             Position possibleDoor = roomUnitLinkedList.getLast().getExits()[0];
             makeDoor(possibleDoor, world);
         }
-        world[38][9] = Tileset.TREE;
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);

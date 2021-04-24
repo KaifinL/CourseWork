@@ -152,6 +152,10 @@ public class Skill {
         return returnFocus;
     }
 
+    private static HallwayUnit initialHallway() {
+        return new HallwayUnit()
+    }
+
 
     private static Position newFocus(Position exit) {
         return realExit(realExit(realExit(exit)));

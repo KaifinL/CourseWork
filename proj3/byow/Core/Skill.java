@@ -115,7 +115,7 @@ public class Skill {
             newObject = RandomWorld.generateHallway(seed, realFocus);
         }
         newObject.setFocus(realFocus);
-        if (newObject.checkIndexError(world) || newObject.checkOverlap(world)) {
+        if (newObject.checkIndexError(world) || newObject.checkOverlap2(world)) {
             if (tries > 6) {
                 return null;
             }

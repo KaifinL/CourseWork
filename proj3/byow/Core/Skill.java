@@ -166,7 +166,6 @@ public class Skill {
             }
             returnHallway = initialHallway(direction, focus, exits, length - 1);
         } else {
-            returnHallway.setSEED(RandomWorld.turnPositive(returnHallway.getSEED()));
             returnHallway.generate(world);
             for (Position exit : returnHallway.getExits()) {
                 exits.add(exit);

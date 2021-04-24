@@ -187,8 +187,9 @@ public class Skill {
                 return null;
             }
             if (realEntrance.getDirection() > 3) {
-                realEntrance.changeDirection();
+                realEntrance.setDirection();
             }
+            realEntrance.changeDirection();
             newObject = initialization(realEntrance, world, exitsQueue, tries + 1);
         }
         if (newObject == null) {

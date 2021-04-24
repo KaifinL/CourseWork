@@ -53,8 +53,6 @@ public class RandomWorld implements Serializable {
                 world[x][y] = Tileset.NOTHING;
             }
         }
-        Position initialFocus = randomFocus(pseudoSeed);
-        initialFocus.setDirection();
         RoomUnit r = initialization(world, pseudoSeed, exitsQueue);
         int counter = 0;
         // generate the rooms by exits
@@ -170,7 +168,7 @@ public class RandomWorld implements Serializable {
         return realExit(realExit(realExit(exit)));
     }
 
-    private RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
+    private RoomUnit initialization(TETile[][] world, long seed, PriorityQueue<Position> exitsQueue) {
         Position focus = new Position(50, 20, 0);
         RoomUnit newObject = generateRoom(seed, focus);
         newObject.setFocus(focus);

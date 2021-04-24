@@ -161,7 +161,7 @@ public class Skill {
         RoomUnit returnHallway = new RoomUnit(1, length, direction, this.seed);
         returnHallway.setFocus(focus);
         if ((returnHallway.checkIndexError(world) || returnHallway.checkOverlap(world))) {
-            if (length < 1) {
+            if (length < 4) {
                 return null;
             }
             returnHallway = initialHallway(direction, focus, exits, length - 1);

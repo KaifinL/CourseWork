@@ -71,6 +71,7 @@ public class RandomWorld implements Serializable {
             }
             counter += 1;
         }
+        
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
         ter.renderFrame(world);

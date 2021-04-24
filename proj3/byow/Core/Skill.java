@@ -94,7 +94,7 @@ public class Skill {
             Position newFocus = realExit(realExit(previousExit));
             RoomUnit newRoom = roomGeneration(this.seed, newFocus, 0, exitsQueue);
             if (newRoom != null) {
-                RandomWorld.makeFlower(realExit(previousExit), world);
+                RandomWorld.makeFlower(realExit(previousExit), world, this.seed);
             }
             roomNum += 1;
         }
@@ -125,7 +125,7 @@ public class Skill {
                     getOrigin, tries + 1, exits2);
         } else {
             newObject.generate(world);
-            RandomWorld.makeFlower(realFocus, world);
+            RandomWorld.makeFlower(realFocus, world, this.seed);
             roomNum += 1;
             for (Position exit : newObject.getExits()) {
                 exits2.add(exit);

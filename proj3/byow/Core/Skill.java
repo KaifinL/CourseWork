@@ -191,6 +191,9 @@ public class Skill {
             }
             newObject = initialization(realEntrance, world, exitsQueue, tries + 1);
         }
+        if (newObject == null) {
+            return null;
+        }
         newObject.generate(world);
         Collections.addAll(exitsQueue, newObject.getExits());
         return newObject;

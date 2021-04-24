@@ -18,6 +18,7 @@ public class RandomWorld implements Serializable {
     private Position startPos;
     private boolean doorExist = false;
     private PriorityQueue<Position> exitsQueue = new PriorityQueue<>();
+    private PriorityQueue<Position> leftExits = new PriorityQueue<>();
 
     /**
      * Return a random location on the map.
@@ -27,7 +28,6 @@ public class RandomWorld implements Serializable {
         this.seed = seed;
         this.random = new Random(seed);
     }
-
 
     private static Position randomFocus(long seed) {
         Random r = new Random(seed);
@@ -54,7 +54,7 @@ public class RandomWorld implements Serializable {
         }
         Position initialFocus = randomFocus(pseudoSeed);
         initialFocus.setDirection();
-        RoomUnit r = initialization(world, pseudoSeed, this.exitsQueue);
+        RoomUnit r = initialization(world, pseudoSeed);
         int counter = 0;
         // generate the rooms by exits
         while (counter < 40) {
@@ -64,7 +64,7 @@ public class RandomWorld implements Serializable {
             }
             r.reviseSeed();
             RoomUnit child = randomlyGeneration(this.random.nextInt((int) r.getSEED()),
-                    world, newFocus(exit), 1, this.exitsQueue);
+                    world, newFocus(exit), 1);
             if (child != null) {
                 chisel(realExit(exit), world);
                 chisel(realExit(realExit(exit)), world);
@@ -92,7 +92,7 @@ public class RandomWorld implements Serializable {
      * however, it should return null if attempt more than 3 times.
      */
     private RoomUnit randomlyGeneration(long seed2, TETile[][] world, Position focus,
-                                        int tries, PriorityQueue exitsQueue) {
+                                        int tries) {
         long originSeed = turnPositive(seed2);
         Position getOrigin = new Position(focus.getX(), focus.getY(), focus.getDirection());
         int randomNum = (int) (originSeed % 3);
@@ -108,13 +108,14 @@ public class RandomWorld implements Serializable {
                 return null;
             }
             newObject = randomlyGeneration(this.random.nextInt((int) originSeed), world,
-                    getOrigin, tries + 1, exitsQueue);
+                    getOrigin, tries + 1);
         } else {
             newObject.generate(world);
             makeFlower(focus, world);
             roomNum += 1;
             for (Position exit : newObject.getExits()) {
-                exitsQueue.add(exit);
+                this.exitsQueue.add(exit);
+                leftExits.add(exit);
             }
         }
         return newObject;
@@ -164,13 +165,14 @@ public class RandomWorld implements Serializable {
         return realExit(realExit(realExit(exit)));
     }
 
-    private RoomUnit initialization(TETile[][] world, long seed, PriorityQueue exitsQueue) {
+    private RoomUnit initialization(TETile[][] world, long seed) {
         Position focus = new Position(50, 20, 0);
         RoomUnit newObject = generateRoom(seed, focus);
         newObject.setFocus(focus);
         newObject.generate(world);
         for (Position exit : newObject.getExits()) {
-            exitsQueue.add(exit);
+            this.exitsQueue.add(exit);
+            this.leftExits.add(exit);
         }
         this.startPos = new Position(focus.getX(), focus.getY(), focus.getDirection());
         return newObject;
@@ -200,12 +202,6 @@ public class RandomWorld implements Serializable {
      * this function will judge if we should create the door according to the roomNum
      * @return true if we need to create a door false otherwise
      */
-    private boolean createDoor() {
-        if (this.roomNum % 3 == 0 && doorExist == false) {
-            return true;
-        }
-        return false;
-    }
 
     /**
      * this fuction will automatically judge if we will need to create the door.
@@ -213,7 +209,7 @@ public class RandomWorld implements Serializable {
      * @param world the 2D world we initialized at the beginning of the proj.
      */
     private void makeDoor(Position focus, TETile[][] world) {
-        if (createDoor()) {
+        if (!doorExist) {
             Position newFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
             doorHelper(newFocus, world, 0);
         }

@@ -172,7 +172,7 @@ public class Skill {
             }
             return returnHallway;
         }
-        return null;
+        return returnHallway;
     }
 
 

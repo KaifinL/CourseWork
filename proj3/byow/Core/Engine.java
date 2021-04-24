@@ -142,8 +142,8 @@ public class Engine {
             avatar.setDoor(door);
             avatar.setWorld(finalWorldFrame);
             avatar.systemInput(manipulation);
-            Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
-            c.chiselNewWorld();
+            //Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
+            //c.chiselNewWorld();
         }
         return finalWorldFrame;
     }

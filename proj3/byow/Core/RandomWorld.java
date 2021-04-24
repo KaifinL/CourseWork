@@ -259,7 +259,7 @@ public class RandomWorld implements Serializable {
         Random random = new Random();
         int pseudoNum = random.nextInt((int) realSeed) % 5;
         if (pseudoNum < 2) {
-            return Tileset.GRAYFLOWER;
+            return Tileset.BLUEFLOWER;
         }
         return Tileset.FLOWER;
     }

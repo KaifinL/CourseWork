@@ -179,11 +179,17 @@ public class Skill {
 
 
     private RoomUnit initialization(Position realEntrance, TETile[][] world,
-                                     PriorityQueue<Position> exitsQueue) {
+                                     PriorityQueue<Position> exitsQueue, int tries) {
         RoomUnit newObject = generateHallway(1, 7, realEntrance.getDirection());
         newObject.setFocus(realEntrance);
         if (newObject.checkOverlap(world) || newObject.checkIndexError(world)) {
-            return null;
+            if (tries > 5) {
+                return null;
+            }
+            if (realEntrance.getDirection() > 3) {
+                realEntrance.changeDirection();
+            }
+            newObject = initialization(realEntrance, world, exitsQueue, tries + 1);
         }
         newObject.generate(world);
         Collections.addAll(exitsQueue, newObject.getExits());

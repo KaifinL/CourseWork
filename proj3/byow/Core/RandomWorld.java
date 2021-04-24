@@ -115,7 +115,8 @@ public class RandomWorld implements Serializable {
                     getOrigin, tries + 1, exitsQueue);
         } else {
             newObject.generate(world);
-            makeFlower(focus, world, this.seed);
+            long realSeed = turnPositive(this.seed);
+            makeFlower(focus, world, realSeed);
             roomNum += 1;
             for (Position exit : newObject.getExits()) {
                 exitsQueue.add(exit);

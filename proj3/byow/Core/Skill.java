@@ -166,14 +166,16 @@ public class Skill {
             }
             returnHallway = initialHallway(direction, focus, exits, length - 1);
         } else {
+            returnHallway.generate(world);
             for (Position exit : returnHallway.getExits()) {
                 exits.add(exit);
             }
-            returnHallway.generate(world);
             return returnHallway;
         }
         return null;
     }
+
+
 
 
 

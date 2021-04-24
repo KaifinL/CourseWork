@@ -187,7 +187,9 @@ public class RandomWorld implements Serializable {
         if (seed == 0) {
             return 28739;
         }
-        
+        if (seed > 2147483647) {
+            return turnPositive(seed / 100);
+        }
 
         return seed;
     }

@@ -142,8 +142,8 @@ public class Engine {
             avatar.setDoor(door);
             avatar.setWorld(finalWorldFrame);
             avatar.systemInput(manipulation);
-            //Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
-            //c.chiselNewWorld();
+            Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
+            c.chiselNewWorld();
         }
         return finalWorldFrame;
     }
@@ -207,7 +207,7 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("N3428186674SSSAAAAAAAAASSSSSAAAAAAAAA");
+        interactWithInputString("N3428186674");
     }
 
 }

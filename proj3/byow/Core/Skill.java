@@ -88,7 +88,7 @@ public class Skill {
         Position entrance = worldEntrance();
         world[entrance.getX()][entrance.getY()] = Tileset.TREE;
         Position realEntrance = realExit(entrance);
-        HallwayUnit initial = initialHallway(getDirection(), realEntrance, exitsQueue);
+        RoomUnit initial = initialHallway(getDirection(), realEntrance, exitsQueue);
         if (initial == null) {
             return world;
         }
@@ -156,9 +156,9 @@ public class Skill {
     }
 
 
-    private HallwayUnit initialHallway(int direction, Position focus, PriorityQueue exits) {
+    private RoomUnit initialHallway(int direction, Position focus, PriorityQueue exits) {
 
-        HallwayUnit returnHallway = new HallwayUnit(1, 7, direction, this.seed);
+        RoomUnit returnHallway = new RoomUnit(1, 7, direction, this.seed);
         returnHallway.setFocus(focus);
         if (returnHallway.checkIndexError(world) || returnHallway.checkOverlap(world)) {
             for (Position exit : returnHallway.getExits()) {

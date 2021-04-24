@@ -1,5 +1,6 @@
 package byow.Core;
 
+import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 
@@ -20,7 +21,8 @@ public class Skill {
     private Random random = new Random();
     private int roomNum;
 
-    private void initialize(Avatar avatar, TETile[][] world,
+
+    private Skill(Avatar avatar, TETile[][] world,
                             int width, int height, long seed) {
         this.avatar = avatar;
         this.world = world;
@@ -30,8 +32,7 @@ public class Skill {
     }
 
 
-    public void chiselNewWorld(Avatar avatar, TETile[][] world, int width, int height, long seed) {
-        initialize(avatar, world, width, height, seed);
+    public void chiselNewWorld() {
         int direction = getDirection();
         switch (direction) {
             case 4:
@@ -93,6 +94,8 @@ public class Skill {
             roomNum += 1;
         }
         world[realEntrance.getX()][realEntrance.getY()] = Tileset.TREE;
+        TERenderer teRenderer = new TERenderer();
+        teRenderer.renderFrame(world);
         return this.world;
     }
 

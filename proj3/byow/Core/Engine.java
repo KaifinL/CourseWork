@@ -210,7 +210,7 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("N3428186674");
+        interactWithInputString("N3428186674W");
     }
 
 }

@@ -159,7 +159,7 @@ public class Skill {
     private RoomUnit initialHallway(int direction, Position focus, PriorityQueue exits, int length) {
 
         Position originFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
-        RoomUnit returnHallway = new RoomUnit(1, length, direction, this.seed);
+        RoomUnit returnHallway = new RoomUnit(length, 1, direction, this.seed);
         returnHallway.setFocus(focus);
         if ((returnHallway.checkIndexError(world) || returnHallway.checkOverlap(world))) {
             if (length < 4) {

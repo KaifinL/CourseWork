@@ -3,6 +3,7 @@ package byow.Core;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
+import byow.TileEngine.TERenderer;
 import byow.TileEngine.TETile;
 import byow.TileEngine.Tileset;
 import org.junit.Test;
@@ -74,9 +75,10 @@ public class tests {
                 world[x][y] = Tileset.NOTHING;
             }
         }
+        TERenderer tr = new TERenderer();
         HallwayUnit testHallway = new HallwayUnit(7, 1, 2, 271626);
         testHallway.setFocus(new Position(39, 18, 0));
-
+        tr.renderFrame(world);
     }
 
     /**

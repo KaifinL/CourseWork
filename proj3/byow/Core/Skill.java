@@ -94,6 +94,9 @@ public class Skill {
             Position previousExit = exitsQueue.poll();
             Position newFocus = realExit(realExit(previousExit));
             RoomUnit newRoom = roomGeneration(this.seed, newFocus, 0, exitsQueue);
+            if (newRoom != null) {
+                RandomWorld.makeFlower(realExit(previousExit), world);
+            }
             roomNum += 1;
         }
         world[realEntrance.getX()][realEntrance.getY()] = Tileset.TREE;

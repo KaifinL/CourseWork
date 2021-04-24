@@ -182,7 +182,7 @@ public class RandomWorld implements Serializable {
 
     public static long turnPositive(long seed) {
         if (seed < 0) {
-            return -seed;
+            return turnPositive(-seed);
         }
         if (seed == 0) {
             return 28739;

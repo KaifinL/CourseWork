@@ -105,7 +105,7 @@ public class tests {
     @Test
     public void testWithInputString() {
         Engine test = new Engine();
-        test.interactWithInputString("LR");
+        test.interactWithInputString("N3428186674WWWAAAAAAAAAAAAA");
     }
 
 }

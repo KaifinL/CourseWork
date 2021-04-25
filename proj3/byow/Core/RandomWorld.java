@@ -257,7 +257,7 @@ public class RandomWorld implements Serializable {
     public static TETile Psychedelic(long seed, Random random) {
         long realSeed = turnPositive(seed);
         int pseudoNum = random.nextInt((int) realSeed) % 5;
-        if (pseudoNum < 2) {
+        if (pseudoNum < 1) {
             return Tileset.BLUEFLOWER;
         }
         return Tileset.FLOWER;

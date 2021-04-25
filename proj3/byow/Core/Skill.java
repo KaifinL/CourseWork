@@ -85,10 +85,10 @@ public class Skill {
         Position entrance = worldEntrance();
         Position realEntrance = realExit(entrance);
         RoomUnit initial = initialization(realEntrance, world, exitsQueue, 0);
-        world[entrance.getX()][entrance.getY()] = Tileset.FLOOR;
         if (initial == null) {
             return world;
         }
+        world[entrance.getX()][entrance.getY()] = Tileset.FLOOR;
         while (roomNum < 10 && !exitsQueue.isEmpty()) {
             Position previousExit = exitsQueue.poll();
             Position newFocus = realExit(realExit(previousExit));

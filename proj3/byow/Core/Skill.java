@@ -189,7 +189,7 @@ public class Skill {
             newObject = generateHallway(7, 1, realEntrance.getDirection());
         }
         newObject.setFocus(realFocus);
-        if (newObject.checkOverlap2(world) || newObject.checkIndexError(world)) {
+        if (newObject.checkOverlap(world) || newObject.checkIndexError(world)) {
             if (tries > 3) {
                 return null;
             }

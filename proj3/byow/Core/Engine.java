@@ -77,6 +77,7 @@ public class Engine {
                 avatar.playerInput();
             } else {
                 long realSeed = Long.parseLong(seed);
+                int seedNum = String.valueOf(realSeed).length();
                 RandomWorld newRandomWorld = new RandomWorld(realSeed);
                 TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
                 Position door = newRandomWorld.getDoor();
@@ -85,6 +86,7 @@ public class Engine {
                 avatar.setStartpos(startPos);
                 avatar.setPos(Pos);
                 avatar.setDoor(door);
+                avatar.setSeedNum(seedNum);
                 avatar.setWorld(finalWorldFrame);
                 avatar.playerInput();
             }
@@ -142,8 +144,8 @@ public class Engine {
             avatar.setDoor(door);
             avatar.setWorld(finalWorldFrame);
             avatar.systemInput(manipulation);
-            Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
-            c.chiselNewWorld();
+            //Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
+            //c.chiselNewWorld();
         }
         return finalWorldFrame;
     }

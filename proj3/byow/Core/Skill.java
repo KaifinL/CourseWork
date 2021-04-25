@@ -85,7 +85,7 @@ public class Skill {
         Position entrance = worldEntrance();
         Position realEntrance = realExit(entrance);
         RoomUnit initial = initialization(realEntrance, world, exitsQueue, 0);
-        world[entrance.getX()][entrance.getY()] = Tileset.TREE;
+        world[entrance.getX()][entrance.getY()] = Tileset.FLOOR;
         if (initial == null) {
             return world;
         }
@@ -98,7 +98,7 @@ public class Skill {
             }
             roomNum += 1;
         }
-        world[realEntrance.getX()][realEntrance.getY()] = Tileset.TREE;
+        world[realEntrance.getX()][realEntrance.getY()] = Tileset.FLOOR;
         TERenderer teRenderer = new TERenderer();
         teRenderer.renderFrame(world);
         return this.world;

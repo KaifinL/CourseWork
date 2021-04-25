@@ -184,9 +184,9 @@ public class Skill {
         Position realFocus = new Position(realEntrance.getX(), realEntrance.getY(), realEntrance.getDirection());
         RoomUnit newObject;
         if (!reverse) {
-            newObject = generateHallway(1, 7, realEntrance.getDirection());
+            newObject = generateHallway(1, 5, realEntrance.getDirection());
         } else {
-            newObject = generateHallway(7, 1, realEntrance.getDirection());
+            newObject = generateHallway(5, 1, realEntrance.getDirection());
         }
         newObject.setFocus(realFocus);
         if (newObject.checkOverlap2(world) || newObject.checkIndexError(world)) {

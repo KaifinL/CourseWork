@@ -84,7 +84,7 @@ public class Skill {
         // main function achievement
         Position entrance = worldEntrance();
         Position realEntrance = realExit(entrance);
-        RoomUnit initial = initialization(realEntrance, world, exitsQueue, 0);
+        RoomUnit initial = initialization(realEntrance, world, exitsQueue, 0, false);
         if (initial == null) {
             return world;
         }
@@ -180,16 +180,20 @@ public class Skill {
 
 
     private RoomUnit initialization(Position realEntrance, TETile[][] world,
-                                     PriorityQueue<Position> exitsQueue, int tries) {
+                                     PriorityQueue<Position> exitsQueue, int tries, boolean reverse) {
         Position realFocus = new Position(realEntrance.getX(), realEntrance.getY(), realEntrance.getDirection());
-        RoomUnit newObject = generateHallway(1, 7, realEntrance.getDirection());
+        RoomUnit newObject;
+        if (!reverse) {
+            newObject = generateHallway(1, 7, realEntrance.getDirection());
+        } else {
+            newObject = generateHallway(7, 1, realEntrance.getDirection());
+        }
         newObject.setFocus(realFocus);
-
         if (newObject.checkOverlap2(world) || newObject.checkIndexError(world)) {
-            if (tries > 5) {
+            if (tries > 3) {
                 return null;
             }
-            newObject = initialization(realEntrance, world, exitsQueue, tries + 1);
+            newObject = initialization(realEntrance, world, exitsQueue, tries + 1, true);
         }
         if (newObject == null) {
             return null;

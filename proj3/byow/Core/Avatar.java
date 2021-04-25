@@ -9,6 +9,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Avatar implements Serializable {
+    private int seedNum;
     private int points = 0;
     private TETile appearance = Tileset.AVATAR;
     private Position startpos;
@@ -21,7 +22,7 @@ public class Avatar implements Serializable {
     private TETile floor = Tileset.FLOOR;
     private TETile flower = Tileset.FLOWER;
     private TETile unlockedDoor = Tileset.UNLOCKED_DOOR;
-    private TETile mashroom = Tileset.GRASS;
+    private TETile mashroom = Tileset.BLUEFLOWER;
     private boolean poisoned = false;
 
     public static final int GOAL = 2;
@@ -37,6 +38,10 @@ public class Avatar implements Serializable {
     public void setWorld(TETile[][] world) {
         this.world = world;
         world[startpos.getX()][startpos.getY()] = appearance;
+    }
+
+    public void setSeedNum(int seedNum) {
+        this.seedNum = seedNum;
     }
 
     public void setAppearance() {
@@ -350,6 +355,11 @@ public class Avatar implements Serializable {
                     case "L":
                         //load
                         flag = 0;
+                        break;
+                    case "C":
+                        Skill c = new Skill(this, world, WIDTH, HEIGHT, seedNum);
+                        c.chiselNewWorld();
+                        world = c.getWorld();
                         break;
                     default:
                         flag = 0;

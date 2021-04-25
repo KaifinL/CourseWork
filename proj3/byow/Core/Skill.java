@@ -112,9 +112,9 @@ public class Skill {
         long originSeed = RandomWorld.turnPositive(seed);
         RoomUnit newObject;
         if (randomNum < 1 && tries < 2) {
-            newObject = RandomWorld.generateRoom(seed, realFocus);
+            newObject = RandomWorld.generateRoom(random.nextInt((int) originSeed), realFocus);
         } else {
-            newObject = RandomWorld.generateHallway(seed, realFocus);
+            newObject = RandomWorld.generateHallway(random.nextInt((int) originSeed), realFocus);
         }
         newObject.setFocus(realFocus);
         if (newObject.checkIndexError(world) || newObject.checkOverlap2(world)) {

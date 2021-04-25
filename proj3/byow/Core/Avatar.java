@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Avatar implements Serializable {
     private int seedNum;
     private int points = 0;
+    private int originpoints = 0;
     private TETile appearance = Tileset.AVATAR;
     private Position startpos;
     private Position pos;
@@ -18,12 +19,14 @@ public class Avatar implements Serializable {
     private String commands;
     private TERenderer ter = new TERenderer();
     private TETile[][] world;
+    private TETile[][] backupworld;
     private Boolean GameOver = false;
     private TETile floor = Tileset.FLOOR;
     private TETile flower = Tileset.FLOWER;
     private TETile unlockedDoor = Tileset.UNLOCKED_DOOR;
-    private TETile mashroom = Tileset.BLUEFLOWER;
+    private TETile BLUEFLOWER = Tileset.BLUEFLOWER;
     private boolean poisoned = false;
+    private boolean originstate = false;
 
     public static final int GOAL = 2;
     private static final int WIDTH = 80;
@@ -38,6 +41,7 @@ public class Avatar implements Serializable {
     public void setWorld(TETile[][] world) {
         this.world = world;
         world[startpos.getX()][startpos.getY()] = appearance;
+        setBackupworld();
     }
 
     public void setSeedNum(int seedNum) {
@@ -81,6 +85,23 @@ public class Avatar implements Serializable {
         this.door = door;
     }
 
+    public void setBackupworld() {
+        backupworld = new TETile[WIDTH][HEIGHT];
+        for (int x = 0; x < WIDTH; x += 1) {
+            for (int y = 0; y < HEIGHT; y += 1) {
+                backupworld[x][y] = world[x][y];
+            }
+        }
+    }
+
+    public void setOriginstate() {
+        originstate = poisoned;
+    }
+
+    public void setOriginpoints() {
+        originpoints = points;
+    }
+
     public TETile[][] getWorld() {
         return this.world;
     }
@@ -104,6 +125,13 @@ public class Avatar implements Serializable {
             world[door.getX()][door.getY()] = unlockedDoor;
         }
     }
+    private void minusPoints() {
+        this.points -= 1;
+        if (points < GOAL) {
+            world[door.getX()][door.getY()] = Tileset.LOCKED_DOOR;
+        }
+    }
+
 
     /**
      * Move around with keyboard inputs.
@@ -136,14 +164,15 @@ public class Avatar implements Serializable {
             addPoints();
             this.pos.changeAvatarPos(m, n, world, floor, appearance);
         } else if (nextTile.equals(unlockedDoor)) {
-            if (points > 4) {
+            if (points > 9) {
                 GameOver = true;
                 return;
             }
             solvepuzzle();
             GameOver = true;
-        } else if (nextTile.equals(mashroom)) {
+        } else if (nextTile.equals(BLUEFLOWER)) {
             poisoned = !poisoned;
+            minusPoints();
             this.pos.changeAvatarPos(m, n, world, floor, appearance);
         }
     }
@@ -212,6 +241,12 @@ public class Avatar implements Serializable {
         drawAddition();
     }
 
+    public void drawMouse(int mouseX, int mouseY) {
+        String mouseMessage = world[mouseX][mouseY].description();
+        StdDraw.text(mouseX, mouseY, mouseMessage);
+        StdDraw.show();
+    }
+
     /**
      * Draw additional message while playing the game.
      */
@@ -221,6 +256,13 @@ public class Avatar implements Serializable {
         StdDraw.setPenColor(StdDraw.WHITE);
         String showMessage = "Score : " + Integer.toString(this.points);
         StdDraw.text(WIDTH-5, HEIGHT/2, showMessage);
+        String poisonedMessage;
+        if (poisoned) {
+            poisonedMessage = "Poisoned";
+        } else {
+            poisonedMessage = "Healthy";
+        }
+        StdDraw.text(WIDTH-5, HEIGHT/2-2, poisonedMessage);
         StdDraw.show();
     }
 
@@ -301,7 +343,7 @@ public class Avatar implements Serializable {
         int  flag = 0;
         for (int i = 0; i < arrayInput.length; i += 1) {
             typed = Character.toString(arrayInput[i]);
-            System.out.println(typed);
+            typed = typed.toUpperCase();
             switch (typed) {
                 case ":":
                     flag = 1;
@@ -312,6 +354,13 @@ public class Avatar implements Serializable {
                         SaveLoad.save(this);
                         flag = 2;
                     }
+                    break;
+                case "C":
+                    flag = 0;
+                    Skill c = new Skill(this, world, WIDTH, HEIGHT, seedNum);
+                    c.chiselNewWorld();
+                    world = c.getWorld();
+                    minusPoints();
                     break;
                 default:
                     flag = 0;
@@ -337,8 +386,14 @@ public class Avatar implements Serializable {
         String typed;
         int  flag = 0;
         for (int i = 0; true; i += 1) {
+            if (StdDraw.isMousePressed()) {
+                int mouseX = (int) StdDraw.mouseX();
+                int mouseY = (int) StdDraw.mouseY();
+                drawMouse(mouseX, mouseY);
+            }
             if (StdDraw.hasNextKeyTyped()) {
                 typed = Character.toString(StdDraw.nextKeyTyped());
+                typed = typed.toUpperCase();
                 switch (typed) {
                     case ":":
                         flag = 1;
@@ -352,14 +407,12 @@ public class Avatar implements Serializable {
                             flag = 2;
                         }
                         break;
-                    case "L":
-                        //load
-                        flag = 0;
-                        break;
                     case "C":
+                        flag = 0;
                         Skill c = new Skill(this, world, WIDTH, HEIGHT, seedNum);
                         c.chiselNewWorld();
                         world = c.getWorld();
+                        minusPoints();
                         break;
                     default:
                         flag = 0;
@@ -383,8 +436,15 @@ public class Avatar implements Serializable {
      * visually displaying all of the actions taken since the last time a new world was created.
      */
     public void replay() {
+        poisoned = originstate;
+        points = originpoints;
         world[pos.getX()][pos.getY()] = floor;
         pos = new Position(startpos.getX(),startpos.getY(),startpos.getDirection());
+        for (int x = 0; x < WIDTH; x += 1) {
+            for (int y = 0; y < HEIGHT; y += 1) {
+                world[x][y] = backupworld[x][y];
+            }
+        }
         String typed;
         char[] arrayInput = commands.toCharArray();
         for (int i = 0; i < arrayInput.length; i += 1) {

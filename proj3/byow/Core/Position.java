@@ -3,7 +3,6 @@ package byow.Core;
 //this is actually a focus.
 
 import byow.TileEngine.TETile;
-import byow.TileEngine.Tileset;
 
 import java.io.Serializable;
 

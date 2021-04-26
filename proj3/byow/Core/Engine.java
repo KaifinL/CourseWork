@@ -13,7 +13,7 @@ public class Engine {
     TERenderer ter = new TERenderer();
     /* Feel free to change the width and height. */
     public static final int WIDTH = 80;
-    public static final int HEIGHT = 30;
+    public static final int HEIGHT = 40;
 
     /**
      * Method used for exploring a fresh world. This method should handle all inputs,
@@ -30,7 +30,7 @@ public class Engine {
         for (int i = 0; RUN; i += 1) {
             if (StdDraw.hasNextKeyTyped()) {
                 typed = Character.toString(StdDraw.nextKeyTyped());
-                typed.toUpperCase();
+                typed = typed.toUpperCase();
                 if (flag == 1) {
                     if (typed.equals("S")) {
                         break;
@@ -54,6 +54,9 @@ public class Engine {
                         //load
                         flag = 2;
                         avatar = SaveLoad.loadAvatar();
+                        avatar.setBackupworld();
+                        avatar.setOriginstate();
+                        avatar.setOriginpoints();
                         break;
                     case "C":
                         avatar.setAppearance();
@@ -86,7 +89,7 @@ public class Engine {
                 avatar.setStartpos(startPos);
                 avatar.setPos(Pos);
                 avatar.setDoor(door);
-                avatar.setSeedNum(seedNum);
+                avatar.setSeedNum(realSeed);
                 avatar.setWorld(finalWorldFrame);
                 avatar.playerInput();
             }
@@ -128,6 +131,9 @@ public class Engine {
         System.out.println(manipulation);
         if (input.contains("L")) {
             avatar = SaveLoad.loadAvatar();
+            avatar.setBackupworld();
+            avatar.setOriginstate();
+            avatar.setOriginpoints();
             finalWorldFrame = avatar.getWorld();
             avatar.systemInput(manipulation);
         } else {
@@ -209,7 +215,7 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("N3428186674WWWAAAAAAAAAAAAACDDDDDDDDDDDDDDDDDDCWWWWC");
+        interactWithInputString("N3428186674SSSAAAAAAAAASSSSSAAAAAAAAA");
     }
 
 }

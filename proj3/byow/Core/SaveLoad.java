@@ -11,8 +11,7 @@ public class SaveLoad {
      * and quit.
      */
     private static final File CWD = new File(System.getProperty("user.dir"));
-    private static final File GAME = Utils.join(CWD, "game");
-    public static final File AVATARS = Utils.join(GAME, "avatars");
+    public static final File AVATARS = Utils.join(CWD, "avatars");
 
     /**
      * this function is basically initialize the whole world
@@ -20,7 +19,6 @@ public class SaveLoad {
      */
     public static void initialize() {
         // actually if we want to have different versions we will need a directory
-        GAME.mkdir();
         AVATARS.mkdir();
         File initialAvatar = join(AVATARS, "newest avatar");
         try {
@@ -31,7 +29,6 @@ public class SaveLoad {
     }
 
     public static void save(Avatar avatar) {
-        makedir(GAME);
         makedir(AVATARS);
         File targetAvatar = Utils.join(AVATARS, "NewestAvatar.txt");
         try {

@@ -157,30 +157,30 @@ public class Skill {
 
 
     /**
-    private RoomUnit initialHallway(int direction, Position focus, PriorityQueue exits, int length) {
+     private RoomUnit initialHallway(int direction, Position focus, PriorityQueue exits, int length) {
 
-        Position originFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
-        RoomUnit returnHallway = new RoomUnit(2, length, direction, this.seed);
-        returnHallway.setFocus(focus);
-        if ((returnHallway.checkIndexError(world) || returnHallway.checkOverlap(world))) {
-            if (length < 4) {
-                return null;
-            }
-            returnHallway = initialHallway(direction, originFocus, exits, length - 1);
-        } else {
-            returnHallway.generate(world);
-            for (Position exit : returnHallway.getExits()) {
-                exits.add(exit);
-            }
-            return returnHallway;
-        }
-        return returnHallway;
-    }
+     Position originFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
+     RoomUnit returnHallway = new RoomUnit(2, length, direction, this.seed);
+     returnHallway.setFocus(focus);
+     if ((returnHallway.checkIndexError(world) || returnHallway.checkOverlap(world))) {
+     if (length < 4) {
+     return null;
+     }
+     returnHallway = initialHallway(direction, originFocus, exits, length - 1);
+     } else {
+     returnHallway.generate(world);
+     for (Position exit : returnHallway.getExits()) {
+     exits.add(exit);
+     }
+     return returnHallway;
+     }
+     return returnHallway;
+     }
      */
 
 
     private RoomUnit initialization(Position realEntrance, TETile[][] world,
-                                     PriorityQueue<Position> exitsQueue, int tries, boolean reverse) {
+                                    PriorityQueue<Position> exitsQueue, int tries, boolean reverse) {
         Position realFocus = new Position(realEntrance.getX(), realEntrance.getY(), realEntrance.getDirection());
         RoomUnit newObject;
         if (!reverse) {
@@ -189,7 +189,7 @@ public class Skill {
             newObject = generateHallway(5, 1, realEntrance.getDirection());
         }
         newObject.setFocus(realFocus);
-        if (newObject.checkIndexError(world) || newObject.checkOverlap2(world)) {
+        if (newObject.checkOverlap2(world) || newObject.checkIndexError(world)) {
             if (tries > 3) {
                 return null;
             }

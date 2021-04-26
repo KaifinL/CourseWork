@@ -89,12 +89,6 @@ public class RandomWorld implements Serializable {
         return new HallwayUnit(focus.getDirection(), seed);
     }
 
-    /**
-     * this method simply return a room or a hallway randomly
-     * @param world the whole board this should not be changed
-     * @return generally return a random room or hallway
-     * however, it should return null if attempt more than 3 times.
-     */
     private RoomUnit randomlyGeneration(long seed2, TETile[][] world, Position focus,
                                         int tries, PriorityQueue exitsQueue) {
         long originSeed = turnPositive(seed2);
@@ -124,11 +118,6 @@ public class RandomWorld implements Serializable {
         return newObject;
     }
 
-    /**
-     * this function is to return the focus of a new room
-     * @param exit the previous room's exit
-     * @return the generated new focus's position
-     */
     private static Position realExit(Position exit) {
         int m;
         int n;
@@ -150,20 +139,10 @@ public class RandomWorld implements Serializable {
         return returnFocus;
     }
 
-    /**
-     * this function is to make a exit and focus visible
-     * @param target
-     * @param world
-     */
     private static void chisel(Position target, TETile[][] world) {
         world[target.getX()][target.getY()] = Tileset.FLOOR;
     }
 
-    /**
-     *
-     * @param exit the original exit which is in the matrix
-     * @return the new focus
-     */
     private static Position newFocus(Position exit) {
         return realExit(realExit(realExit(exit)));
     }
@@ -195,26 +174,10 @@ public class RandomWorld implements Serializable {
         return seed;
     }
 
-    /**
-     * create the flower in the exit to help the user where to go next
-     * @param focus the exit's focus
-     * @param world the 2D world we initially created
-     */
     public static void makeFlower(Position focus, TETile[][] world, long seed, Random random) {
         world[focus.getX()][focus.getY()] = psychedelic(seed, random);
     }
 
-
-    /**
-     * this function will judge if we should create the door according to the roomNum
-     * @return true if we need to create a door false otherwise
-     */
-
-    /**
-     * this fuction will automatically judge if we will need to create the door.
-     * @param focus the beginning focus we need to pass in
-     * @param world the 2D world we initialized at the beginning of the proj.
-     */
     private void makeDoor(Position focus, TETile[][] world) {
         if (!doorExist) {
             Position newFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
@@ -264,11 +227,5 @@ public class RandomWorld implements Serializable {
         return Tileset.FLOWER;
     }
 
-    /**
-     * This is used for debugging.
-     */
-    //public static void main(String[] args) {
-    //worldGenerator();
-    //}
 
 }

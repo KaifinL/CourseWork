@@ -1,7 +1,5 @@
 package byow.Core;
 
-import byow.TileEngine.TETile;
-
 import java.io.File;
 import java.io.IOException;
 

@@ -139,15 +139,7 @@ public class Engine {
             avatar.systemInput(manipulation);
         } else {
             long realSeed;
-            try {
-                realSeed = Long.parseLong(input.replaceAll("[^0-9]", ""));
-            } catch (NumberFormatException e) {
-
-                File newestAvatar = Utils.join(SaveLoad.CWD, "NewestAvatar.txt");
-                Avatar newest = readObject(newestAvatar, Avatar.class);
-                realSeed = newest.getSeedNum();
-                return newest.getWorld();
-            }
+            realSeed = Long.parseLong(input.replaceAll("[^0-9]", ""));
             int seedNum = String.valueOf(realSeed).length();
             manipulation = input.substring(seedNum + 1);
             if (!digitExist(input)) {

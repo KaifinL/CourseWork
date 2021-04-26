@@ -9,7 +9,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Avatar implements Serializable {
-    private int seedNum;
+    private long seedNum;
     private int points = 0;
     private int originpoints = 0;
     private TETile appearance = Tileset.AVATAR;
@@ -27,6 +27,7 @@ public class Avatar implements Serializable {
     private TETile BLUEFLOWER = Tileset.BLUEFLOWER;
     private boolean poisoned = false;
     private boolean originstate = false;
+    private boolean dark = false;
 
     public static final int GOAL = 2;
     private static final int WIDTH = 80;
@@ -44,7 +45,7 @@ public class Avatar implements Serializable {
         setBackupworld();
     }
 
-    public void setSeedNum(int seedNum) {
+    public void setSeedNum(long seedNum) {
         this.seedNum = seedNum;
     }
 
@@ -241,6 +242,25 @@ public class Avatar implements Serializable {
         drawAddition();
     }
 
+    /**
+     * Draw the dark board(Player turns off the light).
+     */
+    private void drawDarkBoard() {
+        Font font = new Font("Monaco", Font.BOLD, 10);
+        StdDraw.setFont(font);
+        StdDraw.clear(new Color(0, 0, 0));
+        for (int x = pos.getX()-4; x < pos.getX()+4; x += 1) {
+            for (int y = pos.getY()-4; y < pos.getY()+4; y += 1) {
+                if (world[x][y] == null) {
+                    throw new IllegalArgumentException("Tile at position x=" + x + ", y=" + y
+                            + " is null.");
+                }
+                world[x][y].draw(x, y);
+            }
+        }
+        drawAddition();
+    }
+
     public void drawMouse(int mouseX, int mouseY) {
         String mouseMessage = world[mouseX][mouseY].description();
         StdDraw.text(mouseX, mouseY, mouseMessage);
@@ -255,14 +275,14 @@ public class Avatar implements Serializable {
         StdDraw.setFont(font);
         StdDraw.setPenColor(StdDraw.WHITE);
         String showMessage = "Score : " + Integer.toString(this.points);
-        StdDraw.text(WIDTH-5, HEIGHT/2, showMessage);
+        StdDraw.text(5, HEIGHT, showMessage);
         String poisonedMessage;
         if (poisoned) {
             poisonedMessage = "Poisoned";
         } else {
             poisonedMessage = "Healthy";
         }
-        StdDraw.text(WIDTH-5, HEIGHT/2-2, poisonedMessage);
+        StdDraw.text(5, HEIGHT-2, poisonedMessage);
         StdDraw.show();
     }
 
@@ -414,6 +434,9 @@ public class Avatar implements Serializable {
                         world = c.getWorld();
                         minusPoints();
                         break;
+                    case "T":
+                        dark = !dark;
+                        break;
                     default:
                         flag = 0;
                         move(typed);
@@ -427,7 +450,11 @@ public class Avatar implements Serializable {
                 drawEnd();
                 break;
             }
-            drawBoard();
+            if (dark) {
+                drawDarkBoard();
+            } else {
+                drawBoard();
+            }
         }
     }
 
@@ -452,6 +479,15 @@ public class Avatar implements Serializable {
             switch (typed) {
                 case ":":
                     break;
+                case "C":
+                    Skill c = new Skill(this, world, WIDTH, HEIGHT, seedNum);
+                    c.chiselNewWorld();
+                    world = c.getWorld();
+                    minusPoints();
+                    break;
+                case "T":
+                    dark = !dark;
+                    break;
                 default:
                     move(typed);
             }
@@ -459,7 +495,11 @@ public class Avatar implements Serializable {
                 drawEnd();
                 break;
             }
-            drawBoard();
+            if (dark) {
+                drawDarkBoard();
+            } else {
+                drawBoard();
+            }
             StdDraw.pause(400);
         }
         startpos = new Position(pos.getX(),pos.getY(), pos.getDirection());

@@ -34,6 +34,7 @@ public class Avatar implements Serializable {
     private boolean origindark = false;
 
     public static final int GOAL = 2;
+    public static final int LOSE = -5;
     private static final int WIDTH = 80;
     private static final int HEIGHT = 40;
     /**
@@ -107,6 +108,10 @@ public class Avatar implements Serializable {
         origindark = dark;
     }
 
+    public void setOriginpos() {
+        startpos = new Position(pos.getX(), pos.getY(), pos.getDirection());
+    }
+
 
     public TETile[][] getWorld() {
         return this.world;
@@ -134,6 +139,9 @@ public class Avatar implements Serializable {
         this.points -= 1;
         if (points < GOAL) {
             world[door.getX()][door.getY()] = Tileset.LOCKED_DOOR;
+        }
+        if (points <= LOSE) {
+            gameOver = true;
         }
     }
 
@@ -329,9 +337,9 @@ public class Avatar implements Serializable {
         StdDraw.setFont(font1);
         StdDraw.text(WIDTH/2, HEIGHT/2+2, "New Game (N)");
         StdDraw.text(WIDTH/2, HEIGHT/2, "Load Game (L)");
-        StdDraw.text(WIDTH/2, HEIGHT/2-2, "Quit (Q)");
+        StdDraw.text(WIDTH/2, HEIGHT/2-2, "Replay Game(R)");
         StdDraw.text(WIDTH/2, HEIGHT/2-4, "Change Appearance (C)");
-        StdDraw.text(WIDTH/2, HEIGHT/2-6, "Replay (R)");
+        StdDraw.text(WIDTH/2, HEIGHT/2-6, "Quit (Q)");
         StdDraw.show();
     }
 
@@ -357,13 +365,13 @@ public class Avatar implements Serializable {
     /**
      * Draw the end message when game over.
      */
-    public void drawEnd() {
+    public void drawEnd(int index) {
         StdDraw.clear(StdDraw.BLACK);
         Font font = new Font("Monaco", Font.BOLD, 40);
         StdDraw.setFont(font);
         StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE);
-        String showMessage = "YOU WIN!";
-        StdDraw.text(WIDTH/2, HEIGHT/2+5, showMessage);
+        String[] showMessage = {"YOU WIN!", "You lose. Try again!"};
+        StdDraw.text(WIDTH/2, HEIGHT/2+5, showMessage[index]);
         StdDraw.show();
     }
 
@@ -430,6 +438,7 @@ public class Avatar implements Serializable {
                         if (flag == 1) {
                             this.commands = output;
                             SaveLoad.save(this);
+                            System.exit(0);
                             flag = 2;
                         }
                         break;
@@ -453,7 +462,11 @@ public class Avatar implements Serializable {
                 break;
             }
             if (gameOver) {
-                drawEnd();
+                if (points <= LOSE) {
+                    drawEnd(1);
+                } else {
+                    drawEnd(0);
+                }
                 break;
             }
             if (dark) {
@@ -472,6 +485,7 @@ public class Avatar implements Serializable {
         dark = origindark;
         poisoned = originstate;
         points = originpoints;
+        backupworld[startpos.getX()][startpos.getY()] = floor;
         world[pos.getX()][pos.getY()] = floor;
         pos = new Position(startpos.getX(),startpos.getY(),startpos.getDirection());
         for (int x = 0; x < WIDTH; x += 1) {
@@ -499,7 +513,11 @@ public class Avatar implements Serializable {
                     move(typed);
             }
             if (gameOver) {
-                drawEnd();
+                if (points <= LOSE) {
+                    drawEnd(1);
+                } else {
+                    drawEnd(0);
+                }
                 break;
             }
             if (dark) {
@@ -507,8 +525,9 @@ public class Avatar implements Serializable {
             } else {
                 drawBoard();
             }
-            StdDraw.pause(400);
+            StdDraw.pause(200);
         }
         startpos = new Position(pos.getX(),pos.getY(), pos.getDirection());
+        commands = "";
     }
 }

@@ -213,7 +213,7 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("lwsd");
+        interactWithInputString("n82612639s");
     }
 
 }

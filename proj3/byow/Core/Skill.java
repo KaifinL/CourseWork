@@ -106,7 +106,8 @@ public class Skill {
 
     private RoomUnit roomGeneration(long seedHere, Position realFocus,
                                     int tries, PriorityQueue exits2) {
-        Position getOrigin = new Position(realFocus.getX(), realFocus.getY(), realFocus.getDirection());
+        Position getOrigin = new Position(realFocus.getX(),
+                realFocus.getY(), realFocus.getDirection());
         int randomNum = (int) (seedHere % 3);
         long originSeed = RandomWorld.turnPositive(seedHere);
         RoomUnit newObject;
@@ -154,12 +155,13 @@ public class Skill {
         return returnFocus;
     }
 
-    
 
 
-    private RoomUnit initialization(Position realEntrance, TETile[][] world,
-                                    PriorityQueue<Position> exitsQueue, int tries, boolean reverse) {
-        Position realFocus = new Position(realEntrance.getX(), realEntrance.getY(), realEntrance.getDirection());
+
+    private RoomUnit initialization(Position realEntrance,
+                                    TETile[][] worldHere, PriorityQueue<Position> exitsQueue, int tries, boolean reverse) {
+        Position realFocus = new Position(realEntrance.getX(),
+                realEntrance.getY(), realEntrance.getDirection());
         RoomUnit newObject;
         if (!reverse) {
             newObject = generateHallway(1, 5, realEntrance.getDirection());
@@ -167,24 +169,24 @@ public class Skill {
             newObject = generateHallway(5, 1, realEntrance.getDirection());
         }
         newObject.setFocus(realFocus);
-        if (newObject.checkIndexError(world) || newObject.checkOverlap2(world)) {
+        if (newObject.checkIndexError(worldHere) || newObject.checkOverlap2(worldHere)) {
             if (tries > 3) {
                 return null;
             }
-            newObject = initialization(realEntrance, world, exitsQueue, tries + 1, true);
+            newObject = initialization(realEntrance, worldHere, exitsQueue, tries + 1, true);
         }
         if (newObject == null) {
             return null;
         }
 
-        newObject.generate(world);
+        newObject.generate(worldHere);
         Collections.addAll(exitsQueue, newObject.getExits());
 
         return newObject;
     }
 
-    private RoomUnit generateHallway(int width, int length, int direction) {
-        return new RoomUnit(width, length, direction, this.seed);
+    private RoomUnit generateHallway(int widthHere, int length, int direction) {
+        return new RoomUnit(widthHere, length, direction, this.seed);
     }
 
 

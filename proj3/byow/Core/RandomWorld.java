@@ -168,9 +168,10 @@ public class RandomWorld implements Serializable {
         return realExit(realExit(realExit(exit)));
     }
 
-    private RoomUnit initialization(TETile[][] world, long seed, PriorityQueue<Position> exitsQueue) {
+    private RoomUnit initialization(TETile[][] world,
+                                    long seedNum, PriorityQueue<Position> exitsQueue) {
         Position focus = new Position(50, 20, 0);
-        RoomUnit newObject = generateRoom(seed, focus);
+        RoomUnit newObject = generateRoom(seedNum, focus);
         newObject.setFocus(focus);
         newObject.generate(world);
         for (Position exit : newObject.getExits()) {
@@ -200,7 +201,7 @@ public class RandomWorld implements Serializable {
      * @param world the 2D world we initially created
      */
     public static void makeFlower(Position focus, TETile[][] world, long seed, Random random) {
-        world[focus.getX()][focus.getY()] = Psychedelic(seed, random);
+        world[focus.getX()][focus.getY()] = psychedelic(seed, random);
     }
 
 
@@ -233,7 +234,7 @@ public class RandomWorld implements Serializable {
             return;
         }
         newFocus.changeDirection();
-        if (newFocus.getDirection() >3) {
+        if (newFocus.getDirection() > 3) {
             newFocus.setDirection();
         }
         doorHelper(newFocus, world, tries + 1);
@@ -254,7 +255,7 @@ public class RandomWorld implements Serializable {
         return startPos;
     }
 
-    public static TETile Psychedelic(long seed, Random random) {
+    public static TETile psychedelic(long seed, Random random) {
         long realSeed = turnPositive(seed);
         int pseudoNum = random.nextInt((int) realSeed) % 5;
         if (pseudoNum < 1) {

@@ -216,7 +216,7 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("wsd");
+        interactWithInputString("7193300625454684331saaawasdaawd:q");
     }
 
 }

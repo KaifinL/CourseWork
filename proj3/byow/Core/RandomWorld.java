@@ -44,7 +44,7 @@ public class RandomWorld implements Serializable {
         long pseudoSeed = seed2;
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         TERenderer ter = new TERenderer();
-        ter.initialize(WIDTH, HEIGHT);
+        //ter.initialize(WIDTH, HEIGHT);
 
         // initialize tiles
         TETile[][] world = new TETile[WIDTH][HEIGHT];
@@ -77,7 +77,7 @@ public class RandomWorld implements Serializable {
         }
         //generateWorld(pseudoSeed, world, randomFocus());
         // draws the world to the screen
-        ter.renderFrame(world);
+        //ter.renderFrame(world);
         return world;
     }
 

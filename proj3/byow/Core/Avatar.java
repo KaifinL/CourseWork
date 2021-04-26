@@ -31,7 +31,7 @@ public class Avatar implements Serializable {
 
     public static final int GOAL = 2;
     private static final int WIDTH = 80;
-    private static final int HEIGHT = 30;
+    private static final int HEIGHT = 40;
     /**
      * Constructor
      */

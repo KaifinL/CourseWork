@@ -12,20 +12,6 @@ public class SaveLoad {
      */
     public static final File CWD = new File(System.getProperty("user.dir"));
 
-    /**
-     * this function is basically initialize the whole world
-     * @throws IOException no use!
-     */
-    public static void initialize() {
-        // actually if we want to have different versions we will need a directory
-        File initialAvatar = join(CWD, "NewestAvatar.txt");
-        try {
-            initialAvatar.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void save(Avatar avatar) {
         File targetAvatar = Utils.join(CWD, "NewestAvatar.txt");
         try {
@@ -50,12 +36,6 @@ public class SaveLoad {
         }
         target = readObject(targetAvatar, Avatar.class);
         return target;
-    }
-
-    private static void makedir(File dire) {
-        if (!dire.exists()) {
-            dire.mkdir();
-        }
     }
 
 }

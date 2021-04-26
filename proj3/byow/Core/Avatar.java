@@ -39,6 +39,10 @@ public class Avatar implements Serializable {
         initialTER();
     }
 
+    public Position getPos() {
+        return pos;
+    }
+
     public void setWorld(TETile[][] world) {
         this.world = world;
         world[startpos.getX()][startpos.getY()] = appearance;
@@ -100,7 +104,6 @@ public class Avatar implements Serializable {
     }
 
     public void initialTER() {
-        ter.initialize(WIDTH, HEIGHT);
         world = new TETile[WIDTH][HEIGHT];
         for (int x = 0; x < WIDTH; x += 1) {
             for (int y = 0; y < HEIGHT; y += 1) {
@@ -191,7 +194,6 @@ public class Avatar implements Serializable {
         String stranswer = Float.toString(answer);
         String typed;
         String input = "";
-        System.out.println(stranswer); //We can delete this line, later.
         for (int i = 0; true; i += 1) {
             if (StdDraw.hasNextKeyTyped()) {
                 typed = Character.toString(StdDraw.nextKeyTyped());
@@ -267,14 +269,17 @@ public class Avatar implements Serializable {
         StdDraw.setFont(font);
         StdDraw.setPenColor(StdDraw.WHITE);
         String showMessage = "Score : " + Integer.toString(this.points);
-        StdDraw.text(5, HEIGHT, showMessage);
+        StdDraw.text(5, HEIGHT-5, showMessage);
         String poisonedMessage;
         if (poisoned) {
             poisonedMessage = "Poisoned";
         } else {
             poisonedMessage = "Healthy";
         }
-        StdDraw.text(5, HEIGHT-2, poisonedMessage);
+        StdDraw.text(5, HEIGHT-7, poisonedMessage);
+        int mouseX = (int) StdDraw.mouseX();
+        int mouseY = (int) StdDraw.mouseY();
+        drawMouse(mouseX, mouseY);
         StdDraw.show();
     }
 
@@ -296,6 +301,7 @@ public class Avatar implements Serializable {
      * Draw starting message if user uses keyboard.
      */
     public void drawStart() {
+        ter.initialize(WIDTH, HEIGHT);
         StdDraw.clear(StdDraw.BLACK);
         Font font = new Font("Arial", Font.BOLD, 25);
         StdDraw.setFont(font);
@@ -383,10 +389,8 @@ public class Avatar implements Serializable {
                 break;
             }
             if (gameOver) {
-                drawEnd();
                 break;
             }
-            drawBoard();
         }
     }
 
@@ -398,11 +402,6 @@ public class Avatar implements Serializable {
         String typed;
         int  flag = 0;
         for (int i = 0; true; i += 1) {
-            if (StdDraw.isMousePressed()) {
-                int mouseX = (int) StdDraw.mouseX();
-                int mouseY = (int) StdDraw.mouseY();
-                drawMouse(mouseX, mouseY);
-            }
             if (StdDraw.hasNextKeyTyped()) {
                 typed = Character.toString(StdDraw.nextKeyTyped());
                 typed = typed.toUpperCase();
@@ -413,8 +412,6 @@ public class Avatar implements Serializable {
                     case "Q":
                         if (flag == 1) {
                             this.commands = output;
-                            //save
-                            //quit the game
                             SaveLoad.save(this);
                             flag = 2;
                         }
@@ -495,13 +492,5 @@ public class Avatar implements Serializable {
             StdDraw.pause(400);
         }
         startpos = new Position(pos.getX(),pos.getY(), pos.getDirection());
-    }
-
-    public long getSeedNum() {
-        return seedNum;
-    }
-
-    public Position getPos() {
-        return pos;
     }
 }

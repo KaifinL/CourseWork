@@ -138,9 +138,14 @@ public class Engine {
             finalWorldFrame = avatar.getWorld();
             avatar.systemInput(manipulation);
         } else {
+            long realSeed;
             try {
-                long realSeed = Long.parseLong(input.replaceAll("[^0-9]", ""));
-            } catch ()
+                realSeed = Long.parseLong(input.replaceAll("[^0-9]", ""));
+            } catch (NumberFormatException e) {
+                File newestAvatar = Utils.join(SaveLoad.CWD, "NewestAvatar.txt");
+                Avatar newest = readObject(newestAvatar, Avatar.class);
+                realSeed = newest.getSeedNum();
+            }
             int seedNum = String.valueOf(realSeed).length();
             manipulation = input.substring(seedNum + 1);
             RandomWorld newRandomWorld = new RandomWorld(realSeed);
@@ -218,7 +223,7 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("wsd");
+        interactWithInputString("");
     }
 
 }

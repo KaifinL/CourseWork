@@ -138,7 +138,9 @@ public class Engine {
             finalWorldFrame = avatar.getWorld();
             avatar.systemInput(manipulation);
         } else {
-            long realSeed = Long.parseLong(input.replaceAll("[^0-9]", ""));
+            try {
+                long realSeed = Long.parseLong(input.replaceAll("[^0-9]", ""));
+            } catch ()
             int seedNum = String.valueOf(realSeed).length();
             manipulation = input.substring(seedNum + 1);
             RandomWorld newRandomWorld = new RandomWorld(realSeed);

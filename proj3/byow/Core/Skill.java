@@ -189,12 +189,6 @@ public class Skill {
         return new RoomUnit(widthHere, length, direction, this.seed);
     }
 
-
-
-    private static Position newFocus(Position exit) {
-        return realExit(realExit(realExit(exit)));
-    }
-
     public TETile[][] getWorld() {
         return world;
     }

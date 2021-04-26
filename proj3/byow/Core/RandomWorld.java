@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class RandomWorld implements Serializable {
     private static final int WIDTH = 80;
-    private static final int HEIGHT = 30;
+    private static final int HEIGHT = 40;
     private int roomNum;
     private long seed;
     private Random random;

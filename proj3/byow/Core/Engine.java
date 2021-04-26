@@ -130,7 +130,7 @@ public class Engine {
         Avatar avatar = new Avatar();
         String manipulation = input.substring(1);
         System.out.println(manipulation);
-        if (input.contains("L")) {
+        if (input.contains("L") || input.contains("l")) {
             avatar = SaveLoad.loadAvatar();
             avatar.setBackupworld();
             avatar.setOriginstate();

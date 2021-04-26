@@ -394,7 +394,7 @@ public class Avatar implements Serializable {
                 drawEnd();
                 break;
             }
-            drawBoard();
+            //drawBoard();
         }
     }
 

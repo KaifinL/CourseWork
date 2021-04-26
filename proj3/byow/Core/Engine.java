@@ -21,13 +21,13 @@ public class Engine {
      */
 
     public void interactWithKeyboard() {
-        boolean RUN = true;
+        boolean run = true;
         Avatar avatar = new Avatar();
         avatar.drawStart();
         String seed = "";
         String typed;
         int  flag = 0;
-        for (int i = 0; RUN; i += 1) {
+        for (int i = 0; run; i += 1) {
             if (StdDraw.hasNextKeyTyped()) {
                 typed = Character.toString(StdDraw.nextKeyTyped());
                 typed = typed.toUpperCase();
@@ -46,9 +46,9 @@ public class Engine {
                         break;
                     case "Q":
                         //End the game. Do not save, since the game didn't start.
-                        System.out.println(RUN);
-                        RUN = false;
-                        System.out.println(RUN);
+                        System.out.println(run);
+                        run = false;
+                        System.out.println(run);
                         break;
                     case "L":
                         //load
@@ -75,7 +75,7 @@ public class Engine {
                 }
             }
         }
-        if (RUN) {
+        if (run) {
             if (flag == 2) {
                 avatar.playerInput();
             } else {
@@ -85,9 +85,10 @@ public class Engine {
                 TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
                 Position door = newRandomWorld.getDoor();
                 Position startPos = newRandomWorld.getStartPos();
-                Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
+                Position pos = new Position(startPos.getX(),
+                        startPos.getY(), startPos.getDirection());
                 avatar.setStartpos(startPos);
-                avatar.setPos(Pos);
+                avatar.setPos(pos);
                 avatar.setDoor(door);
                 avatar.setSeedNum(realSeed);
                 avatar.setWorld(finalWorldFrame);
@@ -117,7 +118,7 @@ public class Engine {
      * @param input the input string to feed to your program
      * @return the 2D TETile[][] representing the state of the world
      */
-    public static TETile[][] interactWithInputString(String input){
+    public static TETile[][] interactWithInputString(String input) {
         // passed in as an argument, and return a 2D tile representation of the
         // world that would have been drawn if the same inputs had been given
         // to interactWithKeyboard().
@@ -137,16 +138,16 @@ public class Engine {
             finalWorldFrame = avatar.getWorld();
             avatar.systemInput(manipulation);
         } else {
-            long realSeed= Long.parseLong(input.replaceAll("[^0-9]", ""));
+            long realSeed = Long.parseLong(input.replaceAll("[^0-9]", ""));
             int seedNum = String.valueOf(realSeed).length();
             manipulation = input.substring(seedNum + 1);
             RandomWorld newRandomWorld = new RandomWorld(realSeed);
             finalWorldFrame = newRandomWorld.worldGenerator();
             Position door = newRandomWorld.getDoor();
             Position startPos = newRandomWorld.getStartPos();
-            Position Pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
+            Position pos = new Position(startPos.getX(), startPos.getY(), startPos.getDirection());
             avatar.setStartpos(startPos);
-            avatar.setPos(Pos);
+            avatar.setPos(pos);
             avatar.setDoor(door);
             avatar.setWorld(finalWorldFrame);
             avatar.systemInput(manipulation);
@@ -163,7 +164,7 @@ public class Engine {
             case "N":
                 interactWithInputString(target);
                 break;
-            case "L":
+            default:
                 File newestAvatar = join(SaveLoad.AVATARS, "newest avatar");
                 if (!newestAvatar.exists()) {
                     Utils.exitWithError("No previous file exists, please create one first");

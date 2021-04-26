@@ -20,7 +20,7 @@ public class SaveLoad {
     public static void initialize() {
         // actually if we want to have different versions we will need a directory
         AVATARS.mkdir();
-        File initialAvatar = join(AVATARS, "newest avatar");
+        File initialAvatar = join(AVATARS, "NewestAvatar.txt");
         try {
             initialAvatar.createNewFile();
         } catch (IOException e) {

@@ -8,6 +8,9 @@ import edu.princeton.cs.introcs.StdDraw;
 import java.awt.*;
 import java.io.Serializable;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 public class Avatar implements Serializable {
     private long seedNum;
     private int points = 0;
@@ -28,6 +31,7 @@ public class Avatar implements Serializable {
     private boolean poisoned = false;
     private boolean originstate = false;
     private boolean dark = false;
+    private boolean origindark = false;
 
     public static final int GOAL = 2;
     private static final int WIDTH = 80;
@@ -98,6 +102,11 @@ public class Avatar implements Serializable {
     public void setOriginpoints() {
         originpoints = points;
     }
+
+    public void setOrigindark() {
+        origindark = dark;
+    }
+
 
     public TETile[][] getWorld() {
         return this.world;
@@ -243,8 +252,12 @@ public class Avatar implements Serializable {
         Font font = new Font("Monaco", Font.BOLD, 10);
         StdDraw.setFont(font);
         StdDraw.clear(new Color(0, 0, 0));
-        for (int x = pos.getX()-4; x < pos.getX()+4; x += 1) {
-            for (int y = pos.getY()-4; y < pos.getY()+4; y += 1) {
+        int x0 = max(pos.getX()-4, 0);
+        int x1 = min(pos.getX()+4, WIDTH);
+        int y0 = max(pos.getY()-4, 0);
+        int y1 = min(pos.getY()+4, HEIGHT);
+        for (int x = x0; x < x1; x += 1) {
+            for (int y = y0; y < y1; y += 1) {
                 if (world[x][y] == null) {
                     throw new IllegalArgumentException("Tile at position x=" + x + ", y=" + y
                             + " is null.");
@@ -256,6 +269,10 @@ public class Avatar implements Serializable {
     }
 
     public void drawMouse(int mouseX, int mouseY) {
+        mouseX = min(mouseX, WIDTH-1);
+        mouseX = max(mouseX, 0);
+        mouseY = min(mouseY, HEIGHT-1);
+        mouseY = max(mouseY, 0);
         String mouseMessage = world[mouseX][mouseY].description();
         StdDraw.text(mouseX, mouseY, mouseMessage);
         StdDraw.show();
@@ -452,6 +469,7 @@ public class Avatar implements Serializable {
      * visually displaying all of the actions taken since the last time a new world was created.
      */
     public void replay() {
+        dark = origindark;
         poisoned = originstate;
         points = originpoints;
         world[pos.getX()][pos.getY()] = floor;

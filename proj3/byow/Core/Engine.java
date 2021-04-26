@@ -155,8 +155,6 @@ public class Engine {
             avatar.setDoor(door);
             avatar.setWorld(finalWorldFrame);
             avatar.systemInput(manipulation);
-            //Skill c = new Skill(avatar, finalWorldFrame, WIDTH, HEIGHT, seedNum);
-            //c.chiselNewWorld();
         }
         return finalWorldFrame;
     }
@@ -177,11 +175,6 @@ public class Engine {
         }
     }
 
-    /**
-     * this function is help to judge if a target string contains a digit or not
-     * @param target the target string you want to judge
-     * @return true if there is a digit in the string false otherwise
-     */
     private static boolean digitExist(String target) {
         return target.matches(".*\\d.*");
     }

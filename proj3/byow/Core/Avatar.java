@@ -20,7 +20,7 @@ public class Avatar implements Serializable {
     private TERenderer ter = new TERenderer();
     private TETile[][] world;
     private TETile[][] backupworld;
-    private Boolean GameOver = false;
+    private Boolean gameOver = false;
     private TETile floor = Tileset.FLOOR;
     private TETile flower = Tileset.FLOWER;
     private TETile unlockedDoor = Tileset.UNLOCKED_DOOR;
@@ -35,7 +35,7 @@ public class Avatar implements Serializable {
     /**
      * Constructor
      */
-    public Avatar( ) {
+    public Avatar() {
         initialTER();
     }
 
@@ -56,18 +56,10 @@ public class Avatar implements Serializable {
             if (StdDraw.hasNextKeyTyped()) {
                 option = Character.toString(StdDraw.nextKeyTyped());
                 switch (option) {
-                    case "1":
-                        this.appearance = Tileset.WATER;
-                        break;
-                    case "2":
-                        this.appearance = Tileset.SAND;
-                        break;
-                    case "3":
-                        this.appearance = Tileset.MOUNTAIN;
-                        break;
-                    case "4":
-                        this.appearance = Tileset.TREE;
-                        break;
+                    case "1" -> this.appearance = Tileset.WATER;
+                    case "2" -> this.appearance = Tileset.SAND;
+                    case "3" -> this.appearance = Tileset.MOUNTAIN;
+                    case "4" -> this.appearance = Tileset.TREE;
                 }
                 break;
             }
@@ -166,11 +158,11 @@ public class Avatar implements Serializable {
             this.pos.changeAvatarPos(m, n, world, floor, appearance);
         } else if (nextTile.equals(unlockedDoor)) {
             if (points > 9) {
-                GameOver = true;
+                gameOver = true;
                 return;
             }
             solvepuzzle();
-            GameOver = true;
+            gameOver = true;
         } else if (nextTile.equals(BLUEFLOWER)) {
             poisoned = !poisoned;
             minusPoints();
@@ -390,8 +382,8 @@ public class Avatar implements Serializable {
             if (flag == 2) {
                 break;
             }
-            if (GameOver) {
-                drawEnd();
+            if (gameOver) {
+                //drawEnd();
                 break;
             }
             //drawBoard();
@@ -446,7 +438,7 @@ public class Avatar implements Serializable {
             if (flag == 2) {
                 break;
             }
-            if (GameOver) {
+            if (gameOver) {
                 drawEnd();
                 break;
             }
@@ -491,7 +483,7 @@ public class Avatar implements Serializable {
                 default:
                     move(typed);
             }
-            if (GameOver) {
+            if (gameOver) {
                 drawEnd();
                 break;
             }

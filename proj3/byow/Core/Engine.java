@@ -45,18 +45,20 @@ public class Engine {
                         flag = 1;
                         break;
                     case "Q":
-                        //End the game. Do not save, since the game didn't start.
-                        System.out.println(run);
-                        run = false;
-                        System.out.println(run);
-                        break;
+                        System.exit(0);
+                        return;
                     case "L":
-                        //load
                         flag = 2;
                         avatar = SaveLoad.loadAvatar();
+                        if (avatar == null) {
+                            System.exit(0);
+                            return;
+                        }
                         avatar.setBackupworld();
                         avatar.setOriginstate();
                         avatar.setOriginpoints();
+                        avatar.setOrigindark();
+                        avatar.setOriginpos();
                         break;
                     case "C":
                         avatar.setAppearance();
@@ -68,7 +70,7 @@ public class Engine {
                         avatar.replay();
                         break;
                     default:
-                        //maybe we can add some other keyboard control selection.
+                        break;
                 }
                 if (flag == 2) {
                     break;
@@ -80,7 +82,6 @@ public class Engine {
                 avatar.playerInput();
             } else {
                 long realSeed = Long.parseLong(seed);
-                int seedNum = String.valueOf(realSeed).length();
                 RandomWorld newRandomWorld = new RandomWorld(realSeed);
                 TETile[][] finalWorldFrame = newRandomWorld.worldGenerator();
                 Position door = newRandomWorld.getDoor();
@@ -129,7 +130,6 @@ public class Engine {
         TETile[][] finalWorldFrame;
         Avatar avatar = new Avatar();
         String manipulation = input.substring(1);
-        System.out.println(manipulation);
         if (input.contains("L") || input.contains("l")) {
             avatar = SaveLoad.loadAvatar();
             avatar.setBackupworld();
@@ -162,7 +162,6 @@ public class Engine {
     public static void stringManipulation(String target) throws IOException {
         String firstLetter = target.substring(0, 1);
         switch (firstLetter) {
-            // generate a new world
             case "N":
                 interactWithInputString(target);
                 break;
@@ -175,6 +174,11 @@ public class Engine {
         }
     }
 
+    /**
+     * this function is help to judge if a target string contains a digit or not
+     * @param target the target string you want to judge
+     * @return true if there is a digit in the string false otherwise
+     */
     private static boolean digitExist(String target) {
         return target.matches(".*\\d.*");
     }
@@ -213,7 +217,7 @@ public class Engine {
     }
 
     public static void main(String[] args) throws IOException {
-        interactWithInputString("n82612639s");
+        interactWithInputString("lwsd");
     }
 
 }

@@ -147,7 +147,11 @@ public class Engine {
                 realSeed = newest.getSeedNum();
             }
             int seedNum = String.valueOf(realSeed).length();
-            manipulation = input.substring(seedNum + 1);
+            if (!digitExist(input)) {
+                manipulation = input;
+            } else {
+                manipulation = input.substring(seedNum + 1);
+            }
             RandomWorld newRandomWorld = new RandomWorld(realSeed);
             finalWorldFrame = newRandomWorld.worldGenerator();
             Position door = newRandomWorld.getDoor();

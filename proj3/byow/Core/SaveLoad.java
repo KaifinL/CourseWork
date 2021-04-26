@@ -10,8 +10,7 @@ public class SaveLoad {
      * Save the current world, essentially TETile[][]
      * and quit.
      */
-    private static final File CWD = new File(System.getProperty("user.dir"));
-    public static final File AVATARS = Utils.join(CWD, "avatars");
+    public static final File CWD = new File(System.getProperty("user.dir"));
 
     /**
      * this function is basically initialize the whole world
@@ -19,8 +18,7 @@ public class SaveLoad {
      */
     public static void initialize() {
         // actually if we want to have different versions we will need a directory
-        AVATARS.mkdir();
-        File initialAvatar = join(AVATARS, "NewestAvatar.txt");
+        File initialAvatar = join(CWD, "NewestAvatar.txt");
         try {
             initialAvatar.createNewFile();
         } catch (IOException e) {
@@ -29,8 +27,7 @@ public class SaveLoad {
     }
 
     public static void save(Avatar avatar) {
-        makedir(AVATARS);
-        File targetAvatar = Utils.join(AVATARS, "NewestAvatar.txt");
+        File targetAvatar = Utils.join(CWD, "NewestAvatar.txt");
         try {
             targetAvatar.createNewFile();
         } catch (IOException e) {
@@ -47,7 +44,7 @@ public class SaveLoad {
 
     public static Avatar loadAvatar() {
         Avatar target;
-        File targetAvatar = join(AVATARS, "NewestAvatar.txt");
+        File targetAvatar = join(CWD, "NewestAvatar.txt");
         if (!targetAvatar.exists()) {
             return null;
         }

@@ -20,7 +20,7 @@ public class Skill {
     private final int height;
     private final long seed;
     private final Random random = new Random();
-    private int roomNum;
+    private int roomNum = 0;
 
 
     public Skill(Avatar avatar, TETile[][] world,
@@ -80,7 +80,6 @@ public class Skill {
     private TETile[][] worldGeneration() {
         // variables
         PriorityQueue<Position> exitsQueue = new PriorityQueue();
-        int roomNum = 0;
         // main function achievement
         Position entrance = worldEntrance();
         Position realEntrance = realExit(entrance);
@@ -105,11 +104,11 @@ public class Skill {
     }
 
 
-    private RoomUnit roomGeneration(long seed, Position realFocus,
+    private RoomUnit roomGeneration(long seedHere, Position realFocus,
                                     int tries, PriorityQueue exits2) {
         Position getOrigin = new Position(realFocus.getX(), realFocus.getY(), realFocus.getDirection());
-        int randomNum = (int) (seed % 3);
-        long originSeed = RandomWorld.turnPositive(seed);
+        int randomNum = (int) (seedHere % 3);
+        long originSeed = RandomWorld.turnPositive(seedHere);
         RoomUnit newObject;
         if (randomNum < 1 && tries < 2) {
             newObject = RandomWorld.generateRoom(random.nextInt((int) originSeed), realFocus);
@@ -155,28 +154,7 @@ public class Skill {
         return returnFocus;
     }
 
-
-    /**
-     private RoomUnit initialHallway(int direction, Position focus, PriorityQueue exits, int length) {
-
-     Position originFocus = new Position(focus.getX(), focus.getY(), focus.getDirection());
-     RoomUnit returnHallway = new RoomUnit(2, length, direction, this.seed);
-     returnHallway.setFocus(focus);
-     if ((returnHallway.checkIndexError(world) || returnHallway.checkOverlap(world))) {
-     if (length < 4) {
-     return null;
-     }
-     returnHallway = initialHallway(direction, originFocus, exits, length - 1);
-     } else {
-     returnHallway.generate(world);
-     for (Position exit : returnHallway.getExits()) {
-     exits.add(exit);
-     }
-     return returnHallway;
-     }
-     return returnHallway;
-     }
-     */
+    
 
 
     private RoomUnit initialization(Position realEntrance, TETile[][] world,

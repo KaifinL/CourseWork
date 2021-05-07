@@ -226,6 +226,24 @@ public class RandomWorld implements Serializable {
         }
         return Tileset.FLOWER;
     }
+    class Solution {
+        public int[] twoSum(int[] numbers, int target) {
+            int i = 0;
+            int j = numbers.length - 1;
+            while (i < j) {
+                int compare = numbers[j] + numbers[i] - target;
+                if (compare > 0) {
+                    j -= 1;
+                } else if (compare < 0) {
+                    i += 1;
+                } else {
+                    return new int[] {i + 1, j + 1};
+                }
+            }
+            return null;
+        }
+    }
+    
 
 
 }

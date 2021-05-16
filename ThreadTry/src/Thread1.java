@@ -14,6 +14,12 @@ public class Thread1 implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
+
+    }
+    public static class myThread extends Thread {
+        @Override
+        public static void run() {
+            
+        }
     }
 }

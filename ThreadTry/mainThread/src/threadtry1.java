@@ -1,2 +1,3 @@
-package PACKAGE_NAME;public class threadtry1 {
+public class threadtry1 {
+
 }

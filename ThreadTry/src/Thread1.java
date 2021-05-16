@@ -18,8 +18,8 @@ public class Thread1 implements Runnable {
     }
     public static class myThread extends Thread {
         @Override
-        public static void run() {
-            
+        public void run() {
+            System.out.println("keFin is so handsome");
         }
     }
 }

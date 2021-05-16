@@ -1,8 +1,26 @@
+import org.knowm.xchart.style.Theme;
+
 public class Thread1 implements Runnable {
 
+    private boolean stop = false;
     @Override
     public void run() {
-        System.out.println("KeFin is running");
+        while (!stop) {
+            System.out.println("KeFin is running");
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public synchronized boolean isStopped() {
+        return this.stop;
+    }
+
+    public synchronized void requestToStop() {
+        this.stop = true;
     }
 
     public static void main(String[] args) {

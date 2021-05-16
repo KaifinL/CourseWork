@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class trytest {
+import 
+
+public class trytest {
+
 }

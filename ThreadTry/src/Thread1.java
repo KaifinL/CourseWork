@@ -14,7 +14,11 @@ public class Thread1 implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        Runnable test2 = () -> {
+            System.out.println("KeFin is so so so so handsome");
+        };
+        Thread trie2 = new Thread(test2);
+        trie2.start();
     }
     public static class myThread extends Thread {
         @Override

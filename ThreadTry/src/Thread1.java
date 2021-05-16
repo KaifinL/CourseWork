@@ -10,7 +10,7 @@ public class Thread1 implements Runnable {
         Thread trie = new Thread(kefin);
         trie.start();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(20);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

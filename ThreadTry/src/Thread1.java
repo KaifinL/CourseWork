@@ -28,10 +28,12 @@ public class Thread1 implements Runnable {
         Thread trie = new Thread(kefin);
         trie.start();
         try {
-            Thread.sleep(20);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println("request to stop!!!");
+        kefin.requestToStop();
         Runnable test2 = () -> {
             System.out.println("KeFin is so so so so handsome");
         };

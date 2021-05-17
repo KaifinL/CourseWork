@@ -7,11 +7,6 @@ public class Thread1 implements Runnable {
     public void run() {
         while (!stop) {
             System.out.println("KeFin is running");
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 

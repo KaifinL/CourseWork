@@ -17,6 +17,7 @@ class Solution {
         }
         return output;
     }
+    
 
     public static void main(String[] args) {
         String s = "babad";

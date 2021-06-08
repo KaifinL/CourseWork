@@ -21,6 +21,8 @@ public class Thread1 implements Runnable {
     public static void main(String[] args) {
         Thread1 kefin = new Thread1();
         Thread trie = new Thread(kefin);
+        myThread trieTest = new myThread();
+        trieTest.start();
         trie.start();
         try {
             Thread.sleep(200);
@@ -36,9 +38,23 @@ public class Thread1 implements Runnable {
         trie2.start();
     }
     public static class myThread extends Thread {
+        private boolean stop = false;
+
+        public myThread() {
+            this.stop = false;
+        }
+
         @Override
         public void run() {
-            System.out.println("keFin is so handsome");
+            while (!stop) {
+                System.out.println("keFin is so handsome");
+            }
         }
+
+        public void requestToStop() {
+            this.stop = true;
+        }
+
+
     }
 }

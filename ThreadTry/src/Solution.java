@@ -12,7 +12,7 @@ class Solution {
         if (variable.contains("-")) {
             output = "-" + output;
         }
-        return Integer.decode(output);
+        return Integer.getInteger(output);
     }
 
     public static void main(String[] args) {

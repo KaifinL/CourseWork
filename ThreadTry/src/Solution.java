@@ -1,5 +1,5 @@
 class Solution {
-    public int reverse(int x) {
+    public static int reverse(int x) {
         String variable = String.valueOf(x);
         String integer = variable;
         if (variable.contains("-")) {
@@ -16,6 +16,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        
+        System.out.println(reverse(123));
     }
 }

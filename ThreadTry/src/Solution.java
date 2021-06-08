@@ -17,20 +17,6 @@ class Solution {
         return output;
     }
 
-    public static String helper1(String s, int index) {
-        int k = 1;
-        String output = s.substring(0, 1);
-        while (index >= k) {
-            if (s.substring(index - k, index - k + 1).equals(s.substring(index + k, index + k + 1))) {
-                output = s.substring(index - k, index + k + 1);
-                k += 1;
-            }
-            else {
-                break;
-            }
-        }
-        return output;
-    }
     public static boolean judgement(String s) {
         String reverse = "";
         for (int i = s.length() - 1; i >= 0; i--) {

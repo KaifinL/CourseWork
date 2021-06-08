@@ -16,7 +16,11 @@ class Solution {
                 }
             }
             for (int i = numRows - 2, j = 1; i > 0; i--, j++) {
-                stringSet[i] += s.substring(numRows + j, numRows + j + 1);
+                try {
+                    stringSet[i] += s.substring(numRows + j, numRows + j + 1);
+                } catch (StringIndexOutOfBoundsException e) {
+                    break;
+                }
             }
             s = s.substring(2 * numRows - 2);
         }

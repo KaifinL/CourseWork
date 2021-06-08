@@ -30,7 +30,7 @@ class Solution {
 
 
     public static void main(String[] args) {
-        String s = "babad";
+        String s = "cddb";
         System.out.println(longestPalindrome(s));
     }
 }

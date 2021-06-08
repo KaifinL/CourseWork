@@ -1,5 +1,6 @@
 class Solution {
     public String convert(String s, int numRows) {
+        int length = s.length();
         String[] stringSet = new String[numRows];
         // initialize the stringSet;
         for (int i = 0; i < numRows; i++) {
@@ -15,10 +16,16 @@ class Solution {
             }
             s = s.substring(2 * numRows - 2);
         }
-        return s;
+        String output = "";
+        int k = 0;
+        while (k < length) {
+            output += stringSet[k % numRows - 1].substring(k / numRows, k / numRows + 1);
+            k += 1;
+        }
+        return output;
     }
 
     public static void main(String[] args) {
-        
+        System.out.println("", 3);
     }
 }

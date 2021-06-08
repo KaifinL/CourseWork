@@ -80,6 +80,7 @@ public class Solution {
         while (count < 7) {
             curr.next = new ListNode(9, null);
             curr = curr.next;
+            count += 1;
         }
         ListNode test2 = new ListNode(9, null);
         ListNode curr2 = test2;
@@ -87,6 +88,7 @@ public class Solution {
         while (count < 4) {
             curr2.next = new ListNode(9,null);
             curr2 = curr2.next;
+            count += 1;
         }
         System.out.println(test1);
         System.out.println(test2);

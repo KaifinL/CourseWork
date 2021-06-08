@@ -8,7 +8,7 @@ public class Solution {
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int judgement = l1.val + l2.val;
         ListNode solution;
         boolean forward;
@@ -92,6 +92,11 @@ public class Solution {
         }
         System.out.println(test1);
         System.out.println(test2);
+        ListNode test3 = addTwoNumbers(test1, test2);
+        while (test3 != null) {
+            System.out.println(test3.val);
+            test3 = test3.next;
+        }
     }
 
 }

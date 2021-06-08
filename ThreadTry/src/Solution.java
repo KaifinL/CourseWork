@@ -29,7 +29,10 @@ class Solution {
             }
         }
         String output = "";
-        int k = 1;
+        for (int i = 0; i < numRows; i++) {
+            output += stringSet[i].substring(0, 1);
+        }
+        int k = numRows + 1;
         while (k < length) {
             output += stringSet[k % numRows - 1].substring(k / numRows, k / numRows + 1);
             k += 1;

@@ -1,7 +1,12 @@
 public class Solution {
-    public int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
         int solution = 1;
-
+        for (int i = 0; i < s.length(); i++) {
+            int length = helperSubstring(s.substring(i));
+            if (length > solution) {
+                solution = length;
+            }
+        }
         return solution;
     }
 
@@ -19,6 +24,6 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        System.out.println(helperSubstring("Imsohandsome"));
+        System.out.println(lengthOfLongestSubstring("Imsohandsome"));
     }
 }

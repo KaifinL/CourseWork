@@ -12,7 +12,12 @@ class Solution {
         if (variable.contains("-")) {
             output = "-" + output;
         }
-        int returnStaff = Integer.valueOf(output);
+        int returnStaff
+        try {
+            returnStaff = Integer.valueOf(output);
+        } catch (ArithmeticException e) {
+            return 0;
+        }
         return returnStaff;
     }
 

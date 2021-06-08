@@ -85,7 +85,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        ListNode test1 = new ListNode(9,null);
+        ListNode test1 = new ListNode(3,null);
         ListNode curr = test1;
         /**
         int count = 0;
@@ -108,7 +108,8 @@ public class Solution {
             test3 = test3.next;
         }
          **/
-        
+        curr.next = new ListNode(7, null);
+        ListNode test2 = new ListNode()
     }
 
 }

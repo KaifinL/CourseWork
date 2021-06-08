@@ -38,6 +38,7 @@ public class Solution {
                     }
                 }
                 curr = curr.next;
+                l2 = l2.next;
             } else if (l2 == null) {
                 if (!forward) {
                     curr.next = new ListNode(l1.val, null);
@@ -50,6 +51,7 @@ public class Solution {
                     }
                 }
                 curr = curr.next;
+                l1 = l1.next;
             } else {
                 if (l1.val + l2.val < 10) {
                     if (!forward) {
@@ -66,9 +68,9 @@ public class Solution {
                     curr = curr.next;
                     forward = true;
                 }
+                l1 = l1.next;
+                l2 = l2.next;
             }
-            l1 = l1.next;
-            l2 = l2.next;
         }
         return solution;
     }

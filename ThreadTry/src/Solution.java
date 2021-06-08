@@ -5,16 +5,13 @@ class Solution {
     public static String longestPalindrome(String s) {
         String output = s.substring(0, 1);
         for (int i = 0; i < s.length(); i++) {
-            int k = 0;
+            int k = output.length();
             while (i + k < s.length()) {
                 String subString = s.substring(i, i + k + 1);
                 if (judgement(subString) && subString.length() > output.length()) {
                     output = subString;
                 }
                 k += 1;
-                if (!judgement(subString)) {
-                    break;
-                }
             }
         }
         return output;

@@ -9,7 +9,11 @@ class Solution {
         // add the first letter to the substring
         while (!s.equals("")) {
             for (int i = 0; i < numRows; i++) {
-                stringSet[i] += s.substring(i, i + 1);
+                try {
+                    stringSet[i] += s.substring(i, i + 1);
+                } catch (StringIndexOutOfBoundsException e) {
+                    break;
+                }
             }
             for (int i = numRows - 2, j = 1; i > 0; i--, j++) {
                 stringSet[i] += s.substring(numRows + j, numRows + j + 1);

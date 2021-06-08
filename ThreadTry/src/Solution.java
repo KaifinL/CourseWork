@@ -1,5 +1,5 @@
 class Solution {
-    public String convert(String s, int numRows) {
+    public static String convert(String s, int numRows) {
         int length = s.length();
         String[] stringSet = new String[numRows];
         // initialize the stringSet;
@@ -26,6 +26,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println("", 3);
+        System.out.println(convert("PAYPALISHIRING", 3));
     }
 }

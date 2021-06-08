@@ -1,5 +1,8 @@
 class Solution {
     public static String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
         int length = s.length();
         String[] stringSet = new String[numRows];
         // initialize the stringSet;

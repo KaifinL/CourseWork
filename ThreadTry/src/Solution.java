@@ -12,7 +12,8 @@ class Solution {
         if (variable.contains("-")) {
             output = "-" + output;
         }
-        return Integer.getInteger(output).intValue();
+        int returnStaff = Integer.getInteger(output).intValue();
+        return returnStaff;
     }
 
     public static void main(String[] args) {

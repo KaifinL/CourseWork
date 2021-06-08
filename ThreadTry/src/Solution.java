@@ -1,6 +1,6 @@
 public class Solution {
     public static int lengthOfLongestSubstring(String s) {
-        int solution = 1;
+        int solution = 0;
         for (int i = 0; i < s.length(); i++) {
             int length = helperSubstring(s.substring(i));
             if (length > solution) {

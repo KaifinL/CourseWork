@@ -92,7 +92,7 @@ public class Solution {
         }
         ListNode test3 = addTwoNumbers(test1, test2);
         while (test3 != null) {
-            System.out.println(test3.val);
+            System.out.print(test3.val);
             test3 = test3.next;
         }
     }

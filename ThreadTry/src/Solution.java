@@ -102,14 +102,15 @@ public class Solution {
             curr2 = curr2.next;
             count += 1;
         }
+         **/
+        curr.next = new ListNode(7, null);
+        ListNode test2 = new ListNode(9, new ListNode(2, null));
         ListNode test3 = addTwoNumbers(test1, test2);
         while (test3 != null) {
             System.out.print(test3.val);
             test3 = test3.next;
         }
-         **/
-        curr.next = new ListNode(7, null);
-        ListNode test2 = new ListNode()
+
     }
 
 }

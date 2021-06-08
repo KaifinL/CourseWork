@@ -44,7 +44,7 @@ class Solution {
 
 
     public static void main(String[] args) {
-        String s = "cbbd";
+        String s = "a";
         System.out.println(longestPalindrome(s));
     }
 }

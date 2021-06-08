@@ -3,7 +3,7 @@ import org.junit.Test;
 
 class Solution {
     public static String longestPalindrome(String s) {
-        String output = "";
+        String output = s.substring(0, 1);
         for (int i = 0; i < s.length(); i++) {
             int k = 0;
             while (i + k < s.length() - 1) {

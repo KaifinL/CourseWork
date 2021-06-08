@@ -25,7 +25,7 @@ public class Solution {
         ListNode curr = solution;
         l1 = l1.next;
         l2 = l2.next;
-        while (l1 != null && l2 != null) {
+        while (l1 != null || l2 != null) {
             if (l1 == null) {
                 if (!forward) {
                     curr.next = new ListNode(l2.val, null);

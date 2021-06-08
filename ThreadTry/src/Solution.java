@@ -72,6 +72,9 @@ public class Solution {
                 l2 = l2.next;
             }
         }
+        if (forward) {
+            curr.next = new ListNode(1, null);
+        }
         return solution;
     }
 

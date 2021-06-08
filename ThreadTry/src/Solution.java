@@ -12,7 +12,7 @@ public class Solution {
         int judgement = l1.val + l2.val;
         ListNode solution;
         boolean forward;
-        if (judgement > 10) {
+        if (judgement >= 10) {
             forward = true;
         } else {
             forward = false;

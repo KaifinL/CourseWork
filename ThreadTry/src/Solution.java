@@ -59,11 +59,14 @@ public class Solution {
                     } else {
                         if (l1.val + l2.val == 9) {
                             curr.next = new ListNode(0, null);
+                            forward = true;
                         }
-                        curr.next = new ListNode(l1.val + l2.val + 1, null);
+                        else {
+                            curr.next = new ListNode(l1.val + l2.val + 1, null);
+                            forward = false;
+                        }
                     }
                     curr = curr.next;
-                    forward = false;
                 } else{
                     if (!forward) {
                         curr.next = new ListNode (l1.val + l2.val - 10, null);

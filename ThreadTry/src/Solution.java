@@ -10,8 +10,6 @@ class Solution {
                 String subString = s.substring(i, i + k + 1);
                 if (judgement(subString) && subString.length() > output.length()) {
                     output = subString;
-                } else if (!judgement(subString)) {
-                    break;
                 }
                 k += 1;
             }

@@ -3,7 +3,6 @@ class Solution {
         if (numRows == 1) {
             return s;
         }
-        int length = s.length();
         String[] stringSet = new String[numRows];
         // initialize the stringSet;
         for (int i = 0; i < numRows; i++) {

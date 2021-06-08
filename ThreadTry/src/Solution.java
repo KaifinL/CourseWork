@@ -5,12 +5,20 @@ public class Solution {
         return solution;
     }
 
-    public int helperSubstring(String s) {
+    public static int helperSubstring(String s) {
         String finalString = "";
         for (int i = 0; i < s.length(); i++) {
             if (!finalString.contains(s.substring(i, i + 1))) {
-                
+                finalString += s.substring(i, i + 1);
+            } else {
+                break;
             }
         }
+        return finalString.length();
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(helperSubstring("Iamsohandsome"));
     }
 }

@@ -87,6 +87,7 @@ public class Solution {
     public static void main(String[] args) {
         ListNode test1 = new ListNode(9,null);
         ListNode curr = test1;
+        /**
         int count = 0;
         while (count < 7) {
             curr.next = new ListNode(9, null);
@@ -106,6 +107,8 @@ public class Solution {
             System.out.print(test3.val);
             test3 = test3.next;
         }
+         **/
+        
     }
 
 }

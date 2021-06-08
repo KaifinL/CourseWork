@@ -24,7 +24,7 @@ class Solution {
                     break;
                 }
             }
-            if (s.length() > numRows) {
+            if (s.length() > 2 * numRows - 1) {
                 s = s.substring(2 * numRows - 2);
             } else {
                 s = "";

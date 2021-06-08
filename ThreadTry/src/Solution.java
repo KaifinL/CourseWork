@@ -22,7 +22,11 @@ class Solution {
                     break;
                 }
             }
-            s = s.substring(2 * numRows - 2);
+            if (s.length() > numRows) {
+                s = s.substring(2 * numRows - 2);
+            } else {
+                s = "";
+            }
         }
         String output = "";
         int k = 0;

@@ -57,6 +57,9 @@ public class Solution {
                     if (!forward) {
                         curr.next = new ListNode(l1.val + l2.val, null);
                     } else {
+                        if (l1.val + l2.val == 9) {
+                            curr.next = new ListNode(0, null);
+                        }
                         curr.next = new ListNode(l1.val + l2.val + 1, null);
                     }
                     curr = curr.next;

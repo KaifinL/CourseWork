@@ -20,6 +20,6 @@ class Solution {
 
     public static void main(String[] args) {
         String s = "babad";
-        System.out.println(helper1(s, 1));
+        System.out.println(helper1(s, 2));
     }
 }

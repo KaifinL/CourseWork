@@ -36,6 +36,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(convert("A", 1));
+        System.out.println(convert("AB", 1));
     }
 }

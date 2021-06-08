@@ -1,5 +1,13 @@
+import java.util.List;
+
 public class Solution {
-    
+    public static class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int judgement = l1.val + l2.val;
         ListNode solution;
@@ -64,4 +72,24 @@ public class Solution {
         }
         return solution;
     }
+
+    public static void main(String[] args) {
+        ListNode test1 = new ListNode(9,null);
+        ListNode curr = test1;
+        int count = 0;
+        while (count < 7) {
+            curr.next = new ListNode(9, null);
+            curr = curr.next;
+        }
+        ListNode test2 = new ListNode(9, null);
+        ListNode curr2 = test2;
+        count = 0;
+        while (count < 4) {
+            curr2.next = new ListNode(9,null);
+            curr2 = curr2.next;
+        }
+        System.out.println(test1);
+        System.out.println(test2);
+    }
+
 }

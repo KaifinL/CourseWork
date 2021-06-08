@@ -38,6 +38,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(convert("ABC", 2));
+        System.out.println(convert("ABCDE", 4));
     }
 }

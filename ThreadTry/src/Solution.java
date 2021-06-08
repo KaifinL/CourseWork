@@ -12,6 +12,9 @@ class Solution {
                     output = subString;
                 }
                 k += 1;
+                if (!judgement(subString)) {
+                    break;
+                }
             }
         }
         return output;

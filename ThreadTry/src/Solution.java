@@ -90,8 +90,6 @@ public class Solution {
             curr2 = curr2.next;
             count += 1;
         }
-        System.out.println(test1);
-        System.out.println(test2);
         ListNode test3 = addTwoNumbers(test1, test2);
         while (test3 != null) {
             System.out.println(test3.val);

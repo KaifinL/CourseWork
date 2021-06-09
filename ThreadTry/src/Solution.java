@@ -5,8 +5,8 @@ public class Solution {
         if (s.charAt(0) == '-' || s.charAt(0) == '+') {
             if (s.charAt(0) == '-') {
                 negative = true;
-                s = s.substring(1);
             }
+            s = s.substring(1);
         }
         int index = s.length();
         for (int i = 0; i < s.length(); i++) {

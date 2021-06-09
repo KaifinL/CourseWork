@@ -31,7 +31,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = "    -1999999238219211wwwww";
+        String s = "    -199219211wwwww";
         System.out.println(myAtoi(s));
     }
 }

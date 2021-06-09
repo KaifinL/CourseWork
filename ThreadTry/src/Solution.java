@@ -4,7 +4,7 @@ class Solution {
         int output = smaller * smaller;
         for (int i = 0; i < height.length; i++) {
             for (int j = 0; j < height.length - i; j++) {
-                int currSmaller = Math.min(height[i], height[j]);
+                int currSmaller = Math.min(height[i], height[i + j]);
                 int currArea = currSmaller * j;
                 if (currArea > output) {
                     output = currArea;

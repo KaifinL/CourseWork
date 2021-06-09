@@ -15,7 +15,7 @@ class Solution {
         int returnStaff;
         try {
             returnStaff = Integer.valueOf(output);
-        } catch (ArithmeticException e) {
+        } catch (NumberFormatException e) {
             return 0;
         }
         return returnStaff;

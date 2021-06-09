@@ -39,7 +39,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = "+-wena";
+        String s = "+2391-wena";
         System.out.println(myAtoi(s));
     }
 }

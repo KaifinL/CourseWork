@@ -1,7 +1,7 @@
 public class Solution {
     public static int myAtoi(String s) {
         s = s.replace(" ", "");
-
+        
         return Integer.parseInt(s);
     }
 

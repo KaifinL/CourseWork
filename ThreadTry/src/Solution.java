@@ -5,9 +5,6 @@ public class Solution {
             return 0;
         }
         for (int i = 0; i < s.length(); i++) {
-            if (s.isEmpty()) {
-                return 0;
-            }
             if (s.charAt(0) == ' ') {
                 s = s.substring(1);
             } else {

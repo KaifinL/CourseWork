@@ -2,7 +2,9 @@ class Solution {
     public static int romanToInt(String s) {
         if (s.equals("")) {
             return 0;
-        }
+        } else if (s.substring(0, 2).equals("IV")) {
+            return 4;
+        } else if (s.substring(0, 2).equals(""))
         return transferring(s.substring(0, 1)) + romanToInt(s.substring(1));
     }
 

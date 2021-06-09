@@ -6,6 +6,9 @@ public class Solution {
             negative = true;
             s = s.replace("-", "");
         }
+        if (s.contains("+")) {
+            s = s.replace("+", "");
+        }
         int index = s.length();
         for (int i = 0; i < s.length(); i++) {
             if (!Character.isDigit(s.charAt(i))) {
@@ -34,7 +37,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = "words and 987";
+        String s = "+-87";
         System.out.println(myAtoi(s));
     }
 }

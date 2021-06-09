@@ -15,6 +15,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(maxArea(new int[] {8,20,1,2,3,4,5,6}));
+        System.out.println(maxArea(new int[] {}));
     }
 }

@@ -21,6 +21,9 @@ public class Solution {
         try {
             returnStaff = Integer.parseInt(s);
         } catch (NumberFormatException e) {
+            if (s.equals("")) {
+                return 0;
+            }
             if (Long.parseLong(s) > Integer.MAX_VALUE) {
                 return Integer.MAX_VALUE;
             } else {

@@ -12,7 +12,9 @@ class Solution {
             return 90 + romanToInt(s.substring(2));
         } else if (s.startsWith("CD")) {
             return 400 + romanToInt(s.substring(2));
-        } else if (s.startsWith(""))
+        } else if (s.startsWith("CM")) {
+            return 900 + romanToInt(s.substring(2));
+        }
         return transferring(s.substring(0, 1)) + romanToInt(s.substring(1));
     }
 

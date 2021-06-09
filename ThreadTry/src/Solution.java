@@ -3,9 +3,9 @@ public class Solution {
         s = s.replace(" ", "");
         boolean negative = false;
         if (s.charAt(0) == '-' || s.charAt(0) == '+') {
-            s = s.substring(1);
             if (s.charAt(0) == '-') {
                 negative = true;
+                s = s.substring(1);
             }
         }
         int index = s.length();
@@ -16,7 +16,7 @@ public class Solution {
             }
         }
         s = s.substring(0, index);
-        if (negative) {
+        if (negative && !s.isEmpty()) {
             s = "-" + s;
         }
         int returnStaff;

@@ -7,6 +7,9 @@ public class Solution {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(0) == ' ') {
                 s = s.substring(1);
+                if (s.isEmpty()) {
+                    return 0;
+                }
             } else {
                 break;
             }

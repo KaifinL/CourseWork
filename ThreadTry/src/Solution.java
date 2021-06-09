@@ -21,7 +21,7 @@ public class Solution {
         try {
             returnStaff = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            if (Integer.parseInt(s) > Integer.MAX_VALUE) {
+            if (Long.parseLong(s) > Integer.MAX_VALUE) {
                 return Integer.MAX_VALUE;
             } else {
                 return Integer.MIN_VALUE;
@@ -31,7 +31,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = "777we";
+        String s = "1999999238219";
         System.out.println(myAtoi(s));
     }
 }

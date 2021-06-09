@@ -34,7 +34,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = "    -199219211wwwww";
+        String s = "words and 987";
         System.out.println(myAtoi(s));
     }
 }

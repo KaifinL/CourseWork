@@ -7,8 +7,8 @@ class Solution {
         } else if (s.startsWith("IX")) {
             return 9 + romanToInt(s.substring(2));
         } else if (s.startsWith("XL")) {
-            return 
-        }
+            return 40 + romanToInt(s.substring(2));
+        } else if (s.startsWith("XC"))
         return transferring(s.substring(0, 1)) + romanToInt(s.substring(1));
     }
 

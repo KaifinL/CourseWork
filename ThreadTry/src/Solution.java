@@ -2,6 +2,7 @@ class Solution {
     public static int romanToInt(String s) {
         if (s.equals("")) {
             return 0;
+            /**
         } else if (s.startsWith("IV")) {
             return 4 + romanToInt(s.substring(2));
         } else if (s.startsWith("IX")) {
@@ -15,7 +16,12 @@ class Solution {
         } else if (s.startsWith("CM")) {
             return 900 + romanToInt(s.substring(2));
         }
-        return transferring(s.substring(0, 1)) + romanToInt(s.substring(1));
+         **/
+        }
+        if (s.length() == 1 || transferring(s.substring(0, 1)) > transferring(s.substring(1, 2))) {
+            return transferring(s.substring(0, 1)) + romanToInt(s.substring(1));
+        }
+        return transferring(s.substring(1, 2)) - transferring(s.substring(0, 1)) + romanToInt(s.substring(2));
     }
 
 

@@ -46,7 +46,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = "";
+        String s = " +0 123";
         System.out.println(myAtoi(s));
     }
 }

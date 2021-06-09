@@ -1,23 +1,15 @@
 class Solution {
-    public static int maxArea(int[] height) {
-        int smaller = Math.min(height[0], height[1]);
-        int output = smaller * 1;
-        for (int i = 0; i < height.length; i++) {
-            if (height[i] == 0) {
-                continue;
-            }
-            for (int j = output / height[i]; j < height.length - i; j++) {
-                int currSmaller = Math.min(height[i], height[i + j]);
-                int currArea = currSmaller * j;
-                if (currArea > output) {
-                    output = currArea;
-                }
-            }
-        }
-        return output;
+    public int romanToInt(String s) {
+
     }
 
-    public static void main(String[] args) {
-        System.out.println(maxArea(new int[] {0, 2}));
+    public static int transferring(String s) {
+        switch (s) {
+            case "I":
+                return 1;
+            case"V":
+                return 5;
+            case ""
+        }
     }
 }

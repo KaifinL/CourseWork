@@ -5,6 +5,13 @@ public class Solution {
         if (s.isEmpty()) {
             return 0;
         }
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(0) == ' ') {
+                s = s.substring(1);
+            } else {
+                break;
+            }
+        }
         if (s.charAt(0) == '-' || s.charAt(0) == '+') {
             if (s.charAt(0) == '-') {
                 negative = true;
@@ -39,7 +46,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = "+2391-wena";
+        String s = "";
         System.out.println(myAtoi(s));
     }
 }

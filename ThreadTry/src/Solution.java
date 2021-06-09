@@ -1,5 +1,5 @@
 class Solution {
-    public int romanToInt(String s) {
+    public static int romanToInt(String s) {
         if (s.equals("")) {
             return 0;
         }
@@ -21,6 +21,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        
+        System.out.println(romanToInt("III"));
     }
 }

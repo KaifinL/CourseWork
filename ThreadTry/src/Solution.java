@@ -2,12 +2,11 @@ public class Solution {
     public static int myAtoi(String s) {
         s = s.replace(" ", "");
         boolean negative = false;
-        if (s.contains("-")) {
-            negative = true;
-            s = s.replace("-", "");
-        }
-        if (s.contains("+")) {
-            s = s.replace("+", "");
+        if (s.charAt(0) == '-' || s.charAt(0) == '+') {
+            s = s.substring(1);
+            if (s.charAt(0) == '-') {
+                negative = true;
+            }
         }
         int index = s.length();
         for (int i = 0; i < s.length(); i++) {

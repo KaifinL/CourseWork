@@ -13,12 +13,11 @@ public class Solution {
                 break;
             }
         }
-
+        s = s.substring(0, index);
         if (negative) {
             s = "-" + s;
         }
-        return index;
-        //return Integer.parseInt(s);
+        return Integer.parseInt(s);
     }
 
     public static void main(String[] args) {

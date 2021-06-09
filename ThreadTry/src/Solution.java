@@ -11,8 +11,8 @@ class Solution {
         } else if (s.startsWith("XC")) {
             return 90 + romanToInt(s.substring(2));
         } else if (s.startsWith("CD")) {
-            
-        }
+            return 400 + romanToInt(s.substring(2));
+        } else if (s.startsWith(""))
         return transferring(s.substring(0, 1)) + romanToInt(s.substring(1));
     }
 

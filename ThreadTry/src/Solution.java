@@ -48,7 +48,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String s = " ";
+        String s = "20000000000000000000";
         System.out.println(myAtoi(s));
     }
 }

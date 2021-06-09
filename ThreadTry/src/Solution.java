@@ -21,9 +21,13 @@ public class Solution {
         try {
             returnStaff = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            if (returnStaff < )
+            if (Integer.parseInt(s) > Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            } else {
+                return Integer.MIN_VALUE;
+            }
         }
-        return Integer.parseInt(s);
+        return returnStaff;
     }
 
     public static void main(String[] args) {

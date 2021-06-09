@@ -1,7 +1,7 @@
 class Solution {
     public static int maxArea(int[] height) {
         int smaller = Math.min(height[0], height[1]);
-        int output = smaller * smaller;
+        int output = smaller * 1;
         for (int i = 0; i < height.length; i++) {
             for (int j = 0; j < height.length - i; j++) {
                 int currSmaller = Math.min(height[i], height[i + j]);

@@ -17,6 +17,12 @@ public class Solution {
         if (negative) {
             s = "-" + s;
         }
+        int returnStaff;
+        try {
+            returnStaff = Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            if (returnStaff < )
+        }
         return Integer.parseInt(s);
     }
 

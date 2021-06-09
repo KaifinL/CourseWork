@@ -13,7 +13,8 @@ class Solution {
                 return 10;
             case "L":
                 return 50;
-            case ""
+            case "C":
+                return 100;
         }
     }
 }

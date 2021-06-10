@@ -26,6 +26,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(longestCommonPrefix(new String[] {"a"}));
+        System.out.println(longestCommonPrefix(new String[] {""}));
     }
 }

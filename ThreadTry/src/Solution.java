@@ -8,10 +8,10 @@ class Solution {
         }
         String output = "";
         for (int i = 0; i < shortest.length(); i++) {
-                String curr = shortest.substring(0, i);
-                if (judgement(strs, curr) && curr.length() > output.length()) {
-                    output = curr;
-                }
+            String curr = shortest.substring(0, i + 1);
+            if (judgement(strs, curr) && curr.length() > output.length()) {
+                output = curr;
+            }
         }
         return output;
     }

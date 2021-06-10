@@ -18,7 +18,7 @@ class Solution {
 
     public static boolean judgement(String[] strs, String prefix) {
         for (int i = 0; i < strs.length; i++) {
-            if (!strs[i].substring(0, i).equals(prefix)) {
+            if (!strs[i].startsWith(prefix)) {
                 return false;
             }
         }

@@ -1,7 +1,7 @@
 class Solution {
     public static String longestCommonPrefix(String[] strs) {
-        String shortest = "";
-        for (int i = 0; i < strs.length; i++) {
+        String shortest = strs[0];
+        for (int i = 1; i < strs.length; i++) {
             if (strs[i].length() < shortest.length()) {
                 shortest = strs[i];
             }

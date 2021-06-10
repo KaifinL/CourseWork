@@ -9,7 +9,7 @@ class Solution {
         String output = "";
         for (int i = 0; i < shortest.length(); i++) {
             for (int j = 0; j < shortest.length() - i; j++) {
-                String curr = shortest.substring(i, i + j);
+                String curr = shortest.substring(i, i + j + 1);
                 if (judgement(strs, curr) && curr.length() >= output.length()) {
                     output = curr;
                 }

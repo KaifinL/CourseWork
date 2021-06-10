@@ -18,7 +18,7 @@ class Solution {
         return output;
     }
 
-    public boolean judgement(String[] strs, String prefix) {
+    public static boolean judgement(String[] strs, String prefix) {
         for (int i = 0; i < strs.length; i++) {
             if (!strs[i].contains(prefix)) {
                 return false;
@@ -28,6 +28,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(longestCommonPrefix());
+        System.out.println(longestCommonPrefix(new String[] {"flower","flow","flight"}));
     }
 }

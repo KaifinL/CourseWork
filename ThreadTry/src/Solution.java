@@ -10,7 +10,7 @@ class Solution {
         for (int i = 0; i < shortest.length(); i++) {
             for (int j = 0; j < shortest.length() - i; j++) {
                 String curr = shortest.substring(i, i + j);
-                if (judgement(strs, curr) && curr.length() > output.length()) {
+                if (judgement(strs, curr) && curr.length() >= output.length()) {
                     output = curr;
                 }
             }

@@ -28,6 +28,7 @@ public class test {
     }
 
     public static void main(String[] args) {
-        Scanner test1 = new Scanner();
+        Scanner test1 = new Scanner(System.in);
+        int i = 
     }
 }

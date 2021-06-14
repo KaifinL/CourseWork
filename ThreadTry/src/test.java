@@ -11,6 +11,9 @@ public class test {
     public void test1() {
         int[] nums = new int[]{-1,0,1,2,-1,-4};
         List returnList = Solution.threeSum(nums);
+        List<List<Integer>> comparator = new ArrayList<>();
+        List<Integer> list1 = new ArrayList<>();
+        list1.add()
         assertEquals(returnList,);
     }
 }

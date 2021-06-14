@@ -8,24 +8,7 @@ import static org.junit.Assert.*;
 
 
 public class test {
-
-    @Test
-    public void test1() {
-        int[] nums = new int[]{-1,0,1,2,-1,-4};
-        List returnList = Solution.threeSum(nums);
-        List<List<Integer>> comparator = new ArrayList<>();
-        List<Integer> list1 = new ArrayList<>();
-        list1.add(-1);
-        list1.add(-1);
-        list1.add(2);
-        List<Integer> list2 = new ArrayList<>();
-        list2.add(-1);
-        list2.add(0);
-        list2.add(1);
-        comparator.add(list1);
-        comparator.add(list2);
-        assertEquals(returnList, comparator);
-    }
+    
 
     public static void main(String[] args) {
         Scanner test1 = new Scanner(System.in);

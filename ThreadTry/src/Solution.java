@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 class Solution {
@@ -12,7 +13,16 @@ class Solution {
                         newList.add(nums[i]);
                         newList.add(nums[j]);
                         newList.add(nums[k]);
-                        finalList.add(new ArrayList<>());
+                        if (finalList.isEmpty()) {
+                            finalList.add(newList);
+                        } else {
+                            for (List l : finalList) {
+                                if (!new HashSet<>(newList).equals(new HashSet<>(l))) {
+                                    finalList.add(newList);
+                                }
+                            }
+                            finalList.add(new ArrayList<>());
+                        }
                     }
                 }
             }

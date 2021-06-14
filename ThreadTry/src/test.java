@@ -9,6 +9,8 @@ public class test {
 
     @Test
     public void test1() {
-        
+        int[] nums = new int[]{-1,0,1,2,-1,-4};
+        List returnList = Solution.threeSum(nums);
+        assertEquals(returnList,);
     }
 }

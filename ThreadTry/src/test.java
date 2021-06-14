@@ -14,8 +14,8 @@ public class test {
         List<List<Integer>> comparator = new ArrayList<>();
         List<Integer> list1 = new ArrayList<>();
         list1.add(-1);
-        list1.add(-2);
-        list1.add()
+        list1.add(-1);
+        list1.add(2);
         assertEquals(returnList,);
     }
 }

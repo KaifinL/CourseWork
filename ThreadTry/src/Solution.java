@@ -21,4 +21,8 @@ class Solution {
         return finalList;
     }
 
+    public static void main(String[] args) {
+
+    }
+
 }

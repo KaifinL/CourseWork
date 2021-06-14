@@ -12,7 +12,7 @@ class Solution {
                         newList.add(nums[i]);
                         newList.add(nums[j]);
                         newList.add(nums[k]);
-                        finalList.add(new ArrayList<>())
+                        finalList.add(new ArrayList<>());
                     }
                 }
             }

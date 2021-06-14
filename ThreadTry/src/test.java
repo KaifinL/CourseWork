@@ -29,6 +29,7 @@ public class test {
 
     public static void main(String[] args) {
         Scanner test1 = new Scanner(System.in);
-        int i = 
+        int i = test1.nextInt();
+        System.out.println(i);
     }
 }

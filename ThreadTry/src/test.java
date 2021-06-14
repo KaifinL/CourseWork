@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -16,6 +17,6 @@ public class test {
         List tst2 = new ArrayList();
         tst2.add(2);
         tst2.add(1);
-        assertTrue();
+        assertTrue(new HashSet<Integer>(tst1).equals(new HashSet<>(tst2)));
     }
 }

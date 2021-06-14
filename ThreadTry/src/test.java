@@ -20,8 +20,8 @@ public class test {
         list2.add(-1);
         list2.add(0);
         list2.add(1);
-        comparator.add(list2);
         comparator.add(list1);
+        comparator.add(list2);
         assertEquals(returnList, comparator);
     }
 }

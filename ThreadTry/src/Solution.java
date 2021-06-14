@@ -13,15 +13,18 @@ class Solution {
                         newList.add(nums[i]);
                         newList.add(nums[j]);
                         newList.add(nums[k]);
+                        boolean exist = false;
                         if (finalList.isEmpty()) {
                             finalList.add(newList);
                         } else {
                             for (List l : finalList) {
-                                if (!new HashSet<>(newList).equals(new HashSet<>(l))) {
-                                    finalList.add(newList);
+                                if (new HashSet<>(newList).equals(new HashSet<>(l))) {
+                                    exist = true;
                                 }
                             }
-                            finalList.add(new ArrayList<>());
+                            if (!exist) {
+                                finalList.add(newList);
+                            }
                         }
                     }
                 }

@@ -17,7 +17,11 @@ public class test {
         list1.add(-1);
         list1.add(2);
         List<Integer> list2 = new ArrayList<>();
-        list2.add()
-        assertEquals(returnList,);
+        list2.add(-1);
+        list2.add(0);
+        list2.add(1);
+        comparator.add(list1);
+        comparator.add(list2);
+        assertEquals(returnList, comparator);
     }
 }

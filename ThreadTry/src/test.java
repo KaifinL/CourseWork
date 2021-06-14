@@ -24,4 +24,8 @@ public class test {
         comparator.add(list2);
         assertEquals(returnList, comparator);
     }
+
+    public static void main(String[] args) {
+        
+    }
 }

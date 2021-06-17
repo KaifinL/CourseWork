@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 
 public class test {
-    
+
 
     public static void main(String[] args) {
         Scanner test1 = new Scanner(System.in);

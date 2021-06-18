@@ -1,36 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-
 class Solution {
-    public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> finalList = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                for (int k = j + 1; k < nums.length; k++) {
-                    if (nums[i] + nums[j] + nums[k] == 0) {
-                        List<Integer> newList = new ArrayList<>() ;
-                        newList.add(nums[i]);
-                        newList.add(nums[j]);
-                        newList.add(nums[k]);
-                        boolean exist = false;
-                        if (finalList.isEmpty()) {
-                            finalList.add(newList);
-                        } else {
-                            for (List l : finalList) {
-                                if (new HashSet<>(newList).equals(new HashSet<>(l))) {
-                                    exist = true;
-                                }
-                            }
-                            if (!exist) {
-                                finalList.add(newList);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return finalList;
+    public boolean isNumber(String s) {
+        
+        return false;
     }
 }

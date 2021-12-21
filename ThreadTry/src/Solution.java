@@ -3,9 +3,8 @@ import java.util.Random;
 import static java.lang.Math.pow;
 
 class Solution {
-    public int isNumber(String s) {
-        Random rand = new Random();
-        return rand();
+    public static int isNumber(int[] arr) {
+        return (int) (Math.random() * arr.length);
     }
 
     public static boolean isPowerOfTwo(int n) {
@@ -20,6 +19,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(isPowerOfTwo(3));
+        System.out.println(isNumber(int[]{2, 3, 4}));
     }
 }

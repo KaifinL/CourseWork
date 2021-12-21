@@ -1,3 +1,5 @@
+import static java.lang.Math.pow;
+
 class Solution {
     public boolean isNumber(String s) {
 
@@ -5,6 +7,15 @@ class Solution {
     }
 
     public boolean isPowerOfTwo(int n) {
-        
+        int index = 0;
+        while (true) {
+            if (n > pow(2, index)) {
+                return false;
+            }
+            if (n == pow(2, index)) {
+                return true;
+            }
+            index += 1;
+        }
     }
 }

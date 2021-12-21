@@ -3,4 +3,8 @@ class Solution {
 
         return false;
     }
+
+    public boolean isPowerOfTwo(int n) {
+        
+    }
 }

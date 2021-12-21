@@ -19,6 +19,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(isNumber(int[]{2, 3, 4}));
+        System.out.println(isNumber());
     }
 }

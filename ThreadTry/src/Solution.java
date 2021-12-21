@@ -6,7 +6,7 @@ class Solution {
         return false;
     }
 
-    public boolean isPowerOfTwo(int n) {
+    public static boolean isPowerOfTwo(int n) {
         int index = 0;
         while (true) {
             if (n > pow(2, index)) {
@@ -17,5 +17,9 @@ class Solution {
             }
             index += 1;
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPowerOfTwo(2));
     }
 }

@@ -18,6 +18,6 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(isPowerOfTwo(2));
+        System.out.println(isPowerOfTwo(3));
     }
 }

@@ -22,4 +22,7 @@ class Solution {
         int a[] = {1, 2, 3, 4, 5};
         System.out.println(isNumber(a));
     }
+
+    //below is the quick sort implementation from Leet
+
 }

@@ -38,8 +38,8 @@ class Solution {
                 return_list.add(element_List);
             } else if (sorted[i+1] - sorted[i] == smallest) {
                 element_List = new ArrayList<>();
-                element_List.add(sorted[i+1]);
                 element_List.add(sorted[i]);
+                element_List.add(sorted[i+1]);
                 return_list.add(element_List);
             }
         }

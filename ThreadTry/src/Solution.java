@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static java.lang.Math.pow;
@@ -18,7 +20,12 @@ class Solution {
         return false;
     }
 
-    
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+        int sorted[] = sortArray(arr);
+        int smallest = sorted[1] - sorted[0];
+        List return_list = new ArrayList();
+        
+    }
 
     public static void main(String[] args) {
         int a[] = {1, 2, 3, 4, 5};

@@ -24,21 +24,15 @@ class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
         Arrays.sort(arr);
         int smallest = arr[1] - arr[0];
-        List <List<Integer>> return_list = new ArrayList();
-        List <Integer> element_List = new ArrayList();
-        element_List.add(arr[0]);
-        element_List.add(arr[1]);
-        return_list.add(element_List);
         for (int i = 1; i < arr.length-1; i++) {
             if (arr[i+1] - arr[i] < smallest) {
                 smallest = arr[i+1] - arr[i];
-                return_list.clear();
-                element_List.clear();
-                element_List.add(arr[i]);
-                element_List.add(arr[i+1]);
-                return_list.add(element_List);
-            } else if (arr[i+1] - arr[i] == smallest) {
-                element_List = new ArrayList<>();
+            }
+        }
+        List <List<Integer>> return_list = new ArrayList();
+        for (int i = 1; i < arr.length-1; i++) {
+            if (arr[i+1] - arr[i] == smallest) {
+                List<Integer> element_List = new ArrayList<>();
                 element_List.add(arr[i]);
                 element_List.add(arr[i+1]);
                 return_list.add(element_List);

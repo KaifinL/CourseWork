@@ -43,11 +43,18 @@ class Solution {
         return return_list;
     }
 
+    public static ListNode reverse(ListNode head) {
+        if (head.next == null) {
+            return head;
+        }
+        ListNode next_node = 
+    }
+
 
     public void reorderList(ListNode head) {
         //reverse the list
         ListNode curr = head;
-        while (curr.next) {
+        while (curr.next != null) {
 
         }
     }

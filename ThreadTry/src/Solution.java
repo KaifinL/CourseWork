@@ -44,19 +44,25 @@ class Solution {
     }
 
     public static ListNode reverse(ListNode head) {
-        if (head.next == null) {
-            return head;
+        ListNode previous = null;
+        ListNode current = head;
+        ListNode forward;
+
+        while (current != null) {
+            forward = current.next;
+            current.next = previous;
+            previous = current;
+            current = forward;
         }
-        ListNode next_node = 
+
+        return previous;
     }
 
 
     public void reorderList(ListNode head) {
         //reverse the list
-        ListNode curr = head;
-        while (curr.next != null) {
-
-        }
+        ListNode reversed = reverse(head);
+        for (int i = 0; i < )
     }
 
     public static void main(String[] args) {

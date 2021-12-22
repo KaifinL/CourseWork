@@ -23,7 +23,12 @@ class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
         int sorted[] = sortArray(arr);
         int smallest = sorted[1] - sorted[0];
-        List return_list = new ArrayList();
+        List <List<Integer>> return_list = new ArrayList();
+        List <Integer> element_List = new ArrayList();
+        element_List.add(sorted[0]);
+        element_List.add(sorted[1]);
+        return_list.add(element_List);
+        element_List.clear();
         
     }
 

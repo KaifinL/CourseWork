@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +44,13 @@ class Solution {
     }
 
 
-    
+    public void reorderList(ListNode head) {
+        //reverse the list
+        ListNode curr = head;
+        while (curr.next) {
+
+        }
+    }
 
     public static void main(String[] args) {
         int test1[] = {3,8,-10,23,19,-4,-14,27};

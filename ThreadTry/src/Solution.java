@@ -41,7 +41,7 @@ class Solution {
         return return_list;
     }
 
-    
+
 
     public static void main(String[] args) {
         int test1[] = {3,8,-10,23,19,-4,-14,27};

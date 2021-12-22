@@ -47,7 +47,8 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        
+        int test1[] = {1, 2, 3, 4};
+        System.out.println(new Solution().minimumAbsDifference(test1));
     }
 
     //below is the quick sort implementation from LEETCODE!

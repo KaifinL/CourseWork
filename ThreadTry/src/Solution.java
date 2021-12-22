@@ -28,22 +28,26 @@ class Solution {
         element_List.add(sorted[0]);
         element_List.add(sorted[1]);
         return_list.add(element_List);
-        element_List.clear();
+        for (int i = 1; i < arr.length-1; i++) {
+            if (sorted[i+1] - sorted[i] < smallest) {
+                smallest = sorted[i+1] - sorted[i];
+                return_list.clear();
+                element_List.clear();
+                element_List.add(sorted[i]);
+                element_List.add(sorted[i+1]);
+                return_list.add(element_List);
+            } else if (sorted[i+1] - sorted[i] == smallest) {
+                element_List = new ArrayList<>();
+                element_List.add(sorted[i+1]);
+                element_List.add(sorted[i]);
+                return_list.add(element_List);
+            }
+        }
         return return_list;
     }
 
     public static void main(String[] args) {
-        int a[] = {1, 2, 3, 4, 5};
-        List <List<Integer>> return_list = new ArrayList();
-        List <Integer> element_List = new ArrayList();
-        element_List.add(0);
-        element_List.add(1);
-        return_list.add(element_List);
-        element_List = new ArrayList<>();
-        element_List.add(3);
-        element_List.add(4);
-        return_list.add(element_List);
-        System.out.println((return_list));
+        
     }
 
     //below is the quick sort implementation from LEETCODE!

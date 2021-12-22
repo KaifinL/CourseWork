@@ -47,7 +47,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int test1[] = {1, 2, 3, 4};
+        int test1[] = {1,3,6,10,15};
         System.out.println(new Solution().minimumAbsDifference(test1));
     }
 

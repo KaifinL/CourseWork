@@ -106,8 +106,9 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int test1[][2];
-        
+        int pre_test[] = {1, 2};
+        int test1[][] = [pre_test];
+
         Solution testSo = new Solution();
         testSo.reorderList(test1);
         System.out.println(test1);

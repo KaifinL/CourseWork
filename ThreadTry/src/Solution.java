@@ -87,8 +87,10 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int test1[] = {3,8,-10,23,19,-4,-14,27};
-        System.out.println(new Solution().minimumAbsDifference(test1));
+        ListNode test1 = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
+        Solution testSo = new Solution();
+        testSo.reorderList(test1);
+        System.out.println(test1);
     }
 
 }

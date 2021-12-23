@@ -62,17 +62,27 @@ class Solution {
     public void reorderList(ListNode head) {
         //count the number of elements in the list
         ListNode curr = head;
-        int counter = 0;
+        int amount = 0;
         while (curr != null) {
-            counter += 1;
+            amount += 1;
             curr = curr.next;
         }
-        //reverse the list
-        ListNode reversed = reverse(head);
+        //cut down the nodes!
+        int counter = 0;
+        ListNode previous = head;
+        while (counter < floorDiv(amount, 2)) {
+            previous = previous.next;
+            counter += 1;
+        }
+        curr = previous.next;
+        previous.next = null;
+        ListNode reversed = reverse(curr);
+        //insert element in the head
+        curr = head;
         while (reversed != null) {
-            ListNode sentinel = reversed;
-            sentinel.next = new ListNode(reversed.val, sentinel.next);
+            curr.next = new ListNode(reversed.val, curr.next);
             reversed = reversed.next;
+            curr = curr.next.next;
         }
     }
 

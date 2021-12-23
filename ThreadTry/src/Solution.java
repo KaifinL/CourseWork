@@ -92,7 +92,9 @@ class Solution {
             return_list.add(i);
         }
         for (int list[] : prerequisites) {
-            if (return_list.indexOf(list[1]) > )
+            if (return_list.indexOf(list[1]) > return_list.indexOf(list[0])) {
+                return_list.set(return_list.indexOf(list[1]), return_list.)
+            }
         }
     }
 

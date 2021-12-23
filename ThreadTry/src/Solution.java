@@ -106,11 +106,13 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int[][] twoD_arr = new int[1][2];
+        int[][] twoD_arr = new int[2][2];
         twoD_arr[0][0] = 0;
         twoD_arr[0][1] = 1;
+        twoD_arr[1][0] = 2;
+        twoD_arr[1][1] = 3;
         Solution testSo = new Solution();
-        System.out.println(testSo.findOrder(2, twoD_arr));
+        System.out.println(testSo.findOrder(4, twoD_arr));
     }
 
 }

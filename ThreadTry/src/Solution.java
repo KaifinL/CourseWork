@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.Math.floorDiv;
 import static java.lang.Math.pow;
 
 class Solution {
@@ -62,7 +63,24 @@ class Solution {
     public void reorderList(ListNode head) {
         //reverse the list
         ListNode reversed = reverse(head);
-        for (int i = 0; i < )
+        //count the number of elements in the list
+        ListNode curr = head;
+        int counter = 0;
+        while (curr != null) {
+            counter += 1;
+            curr = curr.next;
+        }
+        curr = head;
+        for (int i = 0; i < floorDiv(counter, 2); i++) {
+            curr.next = new ListNode(reversed.val, head.next);
+            reversed = reversed.next;
+            curr = curr.next.next;
+        }
+        if (counter % 2 == 1) {
+            curr.next.next.next = null;
+        } else {
+            head.next.next = null;
+        }
     }
 
     public static void main(String[] args) {

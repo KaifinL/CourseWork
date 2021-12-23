@@ -72,7 +72,7 @@ class Solution {
         //reverse the list
         ListNode reversed = reverse(head, floorDiv(counter, 2));
         while (reversed != null) {
-            ListNode 
+            ListNode sentinal = 
         }
     }
 

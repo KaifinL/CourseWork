@@ -48,15 +48,17 @@ class Solution {
         ListNode previous = null;
         ListNode current = head;
         ListNode forward;
-        int counter = 0;
-        while (counter < amount) {
+        while (current != null) {
             forward = current.next;
             current.next = previous;
             previous = current;
             current = forward;
-            counter += 1;
         }
-
+        ListNode curr = previous;
+        for (int i = 0; i < amount; i++) {
+            curr = curr.next;
+        }
+        curr.next = null;
         return previous;
     }
 
@@ -72,7 +74,9 @@ class Solution {
         //reverse the list
         ListNode reversed = reverse(head, floorDiv(counter, 2));
         while (reversed != null) {
-            ListNode sentinal = 
+            ListNode sentinel = reversed;
+            sentinel.next = new ListNode(reversed.val, sentinel.next);
+            reversed = reversed.next;
         }
     }
 

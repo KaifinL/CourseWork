@@ -107,7 +107,7 @@ class Solution {
 
     public static void main(String[] args) {
         int[][] twoD_arr = new int[1][2];
-        
+        twoD_arr[0] = [0, 1];
 
         Solution testSo = new Solution();
         testSo.reorderList(test1);

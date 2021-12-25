@@ -96,7 +96,7 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             if (Character.isDigit(s.charAt(i))) {
                 if (cont) {
-                    curr = 10 * curr + Integer.parseInt(s.substring(i));
+                    curr = 10 * curr + Integer.parseInt(s.substring(i,i+1));
                 } else {
                     curr = Integer.parseInt(s.substring(i));
                     cont = true;

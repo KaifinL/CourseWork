@@ -88,7 +88,7 @@ class Solution {
 
     public int calculate(String s) {
         for (int i = 0; i < s.length(); i++) {
-            
+            if ()
         }
     }
 
@@ -96,7 +96,7 @@ class Solution {
 
     public static void main(String[] args) {
         String test = "testsyourself";
-        System.out.println(test.substring(0, 1));
+        System.out.println(Character.isDigit(test.charAt(0)));
     }
 
 }

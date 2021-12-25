@@ -86,7 +86,11 @@ class Solution {
         }
     }
 
-    
+    public int calculate(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            
+        }
+    }
 
 
 

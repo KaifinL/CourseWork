@@ -96,7 +96,7 @@ class Solution {
 
 
     public static void main(String[] args) {
-        String test = "testsyourself";
+        String test = "1estsyourself";
         System.out.println(Character.isDigit(test.charAt(0)));
     }
 

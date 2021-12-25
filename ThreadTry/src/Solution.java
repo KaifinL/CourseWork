@@ -86,35 +86,11 @@ class Solution {
         }
     }
 
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        ArrayList<Integer> return_list = new ArrayList();
-        ArrayList<Integer> ranked = new ArrayList<>();
-        for (int i = 0; i < numCourses; i++) {
-            return_list.add(i);
-        }
-        for (int list[] : prerequisites) {
-            if (return_list.indexOf(list[1]) > return_list.indexOf(list[0])) {
-                int index = return_list.indexOf(list[1]);
-                return_list.set(return_list.indexOf(list[0]), list[1]);
-                return_list.set(index, list[0]);
-            }
-            ranked.add()
-        }
-        int real[] = new int[numCourses];
-        for (int i = 0; i < numCourses; i++) {
-            real[i] = return_list.get(i);
-        }
-        return real;
-    }
+
 
     public static void main(String[] args) {
-        int[][] twoD_arr = new int[2][2];
-        twoD_arr[0][0] = 0;
-        twoD_arr[0][1] = 1;
-        twoD_arr[1][0] = 2;
-        twoD_arr[1][1] = 3;
-        Solution testSo = new Solution();
-        System.out.println(testSo.findOrder(4, twoD_arr));
+        String test = "testsyourself";
+        System.out.println(test.substring(0, 1));
     }
 
 }

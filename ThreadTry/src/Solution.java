@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -86,18 +87,34 @@ class Solution {
         }
     }
 
-    /***
+
     public int calculate(String s) {
+        ArrayList<Integer> integers = new ArrayList<>();
+        ArrayList<Character> operators = new ArrayList<>();
+        boolean cont = true;
+        int curr = 0;
         for (int i = 0; i < s.length(); i++) {
-            if ()
+            if (Character.isDigit(s.charAt(i))) {
+                if (cont) {
+                    curr = 10 * curr + (int) s.charAt(i);
+                } else {
+                    curr = s.charAt(i);
+                    cont = true;
+                }
+            } else {
+                cont = false;
+                integers.add(curr);
+                operators.add(s.charAt(i));
+            }
         }
+        return 1;
     }
-    ***/
 
 
     public static void main(String[] args) {
-        String test = "1estsyourself";
-        System.out.println(Character.isDigit(test.charAt(0)));
+        Solution testy = new Solution();
+        String test = "1+2+3+4*4";
+        System.out.println(testy.calculate(test));
     }
 
 }

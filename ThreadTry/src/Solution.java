@@ -88,10 +88,9 @@ class Solution {
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         ArrayList<Integer> return_list = new ArrayList();
-        ArrayList<Integer> check = new ArrayList<>();
+        ArrayList<Integer> ranked = new ArrayList<>();
         for (int i = 0; i < numCourses; i++) {
             return_list.add(i);
-            check.add(i);
         }
         for (int list[] : prerequisites) {
             if (return_list.indexOf(list[1]) > return_list.indexOf(list[0])) {
@@ -99,7 +98,7 @@ class Solution {
                 return_list.set(return_list.indexOf(list[0]), list[1]);
                 return_list.set(index, list[0]);
             }
-
+            ranked.add()
         }
         int real[] = new int[numCourses];
         for (int i = 0; i < numCourses; i++) {

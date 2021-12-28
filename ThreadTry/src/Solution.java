@@ -148,7 +148,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution testy = new Solution();
-        String test = "1+2+32+34*44";
+        String test = " 3+5 / 2 ";
         System.out.println(testy.calculate(test));
     }
 

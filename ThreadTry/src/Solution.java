@@ -107,6 +107,7 @@ class Solution {
                 operators.add(s.charAt(i));
             }
         }
+        integers.add(curr);
         return 1;
     }
 

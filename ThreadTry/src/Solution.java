@@ -117,12 +117,31 @@ class Solution {
             ops[i] = operators.get(i);
         }
         ints[i] = integers.get(i);
-        return 1;
+        return operator(ints, ops);
     }
 
 
     public static int operator(int []ints, char []ops) {
-        
+        for (int i = 0; i <ops.length; i ++) {
+            if (ops[i] == '*') {
+                ints[i+1] = ints[i] * ints[i+1];
+                ints[i] = 0;
+                ops[i] = '+';
+            } else if (ops[i] == '/') {
+                ints[i+1] = ints[i] / ints[i+1];
+                ints[i] = 0;
+                ops[i] = '+';
+            }
+        }
+        int output = ints[0];
+        for (int i = 0; i < ops.length; i++) {
+            if (ops[i] == '+') {
+                output += ints[i+1];
+            } else if (ops[i] == '-') {
+                output -= ints[i+1];
+            }
+        }
+        return output;
     }
 
 

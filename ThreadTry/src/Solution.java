@@ -150,7 +150,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution testy = new Solution();
-        String test = " 3+5 / 2 ";
+        String test = "12-3*4";
         System.out.println(testy.calculate(test));
     }
 

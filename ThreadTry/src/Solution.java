@@ -98,7 +98,7 @@ class Solution {
                 if (cont) {
                     curr = 10 * curr + Integer.parseInt(s.substring(i,i+1));
                 } else {
-                    curr = Integer.parseInt(s.substring(i));
+                    curr = Integer.parseInt(s.substring(i, i+1));
                     cont = true;
                 }
             } else {

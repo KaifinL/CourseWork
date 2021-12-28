@@ -89,6 +89,7 @@ class Solution {
 
 
     public int calculate(String s) {
+        // create two array list to hold the elements of integers and operators respectively.
         ArrayList<Integer> integers = new ArrayList<>();
         ArrayList<Character> operators = new ArrayList<>();
         boolean cont = true;
@@ -108,8 +109,23 @@ class Solution {
             }
         }
         integers.add(curr);
+        int ints[] = new int[integers.size()];
+        char ops[] = new char[operators.size()];
+        int i;
+        for (i=0; i < operators.size(); i++) {
+            ints[i] = integers.get(i);
+            ops[i] = operators.get(i);
+        }
+        ints[i+1] = integers.get(i+1);
         return 1;
     }
+
+    /*
+    public static int operator(ArrayList<Integer> integers, ArrayList<Character> operators) {
+        integers.
+    }
+
+     */
 
 
     public static void main(String[] args) {

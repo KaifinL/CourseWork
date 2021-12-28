@@ -94,7 +94,6 @@ class Solution {
         ArrayList<Character> operators = new ArrayList<>();
         boolean cont = true;
         int curr = 0;
-        char []opers ={'*', '+', '-', '/'};
         for (int i = 0; i < s.length(); i++) {
             if (Character.isDigit(s.charAt(i))) {
                 if (cont) {

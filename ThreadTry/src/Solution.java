@@ -120,12 +120,11 @@ class Solution {
         return 1;
     }
 
-    /*
-    public static int operator(ArrayList<Integer> integers, ArrayList<Character> operators) {
-        integers.
+
+    public static int operator(int []ints, char []ops) {
+        
     }
 
-     */
 
 
     public static void main(String[] args) {

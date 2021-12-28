@@ -116,7 +116,7 @@ class Solution {
             ints[i] = integers.get(i);
             ops[i] = operators.get(i);
         }
-        ints[i+1] = integers.get(i+1);
+        ints[i] = integers.get(i);
         return 1;
     }
 

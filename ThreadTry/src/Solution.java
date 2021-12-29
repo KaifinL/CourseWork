@@ -153,7 +153,19 @@ class Solution {
         return output;
     }
 
-    
+    public Node connect(Node root) {
+        return connect(root, null);
+    }
+
+    public Node connect(Node root, Node right) {
+        if (root.next == null) {
+            root.next = right;
+        } else {
+            root.left = connect(root.left, root.right);
+            root.right = connect(root.right, null);
+        }
+        return root;
+    }
 
 
 

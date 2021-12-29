@@ -171,8 +171,8 @@ class Solution {
 
     public static void main(String[] args) {
         Solution testy = new Solution();
-        String test = "3/2";
-        System.out.println(testy.calculate(test));
+        Node test = new Node(1, new Node(2), new Node(3), null);
+        System.out.println(testy.connect(test));
     }
 
 }

@@ -149,7 +149,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution testy = new Solution();
-        String test = "12-3*4";
+        String test = "3/2";
         System.out.println(testy.calculate(test));
     }
 

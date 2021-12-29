@@ -127,11 +127,19 @@ class Solution {
             if (ops[i] == '*') {
                 ints[i+1] = ints[i] * ints[i+1];
                 ints[i] = 0;
-                ops[i] = ops[i-1];
+                if (i == 0) {
+                    ops[i] = '+';
+                } else {
+                    ops[i] = ops[i-1];
+                }
             } else if (ops[i] == '/') {
                 ints[i+1] = ints[i] / ints[i+1];
                 ints[i] = 0;
-                ops[i] = ops[i-1];
+                if (i == 0) {
+                    ops[i] = '+';
+                } else {
+                    ops[i] = ops[i-1];
+                }
             }
         }
         int output = ints[0];

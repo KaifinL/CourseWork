@@ -169,18 +169,19 @@ class Solution {
 
     public static String rotateRight(String input, int rotateNum) {
         char conversion[] = new char[input.length()];
-        char origin[] = 
+        char origin[] = input.toCharArray();
         for (int i = 0; i < input.length(); i++) {
-            conversion[i] = String.valueOf(((rotateNum+i) % input.length())));
+            conversion[i] = origin[(i+rotateNum)%input.length()];
         }
+        return origin.toString();
     }
 
 
 
     public static void main(String[] args) {
         Solution testy = new Solution();
-        Node test = new Node(1, new Node(2), new Node(3), null);
-        System.out.println(testy.connect(test));
+        String test = Solution.rotateRight("cs124", 4);
+        System.out.println(test);
     }
 
 }

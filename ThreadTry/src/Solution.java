@@ -173,7 +173,7 @@ class Solution {
         for (int i = 0; i < input.length(); i++) {
             conversion[i] = origin[(i+rotateNum)%input.length()];
         }
-        return origin.toString();
+        return new String(conversion);
     }
 
 

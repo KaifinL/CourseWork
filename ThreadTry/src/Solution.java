@@ -158,7 +158,7 @@ class Solution {
     }
 
     public Node connect(Node root, Node right) {
-        if (root.next == null) {
+        if (root.left == null) {
             root.next = right;
         } else {
             root.left = connect(root.left, root.right);

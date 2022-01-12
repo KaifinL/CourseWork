@@ -176,6 +176,7 @@ class Solution {
         return new String(conversion);
     }
 
+    public static char checkboard()
 
 
     public static void main(String[] args) {

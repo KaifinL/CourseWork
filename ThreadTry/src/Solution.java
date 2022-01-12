@@ -167,6 +167,14 @@ class Solution {
         return root;
     }
 
+    public static String rotateRight(String input, int rotateNum) {
+        char conversion[] = new char[input.length()];
+        char origin[] = Character.toCh
+        for (int i = 0; i < input.length(); i++) {
+            conversion[i] = Character.valueOf()input.substring((rotateNum+i) % input.length(), (rotateNum+i) % input.length()+1);
+        }
+    }
+
 
 
     public static void main(String[] args) {

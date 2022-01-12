@@ -171,7 +171,7 @@ class Solution {
         char conversion[] = new char[input.length()];
         char origin[] = input.toCharArray();
         for (int i = 0; i < input.length(); i++) {
-            conversion[i] = origin[(i+rotateNum)%input.length()];
+            conversion[(i+rotateNum)%input.length()] = origin[i];
         }
         return new String(conversion);
     }

@@ -198,6 +198,8 @@ class Solution {
     }
 
 
+
+
     public static void main(String[] args) {
         Solution testy = new Solution();
         String test = Solution.rotateRight("cs124", 6);

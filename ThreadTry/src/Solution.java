@@ -176,7 +176,26 @@ class Solution {
         return new String(conversion);
     }
 
-    public static char checkboard()
+    public static char checkBoard(char input[][]) {
+        if (null == input) {
+            return '.';
+        }
+        for (int row = 0; row < 3; row++) {
+            if (input[row][0] == 'X' && input[row][1] == 'X' && input[row][2] == 'X') {
+                return 'X';
+            } else if (input[row][0] == '0' && input[row][1] == '0' && input[row][2] == '0') {
+                return '0';
+            }
+        }
+        for (int col = 0; col < 3; col ++) {
+            if (input[0][col] == 'X' && input[1][col] == 'X' && input[2][col] == 'X') {
+                return 'X';
+            } else if (input[0][col] == '0' && input[1][col] == '0' && input[2][col] == '0') {
+                return '0';
+            }
+        }
+        return '.';
+    }
 
 
     public static void main(String[] args) {

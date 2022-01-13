@@ -23,6 +23,8 @@ public class Faulter {
 
     }
 
+    
+
     public class YourBinaryTree extends BinaryTree
 
     public static void main(String[] args) {

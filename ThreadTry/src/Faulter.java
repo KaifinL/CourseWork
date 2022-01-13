@@ -17,4 +17,9 @@ public class Faulter {
         }
         return new IllegalArgumentException();
     }
+
+    public static void main(String[] args) {
+        Faulter test1 = new Faulter("NullPointer");
+        System.out.println(test1.fault());
+    }
 }

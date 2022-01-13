@@ -5,6 +5,8 @@ public class Faulter {
     }
 
     public Exception fault() {
-        if (this.error_message == "")
+        if (this.error_message == "NullPointer") {
+            
+        }
     }
 }

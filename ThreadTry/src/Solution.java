@@ -203,7 +203,7 @@ class Solution {
         }
     }
 
-    public class InsertionSorter {
+    public static class InsertionSorter {
         public static int sort(Comparable array[]) {
             int counter = 0;
             for (int ori_index = 0; ori_index < array.length; ori_index++) {
@@ -221,16 +221,7 @@ class Solution {
             return counter;
         }
     }
-
-    public class Max {
-        public static Comparable max(Comparable first, Comparable second) {
-            if (first.compareTo(second) >= 0) {
-                return first;
-            } else {
-                return second;
-            }
-        }
-    }
+    
 
 
 

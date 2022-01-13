@@ -9,6 +9,8 @@ public class Faulter {
             return new NullPointerException();
         } else if (this.error_message == "ArrayIndexOutOfBounds") {
             return new ArrayIndexOutOfBoundsException();
-        } else if (this.error_message == )
+        } else if (this.error_message == "ClassCast") {
+            return new ClassCastException();
+        } else if ()
     }
 }

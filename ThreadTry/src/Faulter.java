@@ -1,3 +1,5 @@
+import com.sun.source.tree.BinaryTree;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,8 +20,10 @@ public class Faulter {
         } else {
             return new ClassCastException();
         }
-        
+
     }
+
+    public class YourBinaryTree extends BinaryTree
 
     public static void main(String[] args) {
         Faulter test1 = new Faulter("NullPointer");

@@ -1,21 +1,20 @@
 public class Faulter {
     private String error_message;
     public Faulter(String error_message) {
+        if (error_message == null || (error_message != "NullPointer" && error_message != "ArrayIndexOutOfBounds" && error_message != "ClassCast")) {
+            throw new IllegalArgumentException();
+        }
         this.error_message = error_message;
     }
 
     public Exception fault() {
-        if (this.error_message == null) {
-            return new IllegalArgumentException();
-        }
         if (this.error_message == "NullPointer") {
             return new NullPointerException("null pointer!!");
         } else if (this.error_message == "ArrayIndexOutOfBounds") {
             return new ArrayIndexOutOfBoundsException("");
-        } else if (this.error_message == "ClassCast") {
+        } else {
             return new ClassCastException();
         }
-        return new IllegalArgumentException();
     }
 
     public static void main(String[] args) {

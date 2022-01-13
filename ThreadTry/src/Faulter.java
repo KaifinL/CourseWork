@@ -1,5 +1,5 @@
 public class Faulter {
-    String error_message;
+    private String error_message;
     public Faulter(String error_message) {
         this.error_message = error_message;
     }

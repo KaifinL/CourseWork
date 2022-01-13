@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Faulter {
     private String error_message;
     public Faulter(String error_message) {
@@ -15,6 +18,7 @@ public class Faulter {
         } else {
             return new ClassCastException();
         }
+        
     }
 
     public static void main(String[] args) {

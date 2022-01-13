@@ -197,6 +197,10 @@ class Solution {
         return '.';
     }
 
+    public class Max {
+
+    }
+
 
 
 

@@ -1,17 +1,10 @@
-public class LastTen {
-    public int lastTen[];
-    public int index = 0;
-
-    public LastTen() {
-        this.lastTen = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+public class Faulter {
+    String error_message;
+    public Faulter(String error_message) {
+        this.error_message = error_message;
     }
 
-    public void add(int newValue) {
-        this.lastTen[index] = newValue;
-        this.index = (this.index+1)%10;
-    }
-
-    public int[] getLastTen() {
-        return this.lastTen;
+    public Exception fault() {
+        if (this.error_message == "")
     }
 }

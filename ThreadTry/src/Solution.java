@@ -204,7 +204,7 @@ class Solution {
     }
 
     public class InsertionSorter {
-        public int sort(Comparable array[]) {
+        public static int sort(Comparable array[]) {
             int counter = 0;
             for (int ori_index = 0; ori_index < array.length; ori_index++) {
                 int curr_index = ori_index;

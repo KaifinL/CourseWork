@@ -8,7 +8,7 @@ public class LastTen {
 
     public void add(int newValue) {
         this.lastTen[index] = newValue;
-        this.index += 1;
+        this.index = (this.index+1)%10;
     }
 
     public int[] getLastTen() {

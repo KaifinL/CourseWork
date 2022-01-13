@@ -197,8 +197,10 @@ class Solution {
         return '.';
     }
 
-    public class Max {
-
+    public static class Max {
+        public static Comparable max(Comparable first, Comparable second) {
+            return first.compareTo(second);
+        }
     }
 
 

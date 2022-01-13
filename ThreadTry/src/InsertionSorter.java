@@ -22,5 +22,5 @@ public class InsertionSorter {
         int result = test2.sort(testDa);
         System.out.println(result);
     }
-    
+
 }

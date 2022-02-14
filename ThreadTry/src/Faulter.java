@@ -23,9 +23,21 @@ public class Faulter {
 
     }
 
-    
+    public class BinaryTree {
+        protected class Node {
+            protected Object value;
+            protected Node right;
+            protected Node left;
+            Node(Object setValue) { value = setValue; }
+        } protected Node root;
+    }
 
-    public class YourBinaryTree extends BinaryTree
+    public class YourBinaryTree extends BinaryTree {
+        protected Map<Object, Integer> valueCount() {
+            Map toReturn = new HashMap();
+            toReturn.
+        }
+    }
 
     public static void main(String[] args) {
         Faulter test1 = new Faulter("NullPointer");

@@ -32,12 +32,12 @@ public class Faulter {
         } protected Node root;
     }
 
-    public class YourBinaryTree extends BinaryTree {
-        protected Map<Object, Integer> valueCount() {
-            Map toReturn = new HashMap();
-            toReturn.
-        }
-    }
+//    public class YourBinaryTree extends BinaryTree {
+//        protected Map<Object, Integer> valueCount() {
+//            Map toReturn = new HashMap();
+//            toReturn.
+//        }
+//    }
 
     public static void main(String[] args) {
         Faulter test1 = new Faulter("NullPointer");

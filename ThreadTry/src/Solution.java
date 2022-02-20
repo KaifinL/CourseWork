@@ -49,7 +49,9 @@ class Solution {
 
     public int helper(String script) {
         Map test1 = new HashMap<String, List<String>>();
-        
+        for (String line : script.split("\n")) {
+            
+        }
     }
 
     public List<List<Integer>> minimumAbsDifference(int[] arr) {

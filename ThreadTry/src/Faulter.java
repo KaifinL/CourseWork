@@ -40,7 +40,7 @@ public class Faulter {
 //    }
 
     public static void main(String[] args) {
-        Faulter test1 = new Faulter("NullPointer");
+        Map test1 = new Faulter("NullPointer");
         test1.fault();
     }
 }

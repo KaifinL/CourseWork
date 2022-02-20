@@ -47,7 +47,7 @@ class Solution {
         return max;
     }
 
-    public int helper(String script) {
+    public static Map helper_script(String script) {
         Map test1 = new HashMap<String, List<String>>();
         for (String line : script.split("\n")) {
             String[] parts = line.split(":");
@@ -55,10 +55,9 @@ class Solution {
             String value = parts[1].trim();
             ArrayList<String> newList = (ArrayList<String>) test1.getOrDefault(key, new ArrayList<String>());
             newList.add(value);
-            
-
             }
-        }
+
+        return test1;
     }
 
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
@@ -263,11 +262,12 @@ class Solution {
 
 
     public static void main(String[] args) {
-        Solution testy = new Solution();
-        InsertionSorter test2 = new InsertionSorter();
-        Comparable testDa[] =  new Comparable[]{5, 1, 6, 9, 2};
-        int result = test2.sort(testDa);
-        System.out.println(result);
+        Map<String, List> test1 = helper_script("why:is\n" +
+                "why:that\n is:who");
+        for (String i : test1.keySet()) {
+            System.out.println(i);
+            System.out.println(test1.get(i));
+        }
     }
 
 }

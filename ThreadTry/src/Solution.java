@@ -27,14 +27,18 @@ class Solution {
 
     public int maxSubarraySum(int [][] arr) {
         assert(arr != null);
-        int max = Integer.MIN_VALUE;
+        int max = 0;
         int sum = 0;
+        boolean record = false;
         for (int i = 0; i < arr.length; i++) {
             sum = 0;
             for (int j = 0; j < arr[i].length; j++) {
                 sum += arr[i][j];
             }
-            if (sum >= max) {
+            if (!record) {
+                max = sum;
+                record = true;
+            } else if (sum > max) {
                 max = sum;
             }
         }

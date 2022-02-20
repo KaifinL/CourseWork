@@ -50,7 +50,14 @@ class Solution {
     public int helper(String script) {
         Map test1 = new HashMap<String, List<String>>();
         for (String line : script.split("\n")) {
-            String parts = line.split(":");
+            String[] parts = line.split(":");
+            String key = parts[0].trim();
+            String value = parts[1].trim();
+            ArrayList<String> newList = (ArrayList<String>) test1.getOrDefault(key, new ArrayList<String>());
+            newList.add(value);
+            
+
+            }
         }
     }
 

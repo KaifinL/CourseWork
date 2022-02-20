@@ -39,8 +39,8 @@ public class Faulter {
 //        }
 //    }
 
-    public static void main(String[] args) {
-        Map test1 = new Faulter("NullPointer");
-        test1.fault();
-    }
+//    public static void main(String[] args) {
+//        Map test1 = new Faulter("NullPointer");
+//        test1.fault();
+//    }
 }

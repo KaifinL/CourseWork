@@ -371,7 +371,8 @@ class Node {
 //        node2.random = node1;
 
         Solution test = new Solution();
-        Node newNode = test.twoSum([]);
+        int []data = {3, 2, 4};
+        Node newNode = test.twoSum(data, );
     }
 
 }

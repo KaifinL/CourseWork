@@ -378,7 +378,7 @@ class Node {
 
     public static String reverse(String s) {
         String toReturn = s.substring(s.length()-1);
-        for (int i = length()-2; i > 0; i--) {
+        for (int i = s.length()-2; i > 0; i--) {
             toReturn += s.substring(i, i+1);
         }
         return toReturn;

@@ -371,8 +371,8 @@ class Node {
 //        node2.random = node1;
 
         Solution test = new Solution();
-        int []data = {2,7,11,15};
-        int []newNode = test.twoSum(data, 9);
+        int []data = {3, 2, 4};
+        int []newNode = test.twoSum(data, 6);
         System.out.println(Arrays.toString(newNode));
     }
 

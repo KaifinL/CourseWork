@@ -317,10 +317,45 @@ class Node {
             curr= curr.next;
         }
         System.out.println(12%10);
-        Arrays.sort([]);
-        int [] sums;
-        sums.
+
         return newHead;
+    }
+
+    public static int find(int[] nums, int target) {
+        if (nums.length == 0) {
+            return -1;
+        }
+        if (nums.length == 2) {
+            if (nums[0] == target) {
+                return 0;
+            } else if (nums[1] == target) {
+                return 1;
+            } else {
+                return -1;
+            }
+        }
+
+        int middle = nums.length/2; // round up
+        if (nums[middle] == target) {
+            return middle;
+        }
+        if (nums[middle] < target) {
+            return middle + find(Arrays.copyOfRange(nums, middle, nums.length-1), target);
+        } else {
+            return find(Arrays.copyOfRange(nums, 0, middle), target);
+        }
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        for (int i = 0; i<nums.length; i++) {
+            int sec_index = find(nums, target-nums[i]);
+            if (sec_index != -1) {
+                int []toReturn = {i, sec_index};
+                return toReturn;
+            }
+        }
+        return null;
     }
 
 
@@ -329,14 +364,14 @@ class Node {
 
 
     public static void main(String[] args) {
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        node1.next = node2;
-        node1.random = node2;
-        node2.random = node1;
+//        Node node1 = new Node(1);
+//        Node node2 = new Node(2);
+//        node1.next = node2;
+//        node1.random = node2;
+//        node2.random = node1;
 
         Solution test = new Solution();
-        Node newNode = test.copyRandomList(node1);
+        Node newNode = test.twoSum([]);
     }
 
 }

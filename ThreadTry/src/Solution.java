@@ -384,6 +384,29 @@ class Node {
         return toReturn;
     }
 
+    // check if the passed in string is a palindrom or not.
+    // return 1 if it is and 0 otherwise.
+    // time complexity : O(length(s))
+    public static int palindromic(String s) {
+        String reversion = reverse(s);
+        if (s.equals(reversion)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public static String longest_helper(String s) {
+        for (int length = s.length(); length > 0; length--) {
+            for (int i = 0; i+length <= s.length(); i++) {
+                String target = s.substring(i, i+length);
+                if (palindromic(target) > 0) {
+                    return target;
+                }
+            }
+        }
+        return null;
+    }
+
     public static String longest_helper(String s, int begin, int end) {
         if (begin == end) {
             return s.substring(begin, begin+1);

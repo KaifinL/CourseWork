@@ -288,95 +288,119 @@ class Node {
 
 
 
-
-
-    public Node copyRandomList(Node head) {
-        Node origin_head = head;
-        Map nodeMap = new HashMap<Node, Node>();
-        Node newHead = null;
-        Node prev = null;
-        while (head != null) {
-            Node newNode = new Node(head.val);
-            if (prev != null) {
-                prev.next = newNode;
-            } else {
-                newHead = newNode;
-            }
-            nodeMap.put(head, newNode);
-            prev = head;
-            head = head.next;
-        }
-
-        Node curr = origin_head;
-        while (curr != null) {
-            Node new_node = (Node) nodeMap.get(curr);
-            if (curr.random != null) {
-                new_node.random = (Node) nodeMap.get(curr.random);
-            }
-
-            curr= curr.next;
-        }
-        System.out.println(12%10);
-
-        return newHead;
-    }
-
-    public static int find(int[] nums, int target) {
-        if (nums.length == 0) {
-            return -1;
-        }
-        if (nums.length == 2) {
-            if (nums[0] == target) {
-                return 0;
-            } else if (nums[1] == target) {
-                return 1;
-            } else {
-                return -1;
-            }
-        }
-
-        int middle = nums.length/2; // round up
-        if (nums[middle] == target) {
-            return middle;
-        }
-        if (nums[middle] < target) {
-            return middle + find(Arrays.copyOfRange(nums, middle, nums.length-1), target);
-        } else {
-            return find(Arrays.copyOfRange(nums, 0, middle), target);
-        }
-    }
-
-    public char * twoSum(int[] nums, int target) {
-//        Arrays.sort(nums);
-//        for (int i = 0; i<nums.length; i++) {
-//            int sec_index = find(nums, target-nums[i]);
-//            if (sec_index != -1) {
-//                int []toReturn = {i, sec_index};
-//                return toReturn;
+//
+//
+//    public Node copyRandomList(Node head) {
+//        Node origin_head = head;
+//        Map nodeMap = new HashMap<Node, Node>();
+//        Node newHead = null;
+//        Node prev = null;
+//        while (head != null) {
+//            Node newNode = new Node(head.val);
+//            if (prev != null) {
+//                prev.next = newNode;
+//            } else {
+//                newHead = newNode;
+//            }
+//            nodeMap.put(head, newNode);
+//            prev = head;
+//            head = head.next;
+//        }
+//
+//        Node curr = origin_head;
+//        while (curr != null) {
+//            Node new_node = (Node) nodeMap.get(curr);
+//            if (curr.random != null) {
+//                new_node.random = (Node) nodeMap.get(curr.random);
+//            }
+//
+//            curr= curr.next;
+//        }
+//        System.out.println(12%10);
+//
+//        return newHead;
+//    }
+//
+//    public static int find(int[] nums, int target) {
+//        if (nums.length == 0) {
+//            return -1;
+//        }
+//        if (nums.length == 2) {
+//            if (nums[0] == target) {
+//                return 0;
+//            } else if (nums[1] == target) {
+//                return 1;
+//            } else {
+//                return -1;
 //            }
 //        }
+//
+//        int middle = nums.length/2; // round up
+//        if (nums[middle] == target) {
+//            return middle;
+//        }
+//        if (nums[middle] < target) {
+//            return middle + find(Arrays.copyOfRange(nums, middle, nums.length-1), target);
+//        } else {
+//            return find(Arrays.copyOfRange(nums, 0, middle), target);
+//        }
+//    }
+//
+//    public char * twoSum(int[] nums, int target) {
+////        Arrays.sort(nums);
+////        for (int i = 0; i<nums.length; i++) {
+////            int sec_index = find(nums, target-nums[i]);
+////            if (sec_index != -1) {
+////                int []toReturn = {i, sec_index};
+////                return toReturn;
+////            }
+////        }
+//
+//        switch (target) {
+//            case 1:
+//                return "I";
+//            case 5:
+//                return "V";
+//            case 10:
+//                return "X";
+//            case 50:
+//                return "L";
+//            case 100:
+//                return "C";
+//            case 500:
+//                return "D";
+//            case 1000:
+//                return "M";
+//        }
+//        case
+//        return null;
+//    }
 
-        switch (target) {
-            case 1:
-                return "I";
-            case 5:
-                return "V";
-            case 10:
-                return "X";
-            case 50:
-                return "L";
-            case 100:
-                return "C";
-            case 500:
-                return "D";
-            case 1000:
-                return "M";
+    public static String longest_helper(String s, int begin, int end) {
+        if (begin == end) {
+            return s.substring(begin, begin+1);
+        } else if (begin > end) {
+            return "";
         }
-        case
-        return null;
+
+        if (s.charAt(begin) == s.charAt(end)) {
+            String a = s.substring(begin, begin+1);
+            String middle = longest_helper(s, begin+1, end-1);
+            a.concat(middle);
+            a.concat(s.substring(begin, begin+1));
+            return a;
+        } else {
+            String first = longest_helper(s, begin+1, end);
+            String second = longest_helper(s, begin, end-1);
+            if (first.length() > second.length()) {
+                return first;
+            }
+            return second;
+        }
     }
-
-
+    public String longestPalindrome(String s) {
+        return longest_helper(s, 0, s.length()-1);
+    }
 
 
 
@@ -389,8 +413,7 @@ class Node {
 //        node2.random = node1;
 
         Solution test = new Solution();
-        int []data = {3, 2, 4};
-        int []newNode = test.twoSum(data, 6);
+        String s = test.longestPalindrome("")
         System.out.println(Arrays.toString(newNode));
     }
 

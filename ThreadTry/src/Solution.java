@@ -355,6 +355,11 @@ class Node {
                 return toReturn;
             }
         }
+
+        switch (target) {
+            
+        }
+        case
         return null;
     }
 

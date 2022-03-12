@@ -274,14 +274,24 @@ class Node {
 }
 */
 
-    
+    class Node {
+        int val;
+        Node next;
+        Node random;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+            this.random = null;
+        }
+    }
 
 
-    class Solution {
+
 
 
         public Node copyRandomList(Node head) {
-            Map nodeMap = new Map();
+            Map nodeMap = new HashMap<Node, Node>();
             Node newHead = null;
             Node prev = null;
             while (head != null) {
@@ -298,15 +308,13 @@ class Node {
 
             Node curr = newHead;
             while (curr != null) {
-                Node origin = nodeMap.get(curr);
-                curr.random = nodeMap.get(origin.random);
+                Node origin = (Node) nodeMap.get(curr);
+                curr.random = (Node) nodeMap.get(origin.random);
                 curr= curr.next;
             }
             return newHead;
         }
 
-
-    }
 
 
 

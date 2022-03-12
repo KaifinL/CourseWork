@@ -189,19 +189,19 @@ class Solution {
         return output;
     }
 
-    public Node connect(Node root) {
-        return connect(root, null);
-    }
-
-    public Node connect(Node root, Node right) {
-        if (root.left == null) {
-            root.next = right;
-        } else {
-            root.left = connect(root.left, root.right);
-            root.right = connect(root.right, null);
-        }
-        return root;
-    }
+//    public Node connect(Node root) {
+//        return connect(root, null);
+//    }
+//
+//    public Node connect(Node root, Node right) {
+//        if (root.left == null) {
+//            root.next = right;
+//        } else {
+//            root.left = connect(root.left, root.right);
+//            root.right = connect(root.right, null);
+//        }
+//        return root;
+//    }
 
     public static String rotateRight(String input, int rotateNum) {
         char conversion[] = new char[input.length()];

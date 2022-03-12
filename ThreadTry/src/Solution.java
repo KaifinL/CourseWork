@@ -259,6 +259,55 @@ class Solution {
     }
 
 
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+
+
+
+    class Solution {
+
+
+        public Node copyRandomList(Node head) {
+            Map nodeMap = new Map();
+            Node newHead = null;
+            Node prev = null;
+            while (head != null) {
+                Node newNode = new Node(head.val);
+                if (prev != null) {
+                    prev.next = newNode;
+                } else {
+                    newHead = newNode;
+                }
+                nodeMap.put(head, newNode);
+                prev = head;
+                head = head.next;
+            }
+
+            Node curr = newHead;
+            while (curr != null) {
+                Node origin = nodeMap.get(curr);
+                curr.random = nodeMap.get(origin.random);
+                curr= curr.next;
+            }
+            return newHead;
+        }
+
+
+    }
+
+
 
 
 

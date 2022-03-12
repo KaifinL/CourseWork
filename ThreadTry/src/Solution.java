@@ -310,9 +310,7 @@ class Node {
         Node curr = origin_head;
         while (curr != null) {
             Node new_node = (Node) nodeMap.get(curr);
-            if (curr.random == null) {
-                new_node.random = null;
-            } else {
+            if (curr.random != null) {
                 new_node.random = (Node) nodeMap.get(curr.random);
             }
 

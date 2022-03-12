@@ -386,8 +386,8 @@ class Node {
         if (s.charAt(begin) == s.charAt(end)) {
             String a = s.substring(begin, begin+1);
             String middle = longest_helper(s, begin+1, end-1);
-            a.concat(middle);
-            a.concat(s.substring(begin, begin+1));
+            a += middle;
+            a += s.substring(begin, begin+1);
             return a;
         } else {
             String first = longest_helper(s, begin+1, end);

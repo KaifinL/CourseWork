@@ -317,6 +317,7 @@ class Node {
             curr= curr.next;
         }
         System.out.println(12%10);
+        
         return newHead;
     }
 

@@ -317,7 +317,7 @@ class Node {
             curr= curr.next;
         }
         System.out.println(12%10);
-        Array.sort
+        Arrays.sort([]);
         return newHead;
     }
 

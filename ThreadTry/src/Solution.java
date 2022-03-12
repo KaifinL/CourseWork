@@ -346,18 +346,31 @@ class Node {
         }
     }
 
-    public int[] twoSum(int[] nums, int target) {
-        Arrays.sort(nums);
-        for (int i = 0; i<nums.length; i++) {
-            int sec_index = find(nums, target-nums[i]);
-            if (sec_index != -1) {
-                int []toReturn = {i, sec_index};
-                return toReturn;
-            }
-        }
+    public char * twoSum(int[] nums, int target) {
+//        Arrays.sort(nums);
+//        for (int i = 0; i<nums.length; i++) {
+//            int sec_index = find(nums, target-nums[i]);
+//            if (sec_index != -1) {
+//                int []toReturn = {i, sec_index};
+//                return toReturn;
+//            }
+//        }
 
         switch (target) {
-            
+            case 1:
+                return "I";
+            case 5:
+                return "V";
+            case 10:
+                return "X";
+            case 50:
+                return "L";
+            case 100:
+                return "C";
+            case 500:
+                return "D";
+            case 1000:
+                return "M";
         }
         case
         return null;

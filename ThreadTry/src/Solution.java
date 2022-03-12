@@ -444,7 +444,7 @@ class Node {
 //        node2.random = node1;
 
         Solution test = new Solution();
-        String s = test.reverse("babad");
+        String s = test.reverse("aacabdkacaa");
         System.out.println(s);
     }
 

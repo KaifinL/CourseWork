@@ -376,6 +376,14 @@ class Node {
 //        return null;
 //    }
 
+    public static String reverse(String s) {
+        String toReturn = s.substring(s.length()-1);
+        for (int i = length()-2; i > 0; i--) {
+            toReturn += s.substring(i, i+1);
+        }
+        return toReturn;
+    }
+
     public static String longest_helper(String s, int begin, int end) {
         if (begin == end) {
             return s.substring(begin, begin+1);
@@ -413,7 +421,7 @@ class Node {
 //        node2.random = node1;
 
         Solution test = new Solution();
-        String s = test.longestPalindrome("babad");
+        String s = test.reverse("babad");
         System.out.println(s);
     }
 

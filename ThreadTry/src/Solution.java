@@ -413,8 +413,8 @@ class Node {
 //        node2.random = node1;
 
         Solution test = new Solution();
-        String s = test.longestPalindrome("")
-        System.out.println(Arrays.toString(newNode));
+        String s = test.longestPalindrome("babad");
+        System.out.println(s);
     }
 
 }

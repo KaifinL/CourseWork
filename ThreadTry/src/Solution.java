@@ -55,6 +55,7 @@ class Solution {
             String value = parts[1].trim();
             ArrayList<String> newList = (ArrayList<String>) test1.getOrDefault(key, new ArrayList<String>());
             newList.add(value);
+            test1.put(key, newList);
             }
 
         return test1;

@@ -274,7 +274,7 @@ class Node {
 }
 */
 
-    class Node {
+    static class Node {
         int val;
         Node next;
         Node random;
@@ -290,30 +290,36 @@ class Node {
 
 
 
-        public Node copyRandomList(Node head) {
-            Map nodeMap = new HashMap<Node, Node>();
-            Node newHead = null;
-            Node prev = null;
-            while (head != null) {
-                Node newNode = new Node(head.val);
-                if (prev != null) {
-                    prev.next = newNode;
-                } else {
-                    newHead = newNode;
-                }
-                nodeMap.put(head, newNode);
-                prev = head;
-                head = head.next;
+    public Node copyRandomList(Node head) {
+        Node origin_head = head;
+        Map nodeMap = new HashMap<Node, Node>();
+        Node newHead = null;
+        Node prev = null;
+        while (head != null) {
+            Node newNode = new Node(head.val);
+            if (prev != null) {
+                prev.next = newNode;
+            } else {
+                newHead = newNode;
+            }
+            nodeMap.put(head, newNode);
+            prev = head;
+            head = head.next;
+        }
+
+        Node curr = origin_head;
+        while (curr != null) {
+            Node new_node = (Node) nodeMap.get(curr);
+            if (curr.random == null) {
+                new_node.random = null;
+            } else {
+                new_node.random = (Node) nodeMap.get(curr.random);
             }
 
-            Node curr = newHead;
-            while (curr != null) {
-                Node origin = (Node) nodeMap.get(curr);
-                curr.random = (Node) nodeMap.get(origin.random);
-                curr= curr.next;
-            }
-            return newHead;
+            curr= curr.next;
         }
+        return newHead;
+    }
 
 
 
@@ -321,12 +327,14 @@ class Node {
 
 
     public static void main(String[] args) {
-        Map<String, List> test1 = helper_script("why:is\n" +
-                "why:that\n is:who");
-        for (String i : test1.keySet()) {
-            System.out.println(i);
-            System.out.println(test1.get(i));
-        }
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        node1.next = node2;
+        node1.random = node2;
+        node2.random = node1;
+
+        Solution test = new Solution();
+        Node newNode = test.copyRandomList(node1);
     }
 
 }

@@ -444,7 +444,7 @@ class Node {
 //        node2.random = node1;
 
         Solution test = new Solution();
-        String s = test.reverse("aacabdkacaa");
+        String s = test.longest_helper("aacabdkacaa");
         System.out.println(s);
     }
 

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Scanner;
 
 import static java.lang.Math.floorDiv;
 import static java.lang.Math.pow;
@@ -460,15 +461,15 @@ class Node {
 
 
     public static void main(String[] args) {
-//        Node node1 = new Node(1);
-//        Node node2 = new Node(2);
-//        node1.next = node2;
-//        node1.random = node2;
-//        node2.random = node1;
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        while (in.hasNextLine()) { // 注意 while 处理多个 case
+            int a = in.nextInt();
+            int b = in.nextInt();
+            printNum(a, b);
 
-        Solution test = new Solution();
-        String s = test.longest_helper("aacabdkacaa");
-        System.out.println(s);
+            System.out.println();
+        }
     }
 
 }

@@ -433,6 +433,29 @@ class Node {
         return longest_helper(s, 0, s.length()-1);
     }
 
+    public static int shuixianNum(int target) {
+        int first = target % 10;
+        int second = target / 10 % 10;
+        int third = target /100;
+        return first^3 + second^3 + third^3;
+    }
+
+    public static int printNum(int a, int b) {
+        int flag = 0;
+        int small = a;
+        int big = b;
+        for (; small <= big; small++) {
+            if (small == shuixianNum(small)) {
+                System.out.print(small);
+                flag = 1;
+            }
+        }
+        if (flag == 0) {
+            System.out.print("no");
+        }
+        return flag;
+    }
+
 
 
 

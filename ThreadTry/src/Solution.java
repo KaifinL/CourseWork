@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -460,8 +461,12 @@ class Node {
 
 
 
+
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        PriorityQueue test2 = new PriorityQueue();
+        test2.
         // 注意 hasNext 和 hasNextLine 的区别
         while (in.hasNextLine()) { // 注意 while 处理多个 case
             int a = in.nextInt();

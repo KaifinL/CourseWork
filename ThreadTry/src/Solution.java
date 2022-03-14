@@ -514,7 +514,7 @@ class Node {
 
         path = path.replaceAll("\\/\\.\\/", "/");
 
-        
+
 
         while (path.contains("/../")) {
             if (path.startsWith("/../")) {

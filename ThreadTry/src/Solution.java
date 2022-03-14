@@ -513,13 +513,13 @@ class Node {
         }
 
         while (path.contains("/../")) {
-            path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.\\/", "");
+            if (path.startsWith("/../")) {
+                path = path.substring(3, path.length());
+            } else {
+                path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.\\/", "");
+            }
         }
-
-
-        if (path.startsWith("/../")) {
-            path = path.substring(3, path.length());
-        }
+        
 
         while (path.endsWith("/") && !path.equals("/")) {
             path = path.substring(0, path.length()-1);

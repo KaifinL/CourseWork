@@ -510,7 +510,7 @@ class Node {
 
         path = path.replaceAll("\\/\\.\\/", "/");
         if (path.endsWith("/.")) {
-            path = path.replaceFirst("\\/\\.", "/");
+            path = path.substring(0, path.length()-1);
         }
 
 

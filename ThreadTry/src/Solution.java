@@ -547,8 +547,8 @@ class Node {
 //            }
 //        }
         Solution test = new Solution();
-        String s = test.simplifyPath("/a/./b/../../c/")
-        System.out.println(counter);
+        String s = test.simplifyPath("/a/./b/../../c/");
+        System.out.println(s);
     }
 
 }

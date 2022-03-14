@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Stack;
 import java.util.Vector;
 
 import static java.lang.Math.floorDiv;
@@ -545,6 +546,22 @@ class Node {
 
 
         return path;
+    }
+
+    public boolean isValid(String s) {
+        Stack orders = new Stack<>();
+        for (int i = 0; i<s.length(); i++) {
+            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
+                orders.push(s.charAt(i));
+            } else {
+                char top = (char) orders.pop();
+                char origin = s.charAt(i);
+                if ((origin == ')' && top != '(' ) || (origin == ']' && top != '[' ) || (origin == '}' && top != '{')) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 

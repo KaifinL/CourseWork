@@ -516,7 +516,7 @@ class Node {
             path.replaceAll("[a-zA-Z_\\.]*\\/\\.\\.\\/", "");
         }
 
-        
+
         if (path.startsWith("/../")) {
             path = path.substring(3, path.length());
         }

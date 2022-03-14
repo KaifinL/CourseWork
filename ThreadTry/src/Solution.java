@@ -501,11 +501,7 @@ class Node {
 
     }
 
-    public String simplifyPath(String path) {
-        // replace all the double slashes sign to single slash
-
-        Vector files = new Vector();
-
+    public String multiCheck(String path) {
         path = path.replaceAll("\\/\\.\\/", "/");
 
         while (path.contains("//")) {
@@ -513,23 +509,39 @@ class Node {
         }
 
         path = path.replaceAll("\\/\\.\\/", "/");
+        if (path.endsWith("/.")) {
+            path = path.replaceFirst("\\/\\.", "/");
+        }
+
+
+
+        return path;
+    }
+
+    public String simplifyPath(String path) {
+        // replace all the double slashes sign to single slash
+        path = multiCheck(path);
 
 
 
         while (path.contains("/../")) {
-            if (path.startsWith("/../")) {
-                path = path.substring(3, path.length());
-            } else {
-                path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.\\/", "");
-            }
+            path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.", "");
+            path = multiCheck(path);
         }
 
+
+
+        if (path.endsWith("/..")) {
+            path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.", "");
+        }
 
         while (path.endsWith("/") && !path.equals("/")) {
             path = path.substring(0, path.length()-1);
         }
 
-
+        if (path.length() == 0) {
+            path = "/";
+        }
 
 
         return path;

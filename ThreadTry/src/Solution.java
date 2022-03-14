@@ -501,8 +501,15 @@ class Node {
         int []length1 = {0, 1, 0, 0};
         int []length2 = {1, 0, 1, 0};
         int [][]matrix = {length1, length2};
-        int a = detect(matrix, 0, 1, 2, 4);
-        System.out.println(a);
+        int counter = 0;
+        for (int i = 0; i < 2; i++) {
+            for (int j =0; j < 4; j++) {
+                if (matrix[i][j] == 0) {
+                    counter += detect(matrix, i, j, 2, 4);
+                }
+            }
+        }
+        System.out.println(counter);
     }
 
 }

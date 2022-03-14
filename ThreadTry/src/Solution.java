@@ -501,7 +501,8 @@ class Node {
         int []length1 = {0, 1, 0, 0};
         int []length2 = {1, 0, 1, 0};
         int [][]matrix = {length1, length2};
-        detect(matrix, 0, 1, 2, 4);
+        int a = detect(matrix, 0, 1, 2, 4);
+        System.out.println(a);
     }
 
 }

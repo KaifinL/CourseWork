@@ -497,6 +497,34 @@ class Node {
 
 
 
+
+
+    }
+
+    public String simplifyPath(String path) {
+        // replace all the double slashes sign to single slash
+
+        Vector files = new Vector();
+
+        path = path.replaceAll("\\/\\.\\/", "/");
+
+        while (path.contains("//")) {
+            path = path.replaceAll("//", "/");
+        }
+
+        path = path.replaceAll("[a-zA-Z_\\.]+\\/\\.\\.\\/", "");
+        if (path.startsWith("/../")) {
+            path = path.substring(3, path.length());
+        }
+
+        while (path.endsWith("/") && !path.equals("/")) {
+            path = path.substring(0, path.length()-1);
+        }
+
+
+
+
+        return path;
     }
 
 

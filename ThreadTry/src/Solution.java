@@ -565,7 +565,7 @@ class Node {
 //            }
 //        }
         Solution test = new Solution();
-        String s = test.simplifyPath("/a//b////c/d//././/..");
+        String s = test.simplifyPath("/home/of/foo/../../bar/../../is/./here/.");
         System.out.println(s);
     }
 

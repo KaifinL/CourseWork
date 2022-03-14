@@ -483,6 +483,8 @@ class Node {
                 break;
             }
         }
+        Map test = new HashMap();
+        test.put
 
         for (int i = 0; i < y_coor; i++) {
             if (matrix[i][x_coor] == 1) {

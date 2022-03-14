@@ -458,12 +458,48 @@ class Node {
         return flag;
     }
 
+    public static int detect(int [][]matrix, int x_coor, int y_coor, int high, int length) {
+        int counter = 0;
+        for (int i = x_coor; i < length; i++) {
+            if (matrix[y_coor][i] == 1) {
+                counter += 1;
+                break;
+            }
+        }
+
+        for (int i = 0; i < x_coor; i++) {
+            if (matrix[y_coor][i] == 1) {
+                counter += 1;
+                break;
+            }
+        }
+
+        for (int i = y_coor; i < high; i++) {
+            if (matrix[i][x_coor] == 1) {
+                counter += 1;
+                break;
+            }
+        }
+
+        for (int i = 0; i < y_coor; i++) {
+            if (matrix[i][x_coor] == 1) {
+                counter += 1;
+                break;
+            }
+        }
+
+        return counter;
+
+    }
+
 
 
 
 
 
     public static void main(String[] args) {
+        int []length1 = {0, 1, 0, 0};
+        int []length2 = {}
         Scanner in = new Scanner(System.in);
         PriorityQueue test2 = new PriorityQueue();
         test2.

@@ -519,7 +519,7 @@ class Node {
                 path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.\\/", "");
             }
         }
-        
+
 
         while (path.endsWith("/") && !path.equals("/")) {
             path = path.substring(0, path.length()-1);

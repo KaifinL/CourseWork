@@ -505,7 +505,7 @@ class Node {
         for (int i = 0; i < 2; i++) {
             for (int j =0; j < 4; j++) {
                 if (matrix[i][j] == 0) {
-                    counter += detect(matrix, i, j, 2, 4);
+                    counter += detect(matrix, j, i, 2, 4);
                 }
             }
         }

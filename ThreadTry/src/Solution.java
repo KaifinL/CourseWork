@@ -512,7 +512,9 @@ class Node {
             path = path.replaceAll("//", "/");
         }
 
-
+        while (path.contains("[a-zA-Z_\\.]*\\/\\.\\.\\/")) {
+            path.replaceAll("[a-zA-Z_\\.]*\\/\\.\\.\\/", "");
+        }
 
         path = path.replaceAll("[a-zA-Z_\\.]*\\/\\.\\.\\/", "");
         if (path.startsWith("/../")) {

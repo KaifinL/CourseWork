@@ -499,18 +499,9 @@ class Node {
 
     public static void main(String[] args) {
         int []length1 = {0, 1, 0, 0};
-        int []length2 = {}
-        Scanner in = new Scanner(System.in);
-        PriorityQueue test2 = new PriorityQueue();
-        test2.
-        // 注意 hasNext 和 hasNextLine 的区别
-        while (in.hasNextLine()) { // 注意 while 处理多个 case
-            int a = in.nextInt();
-            int b = in.nextInt();
-            printNum(a, b);
-
-            System.out.println();
-        }
+        int []length2 = {1, 0, 1, 0};
+        int [][]matrix = {length1, length2};
+        detect(matrix, 0, 2, 2, 4);
     }
 
 }

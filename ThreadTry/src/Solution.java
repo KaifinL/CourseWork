@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Vector;
 
 import static java.lang.Math.floorDiv;
 import static java.lang.Math.pow;
@@ -488,7 +489,13 @@ class Node {
             }
         }
 
+        Vector test = new Vector();
+        test.add(1);
+        test.get(0);
+
         return counter;
+
+
 
     }
 

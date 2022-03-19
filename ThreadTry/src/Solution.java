@@ -484,7 +484,7 @@ class Node {
             }
         }
         Map test = new HashMap();
-        test.put
+        test.get()
 
         for (int i = 0; i < y_coor; i++) {
             if (matrix[i][x_coor] == 1) {

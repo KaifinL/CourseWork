@@ -381,191 +381,191 @@ class Node {
 //        return null;
 //    }
 
-    public static String reverse(String s) {
-        String toReturn = s.substring(s.length()-1);
-        for (int i = s.length()-2; i >= 0; i--) {
-            toReturn += s.substring(i, i+1);
-        }
-        return toReturn;
-    }
-
-    // check if the passed in string is a palindrom or not.
-    // return 1 if it is and 0 otherwise.
-    // time complexity : O(length(s))
-    public static int palindromic(String s) {
-        String reversion = reverse(s);
-        if (s.equals(reversion)) {
-            return 1;
-        }
-        return 0;
-    }
-
-    public static String longest_helper(String s) {
-        for (int length = s.length(); length > 0; length--) {
-            for (int i = 0; i+length <= s.length(); i++) {
-                String target = s.substring(i, i+length);
-                if (palindromic(target) > 0) {
-                    return target;
-                }
-            }
-        }
-        return null;
-    }
-
-    public static String longest_helper(String s, int begin, int end) {
-        if (begin == end) {
-            return s.substring(begin, begin+1);
-        } else if (begin > end) {
-            return "";
-        }
-
-        if (s.charAt(begin) == s.charAt(end)) {
-            String a = s.substring(begin, begin+1);
-            String middle = longest_helper(s, begin+1, end-1);
-            a += middle;
-            a += s.substring(begin, begin+1);
-            return a;
-        } else {
-            String first = longest_helper(s, begin+1, end);
-            String second = longest_helper(s, begin, end-1);
-            if (first.length() > second.length()) {
-                return first;
-            }
-            return second;
-        }
-    }
-    public String longestPalindrome(String s) {
-        return longest_helper(s, 0, s.length()-1);
-    }
-
-    public static int shuixianNum(int target) {
-        int first = target % 10;
-        int second = target / 10 % 10;
-        int third = target /100;
-        return first^3 + second^3 + third^3;
-    }
-
-    public static int printNum(int a, int b) {
-        int flag = 0;
-        int small = a;
-        int big = b;
-        for (; small <= big; small++) {
-            if (small == shuixianNum(small)) {
-                System.out.print(small);
-                flag = 1;
-            }
-        }
-        if (flag == 0) {
-            System.out.print("no");
-        }
-        return flag;
-    }
-
-    public static int detect(int [][]matrix, int x_coor, int y_coor, int high, int length) {
-        int counter = 0;
-        for (int i = x_coor; i < length; i++) {
-            if (matrix[y_coor][i] == 1) {
-                counter += 1;
-                break;
-            }
-        }
-
-        for (int i = 0; i < x_coor; i++) {
-            if (matrix[y_coor][i] == 1) {
-                counter += 1;
-                break;
-            }
-        }
-
-        for (int i = y_coor; i < high; i++) {
-            if (matrix[i][x_coor] == 1) {
-                counter += 1;
-                break;
-            }
-        }
-        Map test = new HashMap();
-        test.get()
-
-        for (int i = 0; i < y_coor; i++) {
-            if (matrix[i][x_coor] == 1) {
-                counter += 1;
-                break;
-            }
-        }
-
-        Vector test = new Vector();
-        test.add(1);
-        test.get(0);
-
-        return counter;
-
-
-
-
-
-    }
-
-    public String multiCheck(String path) {
-        path = path.replaceAll("\\/\\.\\/", "/");
-
-        while (path.contains("//")) {
-            path = path.replaceAll("//", "/");
-        }
-
-        path = path.replaceAll("\\/\\.\\/", "/");
-        if (path.endsWith("/.")) {
-            path = path.substring(0, path.length()-1);
-        }
-
-
-
-        return path;
-    }
-
-    public String simplifyPath(String path) {
-        // replace all the double slashes sign to single slash
-        path = multiCheck(path);
-
-
-
-        while (path.contains("/../")) {
-            path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.", "");
-            path = multiCheck(path);
-        }
-
-
-
-        if (path.endsWith("/..")) {
-            path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.", "");
-        }
-
-        while (path.endsWith("/") && !path.equals("/")) {
-            path = path.substring(0, path.length()-1);
-        }
-
-        if (path.length() == 0) {
-            path = "/";
-        }
-
-
-        return path;
-    }
-
-    public boolean isValid(String s) {
-        Stack orders = new Stack<>();
-        for (int i = 0; i<s.length(); i++) {
-            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
-                orders.push(s.charAt(i));
-            } else {
-                char top = (char) orders.pop();
-                char origin = s.charAt(i);
-                if ((origin == ')' && top != '(' ) || (origin == ']' && top != '[' ) || (origin == '}' && top != '{')) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+//    public static String reverse(String s) {
+//        String toReturn = s.substring(s.length()-1);
+//        for (int i = s.length()-2; i >= 0; i--) {
+//            toReturn += s.substring(i, i+1);
+//        }
+//        return toReturn;
+//    }
+//
+//    // check if the passed in string is a palindrom or not.
+//    // return 1 if it is and 0 otherwise.
+//    // time complexity : O(length(s))
+//    public static int palindromic(String s) {
+//        String reversion = reverse(s);
+//        if (s.equals(reversion)) {
+//            return 1;
+//        }
+//        return 0;
+//    }
+//
+//    public static String longest_helper(String s) {
+//        for (int length = s.length(); length > 0; length--) {
+//            for (int i = 0; i+length <= s.length(); i++) {
+//                String target = s.substring(i, i+length);
+//                if (palindromic(target) > 0) {
+//                    return target;
+//                }
+//            }
+//        }
+//        return null;
+//    }
+//
+//    public static String longest_helper(String s, int begin, int end) {
+//        if (begin == end) {
+//            return s.substring(begin, begin+1);
+//        } else if (begin > end) {
+//            return "";
+//        }
+//
+//        if (s.charAt(begin) == s.charAt(end)) {
+//            String a = s.substring(begin, begin+1);
+//            String middle = longest_helper(s, begin+1, end-1);
+//            a += middle;
+//            a += s.substring(begin, begin+1);
+//            return a;
+//        } else {
+//            String first = longest_helper(s, begin+1, end);
+//            String second = longest_helper(s, begin, end-1);
+//            if (first.length() > second.length()) {
+//                return first;
+//            }
+//            return second;
+//        }
+//    }
+//    public String longestPalindrome(String s) {
+//        return longest_helper(s, 0, s.length()-1);
+//    }
+//
+//    public static int shuixianNum(int target) {
+//        int first = target % 10;
+//        int second = target / 10 % 10;
+//        int third = target /100;
+//        return first^3 + second^3 + third^3;
+//    }
+//
+//    public static int printNum(int a, int b) {
+//        int flag = 0;
+//        int small = a;
+//        int big = b;
+//        for (; small <= big; small++) {
+//            if (small == shuixianNum(small)) {
+//                System.out.print(small);
+//                flag = 1;
+//            }
+//        }
+//        if (flag == 0) {
+//            System.out.print("no");
+//        }
+//        return flag;
+//    }
+//
+//    public static int detect(int [][]matrix, int x_coor, int y_coor, int high, int length) {
+//        int counter = 0;
+//        for (int i = x_coor; i < length; i++) {
+//            if (matrix[y_coor][i] == 1) {
+//                counter += 1;
+//                break;
+//            }
+//        }
+//
+//        for (int i = 0; i < x_coor; i++) {
+//            if (matrix[y_coor][i] == 1) {
+//                counter += 1;
+//                break;
+//            }
+//        }
+//
+//        for (int i = y_coor; i < high; i++) {
+//            if (matrix[i][x_coor] == 1) {
+//                counter += 1;
+//                break;
+//            }
+//        }
+//        Map test = new HashMap();
+//        test.get()
+//
+//        for (int i = 0; i < y_coor; i++) {
+//            if (matrix[i][x_coor] == 1) {
+//                counter += 1;
+//                break;
+//            }
+//        }
+//
+//        Vector test = new Vector();
+//        test.add(1);
+//        test.get(0);
+//
+//        return counter;
+//
+//
+//
+//
+//
+//    }
+//
+//    public String multiCheck(String path) {
+//        path = path.replaceAll("\\/\\.\\/", "/");
+//
+//        while (path.contains("//")) {
+//            path = path.replaceAll("//", "/");
+//        }
+//
+//        path = path.replaceAll("\\/\\.\\/", "/");
+//        if (path.endsWith("/.")) {
+//            path = path.substring(0, path.length()-1);
+//        }
+//
+//
+//
+//        return path;
+//    }
+//
+//    public String simplifyPath(String path) {
+//        // replace all the double slashes sign to single slash
+//        path = multiCheck(path);
+//
+//
+//
+//        while (path.contains("/../")) {
+//            path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.", "");
+//            path = multiCheck(path);
+//        }
+//
+//
+//
+//        if (path.endsWith("/..")) {
+//            path = path.replaceFirst("[a-zA-Z_]*\\/\\.\\.", "");
+//        }
+//
+//        while (path.endsWith("/") && !path.equals("/")) {
+//            path = path.substring(0, path.length()-1);
+//        }
+//
+//        if (path.length() == 0) {
+//            path = "/";
+//        }
+//
+//
+//        return path;
+//    }
+//
+//    public boolean isValid(String s) {
+//        Stack orders = new Stack<>();
+//        for (int i = 0; i<s.length(); i++) {
+//            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
+//                orders.push(s.charAt(i));
+//            } else {
+//                char top = (char) orders.pop();
+//                char origin = s.charAt(i);
+//                if ((origin == ')' && top != '(' ) || (origin == ']' && top != '[' ) || (origin == '}' && top != '{')) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
 
 
 
@@ -576,20 +576,38 @@ class Node {
         int m = in.nextInt();
         String passage = in.nextLine();
         String split_ed[] = passage.split(" ");
-        String answer[] = new String[n];
+        String answer[] = new String[2500];
         String curr_line = "";
+        int answer_index = 0;
         int index = 0;
-        while (index < split_ed.length) {
-            int remain = n;
+        int remain = n;
+        boolean used_m = false;
 
-            index++;
+        while (index < split_ed.length) {
+
+            if (!used_m && split_ed[index].length() < remain+m) {
+                curr_line += split_ed[index];
+                curr_line += " ";
+                remain -= split_ed[index].length();
+                if (split_ed[index].length() > remain) {
+                    used_m = true;
+                }
+                index++;
+            } else {
+                // havent changed the punctuation
+                curr_line.trim();
+                answer[answer_index] = curr_line;
+                answer_index++;
+                curr_line = "";
+                remain = n;
+                used_m = false;
+
+            }
         }
 
-        // 注意 hasNext 和 hasNextLine 的区别
-        while (in.hasNextInt()) { // 注意 while 处理多个 case
-            int a = in.nextInt();
-            int b = in.nextInt();
-            System.out.println(a + b);
+        System.out.println(answer_index);
+        for (int i = 0; i < answer_index; i++) {
+            System.out.println(answer[i]);
         }
     }
 

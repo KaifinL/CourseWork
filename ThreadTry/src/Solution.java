@@ -672,6 +672,10 @@ class Node {
             System.out.println(300);
             return;
         }
+        if (same_num == 4) {
+            System.out.println(150);
+            return;
+        }
 
 
 

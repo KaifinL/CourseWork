@@ -690,8 +690,19 @@ class Node {
             return;
         }
         if (same_num == 2) {
-            if (nums_array[0] == nums_array[1]) {
-                if (nums_array[2] == nums_array[3] || nums_array[4] == nums_array[3])
+            int index = 0;
+            while (index < nums_array.length-1) {
+                if (nums_array[index] == nums_array[index+1]) {
+                    nums_array[index] = -1;
+                    nums_array[index] = -2;
+                    break;
+                }
+                index++;
+            }
+            same_num = same_nums(nums_array);
+            if (same_num == 2) {
+                System.out.println(6);
+                return;
             }
         }
 

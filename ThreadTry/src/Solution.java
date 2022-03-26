@@ -625,9 +625,9 @@ class Node {
         int remain = n;
         boolean used_m = false;
 
-        while (index < split_ed.length || !curr_line.isEmpty()) {
+        while (index < split_ed.length) {
 
-            if (!used_m && split_ed[index].length() < remain+m && index < split_ed.length) {
+            if (!used_m && split_ed[index].length() < remain+m) {
                 curr_line += split_ed[index];
                 curr_line += " ";
 
@@ -646,6 +646,11 @@ class Node {
                 used_m = false;
 
             }
+        }
+        if (!curr_line.isEmpty()) {
+            curr_line.trim();
+            answer[answer_index] = curr_line;
+            answer_index++;
         }
 
 

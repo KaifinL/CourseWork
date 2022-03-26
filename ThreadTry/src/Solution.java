@@ -630,10 +630,11 @@ class Node {
             if (!used_m && split_ed[index].length() < remain+m) {
                 curr_line += split_ed[index];
                 curr_line += " ";
-                remain -= split_ed[index].length();
+
                 if (split_ed[index].length() > remain) {
                     used_m = true;
                 }
+                remain -= split_ed[index].length();
                 index++;
             } else {
                 // havent changed the punctuation

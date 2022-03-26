@@ -608,19 +608,19 @@ class Node {
     public static void perOperation(Scanner in) {
 
         int cards_num = in.nextInt();
-        System.out.println(cards_num);
+
         int nums_array[] = new int [cards_num];
         for (int j = 0; j < cards_num; j++) {
             int next_int = in.nextInt();
             nums_array[j] = next_int;
         }
-        char char_array[] = new char [cards_num];
+        String char_array[] = new String [cards_num];
         for (int j = 0; j < cards_num; j++) {
             String next_int = in.next();
-
-            System.out.println(next_int);
-
+            char_array[j] = next_int;
         }
+
+        
 
     }
 

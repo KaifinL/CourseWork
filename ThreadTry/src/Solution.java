@@ -616,7 +616,7 @@ class Node {
         }
         char char_array[] = new char [cards_num];
         for (int j = 0; j < cards_num; j++) {
-            int next_int = in.nextInt();
+            char next_int = (char) in.nextInt();
             nums_array[j] = next_int;
             System.out.println(char_array[j]);
 

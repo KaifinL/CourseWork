@@ -627,7 +627,7 @@ class Node {
 
         while (index < split_ed.length || !curr_line.isEmpty()) {
 
-            if (!used_m && split_ed[index].length() < remain+m) {
+            if (!used_m && split_ed[index].length() < remain+m && index < split_ed.length) {
                 curr_line += split_ed[index];
                 curr_line += " ";
 

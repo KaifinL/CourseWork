@@ -611,7 +611,7 @@ class Node {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int m = in.nextInt();
-        String passage = in.nextLine();
+        String passage = in.next();
         System.out.println(n);
         System.out.println(m);
         System.out.println(passage);

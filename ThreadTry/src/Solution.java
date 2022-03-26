@@ -714,27 +714,11 @@ class Node {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int num_data = in.nextInt();
-        // 注意 hasNext 和 hasNextLine 的区别
-//        for (int i = 0; i < num_data; i++) {
-//            int cards_num = in.nextInt();
-//            System.out.println(cards_num);
-//            int nums_array[] = new int [cards_num];
-//            for (int j = 0; j < cards_num; j++) {
-//                int next_int = in.nextInt();
-//                nums_array[j] = next_int;
-//            }
-             /*char char_array[] = new char [cards_num+1];
-             for (int j = 0; j < cards_num; j++) {
-                 char_array[j] = (char) in.nextByte();
-                 System.out.println(char_array[j]);
-             }*/
-//        }
-        //Scanner in = new Scanner(System.in);
+
         for (int i = 0; i < num_data; i++) {
             perOperation(in);
         }
-//        int test[] = {4, 4, 4, 6, 6};
-//        System.out.println(same_nums(test));
+
     }
 
 

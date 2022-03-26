@@ -682,7 +682,8 @@ class Node {
             return;
         }
         if (five_consecutive(nums_array)) {
-            
+            System.out.println(40);
+            return;
         }
 
 

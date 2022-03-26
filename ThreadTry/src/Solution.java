@@ -689,7 +689,11 @@ class Node {
             System.out.println(6);
             return;
         }
-        if ()
+        if (same_num == 2) {
+            if (nums_array[0] == nums_array[1]) {
+                if (nums_array[2] == nums_array[3] || nums_array[4] == nums_array[3])
+            }
+        }
 
 
 

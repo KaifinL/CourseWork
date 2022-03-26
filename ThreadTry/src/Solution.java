@@ -605,6 +605,28 @@ class Node {
         }
     }
 
+    // return the number of the same elements in the array
+    public static int same_nums(int nums[]) {
+        Arrays.sort(nums);
+        int index = 1;
+        int max = 1;
+        int curr = nums[0];
+        int record = 1;
+        while (index < nums.length) {
+            if (nums[index] == curr) {
+                record++;
+                if (record > max) {
+                    max = record;
+                }
+            } else {
+                record = 1;
+                curr = nums[index];
+            }
+            index++;
+        }
+        return max;
+    }
+
     public static void perOperation(Scanner in) {
 
         int cards_num = in.nextInt();
@@ -620,7 +642,7 @@ class Node {
             char_array[j] = next_int;
         }
 
-        
+
 
     }
 
@@ -644,7 +666,9 @@ class Node {
 //        }
         //Scanner in = new Scanner(System.in);
 
-        perOperation(in);
+//        perOperation(in);
+        int test[] = {4, 4, 5, 6, 6};
+        System.out.println(same_nums(test));
     }
 
 

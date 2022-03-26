@@ -665,9 +665,10 @@ class Node {
             return;
         }
         if (five_consecutive(nums_array) && same_type(char_array)) {
-            System.out.println(15000);
+            System.out.println(8000);
             return;
         }
+        if ()
 
 
 

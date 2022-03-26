@@ -605,6 +605,24 @@ class Node {
         }
     }
 
+    public static void perOperation() {
+        Scanner in = new Scanner(System.in);
+        int cards_num = in.nextInt();
+        System.out.println(cards_num);
+        int nums_array[] = new int [cards_num];
+        for (int j = 0; j < cards_num; j++) {
+            int next_int = in.nextInt();
+            nums_array[j] = next_int;
+        }
+        char char_array[] = new char [cards_num];
+        for (int j = 0; j < cards_num; j++) {
+            char_array[j] = (char) in.nextByte();
+            System.out.println(char_array[j]);
+
+        }
+
+    }
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int num_data = in.nextInt();
@@ -617,20 +635,13 @@ class Node {
 //                int next_int = in.nextInt();
 //                nums_array[j] = next_int;
 //            }
-////             char char_array[] = new char [cards_num+1];
-////             for (int j = 0; j < cards_num; j++) {
-////                 char_array[j] = (char) in.nextByte();
-////                 System.out.println(char_array[j]);
-////             }
+             /*char char_array[] = new char [cards_num+1];
+             for (int j = 0; j < cards_num; j++) {
+                 char_array[j] = (char) in.nextByte();
+                 System.out.println(char_array[j]);
+             }*/
 //        }
-        int cards_num = in.nextInt();
-        System.out.println(cards_num);
-        int nums_array[] = new int [cards_num];
-        for (int j = 0; j < cards_num; j++) {
-            int next_int = in.nextInt();
-            nums_array[j] = next_int;
-            System.out.println(nums_array[j]);
-        }
+        perOperation();
     }
 
 

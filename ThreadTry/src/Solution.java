@@ -625,7 +625,7 @@ class Node {
         int remain = n;
         boolean used_m = false;
 
-        while (index < split_ed.length) {
+        while (index < split_ed.length || !curr_line.isEmpty()) {
 
             if (!used_m && split_ed[index].length() < remain+m) {
                 curr_line += split_ed[index];
@@ -647,6 +647,7 @@ class Node {
 
             }
         }
+
 
         System.out.println(answer_index);
         for (int i = 0; i < answer_index; i++) {

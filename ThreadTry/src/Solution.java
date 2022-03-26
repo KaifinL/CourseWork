@@ -627,6 +627,13 @@ class Node {
         return max;
     }
 
+    public static boolean five_consecutive(int nums[]) {
+        if (nums.length != 5) {
+            return false;
+        }
+        if (same_nums(nums) == 5 && (nums[0] - nums[4] == ))
+    }
+
     public static void perOperation(Scanner in) {
 
         int cards_num = in.nextInt();
@@ -642,7 +649,7 @@ class Node {
             char_array[j] = next_int;
         }
 
-        
+
 
 
     }

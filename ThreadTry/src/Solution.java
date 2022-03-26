@@ -625,7 +625,7 @@ class Node {
         int remain = n;
         boolean used_m = false;
 
-        while (index < split_ed.length) {
+        while (index <= split_ed.length) {
 
             if (!used_m && split_ed[index].length() < remain+m) {
                 curr_line += split_ed[index];

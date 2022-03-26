@@ -637,6 +637,13 @@ class Node {
         return false;
     }
 
+    public static boolean same_type(String types[]) {
+        if (types.length != 5) {
+            return false;
+        }
+        return types[0].equals(types[1]) && types[0].equals(types[2]) && types[0].equals(types[3]) && types[0].equals(types[4]);
+    }
+
     public static void perOperation(Scanner in) {
 
         int cards_num = in.nextInt();
@@ -652,6 +659,12 @@ class Node {
             char_array[j] = next_int;
         }
 
+        int same_num = same_nums(nums_array);
+        if (same_num == 5) {
+            System.out.println(15000);
+            return;
+        }
+        if (same_num == 4 )
 
 
 

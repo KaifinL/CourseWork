@@ -650,7 +650,7 @@ class Node {
             int next_int = in.nextInt();
             nums_array[j] = next_int;
         }
-        perOperation();
+        //perOperation();
     }
 
 

@@ -573,23 +573,12 @@ class Node {
 
 
     public static void main(String[] args) {
-//        int []length1 = {0, 1, 0, 0};
-//        int []length2 = {1, 0, 1, 0};
-//        int [][]matrix = {length1, length2};
-//        int counter = 0;
-//        for (int i = 0; i < 2; i++) {
-//            for (int j =0; j < 4; j++) {
-//                if (matrix[i][j] == 0) {
-//                    counter += detect(matrix, j, i, 2, 4);
-//                }
-//            }
-//        }
-        Solution test = new Solution();
-        String s = test.simplifyPath("/home/of/foo/../../bar/../../is/./here/.");
-        System.out.println(s);
+//
+        Scanner in = new Scanner();
+
     }
 
 
-    
+
 
 }

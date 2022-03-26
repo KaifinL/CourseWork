@@ -605,66 +605,86 @@ class Node {
         }
     }
 
-
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int m = in.nextInt();
-        in.nextLine();
-        String passage = in.nextLine();
-        System.out.println(n);
-        System.out.println(m);
-        System.out.println(passage);
-
-        String split_ed[] = passage.split(" ");
-        String answer[] = new String[2500];
-        String curr_line = "";
-        int answer_index = 0;
-        int index = 0;
-        int remain = n;
-        boolean used_m = false;
-
-        while (index < split_ed.length) {
-
-            if (!used_m && split_ed[index].length() <= remain+m && remain > 0) {
-                curr_line += split_ed[index];
-                curr_line += " ";
-
-                if (split_ed[index].length() > remain) {
-                    used_m = true;
-                }
-                remain -= (split_ed[index].length()+1);
-                index++;
-            } else {
-                // havent changed the punctuation
-                curr_line.trim();
-                if (curr_line.startsWith(",")) {
-                    answer[answer_index-1] += ",";
-                    curr_line = curr_line.substring(1);
-                    curr_line.trim();
-                }
-
-                answer[answer_index] = curr_line;
-                answer_index++;
-                curr_line = "";
-                remain = n;
-                used_m = false;
-
+        int num_data = in.nextInt();
+        // 注意 hasNext 和 hasNextLine 的区别
+        for (int i = 0; i < num_data; i++) {
+            int cards_num = in.nextInt();
+            System.out.println(cards_num);
+            int nums_array[] = new int [cards_num];
+            for (int j = 0; j < cards_num; j++) {
+                int next_int = in.nextInt();
+                nums_array[j] = next_int;
             }
-        }
-        if (!curr_line.isEmpty()) {
-            curr_line.trim();
-            answer[answer_index] = curr_line;
-            answer_index++;
-        }
-
-
-        System.out.println(answer_index);
-        for (int i = 0; i < answer_index; i++) {
-            System.out.println(answer[i]);
+//             char char_array[] = new char [cards_num+1];
+//             for (int j = 0; j < cards_num; j++) {
+//                 char_array[j] = (char) in.nextByte();
+//                 System.out.println(char_array[j]);
+//             }
         }
     }
+
+
+//
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        int n = in.nextInt();
+//        int m = in.nextInt();
+//        in.nextLine();
+//        String passage = in.nextLine();
+//        System.out.println(n);
+//        System.out.println(m);
+//        System.out.println(passage);
+//
+//        String split_ed[] = passage.split(" ");
+//        String answer[] = new String[2500];
+//        String curr_line = "";
+//        int answer_index = 0;
+//        int index = 0;
+//        int remain = n;
+//        boolean used_m = false;
+//
+//        while (index < split_ed.length) {
+//
+//            if (!used_m && split_ed[index].length() <= remain+m && remain > 0) {
+//                curr_line += split_ed[index];
+//                curr_line += " ";
+//
+//                if (split_ed[index].length() > remain) {
+//                    used_m = true;
+//                }
+//                remain -= (split_ed[index].length()+1);
+//                index++;
+//            } else {
+//                // havent changed the punctuation
+//                curr_line.trim();
+//                if (curr_line.startsWith(",")) {
+//                    answer[answer_index-1] += ",";
+//                    curr_line = curr_line.substring(1);
+//                    curr_line.trim();
+//                }
+//
+//                answer[answer_index] = curr_line;
+//                answer_index++;
+//                curr_line = "";
+//                remain = n;
+//                used_m = false;
+//
+//            }
+//        }
+//        if (!curr_line.isEmpty()) {
+//            curr_line.trim();
+//            answer[answer_index] = curr_line;
+//            answer_index++;
+//        }
+//
+//
+//        System.out.println(answer_index);
+//        for (int i = 0; i < answer_index; i++) {
+//            System.out.println(answer[i]);
+//        }
+//    }
 
 
 

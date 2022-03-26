@@ -568,13 +568,7 @@ class Node {
 //    }
 
 
-
-
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int m = in.nextInt();
-        String passage = in.nextLine();
+    public static void test(int n, int m, String passage) {
         String split_ed[] = passage.split(" ");
         String answer[] = new String[2500];
         String curr_line = "";
@@ -609,6 +603,53 @@ class Node {
         for (int i = 0; i < answer_index; i++) {
             System.out.println(answer[i]);
         }
+    }
+
+
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        String passage = in.nextLine();
+        System.out.println(n);
+        System.out.println(m);
+        System.out.println(passage);
+
+//        String split_ed[] = passage.split(" ");
+//        String answer[] = new String[2500];
+//        String curr_line = "";
+//        int answer_index = 0;
+//        int index = 0;
+//        int remain = n;
+//        boolean used_m = false;
+//
+//        while (index < split_ed.length) {
+//
+//            if (!used_m && split_ed[index].length() < remain+m) {
+//                curr_line += split_ed[index];
+//                curr_line += " ";
+//                remain -= split_ed[index].length();
+//                if (split_ed[index].length() > remain) {
+//                    used_m = true;
+//                }
+//                index++;
+//            } else {
+//                // havent changed the punctuation
+//                curr_line.trim();
+//                answer[answer_index] = curr_line;
+//                answer_index++;
+//                curr_line = "";
+//                remain = n;
+//                used_m = false;
+//
+//            }
+//        }
+//
+//        System.out.println(answer_index);
+//        for (int i = 0; i < answer_index; i++) {
+//            System.out.println(answer[i]);
+//        }
     }
 
 

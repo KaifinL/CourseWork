@@ -629,6 +629,7 @@ class Node {
         for (int j = 0; j < cards_num; j++) {
             int next_int = in.nextInt();
             nums_array[j] = next_int;
+            System.out.println(nums_array[j]);
         }
     }
 

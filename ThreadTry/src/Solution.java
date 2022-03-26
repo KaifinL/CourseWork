@@ -676,16 +676,14 @@ class Node {
             System.out.println(150);
             return;
         }
-        if (same_num == 3) {
-            Arrays.sort(nums_array);
-            if (nums_array[0] == nums_array[1] && nums_array[3] == nums_array[4]) {
-                System.out.println(40);
-            } else {
-                System.out.println(6);
-            }
+        Arrays.sort(nums_array);
+        if (same_num == 3 && (nums_array[0] == nums_array[1] && nums_array[3] == nums_array[4])) {
+            System.out.println(40);
             return;
         }
-        if ()
+        if (five_consecutive(nums_array)) {
+            
+        }
 
 
 

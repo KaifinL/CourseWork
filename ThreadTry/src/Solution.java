@@ -701,8 +701,10 @@ class Node {
             }
             same_num = same_nums(nums_array);
             if (same_num == 2) {
-                System.out.println(6);
+                System.out.println(4);
                 return;
+            } else {
+                
             }
         }
 

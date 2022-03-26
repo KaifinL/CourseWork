@@ -639,7 +639,11 @@ class Node {
             } else {
                 // havent changed the punctuation
                 curr_line.trim();
-                if (curr_line.startsWith())
+                if (curr_line.startsWith(",")) {
+                    answer[answer_index-1] += ",";
+                }
+                curr_line = curr_line.substring(1);
+                curr_line.trim();
                 answer[answer_index] = curr_line;
                 answer_index++;
                 curr_line = "";

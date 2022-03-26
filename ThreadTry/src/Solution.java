@@ -702,13 +702,12 @@ class Node {
             same_num = same_nums(nums_array);
             if (same_num == 2) {
                 System.out.println(4);
-                return;
             } else {
-                
+                System.out.println(2);
             }
+            return;
         }
-
-
+        System.out.println(1);
 
     }
 
@@ -732,9 +731,9 @@ class Node {
 //        }
         //Scanner in = new Scanner(System.in);
 
-//        perOperation(in);
-        int test[] = {4, 4, 4, 6, 6};
-        System.out.println(same_nums(test));
+        perOperation(in);
+//        int test[] = {4, 4, 4, 6, 6};
+//        System.out.println(same_nums(test));
     }
 
 

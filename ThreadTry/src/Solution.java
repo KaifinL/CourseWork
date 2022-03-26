@@ -667,7 +667,7 @@ class Node {
         //Scanner in = new Scanner(System.in);
 
 //        perOperation(in);
-        int test[] = {4, 4, 5, 6, 6};
+        int test[] = {4, 4, 4, 6, 6};
         System.out.println(same_nums(test));
     }
 

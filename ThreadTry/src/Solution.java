@@ -634,7 +634,7 @@ class Node {
                 if (split_ed[index].length() > remain) {
                     used_m = true;
                 }
-                remain -= split_ed[index].length();
+                remain -= (split_ed[index].length()+1);
                 index++;
             } else {
                 // havent changed the punctuation

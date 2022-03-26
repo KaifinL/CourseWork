@@ -642,6 +642,14 @@ class Node {
                  System.out.println(char_array[j]);
              }*/
 //        }
+        //Scanner in = new Scanner(System.in);
+        int cards_num = in.nextInt();
+        System.out.println(cards_num);
+        int nums_array[] = new int [cards_num];
+        for (int j = 0; j < cards_num; j++) {
+            int next_int = in.nextInt();
+            nums_array[j] = next_int;
+        }
         perOperation();
     }
 

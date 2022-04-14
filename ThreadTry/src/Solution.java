@@ -716,6 +716,13 @@ class Node {
         Scanner in = new Scanner(System.in);
         int width = in.nextInt();
         int high = in.nextInt();
+        int origin[][] = new int[width][high];
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < high; j++) {
+                origin[i][j] = in.nextInt();
+            }
+        }
+
         int graph[][] = new int[width+1][high+1];
         for (int i = width; i >= 0; i--) {
             for (int j =0; j >= 0; j--) {
@@ -724,7 +731,7 @@ class Node {
                 } else if (j == high) {
                     graph[i][j] = Integer.MAX_VALUE;
                 } else {
-                    graph[i][j] = min()
+                    graph[i][j] = min(graph[i][j+1]+origin[i][j+1], graph[i+1][j]+origin[i+1][j]);
                 }
             }
         }

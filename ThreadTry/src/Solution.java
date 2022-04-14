@@ -736,7 +736,7 @@ class Node {
             }
         }
 
-        
+        return graph[0][0];
 
     }
 

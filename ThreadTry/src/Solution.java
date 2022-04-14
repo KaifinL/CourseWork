@@ -717,9 +717,16 @@ class Node {
         int width = in.nextInt();
         int high = in.nextInt();
         int origin[][] = new int[width][high];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < high; j++) {
-                origin[i][j] = in.nextInt();
+        for (int i = 0; i <= width; i++) {
+            for (int j = 0; j <= high; j++) {
+                if (i == width) {
+                    origin[i][j] = Integer.MAX_VALUE;
+                } else if (j == high) {
+                    origin[i][j] = Integer.MAX_VALUE;
+                } else {
+                    origin[i][j] = in.nextInt();
+                }
+
             }
         }
 

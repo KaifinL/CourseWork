@@ -14,6 +14,7 @@ import java.util.Stack;
 import java.util.Vector;
 
 import static java.lang.Math.floorDiv;
+import static java.lang.Math.min;
 import static java.lang.Math.pow;
 
 class Solution {
@@ -713,10 +714,19 @@ class Node {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int num_data = in.nextInt();
-
-        for (int i = 0; i < num_data; i++) {
-            perOperation(in);
+        int width = in.nextInt();
+        int high = in.nextInt();
+        int graph[][] = new int[width+1][high+1];
+        for (int i = width; i >= 0; i--) {
+            for (int j =0; j >= 0; j--) {
+                if (i == width) {
+                    graph[i][j] = Integer.MAX_VALUE;
+                } else if (j == high) {
+                    graph[i][j] = Integer.MAX_VALUE;
+                } else {
+                    graph[i][j] = min()
+                }
+            }
         }
 
     }

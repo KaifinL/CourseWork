@@ -906,7 +906,7 @@ class Node {
         int lower = in.nextInt();
         int upper = in.nextInt();
         if (lower > upper) {
-            return false;
+            return 0;
         }
         int length = in.nextInt();
         int skills[] = new int[length];
@@ -914,6 +914,11 @@ class Node {
             skills[i] = in.nextInt();
         }
         int mini = minimum(skills, original, lower, upper, skills.length-1);
+        if (mini < skills.length) {
+            return mini;
+        } else {
+            return 0;
+        }
 
     }
 
@@ -924,11 +929,8 @@ class Node {
         public static void main(String[] args) {
             Scanner in = new Scanner(System.in);
             int num = in.nextInt();
-            int valid_six_sudo = 0;
             for (int i =0 ; i < num; i++) {
-                if (each(in)) {
-                    valid_six_sudo++;
-                }
+                
             }
             System.out.println(valid_six_sudo);
         }

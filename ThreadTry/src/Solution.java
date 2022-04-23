@@ -968,7 +968,7 @@ class Node {
         }
 
         second = new String();
-        for (int i = 0; i < length_1; i++) {
+        for (int i = 0; i < length_2; i++) {
             second += in.next("[0-9A-Z]");
         }
 
@@ -982,7 +982,9 @@ class Node {
         String final_s = new String();
         final_s = "Login(\"";
         final_s += first;
-        final_s += "\",";
+        final_s += "\",\"";
+        final_s += second;
+        final_s += "\""
 
     }
 

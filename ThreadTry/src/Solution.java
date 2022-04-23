@@ -922,6 +922,14 @@ class Node {
 
     }
 
+    public static int translate(String curr) {
+        if (curr.equals("0xFFFFFFFF")) {
+            return -1;
+        } else {
+            return Integer.decode(curr);
+        }
+    }
+
     public static void tackle_move(String para) {
         String toPrint = "MoveTo(";
         String curr = "0x";

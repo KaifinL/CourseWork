@@ -955,7 +955,9 @@ class Node {
 
     }
 
-    public static void tackle_
+    public static void tackle_login(String para) {
+        
+    }
 
     public static void tackle(Scanner in, int type) {
         in.nextByte();

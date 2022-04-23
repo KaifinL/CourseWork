@@ -860,8 +860,9 @@ class Node {
     public static boolean each(Scanner in) {
         int sudo[][] = new int[6][6];
         for (int i = 0; i < 6; i++) {
+            int curr_num = in.nextInt();
             for (int j = 0; j < 6; j++) {
-                sudo[i][j] = in.nextInt();
+                sudo[i][j] = (int) (curr_num/pow(10, 5-j))%10;
             }
         }
         for (int i = 0; i < 6; i++) {

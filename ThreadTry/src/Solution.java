@@ -935,7 +935,7 @@ class Node {
             String target = "01000000";
             String temp = "0x" + target;
 
-            int a = Integer.parseInt(temp);
+            int a = Integer.parseUnsignedInt(temp);
             System.out.println(a);
         }
 

@@ -881,9 +881,13 @@ class Node {
         public static void main(String[] args) {
             Scanner in = new Scanner(System.in);
             int num = in.nextInt();
+            int valid_six_sudo = 0;
             for (int i =0 ; i < num; i++) {
-                
+                if (each(in)) {
+                    valid_six_sudo++;
+                }
             }
+            
         }
 
 

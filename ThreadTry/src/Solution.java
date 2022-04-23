@@ -924,6 +924,11 @@ class Node {
 
     public static void tackle_move(String para) {
         String toPrint = "MoveTo(";
+        String curr = "0x";
+        curr += para.substring(0, 7);
+        int a = Integer.decode(curr);
+        toPrint += String.valueOf(a);
+
     }
 
     public static void tackle(Scanner in, int type) {

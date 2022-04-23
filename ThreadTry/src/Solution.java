@@ -984,7 +984,10 @@ class Node {
         final_s += first;
         final_s += "\",\"";
         final_s += second;
-        final_s += "\""
+        final_s += "\",";
+        final_s += Integer.toString(target_int);
+
+        System.out.println(final_s);
 
     }
 

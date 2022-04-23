@@ -935,7 +935,7 @@ class Node {
             String target = "01000000";
             String temp = "0x" + target;
 
-            int a = Integer.getInteger(temp);
+            int a = Integer.decode(temp);
             System.out.println(a);
         }
 

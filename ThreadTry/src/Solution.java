@@ -923,11 +923,15 @@ class Node {
     }
 
     public static void tackle_move(String para) {
-        
+
     }
 
     public static void tackle(Scanner in, int type) {
-
+        in.nextByte();
+        String type_rpc = in.next("0[0-1]");
+        if (type_rpc.equals("01")) {
+            
+        }
     }
 
 

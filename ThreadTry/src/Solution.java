@@ -964,8 +964,15 @@ class Node {
 
         first = new String();
         for (int i = 0; i < length_1; i++) {
-            first += in.next("[0-9A-Z]")
+            first += in.next("[0-9A-Z]");
         }
+
+        second = new String();
+        for (int i = 0; i < length_1; i++) {
+            second += in.next("[0-9A-Z]");
+        }
+
+        
 
     }
 

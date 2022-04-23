@@ -955,8 +955,12 @@ class Node {
 
     }
 
-    public static void tackle_login(String para) {
-        
+    public static void tackle_login(Scanner in) {
+        String first = in.next("")
+
+        int length_1 = Integer.valueOf(para.substring(0, 2));
+        int length_2 = Integer.valueOf(para.substring(2, 4));
+
     }
 
     public static void tackle(Scanner in, int type) {

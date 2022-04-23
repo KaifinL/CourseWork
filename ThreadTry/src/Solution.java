@@ -934,19 +934,19 @@ class Node {
         String toPrint = "MoveTo(";
         String curr = "0x";
         curr += para.substring(0, 8);
-        int a = Integer.decode(curr);
+        int a = translate(curr);
         toPrint += String.valueOf(a);
         toPrint += ",";
 
         curr = "0x";
         curr += para.substring(8, 16);
-        a = Integer.decode(curr);
+        a = translate(curr);
         toPrint += String.valueOf(a);
         toPrint += ",";
 
         curr = "0x";
         curr += para.substring(17, 24);
-        a = Integer.decode(curr);
+        a = translate(curr);
         toPrint += String.valueOf(a);
 
         toPrint += ")";

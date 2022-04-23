@@ -972,7 +972,16 @@ class Node {
             second += in.next("[0-9A-Z]");
         }
 
-        
+        String integer = new String();
+        for (int i = 0; i < 8; i++) {
+            integer += in.next("[0-9A-F]");
+        }
+
+        int target_int = translate(integer);
+
+        String final_s = new String();
+        final_s = "Login(";
+        final_s += 
 
     }
 

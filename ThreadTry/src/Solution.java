@@ -901,7 +901,7 @@ class Node {
 
     }
 
-    public static boolean each(Scanner in) {
+    public static int each(Scanner in) {
         int original = in.nextInt();
         int lower = in.nextInt();
         int upper = in.nextInt();
@@ -914,11 +914,6 @@ class Node {
             skills[i] = in.nextInt();
         }
         int mini = minimum(skills, original, lower, upper, skills.length-1);
-        if (mini < skills.length) {
-            return true;
-        } else {
-            return false;
-        }
 
     }
 

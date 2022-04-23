@@ -937,7 +937,7 @@ class Node {
         toPrint += ",";
 
         curr = "0x";
-        curr += para.substring(17, 24);
+        curr += para.substring(17, 23);
         a = Integer.decode(curr);
         toPrint += String.valueOf(a);
 

@@ -929,7 +929,17 @@ class Node {
         int a = Integer.decode(curr);
         toPrint += String.valueOf(a);
         toPrint += ",";
-        
+
+        curr = "0x";
+        curr += para.substring(8, 15);
+        a = Integer.decode(curr);
+        toPrint += String.valueOf(a);
+        toPrint += ",";
+
+        curr = "0x";
+        curr += para.substring(16, 23);
+        a = Integer.decode(curr);
+        toPrint += String.valueOf(a);
 
         System.out.println(toPrint);
 

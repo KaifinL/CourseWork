@@ -1022,14 +1022,14 @@ class Node {
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {
         if (hp < lower) {
-            return Integer.MAX_VALUE;
+            return Integer.MAX_VALUE/100;
         }
         if (hp >= lower && hp <= upper) {
             return 0;
         }
         int maximum_index = find(skill, hp-lower);
         if (maximum_index == -1) {
-            return Integer.MAX_VALUE;
+            return Integer.MAX_VALUE/100;
         }
         int final_array[] = new int[maximum_index+1];
         for (int i = 0; i <= maximum_index; i++) {
@@ -1059,7 +1059,7 @@ class Node {
     }
 
     public static void main(String[] args) {
-        int a = Integer.MAX_VALUE +1 ;
+
         Scanner in = new Scanner(System.in);
         int data_num = in.nextInt();
         for (int i =0; i < data_num; i++) {

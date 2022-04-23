@@ -930,9 +930,8 @@ class Node {
             Scanner in = new Scanner(System.in);
             int num = in.nextInt();
             for (int i =0 ; i < num; i++) {
-                
+                System.out.println(each(in));
             }
-            System.out.println(valid_six_sudo);
         }
 
 

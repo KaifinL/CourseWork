@@ -962,7 +962,10 @@ class Node {
         int length_1 = Integer.valueOf(first);
         int length_2 = Integer.valueOf(second);
 
-        first = 
+        first = new String();
+        for (int i = 0; i < length_1; i++) {
+            first += in.next("[0-9A-Z]")
+        }
 
     }
 

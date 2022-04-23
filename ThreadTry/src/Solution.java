@@ -887,7 +887,7 @@ class Node {
                     valid_six_sudo++;
                 }
             }
-            
+            System.out.println(valid_six_sudo);
         }
 
 

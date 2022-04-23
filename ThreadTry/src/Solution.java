@@ -922,8 +922,12 @@ class Node {
 
     }
 
-    public static void tackle(Scanner in, int type) {
+    public static void tackle_move(String para) {
         
+    }
+
+    public static void tackle(Scanner in, int type) {
+
     }
 
 

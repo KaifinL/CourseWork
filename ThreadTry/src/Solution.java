@@ -955,6 +955,32 @@ class Node {
 
     }
 
+    // find the maximum index that is smaller than the target
+    public static int find(int skill[], int target) {
+        for (int i = skill.length-1; i >= 0; i--) {
+            if (skill[i] < target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int minimum(int hp, int upper, int lower, int skill[]) {
+        if (hp >= lower && hp <= upper) {
+            return 0;
+        }
+        int maximum_index = find(skill, hp-lower);
+        if (maximum_index == -1) {
+            return Integer.MAX_VALUE;
+        }
+        int final_array[] = new int[maximum_index+1];
+        for (int i = 0; i <= maximum_index; i++) {
+            final_array[i] = minimum(hp-skill[i], upper, lower, skill) + 1;
+        }
+        Arrays.sort(final_array);
+        return final_array[0];
+    }
+
     public static void tackle_login(Scanner in) {
         String first = in.next();
         String second = in.next("[0-9][0-9]");
@@ -1014,7 +1040,7 @@ class Node {
 
         public static void main(String[] args) {
             Scanner in = new Scanner(System.in);
-            tackle_login(in);
+//            tackle_login(in);
 //            int num = in.nextInt();
 //            for (int i =0 ; i < num; i++) {
 //                System.out.println(each(in));

@@ -933,7 +933,7 @@ class Node {
 //                System.out.println(each(in));
 //            }
 
-            System.out.println(0x);
+            System.out.println(0x01000000);
         }
 
 

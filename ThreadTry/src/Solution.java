@@ -956,10 +956,13 @@ class Node {
     }
 
     public static void tackle_login(Scanner in) {
-        String first = in.next("")
+        String first = in.next("[0-9][0-9]");
+        String second = in.next("[0-9][0-9]");
 
-        int length_1 = Integer.valueOf(para.substring(0, 2));
-        int length_2 = Integer.valueOf(para.substring(2, 4));
+        int length_1 = Integer.valueOf(first);
+        int length_2 = Integer.valueOf(second);
+
+        first = 
 
     }
 

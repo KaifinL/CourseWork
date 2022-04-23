@@ -956,7 +956,7 @@ class Node {
     }
 
     public static void tackle_login(Scanner in) {
-        String first = in.next("[0-9][0-9]");
+        String first = in.next("[0-9]");
         String second = in.next("[0-9][0-9]");
 
         int length_1 = Integer.valueOf(first);

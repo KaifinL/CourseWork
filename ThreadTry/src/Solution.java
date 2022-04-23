@@ -1050,7 +1050,7 @@ class Node {
             skill[i] = in.nextInt();
         }
         int mini_each = minimum(hp, upper, lower, skill);
-        if (mini_each == Integer.MAX_VALUE) {
+        if (mini_each >= Integer.MAX_VALUE/1000) {
             System.out.println(0);
         } else {
             System.out.println(mini_each);

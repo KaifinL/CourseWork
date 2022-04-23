@@ -931,13 +931,13 @@ class Node {
         toPrint += ",";
 
         curr = "0x";
-        curr += para.substring(8, 15);
+        curr += para.substring(8, 16);
         a = Integer.decode(curr);
         toPrint += String.valueOf(a);
         toPrint += ",";
 
         curr = "0x";
-        curr += para.substring(16, 23);
+        curr += para.substring(17, 24);
         a = Integer.decode(curr);
         toPrint += String.valueOf(a);
 

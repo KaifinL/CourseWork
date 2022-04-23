@@ -937,7 +937,7 @@ class Node {
         toPrint += ",";
 
         curr = "0x";
-        curr += para.substring(17, 22);
+        curr += para.substring(17, 24);
         a = Integer.decode(curr);
         toPrint += String.valueOf(a);
 
@@ -974,7 +974,7 @@ class Node {
 //            String temp = "0x" + target;
 //
 //            int a = Integer.decode(temp);
-                tackle_move("FFFFFFFF0000000100000A");
+                tackle_move("FFFFFFFF0000000100000A00");
 //            System.out.println(a);
         }
 

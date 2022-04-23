@@ -965,21 +965,7 @@ class Node {
         return -1;
     }
 
-    public static int minimum(int hp, int upper, int lower, int skill[]) {
-        if (hp >= lower && hp <= upper) {
-            return 0;
-        }
-        int maximum_index = find(skill, hp-lower);
-        if (maximum_index == -1) {
-            return Integer.MAX_VALUE;
-        }
-        int final_array[] = new int[maximum_index+1];
-        for (int i = 0; i <= maximum_index; i++) {
-            final_array[i] = minimum(hp-skill[i], upper, lower, skill) + 1;
-        }
-        Arrays.sort(final_array);
-        return final_array[0];
-    }
+
 
     public static void tackle_login(Scanner in) {
         String first = in.next();
@@ -1034,24 +1020,66 @@ class Node {
 
     }
 
+    public static int minimum(int hp, int upper, int lower, int skill[]) {
+        if (hp >= lower && hp <= upper) {
+            return 0;
+        }
+        int maximum_index = find(skill, hp-lower);
+        if (maximum_index == -1) {
+            return Integer.MAX_VALUE;
+        }
+        int final_array[] = new int[maximum_index+1];
+        for (int i = 0; i <= maximum_index; i++) {
+            final_array[i] = minimum(hp-skill[i], upper, lower, skill) + 1;
+        }
+        Arrays.sort(final_array);
+        return final_array[0];
+    }
+
+
+    public static void tackle_each(Scanner in) {
+        int hp = in.nextInt();
+        int lower = in.nextInt();
+        int upper = in.nextInt();
+        int length = in.nextInt();
+        int skill[] = new int[length];
+        for (int i = 0; i < length; i++) {
+            skill[i] = in.nextInt();
+        }
+        int mini_each = minimum(hp, upper, lower, skill);
+        if (mini_each == Integer.MAX_VALUE) {
+            System.out.println(0);
+        } else {
+            System.out.println(mini_each);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int data_num = in.nextInt();
+        for (int i =0; i < data_num; i++) {
+            tackle_each(in);
+        }
+    }
 
 
     // 注意类名必须为 Main, 不要有任何 package xxx 信息
 
-        public static void main(String[] args) {
-            Scanner in = new Scanner(System.in);
-//            tackle_login(in);
-//            int num = in.nextInt();
-//            for (int i =0 ; i < num; i++) {
-//                System.out.println(each(in));
-//            }
-//            String target = "01000000";
-//            String temp = "0x" + target;
+//        public static void main(String[] args) {
+//            Scanner in = new Scanner(System.in);
+////            tackle_login(in);
+////            int num = in.nextInt();
+////            for (int i =0 ; i < num; i++) {
+////                System.out.println(each(in));
+////            }
+////            String target = "01000000";
+////            String temp = "0x" + target;
+////
+////            int a = Integer.decode(temp);
 //
-//            int a = Integer.decode(temp);
-
-//            System.out.println(a);
-        }
+////            System.out.println(a);
+//        }
 
 
 

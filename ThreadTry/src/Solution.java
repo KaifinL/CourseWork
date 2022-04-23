@@ -955,6 +955,8 @@ class Node {
 
     }
 
+    public static void tackle_
+
     public static void tackle(Scanner in, int type) {
         in.nextByte();
         String type_rpc = in.next("0[0-1]");
@@ -965,7 +967,7 @@ class Node {
             }
             tackle_move(target);
         } else {
-            
+
         }
 
 

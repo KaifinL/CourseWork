@@ -712,40 +712,40 @@ class Node {
 
     }
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int width = in.nextInt();
-        int high = in.nextInt();
-        int origin[][] = new int[width+1][high+1];
-        for (int i = 0; i <= width; i++) {
-            for (int j = 0; j <= high; j++) {
-                if (i == width) {
-                    origin[i][j] = Integer.MAX_VALUE;
-                } else if (j == high) {
-                    origin[i][j] = Integer.MAX_VALUE;
-                } else {
-                    origin[i][j] = in.nextInt();
-                }
-
-            }
-        }
-
-        int graph[][] = new int[width+1][high+1];
-        for (int i = width; i >= 0; i--) {
-            for (int j =0; j >= 0; j--) {
-                if (i == width) {
-                    graph[i][j] = Integer.MAX_VALUE;
-                } else if (j == high) {
-                    graph[i][j] = Integer.MAX_VALUE;
-                } else {
-                    graph[i][j] = min(graph[i][j+1]+origin[i][j+1], graph[i+1][j]+origin[i+1][j]);
-                }
-            }
-        }
-
-        System.out.println(graph[0][0]);
-
-    }
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        int width = in.nextInt();
+//        int high = in.nextInt();
+//        int origin[][] = new int[width+1][high+1];
+//        for (int i = 0; i <= width; i++) {
+//            for (int j = 0; j <= high; j++) {
+//                if (i == width) {
+//                    origin[i][j] = Integer.MAX_VALUE;
+//                } else if (j == high) {
+//                    origin[i][j] = Integer.MAX_VALUE;
+//                } else {
+//                    origin[i][j] = in.nextInt();
+//                }
+//
+//            }
+//        }
+//
+//        int graph[][] = new int[width+1][high+1];
+//        for (int i = width; i >= 0; i--) {
+//            for (int j =0; j >= 0; j--) {
+//                if (i == width) {
+//                    graph[i][j] = Integer.MAX_VALUE;
+//                } else if (j == high) {
+//                    graph[i][j] = Integer.MAX_VALUE;
+//                } else {
+//                    graph[i][j] = min(graph[i][j+1]+origin[i][j+1], graph[i+1][j]+origin[i+1][j]);
+//                }
+//            }
+//        }
+//
+//        System.out.println(graph[0][0]);
+//
+//    }
 
 
 //
@@ -828,6 +828,8 @@ class Node {
 //        }
 //    }
 
+
+    
 
 
 

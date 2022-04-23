@@ -857,22 +857,69 @@ class Node {
     }
 
 
+//    public static boolean each(Scanner in) {
+//        int sudo[][] = new int[6][6];
+//        for (int i = 0; i < 6; i++) {
+//            int curr_num = in.nextInt();
+//            for (int j = 0; j < 6; j++) {
+//                sudo[i][j] = (int) (curr_num/pow(10, 5-j))%10;
+//            }
+//        }
+//        for (int i = 0; i < 6; i++) {
+//            boolean row_valid = valid_row(sudo, i);
+//            boolean col_valid = valid_column(sudo, i);
+//            if (!row_valid || !col_valid) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+    public static int minimum(int arr[], int original, int lower, int upper, int curr) {
+
+        if (original <= upper && original >= lower) {
+            return 0;
+        }
+        if (original < lower || curr >= arr.length) {
+            return arr.length+10;
+        }
+        if (arr[curr] <= original-lower) {
+            return min(1+minimum(arr, original-arr[curr], lower, upper, curr+1), minimum(arr, original, lower, upper, curr+1));
+        } else {
+            return minimum(arr, original, lower, upper, curr+1);
+        }
+//        for (int i = curr; i >= 0; i++) {
+//            if (original <= upper && original >= lower) {
+//                all_minimum[i] = 0;
+//            } else if (original < lower || i >= arr.length) {
+//                all_minimum[i] = arr.length+10;
+//            } else if (arr[curr] <= original-lower) {
+//                all_minimum[i] = min(1+all_minimum[i+1], )
+//            }
+//
+//        }
+
+    }
+
     public static boolean each(Scanner in) {
-        int sudo[][] = new int[6][6];
-        for (int i = 0; i < 6; i++) {
-            int curr_num = in.nextInt();
-            for (int j = 0; j < 6; j++) {
-                sudo[i][j] = (int) (curr_num/pow(10, 5-j))%10;
-            }
+        int original = in.nextInt();
+        int lower = in.nextInt();
+        int upper = in.nextInt();
+        if (lower > upper) {
+            return false;
         }
-        for (int i = 0; i < 6; i++) {
-            boolean row_valid = valid_row(sudo, i);
-            boolean col_valid = valid_column(sudo, i);
-            if (!row_valid || !col_valid) {
-                return false;
-            }
+        int length = in.nextInt();
+        int skills[] = new int[length];
+        for (int i = 0; i < length; i++) {
+            skills[i] = in.nextInt();
         }
-        return true;
+        int mini = minimum(skills, original, lower, upper, skills.length-1);
+        if (mini < skills.length) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 

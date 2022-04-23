@@ -1059,6 +1059,7 @@ class Node {
     }
 
     public static void main(String[] args) {
+        int a = Integer.MAX_VALUE +1 ;
         Scanner in = new Scanner(System.in);
         int data_num = in.nextInt();
         for (int i =0; i < data_num; i++) {

@@ -923,15 +923,20 @@ class Node {
     }
 
     public static void tackle_move(String para) {
-
+        String toPrint = "MoveTo(";
     }
 
     public static void tackle(Scanner in, int type) {
         in.nextByte();
         String type_rpc = in.next("0[0-1]");
         if (type_rpc.equals("01")) {
-            
+            String target = new String();
+            for (int i = 0; i < 24; i++) {
+                target += in.next("[0-9A-F]");
+            }
+            tackle_move(target);
         }
+
     }
 
 

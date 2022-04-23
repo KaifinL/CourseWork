@@ -970,11 +970,12 @@ class Node {
 //            for (int i =0 ; i < num; i++) {
 //                System.out.println(each(in));
 //            }
-            String target = "01000000";
-            String temp = "0x" + target;
-
-            int a = Integer.decode(temp);
-            System.out.println(a);
+//            String target = "01000000";
+//            String temp = "0x" + target;
+//
+//            int a = Integer.decode(temp);
+                tackle_move();
+//            System.out.println(a);
         }
 
 

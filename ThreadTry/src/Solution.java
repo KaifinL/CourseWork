@@ -941,6 +941,8 @@ class Node {
         a = Integer.decode(curr);
         toPrint += String.valueOf(a);
 
+        toPrint += ")";
+
         System.out.println(toPrint);
 
     }

@@ -716,7 +716,7 @@ class Node {
         Scanner in = new Scanner(System.in);
         int width = in.nextInt();
         int high = in.nextInt();
-        int origin[][] = new int[width][high];
+        int origin[][] = new int[width+1][high+1];
         for (int i = 0; i <= width; i++) {
             for (int j = 0; j <= high; j++) {
                 if (i == width) {

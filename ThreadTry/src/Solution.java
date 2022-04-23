@@ -974,7 +974,7 @@ class Node {
 //            String temp = "0x" + target;
 //
 //            int a = Integer.decode(temp);
-                tackle_move();
+                tackle_move("01FFFFFFFF0000000100000A");
 //            System.out.println(a);
         }
 

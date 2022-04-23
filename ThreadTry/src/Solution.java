@@ -828,10 +828,50 @@ class Node {
 //        }
 //    }
 
+    public static boolean valid_row(int sudo[][], int row_num) {
+        int row[] = new int[6];
+        for (int i = 0; i < 6; i++) {
+            row[i] = sudo[row_num][i];
+        }
+        Arrays.sort(row);
+        for (int i = 0; i < 6; i++) {
+            if (row[i] != i+1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean valid_column(int sudo[][], int col_num) {
+        int col[] = new int[6];
+        for (int i = 0; i < 6; i++) {
+            col[i] = sudo[i][col_num];
+        }
+        Arrays.sort(col);
+        for (int i = 0; i < 6; i++) {
+            if (col[i] != i+1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     public static boolean each(Scanner in) {
         int sudo[][] = new int[6][6];
-        
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                sudo[i][j] = in.nextInt();
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            boolean row_valid = valid_row(sudo, i);
+            boolean col_valid = valid_column(sudo, i);
+            if (!row_valid || !col_valid) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -841,11 +881,8 @@ class Node {
         public static void main(String[] args) {
             Scanner in = new Scanner(System.in);
             int num = in.nextInt();
-            // 注意 hasNext 和 hasNextLine 的区别
-            while (in.hasNextInt()) { // 注意 while 处理多个 case
-                int a = in.nextInt();
-                int b = in.nextInt();
-                System.out.println(a + b);
+            for (int i =0 ; i < num; i++) {
+                
             }
         }
 

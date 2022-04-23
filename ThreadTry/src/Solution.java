@@ -932,8 +932,11 @@ class Node {
 //            for (int i =0 ; i < num; i++) {
 //                System.out.println(each(in));
 //            }
+            String target = "01000000";
+            String temp = "0x" + target;
 
-            System.out.println(0x01000000);
+            int a = String.valueOf(temp)
+            System.out.println(a);
         }
 
 

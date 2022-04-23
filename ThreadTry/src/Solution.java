@@ -928,6 +928,10 @@ class Node {
         curr += para.substring(0, 7);
         int a = Integer.decode(curr);
         toPrint += String.valueOf(a);
+        toPrint += ",";
+        
+
+        System.out.println(toPrint);
 
     }
 

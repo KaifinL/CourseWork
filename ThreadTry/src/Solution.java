@@ -964,7 +964,11 @@ class Node {
                 target += in.next("[0-9A-F]");
             }
             tackle_move(target);
+        } else {
+            
         }
+
+
 
     }
 
@@ -982,7 +986,7 @@ class Node {
 //            String temp = "0x" + target;
 //
 //            int a = Integer.decode(temp);
-                tackle_move("FFFFFFFF0000000100000A00");
+
 //            System.out.println(a);
         }
 

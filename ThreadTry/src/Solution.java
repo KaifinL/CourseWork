@@ -1138,6 +1138,7 @@ class Node {
         for (int i = 0; i < p.length()+1; i++) {
             IMM[s.length()][i] = false;
         }
+        IMM[s.length()][p.length()] = true;
 
         char curr = '!';
         for (int i = s.length()-1; i>= 0; i--) {

@@ -1068,6 +1068,25 @@ class Node {
         return sb.reverse().toString();
     }
 
+    public String removeDuplicates2(String s, int k) {
+        Stack counter = new Stack();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (counter.empty() || s.charAt(i) != sb.charAt(sb.length()-1)) {
+                counter.push(1);
+                sb.append(s.charAt(i));
+            } else {
+                if ((int)counter.peek() < k-1) {
+                    counter.push((int)counter.pop()+1);
+
+                } else {
+                    counter.pop();
+                    sb.delete(sb.length()-)
+                }
+            }
+        }
+    }
+
     public static int minimum(int hp, int upper, int lower, int skill[]) {
         if (hp < lower) {
             return Integer.MAX_VALUE/100;

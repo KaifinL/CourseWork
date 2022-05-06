@@ -1121,7 +1121,7 @@ class Node {
                 }
             }
         }
-        return s.substring(begin_index, end_index);
+        return s.substring(begin_index, end_index+1);
     }
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

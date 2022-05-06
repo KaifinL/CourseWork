@@ -1150,7 +1150,7 @@ class Node {
                     IMM[i][j] = (IMM[i+1][j]);
                     curr = s.charAt(i);
                 } else if (curr == s.charAt(i) && p.charAt(j) == '*') {
-                    IMM[i][j] = (IMM[i+1][j] || IMM[i+1][j+1]);
+                    IMM[i][j] = (IMM[i+1][j] || IMM[i+1][j+1] || IMM[i][j+1]);
                 } else {
                     IMM[i][j] = false;
                 }

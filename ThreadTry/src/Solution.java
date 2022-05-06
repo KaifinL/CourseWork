@@ -1032,7 +1032,7 @@ class Node {
             return Integer.MAX_VALUE/100;
         }
         int final_array[] = new int[maximum_index+1];
-        for (int i = 0; i <= maximum_index; i++) {
+        for (int i = maximum_index; i >= 0; i--) {
             final_array[i] = minimum(hp-skill[i], upper, lower, skill) + 1;
         }
         Arrays.sort(final_array);

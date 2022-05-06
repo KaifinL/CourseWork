@@ -1199,7 +1199,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.isMatch("aa", "a"));
+        System.out.println(test.isMatch("aa", "a*"));
     }
 
 

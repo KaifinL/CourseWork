@@ -1097,6 +1097,12 @@ class Node {
 
     public String longestPalindrome(String s) {
         boolean [][]LPM = new boolean[s.length()][s.length()];
+        for (int i = 1; i < s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                LPM[i][j] = false;
+            }
+        }
+
         for (int i = 0; i < s.length(); i++) {
             for (int j = i; j < s.length(); j++) {
                 if (s.charAt(i) == s.charAt(j) && j - i <= 1) {

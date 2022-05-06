@@ -1069,7 +1069,7 @@ class Node {
     }
 
     public String removeDuplicates2(String s, int k) {
-        Stack counter = new Stack();
+        Stack <Integer> counter = new Stack();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             if (counter.empty() || s.charAt(i) != sb.charAt(sb.length()-1)) {
@@ -1077,14 +1077,15 @@ class Node {
                 sb.append(s.charAt(i));
             } else {
                 if ((int)counter.peek() < k-1) {
-                    counter.push((int)counter.pop()+1);
+                    counter.push(counter.pop()+1);
 
                 } else {
                     counter.pop();
-                    sb.delete(sb.length()-)
+                    sb.delete(sb.length()-(k-1), sb.length());
                 }
             }
         }
+        return sb.toString();
     }
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

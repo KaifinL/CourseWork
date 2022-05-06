@@ -1020,7 +1020,7 @@ class Node {
 
     }
 
-    public String help_removeDuplicates(StringBuilder s, int k) {
+    public StringBuilder help_removeDuplicates(StringBuilder s, int k) {
         int time = 1;
         char a = s.charAt(0);
         int index = 1;
@@ -1034,28 +1034,16 @@ class Node {
             index++;
         }
         if (time == k) {
-            return removeDuplicates(s.substring(0, index-k)+s.substring(index), k);
+            StringBuilder sb = new StringBuilder(s.substring(0, index - k));
+            sb.append(s.substring(index));
+            return help_removeDuplicates(sb, k);
         }
         return s;
     }
 
     public String removeDuplicates(String s, int k) {
-        int time = 1;
-        char a = s.charAt(0);
-        int index = 1;
-        while (index < s.length() && time < k) {
-            if (s.charAt(index) == a) {
-                time++;
-            } else {
-                time = 1;
-                a = s.charAt(index);
-            }
-            index++;
-        }
-        if (time == k) {
-            return removeDuplicates(s.substring(0, index-k)+s.substring(index), k);
-        }
-        return s;
+        StringBuilder sb = new StringBuilder(s);
+        return help_removeDuplicates(sb, k).toString();
     }
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

@@ -1078,12 +1078,7 @@ class Node {
     }
 
     public static void main(String[] args) {
-
-        Scanner in = new Scanner(System.in);
-        int data_num = in.nextInt();
-        for (int i =0; i < data_num; i++) {
-            tackle_each(in);
-        }
+        
     }
 
 

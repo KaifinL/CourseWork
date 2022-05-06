@@ -1036,12 +1036,29 @@ class Node {
         public int getCount() {
             return count;
         }
+
+        public void increment() {
+            this.count++;
+        }
     }
 
     public String removeDuplicates(String s, int k) {
         Stack charCounter = new Stack();
         for (int i = 0; i < s.length(); i++) {
-            if ()
+            charCount top = (charCount) charCounter.peek();
+            if (!charCounter.empty() && (s.charAt(i) == top.getC())) {
+
+                    if (top.getCount() == (k-1)) {
+                        charCounter.pop();
+                        continue;
+                    } else {
+                        top.increment();
+                    }
+
+               
+            } else {
+                charCounter.push(new charCount(s.charAt(i), 1));
+            }
         }
     }
 

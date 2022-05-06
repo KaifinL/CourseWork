@@ -1109,7 +1109,7 @@ class Node {
             }
         }
 
-        int maximum = 1;
+        int maximum = 0;
         int begin_index = 0;
         int end_index = 0;
         for (int i = 0; i < s.length(); i++) {

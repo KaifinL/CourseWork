@@ -1034,7 +1034,7 @@ class Node {
             index++;
         }
         if (time == k) {
-            return removeDuplicates(s.substring(0, index)+s.substring(index+1), k);
+            return removeDuplicates(s.substring(0, index-1-k)+s.substring(index+1), k);
         }
         return s;
     }

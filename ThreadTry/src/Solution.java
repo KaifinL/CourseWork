@@ -1130,6 +1130,33 @@ class Node {
         return s.substring(begin_index, end_index+1);
     }
 
+    public boolean isMatch(String s, String p) {
+        boolean IMM[][] = new boolean[s.length()+1][p.length()+1];
+        for (int i = 0; i < s.length() + 1; i++) {
+            IMM[i][p.length()] = false;
+        }
+        for (int i = 0; i < p.length()+1; i++) {
+            IMM[s.length()][i] = false;
+        }
+
+        char curr = '!';
+        for (int i = s.length(); i>= 0; i--) {
+            for (int j = p.length(); j>= 0; j--) {
+                if (s.charAt(i) == p.charAt(j)) {
+                    IMM[i][j] = (IMM[i+1][j] || IMM[i+1][j]);
+                } else if (p.charAt(j) == '.') {
+                    curr = s.charAt(i);
+                    IMM[i][j] = (IMM[i+1][j] || IMM[i+1][j]);
+                } else if (curr == s.charAt(i) && p.charAt(j) == '*') {
+                    IMM[i][j] = (IMM[i+1][j] || IMM[i+1][j]);
+                } else {
+                    IMM[i][j] = false;
+                }
+            }
+        }
+        return IMM[0][0];
+    }
+
 
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {
@@ -1172,7 +1199,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.longestPalindrome("babad"));
+        System.out.println(test.isMatch());
     }
 
 

@@ -1142,6 +1142,9 @@ class Node {
         char curr = '!';
         for (int i = s.length()-1; i>= 0; i--) {
             for (int j = p.length()-1; j>= 0; j--) {
+                if (p.charAt(j) == '*') {
+                    curr = p.charAt(j-1);
+                }
                 if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
                     IMM[i][j] = (IMM[i+1][j] || IMM[i+1][j]);
                     curr = s.charAt(i);

@@ -1020,8 +1020,23 @@ class Node {
 
     }
 
-    public String help_removeDuplicates(StringBuilder sb, int k) {
-        
+    public String help_removeDuplicates(StringBuilder s, int k) {
+        int time = 1;
+        char a = s.charAt(0);
+        int index = 1;
+        while (index < s.length() && time < k) {
+            if (s.charAt(index) == a) {
+                time++;
+            } else {
+                time = 1;
+                a = s.charAt(index);
+            }
+            index++;
+        }
+        if (time == k) {
+            return removeDuplicates(s.substring(0, index-k)+s.substring(index), k);
+        }
+        return s;
     }
 
     public String removeDuplicates(String s, int k) {

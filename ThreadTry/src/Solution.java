@@ -1164,7 +1164,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.longestPalindrome(""));
+        System.out.println(test.longestPalindrome("babad"));
     }
 
 

@@ -1095,6 +1095,8 @@ class Node {
         return sb.reverse().toString();
     }
 
+    
+
     public static int minimum(int hp, int upper, int lower, int skill[]) {
         if (hp < lower) {
             return Integer.MAX_VALUE/100;

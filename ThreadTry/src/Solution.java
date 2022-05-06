@@ -1113,7 +1113,7 @@ class Node {
         int begin_index = 0;
         int end_index = 0;
         for (int i = 0; i < s.length(); i++) {
-            for (int j = i; j <= s.length(); j++) {
+            for (int j = i; j < s.length(); j++) {
                 if (LPM[i][j] && (j-i) > maximum) {
                     maximum = j - i;
                     begin_index = i;

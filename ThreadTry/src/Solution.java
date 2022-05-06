@@ -1133,10 +1133,10 @@ class Node {
     public boolean isMatch(String s, String p) {
         boolean IMM[][] = new boolean[s.length()+1][p.length()+1];
         for (int i = 0; i < s.length() + 1; i++) {
-            IMM[i][p.length()] = false;
+            IMM[i][p.length()] = true;
         }
         for (int i = 0; i < p.length()+1; i++) {
-            IMM[s.length()][i] = false;
+            IMM[s.length()][i] = true;
         }
 
         char curr = '!';

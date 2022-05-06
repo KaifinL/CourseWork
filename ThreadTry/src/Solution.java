@@ -1076,7 +1076,7 @@ class Node {
                 counter.push(1);
                 sb.append(s.charAt(i));
             } else {
-                if ((int)counter.peek() <= k-1) {
+                if (counter.peek() < k-1) {
                     counter.push(counter.pop()+1);
 
                 } else {

@@ -1078,7 +1078,7 @@ class Node {
             } else {
                 if (counter.peek() < k-1) {
                     counter.push(counter.pop()+1);
-
+                    sb.append(s.charAt(i));
                 } else {
                     counter.pop();
                     sb.delete(sb.length()-(k-1), sb.length());

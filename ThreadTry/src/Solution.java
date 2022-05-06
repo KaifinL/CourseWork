@@ -1060,7 +1060,12 @@ class Node {
             }
         }
 
-        
+        StringBuilder sb = new StringBuilder();
+        while (!charCounter.empty()) {
+            charCount top = (charCount) charCounter.pop();
+            sb.append(String.valueOf(top.getC()).repeat(Math.max(0, top.getCount())));
+        }
+        return sb.reverse().toString();
     }
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

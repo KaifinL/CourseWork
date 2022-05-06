@@ -1095,7 +1095,34 @@ class Node {
         return sb.reverse().toString();
     }
 
-    
+    public String longestPalindrome(String s) {
+        boolean [][]LPM = new boolean[s.length()][s.length()];
+        for (int i = s.length()-1; i >= 0 ; i--) {
+            for (int j = 0; j < s.length(); j++) {
+                if (i == j) {
+                    LPM[i][j] = true;
+                } else if (i > j || s.charAt(i) != s.charAt(j) || !LPM[i+1][j-1]) {
+                    LPM[i][j] = false;
+                } else {
+                    LPM[i][j] = true;
+                }
+            }
+        }
+
+        int maximum = 1;
+        int begin_index = 0;
+        int end_index = 0;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j <= i; j++) {
+                if (LPM[i][j] && (j-i) > maximum) {
+                    maximum = j - i;
+                    begin_index = i;
+                    end_index = j;
+                }
+            }
+        }
+        return s.substring(begin_index, end_index);
+    }
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {
         if (hp < lower) {
@@ -1137,7 +1164,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.removeDuplicates2("deeedbbcccbdaa", 3));
+        System.out.println(test.longestPalindrome(""));
     }
 
 

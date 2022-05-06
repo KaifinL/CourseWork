@@ -1140,8 +1140,8 @@ class Node {
         }
 
         char curr = '!';
-        for (int i = s.length(); i>= 0; i--) {
-            for (int j = p.length(); j>= 0; j--) {
+        for (int i = s.length()-1; i>= 0; i--) {
+            for (int j = p.length()-1; j>= 0; j--) {
                 if (s.charAt(i) == p.charAt(j)) {
                     IMM[i][j] = (IMM[i+1][j] || IMM[i+1][j]);
                 } else if (p.charAt(j) == '.') {

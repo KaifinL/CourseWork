@@ -1020,6 +1020,10 @@ class Node {
 
     }
 
+    public String help_removeDuplicates(StringBuilder sb, int k) {
+        
+    }
+
     public String removeDuplicates(String s, int k) {
         int time = 1;
         char a = s.charAt(0);

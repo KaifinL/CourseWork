@@ -1020,6 +1020,25 @@ class Node {
 
     }
 
+    public String removeDuplicates(String s, int k) {
+        int time = 1;
+        char a = s.charAt(0);
+        int index = 1;
+        while (index < s.length() && time < k) {
+            if (s.charAt(index) == a) {
+                time++;
+            } else {
+                time = 1;
+                a = s.charAt(index);
+            }
+            index++;
+        }
+        if (time == k) {
+            return removeDuplicates(s.substring(0, index)+s.substring(index+1), k);
+        }
+        return s;
+    }
+
     public static int minimum(int hp, int upper, int lower, int skill[]) {
         if (hp < lower) {
             return Integer.MAX_VALUE/100;

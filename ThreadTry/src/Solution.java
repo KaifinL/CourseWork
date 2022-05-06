@@ -1045,9 +1045,9 @@ class Node {
     public String removeDuplicates(String s, int k) {
         Stack charCounter = new Stack();
         for (int i = 0; i < s.length(); i++) {
-            charCount top = (charCount) charCounter.peek();
-            if (!charCounter.empty() && (s.charAt(i) == top.getC())) {
 
+            if (!charCounter.empty() && (s.charAt(i) == ((charCount) charCounter.peek()).getC())) {
+                    charCount top = (charCount) charCounter.peek();
                     if (top.getCount() == (k-1)) {
                         charCounter.pop();
                     } else {

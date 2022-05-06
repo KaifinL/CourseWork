@@ -1050,16 +1050,17 @@ class Node {
 
                     if (top.getCount() == (k-1)) {
                         charCounter.pop();
-                        continue;
                     } else {
                         top.increment();
                     }
 
-               
+
             } else {
                 charCounter.push(new charCount(s.charAt(i), 1));
             }
         }
+
+        
     }
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

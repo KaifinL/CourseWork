@@ -1264,7 +1264,7 @@ class Node {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            int[] new_nums = new int[nums.length];
+            int[] new_nums = new int[nums.length-1];
             //copy array
             System.arraycopy(nums, 0, new_nums, 0, i);
             System.arraycopy(nums, i+1, new_nums, i, nums.length-i-1);

@@ -1262,9 +1262,9 @@ class Node {
             }
         }
         for (int i = 0; i < nums.length; i++) {
-            if (original[i] == nums[0]) {
+            if (original[i] == nums2[0]) {
                 toReturn[0] = i;
-            } else if (original[i] == nums[1]) {
+            } else if (original[i] == nums2[1]) {
                 toReturn[1] = i;
             }
         }

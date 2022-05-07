@@ -1248,10 +1248,15 @@ class Node {
         return -1;
     }
 
-//    public int[] twoSum(int[] nums, int target) {
-//        Arrays.sort(nums);
-//
-//    }
+    public int[] twoSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            int index = find2(nums, target-nums[i]);
+            if (index != -1) {
+                return []
+            }
+        }
+    }
 
     @Test
     public void test_find2() {

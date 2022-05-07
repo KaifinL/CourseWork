@@ -1258,6 +1258,7 @@ class Node {
             if (index != -1) {
                 nums2[0] = i;
                 nums2[1] = nums[index];
+                break;
             }
         }
         for (int i = 0; i < nums.length; i++) {

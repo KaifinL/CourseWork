@@ -1164,6 +1164,47 @@ class Node {
         return IMM[0][0];
     }
 
+    public boolean find132pattern(int[] nums) {
+        int min = nums[0];
+        int max = Integer.MIN_VALUE;
+        int potential_min = min;
+        boolean initialize_max = false;
+        boolean potential_min_updated = false;
+        int index = 1;
+        // initialize max
+        while (index < nums.length) {
+            if (nums[index] > min) {
+                initialize_max = true;
+                max = nums[index];
+                break;
+            } else {
+                min = nums[index];
+            }
+            index++;
+        }
+
+        if (!initialize_max) {
+            return false;
+        }
+
+        while (index < nums.length) {
+            if (nums[index] > min && nums[index] < max) {
+                return true;
+            } else if (nums[index] < min) {
+                potential_min = nums[index];
+                potential_min_updated = true;
+            } else if (nums[index] > max) {
+                if (potential_min_updated) {
+                    min = potential_min;
+                }
+                max = nums[index];
+                potential_min_updated = false;
+            }
+            index++;
+        }
+        return false;
+    }
+
 
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

@@ -1261,12 +1261,14 @@ class Node {
                 break;
             }
         }
-        for (int i = 0; i < nums.length; i++) {
-            if (original[i] == nums2[0]) {
-                toReturn[0] = i;
-            } else if (original[i] == nums2[1]) {
-                toReturn[1] = i;
+        int index = 0;
+        int curr = 0;
+        while (curr < 2) {
+            if (original[index] == nums2[0] || original[index] == nums2[1]) {
+                toReturn[curr] = index;
+                curr++;
             }
+            index++;
         }
         return toReturn;
     }

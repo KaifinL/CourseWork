@@ -1254,7 +1254,7 @@ class Node {
             num_index.put(nums[i], i);
         }
         for (int i = 0; i < nums.length; i++) {
-            if (num_index.get(target-nums[i]) != null) {
+            if (num_index.get(target-nums[i]) != null && i != num_index.get(target-nums[i])) {
                 return new int[]{i, num_index.get(target-nums[i])};
             }
         }

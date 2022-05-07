@@ -1213,11 +1213,15 @@ class Node {
                 leftMin = Math.min(leftMin, nums[i]);
             }
             int rightMin = Integer.MAX_VALUE;
+            boolean rightFlag = false;
             for (int k = j+1; k < nums.length; k++) {
-                rightMin = Math.min(rightMin, nums[k]);
+                if (nums[k] > leftMin) {
+                    rightMin = Math.min(rightMin, nums[k]);
+                    rightFlag = true;
+                }
             }
 
-            if (leftMin > rightMin && leftMin < nums[j]) {
+            if (rightFlag && rightMin < nums[j]) {
                 return true;
             }
         }

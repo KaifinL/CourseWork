@@ -1254,7 +1254,7 @@ class Node {
 //    }
 
     @Test
-    void test_find2() {
+    public void test_find2() {
         assertTrue(find(new int[]{1, 2, 3, 4, 5}, 4) == 3);
     }
 
@@ -1300,6 +1300,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
+        test.test_find2();
         System.out.println(test.find132pattern(new int[]{1,4,0,-1,-2,-3,-1,-2}));
     }
 

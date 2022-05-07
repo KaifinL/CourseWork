@@ -1178,12 +1178,17 @@ class Node {
     public boolean find132pattern(int[] nums) {
         Vector<int []> intervals = new Vector<>();
         int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         int index = 0;
         while (index < nums.length) {
             if (is_minimal(intervals, nums[index])) {
                 return true;
             } else if (nums[index] < min) {
                 min = nums[index];
+            } else if (nums[index] > max) {
+                max = nums[index];
+                intervals.clear();
+                intervals.add(new int[]{min, max});
             } else if (nums[index] > min) {
                 intervals.add(new int[]{min, nums[index]});
                 min = Integer.MAX_VALUE;
@@ -1235,7 +1240,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.find132pattern(new int[]{-1, 3, 2, 0}));
+        System.out.println(test.find132pattern(new int[]{}));
     }
 
 

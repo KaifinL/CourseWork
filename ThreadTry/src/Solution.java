@@ -1306,10 +1306,18 @@ class Node {
 
     }
 
+    public void printArray(int []nums) {
+        for (int i = 0; i < nums.length; i++) {
+            System.out.println(i);
+        }
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         test.test_find2();
-        System.out.println(test.twoSum(new int[]{2,5,5,11}, 10));
+        int []nums = test.twoSum(new int[]{2,5,5,11}, 10);
+        test.printArray(nums);
+        //System.out.println(test.twoSum(new int[]{2,5,5,11}, 10));
     }
 
 

@@ -1240,7 +1240,7 @@ class Node {
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] < target) {
-                left = mid+1;
+                left = mid;
             } else {
                 right = mid-1;
             }

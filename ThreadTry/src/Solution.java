@@ -1256,7 +1256,7 @@ class Node {
         for (int i = 0; i < nums.length; i++) {
             int index = find2(nums, target-nums[i]);
             if (index != -1) {
-                nums2[0] = i;
+                nums2[0] = nums[i];
                 nums2[1] = nums[index];
                 break;
             }

@@ -1240,7 +1240,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.find132pattern(new int[]{-2,1,2,-2,1,2}));
+        System.out.println(test.find132pattern(new int[]{1,4,0,-1,-2,-3,-1,-2}));
     }
 
 

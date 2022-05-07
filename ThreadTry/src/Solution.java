@@ -1249,28 +1249,16 @@ class Node {
     }
 
     public int[] twoSum(int[] nums, int target) {
-        int original[] = Arrays.copyOf(nums, nums.length);
-        int nums2 [] = new int[2];
-        int toReturn [] = new int[2];
-        Arrays.sort(nums);
+        HashMap<Integer, Integer> num_index = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            int index = find2(nums, target-nums[i]);
-            if (index != -1) {
-                nums2[0] = nums[i];
-                nums2[1] = nums[index];
-                break;
+            num_index.put(nums[i], i);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (num_index.get(target-nums[i]) != null) {
+                return new int[]{i, num_index.get(target-nums[i])};
             }
         }
-        int index = 0;
-        int curr = 0;
-        while (curr < 2) {
-            if (original[index] == nums2[0] || original[index] == nums2[1]) {
-                toReturn[curr] = index;
-                curr++;
-            }
-            index++;
-        }
-        return toReturn;
+        return null;
     }
 
     @Test

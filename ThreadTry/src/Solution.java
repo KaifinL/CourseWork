@@ -1261,6 +1261,17 @@ class Node {
         return null;
     }
 
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            int[] new_nums = new int[nums.length];
+            //copy array
+            System.arraycopy(nums, 0, new_nums, 0, i);
+            System.arraycopy(nums, i+1, new_nums, i, nums.length-i);
+            int []rest = twoSum(new_nums, )
+        }
+    }
+
     @Test
     public void test_find2() {
         assertTrue(find2(new int[]{1, 2, 3, 4, 5}, 5) == 4);

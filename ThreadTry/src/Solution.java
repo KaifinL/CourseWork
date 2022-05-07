@@ -1206,25 +1206,20 @@ class Node {
     }
 
     public boolean find132pattern(int[] nums) {
-        Vector<interval> intervals = new Vector<>();
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
-        int prev_max = max;
-        int index = 0;
-        while (index < nums.length) {
-            if (is_minimal(intervals, nums[index])) {
-                return true;
-            } else if (nums[index] < min) {
-                min = nums[index];
-            } else if (nums[index] > max) {
-                max = nums[index];
-                intervals.clear();
-                intervals.add(new interval());
-            } else if (nums[index] > min) {
-                intervals.add(new int[]{min, nums[index]});
-                min = Integer.MAX_VALUE;
+
+        for (int j = 1; j < nums.length; j++) {
+            int leftMin = Integer.MAX_VALUE;
+            for (int i = 0; i < j; i++) {
+                leftMin = Math.min(leftMin, nums[i]);
             }
-            index++;
+            int rightMin = Integer.MAX_VALUE;
+            for (int k = j+1; k < nums.length; k++) {
+                rightMin = Math.min(rightMin, nums[k]);
+            }
+
+            if (leftMin > rightMin && leftMin < nums[j]) {
+                return true;
+            }
         }
         return false;
     }

@@ -1164,11 +1164,41 @@ class Node {
         return IMM[0][0];
     }
 
+    class interval {
+        private int max;
+        private int min;
+
+        public interval(int min, int max) {
+            this.min = min;
+            this.max = max;
+        }
+
+        public int getMax() {
+            return max;
+        }
+
+        public int getMin() {
+            return min;
+        }
+
+        public void setMax(int max) {
+            this.max = max;
+        }
+
+        public void setMin(int min) {
+            this.min = min;
+        }
+
+        public boolean in_interval(int target) {
+            return (target < this.max) && (target > this.min);
+        }
+    }
+
 
     // return if the integer is within any of the inteval in the vector.
-    public boolean is_minimal(Vector<int []> v, int target) {
-        for (int [] interval :v) {
-            if (target > interval[0] && target < interval[1]) {
+    public boolean is_minimal(Vector<interval> v, int target) {
+        for (interval intval :v) {
+            if (intval.in_interval(target)) {
                 return true;
             }
         }
@@ -1176,9 +1206,10 @@ class Node {
     }
 
     public boolean find132pattern(int[] nums) {
-        Vector<int []> intervals = new Vector<>();
+        Vector<interval> intervals = new Vector<>();
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
+        int prev_max = max;
         int index = 0;
         while (index < nums.length) {
             if (is_minimal(intervals, nums[index])) {
@@ -1188,7 +1219,7 @@ class Node {
             } else if (nums[index] > max) {
                 max = nums[index];
                 intervals.clear();
-                intervals.add(new int[]{min, max});
+                intervals.add(new interval());
             } else if (nums[index] > min) {
                 intervals.add(new int[]{min, nums[index]});
                 min = Integer.MAX_VALUE;

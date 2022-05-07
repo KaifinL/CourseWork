@@ -1229,6 +1229,35 @@ class Node {
     }
 
 
+    // return the index of the target in the array if there is any.
+    // Otherwise, return -1;
+    public int find2(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length-1;
+        while (left < right) {
+            int mid = (left + right)/2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        return -1;
+    }
+
+//    public int[] twoSum(int[] nums, int target) {
+//        Arrays.sort(nums);
+//
+//    }
+
+    @Test
+    public test() {
+        assert
+    }
+
+
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {
         if (hp < lower) {

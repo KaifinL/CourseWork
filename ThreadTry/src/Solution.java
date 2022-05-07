@@ -1255,7 +1255,7 @@ class Node {
 
     @Test
     public void test_find2() {
-        assertTrue(find2(new int[]{1, 2, 3, 4, 5}, 4) == 3);
+        assertTrue(find2(new int[]{1, 2, 3, 4, 5}, 2) == 1);
     }
 
 

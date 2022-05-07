@@ -1235,7 +1235,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.("aab", "c*a*b"));
+        System.out.println(test.find132pattern(new int[]{1, 3, 2, 0}));
     }
 
 

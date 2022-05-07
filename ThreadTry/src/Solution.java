@@ -1333,7 +1333,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        //System.out.println(test.twoSum(new int[]{2,5,5,11}, 10));
+        System.out.println(test.threeSum(new int[]{-1,0,1,2,-1,-4}));
     }
 
 

@@ -16,6 +16,7 @@ import java.util.Vector;
 import static java.lang.Math.floorDiv;
 import static java.lang.Math.min;
 import static java.lang.Math.pow;
+import static org.junit.Assert.assertTrue;
 
 class Solution {
     public static int isNumber(int[] arr) {
@@ -1254,7 +1255,7 @@ class Node {
 
     @Test
     void test_find2() {
-        
+        assertTrue(find(new int[]{1, 2, 3, 4, 5}, 4) == 3);
     }
 
 

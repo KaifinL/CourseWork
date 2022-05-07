@@ -1268,8 +1268,14 @@ class Node {
             //copy array
             System.arraycopy(nums, 0, new_nums, 0, i);
             System.arraycopy(nums, i+1, new_nums, i, nums.length-i);
-            int []rest = twoSum(new_nums, )
+            int []rest = twoSum(new_nums, -nums[i]);
+            List<Integer> new_list = new ArrayList<>();
+            new_list.add(nums[i]);
+            new_list.add(nums[rest[0]]);
+            new_list.add(nums[rest[1]]);
+            result.add(new_list);
         }
+        return result;
     }
 
     @Test

@@ -1318,7 +1318,7 @@ class Node {
     public static void main(String[] args) {
         Solution test = new Solution();
         test.test_find2();
-        System.out.println(test.twoSum(new int[]{3,2,4}, 6));
+        System.out.println(test.twoSum(new int[]{}, 6));
     }
 
 

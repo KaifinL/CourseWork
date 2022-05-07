@@ -1315,7 +1315,7 @@ class Node {
     public static void main(String[] args) {
         Solution test = new Solution();
         test.test_find2();
-        int []nums = test.twoSum(new int[]{2,5,5,11}, 10);
+        int []nums = test.twoSum(new int[]{3, 2, 4}, 6);
         test.printArray(nums);
         //System.out.println(test.twoSum(new int[]{2,5,5,11}, 10));
     }

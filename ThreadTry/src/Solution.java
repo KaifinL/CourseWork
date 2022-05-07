@@ -1272,8 +1272,8 @@ class Node {
             if (rest != null) {
                 List<Integer> new_list = new ArrayList<>();
                 new_list.add(nums[i]);
-                new_list.add(nums[rest[0]]);
-                new_list.add(nums[rest[1]]);
+                new_list.add(new_nums[rest[0]]);
+                new_list.add(new_nums[rest[1]]);
                 result.add(new_list);
             }
         }

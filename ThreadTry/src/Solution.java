@@ -1253,7 +1253,7 @@ class Node {
         for (int i = 0; i < nums.length; i++) {
             int index = find2(nums, target-nums[i]);
             if (index != -1) {
-                return []
+                return new int[]
             }
         }
     }

@@ -1267,13 +1267,15 @@ class Node {
             int[] new_nums = new int[nums.length];
             //copy array
             System.arraycopy(nums, 0, new_nums, 0, i);
-            System.arraycopy(nums, i+1, new_nums, i, nums.length-i);
+            System.arraycopy(nums, i+1, new_nums, i, nums.length-i-1);
             int []rest = twoSum(new_nums, -nums[i]);
-            List<Integer> new_list = new ArrayList<>();
-            new_list.add(nums[i]);
-            new_list.add(nums[rest[0]]);
-            new_list.add(nums[rest[1]]);
-            result.add(new_list);
+            if (rest != null) {
+                List<Integer> new_list = new ArrayList<>();
+                new_list.add(nums[i]);
+                new_list.add(nums[rest[0]]);
+                new_list.add(nums[rest[1]]);
+                result.add(new_list);
+            }
         }
         return result;
     }
@@ -1331,9 +1333,6 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        test.test_find2();
-        int []nums = test.twoSum(new int[]{3, 2, 4}, 6);
-        test.printArray(nums);
         //System.out.println(test.twoSum(new int[]{2,5,5,11}, 10));
     }
 

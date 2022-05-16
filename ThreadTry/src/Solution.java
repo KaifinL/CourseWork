@@ -1346,8 +1346,7 @@ class Node {
             for (int j = -1; j <length; j++) {
                 if (i == 1 && j == 1) {
                     spbm[i][j] = 1;
-                }
-                if (i < 0 || j < 0 || grid[i][j] == 1) {
+                }else if (i < 0 || j < 0 || grid[i][j] == 1) {
                     spbm[i+1][j+1] = length*length;
                 } else {
                     spbm[i+1][j+1] = min(min(spbm[i][j+1], spbm[i][j]), spbm[i+1][j]) + 1;

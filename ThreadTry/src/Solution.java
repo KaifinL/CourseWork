@@ -1341,6 +1341,8 @@ class Node {
         if (grid.length == 1) {
             if (grid[0][0] == 0) {
                 return 1;
+            } else {
+                return -1;
             }
         }
         if (grid[0][0] == 1 || grid[length-1][length-1] == 1) {

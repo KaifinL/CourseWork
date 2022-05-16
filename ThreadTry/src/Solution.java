@@ -1315,6 +1315,7 @@ class Node {
     }
 
     public int deepestLeavesSum(TreeNode root) {
+        nodes = new Stack<>();
         constructor(root, 0);
         int level = nodes.peek().level;
         int sum = 0;

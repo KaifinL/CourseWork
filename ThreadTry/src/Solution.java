@@ -1361,7 +1361,11 @@ class Node {
                 if (grid[i][j] == 1) {
                     spbm[i][j] = length*length;
                 } else {
-                    spbm[i][j] = min(min(min(spbm[i][j+1], spbm[i-1][j+1]), spbm[i+1][j]), spbm[i+1][j+1]) + 1;
+                    if (i == 0) {
+                        spbm[i][j] = min(min(spbm[i][j+1], spbm[i+1][j]), spbm[i+1][j+1]) + 1;
+                    } else {
+                        spbm[i][j] = min(min(min(spbm[i][j+1], spbm[i-1][j+1]), spbm[i+1][j]), spbm[i+1][j+1]) + 1;
+                    }
                 }
             }
         }

@@ -1344,6 +1344,9 @@ class Node {
         int [][]spbm = new int[length+1][length+1];
         for (int i = -1; i < length; i++) {
             for (int j = -1; j <length; j++) {
+                if (i == 0 && j == 0) {
+                    spbm[i][j] = 1;
+                }
                 if (i < 0 || j < 0 || grid[i][j] == 1) {
                     spbm[i+1][j+1] = length*length;
                 } else {

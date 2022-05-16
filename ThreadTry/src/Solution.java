@@ -1381,7 +1381,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        TreeNode root = new TreeNode()
+        TreeNode root = new TreeNode(38, new TreeNode(43, new TreeNode(16, null, new TreeNode(71)), ))
         System.out.println(test.threeSum(new int[]{-1,0,1,2,-1,-4}));
     }
 

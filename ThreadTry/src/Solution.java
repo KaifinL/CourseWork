@@ -1292,14 +1292,39 @@ class Node {
       }
   }
 
-    public int deepestLeavesSum(TreeNode root) {
+  public class mapping {
+        int val;
+        int level;
+
+          public mapping(int val, int level) {
+              this.level = level;
+              this.val = val;
+          }
+  }
+
+
+    public Stack<mapping> nodes;
+
+    public void constructor(TreeNode root, int level) {
         if (root == null) {
-            return 0;
+            return;
         }
-        if (root.left == null && root.right == null) {
-            return root.val;
+        nodes.push(new mapping(root.val, level));
+        constructor(root.left, level+1);
+        constructor(root.right, level+1);
+    }
+
+    public int deepestLeavesSum(TreeNode root) {
+        constructor(root, 0);
+        int level = nodes.peek().level;
+        int sum = 0;
+        while (!nodes.empty()) {
+            mapping curr = nodes.pop();
+            if (curr.level == level) {
+                sum += curr.val;
+            }
         }
-        return deepestLeavesSum(root.left) + deepestLeavesSum(root.right);
+        return sum;
     }
 
     @Test

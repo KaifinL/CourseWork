@@ -1414,7 +1414,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.shortestPathBinaryMatrix(new int[][]{{0,1,1,0,0,0}, {0,1,0,1,1,0}, {0,1,1,0,1,0}, {}});
+        int result = test.shortestPathBinaryMatrix(new int[][]{{0,1,1,0,0,0}, {0,1,0,1,1,0}, {0,1,1,0,1,0}, {0,0,0,1,1,0}, });
         System.out.println(result);
     }
 

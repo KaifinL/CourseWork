@@ -1323,6 +1323,9 @@ class Node {
             mapping curr = nodes.pop();
             if (curr.level == level) {
                 sum += curr.val;
+            } else if (curr.level > level) {
+                sum = curr.val;
+                level = curr.level;
             }
         }
         return sum;

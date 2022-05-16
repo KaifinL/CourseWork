@@ -1405,8 +1405,8 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.shortestPathBinaryMatrix(new int[][]{})
-        System.out.println(test.threeSum(new int[]{-1,0,1,2,-1,-4}));
+        int result = test.shortestPathBinaryMatrix(new int[][]{{0,1}, {1, 0}});
+        System.out.println(result);
     }
 
 

@@ -1338,6 +1338,11 @@ class Node {
 
     public int shortestPathBinaryMatrix(int[][] grid) {
         int length = grid.length;
+        if (grid.length == 1) {
+            if (grid[0][0] == 0) {
+                return 1;
+            }
+        }
         if (grid[0][0] == 1 || grid[length-1][length-1] == 1) {
             return -1;
         }

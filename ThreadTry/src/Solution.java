@@ -1336,6 +1336,27 @@ class Node {
         assertTrue(find2(new int[]{1, 2, 3, 4, 5}, 5) == 4);
     }
 
+    public int shortestPathBinaryMatrix(int[][] grid) {
+        int length = grid.length;
+        if (grid[0][0] == 1 || grid[length-1][length-1] == 1) {
+            return -1;
+        }
+        int [][]spbm = new int[length+1][length+1];
+        for (int i = -1; i < length; i++) {
+            for (int j = -1; j <length; j++) {
+                if (i < 0 || j < 0 || grid[i][j] == 1) {
+                    spbm[i+1][j+1] = length*length;
+                } else {
+                    spbm[i+1][j+1] = min(min(spbm[i][j+1], spbm[i][j]), spbm[i+1][j]) + 1;
+                }
+            }
+        }
+        if (spbm[length][length] >= length*length) {
+            return -1;
+        }
+        return spbm[length][length];
+    }
+
 
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

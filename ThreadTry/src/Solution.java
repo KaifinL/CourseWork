@@ -1349,21 +1349,26 @@ class Node {
             return -1;
         }
         int [][]spbm = new int[length+1][length+1];
-        for (int i = -1; i < length; i++) {
-            for (int j = -1; j <length; j++) {
-                if (i == 0 && j == 0) {
-                    spbm[1][1] = 1;
-                }else if (i < 0 || j < 0 || grid[i][j] == 1) {
-                    spbm[i+1][j+1] = length*length;
+        for (int i = 0; i < length; i++) {
+            spbm[i][length] = length*length;
+        }
+        for (int j = 0; j < length; j++) {
+            spbm[length][j] = length*length;
+        }
+        spbm[length][length] = 1;
+        for (int j = length-1; j >= 0; j--) {
+            for (int i = length-1; i >= 0; i--) {
+                if (grid[i][j] == 1) {
+                    spbm[i][j] = length*length;
                 } else {
-                    spbm[i+1][j+1] = min(min(spbm[i][j+1], spbm[i][j]), spbm[i+1][j]) + 1;
+                    spbm[i][j] = min(min(min(spbm[i][j+1], spbm[i-1][j+1]), spbm[i+1][j]), spbm[i+1][j+1]) + 1;
                 }
             }
         }
-        if (spbm[length][length] >= length*length) {
+        if (spbm[0][0] >= length*length) {
             return -1;
         }
-        return spbm[length][length];
+        return spbm[0][0];
     }
 
 

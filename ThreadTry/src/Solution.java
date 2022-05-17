@@ -1378,6 +1378,14 @@ class Node {
         return spbm[0][0];
     }
 
+    public double median(int []nums1, int[] nums2) {
+        
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+
+    }
+
 
 
     public static int minimum(int hp, int upper, int lower, int skill[]) {

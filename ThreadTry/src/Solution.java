@@ -1379,10 +1379,19 @@ class Node {
     }
 
     // it is guaranteed that the number of elements in these two arrays is the same.
-    public double median(int []nums1, int[] nums2) {
+    public double median(int []nums1, int[] nums2, boolean odd) {
         int length = nums1.length;
         if (length < 20) {
             int []merge = new int[length*2];
+            System.arraycopy(nums1, 0, merge, 0, length);
+            System.arraycopy(nums2, 0, merge, length, length);
+            Arrays.sort(merge);
+            if (odd) {
+                return (double) merge[length];
+            } else {
+                return ((double) merge[length-1] + (double) merge[length]) / 2.0;
+             }
+        } else {
             
         }
     }

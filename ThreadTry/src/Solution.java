@@ -1394,13 +1394,15 @@ class Node {
         } else {
             int middle_index = (length-1)/2;
             if (nums1[middle_index] > nums2[middle_index]) {
-                return median()
+                return median(Arrays.copyOfRange(nums1, 0, middle_index+1), Arrays.copyOfRange(nums2, middle_index+2, length), odd);
+            } else {
+                return median(Arrays.copyOfRange(nums1, middle_index+1, length+1), Arrays.copyOfRange(nums2, 0, middle_index+1), odd);
             }
         }
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-
+        
     }
 
 

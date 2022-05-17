@@ -1402,7 +1402,9 @@ class Node {
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        
+        if ((nums1.length+nums2.length) % 2 == 1) {
+            return median(Arrays.copyOfRange(nums1, ), nums2, true);
+        }
     }
 
 

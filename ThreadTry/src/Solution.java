@@ -1392,9 +1392,9 @@ class Node {
                 return ((double) merge[length-1] + (double) merge[length]) / 2.0;
              }
         } else {
-            int middle_index = length/2;
+            int middle_index = (length-1)/2;
             if (nums1[middle_index] > nums2[middle_index]) {
-                
+                return median()
             }
         }
     }

@@ -1378,7 +1378,9 @@ class Node {
         return spbm[0][0];
     }
 
+    // it is guaranteed that the number of elements in these two arrays is the same.
     public double median(int []nums1, int[] nums2) {
+        int length = nums1.length;
         
     }
 

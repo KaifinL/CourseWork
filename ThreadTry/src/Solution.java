@@ -1392,7 +1392,7 @@ class Node {
                 return ((double) merge[length-1] + (double) merge[length]) / 2.0;
              }
         } else {
-            
+            int middle_index = length/2
         }
     }
 

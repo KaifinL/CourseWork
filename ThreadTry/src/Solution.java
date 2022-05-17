@@ -1349,15 +1349,18 @@ class Node {
             return -1;
         }
         int [][]spbm = new int[length+1][length+1];
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i <= length; i++) {
             spbm[i][length] = length*length;
         }
-        for (int j = 0; j < length; j++) {
+        for (int j = 0; j <= length; j++) {
             spbm[length][j] = length*length;
         }
-        spbm[length][length] = 1;
+        spbm[length-1][length-1] = 1;
         for (int j = length-1; j >= 0; j--) {
             for (int i = length-1; i >= 0; i--) {
+                if (i == length-1 && j == length-1) {
+                    continue;
+                }
                 if (grid[i][j] == 1) {
                     spbm[i][j] = length*length;
                 } else {

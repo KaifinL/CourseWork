@@ -1381,7 +1381,10 @@ class Node {
     // it is guaranteed that the number of elements in these two arrays is the same.
     public double median(int []nums1, int[] nums2) {
         int length = nums1.length;
-        
+        if (length < 20) {
+            int []merge = new int[length*2];
+            
+        }
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {

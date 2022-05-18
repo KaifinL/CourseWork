@@ -1568,7 +1568,7 @@ class Node {
         if (root == null) {
             return;
         }
-        if (val.size() < level) {
+        if (val.size() <= level) {
             val.add(root.val);
         } else {
             val.set(level, val.elementAt(level)+root.val);

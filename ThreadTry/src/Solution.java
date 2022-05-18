@@ -1466,7 +1466,7 @@ class Node {
         int length = nums.length+1;
         int [][]lis = new int[length][length+1];
         for (int j = length; j>= 0; j--) {
-            for (int i = 0; i < j; i--) {
+            for (int i = 0; i < j; i++) {
                 if (j == length) {
                     lis[i][j] = 0;
                 } else if (new_array[j] < new_array[i]) {

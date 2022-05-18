@@ -1495,7 +1495,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.numTrees(2);
+        int result = test.numTrees(3);
         System.out.println(result);
     }
 

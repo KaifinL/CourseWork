@@ -1550,6 +1550,10 @@ class Node {
         return Math.max(first, second);
     }
 
+    public int rob(TreeNode root) {
+
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.rob(new int[]{1, 2, 3, 1});

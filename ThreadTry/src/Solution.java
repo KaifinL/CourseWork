@@ -1465,9 +1465,9 @@ class Node {
         System.arraycopy(nums, 0, new_array, 1, nums.length);
         int length = nums.length+1;
         int [][]lis = new int[length][length+1];
-        for (int j = length; j>= 0; j--) {
-            for (int i = 0; i < j; i++) {
-                if (j == length) {
+        for (int i = length; i >= 0; i--) {
+            for (int j = length; j>= 0; j--) {
+                if (j == length || i > j) {
                     lis[i][j] = 0;
                 } else if (new_array[j] < new_array[i]) {
                     lis[i][j] = lis[i][j+1];

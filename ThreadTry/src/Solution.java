@@ -1481,7 +1481,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.lengthOfLIS(new int[]{})
+        int result = test.lengthOfLIS(new int[]{10,9,2,5,3,7,101,18});
         System.out.println(result);
     }
 

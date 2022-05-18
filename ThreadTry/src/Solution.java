@@ -1479,9 +1479,23 @@ class Node {
         return lis[0][1];
     }
 
+
+    public int numTrees(int n) {
+        int []nt = new int[n+1];
+        nt[0] = 1;
+        for (int i = 1; i <= n; i++) {
+            int sum = 0;
+            for (int j = 1; j <= i; j ++) {
+                sum += nt[j-1] * nt[i-j];
+            }
+            nt[i] = sum;
+        }
+        return nt[n];
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.lengthOfLIS(new int[]{10,9,2,5,3,7,101,18});
+        int result = test.numTrees(1);
         System.out.println(result);
     }
 

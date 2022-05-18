@@ -1507,6 +1507,9 @@ class Node {
             } else {
                 int minimum = Integer.MAX_VALUE;
                 for (int coin : coins) {
+                    if (i < coin) {
+                        continue;
+                    }
                     int curr = cc[i - coin];
                     if (curr < minimum) {
                         minimum = curr;

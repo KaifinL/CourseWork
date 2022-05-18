@@ -1503,7 +1503,7 @@ class Node {
         cc[0] = 0;
         for (int i = 1; i <= amount; i++) {
             if (i < coins[0]) {
-                cc[i] = amount*amount;
+                cc[i] = Integer.MAX_VALUE/2;
             } else {
                 int minimum = Integer.MAX_VALUE;
                 for (int coin : coins) {
@@ -1518,7 +1518,7 @@ class Node {
                 cc[i] = minimum+1;
             }
         }
-        if (cc[amount] > amount*amount) {
+        if (cc[amount] > Integer.MAX_VALUE/2) {
             return -1;
         }
         return cc[amount];

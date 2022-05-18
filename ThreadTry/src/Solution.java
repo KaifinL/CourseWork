@@ -1550,8 +1550,31 @@ class Node {
         return Math.max(first, second);
     }
 
-    public int rob(TreeNode root) {
+    public Vector<Integer> val;
 
+    public int rob(TreeNode root) {
+        val = new Vector<>();
+        rob_helper(root, 0);
+        int robs[] = new int[val.size()+2];
+        robs[val.size()] = 0;
+        robs[val.size()+1] = 0;
+        for (int i = val.size()-1; i >= 0; i--) {
+            robs[i] = max(robs[i+1], val.elementAt(i)+robs[i+2]);
+        }
+        return robs[0];
+    }
+
+    public void rob_helper(TreeNode root, int level) {
+        if (root == null) {
+            return;
+        }
+        if (val.size() < level) {
+            val.add(root.val);
+        } else {
+            val.set(level, val.elementAt(level)+root.val);
+        }
+        rob_helper(root.left, level+1);
+        rob_helper(root.right, level+1);
     }
 
     public static void main(String[] args) {

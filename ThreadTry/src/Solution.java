@@ -1479,7 +1479,10 @@ class Node {
         return lis[0][1];
     }
 
-
+/*
+    this question really needs some calculations and observations. For example, if n = 3,
+    there are three possibilities, either the root is 1, 2, or 3.
+ */
     public int numTrees(int n) {
         int []nt = new int[n+1];
         nt[0] = 1;

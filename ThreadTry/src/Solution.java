@@ -1531,6 +1531,16 @@ class Node {
         return cc[amount];
     }
 
+    public int rob(int[] nums) {
+        int robs[] = new int[nums.length+2];
+        robs[nums.length] = 0;
+        robs[nums.length+1] = 0;
+        for (int i = nums.length-1; i >= 0; i--) {
+            robs[i] = max(robs[i+1], nums[i]+robs[i+2]);
+        }
+        return robs[0];
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.coinChange(new int[]{2}, 1);

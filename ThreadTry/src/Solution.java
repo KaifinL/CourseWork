@@ -1549,7 +1549,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.rob(new int[]{2});
+        int result = test.rob(new int[]{1, 2, 3, 1});
         System.out.println(result);
     }
 

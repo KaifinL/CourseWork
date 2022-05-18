@@ -1531,7 +1531,7 @@ class Node {
         return cc[amount];
     }
 
-    public int rob(int[] nums) {
+    public int rob2(int[] nums) {
         int robs[] = new int[nums.length+2];
         robs[nums.length] = 0;
         robs[nums.length+1] = 0;
@@ -1540,6 +1540,8 @@ class Node {
         }
         return robs[0];
     }
+
+    
 
     public static void main(String[] args) {
         Solution test = new Solution();

@@ -1469,7 +1469,7 @@ class Node {
             for (int j = length; j>= 0; j--) {
                 if (j == length || i >= j) {
                     lis[i][j] = 0;
-                } else if (new_array[j] < new_array[i]) {
+                } else if (new_array[j] <= new_array[i]) {
                     lis[i][j] = lis[i][j+1];
                 } else {
                     lis[i][j] = max(lis[j][j+1]+1, lis[i][j+1]);

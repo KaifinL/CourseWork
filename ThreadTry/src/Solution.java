@@ -1502,9 +1502,14 @@ class Node {
     public int coinChange(int[] coins, int amount) {
         int []cc = new int[amount+1];
         cc[0] = 0;
-        int minimum = (int) Collections.min(Arrays.asList(coins));
+        int minimum_coin = Integer.MAX_VALUE;
+        for (int coin : coins) {
+            if (coin < minimum_coin) {
+                minimum_coin = coin;
+            }
+        }
         for (int i = 1; i <= amount; i++) {
-            if (i < coins[0]) {
+            if (i <  minimum_coin) {
                 cc[i] = Integer.MAX_VALUE/2;
             } else {
                 int minimum = Integer.MAX_VALUE;

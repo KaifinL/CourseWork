@@ -1482,8 +1482,8 @@ class Node {
 /*
     this question really needs some calculations and observations. For example, if n = 3,
     there are three possibilities, either the root is 1, 2, or 3. If the root is 1, both 2 and 3
-    must be on its right. then there are dp(2) possibilites(if the root is 1), so on and so forth.
-    
+    must be on its right. then there are dp(2) possibilities(if the root is 1), so on and so forth.
+    For more puzzles, see https://www.youtube.com/watch?v=Ox0TenN3Zpg.
  */
     public int numTrees(int n) {
         int []nt = new int[n+1];

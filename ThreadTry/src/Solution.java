@@ -1498,7 +1498,9 @@ class Node {
         return nt[n];
     }
 
-    
+    public int coinChange(int[] coins, int amount) {
+        
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();

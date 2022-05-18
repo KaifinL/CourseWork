@@ -1518,7 +1518,7 @@ class Node {
                 cc[i] = minimum+1;
             }
         }
-        if (cc[amount] > Integer.MAX_VALUE/2) {
+        if (cc[amount] >= Integer.MAX_VALUE/2) {
             return -1;
         }
         return cc[amount];

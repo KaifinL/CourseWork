@@ -1499,7 +1499,26 @@ class Node {
     }
 
     public int coinChange(int[] coins, int amount) {
-        
+        int []cc = new int[amount+1];
+        cc[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            if (i < coins[0]) {
+                cc[i] = amount*amount;
+            } else {
+                int minimum = Integer.MAX_VALUE;
+                for (int coin : coins) {
+                    int curr = cc[i - coin];
+                    if (curr < minimum) {
+                        minimum = curr;
+                    }
+                }
+                cc[i] = minimum+1;
+            }
+        }
+        if (cc[amount] >= amount*amount) {
+            return -1;
+        }
+        return cc[amount];
     }
 
     public static void main(String[] args) {

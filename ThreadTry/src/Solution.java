@@ -1518,7 +1518,7 @@ class Node {
                 cc[i] = minimum+1;
             }
         }
-        if (cc[amount] >= amount*amount) {
+        if (cc[amount] > amount*amount) {
             return -1;
         }
         return cc[amount];

@@ -1498,6 +1498,17 @@ class Node {
         return nt[n];
     }
 
+    public List<TreeNode> generateTrees(int n) {
+        List<TreeNode> []tree_ary = new List[n+1];
+        tree_ary[0] = null;
+        for (int i = 1; i <= n; i++) {
+            List<TreeNode> curr = new ArrayList();
+            for (int j = 1; j <= i; j++) {
+                TreeNode root = new TreeNode(j, )
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.numTrees(4);

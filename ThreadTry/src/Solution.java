@@ -14,6 +14,7 @@ import java.util.Stack;
 import java.util.Vector;
 
 import static java.lang.Math.floorDiv;
+import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static java.lang.Math.pow;
 import static org.junit.Assert.assertTrue;
@@ -1458,11 +1459,29 @@ class Node {
         }
     }
 
-    
+    public int lengthOfLIS(int[] nums) {
+        int []new_array = new int[nums.length+1];
+        new_array[0] = Integer.MIN_VALUE;
+        System.arraycopy(nums, 0, new_array, 1, nums.length);
+        int length = nums.length+1;
+        int [][]lis = new int[length][length+1];
+        for (int i = length-1; i >= 0; i--) {
+            for (int j = length; j>= 0; j--) {
+                if (j == length) {
+                    lis[i][j] = 0;
+                } else if (new_array[j] < new_array[i]) {
+                    lis[i][j] = lis[i][j+1];
+                } else {
+                    lis[i][j] = max(lis[j][j+1], lis[i][j+1]);
+                }
+            }
+        }
+        return lis[0][1];
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.shortestPathBinaryMatrix(new int[][]{{0,1,1,0,0,0}, {0,1,0,1,1,0}, {0,1,1,0,1,0}, {0,0,0,1,1,0}, {1,1,1,1,1,0}, {1,1,1,1,1,0}});
+        int result = test.lengthOfLIS(new int[]{})
         System.out.println(result);
     }
 

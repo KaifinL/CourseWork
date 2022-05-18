@@ -1542,6 +1542,9 @@ class Node {
     }
 
     public int rob(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
         int first = rob2(Arrays.copyOfRange(nums, 0, nums.length-1));
         int second = rob2(Arrays.copyOfRange(nums, 1, nums.length));
         return Math.max(first, second);

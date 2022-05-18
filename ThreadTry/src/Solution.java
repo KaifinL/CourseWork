@@ -1541,7 +1541,11 @@ class Node {
         return robs[0];
     }
 
-    
+    public int rob(int[] nums) {
+        int first = rob2(Arrays.copyOfRange(nums, 0, nums.length-2));
+        int second = rob2(Arrays.copyOfRange(nums, 1, nums.length-1));
+        return Math.max(first, second);
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();

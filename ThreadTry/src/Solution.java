@@ -1472,7 +1472,7 @@ class Node {
                 } else if (new_array[j] < new_array[i]) {
                     lis[i][j] = lis[i][j+1];
                 } else {
-                    lis[i][j] = max(lis[j][j+1], lis[i][j+1]);
+                    lis[i][j] = max(lis[j][j+1]+1, lis[i][j+1]);
                 }
             }
         }

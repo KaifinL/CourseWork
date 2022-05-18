@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -1501,7 +1502,7 @@ class Node {
     public int coinChange(int[] coins, int amount) {
         int []cc = new int[amount+1];
         cc[0] = 0;
-        int minimum = Array
+        int minimum = Collections.min
         for (int i = 1; i <= amount; i++) {
             if (i < coins[0]) {
                 cc[i] = Integer.MAX_VALUE/2;

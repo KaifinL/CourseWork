@@ -1573,6 +1573,8 @@ class Node {
         rob_helper(root.right, level+1);
     }
 
+    
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.rob(new int[]{1, 2, 3, 1});

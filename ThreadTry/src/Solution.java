@@ -1574,8 +1574,19 @@ class Node {
     }
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        int [][]upwo = new int[obstacleGrid.length+1][obstacleGrid.length+1];
-        for (int )
+        int width = obstacleGrid[0].length;
+        int high = obstacleGrid.length;
+        int [][]upwo = new int[high+1][width+1];
+        for (int i = high; i >= 0; i--) {
+            for (int j = width; j>= 0; j--) {
+                if (i == high || j == width || obstacleGrid[i][j] == 1) {
+                    upwo[i][j] = 0;
+                } else {
+                    upwo[i][j] = upwo[i+1][j] + upwo[i][j+1];
+                }
+            }
+        }
+        return upwo[0][0];
     }
 
     public static void main(String[] args) {

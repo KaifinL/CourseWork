@@ -1574,7 +1574,8 @@ class Node {
     }
 
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        
+        int [][]upwo = new int[obstacleGrid.length+1][obstacleGrid.length+1];
+        for (int )
     }
 
     public static void main(String[] args) {

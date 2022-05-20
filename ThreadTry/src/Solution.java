@@ -1573,7 +1573,9 @@ class Node {
         rob_helper(root.right, level+1);
     }
 
-    
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();

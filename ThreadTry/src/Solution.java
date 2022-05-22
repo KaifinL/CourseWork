@@ -1603,7 +1603,7 @@ class Node {
                 } else if (s.charAt(i) != s.charAt(j)) {
                     csm[i][j] = Math.max(csm[i+1][j], csm[i][j-1])+1;
                 } else {
-                    csm[i][j] = Math.max(csm[i+1][j], csm[i][j-1])+2+csm[i+1][j-1];
+                    csm[i][j] = Math.max(2+2*csm[i+1][j-1],1+Math.max(csm[i+1][j], csm[i][j-1]));
                 }
             }
         }

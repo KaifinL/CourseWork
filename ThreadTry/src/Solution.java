@@ -1576,10 +1576,15 @@ class Node {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int width = obstacleGrid[0].length;
         int high = obstacleGrid.length;
+        if (obstacleGrid[0][0] == 1 || obstacleGrid[high-1][width-1] == 1) {
+            return 0;
+        }
         int [][]upwo = new int[high+1][width+1];
         for (int i = high; i >= 0; i--) {
             for (int j = width; j>= 0; j--) {
-                if (i == high || j == width || obstacleGrid[i][j] == 1) {
+                if (i == high-1 && j == width-1) {
+                    upwo[i][j] = 1;
+                } else if (i == high || j == width || obstacleGrid[i][j] == 1) {
                     upwo[i][j] = 0;
                 } else {
                     upwo[i][j] = upwo[i+1][j] + upwo[i][j+1];

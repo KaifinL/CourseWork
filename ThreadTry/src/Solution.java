@@ -1595,19 +1595,19 @@ class Node {
     }
 
     public int countSubstrings(String s) {
-        int [][]csm = new int[s.length()+1][s.length()+1];
+        boolean [][]csm = new boolean[s.length()][s.length()];
+        int counter = 0;
         for (int i = s.length(); i >= 0; i--) {
             for (int j = i; j < s.length(); j++) {
-                if (i == j) {
-                    csm[i][j] = 1;
-                } else if (s.charAt(i) != s.charAt(j)) {
-                    csm[i][j] = Math.max(csm[i+1][j], csm[i][j-1])+1;
-                } else {
-                    csm[i][j] = Math.max(2+2*csm[i+1][j-1],1+Math.max(csm[i+1][j], csm[i][j-1]));
+                if (s.charAt(i) == s.charAt(j) && (j-i <= 1 || csm[i+1][j-1])) {
+                    csm[i][j] = true;
+                }
+                if (csm[i][j]) {
+                    counter++;
                 }
             }
         }
-        return csm[0][s.length()-1];
+        return counter;
     }
 
     public static void main(String[] args) {

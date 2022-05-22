@@ -1612,7 +1612,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.countSubstrings("aba");
+        int result = test.countSubstrings("aaa");
         System.out.println(result);
     }
 

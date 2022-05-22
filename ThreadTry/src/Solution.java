@@ -1594,9 +1594,25 @@ class Node {
         return upwo[0][0];
     }
 
+    public int countSubstrings(String s) {
+        int [][]csm = new int[s.length()+1][s.length()+1];
+        for (int i = s.length(); i >= 0; i--) {
+            for (int j = i; j < s.length(); j++) {
+                if (i == j) {
+                    csm[i][j] = 1;
+                } else if (s.charAt(i) != s.charAt(j)) {
+                    csm[i][j] = Math.max(csm[i+1][j], csm[i][j-1])+1;
+                } else {
+                    csm[i][j] = Math.max(csm[i+1][j], csm[i][j-1])+2+csm[i+1][j-1];
+                }
+            }
+        }
+        return csm[0][s.length()-1];
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.rob(new int[]{1, 2, 3, 1});
+        int result = test.countSubstrings("aaa");
         System.out.println(result);
     }
 

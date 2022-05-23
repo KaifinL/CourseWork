@@ -1633,7 +1633,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.countSubstrings("aba");
+        int result = test.findMaxForm(new String[]{"10","0001","111001","1","0"}, 5, );
         System.out.println(result);
     }
 

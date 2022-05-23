@@ -1610,6 +1610,27 @@ class Node {
         return counter;
     }
 
+    public int findMaxForm(String[] strs, int m, int n) {
+        if (m < 0 || n < 0) {
+            return Integer.MIN_VALUE;
+        }
+        if (m == 0 && n == 0) {
+            return 0;
+        }
+        int ones = 0;
+        int zeros = 0;
+        for (int i = 0; i < strs[0].length(); i++) {
+            if (strs[0].charAt(i) == '0') {
+                zeros++;
+            } else {
+                ones++;
+            }
+        }
+        String []next = new String[strs.length-1];
+        System.arraycopy(strs, 1, next, 0, strs.length-1);
+        return Math.max(findMaxForm(next, m-zeros, n-ones)+1, findMaxForm(next, m, n));
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.countSubstrings("aba");

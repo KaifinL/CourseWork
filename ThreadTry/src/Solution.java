@@ -1611,7 +1611,7 @@ class Node {
     }
 
     public int findMaxForm(String[] strs, int m, int n) {
-        if (m < 0 || n < 0 || strs.length == 0) {
+        if (m < 0 || n < 0 || (strs.length == 0 && (m != 0 || n != 0))) {
             return Integer.MIN_VALUE;
         }
         if (m == 0 && n == 0) {

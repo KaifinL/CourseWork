@@ -1631,6 +1631,22 @@ class Node {
         return Math.max(findMaxForm(next, m-zeros, n-ones)+1, findMaxForm(next, m, n));
     }
 
+    public int longestValidParentheses(String s) {
+        int left = 0;
+        int counter = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                left++;
+            } else {
+                if (left > 0) {
+                    left--;
+                    counter += 2;
+                }
+            }
+        }
+        return counter;
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.findMaxForm(new String[]{"10","0001","111001","1","0"}, 5, 3);

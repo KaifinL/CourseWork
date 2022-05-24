@@ -1632,19 +1632,21 @@ class Node {
     }
 
     public int longestValidParentheses(String s) {
-        int left = 0;
-        int counter = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                left++;
-            } else {
-                if (left > 0) {
-                    left--;
-                    counter += 2;
+        boolean lvp[][] = new boolean[s.length()][s.length()];
+        int length = 0;
+        for (int i = s.length()-1; i >= 0; i--) {
+            for (int j = i+1; j < s.length(); j++) {
+                if ((lvp[i+1][j-1] || i == j-1) && s.charAt(i) == '(' && s.charAt(j) == ')') {
+                    lvp[i][j] = true;
+                    if (j - i + 1 > length) {
+                        length = j-i+1;
+                    }
+                } else {
+                    lvp[i][j] = false;
                 }
             }
         }
-        return counter;
+        return length;
     }
 
     public static void main(String[] args) {

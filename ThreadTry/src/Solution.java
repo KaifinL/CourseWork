@@ -1649,8 +1649,25 @@ class Node {
         return length;
     }
 
+    class envelope_struct {
+        int length;
+        int max_length;
+        int max_width;
+        int min_length;
+        int min_width;
 
-    
+        public envelope_struct(int length, int max_length, int max_width, int min_length, int min_width) {
+            this.length = length;
+            this.max_length = max_length;
+            this.max_width = max_width;
+            this.min_length = min_length;
+            this.min_width = min_width;
+        }
+    }
+
+    public int maxEnvelopes(int[][] envelopes) {
+        
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();

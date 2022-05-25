@@ -1666,7 +1666,13 @@ class Node {
     }
 
     public int maxEnvelopes(int[][] envelopes) {
-        
+        int length = envelopes.length;
+        envelope_struct []mes = new envelope_struct[length+1];
+        mes[length] = new envelope_struct(0, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        for (int i = length-1; i >= 0; i--) {
+            int curr_length = envelopes[i][0];
+            int curr_width = envelopes[i][1];
+        }
     }
 
     public static void main(String[] args) {

@@ -1649,6 +1649,9 @@ class Node {
         return length;
     }
 
+
+    
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.longestValidParentheses(")()())");

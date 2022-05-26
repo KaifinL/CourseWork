@@ -1685,6 +1685,8 @@ class Node {
         return ones;
     }
 
+    
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.hammingWeight(-3);

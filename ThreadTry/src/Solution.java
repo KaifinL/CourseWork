@@ -1666,7 +1666,13 @@ class Node {
     }
 
     public int hammingWeight(int n) {
-        
+        int factor = 0;
+        int ones = 0;
+        while (n != 0) {
+            if (n >= Math.pow(2, factor)) {
+                
+            }
+        }
     }
 
     public static void main(String[] args) {

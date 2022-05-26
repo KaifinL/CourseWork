@@ -1666,6 +1666,7 @@ class Node {
     }
 
     public int hammingWeight(int n) {
+        n = (int)
         int factor = 31;
         int ones = 0;
         while (n != 0) {

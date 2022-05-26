@@ -1666,7 +1666,7 @@ class Node {
     }
 
     public int hammingWeight(int n) {
-        String s = Integer.toUnsignedString(n);
+        String s = Integer.toUnsignedString(n, 2);
         int ones = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '1') {

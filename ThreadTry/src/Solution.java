@@ -1666,22 +1666,28 @@ class Node {
     }
 
     public int hammingWeight(int n) {
-        n = (int)
-        int factor = 31;
+        String s = Integer.toUnsignedString(n);
         int ones = 0;
-        while (n != 0) {
-            if (n >= Math.pow(2, factor)) {
-                n -= Math.pow(2, factor);
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '1') {
                 ones++;
             }
-            factor--;
         }
+//        int factor = 31;
+//        int ones = 0;
+//        while (n != 0) {
+//            if (n >= Math.pow(2, factor)) {
+//                n -= Math.pow(2, factor);
+//                ones++;
+//            }
+//            factor--;
+//        }
         return ones;
     }
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.longestValidParentheses(")()())");
+        int result = test.hammingWeight(-3);
         System.out.println(result);
     }
 

@@ -1670,8 +1670,11 @@ class Node {
         envelope_struct []mes = new envelope_struct[length+1];
         mes[length] = new envelope_struct(0, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
         for (int i = length-1; i >= 0; i--) {
-            int curr_length = envelopes[i][0];
-            int curr_width = envelopes[i][1];
+            int curr_width = envelopes[i][0];
+            int curr_length = envelopes[i][1];
+            if (curr_length > mes[i+1].max_length && curr_width > mes[i+1].max_width) {
+                mes[i] = new envelope_struct(mes[i+1].length+1, )
+            }
         }
     }
 

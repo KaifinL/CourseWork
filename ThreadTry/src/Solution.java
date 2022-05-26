@@ -1665,7 +1665,9 @@ class Node {
         }
     }
 
-    
+    public int hammingWeight(int n) {
+        
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();

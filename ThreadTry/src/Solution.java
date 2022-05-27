@@ -1711,6 +1711,32 @@ class Node {
         return steps;
     }
 
+    public int findKthNumber(int n, int k) {
+        int counter = 1;
+        for (int i = 1; i < 10; i++) {
+            if (counter == k) {
+                return i;
+            } else {
+                counter++;
+            }
+            int base = 1;
+            while (i * Math.pow(10, base) < n) {
+                for (int j = 0; j < 10; j++) {
+                    int curr = (int)((i * Math.pow(10, base)) + j);
+                    if (counter == k) {
+                        return curr;
+                    } else if (curr > n) {
+                        break;
+                    } else {
+                        counter++;
+                    }
+                }
+
+                base++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.numberOfSteps(123);

@@ -1685,7 +1685,18 @@ class Node {
         return ones;
     }
 
-    
+    public int closestCost(int[] baseCosts, int[] toppingCosts, int target) {
+        int []budges = new int[baseCosts.length];
+        for (int base : baseCosts) {
+            int curr = target - base;
+            int []toppings = new int[toppingCosts.length*2];
+            for (int i = 0; i < toppingCosts.length; i+=2) {
+                toppings[i] = toppingCosts[i/2];
+                toppingCosts[i+1] = toppingCosts[i/2];
+            }
+            Arrays.sort(toppings);
+        }
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();

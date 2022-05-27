@@ -1713,7 +1713,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.numberOfSteps(14);
+        int result = test.numberOfSteps(8);
         System.out.println(result);
     }
 

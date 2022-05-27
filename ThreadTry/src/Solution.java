@@ -1731,10 +1731,10 @@ class Node {
                         counter++;
                     }
                 }
-
                 base++;
             }
         }
+        return counter;
     }
 
     public static void main(String[] args) {

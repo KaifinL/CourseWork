@@ -1685,22 +1685,35 @@ class Node {
         return ones;
     }
 
-    public int closestCost(int[] baseCosts, int[] toppingCosts, int target) {
-        int []budges = new int[baseCosts.length];
-        for (int base : baseCosts) {
-            int curr = target - base;
-            int []toppings = new int[toppingCosts.length*2];
-            for (int i = 0; i < toppingCosts.length; i+=2) {
-                toppings[i] = toppingCosts[i/2];
-                toppingCosts[i+1] = toppingCosts[i/2];
+//    public int closestCost(int[] baseCosts, int[] toppingCosts, int target) {
+//        int []budges = new int[baseCosts.length];
+//        for (int base : baseCosts) {
+//            int curr = target - base;
+//            int []toppings = new int[toppingCosts.length*2];
+//            for (int i = 0; i < toppingCosts.length; i+=2) {
+//                toppings[i] = toppingCosts[i/2];
+//                toppingCosts[i+1] = toppingCosts[i/2];
+//            }
+//            Arrays.sort(toppings);
+//        }
+//    }
+
+    public int numberOfSteps(int num) {
+        int steps = 0;
+        while (num != 0) {
+            if (num % 2==0) {
+                num /= 2;
+            } else {
+                num--;
             }
-            Arrays.sort(toppings);
+            steps++;
         }
+        return steps;
     }
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.hammingWeight(-3);
+        int result = test.numberOfSteps(14);
         System.out.println(result);
     }
 

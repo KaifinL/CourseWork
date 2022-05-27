@@ -1720,7 +1720,7 @@ class Node {
                 counter++;
             }
             int base = 1;
-            while (i * Math.pow(10, base) < n) {
+            while (i * Math.pow(10, base) <= n) {
                 for (int j = 0; j < 10; j++) {
                     int curr = (int)((i * Math.pow(10, base)) + j);
                     if (counter == k) {

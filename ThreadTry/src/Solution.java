@@ -1723,10 +1723,10 @@ class Node {
             while (i * Math.pow(10, base) <= n) {
                 for (int j = 0; j < 10; j++) {
                     int curr = (int)((i * Math.pow(10, base)) + j);
-                    if (counter == k) {
-                        return curr;
-                    } else if (curr > n) {
+                    if (curr > n) {
                         break;
+                    } else if (counter == k) {
+                        return curr;
                     } else {
                         counter++;
                     }

@@ -1737,11 +1737,26 @@ class Node {
         return counter;
     }
 
-    
+    public boolean no_common(String a, String b) {
+        HashMap<Character, Integer> curr = new HashMap<>();
+        for (int i = 0; i < a.length(); i++) {
+            curr.put(a.charAt(i), 1);
+        }
+        for (int i = 0; i < b.length(); i++) {
+            if (curr.get(b.charAt(i)) == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int maxProduct(String[] words) {
+
+    }
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.findKthNumber(100, 10);
+        boolean result = test.no_common("abc", "a");
         System.out.println(result);
     }
 

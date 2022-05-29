@@ -1781,6 +1781,7 @@ class Node {
                 int curr_han = Math.abs(points[i][0] - x) + Math.abs(points[i][1]-y);
                 if (index == -1 || curr_han < han) {
                     index = i;
+                    han = curr_han;
                 }
             }
         }

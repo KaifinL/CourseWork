@@ -1788,6 +1788,28 @@ class Node {
         return index;
     }
 
+    public int minimum(TreeNode root) {
+        if (root == null) {
+            return Integer.MAX_VALUE;
+        }
+        return Math.min(root.val, min(minimum(root.left), minimum(root.right)));
+    }
+
+    public int maximum(TreeNode root) {
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        }
+        return Math.max(root.val, max(maximum(root.left), maximum(root.right)));
+    }
+
+    public int maxAncestorDiff(TreeNode root) {
+        if (root == null || (root.left == null && root.right == null)) {
+            return -1;
+        }
+        int diff = Math.max(Math.abs(root.val-maximum(root)), Math.abs(root.val-minimum(root)));
+        return Math.max(diff, Math.max(maxAncestorDiff(root.left), maxAncestorDiff(root.right)));
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         boolean result = test.no_common("abc", "a");

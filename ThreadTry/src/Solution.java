@@ -1762,6 +1762,11 @@ class Node {
         return max;
     }
 
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         boolean result = test.no_common("abc", "a");

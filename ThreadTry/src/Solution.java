@@ -1750,9 +1750,9 @@ class Node {
         return true;
     }
 
-    public int maxProduct(String[] words) {
-
-    }
+//    public int maxProduct(String[] words) {
+//
+//    }
 
     public static void main(String[] args) {
         Solution test = new Solution();

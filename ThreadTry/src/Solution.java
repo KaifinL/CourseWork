@@ -1743,7 +1743,7 @@ class Node {
             curr.put(a.charAt(i), 1);
         }
         for (int i = 0; i < b.length(); i++) {
-            if (curr.get(b.charAt(i)) == null) {
+            if (curr.get(b.charAt(i)) != null) {
                 return false;
             }
         }

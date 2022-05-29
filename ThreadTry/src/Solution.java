@@ -1739,7 +1739,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.findKthNumber(10, 3);
+        int result = test.findKthNumber(100, 10);
         System.out.println(result);
     }
 

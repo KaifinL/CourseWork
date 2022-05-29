@@ -1772,6 +1772,21 @@ class Node {
         return nums.length;
     }
 
+    public int nearestValidPoint(int x, int y, int[][] points) {
+        int index = -1;
+        int han = Integer.MAX_VALUE;
+        for (int i = 0; i < points.length; i++) {
+            if (points[i][0] == x || points[i][1] == y) {
+                // this is valid
+                int curr_han = Math.abs(points[i][0] - x) + Math.abs(points[i][1]-y);
+                if (index == -1 || curr_han < han) {
+                    index = i;
+                }
+            }
+        }
+        return index;
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         boolean result = test.no_common("abc", "a");

@@ -1824,7 +1824,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        boolean result = test.divide(, "a");
+        int result = test.divide(-2147483648, -1);
         System.out.println(result);
     }
 

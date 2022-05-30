@@ -1792,14 +1792,14 @@ class Node {
         if (root == null) {
             return Integer.MAX_VALUE;
         }
-        return Math.min(root.val, min(minimum(root.left), minimum(root.right)));
+        return Math.min(root.val, Math.min(minimum(root.left), minimum(root.right)));
     }
 
     public int maximum(TreeNode root) {
         if (root == null) {
             return Integer.MIN_VALUE;
         }
-        return Math.max(root.val, max(maximum(root.left), maximum(root.right)));
+        return Math.max(root.val, Math.max(maximum(root.left), maximum(root.right)));
     }
 
     public int maxAncestorDiff(TreeNode root) {

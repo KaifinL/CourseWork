@@ -1810,9 +1810,21 @@ class Node {
         return Math.max(diff, Math.max(maxAncestorDiff(root.left), maxAncestorDiff(root.right)));
     }
 
+    public int divide(int dividend, int divisor) {
+        int unsigned_dividend = Math.abs(dividend);
+        int unsigned_divisor = Math.abs(divisor);
+        int counter = 0;
+        int bias_divisor = unsigned_divisor;
+        while (bias_divisor <= unsigned_dividend && counter < Integer.MAX_VALUE && counter > Integer.MIN_VALUE) {
+            bias_divisor += unsigned_divisor;
+            counter++;
+        }
+        return ((dividend < 0 && divisor > 0) || (dividend >0 && divisor <0)) ? -counter : counter;
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
-        boolean result = test.no_common("abc", "a");
+        boolean result = test.divide(, "a");
         System.out.println(result);
     }
 

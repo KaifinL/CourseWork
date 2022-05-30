@@ -1811,6 +1811,9 @@ class Node {
     }
 
     public int divide(int dividend, int divisor) {
+        if (dividend == Integer.MIN_VALUE) {
+            dividend++;
+        }
         int unsigned_dividend = Math.abs(dividend);
         int unsigned_divisor = Math.abs(divisor);
         int counter = 0;

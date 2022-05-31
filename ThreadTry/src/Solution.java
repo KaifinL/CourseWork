@@ -1867,7 +1867,7 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        StringBuilder result = test.builder(3, 4);
+        boolean result = test.hasAllCodes("00110110", 2);
         System.out.println(result);
     }
 

@@ -1842,6 +1842,9 @@ class Node {
 //    }
     public StringBuilder builder(int target, int length) {
         StringBuilder curr = new StringBuilder(Integer.toBinaryString(target));
+        while (curr.length() < length) {
+            curr = new StringBuilder("0").append(curr);
+        }
         return curr;
     }
 

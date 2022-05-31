@@ -1856,6 +1856,7 @@ class Node {
             for (int j = 0; j < s.length()-k; j++) {
                 if (curr.substring(j, j+k).equals(target.toString())) {
                     equal = true;
+                    break;
                 }
             }
             if (!equal) {

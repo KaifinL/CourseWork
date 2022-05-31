@@ -1854,7 +1854,7 @@ class Node {
             StringBuilder target = builder(i, k);
             boolean equal = false;
             for (int j = 0; j < s.length()-k; j++) {
-                if (curr.substring(j, j+k).equals(target)) {
+                if (curr.substring(j, j+k+1).equals(target)) {
                     equal = true;
                 }
             }

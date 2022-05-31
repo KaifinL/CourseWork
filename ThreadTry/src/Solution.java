@@ -1825,6 +1825,22 @@ class Node {
         return ((dividend < 0 && divisor > 0) || (dividend >0 && divisor <0)) ? -counter : counter;
     }
 
+    public List<List<Integer>> groupThePeople(int[] groupSizes) {
+        if (groupSizes.length == 0) {
+            return null;
+        }
+        int size = groupSizes[0]-1;
+        int origin = groupSizes[0];
+        List<Integer> indices = new ArrayList<>();
+        indices.add(0);
+        for (int i = 1; i < groupSizes.length && size > 0; i++) {
+             if (groupSizes[i] == origin) {
+                 size--;
+                 indices.add(i);
+             }
+        }
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         int result = test.divide(-2147483648, -1);

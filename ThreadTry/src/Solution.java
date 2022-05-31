@@ -1840,14 +1840,19 @@ class Node {
 //             }
 //        }
 //    }
+    public StringBuilder builder(int target, int length) {
+        StringBuilder curr = new StringBuilder(Integer.toBinaryString(target));
+        return curr;
+    }
 
     public boolean hasAllCodes(String s, int k) {
-        
+        StringBuilder []all_possibilities = new StringBuilder[(int) Math.pow(2, k)];
+        return true;
     }
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        int result = test.divide(-2147483648, -1);
+        StringBuilder result = test.builder(3, 4);
         System.out.println(result);
     }
 

@@ -1849,7 +1849,19 @@ class Node {
     }
 
     public boolean hasAllCodes(String s, int k) {
-        StringBuilder []all_possibilities = new StringBuilder[(int) Math.pow(2, k)];
+        StringBuilder curr = new StringBuilder(s);
+        for (int i = 0; i < k; i++) {
+            StringBuilder target = builder(i, k);
+            boolean equal = false;
+            for (int j = 0; j < s.length()-k; j++) {
+                if (curr.substring(j, j+k).equals(target)) {
+                    equal = true;
+                }
+            }
+            if (!equal) {
+                return false;
+            }
+        }
         return true;
     }
 

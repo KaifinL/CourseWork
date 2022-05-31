@@ -1853,7 +1853,7 @@ class Node {
         for (int i = 0; i < k; i++) {
             StringBuilder target = builder(i, k);
             boolean equal = false;
-            for (int j = 0; j < s.length()-k; j++) {
+            for (int j = 0; j <= s.length()-k; j++) {
                 if (curr.substring(j, j+k).equals(target.toString())) {
                     equal = true;
                     break;

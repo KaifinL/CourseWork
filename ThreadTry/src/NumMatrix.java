@@ -18,7 +18,7 @@ public class NumMatrix {
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        return 
+        return sumGrid[row2+1][col2+1] - sumGrid[row1][col2+1] - sumGrid[row2+1][col1] + sumGrid[row1][col1];
     }
 
     public static void main(String[] args) {

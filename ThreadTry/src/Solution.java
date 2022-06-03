@@ -1850,7 +1850,7 @@ class Node {
 
     public boolean hasAllCodes(String s, int k) {
         StringBuilder curr = new StringBuilder(s);
-        for (int i = 0; i < k; i++) {
+        for (int i = 0; i < Math.pow(2, k); i++) {
             StringBuilder target = builder(i, k);
             boolean equal = false;
             for (int j = 0; j <= s.length()-k; j++) {

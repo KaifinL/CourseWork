@@ -21,6 +21,17 @@ public class NumMatrix {
         return sumGrid[row2+1][col2+1] - sumGrid[row1][col2+1] - sumGrid[row2+1][col1] + sumGrid[row1][col1];
     }
 
+    public int[][] transpose(int[][] matrix) {
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = i + 1; j < matrix[0].length; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+        return matrix;
+    }
+
     public static void main(String[] args) {
 
     }

@@ -22,14 +22,13 @@ public class NumMatrix {
     }
 
     public int[][] transpose(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = i + 1; j < matrix[0].length; j++) {
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[j][i];
-                matrix[j][i] = temp;
+        int [][] result = new int[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                result[i][j] = matrix[j][i];
             }
         }
-        return matrix;
+        return result;
     }
 
     public static void main(String[] args) {

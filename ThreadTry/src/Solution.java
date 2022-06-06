@@ -1890,7 +1890,7 @@ class Node {
                 } else {
                     return headA;
                 }
-            } 
+            }
             if (headB != null) {
                 if (!hash_nodes.contains(headB)) {
                     hash_nodes.add(headB);

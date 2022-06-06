@@ -22,15 +22,15 @@ class ATM {
         this.five_hundreds += banknotesCount[4];
     }
 
-    private int[] withdraw_helper(int amount) {
-        if (amount < 0) {
-            return new int[]{-1};
-        }
-    }
-
-    public int[] withdraw(int amount) {
-
-    }
+//    private int[] withdraw_helper(int amount) {
+//        if (amount < 0) {
+//            return new int[]{-1};
+//        }
+//    }
+//
+//    public int[] withdraw(int amount) {
+//
+//    }
 
 }
 

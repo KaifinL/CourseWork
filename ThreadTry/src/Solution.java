@@ -1869,6 +1869,8 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
+        ListNode headA = new ListNode(4, new ListNode(1, new ListNode(8, new ListNode(4, new ListNode(5)))));
+        ListNode headB = new ListNode()
         boolean result = test.hasAllCodes("00110110", 2);
         System.out.println(result);
     }

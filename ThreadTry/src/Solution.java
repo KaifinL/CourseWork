@@ -1883,8 +1883,16 @@ class Node {
                 } else {
                     return headA;
                 }
+            } else {
+                if (!hash_nodes.contains(headB)) {
+                    hash_nodes.add(headB);
+                    headB = headB.next;
+                } else {
+                    return headB;
+                }
             }
         }
+        return null;
     }
 
 

@@ -1869,8 +1869,9 @@ class Node {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        ListNode headA = new ListNode(4, new ListNode(1, new ListNode(8, new ListNode(4, new ListNode(5)))));
-        ListNode headB = new ListNode(5, new ListNode(6, new ListNode(1, new ListNode(8, new ListNode(4, new ListNode(5))))));
+        ListNode common = new ListNode(8, new ListNode(4, new ListNode(5)));
+        ListNode headA = new ListNode(4, new ListNode(1, common));
+        ListNode headB = new ListNode(5, new ListNode(6, new ListNode(1, common)));
 
         ListNode result = test.getIntersectionNode(headA, headB);
         System.out.println(result);

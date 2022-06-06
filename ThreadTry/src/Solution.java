@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -1870,6 +1871,20 @@ class Node {
         Solution test = new Solution();
         boolean result = test.hasAllCodes("00110110", 2);
         System.out.println(result);
+    }
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        HashSet<ListNode> hash_nodes = new HashSet<>();
+        while (headA != null && headB != null) {
+            if (headA != null) {
+                if (!hash_nodes.contains(headA)) {
+                    hash_nodes.add(headA);
+                    headA = headA.next;
+                } else {
+                    return headA;
+                }
+            }
+        }
     }
 
 

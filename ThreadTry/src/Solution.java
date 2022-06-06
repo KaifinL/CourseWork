@@ -1871,7 +1871,7 @@ class Node {
         Solution test = new Solution();
         ListNode common = new ListNode(2, new ListNode(4));
         ListNode headA = new ListNode(1, new ListNode(9, new ListNode(1, common)));
-        ListNode headB = new ListNode(5, new ListNode(6, new ListNode(1, common)));
+        ListNode headB = new ListNode(3, common);
 
         ListNode result = test.getIntersectionNode(headA, headB);
         System.out.println(result);

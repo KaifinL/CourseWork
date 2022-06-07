@@ -67,6 +67,6 @@ public class NumMatrix {
 
     public static void main(String[] args) {
         NumMatrix test = new NumMatrix();
-        test.merge(new int[]{1, 3, 4, 0, 0, 0}, 3, new int[]{2, 5, 6}, 3);
+        test.merge(new int[]{1, 2, 3, 0, 0, 0}, 3, new int[]{2, 5, 6}, 3);
     }
 }

@@ -1867,15 +1867,15 @@ class Node {
         return true;
     }
 
-    public static void main(String[] args) {
-        Solution test = new Solution();
-        ListNode common = new ListNode(2, new ListNode(4));
-        ListNode headA = new ListNode(1, new ListNode(9, new ListNode(1, common)));
-        ListNode headB = new ListNode(3, common);
-
-        ListNode result = test.getIntersectionNode(headA, headB);
-        System.out.println(result);
-    }
+//    public static void main(String[] args) {
+//        Solution test = new Solution();
+//        ListNode common = new ListNode(2, new ListNode(4));
+//        ListNode headA = new ListNode(1, new ListNode(9, new ListNode(1, common)));
+//        ListNode headB = new ListNode(3, common);
+//
+//        ListNode result = test.getIntersectionNode(headA, headB);
+//        System.out.println(result);
+//    }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         HashSet<ListNode> hash_nodes = new HashSet<>();

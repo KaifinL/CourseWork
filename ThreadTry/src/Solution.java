@@ -1879,7 +1879,7 @@ class Node {
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         HashSet<ListNode> hash_nodes = new HashSet<>();
-        while (headA != null && headB != null) {
+        while (headA != null || headB != null) {
             if (headA == headB) {
                 return headA;
             }

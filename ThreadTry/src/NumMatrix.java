@@ -2,6 +2,10 @@ public class NumMatrix {
 
     private int[][] sumGrid;
 
+    public NumMatrix() {
+        this.sumGrid = null;
+    }
+
     public NumMatrix(int[][] matrix) {
         sumGrid = new int[matrix.length+1][matrix[0].length+1];
         for (int i = 0; i <= matrix.length; i++) {
@@ -31,9 +35,38 @@ public class NumMatrix {
         return result;
     }
 
-    
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int []result = new int[m+n];
+        int first = 0;
+        int second = 0;
+        int index = 0;
+        while (first < m && second < n) {
+            if (nums1[first] < nums2[second]) {
+                result[index] = nums1[first];
+                first++;
+            } else {
+                result[index] = nums2[second];
+                second++;
+            }
+            index++;
+        }
+        if (first < m) {
+            for (int counter = first; counter < m; counter++) {
+                result[index+counter] = nums1[counter];
+            }
+        } else {
+            for (int counter = second; counter < n; counter++) {
+                result[index+counter] = nums2[counter];
+            }
+        }
+
+        for (int i =0 ; i < m+n; i++) {
+            nums1[i] = result[i];
+        }
+    }
 
     public static void main(String[] args) {
-
+        NumMatrix test = new NumMatrix();
+        test.merge(new int[]{1, 3, 4, 0, 0, 0}, 3, new int[]{2, 5, 6}, 3);
     }
 }

@@ -52,11 +52,13 @@ public class NumMatrix {
         }
         if (first < m) {
             for (int counter = first; counter < m; counter++) {
-                result[index+counter-1] = nums1[counter];
+                result[index] = nums1[counter];
+                index++;
             }
         } else {
             for (int counter = second; counter < n; counter++) {
                 result[index+counter-1] = nums2[counter];
+                index++;
             }
         }
 

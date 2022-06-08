@@ -67,7 +67,23 @@ public class NumMatrix {
         }
     }
 
-    
+    public int longestPalindromeSubseq(String s) {
+        int [][]lps = new int[s.length()][s.length()];
+        for (int i = s.length()-1; i >= 0; i--) {
+            for (int j = 0; j < s.length(); j++) {
+                if (i > j) {
+                    lps[i][j] = 0;
+                } else if (i == j) {
+                    lps[i][j] = 1;
+                } else if (s.charAt(i) == s.charAt(j)) {
+                    lps[i][j] = 2+lps[i+1][j-1];
+                } else {
+                    lps[i][j] = Math.max(lps[i+1][j], lps[i][j-1]);
+                }
+            }
+        }
+        return lps[0][s.length()-1];
+    }
 
 
 }

@@ -94,7 +94,16 @@ public class NumMatrix {
             mapping.put(numbers[index], index);
         }
 
-        for 
+        for (int index = 0; index < numbers.length; index++) {
+            if (mapping.get(target-numbers[index]) != null) {
+                if (target == 2*numbers[index] && index != numbers.length-1 && numbers[index] == numbers[index+1]) {
+                    return new int[]{index+1, index+2};
+                } else if (target != 2*numbers[index]) {
+                    return new int[]{index+1, mapping.get(target-numbers[index])+1};
+                }
+            }
+        }
+        return null;
     }
 
 

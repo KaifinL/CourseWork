@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class NumMatrix {
@@ -87,7 +88,14 @@ public class NumMatrix {
         return lps[0][s.length()-1];
     }
 
-    
+    public int[] twoSum(int[] numbers, int target) {
+        HashMap<Integer, Integer> mapping = new HashMap<>();
+        for (int index = 0; index < numbers.length; index++) {
+            mapping.put(numbers[index], index);
+        }
+
+        for 
+    }
 
 
 }

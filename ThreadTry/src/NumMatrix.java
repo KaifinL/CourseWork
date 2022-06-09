@@ -87,15 +87,7 @@ public class NumMatrix {
         return lps[0][s.length()-1];
     }
 
-    public int longestConsecutive(int[] nums) {
-        HashSet<Integer> nums_set = new HashSet();
-        int minimum = Integer.MAX_VALUE;
-        for (int num : nums) {
-            minimum = Math.min(minimum, num);
-            nums_set.add(num);
-        }
-        int length 
-    }
+    
 
 
 }

@@ -106,7 +106,18 @@ public class NumMatrix {
         return null;
     }
 
-    
+    public int lengthOfLongestSubstring(String s) {
+        HashSet<Character> set = new HashSet<>();
+        int length = 0;
+        for (int i = 0; i < s.length(); i++) {
+            Character curr = s.charAt(i);
+            if (!set.contains(curr)) {
+                set.add(curr);
+                length++;
+            }
+        }
+        return length;
+    }
 
 
 }

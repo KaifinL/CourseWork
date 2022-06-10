@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -127,7 +128,24 @@ public class NumMatrix {
         return length;
     }
 
-    
+    public boolean canPartition(int[] nums) {
+        int counter = 0;
+        for (int i = 0; i < nums.length; i++) {
+            counter+=nums[i];
+        }
+        if (counter % 2 == 1) {
+            return false;
+        }
+        return partition_helper(nums, counter/2);
+    }
+
+    public boolean partition_helper(int[] nums, int target) {
+        if (target == nums[0]) {
+            return true;
+        }
+        int []sub = Arrays.copyOfRange(nums, 1, nums.length);
+        return partition_helper(sub, target) || partition_helper(sub, target-nums[0]);
+    }
 
 
 }

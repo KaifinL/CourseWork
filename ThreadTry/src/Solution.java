@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         NumMatrix test3 = new NumMatrix();
-        boolean result = test3.canPartition(new int[]{1, 5, 11, 4});
+        boolean result = test3.canPartition(new int[]{1,2, 5});
         System.out.println(result);
     }
 

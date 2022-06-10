@@ -113,17 +113,14 @@ public class NumMatrix {
         boolean repetition = false;
         for (int i = 0; i < s.length(); i++) {
             Character curr = s.charAt(i);
-            if (repetition) {
+            if (i != 0 && set.contains(curr)) {
                 length = Math.max(length, temp);
                 set.clear();
-                set.add(curr)
-            } else {
-
-            }
-            
-            if (!set.contains(curr)) {
                 set.add(curr);
-                length++;
+                temp = 1;
+            } else {
+                temp++;
+                set.add(curr);
             }
         }
         return length;

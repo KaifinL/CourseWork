@@ -150,7 +150,33 @@ public class NumMatrix {
         return partition_helper(sub, target) || partition_helper(sub, target-nums[0]);
     }
 
-    
+    public int minOperations(int[] nums, int x) {
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+        }
+        int [][]subsum = new int[nums.length][nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                if (i > j) {
+                    subsum[i][j] = 0;
+                } else if (i == j) {
+                    subsum[i][j] = nums[i];
+                } else {
+                    subsum[i][j] = subsum[i][j-1] + nums[j];
+                }
+            }
+        }
+        int minimum = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                if (subsum[i][j] == sum - x) {
+                    minimum = Math.min(minimum, j - i);
+                }
+            }
+        }
+        return minimum;
+    }
 
 
 }

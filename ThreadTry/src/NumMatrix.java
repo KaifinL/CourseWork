@@ -171,7 +171,7 @@ public class NumMatrix {
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums.length; j++) {
                 if (subsum[i][j] == sum - x) {
-                    minimum = Math.min(minimum, j - i);
+                    minimum = Math.min(minimum, i + nums.length - j - 1);
                 }
             }
         }

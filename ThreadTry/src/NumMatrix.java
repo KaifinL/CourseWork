@@ -140,6 +140,9 @@ public class NumMatrix {
     }
 
     public boolean partition_helper(int[] nums, int target) {
+        if (nums.length == 0) {
+            return false;
+        }
         if (target == nums[0]) {
             return true;
         }

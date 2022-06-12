@@ -175,7 +175,7 @@ public class NumMatrix {
                 }
             }
         }
-        return minimum;
+        return minimum == Integer.MAX_VALUE ? -1 : minimum;
     }
 
 

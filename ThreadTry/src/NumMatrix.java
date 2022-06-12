@@ -188,7 +188,7 @@ public class NumMatrix {
         for (int curr = 1; curr < nums.length; curr++) {
             int prev = mapping.getOrDefault(nums[curr], -1);
             if (prev != -1 && prev >= init) {
-                init = prev;
+                init = prev+1;
                 sum_arr[curr] = sum_arr[curr-1] - sum_arr[init-1] + nums[curr];
             } else {
                 sum_arr[curr] = sum_arr[curr-1] + nums[curr];

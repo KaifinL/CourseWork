@@ -178,7 +178,9 @@ public class NumMatrix {
         return minimum == Integer.MAX_VALUE ? -1 : minimum;
     }
 
-    
+    public int maximumUniqueSubarray(int[] nums) {
+        
+    }
 
 
 }

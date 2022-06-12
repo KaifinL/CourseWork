@@ -179,7 +179,16 @@ public class NumMatrix {
     }
 
     public int maximumUniqueSubarray(int[] nums) {
-        
+        int init = 0;
+        int sum = Integer.MIN_VALUE;
+        int sum_arr[] = new int[nums.length];
+        sum_arr[0] = nums[0];
+        HashMap<Integer, Integer> mapping = new HashMap<>();
+        mapping.put(nums[0], 0);
+        for (int curr = 1; curr < nums.length; curr++) {
+            int prev = mapping.get(nums[curr]);
+            if (prev != null && )
+        }
     }
 
 

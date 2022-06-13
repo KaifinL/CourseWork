@@ -220,6 +220,9 @@ public class NumMatrix {
                     minimum = Math.min(minimum, curr.get(curr_index));
                 }
             }
+            if (num == triangle.size()-1) {
+                break;
+            }
             num++;
             prev = curr;
             curr = new ArrayList<>();

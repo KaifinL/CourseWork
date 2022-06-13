@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class NumMatrix {
 
@@ -197,6 +199,33 @@ public class NumMatrix {
             sum = Math.max(sum, sum_arr[curr]);
         }
         return sum;
+    }
+
+    public int minimumTotal(List<List<Integer>> triangle) {
+        List<Integer> prev = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
+        prev.add(triangle.get(0).get(0));
+        int minimum = prev.get(0);
+        int curr_index = 0;
+        int num = 2; // denote the number of the element in the curr list. should increase in each while iteration.
+        while (curr != null) {
+            for (curr_index = 0; curr_index < num; curr_index++) {
+                if (curr_index == 0) {
+                    curr.add(triangle.get(num-1).get(0) + prev.get(0));
+                } else if (curr_index == num-1) {
+                    curr.add(triangle.get(num-1).get(num-1) + prev.get(num-2));
+                } else {
+                    curr.add(Math.min(triangle.get(num-1).get(curr_index) + prev.get(curr_index), triangle.get(num-1).get(curr_index) + prev.get(curr_index-1)));
+                }
+            }
+            num++;
+            prev = curr;
+            curr = new ArrayList<>();
+        }
+        for (int i = 0; i < num; i++) {
+            minimum = Math.min(minimum, prev.get(i));
+        }
+        return minimum;
     }
 
 

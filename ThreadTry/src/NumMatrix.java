@@ -207,7 +207,7 @@ public class NumMatrix {
         prev.add(triangle.get(0).get(0));
         int minimum = (triangle.size() == 1) ? prev.get(0) : Integer.MAX_VALUE;
         int num = 2; // denote the number of the element in the curr list. should increase in each while iteration.
-        while (triangle.size() > num-1) {
+        while (true) {
             for (int curr_index = 0; curr_index < num; curr_index++) {
                 if (curr_index == 0) {
                     curr.add(triangle.get(num-1).get(0) + prev.get(0));

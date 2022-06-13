@@ -206,10 +206,9 @@ public class NumMatrix {
         List<Integer> curr = new ArrayList<>();
         prev.add(triangle.get(0).get(0));
         int minimum = prev.get(0);
-        int curr_index = 0;
         int num = 2; // denote the number of the element in the curr list. should increase in each while iteration.
-        while (triangle.get(num-1) != null) {
-            for (curr_index = 0; curr_index < num; curr_index++) {
+        while (triangle.size() >= num-1) {
+            for (int curr_index = 0; curr_index < num; curr_index++) {
                 if (curr_index == 0) {
                     curr.add(triangle.get(num-1).get(0) + prev.get(0));
                 } else if (curr_index == num-1) {
@@ -222,8 +221,10 @@ public class NumMatrix {
             prev = curr;
             curr = new ArrayList<>();
         }
-        for (int i = 0; i < num; i++) {
-            minimum = Math.min(minimum, prev.get(i));
+        if (prev.size() != 0) {
+            for (int i = 0; i < num; i++) {
+                minimum = Math.min(minimum, prev.get(i));
+            }
         }
         return minimum;
     }

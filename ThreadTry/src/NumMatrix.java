@@ -222,6 +222,7 @@ public class NumMatrix {
             curr = new ArrayList<>();
         }
         if (prev.size() != 0) {
+            minimum = Integer.MAX_VALUE;
             for (int i = 0; i < num; i++) {
                 minimum = Math.min(minimum, prev.get(i));
             }

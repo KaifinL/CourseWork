@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         NumMatrix test3 = new NumMatrix();
-        int result = test3.maximumUniqueSubarray(new int[]{});
+        int result = test3.maximumUniqueSubarray(new int[]{5,2,1,2,5,2,1,2,5});
         System.out.println(result);
     }
 

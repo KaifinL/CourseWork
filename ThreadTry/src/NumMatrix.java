@@ -249,4 +249,27 @@ public class NumMatrix {
     }
 
 
+    // check if word1 is the pro
+    public boolean consistent(String word1, String word2) {
+        if (word1.length() != word2.length()-1) {
+            return false;
+        }
+        int first = 0, second = 0;
+        boolean diff = false;
+        while (first < word1.length() && second < word2.length()) {
+            if (word1.charAt(first) != word2.charAt(second)) {
+                if (diff) {
+                    return false;
+                }
+                second++;
+                diff = true;
+                continue;
+            }
+            first++;
+            second++;
+        }
+        return true;
+    }
+
+
 }

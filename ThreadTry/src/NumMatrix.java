@@ -280,7 +280,7 @@ public class NumMatrix {
         System.arraycopy(words, 0, new_words, 1, words.length);
         Arrays.sort(words, (String a, String b) -> a.length() - b.length());
         int [][] ls = new int[words.length+2][words.length+2];
-        for (int i = words.length+1; i >= 0; i--) {
+        for (int i = words.length; i >= 0; i--) {
             for (int j = words.length+1; j >= 0; j--) {
                 if (j > words.length) {
                     ls[i][j] = 0;

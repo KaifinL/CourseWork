@@ -249,7 +249,7 @@ public class NumMatrix {
     }
 
 
-    // check if word1 is the pro
+    // check if word1 is the predecessor of word2. The order matters!
     public boolean consistent(String word1, String word2) {
         if (word1.length() != word2.length()-1) {
             return false;
@@ -270,6 +270,8 @@ public class NumMatrix {
         }
         return true;
     }
+
+    
 
 
 }

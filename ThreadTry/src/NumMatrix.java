@@ -272,6 +272,8 @@ public class NumMatrix {
     }
 
     public int longestStrChain(String[] words) {
+        Arrays.sort(words, (String a, String b) -> a.length() - b.length());
+        int [][] ls = new int[words.length][words.length];
         
     }
 

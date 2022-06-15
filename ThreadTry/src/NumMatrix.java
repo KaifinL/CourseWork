@@ -277,8 +277,8 @@ public class NumMatrix {
     public int longestStrChain(String[] words) {
         String []new_words = new String[words.length+1];
         new_words[0] = "";
-        System.arraycopy(new_words, 0, new_words, 1, words.length);
-        Arrays.sort(words, (String a, String b) -> a.length() - b.length());
+        System.arraycopy(words, 0, new_words, 1, words.length);
+        Arrays.sort(new_words, (String a, String b) -> a.length() - b.length());
         int [][] ls = new int[words.length+2][words.length+2];
         for (int i = words.length; i >= 0; i--) {
             for (int j = words.length+1; j >= 0; j--) {

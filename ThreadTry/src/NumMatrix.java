@@ -230,7 +230,23 @@ public class NumMatrix {
         return minimum;
     }
 
-    
+    public int minDistance(String word1, String word2) {
+        int [][] md = new int[word1.length()+1][word2.length()+1];
+        for (int i = word1.length(); i >= 0; i--) {
+            for (int j = word2.length(); j >= 0; j--) {
+                if (j == word2.length()) {
+                    md[i][j] = word1.length()-i;
+                } else if (i == word1.length()) {
+                    md[i][j] = word2.length()-j;
+                } else if (word1.charAt(i) == word2.charAt(j)) {
+                    md[i][j] = md[i+1][j+1];
+                } else {
+                    md[i][j] = Math.min(md[i+1][j], md[i][j+1])+1;
+                }
+            }
+        }
+        return md[0][0];
+    }
 
 
 }

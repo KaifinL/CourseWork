@@ -271,7 +271,9 @@ public class NumMatrix {
         return true;
     }
 
-    
+    public int longestStrChain(String[] words) {
+        
+    }
 
 
 }

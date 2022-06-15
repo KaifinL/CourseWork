@@ -251,6 +251,9 @@ public class NumMatrix {
 
     // check if word1 is the predecessor of word2. The order matters!
     public boolean consistent(String word1, String word2) {
+        if (word1.equals("")) {
+            return true;
+        }
         if (word1.length() != word2.length()-1) {
             return false;
         }
@@ -274,7 +277,7 @@ public class NumMatrix {
     public int longestStrChain(String[] words) {
         Arrays.sort(words, (String a, String b) -> a.length() - b.length());
         int [][] ls = new int[words.length][words.length];
-        
+
     }
 
 

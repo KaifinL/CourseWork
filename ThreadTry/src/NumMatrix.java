@@ -311,7 +311,42 @@ public class NumMatrix {
         return (nums[left] == target) ? left : -1;
     }
 
-    
+    public int find_k(int []nums) {
+        int left = 0;
+        int right = nums.length -1;
+        int mid;
+        while (left < right) {
+            mid = (left + right) / 2;
+            if (mid == 0) {
+                return (nums[0] > nums[1]) ? 1 : -1;
+            }
+            if (nums[mid] < nums[mid-1]) {
+                return mid;
+            }
+            if (nums[mid] > nums[0]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return (nums[left] < nums[left-1]) ? left : -1;
+    }
+
+    public int search(int[] nums, int target) {
+        if (nums[0] < nums[nums.length-1]) {
+            return binary_search(nums, target);
+        } else {
+            int k = find_k(nums);
+            if (nums[k] == target) {
+                return k;
+            }
+            if (target > nums[0]) {
+                return binary_search(Arrays.copyOfRange(nums, 0, k), target);
+            } else {
+                return binary_search(Arrays.copyOfRange(nums, k, nums.length), target);
+            }
+        }
+    }
 
 
 }

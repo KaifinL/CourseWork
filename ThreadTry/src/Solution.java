@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         NumMatrix test3 = new NumMatrix();
-        int result = test3.binary_search(new int[]{1, 2, 3, 4, 5, 6}, 7);
+        int result = test3.search(new int[]{}, 7);
         System.out.println(result);
     }
 

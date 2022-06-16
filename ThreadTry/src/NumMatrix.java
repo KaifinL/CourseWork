@@ -343,7 +343,7 @@ public class NumMatrix {
             if (target >= nums[0]) {
                 return binary_search(Arrays.copyOfRange(nums, 0, k), target);
             } else {
-                return binary_search(Arrays.copyOfRange(nums, k, nums.length), target);
+                return binary_search(Arrays.copyOfRange(nums, k, nums.length), target) + k;
             }
         }
     }

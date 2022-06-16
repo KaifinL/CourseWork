@@ -291,7 +291,7 @@ public class NumMatrix {
                 }
             }
         }
-        return ls[0][1]-1;
+        return ls[0][1];
     }
 
 

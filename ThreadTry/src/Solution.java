@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         NumMatrix test3 = new NumMatrix();
-        int result = test3.longestStrChain(new String[]{"xbc","pcxbcf","xb","cxbc","pcxbc"});
+        int result = test3.binary_search(new int[]{1, 2, 3, 4, 5}, 4);
         System.out.println(result);
     }
 

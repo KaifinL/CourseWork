@@ -1913,20 +1913,15 @@ class Node {
             return head;
         }
         ListNode result = head.next;
-        ListNode curr = result;
-        ListNode prev = head;
-        ListNode prev2 = null;
-        while (prev != null && curr != null) {
-            prev.next = curr.next;
-            curr.next = prev;
-            prev = prev.next;
+        ListNode prev = null;
+        while (head != null && head.next != null) {
             if (prev != null) {
-                if (prev2 != null) {
-                    prev2.next = curr;
-                }
-                prev2 = curr;
-                curr = prev.next;
+                prev.next = head.next;
             }
+            ListNode next = head.next;
+            head.next = next.next;
+            head = head.next;
+            prev = next;
         }
         return result;
     }

@@ -1875,9 +1875,9 @@ class Node {
 //
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
-        NumMatrix test3 = new NumMatrix();
-        int result = test3.search(new int[]{4,5,6,7,0,1,2}, 3);
-        System.out.println(result);
+        Solution test3 = new Solution();
+        ListNode result = test3.swapPairs(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
+        System.out.println(result.val);
     }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
@@ -1906,7 +1906,25 @@ class Node {
         return null;
     }
 
-    
+    public ListNode swapPairs(ListNode head) {
+        if (head == null) {
+            return null;
+        } else if (head.next == null) {
+            return head;
+        }
+        ListNode result = head.next;
+        ListNode curr = result;
+        ListNode prev = head;
+        while (prev != null && curr != null) {
+            prev.next = curr.next;
+            curr.next = prev;
+            prev = prev.next;
+            if (prev != null) {
+                curr = prev.next;
+            }
+        }
+        return result;
+    }
 
 
     // 注意类名必须为 Main, 不要有任何 package xxx 信息

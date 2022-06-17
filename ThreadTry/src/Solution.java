@@ -1920,6 +1920,7 @@ class Node {
             }
             ListNode next = head.next;
             head.next = next.next;
+            next.next = head;
             head = head.next;
             prev = next;
         }

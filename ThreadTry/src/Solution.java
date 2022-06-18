@@ -1980,11 +1980,18 @@ class Node {
         }
     }
 
+    private HashMap<Integer, ListNode> index_node = new HashMap<>();
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
 
     }
 
     private void put2map(ListNode curr, int index) {
+        if (curr.next == null) {
+            index_node.put(index, curr);
+            return;
+        }
+        put2map(curr.next, index+1);
         
     }
 

@@ -1947,6 +1947,26 @@ class Node {
         return (nums[left] == target) ? left : -1;
     }
 
+    private int find_last(int []nums, int target) {
+        int left = 0;
+        int right = nums.length-1;
+        while (left < right) {
+            int mid = (left+right)/2;
+            if (mid >= nums.length-1) {
+                return (nums[nums.length-1] == target) ? nums.length-1 : -1;
+            }
+            if (nums[mid] == target && nums[mid+1]!=target) {
+                return mid;
+            }
+            if (nums[mid] >= target) {
+                right = mid;
+            } else {
+                left = mid+1;
+            }
+        }
+        return (nums[left] == target) ? left : -1;
+    }
+
 
     // 注意类名必须为 Main, 不要有任何 package xxx 信息
 

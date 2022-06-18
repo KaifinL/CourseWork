@@ -1967,7 +1967,15 @@ class Node {
         return (nums[left] == target) ? left : -1;
     }
 
-    
+    public int[] searchRange(int[] nums, int target) {
+        int first = find_first(nums, target);
+        int last = find_last(nums, target);
+        if (first == -1 || last == -1) {
+            return new int[]{-1, -1};
+        } else {
+            return new int[]{first, last};
+        }
+    }
 
 
     // 注意类名必须为 Main, 不要有任何 package xxx 信息

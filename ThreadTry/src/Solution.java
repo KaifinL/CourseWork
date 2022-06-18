@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        int result = test3.find_last(new int[]{5,7,7,8,8,10}, 8);
+        int result = test3.find_last(new int[]{5,7,7,8,8,10}, 7);
         System.out.println(result);
     }
 

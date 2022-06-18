@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        ListNode result = test3.swapPairs(new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4)))));
+        int result = test3.find_first(new int[]{})
         System.out.println(result.val);
     }
 
@@ -1925,6 +1925,26 @@ class Node {
             head = head.next;
         }
         return result;
+    }
+
+    private int find_first(int [] nums, int target) {
+        int left = 0;
+        int right = nums.length-1;
+        while (left < right) {
+            int mid = (left+right)/2;
+            if (mid >= nums.length-1) {
+                return (nums[nums.length-1] == target) ? nums.length-1 : -1;
+            }
+            if (nums[mid] != target && nums[mid+1]==target) {
+                return mid+1;
+            }
+            if (nums[mid] >= target) {
+                right = mid;
+            } else {
+                left = mid+1;
+            }
+        }
+        return (nums[left] == target) ? left : -1;
     }
 
 

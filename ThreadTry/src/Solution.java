@@ -1980,6 +1980,10 @@ class Node {
         }
     }
 
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        
+    }
+
 
     // 注意类名必须为 Main, 不要有任何 package xxx 信息
 

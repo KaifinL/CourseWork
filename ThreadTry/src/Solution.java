@@ -1918,11 +1918,11 @@ class Node {
             if (prev != null) {
                 prev.next = head.next;
             }
+            prev = head;
             ListNode next = head.next;
             head.next = next.next;
             next.next = head;
             head = head.next;
-            prev = head;
         }
         return result;
     }

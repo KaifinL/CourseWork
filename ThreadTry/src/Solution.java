@@ -1968,6 +1968,9 @@ class Node {
     }
 
     public int[] searchRange(int[] nums, int target) {
+        if (nums.length == 0) {
+            return new int[]{-1, -1};
+        }
         int first = find_first(nums, target);
         int last = find_last(nums, target);
         if (first == -1 || last == -1) {

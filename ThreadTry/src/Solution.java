@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        int result = test3.find_first(new int[]{5,7,7,8,8,10}, 9);
+        int result = test3.find_last(new int[]{5,7,7,8,8,10}, 8);
         System.out.println(result);
     }
 
@@ -1958,7 +1958,7 @@ class Node {
             if (nums[mid] == target && nums[mid+1]!=target) {
                 return mid;
             }
-            if (nums[mid] >= target) {
+            if (nums[mid] > target) {
                 right = mid;
             } else {
                 left = mid+1;

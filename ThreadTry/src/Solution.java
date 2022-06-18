@@ -1983,7 +1983,17 @@ class Node {
     private HashMap<Integer, ListNode> index_node = new HashMap<>();
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
-
+        int index = 1;
+        ListNode curr = head;
+        while (curr != null) {
+            index_node.put(index, curr);
+            curr = curr.next;
+            index++;
+        }
+        curr = index_node.get(index-n-1);
+        ListNode next = index_node.get(index-n+1);
+        curr.next = next;
+        return head;
     }
 
     private void put2map(ListNode curr, int index) {
@@ -1992,7 +2002,7 @@ class Node {
             return;
         }
         put2map(curr.next, index+1);
-        
+
     }
 
 

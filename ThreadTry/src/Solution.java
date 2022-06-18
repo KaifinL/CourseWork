@@ -1876,8 +1876,8 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        int result = test3.find_first(new int[]{})
-        System.out.println(result.val);
+        int result = test3.find_first(new int[]{5,7,7,8,8,10}, 8);
+        System.out.println(result);
     }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {

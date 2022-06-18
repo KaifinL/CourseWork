@@ -1981,6 +1981,10 @@ class Node {
     }
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
+
+    }
+
+    private void put2map(ListNode curr, int index) {
         
     }
 

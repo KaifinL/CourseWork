@@ -1983,6 +1983,9 @@ class Node {
     private HashMap<Integer, ListNode> index_node = new HashMap<>();
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head.next == null) {
+            return null;
+        }
         int index = 1;
         ListNode curr = head;
         while (curr != null) {

@@ -1993,6 +1993,10 @@ class Node {
             curr = curr.next;
             index++;
         }
+        ListNode deleted = index_node.get(index-n);
+        if (deleted == head) {
+            return head.next;
+        }
         curr = index_node.get(index-n-1);
         ListNode next = index_node.get(index-n+1);
         curr.next = next;

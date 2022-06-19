@@ -366,6 +366,7 @@ public class NumMatrix {
         int index = 0;
         while (index < searchWord.length()) {
             List<String> curr_list = new ArrayList<>();
+            List<String> to_delete = new ArrayList<>();
             int size = 0;
             for (String s: remaining) {
                 if (size == 3) {
@@ -375,8 +376,11 @@ public class NumMatrix {
                     curr_list.add(s);
                     size++;
                 } else {
-                    remaining.remove(s);
+                    to_delete.add(s);
                 }
+            }
+            for (String s : to_delete) {
+                remaining.remove(s);
             }
             result.add(curr_list);
             index++;

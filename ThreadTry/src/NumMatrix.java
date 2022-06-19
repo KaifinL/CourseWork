@@ -391,7 +391,7 @@ public class NumMatrix {
     public int jump(int[] nums) {
         int []jp = new int[nums.length];
         jp[nums.length-1] = 0;
-        for (int i = nums.length-2; i >= 0; i++) {
+        for (int i = nums.length-2; i >= 0; i--) {
             jp[i] = Math.min(jp[i+1] + 1, jp[i+nums[i]]+1);
         }
         return jp[0];

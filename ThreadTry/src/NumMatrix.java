@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -360,14 +361,26 @@ public class NumMatrix {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         Arrays.sort(products);
         List<List<String>> result = new ArrayList();
+        List<String> remaining = new ArrayList<>();
+        Collections.addAll(remaining, products);
         int index = 0;
         while (index < searchWord.length()) {
-            List<Integer> curr_list = new ArrayList<>();
-            
-
+            List<String> curr_list = new ArrayList<>();
+            int size = 0;
+            for (String s: remaining) {
+                if (size == 3) {
+                    break;
+                }
+                if (s.startsWith(searchWord.substring(0, index+1))) {
+                    curr_list.add(s);
+                    size++;
+                } else {
+                    remaining.remove(s);
+                }
+            }
+            result.add(curr_list);
             index++;
         }
-
         return result;
     }
 

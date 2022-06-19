@@ -357,7 +357,19 @@ public class NumMatrix {
         }
     }
 
-    
+    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        Arrays.sort(products);
+        List<List<String>> result = new ArrayList();
+        int index = 0;
+        while (index < searchWord.length()) {
+            List<Integer> curr_list = new ArrayList<>();
+            
+
+            index++;
+        }
+
+        return result;
+    }
 
 
 }

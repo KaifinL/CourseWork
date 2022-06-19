@@ -1877,7 +1877,8 @@ class Node {
 
         Solution test3 = new Solution();
         int result = test3.find_last(new int[]{5,7,7,8,8,10}, 3);
-        String []test4 = new String[]{}
+        String []test4 = new String[]{"mobile","mouse","moneypot","monitor","mousepad"};
+        Arrays.sort(test4);
         System.out.println(result);
     }
 

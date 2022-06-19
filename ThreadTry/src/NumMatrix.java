@@ -392,7 +392,12 @@ public class NumMatrix {
         int []jp = new int[nums.length];
         jp[nums.length-1] = 0;
         for (int i = nums.length-2; i >= 0; i--) {
-            jp[i] = Math.min(jp[i+1] + 1, jp[(i+nums[i] >= nums.length) ? nums.length-1 : i+nums[i]]+1);
+            int curr = Math.max(nums[i], 1);
+            int minimum = Integer.MAX_VALUE;
+            for (int j = 1; j <= Math.min(curr, nums.length-1); j++) {
+                minimum = Math.min(minimum, jp[i]);
+            }
+            jp[i] = minimum+1;
         }
         return jp[0];
     }

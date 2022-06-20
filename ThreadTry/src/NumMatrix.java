@@ -402,7 +402,15 @@ public class NumMatrix {
         return jp[0];
     }
 
-    
+    public int minimumLengthEncoding(String[] words) {
+        List<String> references = new ArrayList<>();
+        String curr = words[0];
+        references.add(curr);
+        for (String word : words) {
+            curr = curr.substring(1);
+            if (curr.contains(word)) 
+        }
+    }
 
 
 }

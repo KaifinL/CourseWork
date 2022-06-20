@@ -406,7 +406,8 @@ public class NumMatrix {
         List<String> references = new ArrayList<>();
         String curr = words[0];
         references.add(curr);
-        for (String word : words) {
+        for (int i = 1; i < words.length; i++) {
+            String word = words[i];
             curr = curr.substring(1);
             if (curr.contains(word)) {
                 continue;

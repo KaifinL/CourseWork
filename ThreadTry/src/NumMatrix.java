@@ -394,7 +394,7 @@ public class NumMatrix {
         for (int i = nums.length-2; i >= 0; i--) {
             int curr = Math.max(nums[i], 1);
             int minimum = Integer.MAX_VALUE;
-            for (int j = 1; j <= Math.min(curr, nums.length-1); j++) {
+            for (int j = 1; j <= Math.min(curr, nums.length-i-1); j++) {
                 minimum = Math.min(minimum, jp[i+j]);
             }
             jp[i] = minimum+1;

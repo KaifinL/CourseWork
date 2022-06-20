@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         NumMatrix test3 = new NumMatrix();
-        int result = test3.jump(new int[]{1, 2, 3});
+        int result = test3.minimumLengthEncoding(new String[]{"time","me","bell"});
 
         System.out.println(result);
     }

@@ -403,7 +403,7 @@ public class NumMatrix {
     }
 
     public int minimumLengthEncoding(String[] words) {
-        Arrays.sort(words, (String a, String b) -> b.length() - a.length());
+        
         List<String> references = new ArrayList<>();
         String curr = words[0];
         references.add(curr);

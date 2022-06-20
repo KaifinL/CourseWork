@@ -408,8 +408,18 @@ public class NumMatrix {
         references.add(curr);
         for (String word : words) {
             curr = curr.substring(1);
-            if (curr.contains(word)) 
+            if (curr.contains(word)) {
+                continue;
+            } else {
+                references.add(word);
+                curr = word;
+            }
         }
+        int result = 0;
+        for (int i = 0; i < references.size(); i++) {
+            result += references.get(i).length() + 1;
+        }
+        return result;
     }
 
 

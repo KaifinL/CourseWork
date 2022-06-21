@@ -429,9 +429,15 @@ public class NumMatrix {
         for (int curr = heights.length-1; curr >= 0; curr--) {
             for (int i = 0; i < bricks; i++) {
                 for (int j = 0; j < ladders; j++) {
-                    if (curr == heights.length-1 || (i == 0 && j > heights[curr+1]-heights[curr])) {
+                    if (curr == heights.length-1 || (i == 0 && j < heights[curr+1]-heights[curr])) {
                         fb[curr][i][j] = 0;
-                    } else {
+                    } else if (heights[curr] >= heights[curr+1]) {
+                        fb[curr][i][j] = fb[curr+1][i][j] + 1;
+                    } else if (i == 0) {
+                        fb[curr][i][j] = fb[curr+1][i][j-heights[curr+1]+heights[curr]] + 1;
+                    } else if (j < heights[curr+1]-heights[curr]) {
+                        fb[curr][i][j] = fb[curr+1][i-1][j] + 1;
+                    }else {
                         fb[curr][i][j] = Math.max(fb[curr+1][i-1][j], fb[curr+1][i][j-heights[curr+1]+heights[curr]]) + 1;
                     }
                 }

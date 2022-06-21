@@ -425,7 +425,7 @@ public class NumMatrix {
     }
 
     public int furthestBuilding(int[] heights, int bricks, int ladders) {
-        int [][][]fb = new int[heights.length][bricks+1][ladders+1];
+        int [][][]fb = new int[heights.length][ladders+1][bricks+1];
         for (int curr = heights.length-1; curr >= 0; curr--) {
             for (int j = 0; j <= bricks; j++) {
                 for (int i = 0; i <= ladders; i++) {

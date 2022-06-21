@@ -424,7 +424,21 @@ public class NumMatrix {
         return result;
     }
 
-    
+    public int furthestBuilding(int[] heights, int bricks, int ladders) {
+        int [][][]fb = new int[heights.length][bricks][ladders];
+        for (int curr = heights.length-1; curr >= 0; curr--) {
+            for (int i = 0; i < bricks; i++) {
+                for (int j = 0; j < ladders; j++) {
+                    if (curr == heights.length-1 || (i == 0 && j > heights[curr+1]-heights[curr])) {
+                        fb[curr][i][j] = 0;
+                    } else {
+                        fb[curr][i][j] = Math.max(fb[curr+1][i-1][j], fb[curr+1][i][j-heights[curr+1]+heights[curr]]) + 1;
+                    }
+                }
+            }
+        }
+        return fb[0][bricks][ladders];
+    }
 
 
 }

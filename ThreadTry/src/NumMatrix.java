@@ -443,7 +443,7 @@ public class NumMatrix {
                 }
             }
         }
-        return fb[0][bricks][ladders];
+        return fb[0][bricks-1][ladders-1];
     }
 
 

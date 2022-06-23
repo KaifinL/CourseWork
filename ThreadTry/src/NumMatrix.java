@@ -447,7 +447,7 @@ public class NumMatrix {
     }
 
     public int scheduleCourse(int[][] courses) {
-        int [][]sc = new int[courses.length+1][courses.length+1];
+        int [][]sc = new int[courses.length+2][courses.length+2];
         int [][] new_courses = new int[courses.length+1][courses[0].length];
         int index = 1;
         new_courses[0] = new int[]{0, 0};
@@ -455,9 +455,9 @@ public class NumMatrix {
             new_courses[index] = course;
             index++;
         }
-        for (int j = courses.length; j >= 0; j--) {
+        for (int j = courses.length+1; j >= 0; j--) {
             for (int i = j - 1; i >= 0; i--) {
-                if (j == courses.length) {
+                if (j > courses.length) {
                     sc[i][j] = 0;
                 } else if (courses[j][0] >= courses[i][1]) {
                     sc[i][j] = Math.max(sc[j][j+1] + 1, sc[i][j+1]);

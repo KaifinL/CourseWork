@@ -446,7 +446,28 @@ public class NumMatrix {
         return fb[0][ladders][bricks];
     }
 
-    
+    public int scheduleCourse(int[][] courses) {
+        int [][]sc = new int[courses.length+1][courses.length+1];
+        int [][] new_courses = new int[courses.length+1][courses[0].length];
+        int index = 1;
+        new_courses[0] = new int[]{0, 0};
+        for (int []course : courses) {
+            new_courses[index] = course;
+            index++;
+        }
+        for (int j = courses.length; j >= 0; j--) {
+            for (int i = j - 1; i >= 0; i--) {
+                if (j == courses.length) {
+                    sc[i][j] = 0;
+                } else if (courses[j][0] >= courses[i][1]) {
+                    sc[i][j] = Math.max(sc[j][j+1], sc[i][j+1]);
+                } else {
+                    sc[i][j] = sc[i][j+1];
+                }
+            }
+        }
+        return sc[0][1];
+    }
 
 
 }

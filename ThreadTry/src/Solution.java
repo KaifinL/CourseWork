@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         NumMatrix test3 = new NumMatrix();
-        int result = test3.furthestBuilding(new int[]{4,2,7,6,9,14,12}, 5, 1);
+        int result = test3.scheduleCourse(new int[][]{});
 
         System.out.println(result);
     }

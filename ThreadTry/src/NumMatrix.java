@@ -459,7 +459,7 @@ public class NumMatrix {
             for (int i = j - 1; i >= 0; i--) {
                 if (j > courses.length) {
                     sc[i][j] = 0;
-                } else if (courses[j][0] >= courses[i][1]) {
+                } else if (new_courses[j][0] >= new_courses[i][1]) {
                     sc[i][j] = Math.max(sc[j][j+1] + 1, sc[i][j+1]);
                 } else {
                     sc[i][j] = sc[i][j+1];

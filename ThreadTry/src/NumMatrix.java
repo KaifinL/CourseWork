@@ -461,7 +461,7 @@ public class NumMatrix {
             }
         }
         int [][] new_course2 = new int[index][index];
-        if (index + 1 >= 0) System.arraycopy(new_courses, 0, new_course2, 0, index + 1);
+        if (index >= 0) System.arraycopy(new_courses, 0, new_course2, 0, index);
         Arrays.sort(new_course2, (int []a, int[]b) -> a[0]-b[0]);
         if (index == 1) {
             return 0;

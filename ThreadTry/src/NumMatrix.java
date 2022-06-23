@@ -451,12 +451,16 @@ public class NumMatrix {
         int [][] new_courses = new int[courses.length+1][courses[0].length];
         int index = 1;
         new_courses[0] = new int[]{0, 0};
+        int bias = 0;
         for (int []course : courses) {
             if (course[0] < course[1]) {
                 new_courses[index] = course;
                 index++;
+            } else if (course[0] == course[1]) {
+                bias++;
             }
         }
+        Arrays.sort(new_courses, ());
         if (index == 1) {
             return 0;
         }
@@ -472,7 +476,7 @@ public class NumMatrix {
                 }
             }
         }
-        return sc[0][1];
+        return sc[0][1] + bias;
     }
 
 

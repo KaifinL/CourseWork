@@ -460,7 +460,9 @@ public class NumMatrix {
                 bias++;
             }
         }
-        Arrays.sort(new_courses, (int []a, int[]b) -> a[0]-b[0]);
+        int [][] new_course2 = new int[index][index];
+        if (index + 1 >= 0) System.arraycopy(new_courses, 0, new_course2, 0, index + 1);
+        Arrays.sort(new_course2, (int []a, int[]b) -> a[0]-b[0]);
         if (index == 1) {
             return 0;
         }
@@ -469,7 +471,7 @@ public class NumMatrix {
             for (int i = j - 1; i >= 0; i--) {
                 if (j == index) {
                     sc[i][j] = 0;
-                } else if (new_courses[j][0] >= new_courses[i][1]) {
+                } else if (new_course2[j][0] >= new_course2[i][1]) {
                     sc[i][j] = Math.max(sc[j][j+1] + 1, sc[i][j+1]);
                 } else {
                     sc[i][j] = sc[i][j+1];

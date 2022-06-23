@@ -446,5 +446,7 @@ public class NumMatrix {
         return fb[0][ladders][bricks];
     }
 
+    
+
 
 }

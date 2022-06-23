@@ -460,7 +460,7 @@ public class NumMatrix {
                 bias++;
             }
         }
-        Arrays.sort(new_courses, ());
+        Arrays.sort(new_courses, (int []a, int[]b) -> a[0]-b[0]);
         if (index == 1) {
             return 0;
         }

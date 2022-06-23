@@ -452,6 +452,7 @@ public class NumMatrix {
         int index = 1;
         new_courses[0] = new int[]{0, 0};
         for (int []course : courses) {
+            if (course[0] )
             new_courses[index] = course;
             index++;
         }

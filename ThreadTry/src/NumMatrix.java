@@ -486,6 +486,8 @@ public class NumMatrix {
         node next;
     }
 
-    
+    public int[][] reconstructQueue(int[][] people) {
+        
+    }
 
 }

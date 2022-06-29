@@ -484,10 +484,31 @@ public class NumMatrix {
     public class node {
         int[] val;
         node next;
+        node prev;
+
+        public node(int []val, node next, node prev) {
+            this.val = val;
+            this.next = next;
+            this.prev = prev;
+        }
     }
 
     public int[][] reconstructQueue(int[][] people) {
-        
+        Arrays.sort(people, (int[]a, int[]b)->(a[0]==b[0]?a[1]-b[1]:a[0]-b[0]));
+        HashMap<Integer, Integer> counts = new HashMap<>();
+        node head = new node(people[0], null, null);
+        node curr = head;
+        counts.put(people[0][0], 1);
+        for (int i = 1; i < people.length; i++) {
+            curr.next = new node(people[i], null, curr);
+            curr = curr.next;
+            counts.put(people[i][0], counts.getOrDefault(people[i][0], 0)+1);
+        }
+        while (curr != null) {
+            
+
+            curr = curr.prev;
+        }
     }
 
 }

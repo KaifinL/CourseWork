@@ -481,5 +481,7 @@ public class NumMatrix {
         return sc[0][1] + bias;
     }
 
+    public class LinkedList
+
 
 }

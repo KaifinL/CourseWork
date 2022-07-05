@@ -515,7 +515,7 @@ public class NumMatrix {
                 i++;
             } else if (dir == 'l') {
                 j--;
-            } else if (dir == 'u') {
+            } else {
                 i--;
             }
 

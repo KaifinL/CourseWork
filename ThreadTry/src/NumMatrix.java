@@ -519,7 +519,7 @@ public class NumMatrix {
                 i--;
             }
 
-            n++;
+            counter++;
         }
         return result;
     }

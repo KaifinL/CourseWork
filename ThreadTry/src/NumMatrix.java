@@ -504,8 +504,22 @@ public class NumMatrix {
             curr = curr.next;
             counts.put(people[i][0], counts.getOrDefault(people[i][0], 0)+1);
         }
+        int curr_key = curr.val[0];
+        int curr_count = 1;
+        curr = curr.prev;
         while (curr != null) {
-            
+            if (curr.val[0] != curr_key) {
+                curr_key = curr.val[0];
+                curr_count = 1;
+            } else {
+                curr_count++;
+            }
+
+            int total = counts.get(curr_key);
+            if (curr.val[1]>total-curr_count) {
+                curr.prev.next = curr.next;
+                
+            }
 
             curr = curr.prev;
         }

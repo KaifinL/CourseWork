@@ -1885,8 +1885,8 @@ class Node {
     private void addIp(List<String> result, StringBuilder temp, int remain_dots, String s, int index) {
         if (s.length()==index+1 && remain_dots==0) {
             result.add(temp.toString());
-        } else if ((remain_dots==0 && s.length()!=index+1) ||
-                (remain_dots!=0 && s.length()==index+1) || (s.length()-index > (remain_dots+1)*3)) {
+        } else if ((remain_dots<0 && s.length()!=index+1) ||
+                (remain_dots>=0 && s.length()==index+1) || (s.length()-index > (remain_dots)*3)) {
             return;
         } else {
             temp.append(s.substring(index, index+1));

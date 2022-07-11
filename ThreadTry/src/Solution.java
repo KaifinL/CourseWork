@@ -1875,8 +1875,8 @@ class Node {
 //
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
-        NumMatrix test3 = new NumMatrix();
-        int[][] result = test3.(3);
+        Solution test3 = new Solution();
+        int[][] result = test3.restoreIpAddresses("");
 
         System.out.println(result);
     }

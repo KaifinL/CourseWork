@@ -497,7 +497,7 @@ public class NumMatrix {
         int [][]result = new int[n][n];
         int i = 0, j = 0, counter = 1;
         char dir = 'r';
-        while (counter < n*n) {
+        while (counter <= n*n) {
             result[i][j] = counter;
             if (dir == 'r' && (j == n-1 || result[i][j+1]!=0)) {
                 dir = 'd';

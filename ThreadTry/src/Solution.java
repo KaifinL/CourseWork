@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        List result = test3.restoreIpAddresses("0000");
+        List result = test3.restoreIpAddresses("");
 
         System.out.println(result);
     }

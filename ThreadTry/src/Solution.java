@@ -1876,9 +1876,45 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         NumMatrix test3 = new NumMatrix();
-        int[][] result = test3.generateMatrix(3);
+        int[][] result = test3.(3);
 
         System.out.println(result);
+    }
+
+
+    private void addIp(List<String> result, StringBuilder temp, int remain_dots, String s, int index) {
+        if (s.length()==index+1 && remain_dots==0) {
+            result.add(temp.toString());
+        } else if ((remain_dots==0 && s.length()!=index+1) ||
+                (remain_dots!=0 && s.length()==index+1) || (s.length()-index > (remain_dots+1)*3)) {
+            return;
+        } else {
+            temp.append(s.substring(index, index+1));
+            temp.append(".");
+            addIp(result, temp, remain_dots-1, s, index+1);
+            temp = temp.delete(temp.length()-2, temp.length());
+            if (Integer.parseInt(s.substring(index, index+1)) != 0) {
+                if (index < s.length()-1) {
+                    temp.append(s.substring(index, index+2));
+                    temp.append(".");
+                    addIp(result, temp, remain_dots-1, s, index+2);
+                    temp = temp.delete(temp.length()-3, temp.length());
+                }
+                if (index < s.length()-2 && Integer.parseInt(s.substring(index, index+3)) <= 255) {
+                    temp.append(s.substring(index, index+3));
+                    temp.append(".");
+                    addIp(result, temp, remain_dots-1, s, index+3);
+                    temp = temp.delete(temp.length()-4, temp.length());
+                }
+            }
+
+        }
+    }
+
+    public List<String> restoreIpAddresses(String s) {
+        List<String> result = new ArrayList<>();
+        addIp(result, new StringBuilder(), 3, s, 0);
+        return result;
     }
 
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {

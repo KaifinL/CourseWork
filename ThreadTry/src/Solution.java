@@ -1883,10 +1883,12 @@ class Node {
 
 
     private void addIp(List<String> result, StringBuilder temp, int remain_dots, String s, int index) {
-        if (s.length()==index+1 && remain_dots==0) {
+        if (s.length()==index && remain_dots==0) {
+            temp = temp.deleteCharAt(temp.length()-1);
             result.add(temp.toString());
-        } else if ((remain_dots<0 && s.length()!=index+1) ||
-                (remain_dots>=0 && s.length()==index+1) || (s.length()-index > (remain_dots)*3)) {
+            temp.append(".");
+        } else if ((remain_dots==0 && s.length()!=index+1) ||
+                (remain_dots!=0 && s.length()==index+1) || (s.length()-index > (remain_dots)*3)) {
             return;
         } else {
             temp.append(s.substring(index, index+1));
@@ -1913,7 +1915,7 @@ class Node {
 
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<>();
-        addIp(result, new StringBuilder(), 3, s, 0);
+        addIp(result, new StringBuilder(), 4, s, 0);
         return result;
     }
 

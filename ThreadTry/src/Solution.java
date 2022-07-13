@@ -1887,8 +1887,8 @@ class Node {
             temp = temp.deleteCharAt(temp.length()-1);
             result.add(temp.toString());
             temp.append(".");
-        } else if ((remain_dots==0 && s.length()!=index+1) ||
-                (remain_dots!=0 && s.length()==index+1) || (s.length()-index > (remain_dots)*3)) {
+        } else if ((remain_dots==0 && s.length()!=index) ||
+                (remain_dots!=0 && s.length()==index) || (s.length()-index > (remain_dots)*3)) {
             return;
         } else {
             temp.append(s.substring(index, index+1));

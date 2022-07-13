@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        String result = test3.restoreIpAddresses("0000");
+        String result = test3.isPalindrome("0000");
 
         System.out.println(result);
     }

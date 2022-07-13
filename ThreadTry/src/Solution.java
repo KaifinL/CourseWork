@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        String result = test3.isPalindrome("0000");
+        boolean result = test3.isPalindrome("A man, a plan, a canal: Panama");
 
         System.out.println(result);
     }

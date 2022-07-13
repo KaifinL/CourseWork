@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        List result = test3.restoreIpAddresses("0000");
+        String result = test3.restoreIpAddresses("0000");
 
         System.out.println(result);
     }
@@ -2051,7 +2051,29 @@ class Node {
 
     }
 
-    
+    public boolean isPalindrome(String s) {
+        StringBuilder letter_s = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char curr = s.charAt(i);
+            if ((curr >= 97 && curr <= 122)) {
+                letter_s.append(curr);
+            } else if (curr >= 65 && curr <= 90) {
+                letter_s.append(curr+32);
+            }
+        }
+        int first = 0;
+        int second = letter_s.length()-1;
+        while (first < second) {
+            if (letter_s.charAt(first)!= letter_s.charAt(second)) {
+                return false;
+            }
+            first++;
+            second--;
+        }
+        return true;
+    }
+
+
 
 
     // 注意类名必须为 Main, 不要有任何 package xxx 信息

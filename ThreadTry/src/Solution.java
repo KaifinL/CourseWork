@@ -2073,6 +2073,32 @@ class Node {
         return true;
     }
 
+    public ListNode insertionSortList(ListNode head) {
+        if (head.next == null) {
+            return head;
+        }
+        ListNode curr = head.next;
+        while (curr != null) {
+            ListNode next = curr.next;
+            if (curr.val < head.val) {
+                curr.next = head;
+                head.next = next;
+                head = curr;
+            } else {
+                ListNode compare = head;
+                ListNode prev = null;
+                while (compare != null && curr.val > compare.val) {
+                    prev = compare;
+                    compare = compare.next;
+                }
+                prev.next = curr;
+                curr.next = compare;
+                compare.next = null;
+            }
+            curr = next;
+        }
+    }
+
 
 
 

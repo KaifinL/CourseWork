@@ -2092,7 +2092,7 @@ class Node {
                 }
                 prev.next = curr;
                 curr.next = compare;
-                compare.next = null;
+                
             }
             curr = next;
         }

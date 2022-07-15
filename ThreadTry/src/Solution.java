@@ -2058,7 +2058,7 @@ class Node {
             if ((curr >= 97 && curr <= 122)) {
                 letter_s.append(curr);
             } else if (curr >= 65 && curr <= 90) {
-                letter_s.append(curr+32);
+                letter_s.append((char) (curr+32));
             }
         }
         int first = 0;

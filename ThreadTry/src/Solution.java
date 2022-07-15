@@ -2091,7 +2091,7 @@ class Node {
                     compare = compare.next;
                 }
                 prev.next = curr;
-                curr.next = compare;
+                curr.next = (curr==compare)?null:compare;
 
             }
             curr = next;

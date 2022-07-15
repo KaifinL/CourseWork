@@ -2097,6 +2097,7 @@ class Node {
             }
             curr = next;
         }
+        return head;
     }
 
 

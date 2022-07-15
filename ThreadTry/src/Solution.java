@@ -2082,7 +2082,6 @@ class Node {
             ListNode next = curr.next;
             if (curr.val < head.val) {
                 curr.next = head;
-                head.next = next;
                 head = curr;
             } else {
                 ListNode compare = head;

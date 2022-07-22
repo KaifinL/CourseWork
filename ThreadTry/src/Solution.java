@@ -1876,7 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        int result = test3.compareVersion("0.1", "1.1");
+        int result = test3.compareVersion("1.01", "1.001");
         System.out.println(result);
     }
 

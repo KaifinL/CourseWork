@@ -1876,8 +1876,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        ListNode result = test3.insertionSortList(new ListNode(4, new ListNode(2, new ListNode(3, new ListNode(1)))));
-
+        int result = test3.compareVersion("0.1", "")
         System.out.println(result);
     }
 

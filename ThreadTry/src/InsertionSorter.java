@@ -16,11 +16,5 @@ public class InsertionSorter {
         return counter;
     }
 
-    public static void main(String[] args) {
-        Solution.InsertionSorter test2 = new Solution.InsertionSorter();
-        Comparable testDa[] =  new Comparable[]{5, 1, 6, 9, 2};
-        int result = test2.sort(testDa);
-        System.out.println(result);
-    }
 
 }

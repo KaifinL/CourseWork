@@ -2182,7 +2182,7 @@ class Node {
     private float transform(int x, int y) {
         StringBuilder sb = new StringBuilder("0.");
         sb.append(String.valueOf(y));
-        return (float)x + Float.parseFloat(sb.toString());
+        return  + Float.parseFloat(sb.toString());
     }
 
     public int numIslands(char[][] grid) {

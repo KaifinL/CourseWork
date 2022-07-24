@@ -1877,7 +1877,7 @@ class Node {
 //        ListNode result = test.getIntersectionNode(headA, headB);
 
         Solution test3 = new Solution();
-        int result = test3.compareVersion("1.01", "1.001");
+        int result = test3.numIslands(new char[][]{});
         System.out.println(result);
     }
 

@@ -14,9 +14,9 @@ class Solution {
             if (mid * mid <= x && (mid+1)*(mid+1) >x) {
                 return mid;
             } else if (mid * mid < x) {
-                right = mid;
+                left = mid + 1;
             } else {
-                left = mid+1;
+                right = mid;
             }
         }
         return left;

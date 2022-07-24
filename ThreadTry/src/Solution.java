@@ -2120,8 +2120,8 @@ class Node {
     }
 
     public int compareVersion(String version1, String version2) {
-        String []first = version1.split(".");
-        String []second = version2.split(".");
+        String []first = version1.split(".", 2);
+        String []second = version2.split(".", 2);
         int i;
         for (i = 0; i < Math.min(first.length, second.length); i++) {
             int curr1 = Integer.parseInt(first[i]);

@@ -13,8 +13,12 @@ class Solution {
 
         for (int i = begin; i < end; i++) {
             temp.add(nums[i]);
-            permute_helper(result, temp, nums, begin, i);
-            permute_helper(result, temp, nums, i+1, end);
+            if (temp.size() == nums.length) {
+                result.add(new ArrayList<>(temp));
+            } else {
+                permute_helper(result, temp, nums, begin, i);
+                permute_helper(result, temp, nums, i + 1, end);
+            }
             temp.remove(temp.size()-1);
             int j = i+1;
             while (j < end&&nums[i]==nums[j]) {

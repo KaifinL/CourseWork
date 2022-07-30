@@ -26,7 +26,7 @@ class Solution {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList();
-        permute_helper(result, new ArrayList(), nums, 0, nums.length-1);
+        permute_helper(result, new ArrayList(), nums, 0, nums.length);
         return result;
     }
 

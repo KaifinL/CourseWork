@@ -1,0 +1,30 @@
+class Solution {
+
+
+    // given the array nums, find all the possible permutations from
+    // nums[i] to nums[j] and append these arrays to temp accordingly.
+    private void permute_helper(List<List<Integer>> result, List<Integer> temp, int[]nums, int begin, int end) {
+        if (temp.size() == nums.length) {
+            result.add(temp);
+            return;
+        }
+
+        for (int i = begin; i < end; i++) {
+            temp.add(i);
+            permute_helper(result, temp, nums, begin, i);
+            permute_helper(result, temp, nums, i+1, end);
+            temp.remove(temp.size()-1);
+            int j = i+1;
+            while (j < end&&nums[i]==nums[j]) {
+                i++;
+                j++;
+            }
+        }
+    }
+
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<List<Integer>> result = new ArrayList();
+        permute_helper(result, new ArrayList(), nums, 0, nums.length-1);
+        return result;
+    }
+}

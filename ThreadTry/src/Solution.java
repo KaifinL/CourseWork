@@ -7,7 +7,7 @@ class Solution {
     // nums[i] to nums[j] and append these arrays to temp accordingly.
     private void permute_helper(List<List<Integer>> result, List<Integer> temp, int[]nums, int begin, int end) {
         if (temp.size() == nums.length) {
-            result.add(temp);
+            result.add(new ArrayList<>(temp));
             return;
         }
 

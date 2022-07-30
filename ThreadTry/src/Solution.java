@@ -12,7 +12,7 @@ class Solution {
         }
 
         for (int i = begin; i < end; i++) {
-            temp.add(i);
+            temp.add(nums[i]);
             permute_helper(result, temp, nums, begin, i);
             permute_helper(result, temp, nums, i+1, end);
             temp.remove(temp.size()-1);

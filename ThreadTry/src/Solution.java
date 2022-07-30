@@ -11,9 +11,11 @@ class Solution {
         int right = x/2;
         while (left < right) {
             int mid = (left+right)/2;
-            if (mid * mid <= x && (mid+1)*(mid+1) >x) {
+            long product = (long) mid *mid;
+            long plus_product = (long) (mid + 1) *(mid+1);
+            if (product <= (long)x && plus_product >(long)x) {
                 return mid;
-            } else if (mid * mid < x) {
+            } else if (product < (long)x) {
                 left = mid + 1;
             } else {
                 right = mid;

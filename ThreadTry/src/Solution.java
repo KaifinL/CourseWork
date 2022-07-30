@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
 
 
@@ -26,5 +28,11 @@ class Solution {
         List<List<Integer>> result = new ArrayList();
         permute_helper(result, new ArrayList(), nums, 0, nums.length-1);
         return result;
+    }
+
+    public static void main(String[] args) {
+        Solution test = new Solution();
+        List<List<Integer>> result = test.permuteUnique(new int[]{1, 1, 3});
+        System.out.println(result);
     }
 }

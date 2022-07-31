@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
 
-
+    public int age = 3;
     // given the array nums, find all the possible permutations from
     // nums[i] to nums[j] and append these arrays to temp accordingly.
     private void permute_helper(List<List<Integer>> result, List<Integer> temp, int[]nums, int begin, int end) {
@@ -38,5 +38,7 @@ class Solution {
         Solution test = new Solution();
         List<List<Integer>> result = test.permuteUnique(new int[]{1, 2, 3});
         System.out.println(result);
+        Solution test2 = new ATM();
+        System.out.println(test2.age);
     }
 }

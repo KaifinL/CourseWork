@@ -9,12 +9,12 @@ public class Child extends Parent {
     }
 
     public static void main(String[] args) {
-        Child child = new Child();
+        ArrayList<Double> dlist = new ArrayList<>();
     }
 
     private static void addPi(ArrayList<Double> list) {
         list.add(Math.PI);
     }
 
-    
+
 }

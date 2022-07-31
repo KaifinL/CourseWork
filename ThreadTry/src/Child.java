@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.TreeSet;
 
 public class Child extends Parent {
@@ -14,7 +15,7 @@ public class Child extends Parent {
     }
 
     public static void main(String[] args) {
-        Collection<String> collection = new ArrayList<>();
+        Collection<String> collection = new LinkedList<>();
         collection.add("foo");
         collection.add("bar");
         collection.add("baz");

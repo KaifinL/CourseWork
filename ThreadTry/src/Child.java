@@ -15,7 +15,8 @@ public class Child extends Parent {
         Collection<String> collection = new LinkedHashSet<>();
         collection.add("foo");
         collection.add("bar");
-        collection.add("baz")
+        collection.add("baz");
+        collection.forEach();
     }
 
 

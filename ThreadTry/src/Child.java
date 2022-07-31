@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.TreeSet;
 
 public class Child extends Parent {
     {
@@ -12,7 +13,7 @@ public class Child extends Parent {
     }
 
     public static void main(String[] args) {
-        Collection<String> collection = new <>();
+        Collection<String> collection = new TreeSet<>();
         collection.add("foo");
         collection.add("bar");
         collection.add("baz");

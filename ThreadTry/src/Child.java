@@ -16,7 +16,7 @@ public class Child extends Parent {
         addPi(dlist);
     }
 
-    private static void addPi(ArrayList<? super Double> list) {
+    private static void addPi(ArrayList<? extends Double> list) {
         list.add(Math.PI);
     }
 

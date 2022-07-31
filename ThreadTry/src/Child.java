@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,7 +14,7 @@ public class Child extends Parent {
     }
 
     public static void main(String[] args) {
-        Collection<String> collection = new TreeSet<>();
+        Collection<String> collection = new ArrayDeque<>();
         collection.add("foo");
         collection.add("bar");
         collection.add("baz");

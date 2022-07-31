@@ -16,7 +16,7 @@ public class Child extends Parent {
         collection.add("foo");
         collection.add("bar");
         collection.add("baz");
-        collection.forEach();
+        collection.forEach(System.out::println());
     }
 
 

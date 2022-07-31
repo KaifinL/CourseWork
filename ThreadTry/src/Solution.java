@@ -36,7 +36,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        List<List<Integer>> result = test.permuteUnique(new int[]{1, 1, 3});
+        List<List<Integer>> result = test.permuteUnique(new int[]{1, 2, 3});
         System.out.println(result);
     }
 }

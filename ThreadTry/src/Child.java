@@ -12,7 +12,8 @@ public class Child extends Parent {
     public static void main(String[] args) {
         ArrayList<Double> dlist = new ArrayList<>();
         ArrayList<Number> nlist = new ArrayList<>();
-        
+        addPi(nlist);
+        addPi(dlist);
     }
 
     private static void addPi(ArrayList<Double> list) {

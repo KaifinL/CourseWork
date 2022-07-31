@@ -12,7 +12,7 @@ public class Child extends Parent {
     }
 
     public static void main(String[] args) {
-        Collection<String> collection = new LinkedHashSet<>();
+        Collection<String> collection = new ArrayList<>();
         collection.add("foo");
         collection.add("bar");
         collection.add("baz");

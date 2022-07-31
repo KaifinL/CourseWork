@@ -1,10 +1,11 @@
-class ATM {
+class ATM extends Solution {
 
     private int twenties;
     private int fifties;
     private int hundred;
     private int two_hundreds;
     private int five_hundreds;
+    public int age = 1;
 
     public ATM() {
         this.twenties = 0;

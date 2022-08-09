@@ -1,50 +1,61 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList();
-        Arrays.sort(nums);
-        for (int curr = 0; curr < nums.length - 2; curr++) {
-            int left = curr + 1;
-            int right = nums.length - 1;
-            while (left < right) {
-                if (nums[curr] + nums[left] + nums[right] == 0) {
-                    List<Integer> temp = new ArrayList();
-                    temp.add(nums[curr]);
-                    temp.add(nums[left]);
-                    temp.add(nums[right]);
-                    result.add(temp);
-                    int j = left + 1;
-                    while (j < right && nums[left] == nums[j]) {
-                        left++;
-                        j++;
-                    }
-                    left++;
-                    j = right - 1;
-                    while (j > left && nums[j] == nums[right]) {
-                        right--;
-                        j--;
-                    }
-                    right--;
-                } else if (nums[curr] + nums[left] + nums[right] < 0) {
-                    left++;
-                } else {
-                    right--;
-                }
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int arrCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> arr = IntStream.range(0, arrCount).mapToObj(i -> {
+            try {
+                return bufferedReader.readLine().replaceAll("\\s+$", "");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
-            int j = curr + 1;
-            while (j < nums.length - 2 && nums[j] == nums[curr]) {
-                j++;
-                curr++;
+        })
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .collect(toList());
+
+        int operationsRows = Integer.parseInt(bufferedReader.readLine().trim());
+        int operationsColumns = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<List<Integer>> operations = new ArrayList<>();
+
+        IntStream.range(0, operationsRows).forEach(i -> {
+            try {
+                operations.add(
+                        Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                                .map(Integer::parseInt)
+                                .collect(toList())
+                );
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
-        }
+        });
 
-        return result;
-    }
+        List<Integer> result = Result.performOperations(arr, operations);
 
+        bufferedWriter.write(
+                result.stream()
+                        .map(Object::toString)
+                        .collect(joining("\n"))
+                        + "\n"
+        );
 
-    public static void main(String[] args) {
-        Solution test = new Solution();
-        test.threeSum(new int[]{-1,0,1,2,-1,-4});
+        bufferedReader.close();
+        bufferedWriter.close();
     }
 }

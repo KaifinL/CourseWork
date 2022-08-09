@@ -29,7 +29,7 @@ class Result {
             origin.remove(begin+i);
             origin.add(begin+i, origin.get(end-i-1));
             origin.remove(end-i);
-            origin.add(end-i, origin.get(temp));
+            origin.add(end-i, (temp));
         }
     }
 

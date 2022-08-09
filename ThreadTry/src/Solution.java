@@ -1,6 +1,6 @@
 class Solution {
 
-    public static int 
+    public static int satisfy()
 
     public static void main(String[] args) {
 

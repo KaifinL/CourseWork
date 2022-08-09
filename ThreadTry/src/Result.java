@@ -24,11 +24,12 @@ class Result {
      */
 
     public static void reverseSubarray(List<Integer> origin, int begin, int end) {
-        Object[] test = origin.toArray();
-        for (int i = 0; i < (end - begin+1) / 2; i++) {
-            int temp = (int)test[begin+i];
-            test[begin+i] = test[end-i];
-            test[end-i] = temp;
+        for (int i = 0; i < (end-begin)/2; i++) {
+            int temp = origin.get(begin+i);
+            origin.remove(begin+i);
+            origin.add(begin+i, origin.get(end-i));
+            origin.remove(end-i);
+            origin.add(end-i, origin.get(temp));
         }
     }
 
@@ -42,7 +43,15 @@ class Result {
 
 
     public static void main(String[] args) {
-        int []test_arr= new int[]{3, 1, 2, 3, 3, 2};
-
+        List<Integer> test = new ArrayList();
+        test.add(0);
+        test.add(1);
+        test.add(2);
+        List<List<Integer>> operations = new ArrayList<>();
+        List<Integer> operation1 = new ArrayList();
+        operation1.add(0);
+        operation1.add(2);
+        operations.add(operation1);
+        performOperations(test, operations);
     }
 }

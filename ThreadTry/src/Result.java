@@ -46,11 +46,11 @@ class Result {
         List<Integer> test = new ArrayList();
         test.add(0);
         test.add(1);
-        test.add(2);
+//        test.add(2);
         List<List<Integer>> operations = new ArrayList<>();
         List<Integer> operation1 = new ArrayList();
         operation1.add(0);
-        operation1.add(2);
+        operation1.add(1);
         operations.add(operation1);
         performOperations(test, operations);
     }

@@ -27,8 +27,7 @@ class Result {
         for (int i = 0; i < (end-begin)/2; i++) {
             int temp = origin.get(begin+i);
             origin.remove(begin+i);
-            int end_element = origin.get(end-i);
-            origin.add(begin+i, end_element);
+            origin.add(begin+i, origin.get(end-i-1));
             origin.remove(end-i);
             origin.add(end-i, origin.get(temp));
         }

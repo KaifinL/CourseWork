@@ -25,7 +25,7 @@ class Solution {
                         right--;
                         j--;
                     }
-                    right++;
+                    right--;
                 } else if (nums[curr] + nums[left] + nums[right] < 0) {
                     left++;
                 } else {

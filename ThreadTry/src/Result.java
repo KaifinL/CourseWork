@@ -24,7 +24,7 @@ class Result {
      */
 
     public static void reverseSubarray(List<Integer> origin, int begin, int end) {
-        for (int i = 0; i < (end-begin)/2; i++) {
+        for (int i = 0; i < (end-begin+1)/2; i++) {
             int temp = origin.get(begin+i);
             origin.remove(begin+i);
             origin.add(begin+i, origin.get(end-i-1));

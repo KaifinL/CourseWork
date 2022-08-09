@@ -24,21 +24,25 @@ class Result {
      */
 
     public static void reverseSubarray(List<Integer> origin, int begin, int end) {
-        for (int i = 0; i <= (end-begin)/2; i++) {
-            int temp = origin.get(begin+i);
-            origin.remove(begin+i);
-            origin.add(begin+i, origin.get(end-i));
-            origin.remove(end-i);
-            origin.add(end-i, origin.get(temp));
+        for (int i = 0; i <= (end - begin) / 2; i++) {
+            int temp = origin.get(begin + i);
+            origin.remove(begin + i);
+            origin.add(begin + i, origin.get(end - i));
+            origin.remove(end - i);
+            origin.add(end - i, origin.get(temp));
         }
     }
 
     public static List<Integer> performOperations(List<Integer> arr, List<List<Integer>> operations) {
         // Write your code here
-        for (List<Integer> operation:operations) {
+        for (List<Integer> operation : operations) {
             reverseSubarray(arr, operation.get(0), operation.get(1));
         }
         return arr;
     }
 
+
+    public static void main(String[] args) {
+        
+    }
 }

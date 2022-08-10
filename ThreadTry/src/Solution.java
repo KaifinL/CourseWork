@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
+    public static boolean containsNearbyDuplicate(int[] nums, int k) {
         HashMap<Integer, Integer> num_index = new HashMap();
         for (int i = 0; i < nums.length; i++) {
             if (num_index.getOrDefault(nums[i], -1) == -1) {
@@ -19,6 +19,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int []nums = new int[]{}
+        int []nums = new int[]{1,2,3,1,2,3};
+        containsNearbyDuplicate(nums, 2)
     }
 }

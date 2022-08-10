@@ -20,6 +20,7 @@ class Solution {
 
     public static void main(String[] args) {
         int []nums = new int[]{1,2,3,1,2,3};
-        containsNearbyDuplicate(nums, 2)
+        boolean a = containsNearbyDuplicate(nums, 2);
+        System.out.println(a);
     }
 }

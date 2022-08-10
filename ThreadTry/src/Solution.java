@@ -1,41 +1,24 @@
 import java.util.*;
 
-
 class Solution {
-
-
-    // return -1 if there is no such match and the next item otherwise.
-    public static int next_index(List<String> curr_code, List<String> shoppingCart, int index) {
-        int satisfied_counter = 0;
-        while (index < shoppingCart.size() && satisfied_counter < curr_code.size()) {
-            if (shoppingCart.get(index).equals(curr_code.get(satisfied_counter))) {
-                satisfied_counter++;
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        HashMap<Integer, Integer> num_index = new HashMap();
+        for (int i = 0; i < nums.length; i++) {
+            if (num_index.getOrDefault(nums[i], -1) == -1) {
+                num_index.put(nums[i], i);
             } else {
-                satisfied_counter = 0;
-            }
-            index++;
-        }
-        if (satisfied_counter == curr_code.size()) {
-            return index;
-        } else {
-            return -1;
-        }
-    }
-
-    // return 1 if the items in shopping cart satisfy the order form codeList without
-    // overlap. Gaps are allowed.
-    public static int satisfy(List<List<String>> codeList, List<String> shoppingCart) {
-        int next_index = 0;
-        for (List<String> code : codeList) {
-            next_index = next_index(code, shoppingCart, next_index);
-            if (next_index == -1) {
-                return 0;
+                int index = num_index.get(nums[i]);
+                if (i - index >= k) {
+                    return true;
+                } else {
+                    num_index.put(nums[i], i);
+                }
             }
         }
-        return 1;
+        return false;
     }
 
     public static void main(String[] args) {
-
+        int []nums = new int[]{}
     }
 }

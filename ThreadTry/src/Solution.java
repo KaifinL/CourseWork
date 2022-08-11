@@ -31,7 +31,7 @@ class Solution {
             }
             curr++;
         }
-        return counter;
+        return curr;
     }
 
 

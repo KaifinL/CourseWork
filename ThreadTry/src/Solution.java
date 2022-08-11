@@ -8,7 +8,7 @@ class Solution {
                 num_index.put(nums[i], i);
             } else {
                 int index = num_index.get(nums[i]);
-                if (i - index >= k) {
+                if (i - index <= k) {
                     return true;
                 } else {
                     num_index.put(nums[i], i);

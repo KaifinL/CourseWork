@@ -81,7 +81,7 @@ class Solution {
                 if (i == j) {
                     sums[i][j] = strength[i];
                 } else {
-                    sums[i][j] = sums[i][j-1] + strength[i];
+                    sums[i][j] = sums[i][j-1] + strength[j];
                 }
                 result += ((long) sums[i][j] * mins[i][j]);
             }

@@ -105,7 +105,31 @@ class Solution {
         return result;
     }
 
-    
+    public static int phone(String s) {
+        HashMap<Character, Integer> frequency = new HashMap();
+        for (int i = 0; i < s.length(); i++) {
+            frequency.put(s.charAt(i), frequency.getOrDefault(s.charAt(i), 0)+1);
+        }
+        int counter = 0;
+        int[] frequency_list = new int[frequency.size()];
+        for (Character c:frequency.keySet()) {
+            frequency_list[counter] = frequency.get(c);
+            counter++;
+        }
+        Arrays.sort(frequency_list);
+        counter = 0;
+        for (int i = frequency_list.length-1; i>=0; i--) {
+            if (i >= frequency_list.length-9) {
+                counter += frequency_list[i];
+            } else if (i >= frequency_list.length-18) {
+                counter += (2*frequency_list[i]);
+            } else {
+                counter += (3*frequency_list[i]);
+            }
+        }
+        return counter;
+    }
+
 
     public static void main(String[] argv) {
         System.out.println(min_net(new int[]{1, 3, 2, 4}));

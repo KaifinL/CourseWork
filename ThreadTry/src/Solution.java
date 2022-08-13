@@ -25,7 +25,7 @@ class Solution {
         for (int i = 0; i < words.length; i++) {
             words_index.put(words[i], i);
         }
-        for (int i = 0; i < s.length()-word_length+1; i++) {
+        for (int i = 0; i < s.length()-word_length; i++) {
             String curr = s.substring(i, i+word_length);
             if (words_index.containsKey(curr)) {
                 fs_memory[i] = words_index.get(curr);

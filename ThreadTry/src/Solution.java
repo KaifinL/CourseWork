@@ -8,14 +8,17 @@ class Solution {
             if (begin_index+i*word_length >= fs_memory.length) {
                 return false;
             }
+            if (fs_memory[begin_index+i*word_length] < 0 || validation.contains(fs_memory[begin_index+i*word_length])) {
+                return false;
+            }
             validation.add(fs_memory[begin_index+i*word_length]);
         }
 
-        for (int i = 0; i < word_length; i++) {
-            if (!validation.contains(i)) {
-                return false;
-            }
-        }
+//        for (int i = 0; i < word_length; i++) {
+//            if (!validation.contains(i)) {
+//                return false;
+//            }
+//        }
         return true;
     }
 

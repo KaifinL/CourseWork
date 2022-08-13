@@ -5,6 +5,9 @@ class Solution {
     private boolean valid_index(int []fs_memory, int begin_index, int word_length) {
         HashSet<Integer> validation = new HashSet();
         for (int i = 0; i < word_length; i++) {
+            if (begin_index+i*word_length > fs_memory.length) {
+                return false;
+            }
             validation.add(fs_memory[begin_index+i*word_length]);
         }
 

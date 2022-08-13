@@ -105,8 +105,7 @@ class Solution {
         return result;
     }
 
-    public static void main(String[] args) {
-        Solution test = new Solution();
-        test.totalStrength(new int[]{1,3,1,2});
+    public static void main(String[] argv) {
+        System.out.println(min_net(new int[]{1, 3, 2, 4}));
     }
 }

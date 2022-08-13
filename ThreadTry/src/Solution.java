@@ -47,6 +47,21 @@ class Solution {
         return result;
     }
 
+    public int[] twoSum(int[] nums, int target) {
+        // fix the first element.
+        HashMap<Integer, Integer> nums_index = new HashMap();
+        for (int index = 0; index < nums.length; index++) {
+            nums_index.put(nums[index], index);
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (target.containsKey(target-nums[i]) && ((target.get(target-nums[i])) != i)) {
+                return new int[]{i, target.get(target-nums[i])};
+            }
+        }
+        return new int[]{};
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         test.findSubstring("wordgoodgoodgoodbestword", new String[]{"word","good","best","good"});

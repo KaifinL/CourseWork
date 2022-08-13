@@ -1,42 +1,47 @@
+
 import java.util.*;
 
 class Solution {
-    public int nthUglyNumber(int n) {
-        if (n <= 6) {
-            return n;
+    private boolean valid_index(int []fs_memory, int begin_index, int word_length) {
+        HashSet<Integer> validation = new HashSet();
+        for (int i = 0; i < word_length; i++) {
+            validation.add(fs_memory[begin_index+i*word_length]);
         }
-        List<Boolean> uglys = new ArrayList();
-        // 0 is not ugly.
-        uglys.add(false);
-        // all ugly numbers from 1 to 5.
-        uglys.add(true);
-        uglys.add(true);
-        uglys.add(true);
-        uglys.add(true);
-        uglys.add(true);
-        int counter = 5;
-        int curr = 6;
-        while (counter < n) {
-            if (curr % 2 == 0 && uglys.get(curr / 2)) {
-                uglys.add(true);
-                counter++;
-            } else if (curr % 3 == 0 && uglys.get(curr / 3)) {
-                uglys.add(true);
-                counter++;
-            } else if (curr % 3 == 0 && uglys.get(curr / 5)) {
-                uglys.add(true);
-                counter++;
-            } else {
-                uglys.add(false);
+
+        for (int i = 0; i < word_length; i++) {
+            if (!validation.contains(i)) {
+                return false;
             }
-            curr++;
         }
-        return curr-1;
+        return true;
     }
 
 
+    public List<Integer> findSubstring(String s, String[] words) {
+        int fs_memory[] = new int[s.length()];
+        int word_length = words[0].length();
+        List<Integer> result = new ArrayList();
+        HashMap<String, Integer> words_index = new HashMap();
+        for (int i = 0; i < words.length; i++) {
+            words_index.put(words[i], i);
+        }
+        for (int i = 0; i < s.length()-word_length+1; i++) {
+            String curr = s.substring(i, i+word_length+1);
+            if (words_index.containsKey(curr)) {
+                fs_memory[i] = words_index.get(curr);
+            } else {
+                fs_memory[i] = -1;
+            }
+        }
+        for (int i = 0; i < s.length()-word_length+1; i++) {
+            if (fs_memory[i] >= 0 && valid_index(fs_memory, i, word_length)) {
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        Solution test = new Solution();
-        System.out.println(test.nthUglyNumber(7));
+        
     }
 }

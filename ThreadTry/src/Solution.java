@@ -2,9 +2,9 @@
 import java.util.*;
 
 class Solution {
-    private boolean valid_index(int []fs_memory, int begin_index, int word_length) {
+    private boolean valid_index(int []fs_memory, int begin_index, int word_length, int list_length) {
         HashSet<Integer> validation = new HashSet();
-        for (int i = 0; i < word_length; i++) {
+        for (int i = 0; i < list_length; i++) {
             if (begin_index+i*word_length >= fs_memory.length) {
                 return false;
             }
@@ -40,7 +40,7 @@ class Solution {
             }
         }
         for (int i = 0; i < s.length()-word_length+1; i++) {
-            if (fs_memory[i] >= 0 && valid_index(fs_memory, i, word_length)) {
+            if (fs_memory[i] >= 0 && valid_index(fs_memory, i, word_length, words.length)) {
                 result.add(i);
             }
         }

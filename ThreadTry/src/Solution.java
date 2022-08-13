@@ -86,7 +86,7 @@ class Solution {
                 result += ((long) sums[i][j] * mins[i][j]);
             }
         }
-
+        Integer.
         return (int) (result%(Math.pow(10, 9)+7));
     }
 

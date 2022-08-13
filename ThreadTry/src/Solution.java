@@ -62,6 +62,34 @@ class Solution {
         return new int[]{};
     }
 
+    public int totalStrength(int[] strength) {
+        // memoize the minimum value in the strength from i to j
+        int[][] mins = new int[strength.length][strength.length];
+        for (int i = 0; i < strength.length; i++) {
+            for (int j = i; j<strength.length; j++) {
+                if (i == j) {
+                    mins[i][j] = strength[i];
+                } else {
+                    mins[i][j] = Math.min(mins[i][j-1], strength[j]);
+                }
+            }
+        }
+        long result = 0;
+        int[][] sums = new int[strength.length][strength.length];
+        for (int i = 0; i < strength.length; i++) {
+            for (int j = i; j<strength.length;j++) {
+                if (i == j) {
+                    sums[i][j] = strength[i];
+                } else {
+                    sums[i][j] = sums[i][j-1] + strength[i];
+                }
+                result += ((long) sums[i][j] * mins[i][j]);
+            }
+        }
+
+        return (int) (result%(Math.pow(10, 9)+7));
+    }
+
     public static void main(String[] args) {
         Solution test = new Solution();
         test.findSubstring("wordgoodgoodgoodbestword", new String[]{"word","good","best","good"});

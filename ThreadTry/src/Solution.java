@@ -31,12 +31,12 @@ class Solution {
             }
             curr++;
         }
-        return curr;
+        return curr-1;
     }
 
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        System.out.println(test.nthUglyNumber(10));
+        System.out.println(test.nthUglyNumber(7));
     }
 }

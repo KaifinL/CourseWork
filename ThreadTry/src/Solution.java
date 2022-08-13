@@ -55,8 +55,8 @@ class Solution {
         }
 
         for (int i = 0; i < nums.length; i++) {
-            if (target.containsKey(target-nums[i]) && ((target.get(target-nums[i])) != i)) {
-                return new int[]{i, target.get(target-nums[i])};
+            if (nums_index.containsKey(target-nums[i]) && ((nums_index.get(target-nums[i])) != i)) {
+                return new int[]{i, nums_index.get(target-nums[i])};
             }
         }
         return new int[]{};

@@ -105,6 +105,8 @@ class Solution {
         return result;
     }
 
+    
+
     public static void main(String[] argv) {
         System.out.println(min_net(new int[]{1, 3, 2, 4}));
     }

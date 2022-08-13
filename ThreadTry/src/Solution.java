@@ -132,6 +132,6 @@ class Solution {
 
 
     public static void main(String[] argv) {
-        System.out.println(min_net(new int[]{1, 3, 2, 4}));
+        System.out.println(phone("hello"));
     }
 }

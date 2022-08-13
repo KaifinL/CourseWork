@@ -86,8 +86,23 @@ class Solution {
                 result += ((long) sums[i][j] * mins[i][j]);
             }
         }
-        Integer.
+
         return (int) (result%(Math.pow(10, 9)+7));
+    }
+
+    public static int min_net(int []stock) {
+        int sum = 0;
+        int minimum = Integer.MAX_VALUE;
+        int result = -1;
+        for (int i = 0; i < stock.length; i++) {
+            sum += stock[i];
+            int average = sum/(i+1);
+            if (Math.abs(average-stock[i]) < minimum) {
+                result = i;
+                minimum = Math.abs(average-stock[i]);
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {

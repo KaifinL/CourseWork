@@ -92,6 +92,6 @@ class Solution {
 
     public static void main(String[] args) {
         Solution test = new Solution();
-        test.findSubstring("wordgoodgoodgoodbestword", new String[]{"word","good","best","good"});
+        test.totalStrength(new int[]{1,3,1,2});
     }
 }

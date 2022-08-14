@@ -132,6 +132,6 @@ class Solution {
 
 
     public static void main(String[] argv) {
-        System.out.println(phone("hello"));
+        System.out.println(phone("abacadefghibj"));
     }
 }

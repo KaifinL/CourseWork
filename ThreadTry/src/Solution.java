@@ -130,8 +130,25 @@ class Solution {
         return counter;
     }
 
+    public static int select(String log, String t) {
+        HashMap<Character, Integer> log_counts = new HashMap();
+        HashMap<Character, Integer> t_counts = new HashMap();
+        for (int i = 0; i < log.length(); i++) {
+            log_counts.put(log.charAt(i), log_counts.getOrDefault(log.charAt(i), 0)+1);
+        }
+        for (int i = 0; i < t.length(); i++) {
+            t_counts.put(t.charAt(i), t_counts.getOrDefault(t.charAt(i), 0)+1);
+        }
+        int counter = Integer.MAX_VALUE;
+        for (char c: t_counts.keySet()) {
+            int c_nums = t_counts.get(c);
+            counter = Math.min(counter, log_counts.getOrDefault(c, 0)/t_counts.get(c));
+        }
+        return counter;
+    }
+
 
     public static void main(String[] argv) {
-        System.out.println(phone("abacadefghibj"));
+        System.out.println(select("", ));
     }
 }

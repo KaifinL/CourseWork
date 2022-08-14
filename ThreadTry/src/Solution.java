@@ -149,6 +149,6 @@ class Solution {
 
 
     public static void main(String[] argv) {
-        System.out.println(select("", ));
+        System.out.println(select("mononom", "mon"));
     }
 }

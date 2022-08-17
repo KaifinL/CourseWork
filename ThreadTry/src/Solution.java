@@ -159,6 +159,57 @@ class Solution {
         return set.size();
     }
 
+    private static String line(StringBuilder sb, int width) {
+        StringBuilder result = new StringBuilder("*");
+        result.append("(".repeat((width-sb.length())/2));
+        result.append(sb);
+        result.append(")".repeat(width-(result.length()-1)));
+        result.append("*");
+        return result.toString();
+    }
+
+    public static String[] method(String[][] paragraphs, int width) {
+        List<String> result = new ArrayList();
+        String header = "*".repeat(width+2);
+        result.add(header);
+        for (String[] paragraph : paragraphs) {
+            StringBuilder curr = new StringBuilder();
+            int word_count = 0;
+            for (String s : paragraph) {
+                if (word_count == 0) {
+                    curr.append(s);
+                } else if (word_count + s.length() + 1 < width) {
+                    curr.append(" ");
+                    curr.append(s);
+                    word_count++;
+                } else {
+                    String curr_line = line(curr, width);
+                    result.add(curr_line);
+                    curr = new StringBuilder(s);
+                    word_count = 0;
+                }
+                word_count += s.length();
+            }
+        }
+        String[] result_arr = new String[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            result_arr[i] = result.get(i);
+        }
+        return result_arr;
+    }
+
+    public static void main(String[] args) {
+        String header = "*".repeat(16);
+        String[][] test= new String[3][3];
+        test[0] = new String[] {"hello", "world", ""};
+        test[1] = new String[] {"how", "areyou", "doing"};
+        test[2] = new String[] {"Please look", "and align", "to center"};
+        String[] result = method(test, 16);
+        for (int i = 0; i < result.length;  i++) {
+            System.out.println(result[i]);
+        }
+    }
+
 
     public static void main(String[] argv) {
         System.out.println(uniqueMorseRepresentations (new String[]{"gin","zen","gig","msg"}));

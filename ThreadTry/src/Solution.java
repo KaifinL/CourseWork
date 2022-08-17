@@ -146,7 +146,7 @@ class Solution {
         return counter;
     }
 
-    public int uniqueMorseRepresentations(String[] words) {
+    public static int uniqueMorseRepresentations(String[] words) {
         String[] dict = new String[]{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
         HashSet<String> set = new HashSet();
         for (String word:words) {
@@ -161,6 +161,6 @@ class Solution {
 
 
     public static void main(String[] argv) {
-        System.out.println(select("mononomo", "mon"));
+        System.out.println(uniqueMorseRepresentations (new String[]{"mononomo", "mon"}));
     }
 }

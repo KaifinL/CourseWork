@@ -178,7 +178,7 @@ class Solution {
             for (String s : paragraph) {
                 if (word_count == 0) {
                     curr.append(s);
-                } else if (word_count + s.length() + 1 < width) {
+                } else if (word_count + s.length() + 1 <= width) {
                     curr.append(" ");
                     curr.append(s);
                     word_count++;
@@ -195,6 +195,7 @@ class Solution {
                 result.add(curr_line);
             }
         }
+        result.add(header);
         String[] result_arr = new String[result.size()];
         for (int i = 0; i < result.size(); i++) {
             result_arr[i] = result.get(i);

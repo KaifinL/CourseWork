@@ -154,7 +154,7 @@ class Solution {
             for (int i = 0; i < word.length(); i++) {
                 curr.append(dict[(int)(word.charAt(i))-97]);
             }
-            set.add(word.toString());
+            set.add(curr.toString());
         }
         return set.size();
     }

@@ -190,6 +190,10 @@ class Solution {
                 }
                 word_count += s.length();
             }
+            if (word_count != 0) {
+                String curr_line = line(curr, width);
+                result.add(curr_line);
+            }
         }
         String[] result_arr = new String[result.size()];
         for (int i = 0; i < result.size(); i++) {
@@ -209,5 +213,5 @@ class Solution {
             System.out.println(result[i]);
         }
     }
-    
+
 }

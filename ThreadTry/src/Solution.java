@@ -161,6 +161,6 @@ class Solution {
 
 
     public static void main(String[] argv) {
-        System.out.println(uniqueMorseRepresentations (new String[]{"mononomo", "mon"}));
+        System.out.println(uniqueMorseRepresentations (new String[]{"gin","zen","gig","msg"}));
     }
 }

@@ -209,9 +209,5 @@ class Solution {
             System.out.println(result[i]);
         }
     }
-
-
-    public static void main(String[] argv) {
-        System.out.println(uniqueMorseRepresentations (new String[]{"gin","zen","gig","msg"}));
-    }
+    
 }

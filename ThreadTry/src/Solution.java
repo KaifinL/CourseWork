@@ -146,6 +146,19 @@ class Solution {
         return counter;
     }
 
+    public int uniqueMorseRepresentations(String[] words) {
+        String[] dict = new String[]{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        HashSet<String> set = new HashSet();
+        for (String word:words) {
+            StringBuilder curr = new StringBuilder();
+            for (int i = 0; i < word.length(); i++) {
+                curr.append(dict[(int)(word.charAt(i))-97]);
+            }
+            set.add(word.toString());
+        }
+        return set.size();
+    }
+
 
     public static void main(String[] argv) {
         System.out.println(select("mononomo", "mon"));

@@ -141,7 +141,6 @@ class Solution {
         }
         int counter = Integer.MAX_VALUE;
         for (char c: t_counts.keySet()) {
-            int c_nums = t_counts.get(c);
             counter = Math.min(counter, log_counts.getOrDefault(c, 0)/t_counts.get(c));
         }
         return counter;
@@ -149,6 +148,6 @@ class Solution {
 
 
     public static void main(String[] argv) {
-        System.out.println(select("mononom", "mon"));
+        System.out.println(select("mononomo", "mon"));
     }
 }

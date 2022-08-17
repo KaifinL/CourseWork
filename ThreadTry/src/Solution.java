@@ -203,6 +203,19 @@ class Solution {
         return result_arr;
     }
 
+    public int[][] diagonalSort(int[][] mat) {
+        for (int i = 0; i < mat.length; i++) {
+            int []curr_arr = new int[(int)Math.floor(Math.sqrt(2)*Math.min(mat.length, mat[0].length))];
+            int row = i, col = 0;
+            while (row < mat.length && col < mat[0].length) {
+                curr_arr
+
+                row++;
+                col++;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         String header = "*".repeat(16);
         String[][] test= new String[3][3];

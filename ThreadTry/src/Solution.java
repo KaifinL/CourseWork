@@ -22,7 +22,7 @@ class Solution {
             int first_main = arrival[main_str.peek()];
             int first_aven = arrival[avenue.peek()];
             if ((curTime < first_main && !first_priority) || (curTime < first_aven && first_priority)) {
-                curTime = Math.min(first_aven, first_main);
+                curTime = Math.max(Math.min(first_aven, first_main), curTime);
                 first_priority = (first_aven<=first_main);
             }
 

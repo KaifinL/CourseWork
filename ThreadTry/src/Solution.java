@@ -53,8 +53,8 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        int []arrival = new int[]{0, 1, 1, 3, 3};
-        int []street = new int[] {0, 1, 0, 0, 1};
+        int []arrival = new int[]{0, 0, 1, 4};
+        int []street = new int[] {0, 1, 1, 0};
         int []test = traffic(arrival, street);
     }
 

@@ -32,6 +32,7 @@ class Solution {
     }
 
     public int[][] diagonalSort(int[][] mat) {
+        this.mat = mat;
         for (int i = 0; i < mat.length; i++) {
             change_status(i, 0);
         }

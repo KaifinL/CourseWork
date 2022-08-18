@@ -29,9 +29,11 @@ class Solution {
             if (first_priority && first_aven-curTime <= 1) {
                 result[avenue.poll()] = curTime;
                 curTime++;
+                first_priority = true;
             } else {
                 result[main_str.poll()] = curTime;
                 curTime++;
+                first_priority = false;
             }
         }
         if (main_str.isEmpty()) {

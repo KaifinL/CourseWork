@@ -27,22 +27,22 @@ class Solution {
             }
 
             if (first_priority && first_aven-curTime <= 1) {
-                result[avenue.peek()] = curTime;
+                result[avenue.poll()] = curTime;
                 curTime++;
             } else {
-                result[main_str.peek()] = curTime;
+                result[main_str.poll()] = curTime;
                 curTime++;
             }
         }
         if (main_str.isEmpty()) {
             while (!avenue.isEmpty()) {
-                int curr_index = avenue.pool();
+                int curr_index = avenue.poll();
                 result[curr_index] = Math.max(curTime, arrival[curr_index]);
                 curTime = Math.max(arrival[curr_index], curTime+1);
             }
         } else {
             while (!main_str.isEmpty()) {
-                int curr_index = main_str.pool();
+                int curr_index = main_str.poll();
                 result[curr_index] = Math.max(curTime, arrival[curr_index]);
                 curTime = Math.max(arrival[curr_index], curTime+1);
             }
@@ -53,6 +53,7 @@ class Solution {
     public static void main(String[] args) {
         int []arrival = new int[]{0, 0, 1, 4};
         int []street = new int[] {0, 1, 1, 0};
+        int []test = traffic(arrival, street);
     }
 
 }

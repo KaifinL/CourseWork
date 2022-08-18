@@ -21,7 +21,7 @@ class Solution {
         while (!main_str.isEmpty() && !avenue.isEmpty()) {
             int first_main = arrival[main_str.peek()];
             int first_aven = arrival[avenue.peek()];
-            if (curTime < first_main-1 && curTime < first_aven-1) {
+            if (curTime < first_main && curTime < first_aven) {
                 curTime = Math.min(first_aven, first_main);
                 first_priority = (first_aven<=first_main);
             }

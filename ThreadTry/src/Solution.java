@@ -3,48 +3,56 @@ import java.util.*;
 
 class Solution {
 
-    private int[][] mat;
+    public static int[] traffic(int []arrival, int[]street) {
+        LinkedList<Integer> main_str = new LinkedList();
+        LinkedList<Integer> avenue = new LinkedList();
+        // we store the index in the array, so that arrival[i] represent the time.
+        for (int i = 0; i < arrival.length; i++) {
+            if (street[i] == 0) {
+                main_str.add(i);
+            } else {
+                avenue.add(i);
+            }
+        }
 
+        int curTime = -1;
+        boolean first_priority = true;
+        int []result = new int[arrival.length];
+        while (!main_str.isEmpty() && !avenue.isEmpty()) {
+            int first_main = arrival[main_str.peek()];
+            int first_aven = arrival[avenue.peek()];
+            if (curTime < first_main-1 && curTime < first_aven-1) {
+                curTime = Math.min(first_aven, first_main);
+                first_priority = (first_aven<=first_main);
+            }
 
-    private void change_status(int x, int y) {
-        int []curr_arr = new int[(int)Math.floor(Math.sqrt(2)*Math.min(mat.length, mat[0].length))];
-        int row = x, col = y, size = 0;
-        while (row < mat.length && col < mat[0].length) {
-            curr_arr[size] = this.mat[row][col];
-            size++;
-            row++;
-            col++;
+            if (first_priority && first_aven-curTime <= 1) {
+                result[avenue.peek()] = curTime;
+                curTime++;
+            } else {
+                result[main_str.peek()] = curTime;
+                curTime++;
+            }
         }
-        while (size < curr_arr.length) {
-            curr_arr[size] = Integer.MAX_VALUE;
-            size++;
+        if (main_str.isEmpty()) {
+            while (!avenue.isEmpty()) {
+                int curr_index = avenue.pool();
+                result[curr_index] = Math.max(curTime, arrival[curr_index]);
+                curTime = Math.max(arrival[curr_index], curTime+1);
+            }
+        } else {
+            while (!main_str.isEmpty()) {
+                int curr_index = main_str.pool();
+                result[curr_index] = Math.max(curTime, arrival[curr_index]);
+                curTime = Math.max(arrival[curr_index], curTime+1);
+            }
         }
-        Arrays.sort(curr_arr);
-        row = x;
-        col = y;
-        size = 0;
-        while (row < mat.length && col < mat[0].length) {
-            mat[row][col] = curr_arr[size];
-            size++;
-            row++;
-            col++;
-        }
-    }
-
-    public int[][] diagonalSort(int[][] mat) {
-        this.mat = mat;
-        for (int i = 0; i < mat.length; i++) {
-            change_status(i, 0);
-        }
-        for (int i = 1; i < mat[0].length; i++) {
-            change_status(0, i);
-        }
-        return this.mat;
+        return result;
     }
 
     public static void main(String[] args) {
-        Solution test = new Solution();
-        int mat[][] = new int[][];
+        int []arrival = new int[]{0, 0, 1, 4};
+        int []street = new int[] {0, 1, 1, 0};
     }
 
 }

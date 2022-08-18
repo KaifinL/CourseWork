@@ -52,10 +52,27 @@ class Solution {
         return result;
     }
 
+    public static boolean reachingPoints(int sx, int sy, int tx, int ty) {
+        boolean[][] reachable = new boolean[tx-sx+1][ty-sy+1];
+        reachable[tx-sx][ty-sy] = true;
+        for (int i = 0; i < tx-sx+1; i++) {
+            for (int j = 0; j < ty-sy+1; j++) {
+                if (i+j <= tx-sx && reachable[i+j][j]) {
+                    reachable[i][j] = true;
+                } else if (i+j <= ty-sy && reachable[i][i+j]) {
+                    reachable[i][j] = true;
+                } else {
+                    reachable[i][j] = false;
+                }
+            }
+        }
+        return reachable[0][0];
+    }
+
     public static void main(String[] args) {
-        int []arrival = new int[]{0, 0, 1, 4};
-        int []street = new int[] {0, 1, 1, 0};
-        int []test = traffic(arrival, street);
+//        int []arrival = new int[]{0, 0, 1, 4};
+//        int []street = new int[] {0, 1, 1, 0};
+        boolean test = reachingPoints(1, 1, 3, 5);
     }
 
 }

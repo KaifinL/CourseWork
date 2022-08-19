@@ -1,14 +1,15 @@
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 class Solution {
 
-    public static int[] traffic(int []arrival, int[]street) {
+    public static List<Integer> traffic(List<Integer> arrival, List<Integer> street) {
         LinkedList<Integer> main_str = new LinkedList();
         LinkedList<Integer> avenue = new LinkedList();
         // we store the index in the array, so that arrival[i] represent the time.
-        for (int i = 0; i < arrival.length; i++) {
-            if (street[i] == 0) {
+        for (int i = 0; i < arrival.size(); i++) {
+            if (street.get(i) == 0) {
                 main_str.add(i);
             } else {
                 avenue.add(i);
@@ -17,10 +18,10 @@ class Solution {
 
         int curTime = -1;
         boolean first_priority = true;
-        int []result = new int[arrival.length];
+        int []result = new int[arrival.size()];
         while (!main_str.isEmpty() && !avenue.isEmpty()) {
-            int first_main = arrival[main_str.peek()];
-            int first_aven = arrival[avenue.peek()];
+            int first_main = arrival.get(main_str.peek());
+            int first_aven = arrival.get(avenue.peek());
             if ((curTime < first_main && !first_priority) || (curTime < first_aven && first_priority)) {
                 curTime = Math.max(Math.min(first_aven, first_main), curTime);
                 first_priority = (first_aven<=first_main);
@@ -39,17 +40,21 @@ class Solution {
         if (main_str.isEmpty()) {
             while (!avenue.isEmpty()) {
                 int curr_index = avenue.poll();
-                result[curr_index] = Math.max(curTime, arrival[curr_index]);
-                curTime = Math.max(arrival[curr_index], curTime+1);
+                result[curr_index] = Math.max(curTime, arrival.get(curr_index));
+                curTime = Math.max(arrival.get(curr_index), curTime+1);
             }
         } else {
             while (!main_str.isEmpty()) {
                 int curr_index = main_str.poll();
-                result[curr_index] = Math.max(curTime, arrival[curr_index]);
-                curTime = Math.max(arrival[curr_index], curTime+1);
+                result[curr_index] = Math.max(curTime, arrival.get(curr_index));
+                curTime = Math.max(arrival.get(curr_index), curTime+1);
             }
         }
-        return result;
+        List<Integer> result_lst = new ArrayList<>();
+        for (int j : result) {
+            result_lst.add(j);
+        }
+        return result_lst;
     }
 
     HashSet<String> seen;
@@ -88,9 +93,21 @@ class Solution {
     public static void main(String[] args) {
 //        int []arrival = new int[]{0, 0, 1, 4};
 //        int []street = new int[] {0, 1, 1, 0};
-        Solution test1 = new Solution();
-        boolean test = test1.reachingPoints(1, 4, 7, 6, 1);
-        System.out.println(test);
+        List<Integer> arrival = new ArrayList<>();
+        arrival.add(0);
+        arrival.add(0);
+        arrival.add(1);
+        arrival.add(4);
+        List<Integer> street = new ArrayList<>();
+        street.add(0);
+        street.add(1);
+        street.add(1);
+        street.add(0);
+//        Solution test1 = new Solution();
+        List<Integer> test = traffic(arrival, street);
+        for (int i = 0; i < test.size(); i++) {
+            System.out.println(i);
+        }
     }
 
 }

@@ -106,7 +106,7 @@ class Solution {
 //        Solution test1 = new Solution();
         List<Integer> test = traffic(arrival, street);
         for (int i = 0; i < test.size(); i++) {
-            System.out.println(i);
+            System.out.println(test.get(i));
         }
     }
 

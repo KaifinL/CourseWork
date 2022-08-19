@@ -132,7 +132,8 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        
+        int[] test_arr = new int[]{1, 2, 3};
+        System.out.println(maxLength(test_arr, 3));
     }
 
 }

@@ -90,6 +90,26 @@ class Solution {
         return reach_helper(x1, y1, x2, y2, c);
     }
 
+    public int minSetSize(int[] arr) {
+        HashMap<Integer, Integer> frequency = new HashMap();
+        for (int i = 0; i < arr.length; i++) {
+            frequency.put(arr[i], frequency.getOrDefault(arr[i], 0)+1);
+        }
+
+        PriorityQueue<Integer> max_heap = new PriorityQueue<Integer>(frequency.size(), (a, b)->(Integer.compare(b, a)));
+        for (int freq : frequency.values()) {
+            max_heap.add(freq);
+        }
+        int result = 0;
+        for (int i = 0; i < frequency.size(); i++) {
+            result += max_heap.poll();
+            if (result >= arr.length/2) {
+                return result;
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
 //        int []arrival = new int[]{0, 0, 1, 4};
 //        int []street = new int[] {0, 1, 1, 0};

@@ -75,6 +75,8 @@ class Solution {
         return result;
     }
 
+    
+
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();
         arr.add(1);
@@ -83,6 +85,6 @@ class Solution {
         System.out.println(maxLength(arr, 3));
     }
 
-    
+
 
 }

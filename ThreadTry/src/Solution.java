@@ -23,11 +23,14 @@ class Solution {
     public static int smallestRangeII(int[]a, int k) {
         int left_most = a[0]+k;
         int right_most = a[a.length-1]-k;
+        int minimum = Integer.MAX_VALUE;
         for (int i = 0; i < a.length; i++) {
             int curr_left = Math.min(a[i+1]-k, left_most);
-            int curr_right = Math.min(a[i]+k, right_most);
-
+            int curr_right = Math.max(a[i]+k, right_most);
+            int curr_diff = curr_right-curr_left;
+            minimum = Math.min(curr_diff, minimum);
         }
+        return minimum;
     }
 
     public static void main(String[] args) {

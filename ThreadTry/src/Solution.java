@@ -34,6 +34,15 @@ class Solution {
         return minimum;
     }
 
+    private static boolean isOdd(String s) {
+        boolean odd = false;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) % 2 != 0){
+                odd = !odd;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int[] test_arr = new int[]{1, 2, 3};
         System.out.println(maxLength(test_arr, 3));

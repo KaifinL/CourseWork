@@ -59,7 +59,19 @@ class Solution {
         }
     }
 
-    
+    public long kSub(int k, int []nums) {
+        int curr_sum = 0, result = 0;
+        HashMap<Integer, Integer> seen = new HashMap<>();
+        for (int i : nums) {
+            curr_sum += i;
+            curr_sum = curr_sum % k;
+            if (seen.containsKey(curr_sum)) {
+                result += seen.get(curr_sum);
+            }
+            seen.put(curr_sum, seen.getOrDefault(curr_sum, 0)+1);
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();

@@ -89,7 +89,7 @@ class Solution {
 //        int []arrival = new int[]{0, 0, 1, 4};
 //        int []street = new int[] {0, 1, 1, 0};
         Solution test1 = new Solution();
-        boolean test = test1.reachingPoints(1, 1, 4, 7, 6);
+        boolean test = test1.reachingPoints(1, 4, 7, 6, 1);
         System.out.println(test);
     }
 

@@ -21,6 +21,7 @@ class Solution {
     }
 
     public static int smallestRangeII(int[]a, int k) {
+        Arrays.sort(a);
         int left_most = a[0]+k;
         int right_most = a[a.length-1]-k;
         int minimum = Integer.MAX_VALUE;

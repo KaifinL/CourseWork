@@ -45,7 +45,7 @@ class Solution {
         return false;
     }
 
-    public static String isOdd(String[] s_arr, int k) {
+    public static String isOdd(List<String> s_arr, int k) {
         boolean odd = false;
         for (String s:s_arr) {
             if (isOdd(s)) {

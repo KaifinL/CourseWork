@@ -111,18 +111,24 @@ class Solution {
     }
 
     public static int maxLength(int[] a, int k) {
-        int curr_sum = 0;
-        int max_length = 0, curr_length = 0;
+        int curr_sum = a[0];
+        int max_length = 0;
         int left = 0, right = 0;
         while (right < a.length) {
             if (left == right) {
                 right++;
-                curr_length = 1;
             } else {
-                curr_sum += a[left];
-                
+                curr_sum += a[right];
+                if (curr_sum > k) {
+                    curr_sum -= a[left];
+                    left++;
+                } else {
+                    right++;
+                    max_length = Math.max(max_length, right-left);
+                }
             }
         }
+        return max_length;
     }
 
     public static void main(String[] args) {

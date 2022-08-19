@@ -84,14 +84,27 @@ class Solution {
             increment[start]++;
             increment[end+1]--;
         }
+
+        int[] points = new int[n+1];
+        int maximum = Integer.MIN_VALUE;
+        int result = -1;
+        for (int i = 1; i <= n; i++) {
+            points[i] = points[i-1] + increment[i];
+            if (points[i] > maximum) {
+                result = i;
+                maximum = points[i];
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();
-        arr.add(1);
         arr.add(2);
+        arr.add(4);
+        arr.add(1);
         arr.add(3);
-        System.out.println(maxLength(arr, 3));
+        System.out.println(maxLength(arr, 10));
     }
 
 

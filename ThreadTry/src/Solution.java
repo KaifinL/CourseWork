@@ -103,7 +103,7 @@ class Solution {
         arr.add(2);
         arr.add(4);
         arr.add(1);
-        arr.add(3);
+        arr.add(2);
         System.out.println(maxLength(arr, 10));
     }
 

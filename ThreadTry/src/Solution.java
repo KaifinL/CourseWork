@@ -54,11 +54,17 @@ class Solution {
 
     HashSet<String> seen;
 
+    private boolean isPerfect(int num) {
+        return Math.pow(Math.ceil(Math.sqrt(num)), 2) == num;
+    }
+
     public boolean reach_helper(int x1, int y1, int x2, int y2, int c) {
         if (x1 > x2 || y1>y2) {
             return false;
         }
-        if (x1)
+        if (isPerfect(x1+y1)) {
+            return false;
+        }
         String curr = String.valueOf(x1) + "," + String.valueOf(y1);
         if (seen.contains(curr)) {
             return false;

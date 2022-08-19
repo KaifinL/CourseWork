@@ -24,7 +24,7 @@ class Solution {
         Arrays.sort(a);
         int left_most = a[0]+k;
         int right_most = a[a.length-1]-k;
-        int minimum = Integer.MAX_VALUE;
+        int minimum = a[a.length-1]-a[0];
         for (int i = 0; i < a.length; i++) {
             int curr_left = Math.min(a[i+1]-k, left_most);
             int curr_right = Math.max(a[i]+k, right_most);

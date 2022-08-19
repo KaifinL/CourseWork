@@ -59,6 +59,7 @@ class Solution {
         }
     }
 
+    //ksub divisible problem
     public long kSub(int k, int []nums) {
         int curr_sum = 0, result = 0;
         HashMap<Integer, Integer> seen = new HashMap<>();

@@ -58,6 +58,7 @@ class Solution {
         if (x1 > x2 || y1>y2) {
             return false;
         }
+        if (x1)
         String curr = String.valueOf(x1) + "," + String.valueOf(y1);
         if (seen.contains(curr)) {
             return false;
@@ -83,6 +84,7 @@ class Solution {
 //        int []street = new int[] {0, 1, 1, 0};
         Solution test1 = new Solution();
         boolean test = test1.reachingPoints(1, 1, 4, 7, 6);
+        System.out.println(test);
     }
 
 }

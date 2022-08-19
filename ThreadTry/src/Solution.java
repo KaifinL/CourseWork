@@ -51,7 +51,34 @@ class Solution {
         }
         return result;
     }
-    
+
+    HashSet<String> seen;
+
+    public boolean reach_helper(int x1, int y1, int x2, int y2, int c) {
+        if (x1 > x2 || y1>y2) {
+            return false;
+        }
+        String curr = String.valueOf(x1) + "," + String.valueOf(y1);
+        if (seen.contains(curr)) {
+            return false;
+        }
+
+        if (x1 == x2 && y1 == y2) {
+            return true;
+        }
+
+        seen.add(curr);
+
+        return reach_helper(x1+y1, y1, x2, y2, c) || reach_helper(x1, x1+y1, x2, y2, c) || reach_helper(x1+c, y1+c, x2, y2, c);
+    }
+
+
+    public static boolean reachingPoints(int x1, int y1, int x2, int y2, int c) {
+        if (x1 > x2 || y1>y2) {
+            return false;
+        }
+
+    }
 
     public static void main(String[] args) {
 //        int []arrival = new int[]{0, 0, 1, 4};

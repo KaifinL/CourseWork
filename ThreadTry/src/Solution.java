@@ -43,15 +43,21 @@ class Solution {
         return false;
     }
 
-    public static boolean isOdd(String[] s_arr, int k) {
+    public static String isOdd(String[] s_arr, int k) {
         boolean odd = false;
         for (String s:s_arr) {
             if (isOdd(s)) {
                 odd = !odd;
             }
         }
-        return odd;
+        if (odd) {
+            return "Odd";
+        } else {
+            return "Even";
+        }
     }
+
+
 
     public static void main(String[] args) {
         int[] test_arr = new int[]{1, 2, 3};

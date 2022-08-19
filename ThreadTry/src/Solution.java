@@ -104,7 +104,7 @@ class Solution {
         for (int i = 0; i < frequency.size(); i++) {
             result += max_heap.poll();
             if (result >= arr.length/2) {
-                return result;
+                return i+1;
             }
         }
         return -1;

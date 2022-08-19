@@ -62,6 +62,7 @@ class Solution {
     public long kSub(int k, int []nums) {
         int curr_sum = 0, result = 0;
         HashMap<Integer, Integer> seen = new HashMap<>();
+        seen.put(0, 1);
         for (int i : nums) {
             curr_sum += i;
             curr_sum = curr_sum % k;

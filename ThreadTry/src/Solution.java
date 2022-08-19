@@ -4,14 +4,15 @@ import java.util.*;
 
 class Solution {
 
-    public static int maxLength(int[] a, int k) {
+    // Longest subarray
+    public static int maxLength(List<Integer> a, int k) {
         int curr_sum = 0;
         int max_length = 0;
         int left = 0, right = 0;
-        while (right < a.length) {
-            curr_sum+=a[right];
+        while (right < a.size()) {
+            curr_sum+=a.get(right);
             while (curr_sum > k) {
-                curr_sum-=a[left];
+                curr_sum-=a.get(left);
                 left++;
             }
             max_length = Math.max(max_length, right-left+1);
@@ -60,8 +61,11 @@ class Solution {
 
 
     public static void main(String[] args) {
-        int[] test_arr = new int[]{1, 2, 3};
-        System.out.println(maxLength(test_arr, 3));
+        List<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        System.out.println(maxLength(arr, 3));
     }
 
 }

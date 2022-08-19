@@ -75,7 +75,9 @@ class Solution {
         return result;
     }
 
-    
+    public static int mostVisited(List<Integer> lst, int n) {
+        
+    }
 
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();

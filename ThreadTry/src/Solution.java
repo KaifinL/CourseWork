@@ -61,8 +61,6 @@ class Solution {
                     reachable[i][j] = true;
                 } else if (i+j <= ty-sy && reachable[i][i+j]) {
                     reachable[i][j] = true;
-                } else {
-                    reachable[i][j] = false;
                 }
             }
         }

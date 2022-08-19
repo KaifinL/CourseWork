@@ -20,7 +20,9 @@ class Solution {
         return max_length;
     }
 
-    public static int smallestRangeII(int[]a, int )
+    public static int smallestRangeII(int[]a, int k) {
+        
+    }
 
     public static void main(String[] args) {
         int[] test_arr = new int[]{1, 2, 3};

@@ -76,7 +76,14 @@ class Solution {
     }
 
     public static int mostVisited(List<Integer> lst, int n) {
-        
+        int[] increment = new int[n+2];
+        Arrays.fill(increment, 0);
+        for (int i = 0; i < lst.size()-1; i++) {
+            int start = Math.min(lst.get(i), lst.get(i+1));
+            int end = Math.max(lst.get(i), lst.get(i+1));
+            increment[start]++;
+            increment[end+1]--;
+        }
     }
 
     public static void main(String[] args) {

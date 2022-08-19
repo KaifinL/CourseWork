@@ -110,7 +110,20 @@ class Solution {
         return -1;
     }
 
-    
+    public static int maxLength(int[] a, int k) {
+        int curr_sum = 0;
+        int max_length = 0, curr_length = 0;
+        int left = 0, right = 0;
+        while (right < a.length) {
+            if (left == right) {
+                right++;
+                curr_length = 1;
+            } else {
+                curr_sum += a[left];
+                
+            }
+        }
+    }
 
     public static void main(String[] args) {
 //        int []arrival = new int[]{0, 0, 1, 4};

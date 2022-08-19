@@ -118,11 +118,11 @@ class Solution {
             if (left == right) {
                 right++;
             } else {
-                curr_sum += a[right];
                 if (curr_sum > k) {
                     curr_sum -= a[left];
                     left++;
                 } else {
+                    curr_sum += a[right];
                     right++;
                     max_length = Math.max(max_length, right-left);
                 }
@@ -132,23 +132,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-//        int []arrival = new int[]{0, 0, 1, 4};
-//        int []street = new int[] {0, 1, 1, 0};
-        List<Integer> arrival = new ArrayList<>();
-        arrival.add(0);
-        arrival.add(0);
-        arrival.add(1);
-        arrival.add(4);
-        List<Integer> street = new ArrayList<>();
-        street.add(0);
-        street.add(1);
-        street.add(1);
-        street.add(0);
-//        Solution test1 = new Solution();
-        List<Integer> test = traffic(arrival, street);
-        for (int i = 0; i < test.size(); i++) {
-            System.out.println(test.get(i));
-        }
+        
     }
 
 }

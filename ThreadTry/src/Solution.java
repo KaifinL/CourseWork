@@ -35,12 +35,22 @@ class Solution {
     }
 
     private static boolean isOdd(String s) {
-        boolean odd = false;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) % 2 != 0){
+            if (s.charAt(i) % 2 == 0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isOdd(String[] s_arr, int k) {
+        boolean odd = false;
+        for (String s:s_arr) {
+            if (isOdd(s)) {
                 odd = !odd;
             }
         }
+        return odd;
     }
 
     public static void main(String[] args) {

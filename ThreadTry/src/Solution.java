@@ -73,17 +73,16 @@ class Solution {
     }
 
 
-    public static boolean reachingPoints(int x1, int y1, int x2, int y2, int c) {
-        if (x1 > x2 || y1>y2) {
-            return false;
-        }
-
+    public boolean reachingPoints(int x1, int y1, int x2, int y2, int c) {
+        seen = new HashSet<>();
+        return reach_helper(x1, y1, x2, y2, c);
     }
 
     public static void main(String[] args) {
 //        int []arrival = new int[]{0, 0, 1, 4};
 //        int []street = new int[] {0, 1, 1, 0};
-        boolean test = reachingPoints(1, 1, 4, 7, 6);
+        Solution test1 = new Solution();
+        boolean test = test1.reachingPoints(1, 1, 4, 7, 6);
     }
 
 }

@@ -115,6 +115,7 @@ class Solution {
 
     //find group
     private int[] students;
+    private int count;
     private int find_root(int a) {
         if (students[a] != a) {
             students[a] = find_root(students[a]);
@@ -127,12 +128,13 @@ class Solution {
         int root_a = find_root(a);
         int root_b = find_root(b);
         if (root_a != root_b) {
-            
+
         }
     }
 
-    public int groupSize(List<String> query, List<Integer> student1, List<Integer> student2) {
-        students = new int[student1.size()+1];
+    public int groupSize(int n, List<String> query, List<Integer> student1, List<Integer> student2) {
+        students = new int[n+1];
+        count = n;
     }
 
     public static void main(String[] args) {

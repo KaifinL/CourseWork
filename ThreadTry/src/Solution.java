@@ -132,12 +132,19 @@ class Solution {
         }
     }
 
-    public int groupSize(int n, List<String> query, List<Integer> student1, List<Integer> student2) {
+    public void groupSize(int n, List<String> query, List<Integer> student1, List<Integer> student2) {
         students = new int[n+1];
         for (int i = 0; i < n+1; i++) {
             students[i] = i;
         }
         count = n;
+        for (int i = 0; i < query.size(); i++) {
+            if (query.get(i).equals("friend")) {
+                union(student1.get(i), student2.get(i));
+            } else {
+                System.out.println(this.count);
+            }
+        }
     }
 
     public static void main(String[] args) {

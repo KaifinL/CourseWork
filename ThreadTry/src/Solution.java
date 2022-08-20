@@ -115,7 +115,7 @@ class Solution {
 
     //find group
     private int[] students;
-    public static int groupSize() {
+    public static int groupSize(List<String> query, List<Integer> student1, List<Integer> student2) {
         
     }
 

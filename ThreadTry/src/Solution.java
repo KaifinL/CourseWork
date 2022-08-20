@@ -116,6 +116,7 @@ class Solution {
     //find group
     private int[] students;
     private int count;
+    private int[] rank;
     private int find_root(int a) {
         if (students[a] != a) {
             students[a] = find_root(students[a]);
@@ -134,8 +135,10 @@ class Solution {
 
     public int groupSize(int n, List<String> query, List<Integer> student1, List<Integer> student2) {
         students = new int[n+1];
+        rank = new int[n+1];
         for (int i = 0; i < n+1; i++) {
             students[i] = i;
+            rank[i] = i;
         }
         count = n;
     }

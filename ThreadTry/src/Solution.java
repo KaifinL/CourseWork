@@ -115,12 +115,20 @@ class Solution {
 
     //find group
     private int[] students;
-    private void union(int a, int b) {
+    private int find_root(int a) {
+        if (students[a] == a) {
+            return a;
+        }
+        int root = find_root(students[a]);
         
     }
 
-    public static int groupSize(List<String> query, List<Integer> student1, List<Integer> student2) {
+    private void union(int a, int b) {
 
+    }
+
+    public int groupSize(List<String> query, List<Integer> student1, List<Integer> student2) {
+        students = new int[student1.size()+1];
     }
 
     public static void main(String[] args) {

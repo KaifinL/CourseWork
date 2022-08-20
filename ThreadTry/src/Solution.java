@@ -124,7 +124,9 @@ class Solution {
     }
 
     private void union(int a, int b) {
-
+        int root_a = find_root(a);
+        int root_b = find_root(b);
+        
     }
 
     public int groupSize(List<String> query, List<Integer> student1, List<Integer> student2) {

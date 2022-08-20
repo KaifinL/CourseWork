@@ -115,8 +115,12 @@ class Solution {
 
     //find group
     private int[] students;
-    public static int groupSize(List<String> query, List<Integer> student1, List<Integer> student2) {
+    private void union(int a, int b) {
         
+    }
+
+    public static int groupSize(List<String> query, List<Integer> student1, List<Integer> student2) {
+
     }
 
     public static void main(String[] args) {

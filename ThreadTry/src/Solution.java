@@ -98,7 +98,21 @@ class Solution {
         return result;
     }
 
-    public boolean 
+    private double distance(int x1, int y1, int x2, int y2) {
+        return Math.sqrt(Math.pow((x1-x2), 2) + Math.pow(y1-y2, 2));
+    }
+
+    private boolean form_triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+        double first = distance(x1, y1, x2, y2);
+        double second = distance(x2, y2, x3, y3);
+        double third = distance(x1, y1, x3, y3);
+        if (first + second <= third) return false;
+        if (first + third <= second) return false;
+        if (second+third <= first) return false;
+        return true;
+    }
+
+    
 
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();

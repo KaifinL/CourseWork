@@ -114,7 +114,10 @@ class Solution {
 
 
     //find group
-    
+    private int[] students;
+    public static int groupSize() {
+        
+    }
 
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();

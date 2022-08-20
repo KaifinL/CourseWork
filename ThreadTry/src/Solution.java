@@ -135,10 +135,9 @@ class Solution {
 
     public int groupSize(int n, List<String> query, List<Integer> student1, List<Integer> student2) {
         students = new int[n+1];
-        rank = new int[n+1];
+        
         for (int i = 0; i < n+1; i++) {
             students[i] = i;
-            rank[i] = 0;
         }
         count = n;
     }

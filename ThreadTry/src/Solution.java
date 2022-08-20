@@ -128,7 +128,7 @@ class Solution {
         int root_b = find_root(b);
         if (root_a != root_b) {
             count--;
-            
+            students[root_a] = root_b;
         }
     }
 

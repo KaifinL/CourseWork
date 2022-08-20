@@ -116,11 +116,11 @@ class Solution {
     //find group
     private int[] students;
     private int find_root(int a) {
-        if (students[a] == a) {
-            return a;
+        if (students[a] != a) {
+            students[a] = find_root(students[a]);
         }
         int root = find_root(students[a]);
-        
+
     }
 
     private void union(int a, int b) {

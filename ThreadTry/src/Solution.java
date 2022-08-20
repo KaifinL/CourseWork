@@ -184,7 +184,10 @@ class Solution {
 //        query.add("count");
 //        Solution solution = new Solution();
 //        solution.groupSize( 4, query, arr, student2);
-        List<Integer> test = minCost(arr, student2, )
+        List<Integer> test = minCost(arr, student2, 2);
+        for (int i : test) {
+            System.out.println(i);
+        }
     }
 
 

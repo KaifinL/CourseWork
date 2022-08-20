@@ -153,9 +153,15 @@ class Solution {
         arr.add(2);
         arr.add(1);
         List<Integer> student2 = new ArrayList<>();
-        arr.add()
-        arr.add(2);
-        System.out.println(mostVisited(arr, 10));
+        student2.add(2);
+        student2.add(3);
+        student2.add(4);
+        List<String> query = new ArrayList<>();
+        query.add("friend");
+        query.add("friend");
+        query.add("count");
+        Solution solution = new Solution();
+        solution.groupSize( 4, query, arr, student2);
     }
 
 

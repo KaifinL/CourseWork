@@ -148,7 +148,9 @@ class Solution {
     }
 
 
-    
+    public List<Integer> minCost(List<Integer> red, List<Integer> blue, int blueCost) {
+        int[][] dp = new int[2][red.size()+1];
+    }
 
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();

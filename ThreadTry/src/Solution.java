@@ -119,7 +119,7 @@ class Solution {
         if (students[a] != a) {
             students[a] = find_root(students[a]);
         }
-        int root = find_root(students[a]);
+        return students[a];
 
     }
 

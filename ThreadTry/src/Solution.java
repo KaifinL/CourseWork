@@ -104,7 +104,7 @@ class Solution {
         arr.add(4);
         arr.add(1);
         arr.add(2);
-        System.out.println(maxLength(arr, 10));
+        System.out.println(mostVisited(arr, 10));
     }
 
 

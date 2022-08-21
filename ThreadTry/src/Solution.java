@@ -203,7 +203,7 @@ class Solution {
                 }
             }
         }
-        return (int) result% Math.pow(10, 9)
+        return (int) (result% (Math.pow(10, 9)+7));
     }
 
     public static void main(String[] args) {

@@ -127,18 +127,29 @@ class Solution {
         return result;
     }
 
-    public static int[] sortByBits(int[] arr_list) {
-        Arrays.sort(arr_list,new Comparator<>(){
-            @Override
-            public int compare(Object a, Object b) {
-                int tempa = (int)a;
-                int tempb = (int)b;
-                String bin_a = int2Binary(tempa);
-                String bin_b = int2Binary(tempb);
-                return (bin_a.equals(bin_b) ? tempa-tempb : bin_a.compareTo(bin_b));
+    class myCmp implements Comparator<int[]> {
+        public int compare(int[] a, int[] b) {
+            if(a[1] != b[1]) {
+                return a[1]-b[1];
+            } else {
+                return a[0]-b[0];
             }
-        });
-        return arr_list;
+        }
+    }
+
+    public int[] sortByBits(int[] arr) {
+        int[][] count = new int[arr.length][2];
+        for(int i = 0; i < arr.length; i++){
+            count[i][0] = arr[i];
+            count[i][1] = Integer.bitCount(arr[i]);
+        }
+
+        Arrays.sort(count, new myCmp());
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = count[i][0];
+        }
+
+        return arr;
     }
 
 

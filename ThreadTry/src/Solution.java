@@ -110,15 +110,25 @@ class Solution {
         return s;
     }
 
-    public List<Integer> cardinality_sorting(List<Integer> arr) {
+    public static List<Integer> cardinality_sorting(List<Integer> arr) {
         Integer[] arr_list = new Integer[arr.size()];
         arr_list = arr.toArray(arr_list);
-        
+        Arrays.sort(arr_list, (a, b)->{
+            String bin_a = int2Binary(a);
+            String bin_b = int2Binary(b);
+            return (!bin_a.equals(bin_b) ? bin_a.compareTo(bin_b):a.compareTo(b));
+        });
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < arr_list.length; i++) {
+            result.add(arr_list[i]);
+        }
+        return result;
     }
 
 
     public static void main(String[] args) {
         System.out.println(binary_palindrome("01111"));
+        System.out.println();
     }
 
 

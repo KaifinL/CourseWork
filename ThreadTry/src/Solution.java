@@ -184,6 +184,10 @@ class Solution {
         return String.valueOf(arr);
     }
 
+    public int palindrome_subsequence(String s) {
+        
+    }
+
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();
         arr.add(2);

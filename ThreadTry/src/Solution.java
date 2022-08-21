@@ -150,20 +150,19 @@ class Solution {
 
     public static List<Integer> minCost(List<Integer> red, List<Integer> blue, int blueCost) {
         int[][] dp = new int[2][red.size()];
-        dp[0][red.size()-1] = red.get(red.size()-1);
-        dp[1][blue.size()-1] = blue.get(blue.size()-1);
+        dp[0][0] = red.get(0);
+        dp[1][0] = blue.get(0)+blueCost;
         List<Integer> result = new ArrayList<>();
         result.add(0);
-        for (int i = red.size()-2; i>=0; i--) {
+        result.add(Math.min(dp[0][0], dp[1][0]));
+        for (int i = 1; i < red.size(); i++) {
             for (int j = 0; j < 2; j++) {
                 if (j == 0) {
-                    dp[j][i] = Math.min(dp[1][i+1]+blue.get(i)+blueCost, dp[0][i+1]+red.get(i));
+                    dp[j][i] = Math.min(dp[1][i-1]+red.get(i), dp[0][i-1]+red.get(i));
                 } else {
-                    dp[j][i] = Math.min(dp[1][i+1]+blue.get(i), dp[0][i+1]+red.get(i));
+                    dp[j][i] = Math.min(dp[1][i-1]+blue.get(i), dp[0][i-1]+blue.get(i)+blueCost);
                 }
             }
-        }
-        for (int i = 0; i < red.size(); i++) {
             result.add(Math.min(dp[0][i], dp[1][i]));
         }
         return result;

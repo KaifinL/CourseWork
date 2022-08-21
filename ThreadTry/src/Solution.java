@@ -131,7 +131,11 @@ class Solution {
         Arrays.sort(arr_list,new Comparator<>(){
             @Override
             public int compare(Object a, Object b) {
-                
+                int tempa = (int)a;
+                int tempb = (int)b;
+                String bin_a = int2Binary(tempa);
+                String bin_b = int2Binary(tempb);
+                return (bin_a.equals(bin_b) ? tempa-tempb : bin_a.compareTo(bin_b));
             }
         });
         return arr_list;

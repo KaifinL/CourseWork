@@ -129,9 +129,9 @@ class Solution {
 
     public static int[] sortByBits(int[] arr_list) {
         Arrays.sort(arr_list,new Comparator<Integer>(){
-            @override
-            public int compare(int a, int b) {
-                
+            @overr
+            public int compare(Object a, Object b) {
+
             }
         });
         return arr_list;

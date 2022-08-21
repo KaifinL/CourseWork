@@ -161,6 +161,9 @@ class Solution {
         if (a > c || b > d) {
             return false;
         }
+        if (a == c && b==d){
+            return true;
+        }
         return possible(a+b, b, c, d) || possible(a, a+b, c, d);
     }
 

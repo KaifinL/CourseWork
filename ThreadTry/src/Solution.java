@@ -128,8 +128,8 @@ class Solution {
     public static int[] sortByBits(int[] arr_list) {
         Arrays.sort(arr_list,new Comparator<>(){
             @override
-            public int compareTo(int a, int b) {
-
+            public int compare(int a, int b) {
+            
             }
         });
         return arr_list;

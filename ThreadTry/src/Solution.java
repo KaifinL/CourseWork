@@ -22,7 +22,7 @@ class Solution {
 
     public static int palindrome_subsequence(String s) {
         long [][]three_length = new long[s.length()][s.length()];
-        for (int i = s.length()-1; i>=0; i--) {
+        for (int i = s.length()-2; i>=0; i--) {
             for (int j = i+2; j < s.length(); j++) {
                 three_length[i][j] = three_length[i][j-1]+three_length[i+1][j]-three_length[i+1][j-1];
                 if (s.charAt(i) == s.charAt(j)) {

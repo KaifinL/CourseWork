@@ -126,10 +126,8 @@ class Solution {
     }
 
     public static int[] sortByBits(int[] arr_list) {
-        Arrays.sort(arr_list, (a, b)->{
-            String bin_a = int2Binary((Integer) a);
-            String bin_b = int2Binary((Integer) b);
-            return (!bin_a.equals(bin_b) ? bin_a.compareTo(bin_b):Integer.compare((Integer) a, (Integer) b));
+        Arrays.sort(arr_list,new Comparator<>(){
+            public Comparator()
         });
         return arr_list;
     }

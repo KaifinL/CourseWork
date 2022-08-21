@@ -20,7 +20,7 @@ class Solution {
         return String.valueOf(arr);
     }
 
-    public int palindrome_subsequence(String s) {
+    public static int palindrome_subsequence(String s) {
         long [][]three_length = new long[s.length()][s.length()];
         for (int i = s.length()-1; i>=0; i--) {
             for (int j = i+2; j < s.length(); j++) {
@@ -43,7 +43,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(breakPalindrome("aabccba"));
+        System.out.println(palindrome_subsequence("aabccba"));
     }
 
 

@@ -127,31 +127,34 @@ class Solution {
         return result;
     }
 
-    class myCmp implements Comparator<int[]> {
-        public int compare(int[] a, int[] b) {
-            if(a[1] != b[1]) {
-                return a[1]-b[1];
-            } else {
-                return a[0]-b[0];
+    // real cardinality sorting.
+    public static int[] sortByBits(int[] arr) {
+        int[] bits = new int[arr.length];
+        int[] ans = new int[arr.length];
+        Arrays.sort(arr);
+        for(int i = 0; i < arr.length; i++){
+            int count = 0;
+            int n = arr[i];
+            while(n > 0){
+                if((n & 1) == 1){
+                    count++;
+                }
+                n >>= 1;
+            }
+            bits[i] = count;
+        }
+        int l = 0;
+        for(int j = 0; j <= 14; j++){
+            int length = 0;
+            for(int k = 0; k < bits.length; k++){
+                if(j == bits[k]){
+                    length++;
+                    ans[l] = arr[k];
+                    l++;
+                }
             }
         }
-    }
-
-    
-
-    public int[] sortByBits(int[] arr) {
-        int[][] count = new int[arr.length][2];
-        for(int i = 0; i < arr.length; i++){
-            count[i][0] = arr[i];
-            count[i][1] = Integer.bitCount(arr[i]);
-        }
-
-        Arrays.sort(count, new myCmp());
-        for(int i = 0; i < arr.length; i++){
-            arr[i] = count[i][0];
-        }
-
-        return arr;
+        return ans;
     }
 
 

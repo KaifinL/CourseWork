@@ -185,7 +185,19 @@ class Solution {
     }
 
     public int palindrome_subsequence(String s) {
-        
+        long [][]three_length = new long[s.length()][s.length()];
+        for (int i = s.length()-1; i>=0; i--) {
+            for (int j = i+2; j < s.length(); j++) {
+                three_length[i][j] = three_length[i][j-1]+three_length[i+1][j]-three_length[i+1][j-1];
+                if (s.charAt(i) == s.charAt(j)) {
+                    three_length[i][j] += (j-i+1);
+                }
+            }
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            
+        }
     }
 
     public static void main(String[] args) {

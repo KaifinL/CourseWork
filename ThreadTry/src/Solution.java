@@ -127,7 +127,10 @@ class Solution {
 
     public static int[] sortByBits(int[] arr_list) {
         Arrays.sort(arr_list,new Comparator<>(){
-            public Comparator()
+            @override
+            public int compareTo(int a, int b) {
+
+            }
         });
         return arr_list;
     }

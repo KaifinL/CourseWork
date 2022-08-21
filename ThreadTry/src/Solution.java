@@ -43,6 +43,15 @@ class Solution {
         return (int) (result% (Math.pow(10, 9)+7));
     }
 
+    /*
+    @para s is the original string given.
+    @para target is the string among those 8
+     */
+    private int numPalindrome(String s, int target) {
+        int [][]dp = new int[5][s.length()];
+        
+    }
+
 
     public int binary_palindrome(String s) {
         HashSet<String> palindromes = new HashSet<>();
@@ -62,7 +71,7 @@ class Solution {
         for (int i = 0; i+5 < s.length(); i++) {
             String curr = s.substring(i, i+5);
             if (palindromes.contains(curr)) {
-                
+
             }
         }
     }

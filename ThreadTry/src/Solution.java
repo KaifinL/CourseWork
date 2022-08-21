@@ -20,6 +20,7 @@ class Solution {
         return String.valueOf(arr);
     }
 
+    // 假的 这个没有control binary form.
     public static int palindrome_subsequence(String s) {
         long [][]three_length = new long[s.length()][s.length()];
         for (int i = s.length()-2; i>=0; i--) {
@@ -40,6 +41,10 @@ class Solution {
             }
         }
         return (int) (result% (Math.pow(10, 9)+7));
+    }
+
+    public int binary_palindrome(String s) {
+        
     }
 
     public static void main(String[] args) {

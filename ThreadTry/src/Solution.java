@@ -125,6 +125,15 @@ class Solution {
         return result;
     }
 
+    public static int[] sortByBits(Integer[] arr_list) {
+        Arrays.sort(arr_list, (a, b)->{
+            String bin_a = int2Binary((Integer) a);
+            String bin_b = int2Binary((Integer) b);
+            return (!bin_a.equals(bin_b) ? bin_a.compareTo(bin_b):Integer.compare(a, b));
+        });
+        return arr_list;
+    }
+
 
     public static void main(String[] args) {
         System.out.println(binary_palindrome("01111"));

@@ -47,32 +47,31 @@ class Solution {
     @para s is the original string given.
     @para target is the string among those 8
      */
-    public static int count(String a, String b) {
+    public static long count(String a, String b) {
         int m = a.length();
-        int n = b.length();
-        int lookup[][] = new int[m + 1][n + 1];
-        for (int i = 0; i <= n; ++i)
-            lookup[0][i] = 0;
+        long dp[][] = new long[m + 1][6];
+        for (int i = 0; i <= 5; ++i)
+            dp[0][i] = 0;
         for (int i = 0; i <= m; ++i)
-            lookup[i][0] = 1;
+            dp[i][0] = 1;
         for (int i = 1; i <= m; i++)
         {
-            for (int j = 1; j <= n; j++)
+            for (int j = 1; j <= 5; j++)
             {
                 if (a.charAt(i - 1) == b.charAt(j - 1))
-                    lookup[i][j] = lookup[i - 1][j - 1] +
-                            lookup[i - 1][j];
+                    dp[i][j] = dp[i - 1][j - 1] +
+                            dp[i - 1][j];
 
                 else
-                    lookup[i][j] = lookup[i - 1][j];
+                    dp[i][j] = dp[i - 1][j];
             }
         }
 
-        return lookup[m][n];
+        return dp[m][5];
     }
 
 
-    public int binary_palindrome(String s) {
+    public static int binary_palindrome(String s) {
         HashSet<String> palindromes = new HashSet<>();
         for (int i = 0; i < 2; i++) {
             StringBuilder sb = new StringBuilder();
@@ -87,16 +86,15 @@ class Solution {
             }
         }
 
-        for (int i = 0; i+5 < s.length(); i++) {
-            String curr = s.substring(i, i+5);
-            if (palindromes.contains(curr)) {
-
-            }
+        long result = 0;
+        for (String curr:palindromes) {
+            result += count(s, curr);
         }
+        return (int) (result%(Math.pow(10, 9)+7));
     }
 
     public static void main(String[] args) {
-        System.out.println(palindrome_subsequence("aabccba"));
+        System.out.println(binary_palindrome(""));
     }
 
 

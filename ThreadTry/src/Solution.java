@@ -70,7 +70,6 @@ class Solution {
         return dp[m][5];
     }
 
-
     public static int binary_palindrome(String s) {
         HashSet<String> palindromes = new HashSet<>();
         for (int i = 0; i < 2; i++) {

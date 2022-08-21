@@ -195,9 +195,15 @@ class Solution {
             }
         }
 
+        long result = 0;
         for (int i = 0; i < s.length(); i++) {
-            
+            for (int j = i+4; j<s.length(); j++) {
+                if (s.charAt(i)==s.charAt(j)) {
+                    result += three_length[i+1][j-1];
+                }
+            }
         }
+        return (int) result% Math.pow(10, 9)
     }
 
     public static void main(String[] args) {

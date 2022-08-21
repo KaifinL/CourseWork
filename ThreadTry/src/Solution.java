@@ -4,7 +4,7 @@ import java.util.*;
 
 class Solution {
 
-    public String breakPalindrome(String palindrome) {
+    public static String breakPalindrome(String palindrome) {
         if(palindrome.length()<=1)
             return "";
         char[] arr = palindrome.toCharArray();
@@ -43,7 +43,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        
+        System.out.println(breakPalindrome("aabccba"));
     }
 
 

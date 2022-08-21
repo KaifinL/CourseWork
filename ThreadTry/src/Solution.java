@@ -157,6 +157,8 @@ class Solution {
         return ans;
     }
 
+    public boolean
+
 
     public static void main(String[] args) {
         System.out.println(binary_palindrome("01111"));

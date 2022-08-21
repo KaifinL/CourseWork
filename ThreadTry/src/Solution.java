@@ -82,7 +82,9 @@ class Solution {
                 for (int m = 0; m < 2; m++) {
                     sb.insert(2, i);
                     palindromes.add(sb.toString());
+                    sb.delete(2, 3);
                 }
+                sb.delete(1, 3);
             }
         }
 

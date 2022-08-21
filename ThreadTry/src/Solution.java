@@ -51,10 +51,18 @@ class Solution {
             sb.append(i);
             sb.append(i);
             for (int j = 0; j < 2; j++) {
-                sb.insert(String.valueOf(i).repeat(2), 1);
+                sb.insert(1, String.valueOf(i).repeat(2));
                 for (int m = 0; m < 2; m++) {
-                    sb.insert()
+                    sb.insert(2, i);
+                    palindromes.add(sb.toString());
                 }
+            }
+        }
+
+        for (int i = 0; i+5 < s.length(); i++) {
+            String curr = s.substring(i, i+5);
+            if (palindromes.contains(curr)) {
+                
             }
         }
     }

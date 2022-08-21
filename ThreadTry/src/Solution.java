@@ -67,10 +67,11 @@ class Solution {
             }
         }
 
-        // if no built-in converter allowed, use this functiont to convert 
+
 
         return dp[m][5];
     }
+
 
     public static int binary_palindrome(String s) {
         HashSet<String> palindromes = new HashSet<>();
@@ -95,6 +96,22 @@ class Solution {
         }
         return (int) (result%(Math.pow(10, 9)+7));
     }
+
+
+    // if no built-in converter allowed, use this functiont to convert an int to a binary representation.
+    public static String int2Binary(int n)
+    {
+        String s = "";
+        while (n > 0)
+        {
+            s =  ( (n % 2 ) == 0 ? "0" : "1") +s;
+            n = n / 2;
+        }
+        return s;
+    }
+
+    
+
 
     public static void main(String[] args) {
         System.out.println(binary_palindrome("01111"));

@@ -94,7 +94,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(binary_palindrome(""));
+        System.out.println(binary_palindrome("0100110"));
     }
 
 

@@ -1,4 +1,6 @@
 
+import jh61b.junit.In;
+
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -126,10 +128,10 @@ class Solution {
     }
 
     public static int[] sortByBits(int[] arr_list) {
-        Arrays.sort(arr_list,new Comparator<>(){
+        Arrays.sort(arr_list,new Comparator<Integer>(){
             @override
             public int compare(int a, int b) {
-            
+                
             }
         });
         return arr_list;

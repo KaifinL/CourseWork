@@ -43,8 +43,9 @@ class Solution {
         return (int) (result% (Math.pow(10, 9)+7));
     }
 
+
     public int binary_palindrome(String s) {
-        
+        HashSet
     }
 
     public static void main(String[] args) {

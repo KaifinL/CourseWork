@@ -45,7 +45,18 @@ class Solution {
 
 
     public int binary_palindrome(String s) {
-        HashSet
+        HashSet<String> palindromes = new HashSet<>();
+        for (int i = 0; i < 2; i++) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(i);
+            sb.append(i);
+            for (int j = 0; j < 2; j++) {
+                sb.insert(String.valueOf(i).repeat(2), 1);
+                for (int m = 0; m < 2; m++) {
+                    sb.insert()
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {

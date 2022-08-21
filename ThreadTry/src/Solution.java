@@ -168,7 +168,25 @@ class Solution {
         return possible(a+b, b, c, d) || possible(a, a+b, c, d);
     }
 
-    
+    public String removeDuplicates(String s, int k) {
+        Stack <Integer> counter = new Stack();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (counter.empty() || s.charAt(i) != sb.charAt(sb.length()-1)) {
+                counter.push(1);
+                sb.append(s.charAt(i));
+            } else {
+                if (counter.peek() < k-1) {
+                    counter.push(counter.pop()+1);
+                    sb.append(s.charAt(i));
+                } else {
+                    counter.pop();
+                    sb.delete(sb.length()-(k-1), sb.length());
+                }
+            }
+        }
+        return sb.toString();
+    }
 
 
     public static void main(String[] args) {

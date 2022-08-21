@@ -112,8 +112,8 @@ class Solution {
 
     public List<Integer> cardinality_sorting(List<Integer> arr) {
         Integer[] arr_list = new Integer[arr.size()];
-        arr_list = arr.toArray(arr);
-
+        arr_list = arr.toArray(arr_list);
+        
     }
 
 

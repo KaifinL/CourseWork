@@ -26,7 +26,7 @@ class Solution {
             for (int j = i+2; j < s.length(); j++) {
                 three_length[i][j] = three_length[i][j-1]+three_length[i+1][j]-three_length[i+1][j-1];
                 if (s.charAt(i) == s.charAt(j)) {
-                    three_length[i][j] += (j-i+1);
+                    three_length[i][j] += (j-i-1);
                 }
             }
         }

@@ -229,7 +229,37 @@ class Solution {
         return false;
     }
 
-    
+    private HashMap<String, HashSet<String>> mapping;
+
+
+    public void enter(String start, String destination) {
+        if (mapping==null) {
+            mapping = new HashMap();
+        }
+        HashSet<String> curr = mapping.getOrDefault(start, new HashSet());
+        curr.add(destination);
+        mapping.put(start, curr);
+    }
+
+    private void print_helper(String start, String destination, StringBuilder temp) {
+        if (start.equals(destination)) {
+            System.out.println(temp.toString());
+            return;
+        }
+        temp.append(start);
+        HashSet<String> stop = mapping.get(start);
+        if (stop == null) {
+            return;
+        }
+        for (Object curr : stop.toArray()) {
+            print_helper((String)curr, destination, temp);
+        }
+        temp.delete(temp.length()-start.length(), temp.length());
+    }
+
+    public void printRoute(String start, String destination) {
+        print_helper(start, destination, new StringBuilder());
+    }
 
 
     public static void main(String[] args) {

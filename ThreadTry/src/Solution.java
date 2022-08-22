@@ -190,7 +190,19 @@ class Solution {
     }
 
     //whole minute dilemma
-    public int 
+    public int playlist(int []songs){
+        int result = 0;
+        for (int i = 0; i < songs.length; i++) {
+            for (int j = i+1; j< songs.length; j++) {
+                if (songs[i]+songs[j] % 60 == 0) {
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
+
+    
 
 
     public static void main(String[] args) {

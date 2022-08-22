@@ -202,12 +202,39 @@ class Solution {
         return result;
     }
 
-    
+    private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {
+        if (index == word.length()) {
+            return true;
+        }
+        String coordinate = row + "," + col;
+        if (row >= board.length || col>=board[0].length || row< 0 || col < 0 || board[row][col]!=word.charAt(index) || seen.contains(coordinate)) {
+            return false;
+        }
+        seen.add(coordinate);
+        return exist_helper(board, seen, word, index+1, row+1, col) || exist_helper(board, seen, word, index+1, row-1, col) || exist_helper(board, seen, word, index+1, row, col+1) || exist_helper(board, seen, word, index+1, row, col-1);
+    }
+
+    public boolean exist(char[][] board, String word) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (exist_helper(board, new HashSet(), word, 0, i, j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 
     public static void main(String[] args) {
-        System.out.println(binary_palindrome("01111"));
-        System.out.println();
+//        System.out.println(binary_palindrome("01111"));
+//        System.out.println();
+        Solution test = new Solution();
+        char[][] board = new char[3][4];
+        board[0] = new char[]{'A', 'B', 'C', 'E'};
+        board[1] = new char[]{'S', 'F', 'E', 'S'};
+        board[2] = new char[]{'A', 'D', 'E', 'E'};
+        System.out.println(test.exist(board, "ABCESEEEFS"));
     }
 
 

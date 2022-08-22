@@ -263,14 +263,11 @@ class Solution {
 
 
     public static void main(String[] args) {
-//        System.out.println(binary_palindrome("01111"));
-//        System.out.println();
         Solution test = new Solution();
-        char[][] board = new char[3][4];
-        board[0] = new char[]{'A', 'B', 'C', 'E'};
-        board[1] = new char[]{'S', 'F', 'E', 'S'};
-        board[2] = new char[]{'A', 'D', 'E', 'E'};
-        System.out.println(test.exist(board, "ABCESEEEFS"));
+        test.enter("A", "B");
+        test.enter("B", "C");
+        test.enter("A", "C");
+        test.printRoute("A", "C");
     }
 
 

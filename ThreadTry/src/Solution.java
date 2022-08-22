@@ -211,7 +211,11 @@ class Solution {
             return false;
         }
         seen.add(coordinate);
-        return exist_helper(board, seen, word, index+1, row+1, col) || exist_helper(board, seen, word, index+1, row-1, col) || exist_helper(board, seen, word, index+1, row, col+1) || exist_helper(board, seen, word, index+1, row, col-1);
+        if (!exist_helper(board, seen, word, index+1, row+1, col) || exist_helper(board, seen, word, index+1, row-1, col) || exist_helper(board, seen, word, index+1, row, col+1) || exist_helper(board, seen, word, index+1, row, col-1)) {
+            seen.remove(coordinate);
+            return false;
+        }
+        return true;
     }
 
     public boolean exist(char[][] board, String word) {

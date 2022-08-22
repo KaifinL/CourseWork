@@ -168,6 +168,7 @@ class Solution {
         return possible(a+b, b, c, d) || possible(a, a+b, c, d);
     }
 
+    // word compression
     public String removeDuplicates(String s, int k) {
         Stack <Integer> counter = new Stack();
         StringBuilder sb = new StringBuilder();

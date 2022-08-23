@@ -243,7 +243,8 @@ class Solution {
 
     private void print_helper(String start, String destination, StringBuilder temp) {
         if (start.equals(destination)) {
-            System.out.println(temp.toString());
+
+            System.out.println(temp.toString()+destination);
             return;
         }
         temp.append(start);

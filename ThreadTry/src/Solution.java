@@ -266,7 +266,7 @@ class Solution {
         int[] next_greater = new int[nums2.length];
         next_greater[nums2.length-1]=-1;
         HashMap<Integer, Integer> greater_index = new HashMap();
-        for (int i = nums1.length-2; i>=0; i--) {
+        for (int i = nums2.length-2; i>=0; i--) {
             if (nums2[i+1]>nums2[i]) {
                 next_greater[i] = i+1;
             } else {

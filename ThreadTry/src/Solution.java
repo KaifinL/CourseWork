@@ -322,7 +322,7 @@ class Solution {
 //        test.printRoute("A", "C");
 //        int[] test1 = new int[]{4,1,2};
 //        int[] test2 = new int[]{1,3,4,2};
-        System.out.println(test.lottery());
+        System.out.println(test.lottery(3));
     }
 
 

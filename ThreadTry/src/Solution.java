@@ -262,7 +262,28 @@ class Solution {
         print_helper(start, destination, new StringBuilder());
     }
 
-    
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        int[] next_greater = new int[nums2.length];
+        next_greater[nums2.length-1]=-1;
+        HashMap<Integer, Integer> greater_index = new HashMap();
+        for (int i = nums1.length-2; i>=0; i--) {
+            if (nums2[i+1]>nums2[i]) {
+                next_greater[i] = i+1;
+            } else {
+                int curr = nums2[i+1];
+                while (curr!=-1 && nums2[i]>nums2[curr]) {
+                    curr = next_greater[curr];
+                }
+                next_greater[i] = curr;
+            }
+            greater_index.put(nums2[i], (next_greater[i]==-1)?-1:nums2[next_greater[i]]);
+        }
+        int result[] = new int[nums1.length];
+        for (int i = 0; i < nums1.length; i++) {
+            result[i] = greater_index.get(nums1[i]);
+        }
+        return result;
+    }
 
 
     public static void main(String[] args) {
@@ -271,6 +292,7 @@ class Solution {
         test.enter("B", "C");
         test.enter("A", "C");
         test.printRoute("A", "C");
+        int[] test1 = new int[]
     }
 
 

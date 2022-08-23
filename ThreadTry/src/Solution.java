@@ -202,6 +202,33 @@ class Solution {
         return result;
     }
 
+    private int digit_sum(int n) {
+        int result = 0;
+        while (n!=0) {
+            result += (n%10);
+            n/=10;
+        }
+        return result;
+    }
+
+    //lottory ticket
+    public int lottery(int n) {
+        int[] arr = new int[28];
+        int maximum = 0;
+        for (int i = 1; i <= n; i++) {
+            int curr = digit_sum(i);
+            arr[curr]++;
+            maximum = Math.max(maximum, arr[curr]);
+        }
+        int result = 0;
+        for (int i = 1; i <= 27; i++) {
+            if (arr[i] == maximum) {
+                result++;
+            }
+        }
+        return result;
+    }
+
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {
         if (index == word.length()) {
             return true;
@@ -293,9 +320,9 @@ class Solution {
 //        test.enter("B", "C");
 //        test.enter("A", "C");
 //        test.printRoute("A", "C");
-        int[] test1 = new int[]{4,1,2};
-        int[] test2 = new int[]{1,3,4,2};
-        System.out.println(test.nextGreaterElement(test1, test2));
+//        int[] test1 = new int[]{4,1,2};
+//        int[] test2 = new int[]{1,3,4,2};
+        System.out.println(test.lottery());
     }
 
 

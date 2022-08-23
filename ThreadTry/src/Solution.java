@@ -270,7 +270,7 @@ class Solution {
             if (nums2[i+1]>nums2[i]) {
                 next_greater[i] = i+1;
             } else {
-                int curr = nums2[i+1];
+                int curr = next_greater[i+1];
                 while (curr!=-1 && nums2[i]>nums2[curr]) {
                     curr = next_greater[curr];
                 }

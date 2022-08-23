@@ -292,7 +292,8 @@ class Solution {
         test.enter("B", "C");
         test.enter("A", "C");
         test.printRoute("A", "C");
-        int[] test1 = new int[]
+        int[] test1 = new int[]{4,1,2};
+        int[] test2 = new int[]{}
     }
 
 

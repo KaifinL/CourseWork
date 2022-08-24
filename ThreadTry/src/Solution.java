@@ -229,9 +229,28 @@ class Solution {
         return result;
     }
 
-    // return the number of ana
-    private int count_helper(HashMap<String, Integer>set, String sentence) {
 
+    // time complexity O(n), in terms of the length of a or b.
+    private boolean anagram(String a, String b) {
+        char[] letters = new char[26];
+        if (a.length() != b.length()) {
+            return false;
+        }
+        for (int i = 0; i < a.length(); i++) {
+            letters[a.charAt(i)-'a']++;
+            letters[b.charAt(i)-'b']--;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (letters[i] != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // return the number of anagrams we can shape given the sentence.
+    private int count_helper(HashMap<String, Integer>set, String sentence) {
+        String[] curr = sentence.split(" ");
     }
 
     // how many sentences

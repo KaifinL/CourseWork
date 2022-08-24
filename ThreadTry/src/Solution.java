@@ -306,7 +306,7 @@ class Solution {
                 right = mid;
             }
         }
-        return -1;
+        return a.get(left) > b ? left : left+1;
     }
 
     //football score

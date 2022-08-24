@@ -251,6 +251,8 @@ class Solution {
     // return the number of anagrams we can shape given the sentence.
     private int count_helper(HashMap<String, Integer>set, String sentence) {
         String[] curr = sentence.split(" ");
+        int result = 1;
+        for ()
     }
 
     // how many sentences

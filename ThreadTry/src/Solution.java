@@ -288,7 +288,7 @@ class Solution {
 
     private int nums_smaller(List<Integer> a, int b) {
         if (a.size() == 1) {
-            return (a.get(0)>b) ? 1: 0;
+            return (a.get(0)>b) ? 0: 1;
         }
         int left = 0;
         int right = a.size()-1;
@@ -296,7 +296,7 @@ class Solution {
             int mid = (left + right) / 2;
             int curr = a.get(mid);
             if (mid == 0) {
-                return (a.get(0)>b) ? 0 :
+                return (a.get(0)>b) ? 0 : (a.get(1)>b) ? 1 : 2;
             }
             if (curr>b && a.get(mid-1) < b) {
                 return mid;
@@ -306,7 +306,7 @@ class Solution {
                 right = mid;
             }
         }
-
+        return -1;
     }
 
     //football score
@@ -411,6 +411,7 @@ class Solution {
 //        test.printRoute("A", "C");
 //        int[] test1 = new int[]{4,1,2};
 //        int[] test2 = new int[]{1,3,4,2};
+        List<Integer> 
         String[] test1 = new String[]{"listen", "silent", "it", "is"};
         String[] test2 = new String[]{"listen is it silent"};
         System.out.println(test.countSentences(test1, test2));

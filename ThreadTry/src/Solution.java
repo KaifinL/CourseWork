@@ -418,7 +418,10 @@ class Solution {
         list.add(1);
         list.add(2);
         list.add(3);
-        System.out.println(test.nums_smaller(list, 5));
+        List<Integer> list2 = new ArrayList<>();
+        list2.add(2);
+        list2.add(4);
+        System.out.println(test.football_score(list, list2));
     }
 
 

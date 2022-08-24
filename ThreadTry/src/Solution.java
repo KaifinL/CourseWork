@@ -267,12 +267,21 @@ class Solution {
     public int[] countSentences(String[] wordSet, String[] sentenceSet) {
         HashMap<String, Integer> set = new HashMap<>();
         for (int i = 0; i < wordSet.length; i++) {
-            
+            boolean found = false;
             for (String curr : set.keySet()) {
                 if (anagram(curr, wordSet[i])) {
-                    set.put(curr, set.get())
+                    set.put(curr, set.get(curr)+1);
+                    found = true;
+                    break;
                 }
             }
+            if (!found) {
+                set.put(wordSet[i], 1);
+            }
+        }
+        int[] result = new int[sentenceSet.length];
+        for (int i = 0; i < sentenceSet.length; i++) {
+            result[i] = count_helper(set, sentenceSet[i]);
         }
     }
 

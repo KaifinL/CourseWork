@@ -229,7 +229,10 @@ class Solution {
         return result;
     }
 
-    private 
+    // return the number of ana
+    private int count_helper(HashMap<String, Integer>set, String sentence) {
+
+    }
 
     // how many sentences
     public int[] countSentences(String[] wordSet, String[] sentenceSet) {

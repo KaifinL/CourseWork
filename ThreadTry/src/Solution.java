@@ -283,6 +283,7 @@ class Solution {
         for (int i = 0; i < sentenceSet.length; i++) {
             result[i] = count_helper(set, sentenceSet[i]);
         }
+        return result;
     }
 
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {

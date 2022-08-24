@@ -286,10 +286,33 @@ class Solution {
         return result;
     }
 
+    private int nums_smaller(List<Integer> a, int b) {
+        int left = 0;
+        int right = a.size()-1;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            int curr = a.get(mid);
+            if (mid == 0) {
+                
+            }
+            if (curr>b && a.get(mid-1) < b) {
+                return mid;
+            } else if (curr < b) {
+                left = mid+1;
+            } else {
+                right = mid;
+            }
+        }
+
+    }
+
     //football score
     public List<Integer> football_score(List<Integer> a, List<Integer> b) {
-        int[] temp_a = new int[a.size()];
-        a.toArray(temp_a);
+        a.sort((c, d)->{
+            return c.compareTo(d);
+        });
+        List<Integer> result = new ArrayList<>();
+
     }
 
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {

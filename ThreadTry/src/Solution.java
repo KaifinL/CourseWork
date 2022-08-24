@@ -379,7 +379,8 @@ class Solution {
 //        int[] test1 = new int[]{4,1,2};
 //        int[] test2 = new int[]{1,3,4,2};
         String[] test1 = new String[]{"listen", "silent", "it", "is"};
-        String[] test2 = new String[]{"listen is it silent"}
+        String[] test2 = new String[]{"listen is it silent"};
+        System.out.println(test.countSentences(test1, test2));
     }
 
 

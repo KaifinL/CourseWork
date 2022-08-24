@@ -265,7 +265,15 @@ class Solution {
 
     // how many sentences
     public int[] countSentences(String[] wordSet, String[] sentenceSet) {
-        
+        HashMap<String, Integer> set = new HashMap<>();
+        for (int i = 0; i < wordSet.length; i++) {
+            
+            for (String curr : set.keySet()) {
+                if (anagram(curr, wordSet[i])) {
+                    set.put(curr, set.get())
+                }
+            }
+        }
     }
 
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {

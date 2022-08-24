@@ -252,12 +252,20 @@ class Solution {
     private int count_helper(HashMap<String, Integer>set, String sentence) {
         String[] curr = sentence.split(" ");
         int result = 1;
-        for ()
+        for (String temp:curr) {
+            for (String target : set.keySet()) {
+                if (set.get(target) != 1 && anagram(target, temp)) {
+                    result *= set.get(target);
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     // how many sentences
     public int[] countSentences(String[] wordSet, String[] sentenceSet) {
-
+        
     }
 
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {

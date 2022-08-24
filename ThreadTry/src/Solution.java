@@ -287,13 +287,16 @@ class Solution {
     }
 
     private int nums_smaller(List<Integer> a, int b) {
+        if (a.size() == 1) {
+            return (a.get(0)>b) ? 1: 0;
+        }
         int left = 0;
         int right = a.size()-1;
         while (left < right) {
             int mid = (left + right) / 2;
             int curr = a.get(mid);
             if (mid == 0) {
-                
+                return (a.get(0)>b) ? 0 :
             }
             if (curr>b && a.get(mid-1) < b) {
                 return mid;

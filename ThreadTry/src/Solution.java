@@ -238,7 +238,7 @@ class Solution {
         }
         for (int i = 0; i < a.length(); i++) {
             letters[a.charAt(i)-'a']++;
-            letters[b.charAt(i)-'b']--;
+            letters[b.charAt(i)-'a']--;
         }
         for (int i = 0; i < 26; i++) {
             if (letters[i] != 0) {

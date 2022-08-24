@@ -415,7 +415,7 @@ class Solution {
         list.add(1);
         list.add(2);
         list.add(3);
-        System.out.println(test.nums_smaller(list, 2));
+        System.out.println(test.nums_smaller(list, 3));
     }
 
 

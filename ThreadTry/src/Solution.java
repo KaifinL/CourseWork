@@ -411,10 +411,11 @@ class Solution {
 //        test.printRoute("A", "C");
 //        int[] test1 = new int[]{4,1,2};
 //        int[] test2 = new int[]{1,3,4,2};
-        List<Integer> 
-        String[] test1 = new String[]{"listen", "silent", "it", "is"};
-        String[] test2 = new String[]{"listen is it silent"};
-        System.out.println(test.countSentences(test1, test2));
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        System.out.println(test.nums_smaller(list, -1));
     }
 
 

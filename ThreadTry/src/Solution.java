@@ -229,7 +229,8 @@ class Solution {
         return result;
     }
 
-    // 
+    // how many sentences
+    public int[] countSentences(String[] )
 
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {
         if (index == word.length()) {

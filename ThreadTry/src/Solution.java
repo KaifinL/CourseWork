@@ -286,6 +286,11 @@ class Solution {
         return result;
     }
 
+    //football score
+    public List<Integer> football_score(List<Integer> a, List<Integer> b) {
+        int[] temp_a = a.toArray(new int[]{0});
+    }
+
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {
         if (index == word.length()) {
             return true;

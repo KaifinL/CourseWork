@@ -310,13 +310,16 @@ class Solution {
     }
 
     //football score
-//    public List<Integer> football_score(List<Integer> a, List<Integer> b) {
-//        a.sort((c, d)->{
-//            return c.compareTo(d);
-//        });
-//        List<Integer> result = new ArrayList<>();
-//
-//    }
+    public List<Integer> football_score(List<Integer> a, List<Integer> b) {
+        a.sort((c, d)->{
+            return c.compareTo(d);
+        });
+        List<Integer> result = new ArrayList<>();
+        for (int i : b) {
+            result.add(nums_smaller(a, i));
+        }
+        return result;
+    }
 
     private boolean exist_helper(char[][] board, HashSet<String> seen, String word, int index, int row, int col) {
         if (index == word.length()) {

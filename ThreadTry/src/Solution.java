@@ -283,7 +283,6 @@ class Solution {
         return result;
     }
 
-    //FOOTBALL SCORE
     private int nums_smaller(List<Integer> a, int b) {
         if (a.size() == 1) {
             return (a.get(0)>b) ? 0: 1;
